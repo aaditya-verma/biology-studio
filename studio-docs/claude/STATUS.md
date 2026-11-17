@@ -38,7 +38,7 @@
 - **D-025 (c)** still proposed: Professor as human G-Sci reviewer? (a) decided, (b) rejected → D-027.
 - Professor's name, Google address and **GitHub username** — needed for invites (repo: Settings → Collaborators → Add people).
 - `THIRD_PARTY.md` licences are ≈ — check each against its licence file before A0.
-- Laptop: after cloning the repo into `repo\biology-studio\`, the old `tools\` + `content\` in Studio home are retired (keep `out\`); `tools\map\K1-handoff.md` there is superseded — delete it.
+- Laptop: after cloning the repo into `repo\biology-studio\`, the old `tools\` + `content\` in Studio home are retired (keep `out\`).
 - Google Cloud project "Biology Studio" not created yet; add the Professor as an OAuth test user when it is (D1).
 
 ## Owner reminders
