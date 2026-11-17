@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 17 Nov 2026 · Bio · Ideation · A0 colours (§2 tokens, D-031). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -39,7 +39,10 @@
 - **Scene:** a file describing shapes, keyframes by day, labels and camera for one card or shot (`docs/scene-spec.md`).
 - **Shot:** one continuous piece of an episode, made from one scene. **Storyboard:** one frame per beat. **Shot list:** shots with duration and day range.
 - **Render:** turning a scene into video frames. **Master:** the final full-quality episode file. **Clip:** a 10–20 s cut used on a card.
+- **Rendition:** one encode of a master at a set resolution (720p for phones; 1080p for tablet/desktop if M1 allows — D-033).
 - **TTS:** text-to-speech voice-over. **VTT / SRT:** subtitle files. **Drift:** subtitle lag behind speech.
+- **Host:** the episode's on-screen character (cell/embryo by default · animal · stylised human · none); asks, reacts, jokes, never shows anatomy (audience profile `host`, playbook §5b, D-032).
+- **Short:** the 9:16, ≤ 60 s audience cut (`-short` suffix) — hook ≤ 1 s, cuts every 1–3 s (playbook §5b). **Kinetic captions:** styled, toggleable subtitles for Shorts — one phrase at a time, key term highlighted, Latin + Devanagari.
 - **Bake-off:** making the same shot several ways and comparing (M1).
 - **Animatic:** a rough three.js version of an episode with scratch voice, reviewed before any final render (RULES H3).
 - **Render manifest:** the record written with every render — scene hash, tools, GPU, settings, seed, voice (RULES H7).
@@ -55,9 +58,13 @@
 - **Draft & review:** Studio's flow for drafting cards and scripts with Claude and approving them line by line.
 - **Recall quotient:** % right on a cold Check 24 h and 7 days after first watching.
 - **Testing mode:** the app runs but saves nothing (`?test=1`). **Version line:** "vNN · commit · date" in Settings.
-- **Debug flag:** a switch, off by default, that shows extra detail for one area — `?debug=map,viewer` in the app, `--debug` / `--dry-run` / `--only` / `--preview` on tool scripts, `debug: true` in a scene (RULES I5).
+- **Debug flag:** a switch, off by default, that shows extra detail for one area — `?debug=map,viewer,layout` in the app, `--debug` / `--dry-run` / `--only` / `--preview` on tool scripts, `debug: true` in a scene (RULES I5).
 - **Edit hook:** a marked place to change something — one home per value (tokens, `02-config.js`, `content/`, `strings.js`), `// EDIT:` markers in code, and the ✎ button in testing mode that shows an item's id + file and copies an "edit this" prompt (RULES I6).
 - **Edit prompt:** the text the ✎ copies; paste it into a `Bio · Fix · <id>` chat.
+- **Device class:** which layout a screen uses — `dev-p` phone portrait · `dev-pl` phone landscape · `dev-tp` tablet portrait · `dev-tl` tablet landscape · `dev-d` desktop/laptop; set from short side, orientation and pointer (master plan §8a, RULES C13).
+- **Input class:** `.in-touch` (finger) or `.in-mouse` (mouse/trackpad + hover); separate from device class.
+- **Test matrix:** the 13 fixed screen sizes every UI is checked at — phones and tablets in both orientations, 100 % and 125 % text, light and dark (master plan §8a).
+- **Layout check:** `tools/layout-check` — the headless sweep over the test matrix with automatic checks (RULES C8, C13). **Contact sheet:** its grid of screenshots per device class, reviewed at G-Art.
 
 ## 7. Carnegie stages
 A stage is set by **form**, not by age or length (R05f). Day = classic estimate, days after fertilization ≈ postovulatory (R08 from R06; the book's days agree). R02's revised ages run ~3–7 days older from CS6 on — see D-030; on screen we show the book day. Same day ranges fill `content/E/index/timeline.json` `cs` (via `tools/indexer/carnegie.json`). Key events: CS06–CS10 done in X1 Ch 05 (dossier ch05 §1); other rows filled by each chapter's X1.

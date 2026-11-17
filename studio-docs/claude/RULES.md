@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 17 Nov 2026 · Bio · Ideation · A0 colours — B3 extended, D-031.)*
+*(Purpose: the non-negotiables. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: C8 matrix pointer, new C13, H8 tablet/desktop line, I5 `layout` area (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -30,11 +30,12 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **C5.** Light code: no bundler, plain scripts, hand-written SVG charts. **three.js is the one heavy library**, pinned and vendored (D-006, decided D-019); glTF (.glb) is the 3D exchange format.
 - **C6.** After a deploy, tell the owner to hard-refresh (or re-add the home-screen app). Bump `?v=` on changed files.
 - **C7.** Commit to `main` with a clear message; add a line to `logs/build-log.md`.
-- **C8.** **Layout check before every UI deploy:** no overlap or overflow; taps ≥ `--tap`; text ≥ `--fs-min`; nothing fixed over controls; Android Back stays in the app. 13 sizes, portrait + landscape, + 125 % text.
+- **C8.** **Layout check before every UI deploy:** no overlap or overflow; taps ≥ `--tap`; text ≥ `--fs-min`; nothing fixed over controls; Android Back stays in the app. 13 sizes (matrix: master plan §8a), portrait + landscape, + 125 % text — run by `tools/layout-check`.
 - **C9.** When the claude.ai Studio copy is affected, rebuild and republish it in the same step (or leave an owner reminder if this chat can't).
 - **C10.** **Keep the Guide true** (once G1 exists): a behaviour change updates its How page, tour steps and What's new in the same step.
 - **C11.** **Still regression:** a viewer or scene change re-renders every shipped card's still and compares; differences must be intended.
 - **C12.** **Local-first** (D-014): render, encode, voice and AI-model steps are written to run on the owner's NVIDIA laptop (GPU paths: OptiX/CUDA, NVENC). A step that needs an online service says why and names the free option first.
+- **C13.** **Optimal on every device (D-033 — owner standing rule).** Every UI (app, explorer, Studio, any artifact) and every viewer-facing output gets a designed layout — not just a working one — on phone, tablet and desktop, portrait and landscape: five classes `dev-p / pl / tp / tl / d`, the layout per screen and the test matrix in master plan §8a (→ `build/design-plan.md` after A0). Layouts change by class (panes, rails, drawers, side panels), never by stretching; touch and mouse/keyboard are both first-class; rotating never loses place. A UI step is not done until `tools/layout-check` is green for all classes and G-Art has passed its contact sheet; owner checks run on phone, tablet and laptop.
 
 ## D. Teaching & story
 - **D1.** Shape before names: show the fold, then label it.
@@ -73,7 +74,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **H5.** **Accessibility:** captions + transcript on every video; WCAG AA contrast; colour never the only cue; no flashing above 3/s; reduced-motion option.
 - **H6.** **Sound:** narration 130–150 wpm; pronunciation dictionary; music never under key sentences; about −14 LUFS integrated, true peak ≤ −1 dBTP.
 - **H7.** **Reproducible outputs:** every render writes a manifest (scene hash, tool + version, GPU, settings, seed, voice version); published files are never overwritten — bump the version.
-- **H8.** **Performance budgets** (until Measured replaces them): phone scene ≤ 150k triangles and ≤ 2 MB at ≥ 30 fps; app first load ≤ 3 s on 4G; 720p episode ≤ 12 MB/min.
+- **H8.** **Performance budgets** (until Measured replaces them): phone scene ≤ 150k triangles and ≤ 2 MB at ≥ 30 fps; app first load ≤ 3 s on 4G; 720p episode ≤ 12 MB/min. Tablet/desktop extras (richer 3D detail, 1080p rung) only once Measured (C13).
 - **H9.** **AI disclosure:** AI-generated material is credited as such and never carries anatomy without passing G-Sci.
 - **H10.** **Licence ledger:** every library, model and asset used is listed with its licence in the repo's `THIRD_PARTY.md` (and the registry Tools section).
 
@@ -82,7 +83,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **I2. Docs always current, in the same chat.** Every change updates, before the chat ends: STATUS (now · next · **pendencies**), `logs/build-log.md` (**changelog**), DECISIONS, the owner doc (plan, glossary, registry, backlog, checklist, catalog, pipeline reference…) and the README doc map if a doc is added or renamed. A stale doc is a bug: fix it when found.
 - **I3. One place for each list.** Pendencies → STATUS § Blocked + Owner reminders only. Ideas → `build/ideas-backlog.md` only. History → build log only. Terms → GLOSSARY only. Superseded text is removed (history lives in the log and DECISIONS), not left beside the new.
 - **I4. Every doc says what it is.** First lines: one-line purpose + `Updated: <date> · <step/chat>`. Added the next time a doc is touched.
-- **I5. Debug flags everywhere, off by default.** App: `?debug=1` or per area `?debug=map,viewer,sync,audio` (one module `src/js/01-debug.js`; overlay shows version, ids, fps, triangles, state size; logs tagged `[area]`); `?test=1` testing mode. Tools: every script takes `--dry-run`, `--debug`, `--only <id>`, `--preview` (low-res, fast). Scenes: `debug: true` shows axes and bounding boxes. Debug never shows in published videos or the default app.
+- **I5. Debug flags everywhere, off by default.** App: `?debug=1` or per area `?debug=map,viewer,sync,audio,layout` (one module `src/js/01-debug.js`; overlay shows version, ids, fps, triangles, state size, device class; logs tagged `[area]`); `?test=1` testing mode. Tools: every script takes `--dry-run`, `--debug`, `--only <id>`, `--preview` (low-res, fast). Scenes: `debug: true` shows axes and bounding boxes. Debug never shows in published videos or the default app.
 - **I6. Edit hooks.** Every changeable value has one home: look in `:root` tokens (`app.css`), settings in `src/js/02-config.js`, content in `content/<book>/…` data (never in code), UI words in `content/strings.js`. Code marks edit points with `// EDIT:` and each file starts with purpose + owner doc. In testing mode, a ✎ on any card, scene, episode or map node shows its id and file path and copies a ready "edit this" prompt.
 - **I7. No confusion.** One name per thing (GLOSSARY), fixed file/id patterns (README), owner doc wins on conflict and the other doc is fixed in the same chat. If a request is ambiguous or conflicts with a rule or decision, Claude says so and asks before acting.
 

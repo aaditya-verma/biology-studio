@@ -1,6 +1,6 @@
 # Studio playbook — how the crew works, and the craft standards
 
-*(Owner doc for best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-019. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`.)*
+*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in master plan §8a.)*
 
 **Stance:** we work like a small science-animation studio. A lead biologist-researcher who is also designer, teacher and storyteller, with a team of engineers behind him. Facts first, clarity over realism, story for attention, measurement for truth.
 
@@ -14,12 +14,12 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 | **Lead scientist** (subject expert) | Concept map, card facts, ⚑ calls, tiers | Scripts, scenes (anatomy) |
 | **Research librarian** | Sources, dossiers, confidence marks, licences | Cards (citations) |
 | **Learning designer** | Objectives, Checks, sequencing, Remember lines | Scripts, cards (pedagogy) |
-| **Story director / writer** | Episode structure, hooks, voice, audience cuts | Cards (clarity for General level) |
-| **Art director** | Look, colour, camera grammar, typography, thumbnails | Scenes, storyboards, UI screens |
+| **Story director / writer** | Episode structure, hooks, voice, audience cuts, host character | Cards (clarity for General level) |
+| **Art director** | Look, colour, camera grammar, typography, thumbnails, host design, layouts per device class | Scenes, storyboards, UI screens, layout contact sheets |
 | **3D / technical artist** | Scenes, meshes, rigs, lighting, render settings | Viewer performance |
-| **Pipeline TD** | Tools, render queue, manifests, encoding, Drive publish | Build steps touching media |
-| **Front-end engineer** | App, explorer, viewer, PWA, storage | UI builds |
-| **QA & accessibility** | Validators, layout sweep, still regression, captions, contrast | Every gate |
+| **Pipeline TD** | Tools, render queue, manifests, encoding + renditions, Drive publish | Build steps touching media |
+| **Front-end engineer** | App, explorer, viewer, PWA, storage, device classes | UI builds |
+| **QA & accessibility** | Validators, layout sweep (all device classes, `tools/layout-check`), still regression, captions, contrast | Every gate |
 | **Sound** | Voice, pronunciation dictionary, mix, loudness | Episodes |
 
 **Fresh-eyes rule:** cards, scripts and anything going public get a review by a separate reviewer (a separate agent or a fresh chat) that did not write them, so the work never grades itself.
@@ -29,11 +29,11 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 |---|---|---|---|
 | **G-Sci** Science | Every fact cited + marked; no ≈; anatomy, timing, scale right vs book + R01/R02 | Lead scientist + librarian | Cards, scripts, scenes |
 | **G-Learn** Learning | Objective stated; Checks match it; ≤ 3 new terms; teaching-methods checklist | Learning designer | Cards, episodes |
-| **G-Story** Story | Hook in ≤ 10 s; one question carried to payoff; General cut understandable | Story director | Episodes |
-| **G-Art** Design | Hierarchy, colour semantics, orientation, readability on a phone | Art director | Scenes, storyboards, UI |
-| **G-Eng** Engineering | Tests green, budgets met, reproducible build/render, nothing secret or copyrighted committed | Engineers + QA | Builds, renders |
-| **G-A11y** Accessibility | Captions, contrast, colour-blind safe, no flashing, reduced motion | QA | Everything shipped |
-| **G-Owner** | Watches/uses on real devices (owner checks Tn) | Owner | Next build (use gate) |
+| **G-Story** Story | Hook in ≤ 10 s (≤ 1 s for Shorts); one question carried to payoff; General cut understandable | Story director | Episodes |
+| **G-Art** Design | Hierarchy, colour semantics, orientation; readable and **designed for each device class** (phone, tablet, desktop; portrait + landscape — contact sheet, master plan §8a); meets the QR01/QR02 look bar | Art director | Scenes, storyboards, host shots, UI |
+| **G-Eng** Engineering | Tests green, `tools/layout-check` green on the §8a matrix, budgets met, reproducible build/render, nothing secret or copyrighted committed | Engineers + QA | Builds, renders |
+| **G-A11y** Accessibility | Captions, contrast, colour-blind safe, no flashing, reduced motion, 125 % text, keyboard + touch reachable | QA | Everything shipped |
+| **G-Owner** | Watches/uses on real devices — phone, tablet, laptop (owner checks Tn) | Owner | Next build (use gate) |
 
 ## 3. Research craft
 1. **Claim → cite → mark.** Break a section into atomic claims; each gets its book section, registry sources and a mark (✔✔ ✔ ⚑ ✚ ≈).
@@ -61,9 +61,27 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 6. **Payoff and recap:** the answer lands as a visual, then 2 Checks.
 7. **Audience cuts from one scene set:** MBBS cut (terms, clinical depth), General cut (everyday words, one analogy more, no exam detail), Short (9:16, ≤ 60 s, one idea).
 
+## 5b. Host character and the Short profile (D-032)
+**Host (profile field `host`):** cell/embryo character (**default**) · animal · stylised human · none.
+1. **Job:** asks the episode's question, reacts, jokes, recaps — a face for attention. It **never shows anatomy**; the science shot carries every fact (H9, D5).
+2. **Design:** our own original character (no copying references — G1); a character sheet (front, side, 6 expressions, palette, silhouette readable at phone size), a name, a voice, a personality line. The cell/embryo host must not look like a real structure in a way that could mislead (e.g. not coloured with a germ-layer token or the accent).
+3. **Consistency:** same sheet + same seed/reference image for every shot; checked across 2 angles before use.
+4. **Humour:** light, character-driven, never at a patient's or condition's expense (D6); a joke never bends a fact.
+5. **Credits:** AI-made host shots are labelled in credits and the description.
+
+**Language (profile field `language`):** English (**default**) · Hinglish · Hindi. One cited script per episode; translations keep the citations; pronunciation dictionary per language.
+
+**Short profile (9:16, ≤ 60 s):**
+1. Hook ≤ 1 s (host question or visual puzzle); one idea; payoff by the end; "full episode in the app" end card.
+2. Cuts every 1–3 s; science shots still hold ≥ 1 s on a reveal.
+3. **Kinetic captions** = styled subtitles (toggleable): one phrase at a time, key term highlighted, outline for contrast, Latin + Devanagari, inside the 9:16 safe area (clear of app buttons at the bottom and right).
+4. Same loudness target (H6).
+
+**Explainer / MBBS cuts** keep learning pace: hold 1–2 s after each reveal, chapter markers, captions as a toggle.
+
 ## 6. Visual & motion craft (science animation)
-1. **Clarity over realism:** stylised semi-real surfaces; detail only where it teaches.
-2. **Colour has meaning:** germ-layer tokens (RULES B3) on a colour-blind-safe base (Okabe–Ito-style hues + patterns); neutrals for context; one accent for "look here".
+1. **Clarity over realism — but cinematic.** Target look (QR bar): subsurface-scattering tissue, translucent membranes, volumetric light, shallow depth of field on the subject, a graded palette; detail only where it teaches.
+2. **Colour has meaning:** germ-layer tokens (RULES B3, D-031) with patterns; `--g-ctx` neutral for non-layer tissue; the accent `--accent` only as a "look here" ring/outline + label (+ motion in video), never a fill or a layer colour.
 3. **Visual hierarchy:** the subject is lit, sharp and saturated; context is dimmer and desaturated; at most one moving focus at a time.
 4. **Always oriented:** axis gizmo (cranial/caudal, dorsal/ventral), scale bar and day/stage stamp on every 3D shot (B2).
 5. **Camera grammar:** establish → move in → detail → pull back to context; slow, motivated moves with ease in/out; no fast spins; hold 1–2 s after each reveal.
@@ -71,11 +89,12 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 7. **Typography:** one family, 2 weights; labels 1–3 words on their structure (D8); safe areas for 16:9 and 9:16.
 8. **Animatic first:** a rough three.js preview with scratch voice is reviewed (G-Story, G-Sci, G-Art) before any final render.
 9. **Thumbnails and titles:** a single clear image + a question; never misleading.
+10. **Designed per device (D-033, RULES C13):** each screen has its own layout per class (master plan §8a): phones stack or drill down with actions in thumb reach; tablets split into two panes (study mode); desktops use up to three panes with hover and keyboard. Never just stretch. Labels and overlays in shots stay legible on a phone *and* don't look oversized on a desktop — check frames at both sizes.
 
 ## 7. Sound craft
-1. **Voice:** 130–150 words per minute; pronunciation dictionary for every term; consistent voice per season.
+1. **Voice:** 130–150 words per minute; pronunciation dictionary for every term; consistent voice per season (and per host).
 2. **Mix:** music ducked well under narration (none under key sentences, D6 coherence); light sound design for state changes only.
-3. **Loudness:** about −14 LUFS integrated for web/YouTube, true peak ≤ −1 dBTP; check on phone speakers.
+3. **Loudness:** about −14 LUFS integrated for web/YouTube, true peak ≤ −1 dBTP; check on phone speakers and laptop speakers.
 
 ## 8. Accessibility & ethics
 1. **Captions on every video** (accurate, synced, speaker-neutral) + a transcript; subtitles toggle (on by default when muted).
@@ -88,24 +107,26 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 ## 9. Engineering practice (the team behind the studio)
 1. **One build chat per repo; small steps; tests before merge** (DrumPath practice).
 2. **Schemas first:** card, scene, map and episode formats as versioned JSON Schemas (`docs/*-spec.md`); validators run them.
-3. **CI on GitHub Actions (free):** validators, citation/mark check, id check, layout sweep, still regression on every push.
+3. **CI on GitHub Actions (free):** validators, citation/mark check, id check, **layout sweep (`tools/layout-check`, §8a matrix)**, still regression on every push.
 4. **Reproducible renders:** each render writes a **manifest** (scene file hash, tool + version, GPU, settings, seed, voice version) next to the output.
-5. **Asset naming:** `<book>/<id>/<type>-<version>.<ext>` (e.g. `E/S1E01/master-v03.mp4`); never overwrite a published file — bump the version.
-6. **Performance budgets:** phone scene ≤ 150k triangles and ≤ 2 MB, ≥ 30 fps; app first load ≤ 3 s on 4G; episode 720p ≤ 12 MB/min (until Measured replaces them).
+5. **Asset naming:** `<book>/<id>/<type>-<version>.<ext>` (e.g. `E/S1E01/master-v03.mp4`; renditions `-720p` / `-1080p`); never overwrite a published file — bump the version.
+6. **Performance budgets:** phone scene ≤ 150k triangles and ≤ 2 MB, ≥ 30 fps; app first load ≤ 3 s on 4G; episode 720p ≤ 12 MB/min (until Measured replaces them). Tablet/desktop extras only once Measured.
 7. **Local-first models:** find candidates on Hugging Face (connector available), record each model's licence and size in the pipeline reference; non-commercial models stay on the laptop (RULES F4).
 8. **Licence ledger:** `THIRD_PARTY.md` in the repo lists every library, model and asset with its licence and credit.
 9. **Privacy:** no analytics or tracking; stats stay on the device and the owner's Drive.
 10. **Backups before data changes;** testing mode for experiments (RULES A3).
 
 ## 10. Production pipeline (stages and artefacts)
-Brief + audience profile → research dossier (X1) → objectives → cited script → table read (scratch TTS) → **animatic** (three.js, scratch voice) → gates G-Sci/G-Learn/G-Story/G-Art → scene build → final render (laptop GPU) → final voice + mix → captions → QC (G-Eng, G-A11y) → publish (Drive + catalog + clips) → owner check → measure (recall 24 h / 7 d, completion, drop-off) → retro line in the review log.
+Brief + audience profile (level, depth, type, format, length, **language, host**) → research dossier (X1) → objectives → cited script → table read (scratch TTS) → **animatic** (three.js, scratch voice; host as a placeholder) → gates G-Sci/G-Learn/G-Story/G-Art → scene build + host shots → final render (laptop GPU) → final voice + mix → captions (kinetic for Shorts) → renditions (§8a) → QC (G-Eng, G-A11y; plays well on phone, tablet, laptop) → publish (Drive + catalog + clips) → owner check → measure (recall 24 h / 7 d, completion, drop-off) → retro line in the review log.
 
 ## 11. Definition of Done
 - **Concept (K1):** id, name, tier, threads, day/stage, layer, system, importance, prerequisites, locator; no orphan links.
 - **Card:** objective; idea + 3D view; Remember; Check aligned; every fact cited + marked; G-Sci, G-Learn, G-A11y passed.
 - **Scene:** spec-valid; scale, day, orientation shown; budgets met; checked against R01/R02 (look only); still stored for regression.
-- **Episode:** audience profile; ABT script, cited; animatic approved; captions + transcript; loudness; QC + all gates; manifest; catalog row.
-- **Build step:** tests green; budgets met; STATUS, log, DECISIONS updated; owner check written; next prompt given.
+- **Host shot:** original design from its sheet; identity consistent across angles; synced to its line; no anatomy shown; credited; G-Art passed.
+- **Episode:** audience profile; ABT script, cited; animatic approved; captions + transcript; loudness; renditions; QC + all gates; manifest; catalog row.
+- **UI screen / artifact:** a §8a layout for all five device classes; layout-check green (13 sizes, both orientations, 125 % text, light + dark); contact sheet passed G-Art; rotation keeps place; touch, mouse and keyboard all work.
+- **Build step:** tests green; budgets met; STATUS, log, DECISIONS updated; owner check written (phone, tablet, laptop); next prompt given.
 
 ## 12. What we measure
-Recall at 24 h and 7 d (per episode, story format, audience cut) · completion rate and drop-off timestamps · Check accuracy per objective · Understood rate per card · General-cut comprehension (a non-medical viewer explains it back in one sentence) · production time per minute of video.
+Recall at 24 h and 7 d (per episode, story format, audience cut, host on/off) · completion rate and drop-off timestamps · Check accuracy per objective · Understood rate per card · General-cut comprehension (a non-medical viewer explains it back in one sentence) · production time per minute of video · which device class each session uses (on-device only, no analytics).

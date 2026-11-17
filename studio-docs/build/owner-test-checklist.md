@@ -1,8 +1,10 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 17 Nov 2026 · Bio · Build · K1 concept map (T2 written).)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): device rule, T1 step 2b, T2–T4 device fields.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
+
+**Devices (D-033, RULES C13):** every check with a screen runs on the **phone (portrait + landscape)**, a **tablet (portrait + landscape)** and the **laptop**. No tablet to hand → use the laptop browser's device mode (Chrome: F12 › device toolbar › iPad / Android tablet) and note "emulated". Report layout problems as *device + orientation + screen + what's wrong*.
 
 **Apps:** none live yet.
 
@@ -10,10 +12,11 @@ Run on real devices. Write each result on its **Result** line, then tick it in `
 
 ---
 
-## T1. Bake-off: pick the renderer + voice *(~10 min on the phone)* — WAITING FOR CLIPS (M1)
+## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — WAITING FOR CLIPS (M1)
 Before: on the laptop, `python bakeoff.py all` (+ `C_ai\README.md` for the AI clip), then upload `out\for_drive\` to Drive › Embryo Studio › renders › bakeoff. Keep `out\blind_key.json` closed.
 1. Open Drive › renders › bakeoff on the phone. Up to 4 clips of the same 20 s shot: `clip-A … clip-D` (Blender Cycles, Blender Eevee, three.js, AI video — in random order).
 2. Watch each full screen, once with sound off.
+2b. Watch your favourite clip once on a tablet (both orientations) and once on the laptop: labels legible, nothing looks oversized or blurry.
 3. For each, judge:
    - **Biology:** streak in the caudal midline, node at its cranial tip, mesoderm spreading between the layers, endoderm replacing hypoblast, disc broader cranially, day 15 → 17.
    - **Readable:** day stamp, scale bar, axis gizmo (Cr/Ca/D/V) and the labels, on a phone.
@@ -21,7 +24,7 @@ Before: on the laptop, `python bakeoff.py all` (+ `C_ai\README.md` for the AI cl
    - **Look:** clear and attractive enough for a medical student to keep watching.
 4. Listen to `voice1_kokoro.wav` and `voice2_piper.wav` (20 terms in the order of `D_tts\terms.txt`, then one sentence). Note any term said wrong.
 5. Then open `blind_key.json` and reply in the M1 chat with your picks (options in DECISIONS D-024).
-- **Result:** ☐ pass ☐ problems — A: ☐ clear ☐ confusing · B: ☐ clear ☐ confusing · C: ☐ clear ☐ confusing · D: ☐ clear ☐ confusing · pick: ___ ☐ mix · voice: ☐ 1 ☐ 2 ☐ neither · mispronounced terms: ___ · notes:
+- **Result:** ☐ pass ☐ problems — A: ☐ clear ☐ confusing · B: ☐ clear ☐ confusing · C: ☐ clear ☐ confusing · D: ☐ clear ☐ confusing · pick: ___ ☐ mix · voice: ☐ 1 ☐ 2 ☐ neither · mispronounced terms: ___ · tablet/laptop: ☐ fine ☐ labels too small/large ☐ blurry · notes:
 
 ## T5. Laptop 2 setup — the Professor *(~1 h 30 min on the laptop, once)* — OPEN: repo ready (H1 ✅ 17 Nov 2026); waits for the Professor's GitHub invite
 Follow `build/setup-guide.md` §1–§5.
@@ -40,14 +43,15 @@ Follow `build/setup-guide.md` §1–§5.
 4. Prerequisites tab: are the top 10 sensible "learn first" ideas?
 5. Tap ✎ Test, then ✎ on any concept: an edit prompt appears; Copy works (or select by hand).
 6. On the laptop: repeat step 2; the concept page opens beside the list.
+6b. Rotate the phone mid-task, then open the explorer on a tablet (both orientations, or emulated). Note layout problems only — the explorer was built before the device rule (D-033); A0 brings it up to master plan §8a when it ports it as the Book map.
 7. Open `curriculum/roadmap.md`: read Wave 1 (Season 1). Order sensible?
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
-- **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?)
+- **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + Part 0 cards *(~10 min, phone + tablet)* — PLANNED (A0, V1, C1)
+## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — PLANNED (A0, V1, C1)
 Steps written by the C1 build chat.
-- **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?)
+- **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
-## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days)* — PLANNED (R1, L1)
+## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L1)
 Steps written by the L1 build chat. Watch the MBBS cut; a non-medical friend watches the General cut if possible.
-- **Result:** ☐ pass ☐ problems · ☐ biologically right ☐ off at (time) · ☐ watched to the end ☐ drifted at (time) · story ☐ gripping ☐ flat · voice pace ☐ right ☐ fast · 3D ☐ clear ☐ lost track at (time) · General cut understood by a non-medical viewer: ☐ yes ☐ no · Check: __ / __ · 24 h: __ / __ · 7 d: __ / __
+- **Result:** ☐ pass ☐ problems · ☐ biologically right ☐ off at (time) · ☐ watched to the end ☐ drifted at (time) · story ☐ gripping ☐ flat · voice pace ☐ right ☐ fast · 3D ☐ clear ☐ lost track at (time) · General cut understood by a non-medical viewer: ☐ yes ☐ no · Check: __ / __ · 24 h: __ / __ · 7 d: __ / __ · player on tablet/laptop: ☐ good ☐ problems (what?)
