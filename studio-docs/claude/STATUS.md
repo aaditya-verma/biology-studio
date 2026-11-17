@@ -3,7 +3,7 @@
 *(Purpose: current state + all pendencies — nothing else. Updated: 18 Nov 2026 · Bio · Review · T3a results (pass; D-034 kept); before: A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: free *(RULES I8; A0 released 18 Nov 2026, 01:15 IST)*
+- Build lock: Aaditya · Bio · Build · V1 viewer · 18 Nov 2026, 01:45 IST
 
 ## Now
 - **T3a passed** (18 Nov): owner checked every item on phone, tablet and laptop, both orientations, light + dark — no problems, D-034 choices kept. App live: https://aaditya-verma.github.io/biology-studio/ (Pages on, install works).
