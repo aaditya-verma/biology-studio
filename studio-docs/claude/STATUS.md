@@ -1,6 +1,6 @@
 # Status — updated 17 Nov 2026
 
-*(Purpose: current state + all pendencies — nothing else. Updated: 18 Nov 2026 · Bio · Build · A0 shell (D-034). Finished work lives in `logs/build-log.md`.)*
+*(Purpose: current state + all pendencies — nothing else. Updated: 18 Nov 2026 · Bio · Build · A0 shell (D-034); hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
 - Build lock: free *(RULES I8; A0 released 18 Nov 2026, 01:15 IST)*
@@ -34,7 +34,7 @@
 - **K1 leftovers (X1 per chapter, E05 done):** AN codes, marks and cited `cs` missing outside E05 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
 - **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows.
 - Roadmap episode numbers after S1E01 are provisional until added to the episode catalog.
-- **App hosting (decide):** the repo is private, and GitHub Pages on a private repo needs a paid plan. Options: (a) make the repo **public** (free Pages; it holds no book text or figures, RULES §G — but docs and tools become visible) · (b) **GitHub Pro** ~$4/month keeps it private with Pages (paid, F2) · (c) keep testing on the claude.ai preview artifact (free; no install/offline). Until then the preview is the app; installing as a PWA waits for (a) or (b).
+- **App hosting decided** (D-035): public repo + GitHub Pages — waiting for the owner to flip the two settings (reminders). Then the app lives at https://aaditya-verma.github.io/biology-studio/ and T3a can use it (install + offline).
 - A0 notes for later: in-app **reduced-motion switch** → V1 (nothing animates yet; the OS setting is honoured) · light control borders on grey panels 3.4:1 (passes 3:1) · the published K1 explorer artifact got D-031 colours but keeps its old layouts — the app's Book map replaces it.
 - **Tablet for owner checks:** model not recorded (pipeline reference §2). Which tablet do you or the Professor have? None → checks use the laptop's device mode, marked "emulated".
 - Host design (name, look, voice) — picked in M1b from 2–3 concepts.
@@ -49,7 +49,7 @@
 ## Owner reminders
 - [ ] **Press Sync now** (Project knowledge) — this chat changed docs (D-034, design plan).
 - [ ] **T3a app shell** (~10 min) — open https://claude.ai/artifact/GuWVVUt5kb3uVyjSXVWf1a on phone, tablet (or emulated) and laptop; steps in `build/owner-test-checklist.md` T3a.
-- [ ] **Decide app hosting** (a) public repo · (b) GitHub Pro · (c) preview only — see pendencies.
+- [ ] **Make the repo public + turn on Pages** (D-035): github.com/aaditya-verma/biology-studio → Settings → General → Danger Zone → Change visibility → Public · then Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save. App: https://aaditya-verma.github.io/biology-studio/ (ready ~2 min later).
 - [ ] **Delete the 24 uploaded Project docs** (Project → knowledge; keep the GitHub `studio-docs/` source). All their content is in the repo now (18 Nov doc reconcile). Then a chat checks it still sees this STATUS.
 - [ ] **Re-paste `claude/INSTRUCTIONS.md` §6** into Project → Custom instructions — it gained the device line (D-033). (Professor's Project too, once set up.)
 - [ ] **Tell a chat which tablet you can test on** (or "none" → emulated).

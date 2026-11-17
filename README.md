@@ -9,4 +9,4 @@ Turns a biology book or topic into a concept map, cited concept cards and story-
 - `tools/` — kits and scripts (`m1-bakeoff`, `indexer`, `map`, `layout-check`) · `content/E/` — derived data only (index, map).
 - Licences: [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
-No book text, figures or page images are kept here (RULES §G). Private until A0.
+No book text, figures or page images are kept here (RULES §G). Public from 18 Nov 2026 (D-035); the app: https://aaditya-verma.github.io/biology-studio/
