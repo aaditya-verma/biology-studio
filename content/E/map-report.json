@@ -1,0 +1,33 @@
+{
+ "concepts": 314,
+ "sections_with_concepts": 124,
+ "content_sections": 116,
+ "empty_sections": [],
+ "openers_with_concepts": [
+  "E01.00",
+  "E04.00",
+  "E05.00",
+  "E06.00",
+  "E11.00",
+  "E13.00",
+  "E16.00",
+  "E17.00"
+ ],
+ "terms_linked": 205,
+ "terms_loose": 60,
+ "terms_orphan": [],
+ "by_importance": {
+  "core": 93,
+  "supporting": 71,
+  "exam-high": 129,
+  "detail": 21
+ },
+ "by_tier": {
+  "A": 105,
+  "B": 123,
+  "D": 26,
+  "C": 60
+ },
+ "with_misconception": 50,
+ "orphan_prereqs": 0
+}

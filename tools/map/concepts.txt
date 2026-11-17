@@ -1,0 +1,441 @@
+# K1 concept source — E (Langman 14e). Our own words; no book text (RULES G1).
+# Line: key|name|tier|threads|imp(c core,x exam-high,s supporting,d detail)|layer|system|days|prereq keys|definition|misconception
+# Sections start with "@ <section id>". Concept nn = order in section. EDIT: add concepts at the END of a section (ids are permanent).
+@ E00.01
+axes|Axes & planes|A|F|c|none|ori||| Cranial–caudal, dorsal–ventral and left–right, shown on a rotating disc.|
+dating0|Days, weeks & Carnegie stages|A|T|c|none|ori||| How embryos are dated; fertilization age vs gestational (LMP) age; the stage ruler.|Gestational age and fertilization age are the same number.
+scale0|Scale|A|T|c|none|ori||| A zoom ruler from 0.1 mm to 30 cm, shown on every 3D view.|
+colourkey|Colour key|A|G|c|none|ori||| Fixed germ-layer colours with patterns and labels, safe for colour-blind viewers.|
+section0|Reading a section|A|F|c|none|ori||axes| How a flat slice relates to the 3D shape it cuts through.|
+appuse|How to use the app|A||s|none|ori||| Watch it · Try it · Remember deck · Check.|
+@ E01.00
+chromatin|Chromatin and nucleosomes|B|M|s|none|mol||| DNA wound on histone spools; how tightly it is packed decides which genes can be read.|
+@ E01.01
+gene|Gene structure: promoter, exons, introns|B|M|s|none|mol||chromatin| A gene has a promoter where reading starts, exons that code and introns that are cut out.|
+tf|Transcription factors|B|M|x|none|mol||gene| Proteins that bind DNA and switch genes on or off; master regulators of development.|
+enh|Enhancers|B|M|s|none|mol||tf| DNA stretches, often far away, that boost a gene's promoter in particular tissues.|
+@ E01.02
+splice|Alternative splicing|B|M|s|none|mol||gene| One gene can make several proteins by joining its exons in different ways.|
+methyl|DNA methylation and imprinting|D|M|s|none|mol||chromatin| Chemical tags silence genes without changing the sequence; imprinted genes are read from one parent only.|Imprinting changes the DNA sequence.
+@ E01.03
+induction|Induction|A|M|c|none|mol||tf| One tissue changes the fate of a neighbouring tissue; the responder must be competent to react.|Induction is a one-way, one-off signal (most are reciprocal and repeated).
+epimes|Epithelial–mesenchymal interactions|B|M|s|none|mol||induction| Organs form from repeated two-way talk between an epithelium and the mesenchyme beneath it.|
+@ E01.04
+paracrine|Paracrine and juxtacrine signalling|B|M|x|none|mol||induction| Signals that diffuse to nearby cells (paracrine) vs signals passed by direct cell contact (juxtacrine).|
+morphogen|Morphogen gradients|B|M|s|none|mol||paracrine| A signal whose concentration tells cells where they are, so one source can pattern a whole field.|
+@ E01.05
+shh|Sonic hedgehog (SHH) pathway|D|M|x|none|mol||paracrine| A key signal for midline, neural tube, limb and gut patterning; its loss causes midline defects.|
+wnt|WNT pathway|D|M|s|none|mol||paracrine| Signals that drive growth and polarity, acting through β-catenin.|
+tgfb|TGF-β superfamily (BMPs, Nodal)|D|M|s|none|mol||paracrine| A large family of growth factors including BMPs and Nodal, used in axis setting and organ shaping.|
+fgf|FGFs and receptor tyrosine kinases|D|M|s|none|mol||paracrine| Growth factors that act through receptor kinases; drive limb outgrowth and many inductions.|
+notch|Notch signalling|D|M|d|none|mol||paracrine| A contact signal between neighbouring cells, used to make cells choose different fates.|
+ra|Retinoic acid|D|M|s|none|mol||paracrine| A vitamin A derivative that patterns the head–tail axis; too much is teratogenic.|
+@ E02.01
+pgc|Primordial germ cells|A|T G|x|multi|gam|14-35|epihypo| Germ cells set aside in the epiblast that migrate through the yolk-sac wall and hindgut to the gonads.|Germ cells start in the gonad.
+teratomag|Teratomas from germ cells|C|C|s|multi|defects||pgc| Stray germ or pluripotent cells can form tumours containing tissues of all three layers.|
+@ E02.02
+mitosis|Mitosis|A||c|none|gam||| One division that makes two identical diploid cells.|
+meiosis|Meiosis|A|T|c|none|gam||mitosis| Two divisions that halve the chromosome number and shuffle genes by crossing over.|Crossing over happens in meiosis II.
+nondisj|Nondisjunction and numerical abnormalities|B|C|x|none|defects||meiosis| Chromosomes fail to separate, giving trisomy (21, 18, 13), Klinefelter (47,XXY) or monosomy (Turner); risk rises with maternal age.|
+structchr|Structural chromosome abnormalities|C|C|s|none|defects||meiosis| Breaks give translocations, deletions and microdeletions; Prader-Willi vs Angelman (15q) depends on the parent of origin; fragile X is a fragile site.|
+mosaic|Mosaicism|B|C|s|none|defects||mitosis| Two or more cell lines with different karyotypes in one person, usually from an error after fertilization.|
+karyo|Karyotype and genetic testing|C|C|d|none|defects||nondisj| Ways to look at chromosomes and genes: karyotype, FISH, microarray, sequencing.|
+@ E02.03
+oogen|Oogenesis|A|T|x|none|gam|| meiosis| Oocytes start meiosis before birth and pause; meiosis I finishes just before ovulation, then it pauses again until fertilization completes meiosis II.|Women make new eggs every month.
+follicle|Follicle maturation|B||x|none|gam||oogen| Primordial → primary → secondary (antral) follicle around the oocyte.|
+spermgen|Spermatogenesis|A|T|x|none|gam||meiosis| From puberty, spermatogonia divide into spermatocytes and spermatids, supported by Sertoli cells.|
+spermio|Spermiogenesis|B||s|none|gam||spermgen| Shaping a round spermatid into a sperm: acrosome, condensed head, tail.|Spermiogenesis is another word for spermatogenesis.
+abngam|Abnormal gametes|C|C|d|none|gam||oogen,spermgen| Gametes with extra or missing chromosomes or abnormal shapes; a cause of early loss.|
+@ E03.01
+ovcycle|Ovarian cycle and its hormones|B||x|none|gam||follicle| Hypothalamus and pituitary (GnRH, FSH, LH) drive follicle growth each cycle.|
+ovulation|Ovulation|A|T|c|none|gam|0-0|ovcycle| An LH surge releases the secondary oocyte from the follicle mid-cycle.|Ovulation is always on day 14.
+corpusl|Corpus luteum|B||x|none|gam||ovulation| The emptied follicle makes progesterone; hCG from the embryo keeps it going in pregnancy.|
+oviduct|Oocyte transport|B||s|none|gam|0-1|ovulation| Fimbriae sweep the oocyte into the tube; cilia and muscle move it toward the uterus.|
+@ E03.02
+capacit|Capacitation and acrosome reaction|B||x|none|gam|0-1|spermio| Sperm are primed in the female tract, then release acrosome enzymes at the zona.|
+fert|Fertilization|A|T|c|none|gam|0-1|capacit,oogen| In the ampulla a sperm fuses with the oocyte; the zona reaction blocks others; meiosis II completes.|Fertilization happens in the uterus.
+fertres|Results of fertilization|A|T|c|none|gam|1-1|fert| Diploid number restored, sex decided by the sperm, and cleavage starts.|
+art|Contraception and assisted reproduction|C|C|s|none|gam||fert| How contraception works and how IVF and ICSI help with infertility.|
+@ E03.03
+cleavage|Cleavage and morula|A|T|c|none|early|1-3|fertres| Rapid divisions with no overall growth make smaller blastomeres and a morula by about day 3.|The embryo grows during cleavage.
+compaction|Compaction; inner and outer cell mass|B||s|none|early|3-4|cleavage| Blastomeres pack tightly and split into an inner cell mass and an outer cell mass.|
+@ E03.04
+blastocyst|Blastocyst|A|T|c|multi|early|4-5|compaction| A fluid cavity forms; the embryoblast (inner cell mass) sits at one pole inside the trophoblast.|
+implant|Implantation begins|A|T|c|extra|early|6-7|blastocyst| The blastocyst hatches from the zona and the trophoblast attaches to the uterine lining.|
+@ E03.05
+epihypo|Epiblast and hypoblast|A|G|c|multi|early|7-8|blastocyst| The inner cell mass splits into two layers: epiblast and hypoblast.|
+ave|Anterior visceral endoderm sets the head end|D|M F|s|extra|early|7-8|epihypo| Hypoblast cells at one edge signal to mark the future cranial end.|
+stemcells|Embryonic stem cells|C|C|d|none|early||epihypo| Cells of the inner cell mass can make any tissue; uses and limits in medicine.|
+@ E03.06
+endomet|Uterus at implantation|B||x|none|plac||ovcycle| The secretory-phase endometrium, its three layers, and where the blastocyst usually implants.|
+menstrual|Menstrual cycle phases|B|T|s|none|plac||endomet| Proliferative, secretory and menstrual phases of the uterine lining.|
+@ E04.00
+troph2|Cytotrophoblast and syncytiotrophoblast|A|G|c|extra|plac|8-9|implant| The trophoblast splits into an inner cell layer and an outer invasive multinucleated layer.|
+@ E04.01
+bilam|Bilaminar disc|A|G F|c|multi|early|8-9|epihypo| Epiblast and hypoblast form a flat two-layered disc.|
+amnion|Amniotic cavity|A|G|x|extra|early|8-9|bilam| A cavity opens in the epiblast, lined by amnioblasts.|
+@ E04.02
+lacunae|Trophoblastic lacunae|B||s|extra|plac|9-9|troph2| Spaces open in the syncytiotrophoblast.|
+psac|Primitive yolk sac and exocoelomic membrane|B|G|x|extra|early|9-9|bilam| Cells from the hypoblast line the blastocyst cavity, forming the primitive yolk sac.|
+@ E04.03
+uteroplac|Uteroplacental circulation begins|A|T|c|extra|plac|11-12|lacunae| The syncytium erodes maternal capillaries so maternal blood flows through the lacunae.|
+xmeso|Extraembryonic mesoderm|B|G|x|extra|early|11-12|psac| A loose tissue fills the space around the yolk sac and amnion and splits into two layers.|
+decidual|Decidual reaction|B||s|none|plac|11-13|uteroplac| Stromal cells of the endometrium swell with stored nutrients around the implanting embryo.|
+@ E04.04
+villi1|Primary villi|B||x|extra|plac|13-13|uteroplac| Cytotrophoblast columns push into the syncytium.|
+ysac2|Secondary yolk sac|B|G|s|extra|early|13-13|psac| A smaller definitive yolk sac forms; exocoelomic cysts pinch off.|
+chcav|Chorionic cavity and connecting stalk|A|G|c|extra|early|13-13|xmeso| The extraembryonic coelom becomes the chorionic cavity; the embryo hangs from the connecting stalk.|
+ectopic|Abnormal implantation and ectopic pregnancy|C|C|x|extra|defects||implant| Implantation outside the uterine body, most often the tube; can rupture and bleed.|
+mole|Hydatidiform mole and hCG|C|C|x|extra|defects||troph2| Trophoblast overgrowth without a normal embryo; high hCG; risk of choriocarcinoma.|
+@ E05.00
+prechordal|Prechordal plate|B|F|x|endo|early|14-18|bilam| A thickened area at the cranial end that marks the head and signals the forebrain.|
+oromem|Oropharyngeal and cloacal membranes|B|F|x|multi|early|14-21|prechordal| Places where ectoderm and endoderm touch with no mesoderm: future mouth and future anus.|
+@ E05.01
+gastrul|Gastrulation in one picture|A|G F|c|multi|early|15-21|bilam| In week 3 the two-layered disc becomes three layers: ectoderm, mesoderm, endoderm.|
+streak|Primitive streak|A|T F|c|multi|early|15-28|gastrul,axes| A groove on the epiblast with a node and pit at its head; it marks the body axis.|The primitive streak is permanent (it shrinks and vanishes).
+ingress|Cells move in|A|G F|c|meso|early|15-21|streak| Epiblast cells leave the surface and pass through the streak to make the new layers.|The hypoblast becomes the endoderm (epiblast cells replace it).
+layers3|Three germ layers from the epiblast|A|G|c|multi|early|16-21|ingress| Epiblast makes all three layers: what stays is ectoderm, what moves in is mesoderm and endoderm.|Mesoderm comes from the hypoblast.
+@ E05.02
+notochord|Notochord|A|F|c|meso|early|17-21|ingress| A midline rod formed from cells entering at the node; signals the neural tube and later the disc core.|The notochord becomes the vertebral column.
+neurenteric|Neurenteric canal|C|F|d|meso|early|17-18|notochord| A brief opening that links the amniotic cavity and yolk sac during notochord formation.|
+@ E05.03
+axes3|Body axes are set|B|T F|c|multi|early|7-21|ave,streak| Head–tail, back–belly and left–right axes are fixed before and during gastrulation.|
+lr|Left–right signals|D|M|x|multi|early|16-20|axes3| Cilia at the node move fluid leftward; Nodal and PITX2 become active on the left only.|
+organizer|The node as organizer|D|M|s|multi|early|16-20|streak| Node signals block BMP so the overlying ectoderm becomes neural.|
+@ E05.04
+fatemap|Fate map: three layers → what they become|A|G A|c|multi|early||layers3| Ectoderm → skin and nervous system; mesoderm → muscle, bone, blood; endoderm → gut and lung lining.|
+streakfate|Streak position decides mesoderm type|B|G|x|meso|early|15-21|ingress| Cells entering cranially become paraxial; mid-streak intermediate; caudally lateral plate and extraembryonic.|
+@ E05.05
+discgrowth|Growth of the disc|A|F|c|multi|early|15-21|gastrul| The disc becomes pear-shaped as the head end grows and the streak shortens.|
+gastrclin|When gastrulation goes wrong|C|C|x|meso|defects|15-21|gastrul| Damage in week 3 can cause caudal dysgenesis (sirenomelia) or midline face and brain defects.|
+sacroter|Sacrococcygeal teratoma|C|C|x|multi|defects||streak| A tumour from leftover primitive-streak cells at the base of the spine.|
+situs|Situs inversus and laterality defects|C|C|x|multi|defects||lr| Organs reversed (situs inversus) or mixed up (heterotaxy) when left–right signals fail.|
+@ E05.06
+villi23|Secondary and tertiary villi|B|T|x|extra|plac|15-21|villi1| Mesoderm grows into the villi, then blood vessels form in them.|
+cytoshell|Cytotrophoblast shell; stem and free villi|B||s|extra|plac|15-21|villi23| Trophoblast spreads to anchor the chorion to the endometrium.|
+villcirc|Villi join the embryo's circulation|B|T|s|extra|plac|19-22|villi23| Vessels in villi connect through the connecting stalk to the heart as it starts to beat.|
+@ E06.00
+embper|Embryonic period: weeks 3–8|A|T C|c|multi|early|15-56|layers3| Embryogenesis proper: every major organ starts forming; the most sensitive time for birth defects.|The most dangerous time for teratogens is late pregnancy.
+@ E06.01
+neuralplate|Neural induction and neural plate|A|G|c|ecto|cns|18-19|organizer,notochord| Blocking BMP makes midline ectoderm thicken into the neural plate.|
+neurul|Neurulation|A|F|c|ecto|cns|19-28|neuralplate| Neural folds rise and fuse, starting in the neck region and zipping both ways into a tube.|The neural tube closes all at once.
+neuropores|Neuropores close|A|T|x|ecto|cns|25-28|neurul| The cranial neuropore closes around day 25, the caudal around day 28.|
+crest|Neural crest cells|A|G|c|crest|cns|19-28|neurul| Cells at the fold edges leave the tube and migrate widely.|Neural crest is part of the CNS.
+crestder|Neural crest derivatives|B|G A|x|crest|cns||crest| Sensory and autonomic ganglia, Schwann cells, melanocytes, adrenal medulla, face bones, heart outflow septum.|
+ectoder|Ectoderm derivatives and placodes|B|G A|x|ecto|cns||neuralplate| Epidermis, hair, nails, glands, enamel, anterior pituitary; placodes for ear and lens.|
+ntd|Neural tube defects|C|C|x|ecto|defects|25-28|neuropores| Failure to close gives spina bifida or anencephaly; folic acid lowers the risk.|
+@ E06.02
+mesosub|Paraxial, intermediate and lateral plate mesoderm|A|G|c|meso|early|17-21|streakfate| Mesoderm beside the midline separates into three strips.|
+somites|Somites|A|T G|c|meso|msk|20-35|mesosub| Paraxial mesoderm buds off blocks about three pairs a day; their count dates the embryo.|Somites are segments of the neural tube.
+segclock|Segmentation clock|D|M|s|meso|msk|20-35|somites,notch| Oscillating gene activity plus FGF/WNT and retinoic acid gradients set when each somite forms.|
+somdiff|Somite differentiation|A|G|c|meso|msk|22-35|somites| Sclerotome → skeleton; dermomyotome → muscle (myotome) and dermis (dermatome).|The dermatome forms the epidermis.
+intermeso|Intermediate mesoderm|A|G|x|meso|uro|20-28|mesosub| The strip that gives the kidneys and gonads.|
+lateralplate|Lateral plate mesoderm|A|G F|c|meso|cav|17-21|mesosub| Splits into a body-wall (parietal) layer and a gut-wall (visceral) layer around a cavity.|
+vessels|Vasculogenesis and angiogenesis|B|S|x|meso|cv|17-28|mesosub| New vessels from blood islands (vasculogenesis) vs sprouting from existing ones (angiogenesis).|The two words mean the same thing.
+haem|Sites of blood formation|B|S T|x|meso|cv||vessels| Yolk sac first, then the aorta region, liver, and finally bone marrow.|
+haemang|Capillary haemangiomas|C|C|d|meso|defects||vessels| Common benign vessel overgrowths in infants.|
+@ E06.03
+folding|Body folding|A|F|c|multi|early|21-28|discgrowth,lateralplate| Head, tail and side folds turn the flat disc into a tube-shaped body.|The whole yolk sac becomes the gut.
+gutparts|Foregut, midgut, hindgut|A|F G|c|endo|gi|22-28|folding| Folding pinches endoderm into a gut tube; the midgut stays linked to the yolk sac by the vitelline duct.|
+endoder|Endoderm derivatives|A|G A|x|endo|gi||gutparts| Lining of gut, lungs, bladder and glands; liver and pancreas cells; pouch derivatives.|
+@ E06.04
+hox|Hox genes pattern the head–tail axis|D|M|x|multi|mol||tf| Hox genes switch on in the same order as their chromosome position, giving each segment its identity.|
+@ E06.05
+month2|External appearance in month 2|B|T|s|multi|early|29-56|folding| Big head, face forming, limbs with digits, crown–rump length grows fast.|
+ageest|Estimating embryo age|B|T|s|multi|early|20-56|month2,somites| Somite count in week 4, then crown–rump length and ultrasound.|
+@ E07.01
+tubetube|Body plan after folding|A|F|c|multi|cav|22-28|folding,neurul| After folding: neural tube above, gut tube below, inside a body-wall tube.|
+@ E07.02
+ieccav|Intraembryonic body cavity|A|F G|c|meso|cav|19-28|lateralplate| A single cavity forms inside lateral plate mesoderm and later divides.|
+somsplanch|Somatopleure vs splanchnopleure|A|G|x|meso|cav|19-28|ieccav| Parietal layer + ectoderm make the body wall; visceral layer + endoderm make the gut wall.|The somatopleure lines the gut.
+@ E07.03
+serous|Serous membranes and mesenteries|A|A|c|meso|cav|22-35|somsplanch| Peritoneum, pleura and pericardium; mesenteries are double layers holding the gut.|
+bodywall|Body wall defects|C|C|x|multi|defects||folding| Omphalocele (gut in a sac at the cord), gastroschisis (beside the cord, no sac), ectopia cordis, bladder exstrophy.|Omphalocele and gastroschisis are the same defect.
+@ E07.04
+septtr|Septum transversum|B|F|x|meso|cav|22-28|folding| A thick mesoderm plate between heart and yolk stalk; it gives the liver's frame and the diaphragm's central tendon.|
+pleurop|Separating pleural from pericardial cavities|B|F|x|meso|cav|28-49|septtr| Pleuropericardial folds close the canals between them, carrying the phrenic nerves.|
+@ E07.05
+diaphragm|Diaphragm from four parts|A|F A|c|meso|cav|28-56|septtr,pleurop| Septum transversum, pleuroperitoneal membranes, oesophageal mesentery and body-wall muscle; innervated C3–C5.|The diaphragm forms where it ends up (it starts high in the neck).
+cdh|Congenital diaphragmatic hernia|C|C|x|meso|defects||diaphragm| A posterolateral (usually left) hole lets gut into the chest and stunts the lung.|
+@ E08.01
+fetalgrowth|Fetal period growth|B|T|s|multi|plac|57-266|month2| Months 3–9: length grows most in months 3–5, weight in the last two months.|
+iugr|Growth restriction and prematurity|C|C|s|multi|defects||fetalgrowth| Low birth weight and growth restriction, their causes and risks.|
+birthtime|Time of birth|A|T|x|none|plac|266-266|dating0| About 266 days after fertilization, or 280 days (40 weeks) after the last period.|Forty weeks is counted from fertilization.
+@ E08.02
+fetmemb|Chorion and fetal membranes|B|G|c|extra|plac||villi23| The chorion with its villi and the amnion around the fetus.|
+preeclampsia|Preeclampsia|C|C|x|extra|defects||uteroplac,placstruct| Maternal high blood pressure and protein loss linked to shallow trophoblast remodelling of spiral arteries.|
+@ E08.03
+frondosum|Chorion frondosum and laeve; deciduae|A|A|x|extra|plac|57-120|fetmemb| Villi stay on the side facing the decidua basalis (frondosum) and vanish elsewhere (laeve).|
+@ E08.04
+placstruct|Structure of the placenta|A|A|c|extra|plac|120-266|frondosum| Fetal villi bathe in maternal blood in the intervillous space, divided into cotyledons.|Maternal and fetal blood mix in the placenta.
+barrier|The placental membrane|A|A|x|extra|plac||placstruct| A thin barrier that passes gases, nutrients, IgG, many drugs and some viruses.|The placenta blocks drugs and microbes.
+placendo|Placenta as an endocrine organ|B||x|extra|plac||placstruct| Makes hCG, progesterone, oestrogens and placental lactogen.|
+rh|Rh disease and fetal hydrops|C|C|x|extra|defects||barrier| Maternal antibodies cross and destroy fetal red cells.|
+placabn|Placenta accreta and previa|C|C|x|extra|defects||placstruct| Villi invade too deep (accreta/increta/percreta) or implant over the cervix (previa).|
+@ E08.05
+cord|Umbilical cord|A|A|x|extra|plac|28-266|chcav| Two arteries and one vein in jelly, covered by amnion; a single artery can flag other defects.|Umbilical arteries carry oxygen-rich blood.
+@ E08.06
+termplac|Placenta at term|B||s|extra|plac|250-266|placstruct| Size and changes near birth; amnion and chorion fuse into the amniochorionic membrane.|
+@ E08.07
+amfluid|Amniotic fluid|B||x|extra|plac||amnion| Sources, volume, and fetal swallowing and urine in its turnover.|
+polyoligo|Polyhydramnios and oligohydramnios|C|C|x|extra|defects||amfluid| Too much fluid (e.g. can't swallow) or too little (e.g. kidneys absent).|
+@ E08.08
+twins|Twins and their membranes|B||x|extra|plac||blastocyst,fetmemb| Dizygotic twins come from two oocytes; monozygotic membranes depend on when one embryo splits.|All identical twins share one placenta.
+twindef|Twin complications|C|C|s|extra|defects||twins| Conjoined twins and twin–twin transfusion.|
+@ E08.09
+labour|Parturition (labour)|B||s|none|plac|266-266|birthtime| Three stages: cervix opens, baby delivered, placenta delivered.|
+@ E09.01
+defecttypes|Types of birth defects|B|C|x|none|defects||embper| Malformation, disruption, deformation, sequence, syndrome, association.|
+teratology|Principles of teratology|A|C T|c|none|defects|15-56|embper| Effect depends on genotype, timing, dose and mechanism; weeks 3–8 are most sensitive.|Weeks 1–2 are the most sensitive (exposure then usually is all-or-none).
+teratogens|Key teratogens|B|C|x|none|defects||teratology| Infections (rubella, CMV, Zika), drugs (thalidomide, isotretinoin, valproate, warfarin), alcohol, radiation, maternal diabetes.|
+prevent|Preventing birth defects|B|C|x|none|defects||teratogens| Folic acid, iodine, good glucose control, avoiding known teratogens.|
+@ E09.02
+prenatdx|Prenatal screening|B|C|x|none|defects||defecttypes| Ultrasound, maternal serum markers (AFP, hCG) and cell-free fetal DNA.|
+invasive|Amniocentesis and chorionic villus sampling|B|C|x|extra|defects||prenatdx| Sampling fluid or villi for chromosomes and genes; timing and risks.|
+@ E09.03
+fetalther|Fetal therapy|C|C|d|none|defects||prenatdx| Treating the fetus: transfusion, medicines, surgery.|
+@ E10.01
+ossif|Two ways to make bone|A|S|c|meso|msk||somdiff| Intramembranous (straight from mesenchyme) vs endochondral (cartilage model first).|
+neurocran|Neurocranium|B|S A|x|multi|msk||ossif| Flat bones of the vault (membranous) and the cartilaginous skull base.|
+viscerocran|Viscerocranium|B|S|x|crest|msk||ossif,arches| Face and jaw bones, mostly from the first two pharyngeal arches.|
+sutures|Sutures and fontanelles|B|A|x|multi|msk|266-266|neurocran| Fibrous joints and soft spots let the skull mould at birth and the brain grow.|
+craniosyn|Craniosynostosis and skull defects|C|C|x|multi|defects||sutures| Early fusion of sutures changes head shape (e.g. scaphocephaly, brachycephaly).|
+skeldys|Skeletal dysplasias|C|C|x|meso|defects||ossif| Achondroplasia (FGFR3) and other growth-plate disorders; cranioschisis; microcephaly.|
+@ E10.02
+vertebra|Vertebrae from sclerotomes|A|S F|c|meso|msk|28-42|somdiff,notochord| Each vertebra forms from the lower half of one sclerotome and upper half of the next.|One somite makes one vertebra.
+ivdisc|Intervertebral disc|B|S A|x|meso|msk||vertebra| Nucleus pulposus from the notochord, annulus fibrosus from sclerotome.|
+vertdef|Vertebral defects|C|C|x|meso|defects||vertebra| Spina bifida occulta, scoliosis from hemivertebrae, fused neck vertebrae.|
+@ E10.03
+ribs|Ribs and sternum|B|S|s|meso|msk||vertebra| Ribs grow from vertebral costal processes; the sternum from paired bands in the body wall.|
+ribdef|Rib and sternum defects|C|C|d|meso|defects||ribs| Cervical ribs, cleft sternum.|
+@ E11.00
+musorigin|Where muscles come from|A|G|c|meso|msk||somdiff| Skeletal muscle from paraxial mesoderm; smooth and cardiac muscle mostly from splanchnic mesoderm.|
+@ E11.01
+myogen|Myoblasts fuse into fibres|B|S|s|meso|msk||musorigin| Myoblasts line up and fuse into multinucleated muscle fibres.|
+@ E11.02
+primax|Primaxial domain and abaxial domain|B|S|s|meso|msk||somdiff| Muscles from cells staying near the somite vs cells crossing into lateral plate.|
+epihyp|Epaxial and hypaxial muscles|B|S A|x|meso|msk||primax| Back muscles (dorsal ramus) vs body-wall and limb muscles (ventral ramus).|Limb muscles are epaxial and supplied by dorsal rami.
+dermyo|Dermatomes and myotomes keep their nerve|A|S A|c|meso|msk||somdiff| Each segment's skin and muscle stay with its spinal nerve, even after migrating.|
+@ E11.03
+musreg|Molecular regulation of muscle|D|M|d|meso|msk||musorigin| Neighbour signals switch on muscle genes such as MYOD.|
+@ E11.04
+muspat|Patterning of muscles|D|S|d|meso|msk||musorigin| Connective tissue sets the muscle pattern.|
+@ E11.05
+headmus|Head muscles|B|S|x|meso|head||musorigin| From somitomeres and occipital somites: eye, tongue and pharyngeal-arch muscles.|
+@ E11.06
+tendon|Tendons|D|S|d|meso|msk||musorigin| Tendons form from a sclerotome region beside the myotome.|
+@ E11.07
+limbmus|Limb muscles|B|S|x|meso|limb||epihyp,limbbud| Cells migrate into limb buds and form dorsal (extensor) and ventral (flexor) masses.|
+@ E11.08
+cardmus|Cardiac muscle|B|S|s|meso|cv||musorigin,hearttube| From splanchnic mesoderm around the heart tube; some become conducting fibres.|
+@ E11.09
+smoothmus|Smooth muscle|B|S|s|multi|msk||musorigin| Gut-wall smooth muscle from splanchnic mesoderm; vessel smooth muscle from local mesoderm or crest.|
+musdef|Muscle defects|C|C|s|meso|defects||musorigin| Poland sequence, prune belly syndrome, muscular dystrophy.|
+@ E12.01
+limbbud|Limb buds|A|S F|c|meso|limb|26-28|lateralplate| Arm buds appear around day 26–27 and leg buds a day or two later, from lateral plate mesoderm under ectoderm.|
+limbshape|Shaping and rotating the limbs|A|F|c|meso|limb|33-56|limbbud| Hand and foot plates; apoptosis (cell death) frees the digits, then arms rotate laterally and legs medially.|Arms and legs rotate the same way.
+limbossif|Limb bone growth|B|S|x|meso|limb|42-266|ossif,limbbud| Cartilage models ossify from the shaft; growth plates lengthen bones until adulthood.|
+@ E12.02
+aer|Apical ectodermal ridge|D|M|x|ecto|limb|26-49|limbbud,fgf| A ridge at the bud tip releases FGFs that keep the limb growing outward.|
+zpa|Zone of polarizing activity|D|M|x|meso|limb|28-49|limbbud,shh| A posterior patch makes SHH and sets thumb-to-little-finger order.|
+limbinn|Limb musculature and innervation|B|S A|s|meso|limb||limbmus,dermyo| Nerves enter with muscle masses; limb dermatomes follow the rotation.|
+limbdef|Limb defects|C|C|x|meso|defects||limbshape| Amelia, meromelia (e.g. thalidomide phocomelia), polydactyly, syndactyly, split hand.|
+clubfoot|Clubfoot and other limb anomalies|C|C|s|meso|defects||limbshape| Clubfoot, hip dysplasia, arthrogryposis, amniotic bands.|
+@ E13.00
+heartfirst|The heart works first|A|T|c|meso|cv|21-22|vessels,hearttube| The first organ to function; it begins beating at about day 22.|
+@ E13.01
+phf|Primary heart field|B|S G|c|meso|cv|16-18|streakfate| Splanchnic mesoderm cranial to the neural plate forms a crescent of heart precursors.|
+shf|Secondary heart field|B|S|x|meso|cv|20-35|phf| Cells added later make the outflow tract, right ventricle and parts of the atria.|
+@ E13.02
+hearttube|Heart tube forms|A|F|c|meso|cv|19-22|phf,folding| Body folding brings two endocardial tubes together; they fuse into one tube in the pericardial cavity.|
+tubeparts|Parts of the heart tube|A|S|c|meso|cv|22-28|hearttube| Inflow (sinus venosus), atrium, ventricle and outflow (bulbus: conus and truncus).|
+@ E13.03
+looping|Cardiac looping|A|F|c|meso|cv|23-28|tubeparts| The tube bends to the right so the atria move up and back and the ventricle down and forward.|
+dextro|Dextrocardia and heterotaxy|C|C|x|meso|defects||looping,situs| Leftward looping puts the heart on the right; often with other laterality defects.|
+@ E13.04
+cardreg|Molecular regulation of the heart|D|M|s|meso|cv||phf| NKX2.5, TBX5 and BMP/WNT signals specify and pattern the heart.|
+@ E13.05
+sinusv|Sinus venosus|B|S|x|meso|cv|28-56|tubeparts| Blood return shifts right: the right horn forms the smooth atrial wall (edge: crista terminalis), the left the coronary sinus.|
+@ E13.06
+septamech|How septa form|A|S|c|meso|cv|27-37|looping| Endocardial cushions and growing ridges meet to divide the heart.|
+atrsept|Atrial septation|A|S|x|meso|cv|28-42|septamech| Septum primum, two ostia and septum secundum leave a flap valve: the foramen ovale.|The foramen ovale closes before birth.
+asd|Atrial septal defects|C|C|x|meso|defects||atrsept| Secundum defects, probe-patent foramen ovale, cushion defects.|
+avcanal|AV canal and valves|B|S|x|meso|cv|28-42|septamech| Cushions divide the AV canal and help form mitral and tricuspid valves.|
+outflow|Outflow tract septation|A|S G|x|crest|cv|35-56|septamech,crest| Neural-crest ridges spiral and fuse, splitting the truncus into aorta and pulmonary trunk.|
+ventsept|Ventricular septum|B|S|x|meso|cv|35-49|septamech| A muscular part grows up; a membranous part closes the gap.|
+vsd|VSD, tetralogy, transposition, truncus|C|C|x|multi|defects||ventsept,outflow| Membranous VSD; outflow septum shifted (tetralogy) or not spiralling (transposition) or absent (persistent truncus).|
+valvedef|Valve defects and hypoplastic left heart|C|C|s|meso|defects||avcanal| Stenoses, atresias, Ebstein anomaly (tricuspid displaced) and the hypoplastic left heart.|
+@ E13.07
+conduct|Conducting system|B|S|s|meso|cv||sinusv| Pacemaker in the sinus venosus region, then the AV node and bundle.|
+@ E13.08
+aorticarch|Pharyngeal arch arteries and their fates|A|S A|c|meso|cv|28-49|arches| 3rd → carotids; 4th → aortic arch (left) and right subclavian; 6th → pulmonary arteries and ductus.|All six arches are present at the same time.
+recurrent|Recurrent laryngeal nerve asymmetry|B|A|x|none|cv||aorticarch| The left nerve hooks under the ductus; the right under the subclavian.|
+vitumb|Vitelline and umbilical arteries|B|S A|x|meso|cv||vessels| Vitelline arteries → gut arteries; umbilical arteries → internal iliac branches and medial umbilical ligaments.|
+veins|Vitelline, umbilical and cardinal veins|B|S A|x|meso|cv|28-56|vessels| Become the portal system, ductus venosus, SVC and IVC.|
+archdef|Arterial defects|C|C|x|meso|defects||aorticarch| Patent ductus, coarctation, double aortic arch, aberrant right subclavian.|
+fetcirc|Fetal circulation|A|S|c|multi|cv|57-266|veins,atrsept,aorticarch,cord| Three shunts — ductus venosus, foramen ovale, ductus arteriosus — bypass liver and lungs.|The fetal lungs oxygenate the blood.
+birthcirc|Changes at birth and adult remnants|A|S A|c|multi|cv|266-266|fetcirc| Shunts close and leave ligaments (ligamentum arteriosum, round ligament of the liver) and the fossa ovalis.|
+lymph|Lymphatic system|C|S|d|meso|cv||veins| Lymph sacs and ducts form beside the veins.|
+@ E14.01
+lungbud|Respiratory diverticulum|A|S G|c|endo|resp|22-28|gutparts| A ventral outpouching of the foregut; tracheoesophageal ridges fuse into the tracheoesophageal septum, separating it from the oesophagus.|
+tef|Tracheoesophageal fistula and oesophageal atresia|C|C|x|endo|defects||lungbud| Faulty separation joins trachea and oesophagus; fluid can't be swallowed (polyhydramnios).|
+@ E14.02
+larynx|Larynx|B|S|x|multi|resp|28-70|lungbud,arches| Endodermal lining; cartilages and muscles from arches 4 and 6 (vagus).|
+@ E14.03
+bronchi|Bronchi and lung branching|B|S|x|endo|resp|28-112|lungbud| Buds branch into main, lobar and segmental bronchi; splanchnic mesoderm gives cartilage and muscle.|
+pleura|Lungs and pleura|B|S|s|meso|resp||bronchi,pleurop| Lungs grow into the pericardioperitoneal canals, picking up visceral and parietal pleura.|
+@ E14.04
+lungstage|Lung maturation phases|A|T|c|endo|resp|35-266|bronchi| Pseudoglandular, canalicular, terminal sac, then alveolar (continuing after birth).|All alveoli form before birth.
+surfact|Surfactant and preterm breathing|B|C|x|endo|resp|168-266|lungstage| Type II alveolar cells make surfactant late in pregnancy; too little causes respiratory distress.|
+lungdef|Lung anomalies|C|C|s|endo|defects||bronchi| Lung hypoplasia, ectopic lobes.|
+@ E15.01
+gutdiv|Gut divisions and their arteries|A|S A|c|endo|gi|22-28|gutparts| Foregut–coeliac, midgut–superior mesenteric, hindgut–inferior mesenteric.|
+@ E15.02
+gutreg|Molecular regionalisation of the gut|D|M|d|endo|gi||gutparts,ra| Gradients and transcription factors give each gut region its identity.|
+@ E15.03
+mesent|Dorsal and ventral mesenteries|A|S|c|meso|gi|28-35|serous| The gut hangs from a dorsal mesentery; a ventral one exists only near the stomach and liver.|
+@ E15.04
+oesoph|Oesophagus|B|S|s|endo|gi|28-56|lungbud| Lengthens as the heart and lungs descend.|
+stomach|Stomach rotation|A|F|c|endo|gi|28-49|gutdiv| Rotates 90° clockwise on its long axis and tilts, so the left vagus ends up in front.|
+omenta|Omenta and lesser sac|B|A|x|meso|gi|35-70|stomach,mesent| Greater omentum from dorsal mesogastrium; lesser sac behind the stomach, entered by the epiploic foramen; peritoneal ligaments link organs.|
+duoden|Duodenum|B|S|x|endo|gi|28-56|stomach| From the end of the foregut and start of the midgut; forms a C-loop; its lumen fills then reopens (atresia or stenosis if not: 'double bubble').|
+liver|Liver and gallbladder|A|S G|c|endo|gi|22-42|gutdiv,septtr| A liver bud grows into the septum transversum and forms the parenchyma; ventral mesentery forms the lesser omentum and falciform ligament.|
+pyloric|Pyloric stenosis|C|C|x|endo|defects||stomach| Thickened pyloric muscle causes forceful vomiting in young infants.|
+spleen|Spleen|B|S|x|meso|gi|35-56|omenta| Forms from mesenchyme in the dorsal mesogastrium; accessory spleens are common.|The spleen is a gut (endoderm) organ.
+@ E15.05
+liverind|Molecular regulation of liver induction|D|M|d|endo|gi||liver,fgf| Signals from heart and septum transversum turn foregut endoderm into liver.|
+biliary|Biliary atresia and duct anomalies|C|C|s|endo|defects||liver| Bile ducts fail to open or are doubled.|
+@ E15.06
+pancreas|Pancreas|A|S|c|endo|gi|28-49|duoden| Dorsal and ventral buds; the ventral bud swings behind and fuses; ducts join.|
+annular|Annular pancreas and pancreas divisum|C|C|x|endo|defects||pancreas| A ring of pancreas around the duodenum, or ducts that fail to join.|
+@ E15.07
+herniation|Physiological umbilical herniation|A|F|c|endo|gi|42-70|gutdiv| The fast-growing midgut loop bulges into the cord in weeks 6–10, then returns.|Physiological herniation is an omphalocele.
+rotation|Midgut rotation|A|F|c|endo|gi|42-77|herniation| The loop turns 270° counterclockwise around the superior mesenteric artery.|
+fixation|Fixation and retroperitoneal parts|B|A|x|endo|gi|70-84|rotation| Some mesenteries fuse to the back wall, making parts secondarily retroperitoneal.|
+midgutdef|Midgut defects|C|C|x|endo|defects||rotation| Malrotation and volvulus, Meckel diverticulum, vitelline remnants, atresia.|
+@ E15.08
+cloaca|Cloaca division|A|S|c|endo|gi|28-49|gutdiv| The urorectal septum splits the cloaca into rectum and urogenital sinus.|
+analcanal|Anal canal: two origins|A|S A|c|multi|gi|49-63|cloaca| Upper part from endoderm, lower from ectoderm; vessels, nerves and lymph differ at the pectinate line.|
+hindgutdef|Hindgut defects|C|C|x|multi|defects||cloaca,crest| Anorectal malformations and fistulas; Hirschsprung disease (missing crest ganglia).|
+@ E16.00
+kidney3|Three kidney systems|A|S T|c|meso|uro|22-35|intermeso| Pronephros, mesonephros and metanephros appear in sequence; only the metanephros stays.|All three systems form the adult kidney together.
+@ E16.01
+mesoneph|Mesonephros and its duct|B|S|x|meso|uro|28-63|kidney3| A temporary kidney whose duct later forms male genital ducts.|
+metaneph|Metanephros: two sources|A|S|c|meso|uro|35-266|mesoneph| Ureteric bud → collecting system; metanephric blastema → nephrons; they induce each other.|Nephrons and collecting ducts come from the same tissue.
+nephron|Nephron formation|B|S|x|meso|uro||metaneph| Renal vesicle → S-shaped tubule → Bowman capsule with glomerulus.|
+kidascent|Kidney ascent|B|F|x|meso|uro|42-63|metaneph| Kidneys rise from the pelvis, taking new arteries; horseshoe or pelvic kidney if stuck.|
+renaldef|Renal anomalies|C|C|x|meso|defects||metaneph| Agenesis (with Potter sequence), cystic kidneys, duplicated ureter.|
+bladder|Bladder and urethra|B|S|x|endo|uro|35-84|cloaca| From the urogenital sinus; trigone from mesonephric ducts; the urachus links to the allantois.|
+urachal|Urachal anomalies|C|C|s|endo|defects||bladder| Urachal fistula, cyst or sinus at the navel.|
+kidreg|Molecular regulation of kidney development|D|M|d|meso|uro||metaneph| WT1, GDNF and RET drive bud–blastema talk.|
+wilms|Wilms tumour|C|C|s|meso|defects||metaneph,kidreg| A childhood kidney tumour from nephron precursors, linked to WT1.|
+@ E16.02
+sexdet|Sex determination|A|M|c|none|gen|42-49|fertres| SRY on the Y makes a testis; ovary development needs its own genes (e.g. WNT4).|Female development needs no genes at all.
+indiffgon|Indifferent gonad|A|S|c|multi|gen|35-49|pgc,intermeso| Genital ridges plus arriving germ cells form sex cords before sex shows.|
+testis|Testis|B|S|x|meso|gen|49-84|indiffgon,sexdet| Medullary cords with Sertoli cells; Leydig cells make testosterone.|
+ovary|Ovary|B|S|s|meso|gen|49-140|indiffgon| Cortical cords break into follicles around oogonia.|
+ducts|Genital ducts: two sets|A|S|c|meso|gen|42-84|indiffgon,mesoneph,sexdet,testis| Testosterone keeps mesonephric ducts; AMH removes paramesonephric ducts; without them the reverse.|Testosterone makes the paramesonephric ducts regress.
+maleducts|Male ducts and glands|B|S A|x|multi|gen||ducts| Epididymis, ductus deferens, seminal vesicle; prostate from urethra.|
+femducts|Female ducts and vagina|B|S A|x|meso|gen||ducts| Tubes, uterus and upper vagina; vaginal plate canalises.|
+uterdef|Uterine and vaginal anomalies|C|C|x|meso|defects||femducts| Double uterus, bicornuate uterus, vaginal atresia.|
+extgen|External genitalia|A|S|c|multi|gen|49-84|ducts,sexdet,cloaca| Genital tubercle, folds and swellings form either set; DHT makes the male form.|
+hypospad|Hypospadias and epispadias|C|C|x|multi|defects||extgen| Urethral opening on the underside or top of the penis.|
+dsd|Differences of sex development|C|C|x|multi|defects||sexdet,extgen| CAH, androgen insensitivity, 5α-reductase deficiency, ovotesticular DSD.|
+descent|Descent of the testis|A|F|c|meso|gen|56-266|testis| The gubernaculum guides the testis through the inguinal canal, led by the processus vaginalis.|
+hernia|Inguinal hernia, hydrocele, cryptorchidism|C|C|x|meso|defects||descent| An open processus vaginalis or a testis that doesn't descend.|
+@ E17.00
+headorig|What builds the head and neck|A|G|c|crest|head||crest,somites| Pharyngeal arches, neural crest, paraxial mesoderm and placodes.|
+@ E17.01
+arches|Pharyngeal arches|A|S G|c|multi|head|22-35|headorig| Each arch has cartilage, muscle, a nerve and an artery.|Humans have gills or gill slits.
+archder|Arch derivatives|A|A|c|multi|head||arches| 1 trigeminal, chewing, malleus/incus; 2 facial, expression, stapes; 3 glossopharyngeal; 4 and 6 vagus, larynx.|
+stomod|Stomodeum|B|S|s|ecto|head|22-28|oromem| The primitive mouth, closed by the oropharyngeal membrane until it breaks.|
+@ E17.02
+pouches|Pharyngeal pouches|A|G A|c|endo|head|28-56|arches| 1 middle ear and tube; 2 tonsil; 3 thymus and inferior parathyroids; 4 superior parathyroids and C cells.|Inferior parathyroids come from pouch 4.
+@ E17.03
+clefts|Pharyngeal clefts|B|S|x|ecto|head|28-56|arches| The first becomes the external ear canal; the rest are buried in the cervical sinus.|
+branchdef|Arch and pouch defects|C|C|x|multi|defects||clefts,pouches| Branchial cysts and fistulas, DiGeorge (22q11), first-arch syndromes.|
+@ E17.04
+facereg|Molecular regulation of facial development|D|M|d|crest|head||crest| Crest cells carry patterning signals; first arch is Hox-free; SHH is needed.|
+@ E17.05
+tongue|Tongue|A|S A|c|multi|head|28-56|archder,headmus| Front two-thirds from arch 1, back third from arch 3 (and 4); muscles from occipital somites (XII). Touch V3 front, IX back; taste VII front.|
+tonguedef|Tongue-tie|C|C|d|multi|defects||tongue| A short frenulum.|
+@ E17.06
+thyroid|Thyroid descent|A|S|c|endo|head|24-49|tongue| Starts at the foramen cecum and descends in front of the gut via the thyroglossal duct.|
+thyrodef|Thyroglossal cyst and ectopic thyroid|C|C|x|endo|defects||thyroid| Leftover duct tissue forms a midline neck cyst; thyroid may stay at the tongue.|
+@ E17.07
+face|Face from five prominences|A|F G|c|crest|head|28-70|arches| Frontonasal, paired maxillary and mandibular prominences grow and merge.|
+nasalpl|Nasal placodes and prominences|B|F|x|multi|head|35-49|face| Placodes sink into pits ringed by medial and lateral nasal prominences.|
+@ E17.08
+intermax|Intermaxillary segment|B|F|x|crest|head|42-56|nasalpl| Merged medial nasal prominences form the philtrum, upper incisor area and primary palate.|
+@ E17.09
+secpal|Secondary palate|A|F|c|crest|head|49-70|intermax| Palatal shelves rise above the tongue and fuse; the incisive foramen marks the joint with the primary palate.|
+cleft|Cleft lip and cleft palate|C|C|x|crest|defects||secpal| Clefts in front of the incisive foramen (lip, primary palate) vs behind (secondary palate).|Cleft lip and cleft palate are one defect.
+@ E17.10
+nasal|Nasal cavities and sinuses|B|S|s|multi|head|42-266|nasalpl| Oronasal membrane breaks to make choanae; sinuses grow mostly after birth.|
+@ E17.11
+teeth|Teeth|B|S|s|multi|head|42-266|face| Dental lamina → bud, cap, bell; enamel from ectoderm, dentin and pulp from crest mesenchyme.|
+@ E17.12
+toothreg|Tooth regulation and defects|D|M C|d|multi|head||teeth| Signals that pattern teeth; tooth number and enamel defects.|
+@ E18.01
+ntlayers|Neural tube layers|A|S|c|ecto|cns|28-56|neurul| Ventricular (neuroepithelial), mantle (grey matter) and marginal (white matter) layers.|
+alarbasal|Alar and basal plates|A|S|c|ecto|cns|28-56|ntlayers| Dorsal alar plate = sensory; ventral basal plate = motor; the sulcus limitans divides them; the lateral horn (intermediate column) holds autonomic neurons.|The basal plate is sensory.
+spnerve|Spinal nerves and dorsal root ganglia|B|S A|x|multi|cns|28-42|alarbasal,crest| Motor fibres leave from the basal plate; sensory neurons sit in crest-derived ganglia.|
+myelin|Myelination|B|S|s|multi|cns|112-266|spnerve| Schwann cells in nerves; oligodendrocytes in the cord and brain.|
+cordpos|Position of the cord end|B|A|x|ecto|cns|84-266|ntlayers| The cord ends lower in the fetus and rises relative to the spine (about L3 at birth, higher in adults; exact adult level ⚑ X1 checks book vs anatomy sources).|
+spbifida|Spina bifida types|C|C|x|ecto|defects||ntd,vertebra| Occulta, meningocele, myelomeningocele, rachischisis; raised AFP; folic acid helps prevent.|
+dvpat|Dorsoventral patterning of the tube|D|M|x|ecto|cns||alarbasal,shh| SHH from notochord and floor plate makes ventral (motor) cells; BMPs from the roof make dorsal ones.|
+@ E18.02
+vesicles|Brain vesicles and flexures|A|F|c|ecto|cns|28-42|neurul| Three primary vesicles become five; the tube bends at three flexures.|
+hindbrain|Hindbrain: medulla, pons, cerebellum|B|S|x|ecto|cns|35-266|vesicles| Myelencephalon → medulla; metencephalon → pons and cerebellum.|
+midbrain|Midbrain|B|S|s|ecto|cns||vesicles| Colliculi and the narrow cerebral aqueduct.|
+dienceph|Diencephalon and pituitary|B|S|x|multi|cns|35-84|vesicles| Thalamus and hypothalamus; pituitary: adenohypophysis (anterior lobe) from Rathke pouch; neurohypophysis (posterior lobe) from the infundibulum.|The whole pituitary comes from the brain.
+telenceph|Cerebral hemispheres|B|S|x|ecto|cns|35-266|vesicles| Hemispheres, cortex, basal ganglia and commissures such as the corpus callosum.|
+ventricles|Ventricles and CSF|B|S|s|ecto|cns||vesicles| The tube's lumen becomes the ventricles; choroid plexuses make CSF.|
+meninges|Meninges|B|S|s|multi|cns||ntlayers| Dura from mesoderm; pia and arachnoid largely from neural crest.|
+braindef|Brain defects|C|C|x|ecto|defects||vesicles| Anencephaly, hydrocephalus, Chiari malformation, holoprosencephaly, microcephaly.|
+@ E18.03
+brainpat|Brain patterning|D|M|s|ecto|cns||vesicles,hox| Rhombomeres with Hox codes, the isthmus organizer (FGF8) and forebrain SHH.|
+@ E18.04
+cranialn|Cranial nerves|B|S A|x|multi|cns|35-56|alarbasal,archder| Motor nuclei from basal plates; sensory ganglia from crest and placodes.|
+@ E18.05
+symp|Sympathetic system|B|S|x|crest|cns|35-56|crestder| Part of the autonomic nervous system: crest cells form chain ganglia; white and gray rami; splanchnic nerves.|
+adrenal|Adrenal gland: two origins|A|S G|c|multi|cns|42-266|symp| Cortex from mesoderm; medulla from neural crest.|The whole adrenal comes from one layer.
+parasymp|Parasympathetic system|B|S|s|crest|cns||crestder| Brainstem and sacral outflow; ganglia from crest.|
+cresttum|Neural crest tumours|C|C|s|crest|defects||adrenal| Pheochromocytoma and neuroblastoma arise from crest-derived adrenal medulla and ganglia.|
+@ E19.01
+otic|Otic vesicle and inner ear|A|S|c|ecto|ear|22-56|ectoder| Otic placode → vesicle → utricle (semicircular canals) and saccule (cochlea).|
+labyrinth|Membranous and bony labyrinth|B|S|s|multi|ear||otic| Mesenchyme around the membranous labyrinth becomes the bony capsule.|
+@ E19.02
+midear|Middle ear|A|S A|c|multi|ear|28-266|pouches,archder| Tympanic cavity and tube from pouch 1; ossicles from arches 1 and 2; the eardrum has all three layers.|
+@ E19.03
+extear|External ear|B|S|x|multi|ear|42-140|clefts| Canal from cleft 1; auricle from six hillocks; low-set ears flag syndromes.|
+@ E19.04
+deaf|Congenital hearing loss|C|C|s|multi|defects||otic,midear| Genetic causes, rubella and other teratogens, ear malformations.|
+@ E20.01
+opticcup|Optic cup and lens vesicle|A|S|c|ecto|eye|22-42|vesicles,ectoder| Optic vesicle from the forebrain becomes a cup; it induces the lens placode; the choroid fissure carries vessels.|
+@ E20.02
+retina|Retina|A|S|c|ecto|eye|35-266|opticcup| Inner cup wall → neural retina; outer wall → pigment layer.|Retinal detachment separates retina from choroid (it splits the two retinal layers).
+iris|Iris and ciliary body|B|S|x|multi|eye|56-266|retina| Cup rim plus mesenchyme; the iris muscles come from neuroectoderm.|
+@ E20.03
+lens|Lens|B|S|s|ecto|eye|35-266|opticcup| Lens fibres fill the vesicle.|
+@ E20.04
+eyecoats|Choroid, sclera and cornea|B|S|s|multi|eye||opticcup| Mesenchyme forms choroid and sclera, continuous with pia and dura; cornea in layers.|
+@ E20.05
+vitreous|Vitreous and hyaloid artery|B|S|s|multi|eye||opticcup| Gel fills the cup; the hyaloid artery regresses except for the central retinal vessels.|
+@ E20.06
+opticn|Optic nerve|B|S A|x|ecto|eye|42-266|opticcup| Retinal axons travel through the optic stalk.|
+@ E20.07
+eyereg|Molecular regulation of the eye|D|M|x|ecto|eye||opticcup,shh| PAX6 is the master gene; SHH splits one eye field into two.|
+eyedef|Eye defects|C|C|x|ecto|defects||eyereg| Coloboma, congenital cataract, microphthalmia, cyclopia.|
+@ E21.01
+epiderm|Epidermis|B|S G|x|multi|skin|28-266|ectoder,crestder| Layers from ectoderm; melanocytes from crest.|
+dermis|Dermis|B|S|s|meso|skin||somdiff| From dermatomes and lateral plate mesoderm.|
+skindef|Skin disorders|C|C|d|multi|defects||epiderm| Ichthyosis; pigment disorders (albinism, piebaldism) from melanocyte faults.|
+@ E21.02
+hair|Hair|B|S|s|ecto|skin|84-266|epiderm| Follicles grow down into the dermis; fine lanugo hair and vernix.|
+@ E21.03
+nails|Nails|B|S|d|ecto|skin|70-266|epiderm| Nail fields at digit tips.|
+@ E21.04
+sweat|Sweat glands|B|S|d|ecto|skin||epiderm| Eccrine and apocrine glands grow down from the epidermis.|
+@ E21.05
+mammary|Mammary glands|B|S|s|ecto|skin|42-266|epiderm| Along the mammary ridges; extra nipples along the line.|

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biology Studio · Langman concept explorer</title>
+<!-- Purpose: K1 clickable concept explorer (drill-down, crosstabs, search, filters, concept pages). Owner doc: build/master-plan.md §5.
+     Data: map.json (built by k1/build_map.py from concepts.txt + I1 index). EDIT: tokens in :root; UI words in STR; dims in DIMS. -->
+<style>
+:root{ /* EDIT: tokens (DrumPath-style). Germ-layer colours are Okabe–Ito placeholders until A0/V1 (RULES B3). */
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1d1d1f; --ink2:#55565b; --line:#dcdad3; --accent:#0b5cad; --accent-ink:#ffffff;
+  --g-ecto:#0072b2; --g-meso:#d55e00; --g-endo:#e69f00; --g-crest:#cc79a7; --g-extra:#7a7a7a; --g-multi:#009e73; --g-none:#b9b9b9;
+  --heat0:#f2f5fa; --heat1:#cfe0f3; --heat2:#9cc2e8; --heat3:#5f9bd6; --heat4:#1f63ad;
+  --tap:44px; --fs-min:14px; --fs:16px; --r:10px; --gap:12px;
+}
+*{box-sizing:border-box} html{font-size:var(--fs)}
+body{margin:0;font:1rem/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid var(--line);padding:8px 12px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0;flex:1 1 10em;min-width:0}
+h1 small{display:block;font-weight:400;color:var(--ink2);font-size:.8rem}
+.search{flex:1 1 180px;min-width:0;min-height:var(--tap);padding:0 12px;border:1px solid var(--line);border-radius:var(--r);background:#fff}
+.btn{min-height:var(--tap);min-width:var(--tap);padding:0 12px;border:1px solid var(--line);border-radius:var(--r);background:#fff;cursor:pointer}
+.btn[aria-pressed=true],.tab[aria-selected=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+nav.tabs{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
+.tab{min-height:var(--tap);padding:0 14px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;white-space:nowrap}
+#xs,#ys{min-height:var(--tap);border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:0 8px;max-width:100%}
+main{max-width:1100px;margin:0 auto;padding:12px}
+.filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:8px 0}
+.filters label{font-size:.8rem;color:var(--ink2)} .filters select{width:100%;min-height:var(--tap);border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:0 8px}
+.count{color:var(--ink2);font-size:.9rem;margin:4px 0 8px}
+details.ch{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin:8px 0}
+details.ch>summary{min-height:var(--tap);padding:10px 12px;cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center}
+details.ch>summary::-webkit-details-marker{display:none}
+details.ch>summary::before{content:"▸";width:1em} details.ch[open]>summary::before{content:"▾"}
+.sec{padding:4px 12px 10px 28px;border-top:1px solid var(--line)}
+.sec h3{font-size:.9rem;margin:8px 0 4px;color:var(--ink2);font-weight:600}
+.part{margin:16px 0 4px;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+.c{display:flex;gap:8px;align-items:center;width:100%;min-height:var(--tap);padding:6px 8px;border:0;border-radius:8px;background:none;text-align:left;cursor:pointer}
+.c:hover{background:#f0eee8} .c .nm{flex:1} .c .id{font:12px/1 ui-monospace,monospace;color:var(--ink2)}
+.badge{display:inline-block;font-size:.75rem;line-height:1.6;padding:0 6px;border-radius:6px;border:1px solid var(--line);background:#fff;white-space:nowrap}
+.b-core{border-color:#1d1d1f;font-weight:700} .b-exam-high{border-color:var(--accent);color:var(--accent)} .b-detail{color:var(--ink2)}
+.sw{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,.35);flex:none}
+/* colour + pattern per layer (never colour alone, RULES B3/H5) */
+.L-ecto{background:var(--g-ecto)} .L-meso{background:repeating-linear-gradient(45deg,var(--g-meso) 0 3px,#fff6 3px 5px)}
+.L-endo{background:radial-gradient(circle,#fff8 1.5px,transparent 2px) 0 0/5px 5px,var(--g-endo)} .L-crest{background:repeating-linear-gradient(0deg,var(--g-crest) 0 3px,#fff7 3px 5px)}
+.L-extra{background:repeating-linear-gradient(90deg,var(--g-extra) 0 2px,#fff 2px 4px)} .L-multi{background:conic-gradient(var(--g-ecto) 0 33%,var(--g-meso) 0 66%,var(--g-endo) 0)} .L-none{background:var(--g-none)}
+.layerlbl{font-size:.75rem;color:var(--ink2)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:8px 0}
+.cp h2{margin:.2em 0;font-size:1.3rem} .cp .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.cp dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:0} .cp dt{color:var(--ink2);font-size:.85rem} .cp dd{margin:0}
+.mis{border-left:4px solid var(--g-meso);background:#fff4ec;padding:8px 10px;border-radius:6px;margin:10px 0}
+.links{display:flex;flex-wrap:wrap;gap:6px} .lk{min-height:36px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:.9rem}
+.note{font-size:.8rem;color:var(--ink2)}
+.xt-wrap{overflow:auto;max-width:100%;border:1px solid var(--line);border-radius:var(--r);background:#fff}
+table.xt{border-collapse:collapse;font-size:.85rem}
+table.xt th,table.xt td{border:1px solid var(--line);padding:0;text-align:center}
+table.xt th{background:#f6f5f1;padding:6px;position:sticky;top:0;font-weight:600;white-space:nowrap}
+table.xt th.rh{position:sticky;left:0;text-align:left;z-index:1;max-width:14em;overflow:hidden;text-overflow:ellipsis}
+table.xt td button{width:100%;min-width:40px;min-height:40px;border:0;cursor:pointer;font-weight:600}
+.h0{background:var(--heat0);color:#9aa} .h1{background:var(--heat1)} .h2{background:var(--heat2)} .h3{background:var(--heat3);color:#fff} .h4{background:var(--heat4);color:#fff}
+.edit{display:none;margin-left:4px;min-width:32px;min-height:32px;border:1px dashed var(--accent);border-radius:6px;background:#fff;color:var(--accent);cursor:pointer}
+body.test .edit{display:inline-block}
+#dbg{display:none;position:fixed;right:8px;bottom:8px;z-index:9;background:#111d;color:#e6ffe6;font:12px/1.4 ui-monospace,monospace;padding:8px 10px;border-radius:8px;max-width:90vw;pointer-events:none}
+body.debug #dbg{display:block}
+dialog{border:1px solid var(--line);border-radius:var(--r);max-width:560px;width:92vw}
+dialog textarea{width:100%;min-height:140px;font:13px ui-monospace,monospace}
+.sr{position:absolute;left:-9999px}
+@media (min-width:900px){ .split:has(#detail:empty){display:block} .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start} .split>.sticky{position:sticky;top:120px} }
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <h1>Langman concept explorer <small id="sub">Biology Studio · book E · K1</small></h1>
+    <input id="q" class="search" type="search" placeholder="Search concepts, terms, ids…" aria-label="Search concepts">
+    <button id="testBtn" class="btn" aria-pressed="false" title="Testing mode: ✎ edit hooks + debug overlay">✎ Test</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button class="tab" role="tab" data-v="book" aria-selected="true">Book</button>
+    <button class="tab" role="tab" data-v="xt" aria-selected="false">Crosstabs</button>
+    <button class="tab" role="tab" data-v="pre" aria-selected="false">Prerequisites</button>
+    <button class="tab" role="tab" data-v="about" aria-selected="false">About</button>
+  </nav>
+</header>
+<main>
+  <details id="filt" class="panel"><summary style="min-height:var(--tap);cursor:pointer">Filters <span id="fsum" class="note"></span></summary><div class="filters" id="filters"></div>
+    <button class="btn" id="clearF">Clear filters</button></details>
+  <p id="count" class="count" aria-live="polite"></p>
+  <div class="split"><section id="view" aria-label="Results"></section><section id="detail" class="sticky" aria-live="polite"></section></div>
+</main>
+<div id="dbg" aria-hidden="true"></div>
+<dialog id="dlg"><h3 id="dlgT">Edit this</h3><p class="note">Paste into a new chat named <b id="dlgChat"></b>.</p><textarea id="dlgTxt" readonly></textarea>
+  <div class="row"><button class="btn" id="copyBtn">Copy prompt</button><button class="btn" id="closeDlg">Close</button><span id="copied" class="note" aria-live="polite"></span></div></dialog>
+<script>
+"use strict";
+// EDIT: UI words
+const STR={ver:'K1 explorer v1 · 17 Nov 2026', planned:'planned', approx:'≈ until X1 cites it', none:'—'};
+const DIMS={ /* EDIT: crosstab dimensions */
+  chapter:{label:'Chapter',vals:o=>[o.ch]}, recurs:{label:'Chapter it recurs in',vals:o=>Object.keys(o.recurs)},
+  day:{label:'Day / week',vals:o=>[dbin(o.day)]}, cs:{label:'Carnegie stage ≈',vals:o=>o.cs_approx?range(o.cs_approx[0],o.cs_approx[1]).map(n=>'CS'+String(n).padStart(2,'0')):['No stage']},
+  layer:{label:'Germ layer',vals:o=>[o.layer]}, system:{label:'System',vals:o=>[o.system]},
+  tier:{label:'Tier',vals:o=>[o.tier]}, importance:{label:'Importance',vals:o=>[o.importance]}, thread:{label:'Thread',vals:o=>o.threads.length?o.threads:['—']}
+};
+let M,C,byId={},sel={x:'layer',y:'day',cell:null},view='book',F={},testing=false,debug=false;
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const log=(...a)=>{if(debug)console.log('[map]',...a)};
+function range(a,b){const r=[];for(let i=a;i<=b;i++)r.push(i);return r}
+function dbin(d){if(!d)return'No day';const x=d[0];return x<=7?'Wk 1':x<=14?'Wk 2':x<=21?'Wk 3':x<=28?'Wk 4':x<=56?'Wk 5–8':'Fetal'}
+function lab(dim,v){const V=M.vocab;if(dim==='layer')return V.layer[v]||v;if(dim==='system')return V.system[v]||v;if(dim==='tier')return v+' · '+(V.tier[v]||'');
+  if(dim==='thread')return v+' · '+(V.threads[v]||'');if(dim==='chapter'||dim==='recurs'){const c=M.chapters.find(c=>c.id===v);return c?v+' '+c.title:v}return v}
+function order(dim){const V=M.vocab;switch(dim){case'chapter':case'recurs':return M.chapters.map(c=>c.id);case'day':return V.daybins;
+  case'cs':return range(1,23).map(n=>'CS'+String(n).padStart(2,'0')).concat(['No stage']);case'layer':return Object.keys(V.layer);case'system':return Object.keys(V.system);
+  case'tier':return['A','B','C','D'];case'importance':return V.importance;case'thread':return Object.keys(V.threads).concat(['—'])}}
+function sw(l){return `<span class="sw L-${l}" aria-hidden="true"></span>`}
+function badges(o){return `<span class="badge b-${o.importance}">${o.importance}</span> <span class="badge" title="Tier ${esc(M.vocab.tier[o.tier])}">${o.tier}</span>`}
+function edit(kind,id){return `<button class="edit" data-edit="${kind}:${esc(id)}" aria-label="Edit ${esc(id)}">✎</button>`}
+function crow(o){return `<div class="row" style="flex-wrap:nowrap"><button class="c" data-c="${o.id}">${sw(o.layer)}<span class="nm">${esc(o.name)}<br><span class="layerlbl">${esc(M.vocab.layer[o.layer])} · ${esc(M.vocab.system[o.system])}</span></span><span class="id">${o.id}</span>${badges(o)}</button>${edit('concept',o.id)}</div>`}
+
+function pass(o){
+  for(const k of ['tier','importance','layer','system']) if(F[k]&&o[k]!==F[k]) return false;
+  if(F.thread&&!o.threads.includes(F.thread)) return false;
+  const q=($('#q').value||'').trim().toLowerCase();
+  if(q){const t=(o.id+' '+o.name+' '+o.def_ours+' '+(o.misconception||'')+' '+o.terms.map(t=>M.terms[t]?.term).join(' ')).toLowerCase(); if(!q.split(/\s+/).every(w=>t.includes(w))) return false}
+  return true}
+function list(){return C.filter(pass)}
+
+function renderFilters(){
+  const V=M.vocab, opts={tier:['A','B','C','D'],importance:V.importance,layer:Object.keys(V.layer),system:Object.keys(V.system),thread:Object.keys(V.threads)};
+  $('#filters').innerHTML=Object.entries(opts).map(([k,vs])=>`<div><label for="f-${k}">${k[0].toUpperCase()+k.slice(1)}</label><select id="f-${k}" data-f="${k}"><option value="">All</option>${vs.map(v=>`<option value="${v}">${esc(lab(k,v))}</option>`).join('')}</select></div>`).join('');
+  $('#filters').onchange=e=>{const k=e.target.dataset.f;F[k]=e.target.value||undefined;render()};
+}
+function render(){
+  const t0=performance.now(); const L=list();
+  $('#count').textContent=`${L.length} of ${C.length} concepts`+(Object.values(F).some(Boolean)||$('#q').value?' match':'');
+  $('#fsum').textContent=Object.entries(F).filter(([k,v])=>v).map(([k,v])=>k+': '+v).join(' · ');
+  const v=$('#view');
+  if(view==='book'){
+    const q=$('#q').value||Object.values(F).some(Boolean); let h='',part=-1;
+    for(const ch of M.chapters){
+      const cs=L.filter(o=>o.ch===ch.id); if(!cs.length) continue;
+      if(ch.part!==part){part=ch.part;h+=`<div class="part">${['Part 0 · Orientation','Part 1 · General embryology','Part 2 · Systems-based embryology'][part]||''}</div>`}
+      const secs=M.sections.filter(s=>s.ch===ch.id);
+      h+=`<details class="ch" id="ch-${ch.id}" ${q?'open':''}><summary><b>${ch.id}</b> <span style="flex:1">${esc(ch.title)}</span><span class="badge">${cs.length}</span>${edit('chapter',ch.id)}</summary>`;
+      for(const s of secs){const ss=cs.filter(o=>o.sec===s.id);
+        if(!ss.length){ if(!q && (s.kind==='summary'||s.kind==='problems')) h+=`<div class="sec"><h3>${s.id} ${esc(s.title)} <span class="note">· recap section, no concepts</span></h3></div>`; continue}
+        h+=`<div class="sec"><h3>${s.id} ${esc(s.title)} ${s.pages?`<span class="note">· pp ${s.pages[0]}–${s.pages[1]}</span>`:''} ${s.boxes.length?`<span class="note">· ${s.boxes.map(b=>b==='clinical'?'CC':'MR').join(' ')}</span>`:''}${edit('section',s.id)}</h3>${ss.map(crow).join('')}</div>`}
+      h+='</details>'}
+    v.innerHTML=h||'<p>No concepts match.</p>';
+  } else if(view==='xt'){
+    const ds=Object.keys(DIMS), xo=order(sel.x), yo=order(sel.y), m={};
+    for(const o of L) for(const a of DIMS[sel.x].vals(o)) for(const b of DIMS[sel.y].vals(o)) (m[a+'|'+b]??=[]).push(o.id);
+    const xs=xo.filter(x=>yo.some(y=>m[x+'|'+y])), ys=yo.filter(y=>xs.some(x=>m[x+'|'+y]));
+    const mx=Math.max(1,...Object.values(m).map(a=>a.length));
+    const sel_=(id,cur)=>`<select id="${id}" aria-label="${id==='xs'?'Rows':'Columns'}">${ds.map(d=>`<option value="${d}" ${d===cur?'selected':''}>${DIMS[d].label}</option>`).join('')}</select>`;
+    let h=`<div class="panel"><div class="row"><label>Rows ${sel_('xs',sel.x)}</label><label>Columns ${sel_('ys',sel.y)}</label><button class="btn" id="swap">⇄ Swap</button></div>
+      <p class="note">Each number is a count of concepts; tap a cell to list them. Shade follows the number (the number is always shown). Link: <code>#x-${sel.x}-${sel.y}</code></p></div>
+      <div class="xt-wrap"><table class="xt"><caption class="sr">${DIMS[sel.x].label} by ${DIMS[sel.y].label}</caption><thead><tr><th class="rh" scope="col">${DIMS[sel.x].label} ╲ ${DIMS[sel.y].label}</th>${ys.map(y=>`<th scope="col" title="${esc(lab(sel.y,y))}">${esc(short(sel.y,y))}</th>`).join('')}</tr></thead><tbody>`;
+    for(const x of xs){h+=`<tr><th class="rh" scope="row" title="${esc(lab(sel.x,x))}">${esc(lab(sel.x,x))}</th>`;
+      for(const y of ys){const n=(m[x+'|'+y]||[]).length,lv=n?Math.min(4,1+Math.floor(3*n/mx)):0;
+        h+=`<td><button class="h${lv}" data-cell="${esc(x)}|${esc(y)}" aria-label="${esc(lab(sel.x,x))}, ${esc(lab(sel.y,y))}: ${n} concepts">${n||'·'}</button></td>`}h+='</tr>'}
+    h+='</tbody></table></div>';
+    if(sel.cell&&m[sel.cell]){const [a,b]=sel.cell.split('|');h+=`<div class="panel"><b>${esc(lab(sel.x,a))} × ${esc(lab(sel.y,b))}</b> · ${m[sel.cell].length}${m[sel.cell].map(i=>crow(byId[i])).join('')}</div>`}
+    v.innerHTML=h;
+    $('#xs').onchange=e=>{sel.x=e.target.value;sel.cell=null;go('x-'+sel.x+'-'+sel.y)};$('#ys').onchange=e=>{sel.y=e.target.value;sel.cell=null;go('x-'+sel.x+'-'+sel.y)};
+    $('#swap').onclick=()=>{[sel.x,sel.y]=[sel.y,sel.x];sel.cell=null;go('x-'+sel.x+'-'+sel.y)};
+  } else if(view==='pre'){
+    const top=[...L].sort((a,b)=>b.unlock_n-a.unlock_n).slice(0,40);
+    v.innerHTML=`<div class="panel"><b>Most-unlocking concepts</b><p class="note">Number = concepts that build on it, directly or through others. Learn these first; the roadmap is ordered this way.</p>${top.map(o=>`<div class="row" style="flex-wrap:nowrap"><span class="badge" style="min-width:3em;text-align:center">${o.unlock_n}</span><div style="flex:1">${crow(o)}</div></div>`).join('')}</div>`;
+  } else {
+    v.innerHTML=`<div class="panel"><h2 style="margin-top:0">About this map</h2><p>${C.length} concepts across ${M.chapters.length} chapters of <i>${esc(M.title)}</i> (book code E). Every concept has an id <code>E&lt;ch&gt;.&lt;sec&gt;.&lt;nn&gt;</code> that a card will keep for good.</p>
+      <p><b>What's here:</b> our own one-line labels, page locators and links. <b>No book text.</b> Every fact is <b>≈</b> until the research step (X1) cites and marks it. Carnegie stages are approximate (worked out from the day), not cited.</p>
+      <p><b>Colours:</b> each germ layer has a colour <i>and</i> a pattern <i>and</i> a label: ${Object.keys(M.vocab.layer).map(l=>`${sw(l)} ${esc(M.vocab.layer[l])}`).join(' · ')}. Colours are placeholders until the design step.</p>
+      <p><b>Links:</b> <code>#c-E05-01-02</code> opens a concept · <code>#ch-E13</code> a chapter · <code>#x-layer-day</code> a crosstab · <code>#debug</code> turns on testing mode and the debug overlay.</p>
+      <p><b>Testing mode</b> (✎ Test): a ✎ on every chapter, section and concept shows its id and file and copies a ready "edit this" prompt.</p>
+      <p class="note">${STR.ver} · data ${esc(M.schema)} built ${esc(M.built)}</p></div>`;
+  }
+  dbg(`render ${view} ${(performance.now()-t0).toFixed(1)} ms · ${L.length} shown`);
+}
+function short(dim,v){return dim==='tier'||dim==='chapter'||dim==='recurs'||dim==='day'||dim==='cs'?v:(dim==='layer'?M.vocab.layer[v]:dim==='system'?M.vocab.system[v]:v)}
+
+function concept(id){
+  const o=byId[id]; if(!o){$('#detail').innerHTML='';return}
+  const lk=ids=>ids.length?`<div class="links">${ids.map(i=>byId[i]?`<button class="lk" data-c="${i}">${i} ${esc(byId[i].name)}</button>`:'').join('')}</div>`:STR.none;
+  const sec=M.sections.find(s=>s.id===o.sec), ch=M.chapters.find(c=>c.id===o.ch);
+  $('#detail').innerHTML=`<article class="panel cp" aria-labelledby="cpT"><div class="row"><span class="id note">${o.id}</span>${edit('concept',o.id)}<span style="flex:1"></span><button class="btn" id="closeCp" aria-label="Close concept">✕</button></div>
+   <h2 id="cpT" tabindex="-1">${esc(o.name)}</h2><div class="meta">${badges(o)} <span class="badge">${sw(o.layer)} ${esc(M.vocab.layer[o.layer])}</span> <span class="badge">${esc(M.vocab.system[o.system])}</span> ${o.threads.map(t=>`<span class="badge" title="${esc(M.vocab.threads[t])}">${t}</span>`).join(' ')} <span class="badge">${STR.planned} · ≈</span></div>
+   <p>${esc(o.def_ours)} <span class="note">(${STR.approx})</span></p>
+   ${o.misconception?`<div class="mis"><b>Common mix-up:</b> “${esc(o.misconception)}” — not right. <span class="note">Cards will refute it (≈).</span></div>`:''}
+   <dl><dt>Where</dt><dd>${o.ch} ${esc(ch?.title)} › ${o.sec} ${esc(sec?.title)}${o.pages?` · pp ${o.pages[0]}–${o.pages[1]} (locator)`:''}</dd>
+   <dt>Day</dt><dd>${o.day?`day ${o.day[0]}${o.day[1]!==o.day[0]?'–'+o.day[1]:''}${o.cs_approx?` · ≈ CS${o.cs_approx[0]}${o.cs_approx[1]!==o.cs_approx[0]?'–'+o.cs_approx[1]:''}`:''}`:STR.none}</dd>
+   <dt>Needs first</dt><dd>${lk(o.prereq)}</dd><dt>Unlocks</dt><dd>${lk(o.unlocks)} <span class="note">${o.unlock_n?o.unlock_n+' concepts build on this in all':''}</span></dd>
+   <dt>Related</dt><dd>${lk(o.related)}</dd>
+   <dt>Shows up in</dt><dd><div class="links">${Object.keys(o.recurs).map(c=>`<button class="lk" data-ch="${c}">${c}</button>`).join('')}</div></dd>
+   <dt>Glossary terms</dt><dd>${o.terms.concat(o.terms_loose).map(t=>esc(M.terms[t]?.term)).join(' · ')||STR.none}</dd>
+   <dt>Card · episode</dt><dd>Card ${o.id}: ${STR.planned} · episodes: not yet</dd></dl></article>`;
+  $('#closeCp').onclick=()=>{go(view==='book'?'':view==='xt'?'x-'+sel.x+'-'+sel.y:view)};
+  if(innerWidth<900) $('#detail').scrollIntoView({block:'start'});
+  $('#cpT').focus({preventScroll:innerWidth>=900});
+}
+function editPrompt(kind,id){
+  const file={concept:'concepts.txt (row under @ '+(byId[id]?.sec||'')+')',section:'concepts.txt (@ '+id+')',chapter:'concepts.txt (sections of '+id+')'}[kind];
+  const chat=`Bio · Fix · ${id}`;
+  const txt=`Read claude/STATUS.md, claude/RULES.md (A2, B1, I6) and curriculum/concept-map.md (${id.slice(0,3)} table).\nFix ${kind} ${id}${byId[id]?' — "'+byId[id].name+'"':''}: <say what is wrong>.\nEdit ${file}, rebuild map.json + concept-map.md with tools/map/build_map.py, republish the explorer. Keep the id (A2). End with STATUS, build log, gates, usage check.`;
+  $('#dlgT').textContent=`✎ ${kind} ${id}`; $('#dlgChat').textContent=chat; $('#dlgTxt').value=`Chat: ${chat}\nFile: ${file} · data: content/E/map.json\n\n${txt}`; $('#copied').textContent=''; $('#dlg').showModal();
+}
+function dbg(msg){if(!debug)return; $('#dbg').innerHTML=`${STR.ver}<br>route #${esc(location.hash.slice(1))||'—'} · view ${view}<br>${C.length} concepts · filters ${esc(JSON.stringify(F))}<br>${esc(msg)}`;log(msg)}
+function setTest(on){testing=on;document.body.classList.toggle('test',on);$('#testBtn').setAttribute('aria-pressed',on)}
+function go(h){if(location.hash.slice(1)===h)route();else location.hash=h}
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  if(h==='debug'){debug=true;document.body.classList.add('debug');setTest(true)}
+  let m;
+  if(m=h.match(/^c-(E\d\d)-(\d\d)-(\d\d)$/)){concept(`${m[1]}.${m[2]}.${m[3]}`)} else $('#detail').innerHTML='';
+  if(m=h.match(/^x-([a-z]+)-([a-z]+)$/)){if(DIMS[m[1]]&&DIMS[m[2]]){sel.x=m[1];sel.y=m[2]}view='xt'}
+  else if(['xt','pre','about','book'].includes(h)) view=h;
+  else if(m=h.match(/^ch-(E\d\d)$/)){view='book'}
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.v===view));
+  render();
+  if(m&&h.startsWith('ch-')){const d=document.getElementById(h);if(d){d.open=true;d.scrollIntoView()}}
+}
+document.addEventListener('click',e=>{
+  const ed=e.target.closest('[data-edit]'); if(ed){e.preventDefault();e.stopPropagation();const [k,i]=ed.dataset.edit.split(':');editPrompt(k,i);return}
+  const c=e.target.closest('[data-c]'); if(c){go('c-'+c.dataset.c.replace(/\./g,'-'));return}
+  const ch=e.target.closest('[data-ch]'); if(ch){F={};renderFilters();$('#q').value='';go('ch-'+ch.dataset.ch);return}
+  const cell=e.target.closest('[data-cell]'); if(cell){sel.cell=cell.dataset.cell;render();return}
+  const t=e.target.closest('.tab'); if(t){go(t.dataset.v==='xt'?'x-'+sel.x+'-'+sel.y:t.dataset.v)}
+});
+$('#q').addEventListener('input',()=>render());
+$('#testBtn').onclick=()=>setTest(!testing);
+$('#clearF').onclick=()=>{F={};renderFilters();render()};
+$('#closeDlg').onclick=()=>$('#dlg').close();
+$('#copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText($('#dlgTxt').value);$('#copied').textContent='Copied.'}catch(_){$('#dlgTxt').select();$('#copied').textContent='Select all and copy by hand.'}};
+addEventListener('hashchange',route);
+fetch('map.json').then(r=>r.json()).then(d=>{M=d;C=d.concepts;C.forEach(o=>byId[o.id]=o);$('#sub').textContent=`Biology Studio · book E · ${C.length} concepts · K1`;renderFilters();route()})
+  .catch(err=>{$('#view').innerHTML=`<p class="panel">Could not load the map data (${esc(err.message)}).</p>`});
+</script>
+</body>
+</html>

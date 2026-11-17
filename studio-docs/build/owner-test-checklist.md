@@ -1,12 +1,12 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 17 Nov 2026 · Bio · Build · H1 shared repo (T5 open).)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 17 Nov 2026 · Bio · Build · K1 concept map (T2 written).)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
 **Apps:** none live yet.
 
-**Status, 17 Nov 2026:** T1 written; opens when the laptop run puts clips in Drive. T2 opens when K1 publishes the explorer. (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
+**Status, 17 Nov 2026:** T1 written; opens when the laptop run puts clips in Drive. T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
 
 ---
 
@@ -33,8 +33,15 @@ Follow `build/setup-guide.md` §1–§5.
 6. First chat `Bio · Review · Laptop 2 setup` records Laptop 2 in `build/pipeline-reference.md` §1b.
 - **Result:** ☐ pass ☐ problems · GPU/VRAM: ___ · missing tools: ___ · quick run minutes: ___ · stuck at step: ___ · notes:
 
-## T2. Concept map explorer *(~10 min, phone + laptop)* — PLANNED (K1)
-Steps written by the K1 build chat. Expect: drill down Part › Chapter › Subheader › Concept; tap crosstab cells (e.g. germ layer × day) to see their concepts; search a term; open a concept page and follow a prerequisite; read the roadmap's first wave.
+## T2. Concept map explorer *(~10 min, phone + laptop)* — OPEN (K1)
+1. On the phone open https://claude.ai/artifact/Bg2DUqLgdqC3NgroWMEvin. Book tab: E05 › E05.01 › tap "Primitive streak". Read the page; tap a "Needs first" link, then go back.
+2. Crosstabs: Rows = Germ layer, Columns = Day / week; tap Mesoderm × Wk 3; open one concept. Tap ⇄ Swap; try System × Tier.
+3. Search "pouch" — the list narrows; clear it. Filters: Importance = exam-high, System = Heart & vessels.
+4. Prerequisites tab: are the top 10 sensible "learn first" ideas?
+5. Tap ✎ Test, then ✎ on any concept: an edit prompt appears; Copy works (or select by hand).
+6. On the laptop: repeat step 2; the concept page opens beside the list.
+7. Open `curriculum/roadmap.md`: read Wave 1 (Season 1). Order sensible?
+8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?)
 
 ## T3. App shell + Part 0 cards *(~10 min, phone + tablet)* — PLANNED (A0, V1, C1)

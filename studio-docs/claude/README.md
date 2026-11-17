@@ -14,7 +14,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 | **Sources** | Book is the spine; human-embryo atlases, peer-reviewed papers and the NMC curriculum confirm, correct and add depth (D-011). |
 | **Cost** | Free first; paid only suggested, owner approves (D-013). |
 | **App** | Not built yet. One app, two homes — GitHub Pages viewer (PWA, three.js) + claude.ai Studio (D-003, D-006); media on Drive (D-008). Repo `biology-studio`. |
-| **Status** | I1 index done; H1 repo live (17 Nov 2026); M1 bake-off run pending; K1 concept map in progress. See `claude/STATUS.md`. |
+| **Status** | I1 index, H1 repo and K1 concept map done (17 Nov 2026); M1 bake-off run pending; next X1 Ch 5. See `claude/STATUS.md`. |
 
 ---
 
@@ -37,8 +37,8 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - `research/dossiers/` — one per chapter, written in X1 before its cards. First: `ch05-gastrulation.md`.
 
 ### Curriculum (what to learn)
-- `curriculum/concept-map.md` — *(K1)* every chapter → subheader → concept, with crosstabs; source for the clickable explorer.
-- `curriculum/roadmap.md` — *(K1)* step-by-step order to cover all important concepts.
+- `curriculum/concept-map.md` — every chapter → section → concept (314), with crosstabs; built by `tools/map/` with `content/E/map.json`. Explorer: https://claude.ai/artifact/Bg2DUqLgdqC3NgroWMEvin.
+- `curriculum/roadmap.md` — waves → seasons → episodes covering every core and exam-high concept (built by `tools/map/roadmap.py`).
 - `curriculum/book-index-part1.md` — I1 section index, Part 0 orientation + Chapters 1–9; Ch 5 draft cards.
 - `curriculum/book-index-part2.md` — I1 section index, Chapters 10–21, with dependencies on Part 1.
 - `curriculum/episodes-catalog.md` — episodes, card tags, audience profiles, unlock counts, gaps.
@@ -64,7 +64,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - **Book code:** one letter per book. `E` = Langman's Medical Embryology 14e. New books get the next free code here before indexing (then a `tools/indexer/books/<code>.json`).
 - **Chapter:** `<book><ch>` — `E05` (chapters numbered 01–21 in book order).
 - **Section:** `<book><ch>.<sec>` — `E05.02`, numbered by I1: `.00` = chapter opener (text before the first ■ heading); `.01…` = each ■ heading in book order; Summary and Problems to Solve are the last two. Boxes (Clinical Correlates, Molecular Regulation) and smaller subheads are not numbered — they belong to their section. Full list: `curriculum/book-index-part1.md` / `-part2.md`. The indexer warns if a re-run would change any section id.
-- **Concept:** `<book><ch>.<sec>.<nn>` — `E05.02.01` (a concept in the map becomes a card with the same id). Part 0 orientation: `E00.01.01`.
+- **Concept:** `<book><ch>.<sec>.<nn>` — `E05.02.01` (a concept in the map becomes a card with the same id). Part 0 orientation: `E00.01.01`. Rows live in `tools/map/concepts.txt`; add new concepts at the end of their section.
 - **Term:** `<book>.t.<slug>` — `E.t.primitive-streak` (glossary term, I1 `terms.json`).
 - **Episode:** `S<season>E<nn>` — `S1E01`; cuts for other audience profiles add a suffix: `S1E01-gen`, `S1E01-short`.
 - **Scene:** `sc-<card id>` or `sc-<episode>-<shot>` — `sc-E05.02.01`, `sc-S1E01-03`.
@@ -75,7 +75,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - **Review gates:** G-Sci · G-Learn · G-Story · G-Art · G-Eng · G-A11y · G-Owner (playbook §2).
 - **Decision:** `D-001`… · **Owner check:** `T1`… · **Build step:** `M0, R0, M1, H1, I1, K1, X1, A0, V1, S1, C1, P1, R1, L1`.
 - **Chat name:** `Bio · <Type> · <Step or id>` — types: Ideation · Research · Build · Content · Episode · Review · Fix.
-- **Debug areas:** `map · viewer · sync · audio · player · deck · studio` (`?debug=map,viewer`); add new areas here. Tool log tags: `[pdf] [tree] [terms] [xrefs] [timeline]`.
+- **Debug areas:** `map · viewer · sync · audio · player · deck · studio` (`?debug=map,viewer`); add new areas here. The explorer artifact uses `#debug` (artifact links are plain `#name`: `#c-E05-01-02`, `#x-layer-day`). Tool log tags: `[map]` `[pdf] [tree] [terms] [xrefs] [timeline]`.
 
 Ids are permanent once shipped: never renumber or reuse (RULES A2).
 

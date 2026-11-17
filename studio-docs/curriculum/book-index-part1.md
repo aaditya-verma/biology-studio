@@ -1,6 +1,6 @@
 # Book index — Part 0 + Part 1 (Chapters 1–9)
 
-*(Purpose: section-level index of Part 1 + Part 0 orientation cards; Ch 5 draft cards. Updated: 17 Nov 2026 · Bio · Build · I1 index.)*
+*(Purpose: section-level index of Part 1 + Part 0 orientation cards. Updated: 17 Nov 2026 · Bio · Build · K1 concept map.)*
 
 **Book:** Langman's Medical Embryology 14e, code `E`. **Source data:** `content/E/index/` on the laptop (`tree.json`, `terms.json`, `xrefs.json`, `timeline.json`) from `tools/indexer/index_book.py` (I1). Derived only: headings, page numbers, term names, numbers — no book text (RULES G1).
 **Ids:** section `E<ch>.<sec>` fixed by I1 (numbering rules: `claude/README.md`); card `E<ch>.<sec>.<nn>` — permanent once shipped (RULES A2). Concepts per section come in K1.
@@ -84,19 +84,7 @@ Refers to: E05 (2), E08 (2), E02 (2) · Shares most terms with: E05 (13), E08 (1
 | E05.08 | Problems to Solve | 71–71 |  |
 Refers to: E16 (2), E03 (2), E17 (2) · Shares most terms with: E06 (31), E13 (28), E15 (23)
 
-**Ch 5 draft cards — first scope (C1).** Re-numbered to I1 sections (nothing shipped, so allowed). K1 confirms.
-| Id *(draft)* | Card | What it shows | Tier · Threads | Status |
-|---|---|---|---|---|
-| E05.01.01 | Gastrulation in one picture | Two layers become three; why week 3 matters | A · G F | planned (C1) |
-| E05.01.02 | Primitive streak | The groove that marks the body axis | A · T F | planned (C1) |
-| E05.01.03 | Cells move in | Epiblast cells pass through the streak to form the new layers | A · G F | planned (C1) |
-| E05.02.01 | Notochord | The midline rod and what it signals | A · F | planned (C1) |
-| E05.03.01 | Body axes are set | Head–tail, back–belly, left–right in week 3 | B · T F | planned |
-| E05.03.02 | Left–right signals | Molecular basis of sidedness | D · M | planned |
-| E05.04.01 | Fate map: three layers → what they become | Ecto / meso / endo and their adult fates | A · G A | planned (C1) |
-| E05.05.01 | Growth of the disc | Disc shape change through week 3 | A · F | planned (C1) |
-| E05.05.02 | Clinical: when gastrulation goes wrong | From the CC box in E05.05 | C · C | planned |
-| E05.06.01 | Trophoblast in week 3 | Villi development, linking to the placenta story | B · S | planned |
+**Ch 5 concepts:** see `curriculum/concept-map.md` § E05 (K1, D-028). K1 kept the draft ids E05.01.01–03, E05.02.01, E05.03.01–02, E05.04.01, E05.05.01–02, E05.06.01 and added others (E05.01.04 Three germ layers, E05.00.01–02, …). C1 first scope = the Tier A core rows of E05.
 
 **Chapter checkpoint:** S1E01 *Gastrulation* (episode catalog).
 

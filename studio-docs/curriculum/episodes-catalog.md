@@ -14,7 +14,7 @@ Episodes are story-led 3D explainers. The app stores metadata, card tags, the ci
 ### Season 1 — "How does a flat disc become a body?" (Part 1)
 | Id | Title | Format | Length | Cards (★ core) | Fact-checked | Notes |
 |---|---|---|---|---|---|---|
-| S1E01 | Gastrulation | Journey (ride with an epiblast cell) | ~90–120 s | ★E05.01.02, ★E05.01.03, ★E05.01.04, E05.02.01, E00.01.04 | ≈ (not written) | Pilot (P1, R1) |
+| S1E01 | Gastrulation | Journey (ride with an epiblast cell) | ~90–120 s | ★E05.01.01, ★E05.01.02, ★E05.01.03, ★E05.01.04, E05.02.01, E00.01.04 | ≈ (not written) | Pilot (P1, R1) |
 
 ## 2. By system / thread · System × Tier counts
 Filled as episodes are added.
@@ -29,12 +29,12 @@ Filled as episodes are added.
 | Countdown | — |
 
 ## 4. Card → episodes (unlock count)
-Computed by I1 + this catalog. **Cards with no episode yet** and **top-10 cards by unlock count** go here.
+Planned slots for every core and exam-high concept: `curriculum/roadmap.md` (K1, D-028). Unlock counts: `curriculum/concept-map.md` § Prerequisite graph and the explorer's Prerequisites tab. This section lists **cards with no episode yet** once episodes are catalogued.
 
 ## 5. Data for `content/episodes.js`
 ```js
 // [id, title, format, seconds, coreCards, supportCards, factChecked]
 const EPISODES = [
-  ['S1E01','Gastrulation','journey',0,['E05.01.02','E05.01.03','E05.01.04'],['E05.02.01','E00.01.04'],false],
+  ['S1E01','Gastrulation','journey',0,['E05.01.01','E05.01.02','E05.01.03','E05.01.04'],['E05.02.01','E00.01.04'],false],
 ];
 ```
