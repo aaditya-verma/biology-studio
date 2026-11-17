@@ -3,7 +3,7 @@
 *(Purpose: current state + all pendencies — nothing else. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile (D-032, D-033). Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: free *(RULES I8; K1 released 17 Nov 2026, 10:25 IST; H1 released earlier)*
+- Build lock: Aaditya · Bio · Build · A0 shell · 18 Nov 2026, 00:30 IST *(RULES I8)*
 
 ## Now
 - **Docs reconciled** (18 Nov): the four upload-only chats of 17 Nov are now in the repo — **quality bar + host + Short profile** (D-032, was upload D-028; `research/quality-references.md` added; new step **M1b**), **device rule** (D-033, was upload D-029; RULES C13, master plan §8a, `tools/layout-check`, owner checks on phone + tablet + laptop), and one merged **A0 prompt** (master plan §13). The upload's colour pick (its D-027) is not ported — D-031 replaced it. The 24 uploaded Project docs are now safe to delete (reminders).
