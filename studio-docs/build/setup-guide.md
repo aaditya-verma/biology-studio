@@ -56,7 +56,7 @@ Use **Anaconda Prompt** (or Miniconda Prompt) for every command. After installin
    tools\     kits and scripts (from the repo)
    apps\      Blender portable (optional), ComfyUI — never in the repo
    models\    voices, AI weights — laptop only
-   repo\      the biology-studio repo clone (after H1)
+   repo\      the biology-studio repo clone
    ```
    Wherever a doc says `D:\Projects\biology_studio`, use your own Studio home.
 3. **Install the tools** (one line each):

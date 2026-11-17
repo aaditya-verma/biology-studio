@@ -8,7 +8,17 @@ node_modules/
 # EDIT: renders and audio live in Drive, not the repo (D-008)
 *.mp4
 *.mov
+*.mkv
+*.webm
 *.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+*.onnx
+*.safetensors
+*.ckpt
+*.pt
 *.blend1
 __pycache__/
 .DS_Store

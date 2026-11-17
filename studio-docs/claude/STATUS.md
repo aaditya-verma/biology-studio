@@ -4,7 +4,7 @@
 
 ## Lock
 - Build lock: Aaditya · Bio · Build · K1 concept map · 17 Nov 2026, 09:50 IST *(RULES I8)*
-- Build lock (owner exception, runs alongside K1): Aaditya · Bio · Build · H1 shared repo · 17 Nov 2026, 09:55 IST — K1 must not edit docs until H1 releases this line.
+- H1: released 17 Nov 2026 (free). K1's build is finished; its end-of-chat doc updates are still to be committed (route A, setup guide §6a), and that commit releases the K1 line above.
 
 ## Now
 - **I1 index done** (D-026): book-agnostic indexer `tools\indexer\` + Langman JSON in `content\E\index\` on Laptop 1. 21/21 chapters · 178 sections (`E05.02` numbering in README) · 265 glossary terms, 98.9 % placed · 178 cross-ref edges · 44-day timeline. Section tables: `curriculum/book-index-part1.md` / `-part2.md`. Gates: G-Eng passed with notes.
@@ -19,7 +19,7 @@
 ## Next (in order)
 1. **Owner: run the M1 kit** on the laptop (README in the kit; ~20 min setup, then `python bakeoff.py all`; AI clip per `C_ai\README.md`). Then in chat `Bio · Build · M1 bake-off`: "results are in" → the chat reads `out\RESULTS.md` from the laptop, fills Measured, runs G-Sci/G-Art (look) with a separate reviewer, and logs.
 2. **Professor:** once invited, follows the setup guide and runs **T5** (`Bio · Review · Laptop 2 setup`).
-3. **K1 Concept map + explorer + roadmap** — in progress (holds the lock). From now on it commits doc changes to the repo (§6a), not to Project knowledge.
+3. **K1 wrap-up** — in the K1 chat: commit its doc updates (STATUS, build log, DECISIONS, README map, master plan, concept map, roadmap) to the repo by route A, then release its lock. `concept-map.md` + `roadmap.md` were copied in by H1 at 10:12 IST; K1's commit overwrites them with its final versions.
 4. **T1** (owner, phone) once clips are in Drive → pick from D-024.
 5. **X1 Research · Ch 5** → **A0** (incl. debug + edit hooks) → **V1** (seed: kit's `shot.json` + `scene_math.py`) → **S1** → **C1** → **P1 S1E01** (with animatic) → **R1** → **L1** → **use gate**.
 
@@ -42,6 +42,7 @@
 - [ ] **Send the Professor the setup Doc** (https://claude.ai/artifact/VF2tLYkuJs1PjWLatCbEAd — share it from the Doc) and share Drive subfolders renders/ audio/ research/ assets/ index/ backup/ as Editor — **not** book/ (D-025).
 - [ ] Confirm D-025 (c) (Professor as G-Sci reviewer) in any Bio chat.
 - [ ] **Invite the Professor** when you have his username: github.com/aaditya-verma/biology-studio → Settings → Collaborators → Add people (Write). Then send him the T5 message.
+- [ ] **Connect Project knowledge to GitHub** (`studio-docs/` only) → a chat checks it shows this STATUS → then remove the 23 uploaded duplicates (only after you confirm).
 - [ ] Clone the repo on your laptop: Anaconda Prompt → `cd /d D:\Projects\biology_studio\repo` → `git clone https://github.com/aaditya-verma/biology-studio.git`. Run M1 from `repo\biology-studio\tools\m1-bakeoff` from then on.
 - [ ] **Run the M1 kit** (see Next 1). Keep the laptop plugged in; Cycles is the long part.
 - [ ] **T1** after clips are in Drive.

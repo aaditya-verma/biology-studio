@@ -76,7 +76,7 @@ Checklist: research/teaching-methods.md ✔
 | R<nn> | <title, authors, year, where> | <best for> | <licence → reference only / may ship with credit> |
 ```
 
-## 10. Collaborator handoff note (until H1 — D-025, RULES I8)
+## 10. Handoff note (when a chat has no commit route — RULES I8 (6), setup guide §6a)
 ```
 From: <name> · chat <Bio · Type · Step> · <date>
 Did: <what was researched / reviewed / tried>
