@@ -1,0 +1,30 @@
+{
+  "_purpose": "Carnegie stage → approximate age, for filling the cs column of timeline.json (index_book.py). Book-agnostic (human embryos). Owner docs: claude/GLOSSARY.md §7, research/dossiers/ch05-gastrulation.md §1, D-030. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05",
+  "source": "R08 (NMHM Human Developmental Anatomy Center stage table, from R06 O'Rahilly & Müller 1987) — 'Age (days)' range column; postovulatory days ≈ days after fertilization (±1 d). R02 revised ages run older (D-030): not used here.",
+  "_EDIT": "one row per stage; ranges overlap, so a day can belong to two stages (written 'CS06/CS07')",
+  "stages": [
+    {"cs": 1, "day_from": 1, "day_to": 1},
+    {"cs": 2, "day_from": 2, "day_to": 3},
+    {"cs": 3, "day_from": 4, "day_to": 5},
+    {"cs": 4, "day_from": 5, "day_to": 6},
+    {"cs": 5, "day_from": 7, "day_to": 12},
+    {"cs": 6, "day_from": 13, "day_to": 15},
+    {"cs": 7, "day_from": 15, "day_to": 17},
+    {"cs": 8, "day_from": 17, "day_to": 19},
+    {"cs": 9, "day_from": 19, "day_to": 21},
+    {"cs": 10, "day_from": 22, "day_to": 23},
+    {"cs": 11, "day_from": 23, "day_to": 26},
+    {"cs": 12, "day_from": 26, "day_to": 30},
+    {"cs": 13, "day_from": 28, "day_to": 32},
+    {"cs": 14, "day_from": 31, "day_to": 35},
+    {"cs": 15, "day_from": 35, "day_to": 38},
+    {"cs": 16, "day_from": 37, "day_to": 42},
+    {"cs": 17, "day_from": 42, "day_to": 44},
+    {"cs": 18, "day_from": 44, "day_to": 48},
+    {"cs": 19, "day_from": 48, "day_to": 51},
+    {"cs": 20, "day_from": 51, "day_to": 53},
+    {"cs": 21, "day_from": 53, "day_to": 54},
+    {"cs": 22, "day_from": 54, "day_to": 56},
+    {"cs": 23, "day_from": 56, "day_to": 60}
+  ]
+}

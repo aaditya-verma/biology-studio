@@ -1,0 +1,24 @@
+# X1 research layer — per concept: NMC AN codes, summary mark, cited Carnegie range. Owner doc: research/dossiers/ch<nn>-*.md
+# Line: concept id|AN codes (comma)|mark (✔✔ ✔ ⚑ ≈ = weakest fact line in the dossier)|cs (e.g. 6-7; blank = none)
+# EDIT: one block per chapter, added by that chapter's X1 chat. Ids must exist in concepts.txt output.
+# --- E05 · X1 17 Nov 2026 (dossier ch05-gastrulation.md; stages from R06/R08, D-030) ---
+E05.00.01|AN78.4|✔|7-8
+E05.00.02|AN79.1|✔|7-9
+E05.01.01|AN79.1|✔|6-9
+E05.01.02|AN79.1|✔|6-12
+E05.01.03|AN79.1|✔|6-9
+E05.01.04|AN79.1|✔|7-9
+E05.02.01|AN79.2,AN79.5|⚑|7-12
+E05.02.02|AN79.2|✔✔|8
+E05.03.01|AN79.1|✔|
+E05.03.02||✔|
+E05.03.03|AN79.1|✔|
+E05.04.01|AN79.1,AN79.4|✔|
+E05.04.02|AN79.1|✔|
+E05.05.01|AN79.1|✔|6-9
+E05.05.02|AN79.5,AN79.6|✔|
+E05.05.03|AN79.5|⚑|
+E05.05.04|AN79.5|⚑|
+E05.06.01|AN78.2,AN80.3|✔|6-9
+E05.06.02|AN80.3|✔|
+E05.06.03|AN80.3|✔|9-10

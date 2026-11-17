@@ -14,7 +14,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 | **Sources** | Book is the spine; human-embryo atlases, peer-reviewed papers and the NMC curriculum confirm, correct and add depth (D-011). |
 | **Cost** | Free first; paid only suggested, owner approves (D-013). |
 | **App** | Not built yet. One app, two homes — GitHub Pages viewer (PWA, three.js) + claude.ai Studio (D-003, D-006); media on Drive (D-008). Repo `biology-studio`. |
-| **Status** | I1 index, H1 repo and K1 concept map done (17 Nov 2026); M1 bake-off run pending; next X1 Ch 5. See `claude/STATUS.md`. |
+| **Status** | I1 index, H1 repo, K1 concept map and X1 Ch 5 done (17 Nov 2026); M1 bake-off run pending; next A0 shell (+ X1 Ch 6). See `claude/STATUS.md`. |
 
 ---
 

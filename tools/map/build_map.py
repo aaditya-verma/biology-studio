@@ -6,6 +6,7 @@ import json, re, sys, argparse, collections
 ap = argparse.ArgumentParser()
 ap.add_argument('--index', default='../../content/E/index/')
 ap.add_argument('--src', default='concepts.txt'); ap.add_argument('--out', default='out')
+ap.add_argument('--research', default='research.txt')  # X1 layer: AN codes, marks, cited stages
 ap.add_argument('--dry-run', action='store_true'); ap.add_argument('--debug', action='store_true')
 ap.add_argument('--only'); ap.add_argument('--preview', action='store_true')
 a = ap.parse_args()
@@ -151,12 +152,31 @@ for r in rows:
         a_, b_ = cs_of(r['day'][0]), cs_of(r['day'][1])
         if a_: r['cs'] = [a_, b_ or 23]
 
+# X1 research layer (research.txt): AN codes, summary mark, cited Carnegie range (D-030). Missing file = K1 behaviour.
+RES = {}
+import os
+if os.path.exists(a.research):
+    for ln, line in enumerate(open(a.research, encoding='utf-8'), 1):
+        line = line.rstrip('\n')
+        if not line.strip() or line.startswith('#'): continue
+        p = [x.strip() for x in line.split('|')]
+        if len(p) != 4 or p[0] not in idx: errs.append(f'research line {ln}: bad row {line!r}'); continue
+        if p[2] not in ('✔✔', '✔', '⚑', '≈'): errs.append(f'research line {ln}: bad mark {p[2]}')
+        cs_ = [int(x) for x in p[3].split('-')] if p[3] else None
+        RES[p[0]] = dict(an=[x for x in p[1].split(',') if x], mark=p[2], cs=[cs_[0], cs_[-1]] if cs_ else None)
+        log('research', p[0], RES[p[0]])
+    if errs:
+        print('\n'.join(errs)); sys.exit(1)
+X1_CH = sorted({k[:3] for k in RES})
+
 out_concepts = []
 for r in rows:
     o = dict(id=r['id'], name=r['name'], sec=r['sec'], ch=r['ch'], tier=r['tier'], threads=list(r['threads']), importance=r['imp'],
              layer=r['layer'], system=r['sys'], day=r['day'], cs_approx=r['cs'], prereq=r['pre'], unlocks=r['unlocks'], unlock_n=r['unlock_n'],
              related=r['related'], recurs=r['recurs'], terms=r['terms'], terms_loose=r.get('terms_loose', []), def_ours=r['def_'],
              misconception=r['mis'], pages=r['pages'], status='planned', mark='≈')
+    if r['id'] in RES:  # EDIT: X1 fields are additive (A1/A4): an, mark, cs (cited); cs_approx kept
+        x = RES[r['id']]; o.update(an=x['an'], mark=x['mark'], cs=x['cs'], x1=True)
     out_concepts.append(o)
 
 # crosstabs
@@ -187,7 +207,7 @@ for c in [dict(id='E00', title='Part 0 — Reading an embryo', part=0, pages=Non
 chap_out = [dict(id='E00', title='Reading an embryo (orientation)', part=0, pages=None)] + \
            [dict(id=c['id'], title=c['title'], part=c['part'], pages=c['pages']) for c in T['chapters']]
 M = dict(schema='biostudio.map/1', book='E', title=T['title'], built='2026-11-17', step='K1',
-         note='Derived only: headings, page locators, our own one-line definitions. No book text (RULES G1). Marks are ≈ until X1/C1. cs_approx is derived from day, not cited.',
+         note='Derived only: headings, page locators, our own one-line definitions. No book text (RULES G1). Marks are ≈ until the chapter\'s X1 (x1=true: an, mark, cs cited from research.txt / dossier). cs_approx is derived from day, not cited.',
          vocab=dict(system=SYS, layer=LAYER, importance=list(IMP.values()), tier=dict(A='Foundation', B='MBBS exam', C='NEET-PG / clinical', D='Molecular'),
                     threads=dict(T='timeline', G='germ layer', F='folding/shape', S='system', M='molecular', C='clinical', A='adult anatomy'), daybins=DBINS),
          chapters=chap_out, sections=secs_out, concepts=out_concepts, crosstabs=cross,
@@ -210,26 +230,28 @@ json.dump(rep, open(f'{a.out}/map-report.json', 'w'), indent=1, ensure_ascii=Fal
 # ---------- concept-map.md ----------
 L = []
 L.append('# Concept map — Langman 14e (E)\n')
-L.append('*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 17 Nov 2026 · Bio · Build · K1 concept map.)*\n')
+L.append('*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (AN + marks for E05).)*\n')
 L.append(f"**{len(out_concepts)} concepts** in {len(bysec)} sections (all {len(content_secs)} content sections covered; Summary / Problems sections carry none). "
-         "Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json` (laptop; repo after H1). Builder: `tools/map/` on Laptop 1 (`concepts.txt` + `build_map.py`; README there; H1 moves it to the repo).\n")
+         "Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).\n")
 L.append('**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. '
-         'Pages = I1 section locator (printed pages; ≈ where I1 used OCR). **Every fact is ≈ until X1 cites and marks it** (B1, B7) — definitions here are one-line labels in our words, not card text. '
-         'Carnegie ranges in map.json are `cs_approx` (derived from day; X1 replaces).\n')
-L.append('**Known I1 locator issues (≈):** E05 page ranges are compressed (gastrulation, notochord on p. 59) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.\n')
+         'Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). '
+         f"**Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: {', '.join(X1_CH) or 'none'}) — definitions here are one-line labels in our words, not card text. "
+         'Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.\n')
+L.append('**Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.\n')
 IMPS = dict(core='core', **{'exam-high': 'x', 'supporting': 's', 'detail': 'd'})
 for c in chap_out:
     cs_ = [o for o in out_concepts if o['ch'] == c['id']]
     if a.only and c['id'] != a.only: continue
     pg = f" · pp {c['pages'][0]}–{c['pages'][1]}" if c['pages'] else ''
     L.append(f"\n## {c['id']} — {c['title']}{pg} · {len(cs_)} concepts\n")
-    L.append('| Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks |\n|---|---|---|---|---|---|---|---|---|---|')
+    L.append('| Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |\n|---|---|---|---|---|---|---|---|---|---|---|---|')
     for o in cs_:
         d = f"{o['day'][0]}–{o['day'][1]}" if o['day'] else ''
-        L.append(f"| {o['id']} | {o['name']} | {o['tier']} | {''.join(o['threads'])} | {IMPS[o['importance']]} | {d} | {o['layer']} | {o['system']} | {', '.join(o['prereq'])} | {o['unlock_n'] or ''} |")
+        L.append(f"| {o['id']} | {o['name']} | {o['tier']} | {''.join(o['threads'])} | {IMPS[o['importance']]} | {d} | {o['layer']} | {o['system']} | {', '.join(o['prereq'])} | {o['unlock_n'] or ''} | {', '.join(o.get('an', []))} | {o['mark']} |")
     mis = [o for o in cs_ if o['misconception']]
     if mis:
-        L.append('\n*Misconceptions to refute (≈ until X1):* ' + ' · '.join(f"{o['id']} — “{o['misconception']}”" for o in mis))
+        lab = '(cited in the chapter dossier)' if c['id'] in X1_CH else '(≈ until X1)'
+        L.append(f'\n*Misconceptions to refute {lab}:* ' + ' · '.join(f"{o['id']} — “{o['misconception']}”" for o in mis))
 L.append('\n---\n\n## Crosstabs\n*(Counts of concepts. The explorer makes every cell clickable.)*\n')
 def table(title, fx, xs, fy, ys, xl=None, yl=None):
     m = ct(fx, fy)

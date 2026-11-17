@@ -1,11 +1,11 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (§7 CS06–CS10). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
 - **Embryonic period:** weeks 3–8, when the organ systems are laid down. **Fetal period:** month 3 to birth, mostly growth and maturation.
-- **Carnegie stage (CS01–CS23):** the standard staging of human embryos by form, not age, covering roughly the first 8 weeks. Table in §7 (filled in I1 with sources).
+- **Carnegie stage (CS01–CS23):** the standard staging of human embryos by form, not age, covering roughly the first 8 weeks. Table in §7 (day column for all stages; events filled per chapter in X1).
 - **Day / week notation:** "day 17", "week 3"; episodes show both on screen (RULES B2).
 
 ## 2. Germ layers (thread G) — colour tokens fixed (RULES B3)
@@ -57,12 +57,34 @@
 - **Edit hook:** a marked place to change something — one home per value (tokens, `02-config.js`, `content/`, `strings.js`), `// EDIT:` markers in code, and the ✎ button in testing mode that shows an item's id + file and copies an "edit this" prompt (RULES I6).
 - **Edit prompt:** the text the ✎ copies; paste it into a `Bio · Fix · <id>` chat.
 
-## 7. Carnegie stages (to fill in I1, with sources)
-| Stage | Approx. day | Key events | Taught in |
-|---|---|---|---|
-| CS01 | | | |
-| … | | | |
-| CS23 | | | |
+## 7. Carnegie stages
+A stage is set by **form**, not by age or length (R05f). Day = classic estimate, days after fertilization ≈ postovulatory (R08 from R06; the book's days agree). R02's revised ages run ~3–7 days older from CS6 on — see D-030; on screen we show the book day. Same day ranges fill `content/E/index/timeline.json` `cs` (via `tools/indexer/carnegie.json`). Key events: CS06–CS10 done in X1 Ch 05 (dossier ch05 §1); other rows filled by each chapter's X1.
+
+| Stage | Approx. day | Size (≈) | Key events (our words) | Taught in |
+|---|---|---|---|---|
+| CS01 | 1 | | | E03 |
+| CS02 | 2–3 | | | E03 |
+| CS03 | 4–5 | | | E03 |
+| CS04 | 5–6 | | | E03 |
+| CS05 | 7–12 | | | E04 |
+| **CS06** | 13–15 | 0.2 mm | Chorionic villi appear; primitive streak appears (6b) — gastrulation starts `[E05.01, E06.06 · R06, R08]` ✔✔ | E05.01.02 · S1E01 |
+| **CS07** | 15–17 | 0.4 mm | Notochordal process grows forward from the node; secondary villi `[E05.02, E06.06 · R06, R05a]` ✔✔ | E05.01.03, E05.02.01 |
+| **CS08** | 17–19 | 1–1.5 mm | Primitive pit, notochordal and neurenteric canals; neural groove; pear-shaped disc `[E05.02, E05.05 · R06, R05a, R02]` ✔✔ | E05.02.01–02, E05.05.01 |
+| **CS09** | 19–21 | 1.2–2.5 mm | First 1–3 somite pairs; neural folds; heart area and pericardial cavity `[E06.02, E06.06 · R08, R02]` ✔✔ | Ch 6 bridge (S1) |
+| **CS10** | 22–23 | 2–3.5 mm | 4–12 somite pairs (book: 5–12); neural folds begin to fuse (neck region first) `[E06.06 · R06, R08]` ✔✔ | Ch 6 (S1) |
+| CS11 | 23–26 | | | |
+| CS12 | 26–30 | | | |
+| CS13 | 28–32 | | | |
+| CS14 | 31–35 | | | |
+| CS15 | 35–38 | | | |
+| CS16 | 37–42 | | | |
+| CS17 | 42–44 | | | |
+| CS18 | 44–48 | | | |
+| CS19 | 48–51 | | | |
+| CS20 | 51–53 | | | |
+| CS21 | 53–54 | | | |
+| CS22 | 54–56 | | | |
+| CS23 | 56–60 | | | |
 
 ## 8. Project terms
 - **Owner doc:** the one doc that owns a fact (INSTRUCTIONS §2); it wins on conflict.

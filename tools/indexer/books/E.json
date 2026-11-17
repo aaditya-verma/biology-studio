@@ -1,5 +1,5 @@
 {
-  "_purpose": "Book config for tools/indexer/index_book.py. Owner doc: claude/README.md (ids). Updated: 17 Nov 2026 · Bio · Build · I1 index",
+  "_purpose": "Book config for tools/indexer/index_book.py. Owner doc: claude/README.md (ids). Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (carnegie added)",
   "code": "E",
   "title": "Langman's Medical Embryology, 14th edition",
   "pdf_name": "Langmans Medical Embryology 14th Edition 2.pdf",
@@ -49,6 +49,8 @@
   },
   "index": null,
   "_index_note": "This PDF ends after the Glossary: the book's Index pages are missing (D-026). Terms are placed by full-text search instead.",
+  "_EDIT_carnegie": "stage table (book-agnostic) used to fill timeline cs; path relative to the indexer folder",
+  "carnegie": "carnegie.json",
   "timeline": {
     "pdf_first": 3,
     "pdf_last": 6,

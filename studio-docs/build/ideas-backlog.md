@@ -1,5 +1,7 @@
 # Ideas backlog — PARKED (17 Nov 2026)
 
+*(Purpose: parked ideas only (RULES I3). Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
+
 No pick until the use gate after L1 (D-010). Free only. Each idea: what · why · size (S/M/L). Owner picks; picks move into a plan.
 
 ## A. Study flow
@@ -36,7 +38,7 @@ No pick until the use gate after L1 (D-010). Free only. Each idea: what · why �
 
 ## G. From the research layer (added 17 Nov 2026, D-011)
 21. **Make it** (S) — a 1-minute paper/clay fold on hard cards (gastrulation, folding); hands-on models help with 3D movement (teaching-methods M05).
-22. **Newer evidence mini-series** (M) — Mystery episodes where human-embryo data corrected the textbook (first candidate: notochord, dossier ch05 §2).
+22. **Newer evidence mini-series** (M) — Mystery episodes where human-embryo data corrected the textbook (first candidate: notochord "The rod that grows from the middle", D-029, dossier ch05 §4; also stage ages, D-030).
 23. **Stereo / VR view** (M) — cardboard-style split screen; stereo depth showed a learning advantage in meta-analysis (M04).
 24. **Competency coverage map** (S) — NMC AN topics × cards; shows gaps before exams.
 25. **Source sheet** (S) — tap any citation → source, licence, link (data from `content/sources.js`).

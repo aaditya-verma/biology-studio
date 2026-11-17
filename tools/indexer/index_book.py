@@ -14,7 +14,7 @@ Usage:
   python index_book.py --book books/E.json --pdf "<path to pdf>" --out ../../content/E/index
   flags: --dry-run (no files written) --debug (verbose) --only <chapter no.> --preview (chapters 1-3)
 """
-import argparse, json, re, subprocess, sys, unicodedata
+import argparse, json, os, re, subprocess, sys, unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -320,6 +320,13 @@ def build_xrefs(cfg, tree, pages, terms):
             "edges": out, "chapter_shared_terms": shared}
 
 # ---------------------------------------------------------------- timeline
+def cs_label(cfg, d0, d1):
+    """Carnegie stage(s) for a day range from the config's stage table (X1, D-030); None if no table. EDIT: carnegie.json."""
+    if not cfg.get("carnegie"): return None
+    tab = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), cfg["carnegie"]), encoding="utf-8"))["stages"]
+    hit = [s["cs"] for s in tab if s["day_from"] <= d1 and d0 <= s["day_to"]]
+    return "/".join(f"CS{n:02d}" for n in hit) or None
+
 def build_timeline(cfg, pages, terms):
     tl = cfg["timeline"]; rx = re.compile(tl["day_regex"])
     tvar = [(t, variants(t["term"])) for t in terms]
@@ -330,7 +337,7 @@ def build_timeline(cfg, pages, terms):
             linked = [t["id"] for t, vs in tvar if any(v in cap for v in vs)]
             d0 = int(m[1]); d1 = int(m[2]) if m[2] else d0
             log("timeline", "day", d0, d1, linked)
-            days.append({"day_from": d0, "day_to": d1, "week": (d0 - 1) // 7 + 1, "cs": None,
+            days.append({"day_from": d0, "day_to": d1, "week": (d0 - 1) // 7 + 1, "cs": cs_label(cfg, d0, d1),
                          "terms": linked, "sections": sorted({t["primary_section"] for t in terms if t["id"] in linked and t.get("primary_section")}),
                          "pdf": p})
     days.sort(key=lambda d: d["day_from"])
@@ -355,7 +362,7 @@ def build_timeline(cfg, pages, terms):
             tab["incomplete"] = f"{len(rows)}/{t['expected_rows']} rows read (OCR); finish by hand from the book"
         log("timeline", t["id"], len(rows), "rows")
         tables.append(tab)
-    return {"book": cfg["code"], "note": "numbers only; cs (Carnegie stage) left null — filled from registry sources in X1 (GLOSSARY §7). Event labels are NOT stored; 'terms' are our glossary ids found in the chart caption.",
+    return {"book": cfg["code"], "note": "numbers only; cs = Carnegie stage(s) for the day from the config's stage table (R08 via carnegie.json, D-030; GLOSSARY §7); 'CS06/CS07' = overlapping ranges. Event labels are NOT stored; 'terms' are our glossary ids found in the chart caption.",
             "days": days, "tables": tables}
 
 # ---------------------------------------------------------------- main
