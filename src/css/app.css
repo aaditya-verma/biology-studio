@@ -211,7 +211,8 @@ table.xt thead th.rh{z-index:3;white-space:normal;line-height:1.2;min-width:8em}
 table.xt td button{display:block;width:100%;min-width:var(--tap);min-height:var(--tap);border:0;cursor:pointer;font-weight:700;color:var(--ink)}
 .h0{background:var(--heat0);color:var(--muted)} .h1{background:var(--heat1)} .h2{background:var(--heat2)} .h3{background:var(--heat3);color:var(--heat-ink-hi)!important} .h4{background:var(--heat4);color:var(--heat-ink-hi)!important}
 .p-con .pane{container-type:inline-size}
-@container (max-width:380px){.cp dl{grid-template-columns:minmax(0,1fr);gap:2px}.cp dd{margin-bottom:8px}}
+@container (max-width:440px){.cp dl{grid-template-columns:minmax(0,1fr);gap:2px}.cp dd{margin-bottom:8px}}
+.cp dd{overflow-wrap:anywhere}
 .cp .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
 .cp dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 12px;margin:0} .cp dt{color:var(--muted);font-size:var(--fs-sm)} .cp dd{margin:0;min-width:0}
 .cp .def{max-width:var(--measure)}
