@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 17 Nov 2026 · Bio · Build · H1 shared repo — I8 (6) commit route, D-027.)*
+*(Purpose: the non-negotiables. Updated: 17 Nov 2026 · Bio · Ideation · A0 colours — B3 extended, D-031.)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -13,7 +13,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 ## B. Accuracy & curriculum
 - **B1.** Every fact in a card or script cites a book section (`E05.02`). Uncited or low-confidence lines are marked **≈**; nothing with a ≈ line is marked final.
 - **B2.** Scale and time are on screen whenever a 3D view or shot shows an embryo ("day 17 · ~1.5 mm"). Deliberate distortions are labelled ("not to scale", "colours illustrative").
-- **B3.** Germ layers use fixed tokens only — `--g-ecto`, `--g-meso`, `--g-endo`, `--g-crest` — each with a pattern and a label (colour-blind safe). Never hard-code their colours.
+- **B3.** Germ layers use fixed tokens only — `--g-epi`, `--g-hypo`, `--g-ecto`, `--g-meso`, `--g-endo`, `--g-crest`, plus `--g-ctx` for non-layer tissue — each with a pattern and a label (colour-blind safe; values D-031). Never hard-code their colours. The one accent `--accent` means "look here": a ring/outline + label, never a fill alone and never a layer colour.
 - **B4.** Card statuses: Read → Understood (Check passed) → Can explain. Card Checks set status; episode quizzes count for streak and recall stats only.
 - **B5.** Episodes tag cards **core** (×2) or **support** (×1). Tags to unwritten cards show "Coming in Tier X". Ready to watch = weighted share Understood; it never blocks.
 - **B6.** Langman 14e is the primary source; every fact cites its book section. Outside sources come only from `research/source-registry.md` and are cited after the section: `[E05.02 · R01 CS8]` (D-011).

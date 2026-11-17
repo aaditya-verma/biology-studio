@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (§7 CS06–CS10). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 17 Nov 2026 · Bio · Ideation · A0 colours (§2 tokens, D-031). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -9,12 +9,14 @@
 - **Day / week notation:** "day 17", "week 3"; episodes show both on screen (RULES B2).
 
 ## 2. Germ layers (thread G) — colour tokens fixed (RULES B3)
-- **Epiblast / hypoblast:** the two layers of the bilaminar disc in week 2. The epiblast gives rise to all three germ layers.
+- **Epiblast / hypoblast** (`--g-epi` / `--g-hypo`): the two layers of the bilaminar disc in week 2. The epiblast gives rise to all three germ layers.
 - **Gastrulation:** week 3 process that turns the two-layer disc into three germ layers.
 - **Ectoderm** (`--g-ecto`): outer layer → skin epidermis, nervous system.
 - **Mesoderm** (`--g-meso`): middle layer → muscle, bone, blood, heart, kidneys.
 - **Endoderm** (`--g-endo`): inner layer → gut lining and its glands, lungs.
 - **Neural crest** (`--g-crest`): cells that leave the edges of the neural folds and migrate widely; sometimes called the fourth germ layer.
+- **Context** (`--g-ctx`): non-layer tissue in a shot (amnion, yolk-sac wall, trophoblast), drawn neutral grey.
+- **Accent** (`--accent`): the one "look here" colour — a ring/outline + label, never a layer colour (D-031).
 
 ## 3. Folding & shape (thread F — the spiral strand)
 - **Primitive streak:** a groove on the epiblast that marks the body axis; cells move through it during gastrulation.
