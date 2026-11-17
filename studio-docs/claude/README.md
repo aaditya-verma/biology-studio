@@ -1,6 +1,6 @@
 # Biology Studio — Start here
 
-*(Purpose: what this project is, the doc map and id formats. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: quality-references doc, M1b step, profile language + host (D-032); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
+*(Purpose: what this project is, the doc map and id formats. Updated: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
 
 An engine that takes a book or a biology topic, indexes it, maps its concepts, checks them against trusted outside sources, turns them into concept cards and story-led 3D explainer videos (voice-over + subtitles), and helps the learner remember them. **First book: Langman's Medical Embryology, 14th edition** (429 pp, 21 chapters in 3 parts). Other books and topics follow the same pipeline (D-015). We work like a small science-animation studio: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers (`build/studio-playbook.md`, D-020). Lean on usage, docs always current, debug flags and edit hooks everywhere (RULES §I, D-022).
 
@@ -10,7 +10,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 | **Collaborator** | The Professor — same project, own Windows + NVIDIA laptop; collaborator chats propose, the owner decides (D-025). Setup: `build/setup-guide.md`. |
 | **Audience** | Mainly medical students; every episode also works for non-medical viewers. Level, depth, type, format, length, language (English default) and host (cell/embryo character default) set per request (audience profile, D-016, D-032). |
 | **Quality bar** | The owner's reference reels QR01/QR02 — cinematic look, character + humour, local language, short-form pacing; science shots stay exact (D-032, `research/quality-references.md`). |
-| **Devices** | Every screen and output designed for phone, tablet and desktop, portrait + landscape (D-033, RULES C13, master plan §8a). |
+| **Devices** | Every screen and output designed for phone, tablet and desktop, portrait + landscape (D-033, RULES C13, `build/design-plan.md` §2). |
 | **Machines** | Laptop 1 = owner's NVIDIA gaming laptop (Studio home `D:\Projects\biology_studio`); Laptop 2 = the Professor's (Windows + NVIDIA, any Studio home). Local-first rendering, voice and AI (D-014). Phone/tablet to watch and study. |
 | **Books** | Langman 14e PDF — per person: each uses their own licensed copy in a private Drive `book/` folder (owner's uploaded 17 Nov 2026), never shared, never in the repo, app or videos (D-005, D-025). Only derived data is shared. The owner's PDF has no Index pages (D-026). |
 | **Sources** | Book is the spine; human-embryo atlases, peer-reviewed papers and the NMC curriculum confirm, correct and add depth (D-011). |
@@ -49,6 +49,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 ### Build (how it is made)
 - `build/master-plan.md` — the master build plan (scope, steps, ready prompts). Rich version with flowcharts: https://claude.ai/artifact/92iZDWeXzzA9GcNcru2ZwK (not yet showing X1/K1, the playbook, the host, the device layouts or the new name).
 - `build/studio-playbook.md` — crew roles, 7 review gates, craft standards (research, teaching, story, host + Short profile §5b, visual, sound, accessibility, engineering), production pipeline, Definition of Done, metrics.
+- `build/design-plan.md` — the app's design system: tokens (D-031/D-034), device classes + layout per screen (moved from master plan §8a), shell, addresses, screens, storage, testing mode, ✎ hooks, `tools/layout-check`.
 - `build/pipeline-reference.md` — Expected vs **Measured** numbers (laptop, phone, tablet, desktop, renders, voice). Build only on Measured.
 - `build/owner-test-checklist.md` — owner checks T1…
 - `build/setup-guide.md` — set up a second laptop + person: accounts, invites, own book, Claude Project, tools, daily working, troubleshooting (D-025).

@@ -1,0 +1,29 @@
+# Biology Studio — automatic checks (RULES C3, C8, C13; build/design-plan.md §7). Runs on every push and pull request to main, and by hand.
+# 1. map data checks (tools/map, dry run)  2. layout-check: §8a matrix, in-app tests, rotate, D-031 colour re-check.
+# Report + contact sheets are uploaded as the "layout-check" artifact (download from the run page). EDIT: Python/Playwright versions here.
+name: checks
+on:
+  push: {branches: [main]}
+  pull_request: {branches: [main]}
+  workflow_dispatch: {}
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install Playwright + Pillow
+        run: |
+          pip install playwright==1.48.0 pillow
+          python -m playwright install --with-deps chromium
+      - name: Map data checks (dry run)
+        working-directory: tools/map
+        run: python build_map.py --dry-run
+      - name: Layout check (13 sizes × orientations × 100/125 % × light/dark)
+        run: python tools/layout-check/check.py
+      - name: Upload report + contact sheets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with: {name: layout-check, path: out/layout-check/, retention-days: 14}

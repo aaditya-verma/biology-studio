@@ -1,13 +1,14 @@
 {
   "id": "M1-ps01",
-  "version": 1,
+  "version": 2,
   "title": "Primitive streak forming on the bilaminar disc, days 15-17",
   "notes": [
     "Single source of truth for all bake-off methods (Blender, three.js, AI video overlay).",
     "Units: 1 scene unit = 0.1 mm. Axes: +x cranial, -x caudal, +z dorsal, -z ventral, y = left/right.",
     "Day/size values from dossier ch05 section 1 (R20 from R06): book check pending X1, so every value is marked approx (≈).",
     "Look-only references: Langman ch 5 and R01 CS7 model. Nothing traced or imported (RULES G5).",
-    "Not shown in this shot (on purpose): notochordal process, primitive pit, individual ingressing cells, amnion, yolk sac."
+    "Not shown in this shot (on purpose): notochordal process, primitive pit, individual ingressing cells, amnion, yolk sac.",
+    "Colours = D-031 tokens (studio-docs/claude/DECISIONS.md): epiblast --g-epi, hypoblast --g-hypo, mesoderm --g-meso, endoderm --g-endo; the streak + node are the shot's 'look here', drawn in --accent and always labelled. Background = the app's dark background. EDIT here only (RULES I6)."
   ],
   "fps": 24,
   "duration_s": 20,
@@ -23,19 +24,20 @@
   "mesoderm": { "spread": [0.0, 0.85], "delay": 0.10 },
   "endoderm": { "spread": [0.0, 0.65], "delay": 0.30 },
   "colors": {
-    "background": "#14171c",
+    "background": "#14161A",
     "epiblast": "#56B4E9",
-    "hypoblast": "#D9D2B4",
+    "hypoblast": "#BDD9B8",
     "mesoderm": "#D55E00",
-    "endoderm": "#F0E442",
-    "streak": "#CC79A7",
+    "endoderm": "#E6CF3A",
+    "streak": "#994774",
     "text": "#F2F2F2"
   },
+  "patterns": { "epiblast": "rings", "hypoblast": "vlines", "mesoderm": "diag", "endoderm": "hlines", "streak": "ring" },
   "opacity": { "epiblast": 0.5, "mesoderm": 0.85 },
   "overlay": {
     "stamp": "day {day} · {stage} · ≈{size} mm",
     "disclaimer": "colours illustrative · layer thickness not to scale · ≈ values pending X1",
     "scale_bar_mm": 0.1
   },
-  "ai_prompt": "Scientific 3D animation, orthographic three-quarter view of a small flat oval two-layer disc on a dark slate background: a translucent sky-blue upper layer over a pale sand lower layer. A thin pink groove grows from the narrow end along the midline toward the centre, ending in a small pink knot. An orange-red sheet spreads outward between the two layers from the groove, and a yellow patch replaces the lower layer from the midline. Slow, smooth, clean shading, no text, no camera shake, static camera."
+  "ai_prompt": "Scientific 3D animation, orthographic three-quarter view of a small flat oval two-layer disc on a dark slate background: a translucent sky-blue upper layer over a pale sage-green lower layer. A thin plum groove grows from the narrow end along the midline toward the centre, ending in a small plum knot. An orange-red sheet spreads outward between the two layers from the groove, and a golden-yellow patch replaces the lower layer from the midline. Slow, smooth, clean shading, no text, no camera shake, static camera."
 }

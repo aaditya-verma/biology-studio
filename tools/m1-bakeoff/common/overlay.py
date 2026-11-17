@@ -33,6 +33,25 @@ def hexc(h, a=255):
     return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4)) + (a,)
 
 
+def pattern(d, box, kind, ink):
+    """Fixed pattern per token (D-031): rings, vlines, diag, hlines, dots, xhatch, speckle, ring. EDIT: spacing here."""
+    x0, y0, x1, y1 = box
+    if kind == "hlines":
+        for yy in range(y0 + 3, y1, 5): d.line([x0 + 1, yy, x1 - 1, yy], fill=ink, width=1)
+    elif kind == "vlines":
+        for xx in range(x0 + 3, x1, 5): d.line([xx, y0 + 1, xx, y1 - 1], fill=ink, width=1)
+    elif kind == "diag":
+        for k in range(-(y1 - y0), x1 - x0, 5): d.line([x0 + k, y1 - 1, x0 + k + (y1 - y0), y0 + 1], fill=ink, width=1)
+        d.rectangle(box, outline=None)
+    elif kind in ("rings", "dots"):
+        for yy in range(y0 + 4, y1 - 2, 6):
+            for xx in range(x0 + 4, x1 - 2, 6):
+                if kind == "rings": d.ellipse([xx - 2, yy - 2, xx + 2, yy + 2], outline=ink)
+                else: d.ellipse([xx - 1, yy - 1, xx + 1, yy + 1], fill=ink)
+    elif kind == "ring":
+        d.ellipse([x0 + 3, y0 + 3, x1 - 3, y1 - 3], outline=(255, 255, 255, 230), width=2)
+
+
 def draw(shot, frame, labels=True):
     W, H = shot["width"], shot["height"]
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -47,8 +66,11 @@ def draw(shot, frame, labels=True):
     keys = [("epiblast", "epiblast"), ("hypoblast", "hypoblast"), ("mesoderm", "mesoderm"),
             ("endoderm", "endoderm"), ("streak", "primitive streak / node")]
     y = 30
+    pats = shot.get("patterns", {})  # D-031: every key swatch carries its layer pattern, not colour alone (RULES B3)
     for k, name in keys:
-        d.rectangle([W - 300, y + 4, W - 280, y + 24], fill=hexc(shot["colors"][k]), outline=fg)
+        box = [W - 300, y + 4, W - 280, y + 24]
+        d.rectangle(box, fill=hexc(shot["colors"][k]), outline=fg)
+        pattern(d, box, pats.get(k), (17, 17, 17, 150))
         text(d, (W - 268, y), name, f_mid, fg)
         y += 32
     # scale bar (ortho camera: exact pixels per unit along screen x)

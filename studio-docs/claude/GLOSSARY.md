@@ -61,9 +61,9 @@
 - **Debug flag:** a switch, off by default, that shows extra detail for one area — `?debug=map,viewer,layout` in the app, `--debug` / `--dry-run` / `--only` / `--preview` on tool scripts, `debug: true` in a scene (RULES I5).
 - **Edit hook:** a marked place to change something — one home per value (tokens, `02-config.js`, `content/`, `strings.js`), `// EDIT:` markers in code, and the ✎ button in testing mode that shows an item's id + file and copies an "edit this" prompt (RULES I6).
 - **Edit prompt:** the text the ✎ copies; paste it into a `Bio · Fix · <id>` chat.
-- **Device class:** which layout a screen uses — `dev-p` phone portrait · `dev-pl` phone landscape · `dev-tp` tablet portrait · `dev-tl` tablet landscape · `dev-d` desktop/laptop; set from short side, orientation and pointer (master plan §8a, RULES C13).
+- **Device class:** which layout a screen uses — `dev-p` phone portrait · `dev-pl` phone landscape · `dev-tp` tablet portrait · `dev-tl` tablet landscape · `dev-d` desktop/laptop; set from short side, orientation and pointer (`build/design-plan.md` §2, RULES C13).
 - **Input class:** `.in-touch` (finger) or `.in-mouse` (mouse/trackpad + hover); separate from device class.
-- **Test matrix:** the 13 fixed screen sizes every UI is checked at — phones and tablets in both orientations, 100 % and 125 % text, light and dark (master plan §8a).
+- **Test matrix:** the 13 fixed screen sizes every UI is checked at — phones and tablets in both orientations, 100 % and 125 % text, light and dark (`build/design-plan.md` §2).
 - **Layout check:** `tools/layout-check` — the headless sweep over the test matrix with automatic checks (RULES C8, C13). **Contact sheet:** its grid of screenshots per device class, reviewed at G-Art.
 
 ## 7. Carnegie stages

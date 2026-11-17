@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): device rule, T1 step 2b, T2–T4 device fields.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Build · A0 shell — T3a (app shell) written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -48,8 +48,19 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — PLANNED (A0, V1, C1)
-Steps written by the C1 build chat.
+## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — **part A0 OPEN** (shell + Book map); 3D (V1) and cards (C1) parts follow
+**T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
+1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
+2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
+3. **Back / Up:** use the top-bar ← and ↑, and the phone's Back gesture. At Today, Back once shows "Press Back again to leave"; the app should never close by surprise.
+4. **Rotate** the phone and tablet on the Notochord page: same page, same place, layout changes (two columns in landscape).
+5. **Crosstab:** Book map → Germ layer × Day/week → tap a cell → its concepts list. Each layer row shows its pattern swatch.
+6. **Settings → Colour key:** every layer shows colour + pattern + label with ✓ marks; switch Theme to Dark and look again.
+7. **Install** (phone): browser menu → Add to Home screen (works fully once the app is on GitHub Pages; the preview may not offer it).
+8. **Testing mode:** Settings → Turn on testing mode → tap a ✎ → the edit prompt opens; Copy works. Turn it off again.
+- **Result T3a:** ☐ pass ☐ problems · navigation: ☐ easy ☐ lost (where?) · Back/Up: ☐ right ☐ wrong (where?) · colours/patterns readable: ☐ yes ☐ no (which?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
+
+**T3b — 3D + Part 0 cards:** steps written by the C1 build chat.
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
 ## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L1)

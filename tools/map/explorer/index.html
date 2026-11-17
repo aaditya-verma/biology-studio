@@ -7,10 +7,11 @@
 <!-- Purpose: K1 clickable concept explorer (drill-down, crosstabs, search, filters, concept pages). Owner doc: build/master-plan.md §5.
      Data: map.json (built by k1/build_map.py from concepts.txt + I1 index). EDIT: tokens in :root; UI words in STR; dims in DIMS. -->
 <style>
-:root{ /* EDIT: tokens (DrumPath-style). Germ-layer colours are Okabe–Ito placeholders until A0/V1 (RULES B3). */
-  --bg:#fbfaf7; --panel:#ffffff; --ink:#1d1d1f; --ink2:#55565b; --line:#dcdad3; --accent:#0b5cad; --accent-ink:#ffffff;
-  --g-ecto:#0072b2; --g-meso:#d55e00; --g-endo:#e69f00; --g-crest:#cc79a7; --g-extra:#7a7a7a; --g-multi:#009e73; --g-none:#b9b9b9;
-  --heat0:#f2f5fa; --heat1:#cfe0f3; --heat2:#9cc2e8; --heat3:#5f9bd6; --heat4:#1f63ad;
+:root{ /* EDIT: tokens. Germ-layer colours + patterns = D-031 (RULES B3); the app's src/css/app.css holds the same values. */
+  --bg:#FAFAF7; --panel:#ffffff; --ink:#1d1d1f; --ink2:#55565b; --line:#dcdad3; --accent:#994774; --accent-ink:#ffffff;
+  --g-ecto:#0072B2; --g-meso:#D55E00; --g-endo:#E6CF3A; --g-crest:#009E73; --g-ctx:#828A99; --g-none:#ECEBE6;
+  --g-endo-edge:#978613; --g-crest-edge:#00966D; --g-ctx-edge:#7E8696;
+  --heat0:#F4F3EF; --heat1:#DEDCD5; --heat2:#BDBAB1; --heat3:#77746C; --heat4:#3D3F45;
   --tap:44px; --fs-min:14px; --fs:16px; --r:10px; --gap:12px;
 }
 *{box-sizing:border-box} html{font-size:var(--fs)}
@@ -44,9 +45,13 @@ details.ch>summary::before{content:"▸";width:1em} details.ch[open]>summary::be
 .b-core{border-color:#1d1d1f;font-weight:700} .b-exam-high{border-color:var(--accent);color:var(--accent)} .b-detail{color:var(--ink2)}
 .sw{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,.35);flex:none}
 /* colour + pattern per layer (never colour alone, RULES B3/H5) */
-.L-ecto{background:var(--g-ecto)} .L-meso{background:repeating-linear-gradient(45deg,var(--g-meso) 0 3px,#fff6 3px 5px)}
-.L-endo{background:radial-gradient(circle,#fff8 1.5px,transparent 2px) 0 0/5px 5px,var(--g-endo)} .L-crest{background:repeating-linear-gradient(0deg,var(--g-crest) 0 3px,#fff7 3px 5px)}
-.L-extra{background:repeating-linear-gradient(90deg,var(--g-extra) 0 2px,#fff 2px 4px)} .L-multi{background:conic-gradient(var(--g-ecto) 0 33%,var(--g-meso) 0 66%,var(--g-endo) 0)} .L-none{background:var(--g-none)}
+/* D-031 patterns: ecto dots · meso diagonal lines · endo horizontal lines · crest cross-hatch · context speckle */
+.L-ecto{background:radial-gradient(circle,#fff9 1.3px,transparent 1.8px) 0 0/5px 5px,var(--g-ecto)}
+.L-meso{background:repeating-linear-gradient(45deg,#1118 0 1px,transparent 1px 4px),var(--g-meso)}
+.L-endo{background:repeating-linear-gradient(0deg,#1118 0 1px,transparent 1px 4px),var(--g-endo);border-color:var(--g-endo-edge)}
+.L-crest{background:repeating-linear-gradient(45deg,#1117 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,#1117 0 1px,transparent 1px 5px),var(--g-crest);border-color:var(--g-crest-edge)}
+.L-extra{background:radial-gradient(circle,#1116 .8px,transparent 1.2px) 0 0/4px 4px,var(--g-ctx);border-color:var(--g-ctx-edge)}
+.L-multi{background:conic-gradient(var(--g-ecto) 0 33%,var(--g-meso) 0 66%,var(--g-endo) 0)} .L-none{background:var(--g-none)}
 .layerlbl{font-size:.75rem;color:var(--ink2)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:8px 0}
 .cp h2{margin:.2em 0;font-size:1.3rem} .cp .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
@@ -60,7 +65,7 @@ table.xt th,table.xt td{border:1px solid var(--line);padding:0;text-align:center
 table.xt th{background:#f6f5f1;padding:6px;position:sticky;top:0;font-weight:600;white-space:nowrap}
 table.xt th.rh{position:sticky;left:0;text-align:left;z-index:1;max-width:14em;overflow:hidden;text-overflow:ellipsis}
 table.xt td button{width:100%;min-width:40px;min-height:40px;border:0;cursor:pointer;font-weight:600}
-.h0{background:var(--heat0);color:#9aa} .h1{background:var(--heat1)} .h2{background:var(--heat2)} .h3{background:var(--heat3);color:#fff} .h4{background:var(--heat4);color:#fff}
+.h0{background:var(--heat0);color:#6b6d72} .h1{background:var(--heat1)} .h2{background:var(--heat2)} .h3{background:var(--heat3);color:#fff} .h4{background:var(--heat4);color:#fff}
 .edit{display:none;margin-left:4px;min-width:32px;min-height:32px;border:1px dashed var(--accent);border-radius:6px;background:#fff;color:var(--accent);cursor:pointer}
 body.test .edit{display:inline-block}
 #dbg{display:none;position:fixed;right:8px;bottom:8px;z-index:9;background:#111d;color:#e6ffe6;font:12px/1.4 ui-monospace,monospace;padding:8px 10px;border-radius:8px;max-width:90vw;pointer-events:none}
@@ -98,7 +103,7 @@ dialog textarea{width:100%;min-height:140px;font:13px ui-monospace,monospace}
 <script>
 "use strict";
 // EDIT: UI words
-const STR={ver:'K1 explorer v1 · 17 Nov 2026', planned:'planned', approx:'≈ until X1 cites it', none:'—'};
+const STR={ver:'K1 explorer v2 · 18 Nov 2026 (D-031 colours)', planned:'planned', approx:'≈ until X1 cites it', none:'—'};
 const DIMS={ /* EDIT: crosstab dimensions */
   chapter:{label:'Chapter',vals:o=>[o.ch]}, recurs:{label:'Chapter it recurs in',vals:o=>Object.keys(o.recurs)},
   day:{label:'Day / week',vals:o=>[dbin(o.day)]}, cs:{label:'Carnegie stage ≈',vals:o=>o.cs_approx?range(o.cs_approx[0],o.cs_approx[1]).map(n=>'CS'+String(n).padStart(2,'0')):['No stage']},
@@ -173,7 +178,7 @@ function render(){
   } else {
     v.innerHTML=`<div class="panel"><h2 style="margin-top:0">About this map</h2><p>${C.length} concepts across ${M.chapters.length} chapters of <i>${esc(M.title)}</i> (book code E). Every concept has an id <code>E&lt;ch&gt;.&lt;sec&gt;.&lt;nn&gt;</code> that a card will keep for good.</p>
       <p><b>What's here:</b> our own one-line labels, page locators and links. <b>No book text.</b> Every fact is <b>≈</b> until the research step (X1) cites and marks it. Carnegie stages are approximate (worked out from the day), not cited.</p>
-      <p><b>Colours:</b> each germ layer has a colour <i>and</i> a pattern <i>and</i> a label: ${Object.keys(M.vocab.layer).map(l=>`${sw(l)} ${esc(M.vocab.layer[l])}`).join(' · ')}. Colours are placeholders until the design step.</p>
+      <p><b>Colours:</b> each germ layer has a colour <i>and</i> a pattern <i>and</i> a label: ${Object.keys(M.vocab.layer).map(l=>`${sw(l)} ${esc(M.vocab.layer[l])}`).join(' · ')}. Colours follow D-031 and match the app.</p>
       <p><b>Links:</b> <code>#c-E05-01-02</code> opens a concept · <code>#ch-E13</code> a chapter · <code>#x-layer-day</code> a crosstab · <code>#debug</code> turns on testing mode and the debug overlay.</p>
       <p><b>Testing mode</b> (✎ Test): a ✎ on every chapter, section and concept shows its id and file and copies a ready "edit this" prompt.</p>
       <p class="note">${STR.ver} · data ${esc(M.schema)} built ${esc(M.built)}</p></div>`;

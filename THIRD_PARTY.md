@@ -1,19 +1,20 @@
 # Third-party licences (RULES H10)
 
-*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 17 Nov 2026 · Bio · Build · H1 shared repo. Mirror: `studio-docs/research/source-registry.md` § Tools.)*
+*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 18 Nov 2026 · Bio · Build · A0 shell (app uses no third-party code: system fonts, own icons).)*
 
 **Stub.** Licences below are ≈ until checked against each project's own licence file (do that before A0 ships). "Repo" = may be committed; "Laptop" = installed per person, never committed.
 
 | Name | Used by | Licence | Lives |
 |---|---|---|---|
 | three.js 0.170.0 | `tools/m1-bakeoff/B_three` | MIT | npm install (node_modules ignored); vendored into the app at A0 |
-| Playwright | `B_three/record.mjs` | Apache-2.0 | npm install |
+| Playwright | `B_three/record.mjs`; `tools/layout-check` (Python) + CI | Apache-2.0 | npm / pip install |
+| GitHub Actions `checkout`, `setup-python`, `upload-artifact` | CI | MIT | GitHub-hosted |
 | pypdf | `tools/indexer` | BSD-3-Clause | pip |
 | Poppler (pdftotext) | `tools/indexer` | GPL-2.0+ | Laptop (external program) |
 | Blender 4.2 LTS+ | `A_blender` | GPL-3.0+ (our scripts and renders are ours) | Laptop |
 | ffmpeg | kit encodes | LGPL/GPL (build-dependent) | Laptop |
 | NumPy | kit | BSD-3-Clause | pip |
-| Pillow | `common/overlay.py` | MIT-CMU (HPND) | pip |
+| Pillow | `common/overlay.py`; layout-check contact sheets | MIT-CMU (HPND) | pip |
 | PyTorch | `D_tts` | BSD-3-Clause | pip |
 | soundfile | `D_tts` | BSD-3-Clause | pip |
 | Kokoro-82M + `af_heart` | `D_tts` (V-a) | Apache-2.0 | Laptop `models/` |

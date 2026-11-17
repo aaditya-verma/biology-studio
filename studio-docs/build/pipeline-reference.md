@@ -49,7 +49,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 |---|---|---|---|
 | Blender Eevee 720p, seconds per frame | ~0.5–3 s on a gaming GPU | | |
 | Blender Cycles + OptiX 720p, seconds per frame (64 spp, denoised) | ~2–10 s | | |
-| Same at 1080p (decides the §8a 1080p rung) | ~2–2.5× the 720p time | | |
+| Same at 1080p (decides the 1080p rung, design plan §2) | ~2–2.5× the 720p time | | |
 | 20 s shot at 24 fps, total — Blender Eevee / Cycles | ~5–15 min / ~20–60 min | | |
 | 20 s shot — headless three.js recorded to frames (WebGL on GPU?) | minutes | | |
 | 20 s shot — Wan 2.2 TI2V-5B (ComfyUI): time per ~5 s clip, VRAM peak, control, accuracy | — | | |
@@ -81,7 +81,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 - The chat bridge (desktop app) can read/write files under connected folders; it can't run commands unless a device shell tool is offered.
 - Exchange format between Blender and three.js: glTF (.glb).
 - Second render machine: the Professor's Windows NVIDIA laptop (Laptop 2, D-025); setup in `build/setup-guide.md`.
-- Viewing devices to support (D-033): phone, tablet, desktop/laptop — portrait and landscape; classes and test matrix in master plan §8a.
+- Viewing devices to support (D-033): phone, tablet, desktop/laptop — portrait and landscape; classes and test matrix in `build/design-plan.md` §2.
 
 ## 7. Laptop layout + M1 kit (D-023)
 The **Studio home** can be any folder (D-025): kit paths are relative to the kit; Blender is found on PATH, in `C:\Program Files\Blender Foundation\` or in `<Studio home>\apps\blender*`. Owner's: `D:\Projects\biology_studio\` → `tools\m1-bakeoff\` (kit; later the repo's `tools/`) · `apps\` (Blender portable, ComfyUI — GPL/heavy, never in the repo) · `models\` (TTS voices, AI weights; laptop-only, F4) · `repo\biology-studio\` (from A0). Kit output stays in `tools\m1-bakeoff\out\` (never committed).
