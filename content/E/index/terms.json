@@ -1,0 +1,9586 @@
+{
+ "book": "E",
+ "source": "Glossary of Key Terms (terms only, no definitions)",
+ "terms": [
+  {
+   "term": "Abaxial domain",
+   "glossary_pdf": 416,
+   "id": "E.t.abaxial-domain",
+   "hits": 2,
+   "chapters": {
+    "E11": 2
+   },
+   "sections": {
+    "E11.00": 1,
+    "E11.02": 1
+   },
+   "pdf_pages": [
+    179,
+    180
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.02",
+   "placed": true
+  },
+  {
+   "term": "Acrosome reaction",
+   "glossary_pdf": 416,
+   "id": "E.t.acrosome-reaction",
+   "hits": 7,
+   "chapters": {
+    "E03": 7
+   },
+   "sections": {
+    "E03.02": 6,
+    "E03.07": 1
+   },
+   "pdf_pages": [
+    58,
+    59,
+    67
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.02",
+   "placed": true
+  },
+  {
+   "term": "Adenohypophysis",
+   "glossary_pdf": 416,
+   "id": "E.t.adenohypophysis",
+   "hits": 3,
+   "chapters": {
+    "E03": 1,
+    "E18": 2
+   },
+   "sections": {
+    "E03.00": 1,
+    "E18.02": 1,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    53,
+    350,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.06",
+   "placed": true
+  },
+  {
+   "term": "Alar plates",
+   "glossary_pdf": 416,
+   "id": "E.t.alar-plates",
+   "hits": 31,
+   "chapters": {
+    "E18": 31
+   },
+   "sections": {
+    "E18.01": 4,
+    "E18.02": 21,
+    "E18.06": 6
+   },
+   "pdf_pages": [
+    334,
+    336,
+    337,
+    338,
+    343,
+    344,
+    345,
+    346,
+    348,
+    350,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Allantois",
+   "glossary_pdf": 416,
+   "id": "E.t.allantois",
+   "hits": 38,
+   "chapters": {
+    "E02": 1,
+    "E05": 2,
+    "E06": 6,
+    "E07": 1,
+    "E08": 4,
+    "E13": 4,
+    "E15": 9,
+    "E16": 11
+   },
+   "sections": {
+    "E02.00": 1,
+    "E05.03": 2,
+    "E06.01": 1,
+    "E06.04": 5,
+    "E07.04": 1,
+    "E08.05": 2,
+    "E08.06": 2,
+    "E13.00": 1,
+    "E13.02": 2,
+    "E13.08": 1,
+    "E15.00": 1,
+    "E15.04": 1,
+    "E15.08": 6,
+    "E15.10": 1,
+    "E16.01": 8,
+    "E16.02": 3
+   },
+   "pdf_pages": [
+    33,
+    79,
+    95,
+    108,
+    120,
+    137,
+    138,
+    198,
+    201,
+    228,
+    249,
+    258,
+    271,
+    272,
+    274,
+    276,
+    277,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Alternative splicing",
+   "glossary_pdf": 416,
+   "id": "E.t.alternative-splicing",
+   "hits": 3,
+   "chapters": {
+    "E01": 3
+   },
+   "sections": {
+    "E01.02": 2,
+    "E01.06": 1
+   },
+   "pdf_pages": [
+    24,
+    31
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.02",
+   "placed": true
+  },
+  {
+   "term": "Alveolar cells",
+   "glossary_pdf": 416,
+   "id": "E.t.alveolar-cells",
+   "hits": 2,
+   "chapters": {
+    "E14": 2
+   },
+   "sections": {
+    "E14.04": 1,
+    "E14.05": 1
+   },
+   "pdf_pages": [
+    246,
+    247
+   ],
+   "primary_chapter": "E14",
+   "primary_section": "E14.05",
+   "placed": true
+  },
+  {
+   "term": "Amelia",
+   "glossary_pdf": 416,
+   "id": "E.t.amelia",
+   "hits": 3,
+   "chapters": {
+    "E09": 1,
+    "E12": 2
+   },
+   "sections": {
+    "E09.01": 1,
+    "E12.02": 2
+   },
+   "pdf_pages": [
+    153,
+    193,
+    194
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Amniocentesis",
+   "glossary_pdf": 416,
+   "id": "E.t.amniocentesis",
+   "hits": 15,
+   "chapters": {
+    "E02": 1,
+    "E08": 1,
+    "E09": 12,
+    "E10": 1
+   },
+   "sections": {
+    "E02.02": 1,
+    "E08.04": 1,
+    "E09.02": 8,
+    "E09.03": 1,
+    "E09.05": 3,
+    "E10.03": 1
+   },
+   "pdf_pages": [
+    40,
+    136,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    177
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.02",
+   "placed": true
+  },
+  {
+   "term": "Amniochorionic membrane",
+   "glossary_pdf": 416,
+   "id": "E.t.amniochorionic-membrane",
+   "hits": 1,
+   "chapters": {
+    "E08": 1
+   },
+   "sections": {
+    "E08.06": 1
+   },
+   "pdf_pages": [
+    138
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.06",
+   "placed": true
+  },
+  {
+   "term": "Amnion",
+   "glossary_pdf": 416,
+   "id": "E.t.amnion",
+   "hits": 62,
+   "chapters": {
+    "E04": 4,
+    "E05": 3,
+    "E06": 11,
+    "E07": 9,
+    "E08": 22,
+    "E09": 1,
+    "E12": 2,
+    "E13": 1,
+    "E15": 6,
+    "E17": 1,
+    "E18": 1,
+    "E20": 1
+   },
+   "sections": {
+    "E04.03": 1,
+    "E04.04": 1,
+    "E04.05": 1,
+    "E04.06": 1,
+    "E05.00": 1,
+    "E05.03": 2,
+    "E06.01": 7,
+    "E06.02": 1,
+    "E06.03": 1,
+    "E06.06": 1,
+    "E06.07": 1,
+    "E07.02": 1,
+    "E07.03": 5,
+    "E07.06": 2,
+    "E07.07": 1,
+    "E08.01": 1,
+    "E08.03": 1,
+    "E08.04": 5,
+    "E08.05": 5,
+    "E08.06": 1,
+    "E08.07": 1,
+    "E08.08": 1,
+    "E08.09": 1,
+    "E08.10": 6,
+    "E09.01": 1,
+    "E12.02": 2,
+    "E13.00": 1,
+    "E15.08": 6,
+    "E17.00": 1,
+    "E18.00": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    71,
+    72,
+    76,
+    77,
+    78,
+    79,
+    81,
+    92,
+    93,
+    94,
+    95,
+    99,
+    106,
+    112,
+    114,
+    116,
+    117,
+    119,
+    123,
+    124,
+    127,
+    132,
+    133,
+    134,
+    135,
+    137,
+    138,
+    139,
+    140,
+    141,
+    145,
+    149,
+    196,
+    198,
+    268,
+    269,
+    304,
+    332,
+    385
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.10",
+   "placed": true
+  },
+  {
+   "term": "Amniotic bands",
+   "glossary_pdf": 416,
+   "id": "E.t.amniotic-bands",
+   "hits": 10,
+   "chapters": {
+    "E08": 3,
+    "E09": 5,
+    "E12": 2
+   },
+   "sections": {
+    "E08.07": 3,
+    "E09.01": 2,
+    "E09.02": 1,
+    "E09.03": 1,
+    "E09.05": 1,
+    "E12.02": 2
+   },
+   "pdf_pages": [
+    139,
+    149,
+    161,
+    162,
+    163,
+    196
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Anencephaly",
+   "glossary_pdf": 416,
+   "id": "E.t.anencephaly",
+   "hits": 21,
+   "chapters": {
+    "E06": 3,
+    "E08": 2,
+    "E09": 6,
+    "E10": 2,
+    "E18": 8
+   },
+   "sections": {
+    "E06.01": 3,
+    "E08.07": 1,
+    "E08.10": 1,
+    "E09.01": 4,
+    "E09.02": 2,
+    "E10.01": 2,
+    "E18.01": 1,
+    "E18.04": 6,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    97,
+    98,
+    139,
+    145,
+    151,
+    153,
+    156,
+    158,
+    160,
+    170,
+    341,
+    359,
+    360,
+    368
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Angiogenesis",
+   "glossary_pdf": 416,
+   "id": "E.t.angiogenesis",
+   "hits": 8,
+   "chapters": {
+    "E01": 2,
+    "E06": 4,
+    "E13": 2
+   },
+   "sections": {
+    "E01.05": 1,
+    "E01.06": 1,
+    "E06.02": 4,
+    "E13.08": 2
+   },
+   "pdf_pages": [
+    27,
+    29,
+    104,
+    105,
+    225
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Annulus fibrosis",
+   "glossary_pdf": 416,
+   "id": "E.t.annulus-fibrosis",
+   "hits": 0,
+   "chapters": {},
+   "sections": {},
+   "pdf_pages": [],
+   "primary_chapter": null,
+   "primary_section": null,
+   "placed": false
+  },
+  {
+   "term": "Anterior Visceral endoderm (AVE)",
+   "glossary_pdf": 416,
+   "id": "E.t.anterior-visceral-endoderm-ave",
+   "hits": 15,
+   "chapters": {
+    "E03": 9,
+    "E05": 6
+   },
+   "sections": {
+    "E03.05": 9,
+    "E05.03": 5,
+    "E05.07": 1
+   },
+   "pdf_pages": [
+    63,
+    64,
+    81,
+    82,
+    89
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.05",
+   "placed": true
+  },
+  {
+   "term": "Aortic arch",
+   "glossary_pdf": 417,
+   "id": "E.t.aortic-arch",
+   "hits": 64,
+   "chapters": {
+    "E13": 61,
+    "E17": 3
+   },
+   "sections": {
+    "E13.02": 1,
+    "E13.03": 1,
+    "E13.05": 2,
+    "E13.06": 2,
+    "E13.07": 2,
+    "E13.08": 46,
+    "E13.09": 7,
+    "E17.01": 2,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    200,
+    202,
+    206,
+    211,
+    213,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    240,
+    305,
+    307,
+    315
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.08",
+   "placed": true
+  },
+  {
+   "term": "Apical ectodermal ridge (AER)",
+   "glossary_pdf": 417,
+   "id": "E.t.apical-ectodermal-ridge-aer",
+   "hits": 45,
+   "chapters": {
+    "E12": 44,
+    "E17": 1
+   },
+   "sections": {
+    "E12.00": 5,
+    "E12.01": 13,
+    "E12.02": 21,
+    "E12.03": 5,
+    "E17.13": 1
+   },
+   "pdf_pages": [
+    186,
+    187,
+    191,
+    192,
+    193,
+    196,
+    197,
+    330
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Apoptosis",
+   "glossary_pdf": 417,
+   "id": "E.t.apoptosis",
+   "hits": 13,
+   "chapters": {
+    "E01": 2,
+    "E09": 1,
+    "E10": 1,
+    "E12": 4,
+    "E13": 1,
+    "E16": 1,
+    "E17": 3
+   },
+   "sections": {
+    "E01.05": 1,
+    "E01.06": 1,
+    "E09.03": 1,
+    "E10.01": 1,
+    "E12.02": 2,
+    "E12.03": 2,
+    "E13.06": 1,
+    "E16.01": 1,
+    "E17.04": 1,
+    "E17.13": 2
+   },
+   "pdf_pages": [
+    27,
+    29,
+    162,
+    167,
+    189,
+    194,
+    197,
+    210,
+    279,
+    315,
+    330
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.03",
+   "placed": true
+  },
+  {
+   "term": "Arachnoid mater",
+   "glossary_pdf": 417,
+   "id": "E.t.arachnoid-mater",
+   "hits": 3,
+   "chapters": {
+    "E18": 3
+   },
+   "sections": {
+    "E18.02": 3
+   },
+   "pdf_pages": [
+    354
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Arthrogryposis",
+   "glossary_pdf": 417,
+   "id": "E.t.arthrogryposis",
+   "hits": 4,
+   "chapters": {
+    "E09": 1,
+    "E12": 3
+   },
+   "sections": {
+    "E09.01": 1,
+    "E12.02": 3
+   },
+   "pdf_pages": [
+    152,
+    195,
+    196
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Atresia",
+   "glossary_pdf": 417,
+   "id": "E.t.atresia",
+   "hits": 60,
+   "chapters": {
+    "E05": 1,
+    "E08": 2,
+    "E09": 4,
+    "E12": 1,
+    "E13": 12,
+    "E14": 8,
+    "E15": 24,
+    "E16": 7,
+    "E17": 1
+   },
+   "sections": {
+    "E05.05": 1,
+    "E08.07": 1,
+    "E08.10": 1,
+    "E09.01": 3,
+    "E09.02": 1,
+    "E12.02": 1,
+    "E13.03": 1,
+    "E13.06": 8,
+    "E13.07": 2,
+    "E13.09": 1,
+    "E14.01": 5,
+    "E14.02": 2,
+    "E14.06": 1,
+    "E15.04": 4,
+    "E15.05": 3,
+    "E15.08": 16,
+    "E15.10": 1,
+    "E16.01": 1,
+    "E16.02": 6,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    86,
+    139,
+    145,
+    149,
+    151,
+    154,
+    161,
+    194,
+    202,
+    217,
+    223,
+    224,
+    240,
+    243,
+    244,
+    248,
+    254,
+    262,
+    270,
+    271,
+    272,
+    274,
+    280,
+    294,
+    315
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Autonomic nervous system (ANS)",
+   "glossary_pdf": 417,
+   "id": "E.t.autonomic-nervous-system-ans",
+   "hits": 14,
+   "chapters": {
+    "E18": 14
+   },
+   "sections": {
+    "E18.01": 3,
+    "E18.05": 5,
+    "E18.07": 6
+   },
+   "pdf_pages": [
+    334,
+    361,
+    364,
+    365,
+    366,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.07",
+   "placed": true
+  },
+  {
+   "term": "Basal plates",
+   "glossary_pdf": 417,
+   "id": "E.t.basal-plates",
+   "hits": 24,
+   "chapters": {
+    "E18": 24
+   },
+   "sections": {
+    "E18.01": 6,
+    "E18.02": 14,
+    "E18.06": 4
+   },
+   "pdf_pages": [
+    334,
+    336,
+    337,
+    338,
+    343,
+    344,
+    345,
+    346,
+    348,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Bladder exstrophy",
+   "glossary_pdf": 417,
+   "id": "E.t.bladder-exstrophy",
+   "hits": 4,
+   "chapters": {
+    "E07": 2,
+    "E09": 1,
+    "E16": 1
+   },
+   "sections": {
+    "E07.03": 2,
+    "E09.02": 1,
+    "E16.01": 1
+   },
+   "pdf_pages": [
+    118,
+    119,
+    161,
+    285
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.03",
+   "placed": true
+  },
+  {
+   "term": "Blastocyst",
+   "glossary_pdf": 417,
+   "id": "E.t.blastocyst",
+   "hits": 55,
+   "chapters": {
+    "E03": 24,
+    "E04": 22,
+    "E05": 2,
+    "E06": 1,
+    "E08": 4,
+    "E09": 2
+   },
+   "sections": {
+    "E03.04": 5,
+    "E03.05": 11,
+    "E03.06": 3,
+    "E03.07": 1,
+    "E03.08": 4,
+    "E04.00": 3,
+    "E04.02": 3,
+    "E04.03": 3,
+    "E04.04": 8,
+    "E04.05": 5,
+    "E05.03": 2,
+    "E06.00": 1,
+    "E08.01": 1,
+    "E08.08": 3,
+    "E09.01": 2
+   },
+   "pdf_pages": [
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    79,
+    81,
+    91,
+    128,
+    140,
+    148,
+    150
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.04",
+   "placed": true
+  },
+  {
+   "term": "Bone morphogenetic proteins (BMPs)",
+   "glossary_pdf": 417,
+   "id": "E.t.bone-morphogenetic-proteins-bmps",
+   "hits": 55,
+   "chapters": {
+    "E01": 4,
+    "E05": 1,
+    "E06": 13,
+    "E11": 3,
+    "E12": 7,
+    "E13": 6,
+    "E15": 8,
+    "E16": 2,
+    "E17": 4,
+    "E18": 7
+   },
+   "sections": {
+    "E01.05": 4,
+    "E05.03": 1,
+    "E06.00": 6,
+    "E06.01": 6,
+    "E06.02": 1,
+    "E11.02": 1,
+    "E11.03": 1,
+    "E11.10": 1,
+    "E12.02": 7,
+    "E13.04": 5,
+    "E13.09": 1,
+    "E15.05": 8,
+    "E16.01": 2,
+    "E17.04": 3,
+    "E17.12": 1,
+    "E18.01": 4,
+    "E18.03": 1,
+    "E18.05": 2
+   },
+   "pdf_pages": [
+    27,
+    81,
+    91,
+    95,
+    96,
+    97,
+    103,
+    181,
+    182,
+    184,
+    191,
+    192,
+    205,
+    239,
+    262,
+    279,
+    311,
+    313,
+    329,
+    340,
+    341,
+    356,
+    363,
+    367
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.01",
+   "placed": true
+  },
+  {
+   "term": "Bowman capsule",
+   "glossary_pdf": 417,
+   "id": "E.t.bowman-capsule",
+   "hits": 7,
+   "chapters": {
+    "E16": 7
+   },
+   "sections": {
+    "E16.01": 6,
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    276,
+    277,
+    278,
+    279,
+    288
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Brachycephaly",
+   "glossary_pdf": 417,
+   "id": "E.t.brachycephaly",
+   "hits": 2,
+   "chapters": {
+    "E10": 2
+   },
+   "sections": {
+    "E10.01": 2
+   },
+   "pdf_pages": [
+    171,
+    173
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Brachydactyly",
+   "glossary_pdf": 417,
+   "id": "E.t.brachydactyly",
+   "hits": 3,
+   "chapters": {
+    "E11": 1,
+    "E12": 2
+   },
+   "sections": {
+    "E11.08": 1,
+    "E12.02": 2
+   },
+   "pdf_pages": [
+    183,
+    194,
+    195
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Brain vesicles",
+   "glossary_pdf": 417,
+   "id": "E.t.brain-vesicles",
+   "hits": 13,
+   "chapters": {
+    "E06": 3,
+    "E13": 1,
+    "E17": 1,
+    "E18": 8
+   },
+   "sections": {
+    "E06.01": 1,
+    "E06.03": 1,
+    "E06.06": 1,
+    "E13.02": 1,
+    "E17.07": 1,
+    "E18.00": 2,
+    "E18.01": 2,
+    "E18.02": 3,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    95,
+    106,
+    113,
+    200,
+    319,
+    332,
+    334,
+    335,
+    343,
+    344,
+    350,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Capacitation",
+   "glossary_pdf": 417,
+   "id": "E.t.capacitation",
+   "hits": 5,
+   "chapters": {
+    "E03": 5
+   },
+   "sections": {
+    "E03.02": 4,
+    "E03.07": 1
+   },
+   "pdf_pages": [
+    58,
+    67
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.02",
+   "placed": true
+  },
+  {
+   "term": "Cardiac looping",
+   "glossary_pdf": 417,
+   "id": "E.t.cardiac-looping",
+   "hits": 4,
+   "chapters": {
+    "E13": 4
+   },
+   "sections": {
+    "E13.03": 2,
+    "E13.04": 1,
+    "E13.09": 1
+   },
+   "pdf_pages": [
+    204,
+    205,
+    239
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.03",
+   "placed": true
+  },
+  {
+   "term": "Cardinal veins",
+   "glossary_pdf": 417,
+   "id": "E.t.cardinal-veins",
+   "hits": 35,
+   "chapters": {
+    "E06": 1,
+    "E07": 4,
+    "E13": 30
+   },
+   "sections": {
+    "E06.02": 1,
+    "E07.05": 4,
+    "E13.05": 3,
+    "E13.08": 26,
+    "E13.09": 1
+   },
+   "pdf_pages": [
+    105,
+    121,
+    206,
+    225,
+    231,
+    232,
+    233,
+    234,
+    238
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.08",
+   "placed": true
+  },
+  {
+   "term": "Caudal dysgenesis",
+   "glossary_pdf": 417,
+   "id": "E.t.caudal-dysgenesis",
+   "hits": 4,
+   "chapters": {
+    "E05": 3,
+    "E09": 1
+   },
+   "sections": {
+    "E05.03": 1,
+    "E05.05": 2,
+    "E09.01": 1
+   },
+   "pdf_pages": [
+    82,
+    85,
+    157
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.05",
+   "placed": true
+  },
+  {
+   "term": "Cerebral aqueduct (of Sylvius)",
+   "glossary_pdf": 418,
+   "id": "E.t.cerebral-aqueduct-of-sylvius",
+   "hits": 6,
+   "chapters": {
+    "E18": 6
+   },
+   "sections": {
+    "E18.01": 3,
+    "E18.02": 1,
+    "E18.04": 1,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    333,
+    335,
+    354,
+    360,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Chiari malformation",
+   "glossary_pdf": 418,
+   "id": "E.t.chiari-malformation",
+   "hits": 3,
+   "chapters": {
+    "E09": 1,
+    "E10": 1,
+    "E18": 1
+   },
+   "sections": {
+    "E09.03": 1,
+    "E10.03": 1,
+    "E18.01": 1
+   },
+   "pdf_pages": [
+    162,
+    177,
+    342
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.03",
+   "placed": true
+  },
+  {
+   "term": "Chondrocranium",
+   "glossary_pdf": 418,
+   "id": "E.t.chondrocranium",
+   "hits": 10,
+   "chapters": {
+    "E10": 10
+   },
+   "sections": {
+    "E10.01": 8,
+    "E10.04": 2
+   },
+   "pdf_pages": [
+    168,
+    169,
+    178
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Chorion",
+   "glossary_pdf": 418,
+   "id": "E.t.chorion",
+   "hits": 40,
+   "chapters": {
+    "E05": 1,
+    "E06": 1,
+    "E08": 36,
+    "E13": 1,
+    "E14": 1
+   },
+   "sections": {
+    "E05.04": 1,
+    "E06.06": 1,
+    "E08.01": 3,
+    "E08.03": 14,
+    "E08.04": 7,
+    "E08.05": 1,
+    "E08.06": 1,
+    "E08.09": 4,
+    "E08.10": 6,
+    "E13.08": 1,
+    "E14.05": 1
+   },
+   "pdf_pages": [
+    84,
+    112,
+    126,
+    132,
+    133,
+    137,
+    138,
+    141,
+    145,
+    232,
+    247
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.03",
+   "placed": true
+  },
+  {
+   "term": "Chorion frondosum (leafy chorion)",
+   "glossary_pdf": 418,
+   "id": "E.t.chorion-frondosum-leafy-chorion",
+   "hits": 7,
+   "chapters": {
+    "E08": 7
+   },
+   "sections": {
+    "E08.01": 1,
+    "E08.03": 5,
+    "E08.10": 1
+   },
+   "pdf_pages": [
+    126,
+    132,
+    145
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.03",
+   "placed": true
+  },
+  {
+   "term": "Chorion laeve (smooth chorion)",
+   "glossary_pdf": 418,
+   "id": "E.t.chorion-laeve-smooth-chorion",
+   "hits": 4,
+   "chapters": {
+    "E08": 4
+   },
+   "sections": {
+    "E08.01": 2,
+    "E08.03": 2
+   },
+   "pdf_pages": [
+    126,
+    132
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.03",
+   "placed": true
+  },
+  {
+   "term": "Chorionic cavity",
+   "glossary_pdf": 418,
+   "id": "E.t.chorionic-cavity",
+   "hits": 31,
+   "chapters": {
+    "E04": 9,
+    "E05": 4,
+    "E06": 3,
+    "E08": 15
+   },
+   "sections": {
+    "E04.03": 1,
+    "E04.04": 7,
+    "E04.06": 1,
+    "E05.06": 1,
+    "E05.07": 3,
+    "E06.02": 1,
+    "E06.05": 1,
+    "E06.06": 1,
+    "E08.01": 1,
+    "E08.02": 1,
+    "E08.03": 2,
+    "E08.04": 1,
+    "E08.05": 3,
+    "E08.06": 3,
+    "E08.08": 1,
+    "E08.09": 3
+   },
+   "pdf_pages": [
+    71,
+    72,
+    73,
+    77,
+    87,
+    88,
+    89,
+    103,
+    111,
+    112,
+    126,
+    130,
+    132,
+    133,
+    137,
+    138,
+    140,
+    142
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.09",
+   "placed": true
+  },
+  {
+   "term": "Choroid plexuses",
+   "glossary_pdf": 418,
+   "id": "E.t.choroid-plexuses",
+   "hits": 4,
+   "chapters": {
+    "E18": 4
+   },
+   "sections": {
+    "E18.02": 3,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    351,
+    354,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Cloaca",
+   "glossary_pdf": 418,
+   "id": "E.t.cloaca",
+   "hits": 33,
+   "chapters": {
+    "E06": 3,
+    "E07": 3,
+    "E12": 1,
+    "E15": 14,
+    "E16": 12
+   },
+   "sections": {
+    "E06.04": 3,
+    "E07.03": 1,
+    "E07.04": 1,
+    "E07.06": 1,
+    "E12.02": 1,
+    "E15.03": 1,
+    "E15.04": 1,
+    "E15.07": 1,
+    "E15.08": 8,
+    "E15.09": 1,
+    "E15.10": 2,
+    "E16.00": 1,
+    "E16.01": 9,
+    "E16.02": 1,
+    "E16.03": 1
+   },
+   "pdf_pages": [
+    108,
+    119,
+    120,
+    123,
+    194,
+    251,
+    252,
+    264,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    282,
+    283,
+    284,
+    285,
+    287,
+    301
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Cloacal membrane (plate)",
+   "glossary_pdf": 418,
+   "id": "E.t.cloacal-membrane-plate",
+   "hits": 24,
+   "chapters": {
+    "E05": 4,
+    "E06": 4,
+    "E13": 1,
+    "E15": 13,
+    "E16": 2
+   },
+   "sections": {
+    "E05.03": 3,
+    "E05.04": 1,
+    "E06.03": 3,
+    "E06.04": 1,
+    "E13.02": 1,
+    "E15.00": 1,
+    "E15.02": 1,
+    "E15.04": 2,
+    "E15.07": 1,
+    "E15.08": 7,
+    "E15.09": 1,
+    "E16.02": 2
+   },
+   "pdf_pages": [
+    79,
+    80,
+    84,
+    106,
+    107,
+    108,
+    201,
+    249,
+    250,
+    258,
+    265,
+    271,
+    272,
+    273,
+    295
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Coloboma",
+   "glossary_pdf": 418,
+   "id": "E.t.coloboma",
+   "hits": 9,
+   "chapters": {
+    "E02": 1,
+    "E09": 1,
+    "E16": 1,
+    "E17": 1,
+    "E20": 5
+   },
+   "sections": {
+    "E02.02": 1,
+    "E09.01": 1,
+    "E16.01": 1,
+    "E17.04": 1,
+    "E20.07": 5
+   },
+   "pdf_pages": [
+    40,
+    152,
+    280,
+    315,
+    386,
+    387
+   ],
+   "primary_chapter": "E20",
+   "primary_section": "E20.07",
+   "placed": true
+  },
+  {
+   "term": "Compaction",
+   "glossary_pdf": 418,
+   "id": "E.t.compaction",
+   "hits": 4,
+   "chapters": {
+    "E03": 4
+   },
+   "sections": {
+    "E03.03": 1,
+    "E03.04": 1,
+    "E03.07": 1,
+    "E03.08": 1
+   },
+   "pdf_pages": [
+    61,
+    62,
+    67,
+    68
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.08",
+   "placed": true
+  },
+  {
+   "term": "Congenital malformation",
+   "glossary_pdf": 418,
+   "id": "E.t.congenital-malformation",
+   "hits": 18,
+   "chapters": {
+    "E02": 2,
+    "E05": 2,
+    "E08": 2,
+    "E09": 11,
+    "E19": 1
+   },
+   "sections": {
+    "E02.02": 2,
+    "E05.05": 1,
+    "E05.07": 1,
+    "E08.02": 1,
+    "E08.07": 1,
+    "E09.00": 1,
+    "E09.01": 8,
+    "E09.02": 1,
+    "E09.03": 1,
+    "E19.05": 1
+   },
+   "pdf_pages": [
+    42,
+    43,
+    86,
+    89,
+    129,
+    139,
+    147,
+    149,
+    150,
+    151,
+    154,
+    157,
+    160,
+    162,
+    378
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Connecting stalk",
+   "glossary_pdf": 418,
+   "id": "E.t.connecting-stalk",
+   "hits": 25,
+   "chapters": {
+    "E04": 3,
+    "E05": 10,
+    "E06": 4,
+    "E07": 3,
+    "E08": 3,
+    "E13": 1,
+    "E15": 1
+   },
+   "sections": {
+    "E04.04": 3,
+    "E05.03": 2,
+    "E05.06": 1,
+    "E05.07": 6,
+    "E05.08": 1,
+    "E06.01": 1,
+    "E06.02": 1,
+    "E06.03": 1,
+    "E06.04": 1,
+    "E07.02": 1,
+    "E07.06": 2,
+    "E08.02": 1,
+    "E08.03": 1,
+    "E08.05": 1,
+    "E13.00": 1,
+    "E15.08": 1
+   },
+   "pdf_pages": [
+    72,
+    73,
+    79,
+    81,
+    87,
+    88,
+    89,
+    90,
+    95,
+    105,
+    106,
+    108,
+    116,
+    123,
+    130,
+    132,
+    137,
+    198,
+    268
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.07",
+   "placed": true
+  },
+  {
+   "term": "Conus cordis",
+   "glossary_pdf": 418,
+   "id": "E.t.conus-cordis",
+   "hits": 12,
+   "chapters": {
+    "E13": 12
+   },
+   "sections": {
+    "E13.00": 2,
+    "E13.01": 1,
+    "E13.03": 4,
+    "E13.06": 4,
+    "E13.09": 1
+   },
+   "pdf_pages": [
+    198,
+    199,
+    202,
+    203,
+    204,
+    218,
+    220,
+    238
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Cotyledons",
+   "glossary_pdf": 418,
+   "id": "E.t.cotyledons",
+   "hits": 12,
+   "chapters": {
+    "E08": 12
+   },
+   "sections": {
+    "E08.01": 1,
+    "E08.03": 2,
+    "E08.04": 7,
+    "E08.06": 2
+   },
+   "pdf_pages": [
+    127,
+    132,
+    133,
+    134,
+    135,
+    138
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.04",
+   "placed": true
+  },
+  {
+   "term": "Cranial nerves (CNs)",
+   "glossary_pdf": 418,
+   "id": "E.t.cranial-nerves-cns",
+   "hits": 21,
+   "chapters": {
+    "E06": 1,
+    "E13": 1,
+    "E14": 1,
+    "E17": 4,
+    "E18": 11,
+    "E19": 3
+   },
+   "sections": {
+    "E06.01": 1,
+    "E13.08": 1,
+    "E14.02": 1,
+    "E17.01": 2,
+    "E17.04": 1,
+    "E17.13": 1,
+    "E18.02": 1,
+    "E18.03": 2,
+    "E18.04": 1,
+    "E18.05": 5,
+    "E18.07": 2,
+    "E19.01": 1,
+    "E19.02": 2
+   },
+   "pdf_pages": [
+    97,
+    225,
+    244,
+    307,
+    312,
+    330,
+    344,
+    355,
+    357,
+    361,
+    362,
+    363,
+    366,
+    369,
+    372,
+    373
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Craniosynostosis",
+   "glossary_pdf": 418,
+   "id": "E.t.craniosynostosis",
+   "hits": 18,
+   "chapters": {
+    "E09": 1,
+    "E10": 16,
+    "E12": 1
+   },
+   "sections": {
+    "E09.01": 1,
+    "E10.01": 15,
+    "E10.04": 1,
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    154,
+    170,
+    171,
+    172,
+    173,
+    174,
+    178,
+    196
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Crista terminalis",
+   "glossary_pdf": 418,
+   "id": "E.t.crista-terminalis",
+   "hits": 2,
+   "chapters": {
+    "E13": 2
+   },
+   "sections": {
+    "E13.06": 1,
+    "E13.09": 1
+   },
+   "pdf_pages": [
+    207,
+    239
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.09",
+   "placed": true
+  },
+  {
+   "term": "Cryptorchidism",
+   "glossary_pdf": 418,
+   "id": "E.t.cryptorchidism",
+   "hits": 2,
+   "chapters": {
+    "E16": 2
+   },
+   "sections": {
+    "E16.03": 2
+   },
+   "pdf_pages": [
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.03",
+   "placed": true
+  },
+  {
+   "term": "Cytotrophoblast",
+   "glossary_pdf": 418,
+   "id": "E.t.cytotrophoblast",
+   "hits": 26,
+   "chapters": {
+    "E04": 14,
+    "E05": 5,
+    "E08": 7
+   },
+   "sections": {
+    "E04.00": 5,
+    "E04.02": 1,
+    "E04.03": 1,
+    "E04.04": 3,
+    "E04.05": 2,
+    "E04.06": 2,
+    "E05.03": 1,
+    "E05.06": 1,
+    "E05.07": 3,
+    "E08.02": 6,
+    "E08.03": 1
+   },
+   "pdf_pages": [
+    69,
+    70,
+    71,
+    72,
+    76,
+    77,
+    79,
+    87,
+    88,
+    89,
+    130,
+    131,
+    132
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.00",
+   "placed": true
+  },
+  {
+   "term": "Deformations",
+   "glossary_pdf": 418,
+   "id": "E.t.deformations",
+   "hits": 5,
+   "chapters": {
+    "E08": 1,
+    "E09": 3,
+    "E17": 1
+   },
+   "sections": {
+    "E08.07": 1,
+    "E09.01": 3,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    139,
+    149,
+    315
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Dermatome",
+   "glossary_pdf": 419,
+   "id": "E.t.dermatome",
+   "hits": 27,
+   "chapters": {
+    "E06": 11,
+    "E10": 2,
+    "E11": 10,
+    "E12": 3,
+    "E21": 1
+   },
+   "sections": {
+    "E06.02": 10,
+    "E06.06": 1,
+    "E10.00": 1,
+    "E10.02": 1,
+    "E11.00": 3,
+    "E11.02": 7,
+    "E12.02": 3,
+    "E21.06": 1
+   },
+   "pdf_pages": [
+    101,
+    102,
+    113,
+    166,
+    175,
+    179,
+    180,
+    181,
+    190,
+    394
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.02",
+   "placed": true
+  },
+  {
+   "term": "Diaphysis",
+   "glossary_pdf": 419,
+   "id": "E.t.diaphysis",
+   "hits": 4,
+   "chapters": {
+    "E10": 1,
+    "E12": 3
+   },
+   "sections": {
+    "E10.01": 1,
+    "E12.01": 2,
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    167,
+    188,
+    189
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.01",
+   "placed": true
+  },
+  {
+   "term": "Diencephalon",
+   "glossary_pdf": 419,
+   "id": "E.t.diencephalon",
+   "hits": 34,
+   "chapters": {
+    "E18": 34
+   },
+   "sections": {
+    "E18.00": 1,
+    "E18.01": 5,
+    "E18.02": 21,
+    "E18.05": 2,
+    "E18.06": 5
+   },
+   "pdf_pages": [
+    332,
+    333,
+    335,
+    344,
+    348,
+    349,
+    350,
+    351,
+    353,
+    354,
+    361,
+    362,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Dihydrotestosterone",
+   "glossary_pdf": 419,
+   "id": "E.t.dihydrotestosterone",
+   "hits": 8,
+   "chapters": {
+    "E16": 8
+   },
+   "sections": {
+    "E16.02": 7,
+    "E16.04": 1
+   },
+   "pdf_pages": [
+    290,
+    292,
+    293,
+    298,
+    299,
+    302
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Diploid",
+   "glossary_pdf": 419,
+   "id": "E.t.diploid",
+   "hits": 11,
+   "chapters": {
+    "E02": 6,
+    "E03": 3,
+    "E04": 2
+   },
+   "sections": {
+    "E02.02": 6,
+    "E03.02": 2,
+    "E03.07": 1,
+    "E04.05": 2
+   },
+   "pdf_pages": [
+    34,
+    35,
+    36,
+    60,
+    67,
+    76
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Disruptions",
+   "glossary_pdf": 419,
+   "id": "E.t.disruptions",
+   "hits": 19,
+   "chapters": {
+    "E05": 1,
+    "E06": 1,
+    "E09": 6,
+    "E12": 2,
+    "E13": 7,
+    "E17": 2
+   },
+   "sections": {
+    "E05.07": 1,
+    "E06.00": 1,
+    "E09.01": 6,
+    "E12.02": 1,
+    "E12.03": 1,
+    "E13.01": 2,
+    "E13.02": 2,
+    "E13.06": 1,
+    "E13.09": 2,
+    "E17.04": 2
+   },
+   "pdf_pages": [
+    89,
+    91,
+    148,
+    149,
+    154,
+    196,
+    197,
+    199,
+    200,
+    214,
+    238,
+    314,
+    315
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Dizygotic twins",
+   "glossary_pdf": 419,
+   "id": "E.t.dizygotic-twins",
+   "hits": 5,
+   "chapters": {
+    "E08": 5
+   },
+   "sections": {
+    "E08.08": 3,
+    "E08.09": 2
+   },
+   "pdf_pages": [
+    140,
+    141,
+    143
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.08",
+   "placed": true
+  },
+  {
+   "term": "Dorsal mesentery",
+   "glossary_pdf": 419,
+   "id": "E.t.dorsal-mesentery",
+   "hits": 25,
+   "chapters": {
+    "E06": 2,
+    "E07": 6,
+    "E13": 1,
+    "E15": 13,
+    "E16": 3
+   },
+   "sections": {
+    "E06.02": 1,
+    "E06.03": 1,
+    "E07.00": 1,
+    "E07.02": 2,
+    "E07.05": 1,
+    "E07.07": 2,
+    "E13.08": 1,
+    "E15.03": 4,
+    "E15.04": 3,
+    "E15.05": 1,
+    "E15.06": 1,
+    "E15.08": 2,
+    "E15.10": 2,
+    "E16.02": 3
+   },
+   "pdf_pages": [
+    103,
+    107,
+    115,
+    116,
+    122,
+    124,
+    228,
+    251,
+    252,
+    257,
+    261,
+    263,
+    267,
+    274,
+    286,
+    287
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.03",
+   "placed": true
+  },
+  {
+   "term": "Dorsal primary ramus",
+   "glossary_pdf": 419,
+   "id": "E.t.dorsal-primary-ramus",
+   "hits": 7,
+   "chapters": {
+    "E11": 3,
+    "E18": 4
+   },
+   "sections": {
+    "E11.03": 2,
+    "E11.10": 1,
+    "E18.01": 3,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    182,
+    184,
+    338,
+    369
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.03",
+   "placed": true
+  },
+  {
+   "term": "Dorsal root",
+   "glossary_pdf": 419,
+   "id": "E.t.dorsal-root",
+   "hits": 15,
+   "chapters": {
+    "E06": 2,
+    "E18": 13
+   },
+   "sections": {
+    "E06.01": 2,
+    "E18.01": 10,
+    "E18.05": 2,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    96,
+    97,
+    333,
+    337,
+    338,
+    340,
+    363,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Dura mater",
+   "glossary_pdf": 419,
+   "id": "E.t.dura-mater",
+   "hits": 6,
+   "chapters": {
+    "E18": 4,
+    "E20": 2
+   },
+   "sections": {
+    "E18.02": 4,
+    "E20.04": 2
+   },
+   "pdf_pages": [
+    354,
+    383
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Dysmorphology",
+   "glossary_pdf": 419,
+   "id": "E.t.dysmorphology",
+   "hits": 3,
+   "chapters": {
+    "E09": 1,
+    "E17": 2
+   },
+   "sections": {
+    "E09.00": 1,
+    "E17.04": 1,
+    "E17.05": 1
+   },
+   "pdf_pages": [
+    147,
+    315,
+    316
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.05",
+   "placed": true
+  },
+  {
+   "term": "Ectoderm",
+   "glossary_pdf": 419,
+   "id": "E.t.ectoderm",
+   "hits": 130,
+   "chapters": {
+    "E01": 1,
+    "E05": 8,
+    "E06": 27,
+    "E07": 7,
+    "E08": 1,
+    "E11": 7,
+    "E12": 13,
+    "E13": 3,
+    "E15": 12,
+    "E17": 10,
+    "E18": 10,
+    "E19": 3,
+    "E20": 25,
+    "E21": 3
+   },
+   "sections": {
+    "E01.03": 1,
+    "E05.00": 3,
+    "E05.03": 2,
+    "E05.07": 2,
+    "E05.08": 1,
+    "E06.00": 8,
+    "E06.01": 5,
+    "E06.02": 7,
+    "E06.03": 3,
+    "E06.04": 1,
+    "E06.06": 3,
+    "E07.00": 2,
+    "E07.02": 3,
+    "E07.03": 1,
+    "E07.06": 1,
+    "E08.05": 1,
+    "E11.00": 1,
+    "E11.03": 3,
+    "E11.08": 1,
+    "E11.10": 1,
+    "E11.11": 1,
+    "E12.00": 2,
+    "E12.01": 4,
+    "E12.02": 7,
+    "E13.00": 1,
+    "E13.08": 2,
+    "E15.03": 1,
+    "E15.05": 2,
+    "E15.08": 6,
+    "E15.10": 3,
+    "E17.00": 1,
+    "E17.01": 3,
+    "E17.04": 3,
+    "E17.07": 3,
+    "E18.00": 1,
+    "E18.01": 2,
+    "E18.02": 1,
+    "E18.03": 2,
+    "E18.04": 1,
+    "E18.06": 2,
+    "E18.07": 1,
+    "E19.00": 1,
+    "E19.05": 2,
+    "E20.00": 4,
+    "E20.01": 4,
+    "E20.02": 4,
+    "E20.03": 1,
+    "E20.04": 2,
+    "E20.06": 4,
+    "E20.07": 3,
+    "E20.08": 3,
+    "E21.00": 2,
+    "E21.06": 1
+   },
+   "pdf_pages": [
+    25,
+    78,
+    79,
+    81,
+    89,
+    90,
+    91,
+    95,
+    96,
+    97,
+    99,
+    100,
+    102,
+    103,
+    106,
+    107,
+    108,
+    112,
+    113,
+    115,
+    116,
+    117,
+    123,
+    137,
+    179,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    191,
+    192,
+    198,
+    225,
+    251,
+    262,
+    271,
+    272,
+    274,
+    303,
+    305,
+    307,
+    311,
+    312,
+    319,
+    332,
+    340,
+    341,
+    352,
+    355,
+    356,
+    357,
+    368,
+    369,
+    370,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384,
+    385,
+    386,
+    388,
+    389,
+    394
+   ],
+   "primary_chapter": "E20",
+   "primary_section": "E20.06",
+   "placed": true
+  },
+  {
+   "term": "Ectopia cordis",
+   "glossary_pdf": 419,
+   "id": "E.t.ectopia-cordis",
+   "hits": 6,
+   "chapters": {
+    "E07": 5,
+    "E13": 1
+   },
+   "sections": {
+    "E07.03": 4,
+    "E07.06": 1,
+    "E13.06": 1
+   },
+   "pdf_pages": [
+    117,
+    118,
+    123,
+    223
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.03",
+   "placed": true
+  },
+  {
+   "term": "Ectopic",
+   "glossary_pdf": 419,
+   "id": "E.t.ectopic",
+   "hits": 11,
+   "chapters": {
+    "E04": 5,
+    "E14": 1,
+    "E16": 4,
+    "E17": 1
+   },
+   "sections": {
+    "E04.04": 3,
+    "E04.05": 1,
+    "E04.06": 1,
+    "E14.06": 1,
+    "E16.01": 3,
+    "E16.03": 1,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    74,
+    76,
+    77,
+    248,
+    281,
+    301,
+    313
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.04",
+   "placed": true
+  },
+  {
+   "term": "Ectrodactyly",
+   "glossary_pdf": 419,
+   "id": "E.t.ectrodactyly",
+   "hits": 1,
+   "chapters": {
+    "E12": 1
+   },
+   "sections": {
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    194
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Efferent ductules",
+   "glossary_pdf": 419,
+   "id": "E.t.efferent-ductules",
+   "hits": 7,
+   "chapters": {
+    "E16": 7
+   },
+   "sections": {
+    "E16.02": 7
+   },
+   "pdf_pages": [
+    288,
+    289,
+    290,
+    291,
+    293
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Embryogenesis",
+   "glossary_pdf": 419,
+   "id": "E.t.embryogenesis",
+   "hits": 8,
+   "chapters": {
+    "E01": 1,
+    "E03": 1,
+    "E05": 2,
+    "E06": 2,
+    "E09": 2
+   },
+   "sections": {
+    "E01.05": 1,
+    "E03.02": 1,
+    "E05.03": 1,
+    "E05.08": 1,
+    "E06.06": 1,
+    "E06.07": 1,
+    "E09.01": 1,
+    "E09.05": 1
+   },
+   "pdf_pages": [
+    27,
+    59,
+    79,
+    90,
+    112,
+    114,
+    150,
+    163
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.08",
+   "placed": true
+  },
+  {
+   "term": "Endocardial cushions",
+   "glossary_pdf": 419,
+   "id": "E.t.endocardial-cushions",
+   "hits": 38,
+   "chapters": {
+    "E13": 37,
+    "E17": 1
+   },
+   "sections": {
+    "E13.06": 30,
+    "E13.07": 1,
+    "E13.08": 1,
+    "E13.09": 5,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    216,
+    217,
+    218,
+    220,
+    224,
+    231,
+    239,
+    240,
+    314
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Endochondral ossification",
+   "glossary_pdf": 419,
+   "id": "E.t.endochondral-ossification",
+   "hits": 7,
+   "chapters": {
+    "E10": 3,
+    "E12": 4
+   },
+   "sections": {
+    "E10.00": 1,
+    "E10.01": 1,
+    "E10.04": 1,
+    "E12.01": 3,
+    "E12.03": 1
+   },
+   "pdf_pages": [
+    166,
+    169,
+    178,
+    188,
+    197
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.01",
+   "placed": true
+  },
+  {
+   "term": "Endoderm",
+   "glossary_pdf": 419,
+   "id": "E.t.endoderm",
+   "hits": 111,
+   "chapters": {
+    "E01": 2,
+    "E03": 4,
+    "E04": 2,
+    "E05": 24,
+    "E06": 10,
+    "E07": 4,
+    "E13": 11,
+    "E14": 4,
+    "E15": 26,
+    "E16": 4,
+    "E17": 17,
+    "E19": 3
+   },
+   "sections": {
+    "E01.03": 2,
+    "E03.05": 4,
+    "E04.03": 1,
+    "E04.04": 1,
+    "E05.00": 7,
+    "E05.03": 11,
+    "E05.07": 4,
+    "E05.08": 2,
+    "E06.00": 1,
+    "E06.02": 2,
+    "E06.03": 4,
+    "E06.04": 2,
+    "E06.06": 1,
+    "E07.00": 1,
+    "E07.02": 3,
+    "E13.00": 1,
+    "E13.01": 1,
+    "E13.02": 1,
+    "E13.04": 5,
+    "E13.08": 1,
+    "E13.09": 2,
+    "E14.00": 1,
+    "E14.02": 1,
+    "E14.03": 1,
+    "E14.05": 1,
+    "E15.00": 3,
+    "E15.02": 3,
+    "E15.03": 2,
+    "E15.04": 1,
+    "E15.05": 6,
+    "E15.06": 1,
+    "E15.08": 6,
+    "E15.09": 3,
+    "E15.10": 1,
+    "E16.00": 1,
+    "E16.01": 1,
+    "E16.02": 2,
+    "E17.01": 2,
+    "E17.04": 12,
+    "E17.13": 3,
+    "E19.00": 1,
+    "E19.01": 1,
+    "E19.02": 1
+   },
+   "pdf_pages": [
+    25,
+    63,
+    64,
+    71,
+    73,
+    78,
+    79,
+    80,
+    81,
+    88,
+    89,
+    90,
+    91,
+    103,
+    106,
+    107,
+    108,
+    112,
+    115,
+    116,
+    198,
+    199,
+    201,
+    205,
+    225,
+    239,
+    242,
+    244,
+    245,
+    247,
+    249,
+    250,
+    251,
+    258,
+    261,
+    262,
+    263,
+    267,
+    271,
+    272,
+    273,
+    274,
+    275,
+    285,
+    286,
+    296,
+    307,
+    311,
+    312,
+    313,
+    315,
+    330,
+    370,
+    371,
+    373
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Enhancers",
+   "glossary_pdf": 419,
+   "id": "E.t.enhancers",
+   "hits": 12,
+   "chapters": {
+    "E01": 12
+   },
+   "sections": {
+    "E01.01": 8,
+    "E01.02": 3,
+    "E01.05": 1
+   },
+   "pdf_pages": [
+    23,
+    24,
+    28
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.01",
+   "placed": true
+  },
+  {
+   "term": "Epiblast",
+   "glossary_pdf": 419,
+   "id": "E.t.epiblast",
+   "hits": 55,
+   "chapters": {
+    "E02": 4,
+    "E03": 8,
+    "E04": 13,
+    "E05": 26,
+    "E06": 1,
+    "E13": 1,
+    "E16": 1,
+    "E18": 1
+   },
+   "sections": {
+    "E02.00": 3,
+    "E02.04": 1,
+    "E03.05": 8,
+    "E04.00": 5,
+    "E04.02": 2,
+    "E04.04": 2,
+    "E04.05": 3,
+    "E04.06": 1,
+    "E05.00": 8,
+    "E05.03": 10,
+    "E05.04": 3,
+    "E05.07": 3,
+    "E05.08": 2,
+    "E06.01": 1,
+    "E13.00": 1,
+    "E16.02": 1,
+    "E18.03": 1
+   },
+   "pdf_pages": [
+    33,
+    51,
+    63,
+    64,
+    69,
+    70,
+    72,
+    73,
+    76,
+    77,
+    78,
+    79,
+    80,
+    84,
+    88,
+    89,
+    90,
+    95,
+    198,
+    286,
+    355
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Epibranchial placodes",
+   "glossary_pdf": 420,
+   "id": "E.t.epibranchial-placodes",
+   "hits": 4,
+   "chapters": {
+    "E18": 4
+   },
+   "sections": {
+    "E18.05": 4
+   },
+   "pdf_pages": [
+    363
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Epididymis",
+   "glossary_pdf": 420,
+   "id": "E.t.epididymis",
+   "hits": 12,
+   "chapters": {
+    "E02": 2,
+    "E16": 10
+   },
+   "sections": {
+    "E02.03": 2,
+    "E16.02": 8,
+    "E16.03": 1,
+    "E16.04": 1
+   },
+   "pdf_pages": [
+    50,
+    290,
+    291,
+    293,
+    300,
+    301,
+    302
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Epiphyseal plate",
+   "glossary_pdf": 420,
+   "id": "E.t.epiphyseal-plate",
+   "hits": 3,
+   "chapters": {
+    "E12": 3
+   },
+   "sections": {
+    "E12.01": 3
+   },
+   "pdf_pages": [
+    188
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.01",
+   "placed": true
+  },
+  {
+   "term": "Epiphysis",
+   "glossary_pdf": 420,
+   "id": "E.t.epiphysis",
+   "hits": 14,
+   "chapters": {
+    "E09": 2,
+    "E10": 2,
+    "E12": 4,
+    "E18": 6
+   },
+   "sections": {
+    "E09.01": 2,
+    "E10.01": 2,
+    "E12.01": 2,
+    "E12.02": 2,
+    "E18.02": 6
+   },
+   "pdf_pages": [
+    151,
+    154,
+    167,
+    188,
+    189,
+    348,
+    349,
+    351
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Epiploic foramen (of Winslow)",
+   "glossary_pdf": 420,
+   "id": "E.t.epiploic-foramen-of-winslow",
+   "hits": 5,
+   "chapters": {
+    "E15": 5
+   },
+   "sections": {
+    "E15.04": 5
+   },
+   "pdf_pages": [
+    258,
+    259
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Epithelial—mesenchymal interactions",
+   "glossary_pdf": 420,
+   "id": "E.t.epithelial-mesenchymal-interactions",
+   "hits": 13,
+   "chapters": {
+    "E01": 2,
+    "E14": 1,
+    "E15": 3,
+    "E16": 1,
+    "E17": 4,
+    "E18": 1,
+    "E20": 1
+   },
+   "sections": {
+    "E01.03": 2,
+    "E14.03": 1,
+    "E15.02": 1,
+    "E15.03": 1,
+    "E15.09": 1,
+    "E16.01": 1,
+    "E17.01": 1,
+    "E17.11": 1,
+    "E17.12": 1,
+    "E17.14": 1,
+    "E18.02": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    25,
+    245,
+    250,
+    251,
+    273,
+    279,
+    305,
+    327,
+    329,
+    331,
+    352,
+    386
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.14",
+   "placed": true
+  },
+  {
+   "term": "Exon",
+   "glossary_pdf": 420,
+   "id": "E.t.exon",
+   "hits": 13,
+   "chapters": {
+    "E01": 12,
+    "E02": 1
+   },
+   "sections": {
+    "E01.00": 3,
+    "E01.01": 5,
+    "E01.02": 3,
+    "E01.06": 1,
+    "E02.03": 1
+   },
+   "pdf_pages": [
+    22,
+    23,
+    24,
+    31,
+    44
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.01",
+   "placed": true
+  },
+  {
+   "term": "Falciform ligament",
+   "glossary_pdf": 420,
+   "id": "E.t.falciform-ligament",
+   "hits": 13,
+   "chapters": {
+    "E13": 1,
+    "E15": 12
+   },
+   "sections": {
+    "E13.09": 1,
+    "E15.04": 10,
+    "E15.07": 1,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    238,
+    252,
+    256,
+    257,
+    258,
+    260,
+    265,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Fibroblast growth factors (FGFs)",
+   "glossary_pdf": 420,
+   "id": "E.t.fibroblast-growth-factors-fgfs",
+   "hits": 69,
+   "chapters": {
+    "E01": 11,
+    "E03": 1,
+    "E05": 4,
+    "E06": 10,
+    "E10": 5,
+    "E11": 1,
+    "E12": 16,
+    "E13": 2,
+    "E14": 1,
+    "E15": 5,
+    "E16": 2,
+    "E17": 5,
+    "E18": 2,
+    "E20": 4
+   },
+   "sections": {
+    "E01.05": 8,
+    "E01.07": 3,
+    "E03.05": 1,
+    "E05.00": 1,
+    "E05.03": 2,
+    "E05.07": 1,
+    "E06.00": 4,
+    "E06.01": 2,
+    "E06.02": 2,
+    "E06.06": 2,
+    "E10.01": 5,
+    "E11.03": 1,
+    "E12.02": 15,
+    "E12.03": 1,
+    "E13.04": 1,
+    "E13.05": 1,
+    "E14.03": 1,
+    "E15.05": 2,
+    "E15.08": 3,
+    "E16.01": 2,
+    "E17.04": 4,
+    "E17.12": 1,
+    "E18.03": 2,
+    "E20.06": 1,
+    "E20.07": 3
+   },
+   "pdf_pages": [
+    27,
+    32,
+    63,
+    78,
+    81,
+    82,
+    89,
+    91,
+    96,
+    97,
+    102,
+    104,
+    113,
+    171,
+    182,
+    191,
+    192,
+    193,
+    197,
+    205,
+    206,
+    245,
+    262,
+    270,
+    271,
+    279,
+    312,
+    313,
+    329,
+    355,
+    356,
+    384,
+    386
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Fistula",
+   "glossary_pdf": 420,
+   "id": "E.t.fistula",
+   "hits": 36,
+   "chapters": {
+    "E09": 1,
+    "E14": 6,
+    "E15": 13,
+    "E16": 3,
+    "E17": 13
+   },
+   "sections": {
+    "E09.01": 1,
+    "E14.01": 3,
+    "E14.02": 2,
+    "E14.06": 1,
+    "E15.04": 3,
+    "E15.08": 4,
+    "E15.09": 5,
+    "E15.10": 1,
+    "E16.01": 3,
+    "E17.04": 10,
+    "E17.07": 2,
+    "E17.13": 1
+   },
+   "pdf_pages": [
+    149,
+    243,
+    244,
+    248,
+    254,
+    268,
+    270,
+    272,
+    273,
+    274,
+    285,
+    313,
+    314,
+    319,
+    330
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.09",
+   "placed": true
+  },
+  {
+   "term": "Folic acid",
+   "glossary_pdf": 420,
+   "id": "E.t.folic-acid",
+   "hits": 18,
+   "chapters": {
+    "E06": 6,
+    "E09": 1,
+    "E10": 1,
+    "E18": 10
+   },
+   "sections": {
+    "E06.01": 6,
+    "E09.05": 1,
+    "E10.03": 1,
+    "E18.01": 2,
+    "E18.02": 4,
+    "E18.04": 3,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    97,
+    98,
+    163,
+    177,
+    341,
+    342,
+    343,
+    358,
+    359,
+    360,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Fontanelle",
+   "glossary_pdf": 420,
+   "id": "E.t.fontanelle",
+   "hits": 17,
+   "chapters": {
+    "E10": 17
+   },
+   "sections": {
+    "E10.01": 17
+   },
+   "pdf_pages": [
+    168,
+    169,
+    171,
+    174
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Foramen cecum",
+   "glossary_pdf": 420,
+   "id": "E.t.foramen-cecum",
+   "hits": 7,
+   "chapters": {
+    "E14": 1,
+    "E17": 6
+   },
+   "sections": {
+    "E14.01": 1,
+    "E17.03": 1,
+    "E17.04": 2,
+    "E17.06": 2,
+    "E17.07": 1
+   },
+   "pdf_pages": [
+    243,
+    310,
+    311,
+    317,
+    319
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.06",
+   "placed": true
+  },
+  {
+   "term": "Foramen ovale",
+   "glossary_pdf": 420,
+   "id": "E.t.foramen-ovale",
+   "hits": 2,
+   "chapters": {
+    "E13": 2
+   },
+   "sections": {
+    "E13.06": 2
+   },
+   "pdf_pages": [
+    209,
+    210
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Foregut",
+   "glossary_pdf": 420,
+   "id": "E.t.foregut",
+   "hits": 62,
+   "chapters": {
+    "E06": 4,
+    "E07": 6,
+    "E13": 5,
+    "E14": 14,
+    "E15": 29,
+    "E16": 1,
+    "E17": 3
+   },
+   "sections": {
+    "E06.03": 4,
+    "E07.00": 1,
+    "E07.02": 2,
+    "E07.05": 2,
+    "E07.07": 1,
+    "E13.02": 2,
+    "E13.06": 1,
+    "E13.08": 1,
+    "E13.09": 1,
+    "E14.00": 5,
+    "E14.01": 2,
+    "E14.02": 2,
+    "E14.05": 3,
+    "E14.06": 2,
+    "E15.00": 3,
+    "E15.02": 2,
+    "E15.03": 2,
+    "E15.04": 16,
+    "E15.05": 2,
+    "E15.07": 1,
+    "E15.09": 3,
+    "E16.02": 1,
+    "E17.00": 1,
+    "E17.01": 1,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    106,
+    107,
+    115,
+    116,
+    121,
+    122,
+    124,
+    201,
+    211,
+    228,
+    240,
+    242,
+    243,
+    244,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    258,
+    259,
+    260,
+    261,
+    262,
+    264,
+    273,
+    287,
+    304,
+    305,
+    311
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Fossa ovalis",
+   "glossary_pdf": 420,
+   "id": "E.t.fossa-ovalis",
+   "hits": 0,
+   "chapters": {},
+   "sections": {},
+   "pdf_pages": [],
+   "primary_chapter": null,
+   "primary_section": null,
+   "placed": false
+  },
+  {
+   "term": "Gastroschisis",
+   "glossary_pdf": 420,
+   "id": "E.t.gastroschisis",
+   "hits": 19,
+   "chapters": {
+    "E07": 8,
+    "E09": 4,
+    "E15": 7
+   },
+   "sections": {
+    "E07.03": 7,
+    "E07.06": 1,
+    "E09.01": 2,
+    "E09.02": 2,
+    "E15.08": 7
+   },
+   "pdf_pages": [
+    117,
+    118,
+    119,
+    123,
+    151,
+    154,
+    160,
+    161,
+    268,
+    269,
+    270
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.03",
+   "placed": true
+  },
+  {
+   "term": "Gastrulation",
+   "glossary_pdf": 420,
+   "id": "E.t.gastrulation",
+   "hits": 27,
+   "chapters": {
+    "E01": 3,
+    "E02": 3,
+    "E05": 14,
+    "E09": 1,
+    "E13": 2,
+    "E15": 1,
+    "E17": 1,
+    "E18": 2
+   },
+   "sections": {
+    "E01.05": 1,
+    "E01.06": 1,
+    "E01.07": 1,
+    "E02.00": 2,
+    "E02.04": 1,
+    "E05.00": 4,
+    "E05.03": 1,
+    "E05.04": 2,
+    "E05.05": 4,
+    "E05.07": 2,
+    "E05.08": 1,
+    "E09.01": 1,
+    "E13.02": 1,
+    "E13.03": 1,
+    "E15.00": 1,
+    "E17.13": 1,
+    "E18.03": 2
+   },
+   "pdf_pages": [
+    27,
+    29,
+    32,
+    33,
+    51,
+    78,
+    82,
+    84,
+    85,
+    88,
+    89,
+    90,
+    150,
+    200,
+    204,
+    249,
+    330,
+    355
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.05",
+   "placed": true
+  },
+  {
+   "term": "Germ layers",
+   "glossary_pdf": 420,
+   "id": "E.t.germ-layers",
+   "hits": 37,
+   "chapters": {
+    "E02": 3,
+    "E05": 8,
+    "E06": 23,
+    "E10": 1,
+    "E11": 1,
+    "E15": 1
+   },
+   "sections": {
+    "E02.00": 3,
+    "E05.00": 2,
+    "E05.04": 2,
+    "E05.05": 1,
+    "E05.07": 1,
+    "E05.08": 2,
+    "E06.00": 3,
+    "E06.01": 3,
+    "E06.02": 3,
+    "E06.03": 4,
+    "E06.04": 2,
+    "E06.05": 1,
+    "E06.06": 3,
+    "E06.07": 4,
+    "E10.04": 1,
+    "E11.00": 1,
+    "E15.04": 1
+   },
+   "pdf_pages": [
+    33,
+    78,
+    84,
+    85,
+    89,
+    90,
+    91,
+    95,
+    96,
+    97,
+    99,
+    106,
+    108,
+    109,
+    112,
+    113,
+    114,
+    178,
+    179,
+    253
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.07",
+   "placed": true
+  },
+  {
+   "term": "Glomerulus",
+   "glossary_pdf": 420,
+   "id": "E.t.glomerulus",
+   "hits": 12,
+   "chapters": {
+    "E16": 12
+   },
+   "sections": {
+    "E16.00": 3,
+    "E16.01": 8,
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    275,
+    276,
+    277,
+    278,
+    279,
+    286
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Gray rami communicantes",
+   "glossary_pdf": 420,
+   "id": "E.t.gray-rami-communicantes",
+   "hits": 2,
+   "chapters": {
+    "E18": 2
+   },
+   "sections": {
+    "E18.05": 2
+   },
+   "pdf_pages": [
+    365
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Greater omentum",
+   "glossary_pdf": 420,
+   "id": "E.t.greater-omentum",
+   "hits": 11,
+   "chapters": {
+    "E15": 11
+   },
+   "sections": {
+    "E15.04": 9,
+    "E15.08": 2
+   },
+   "pdf_pages": [
+    252,
+    257,
+    259,
+    267
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Greater sac",
+   "glossary_pdf": 421,
+   "id": "E.t.greater-sac",
+   "hits": 1,
+   "chapters": {
+    "E15": 1
+   },
+   "sections": {
+    "E15.04": 1
+   },
+   "pdf_pages": [
+    259
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Growth factors",
+   "glossary_pdf": 421,
+   "id": "E.t.growth-factors",
+   "hits": 53,
+   "chapters": {
+    "E01": 4,
+    "E03": 2,
+    "E05": 3,
+    "E06": 9,
+    "E08": 1,
+    "E10": 2,
+    "E11": 2,
+    "E12": 3,
+    "E13": 3,
+    "E14": 1,
+    "E15": 2,
+    "E16": 7,
+    "E17": 3,
+    "E18": 7,
+    "E20": 4
+   },
+   "sections": {
+    "E01.05": 4,
+    "E03.00": 1,
+    "E03.05": 1,
+    "E05.00": 2,
+    "E05.03": 1,
+    "E06.00": 2,
+    "E06.02": 4,
+    "E06.03": 1,
+    "E06.06": 1,
+    "E06.07": 1,
+    "E08.02": 1,
+    "E10.01": 2,
+    "E11.03": 1,
+    "E11.08": 1,
+    "E12.02": 3,
+    "E13.04": 1,
+    "E13.08": 2,
+    "E14.03": 1,
+    "E15.05": 2,
+    "E16.01": 7,
+    "E17.04": 2,
+    "E17.12": 1,
+    "E18.01": 2,
+    "E18.03": 3,
+    "E18.05": 1,
+    "E18.07": 1,
+    "E20.06": 2,
+    "E20.07": 2
+   },
+   "pdf_pages": [
+    27,
+    53,
+    63,
+    78,
+    83,
+    91,
+    104,
+    105,
+    106,
+    112,
+    114,
+    129,
+    171,
+    182,
+    183,
+    191,
+    192,
+    205,
+    225,
+    245,
+    262,
+    279,
+    312,
+    313,
+    329,
+    340,
+    355,
+    356,
+    367,
+    369,
+    384,
+    386
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Gubernaculum",
+   "glossary_pdf": 421,
+   "id": "E.t.gubernaculum",
+   "hits": 12,
+   "chapters": {
+    "E16": 12
+   },
+   "sections": {
+    "E16.02": 12
+   },
+   "pdf_pages": [
+    299,
+    300
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Haploid",
+   "glossary_pdf": 421,
+   "id": "E.t.haploid",
+   "hits": 8,
+   "chapters": {
+    "E02": 7,
+    "E03": 1
+   },
+   "sections": {
+    "E02.02": 5,
+    "E02.03": 1,
+    "E02.04": 1,
+    "E03.02": 1
+   },
+   "pdf_pages": [
+    34,
+    35,
+    36,
+    48,
+    51,
+    59
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Hindgut",
+   "glossary_pdf": 421,
+   "id": "E.t.hindgut",
+   "hits": 49,
+   "chapters": {
+    "E06": 4,
+    "E07": 5,
+    "E13": 2,
+    "E14": 1,
+    "E15": 32,
+    "E16": 5
+   },
+   "sections": {
+    "E06.03": 3,
+    "E06.04": 1,
+    "E07.00": 1,
+    "E07.02": 1,
+    "E07.03": 1,
+    "E07.04": 1,
+    "E07.07": 1,
+    "E13.08": 1,
+    "E13.09": 1,
+    "E14.00": 1,
+    "E15.00": 3,
+    "E15.02": 2,
+    "E15.03": 3,
+    "E15.04": 1,
+    "E15.07": 1,
+    "E15.08": 16,
+    "E15.09": 3,
+    "E15.10": 3,
+    "E16.01": 2,
+    "E16.02": 3
+   },
+   "pdf_pages": [
+    106,
+    107,
+    108,
+    115,
+    116,
+    117,
+    120,
+    124,
+    228,
+    240,
+    242,
+    249,
+    250,
+    251,
+    253,
+    264,
+    267,
+    271,
+    272,
+    273,
+    274,
+    277,
+    286,
+    287
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Holoprosencephaly",
+   "glossary_pdf": 421,
+   "id": "E.t.holoprosencephaly",
+   "hits": 9,
+   "chapters": {
+    "E02": 1,
+    "E05": 1,
+    "E09": 1,
+    "E17": 3,
+    "E18": 1,
+    "E20": 2
+   },
+   "sections": {
+    "E02.02": 1,
+    "E05.05": 1,
+    "E09.01": 1,
+    "E17.11": 3,
+    "E18.04": 1,
+    "E20.07": 2
+   },
+   "pdf_pages": [
+    40,
+    85,
+    155,
+    326,
+    357,
+    387
+   ],
+   "primary_chapter": "E20",
+   "primary_section": "E20.07",
+   "placed": true
+  },
+  {
+   "term": "Homeobox genes",
+   "glossary_pdf": 421,
+   "id": "E.t.homeobox-genes",
+   "hits": 13,
+   "chapters": {
+    "E06": 5,
+    "E12": 2,
+    "E15": 1,
+    "E18": 4,
+    "E20": 1
+   },
+   "sections": {
+    "E06.00": 1,
+    "E06.04": 2,
+    "E06.05": 1,
+    "E06.07": 1,
+    "E12.02": 2,
+    "E15.06": 1,
+    "E18.03": 3,
+    "E18.04": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    91,
+    108,
+    109,
+    114,
+    191,
+    263,
+    355,
+    358,
+    385
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.04",
+   "placed": true
+  },
+  {
+   "term": "Hydatidiform mole",
+   "glossary_pdf": 421,
+   "id": "E.t.hydatidiform-mole",
+   "hits": 3,
+   "chapters": {
+    "E04": 2,
+    "E08": 1
+   },
+   "sections": {
+    "E04.05": 2,
+    "E08.02": 1
+   },
+   "pdf_pages": [
+    76,
+    131
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.05",
+   "placed": true
+  },
+  {
+   "term": "Hydrocephalus",
+   "glossary_pdf": 421,
+   "id": "E.t.hydrocephalus",
+   "hits": 10,
+   "chapters": {
+    "E09": 2,
+    "E16": 1,
+    "E18": 7
+   },
+   "sections": {
+    "E09.01": 2,
+    "E16.01": 1,
+    "E18.01": 1,
+    "E18.02": 1,
+    "E18.04": 4,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    151,
+    153,
+    281,
+    342,
+    350,
+    360,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.04",
+   "placed": true
+  },
+  {
+   "term": "Hyperplasia",
+   "glossary_pdf": 421,
+   "id": "E.t.hyperplasia",
+   "hits": 1,
+   "chapters": {
+    "E16": 1
+   },
+   "sections": {
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    298
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Hypertrophy",
+   "glossary_pdf": 421,
+   "id": "E.t.hypertrophy",
+   "hits": 11,
+   "chapters": {
+    "E03": 1,
+    "E09": 1,
+    "E10": 1,
+    "E12": 1,
+    "E13": 6,
+    "E16": 1
+   },
+   "sections": {
+    "E03.01": 1,
+    "E09.01": 1,
+    "E10.01": 1,
+    "E12.02": 1,
+    "E13.06": 6,
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    56,
+    151,
+    167,
+    189,
+    214,
+    216,
+    217,
+    221,
+    222,
+    298
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Hypoblast",
+   "glossary_pdf": 421,
+   "id": "E.t.hypoblast",
+   "hits": 32,
+   "chapters": {
+    "E03": 10,
+    "E04": 11,
+    "E05": 11
+   },
+   "sections": {
+    "E03.05": 10,
+    "E04.00": 2,
+    "E04.02": 2,
+    "E04.03": 2,
+    "E04.04": 2,
+    "E04.05": 2,
+    "E04.06": 1,
+    "E05.00": 4,
+    "E05.03": 5,
+    "E05.04": 1,
+    "E05.07": 1
+   },
+   "pdf_pages": [
+    63,
+    64,
+    69,
+    70,
+    71,
+    72,
+    76,
+    77,
+    78,
+    79,
+    80,
+    84,
+    89
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.05",
+   "placed": true
+  },
+  {
+   "term": "Hypospadias",
+   "glossary_pdf": 421,
+   "id": "E.t.hypospadias",
+   "hits": 14,
+   "chapters": {
+    "E09": 2,
+    "E10": 1,
+    "E12": 1,
+    "E16": 10
+   },
+   "sections": {
+    "E09.01": 2,
+    "E10.01": 1,
+    "E12.02": 1,
+    "E16.02": 10
+   },
+   "pdf_pages": [
+    154,
+    156,
+    172,
+    194,
+    296,
+    297,
+    298,
+    299
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Induction",
+   "glossary_pdf": 421,
+   "id": "E.t.induction",
+   "hits": 34,
+   "chapters": {
+    "E01": 7,
+    "E05": 3,
+    "E06": 8,
+    "E08": 1,
+    "E09": 1,
+    "E11": 1,
+    "E12": 1,
+    "E13": 4,
+    "E15": 2,
+    "E16": 4,
+    "E18": 1,
+    "E20": 1
+   },
+   "sections": {
+    "E01.03": 5,
+    "E01.06": 1,
+    "E01.07": 1,
+    "E05.00": 1,
+    "E05.03": 2,
+    "E06.00": 3,
+    "E06.01": 1,
+    "E06.02": 1,
+    "E06.06": 1,
+    "E06.07": 2,
+    "E08.09": 1,
+    "E09.01": 1,
+    "E11.10": 1,
+    "E12.02": 1,
+    "E13.04": 2,
+    "E13.07": 1,
+    "E13.09": 1,
+    "E15.05": 2,
+    "E16.01": 2,
+    "E16.03": 1,
+    "E16.04": 1,
+    "E18.03": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    25,
+    31,
+    32,
+    78,
+    81,
+    82,
+    91,
+    95,
+    105,
+    112,
+    114,
+    144,
+    156,
+    184,
+    194,
+    205,
+    224,
+    239,
+    261,
+    262,
+    279,
+    301,
+    302,
+    355,
+    387
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.03",
+   "placed": true
+  },
+  {
+   "term": "Inguinal canal",
+   "glossary_pdf": 421,
+   "id": "E.t.inguinal-canal",
+   "hits": 6,
+   "chapters": {
+    "E16": 6
+   },
+   "sections": {
+    "E16.02": 5,
+    "E16.03": 1
+   },
+   "pdf_pages": [
+    297,
+    300,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Inner cell mass",
+   "glossary_pdf": 421,
+   "id": "E.t.inner-cell-mass",
+   "hits": 14,
+   "chapters": {
+    "E03": 8,
+    "E04": 2,
+    "E08": 4
+   },
+   "sections": {
+    "E03.03": 2,
+    "E03.04": 2,
+    "E03.05": 3,
+    "E03.08": 1,
+    "E04.00": 1,
+    "E04.05": 1,
+    "E08.08": 1,
+    "E08.09": 3
+   },
+   "pdf_pages": [
+    61,
+    62,
+    63,
+    64,
+    68,
+    69,
+    76,
+    140,
+    141,
+    142
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.05",
+   "placed": true
+  },
+  {
+   "term": "Intermaxillary segment",
+   "glossary_pdf": 421,
+   "id": "E.t.intermaxillary-segment",
+   "hits": 7,
+   "chapters": {
+    "E17": 7
+   },
+   "sections": {
+    "E17.08": 4,
+    "E17.11": 2,
+    "E17.13": 1
+   },
+   "pdf_pages": [
+    320,
+    323,
+    330
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.08",
+   "placed": true
+  },
+  {
+   "term": "Intermediate column",
+   "glossary_pdf": 421,
+   "id": "E.t.intermediate-column",
+   "hits": 1,
+   "chapters": {
+    "E18": 1
+   },
+   "sections": {
+    "E18.01": 1
+   },
+   "pdf_pages": [
+    336
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Intermediate mesoderm",
+   "glossary_pdf": 421,
+   "id": "E.t.intermediate-mesoderm",
+   "hits": 19,
+   "chapters": {
+    "E05": 4,
+    "E06": 7,
+    "E07": 2,
+    "E16": 6
+   },
+   "sections": {
+    "E05.04": 3,
+    "E05.05": 1,
+    "E06.02": 7,
+    "E07.00": 1,
+    "E07.02": 1,
+    "E16.00": 2,
+    "E16.01": 4
+   },
+   "pdf_pages": [
+    84,
+    85,
+    99,
+    100,
+    103,
+    115,
+    116,
+    275,
+    276
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Intervertebral disc",
+   "glossary_pdf": 421,
+   "id": "E.t.intervertebral-disc",
+   "hits": 7,
+   "chapters": {
+    "E10": 7
+   },
+   "sections": {
+    "E10.02": 7
+   },
+   "pdf_pages": [
+    176
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.02",
+   "placed": true
+  },
+  {
+   "term": "Intramembranous (membranous) ossification",
+   "glossary_pdf": 421,
+   "id": "E.t.intramembranous-membranous-ossification",
+   "hits": 4,
+   "chapters": {
+    "E10": 4
+   },
+   "sections": {
+    "E10.00": 1,
+    "E10.01": 2,
+    "E10.04": 1
+   },
+   "pdf_pages": [
+    166,
+    168,
+    170,
+    178
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Intron",
+   "glossary_pdf": 422,
+   "id": "E.t.intron",
+   "hits": 12,
+   "chapters": {
+    "E01": 12
+   },
+   "sections": {
+    "E01.00": 2,
+    "E01.01": 4,
+    "E01.02": 4,
+    "E01.06": 2
+   },
+   "pdf_pages": [
+    22,
+    23,
+    24,
+    31
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.02",
+   "placed": true
+  },
+  {
+   "term": "Karyotype",
+   "glossary_pdf": 422,
+   "id": "E.t.karyotype",
+   "hits": 6,
+   "chapters": {
+    "E02": 3,
+    "E16": 3
+   },
+   "sections": {
+    "E02.02": 3,
+    "E16.02": 3
+   },
+   "pdf_pages": [
+    38,
+    39,
+    40,
+    298,
+    299
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Lateral horn",
+   "glossary_pdf": 422,
+   "id": "E.t.lateral-horn",
+   "hits": 1,
+   "chapters": {
+    "E18": 1
+   },
+   "sections": {
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.07",
+   "placed": true
+  },
+  {
+   "term": "Lateral plate mesoderm",
+   "glossary_pdf": 422,
+   "id": "E.t.lateral-plate-mesoderm",
+   "hits": 78,
+   "chapters": {
+    "E05": 9,
+    "E06": 17,
+    "E07": 13,
+    "E10": 4,
+    "E11": 16,
+    "E12": 5,
+    "E13": 8,
+    "E15": 1,
+    "E17": 3,
+    "E21": 2
+   },
+   "sections": {
+    "E05.03": 4,
+    "E05.04": 4,
+    "E05.07": 1,
+    "E06.00": 1,
+    "E06.02": 14,
+    "E06.06": 2,
+    "E07.00": 2,
+    "E07.02": 9,
+    "E07.06": 2,
+    "E10.00": 1,
+    "E10.01": 1,
+    "E10.03": 2,
+    "E11.00": 5,
+    "E11.02": 3,
+    "E11.03": 2,
+    "E11.08": 3,
+    "E11.10": 3,
+    "E12.00": 1,
+    "E12.02": 3,
+    "E12.03": 1,
+    "E13.00": 2,
+    "E13.01": 1,
+    "E13.04": 4,
+    "E13.09": 1,
+    "E15.03": 1,
+    "E17.00": 2,
+    "E17.01": 1,
+    "E21.00": 1,
+    "E21.06": 1
+   },
+   "pdf_pages": [
+    82,
+    83,
+    84,
+    89,
+    91,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    113,
+    115,
+    116,
+    123,
+    166,
+    168,
+    177,
+    179,
+    180,
+    182,
+    183,
+    184,
+    186,
+    190,
+    191,
+    197,
+    198,
+    199,
+    205,
+    238,
+    251,
+    303,
+    305,
+    389,
+    394
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.00",
+   "placed": true
+  },
+  {
+   "term": "Lateral somitic frontier",
+   "glossary_pdf": 422,
+   "id": "E.t.lateral-somitic-frontier",
+   "hits": 9,
+   "chapters": {
+    "E07": 1,
+    "E10": 2,
+    "E11": 6
+   },
+   "sections": {
+    "E07.02": 1,
+    "E10.03": 2,
+    "E11.00": 3,
+    "E11.02": 2,
+    "E11.10": 1
+   },
+   "pdf_pages": [
+    116,
+    177,
+    179,
+    180,
+    184
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.00",
+   "placed": true
+  },
+  {
+   "term": "Laterality sequences (heterotaxy)",
+   "glossary_pdf": 422,
+   "id": "E.t.laterality-sequences-heterotaxy",
+   "hits": 1,
+   "chapters": {
+    "E13": 1
+   },
+   "sections": {
+    "E13.03": 1
+   },
+   "pdf_pages": [
+    204
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.03",
+   "placed": true
+  },
+  {
+   "term": "Lesser omentum",
+   "glossary_pdf": 422,
+   "id": "E.t.lesser-omentum",
+   "hits": 14,
+   "chapters": {
+    "E15": 14
+   },
+   "sections": {
+    "E15.04": 12,
+    "E15.07": 1,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    252,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    265,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Lesser sac",
+   "glossary_pdf": 422,
+   "id": "E.t.lesser-sac",
+   "hits": 1,
+   "chapters": {
+    "E15": 1
+   },
+   "sections": {
+    "E15.04": 1
+   },
+   "pdf_pages": [
+    259
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Ligand",
+   "glossary_pdf": 422,
+   "id": "E.t.ligand",
+   "hits": 26,
+   "chapters": {
+    "E01": 18,
+    "E03": 2,
+    "E06": 1,
+    "E10": 1,
+    "E13": 2,
+    "E18": 2
+   },
+   "sections": {
+    "E01.03": 3,
+    "E01.04": 5,
+    "E01.05": 2,
+    "E01.06": 4,
+    "E01.07": 4,
+    "E03.02": 2,
+    "E06.02": 1,
+    "E10.01": 1,
+    "E13.05": 1,
+    "E13.06": 1,
+    "E18.05": 2
+   },
+   "pdf_pages": [
+    25,
+    26,
+    27,
+    29,
+    31,
+    32,
+    59,
+    105,
+    171,
+    206,
+    221,
+    367
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.04",
+   "placed": true
+  },
+  {
+   "term": "Mantle layer",
+   "glossary_pdf": 422,
+   "id": "E.t.mantle-layer",
+   "hits": 9,
+   "chapters": {
+    "E18": 8,
+    "E20": 1
+   },
+   "sections": {
+    "E18.01": 8,
+    "E20.02": 1
+   },
+   "pdf_pages": [
+    334,
+    335,
+    336,
+    337,
+    381
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Marginal layer",
+   "glossary_pdf": 422,
+   "id": "E.t.marginal-layer",
+   "hits": 10,
+   "chapters": {
+    "E18": 10
+   },
+   "sections": {
+    "E18.01": 7,
+    "E18.02": 3
+   },
+   "pdf_pages": [
+    333,
+    334,
+    337,
+    346,
+    348
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Meiosis",
+   "glossary_pdf": 422,
+   "id": "E.t.meiosis",
+   "hits": 35,
+   "chapters": {
+    "E02": 28,
+    "E03": 7
+   },
+   "sections": {
+    "E02.00": 1,
+    "E02.02": 11,
+    "E02.03": 8,
+    "E02.04": 5,
+    "E02.05": 3,
+    "E03.00": 4,
+    "E03.01": 3
+   },
+   "pdf_pages": [
+    33,
+    35,
+    36,
+    37,
+    44,
+    45,
+    46,
+    47,
+    48,
+    50,
+    51,
+    52,
+    53,
+    55,
+    56
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Membranous ossification",
+   "glossary_pdf": 422,
+   "id": "E.t.membranous-ossification",
+   "hits": 2,
+   "chapters": {
+    "E17": 2
+   },
+   "sections": {
+    "E17.01": 2
+   },
+   "pdf_pages": [
+    306,
+    308
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.01",
+   "placed": true
+  },
+  {
+   "term": "Meninges",
+   "glossary_pdf": 422,
+   "id": "E.t.meninges",
+   "hits": 14,
+   "chapters": {
+    "E06": 1,
+    "E10": 1,
+    "E17": 1,
+    "E18": 11
+   },
+   "sections": {
+    "E06.01": 1,
+    "E10.01": 1,
+    "E17.00": 1,
+    "E18.01": 5,
+    "E18.02": 2,
+    "E18.04": 4
+   },
+   "pdf_pages": [
+    97,
+    170,
+    303,
+    337,
+    341,
+    342,
+    354,
+    358
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Meningocele",
+   "glossary_pdf": 422,
+   "id": "E.t.meningocele",
+   "hits": 7,
+   "chapters": {
+    "E10": 2,
+    "E18": 5
+   },
+   "sections": {
+    "E10.01": 2,
+    "E18.01": 3,
+    "E18.04": 2
+   },
+   "pdf_pages": [
+    170,
+    342,
+    358
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Meningoencephalocele",
+   "glossary_pdf": 422,
+   "id": "E.t.meningoencephalocele",
+   "hits": 4,
+   "chapters": {
+    "E18": 4
+   },
+   "sections": {
+    "E18.04": 4
+   },
+   "pdf_pages": [
+    358,
+    359
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.04",
+   "placed": true
+  },
+  {
+   "term": "Meromelia",
+   "glossary_pdf": 422,
+   "id": "E.t.meromelia",
+   "hits": 5,
+   "chapters": {
+    "E09": 2,
+    "E12": 3
+   },
+   "sections": {
+    "E09.01": 2,
+    "E12.02": 3
+   },
+   "pdf_pages": [
+    153,
+    193,
+    194
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Mesencephalon",
+   "glossary_pdf": 422,
+   "id": "E.t.mesencephalon",
+   "hits": 29,
+   "chapters": {
+    "E18": 29
+   },
+   "sections": {
+    "E18.00": 3,
+    "E18.01": 3,
+    "E18.02": 15,
+    "E18.03": 1,
+    "E18.05": 2,
+    "E18.06": 5
+   },
+   "pdf_pages": [
+    332,
+    333,
+    335,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    351,
+    356,
+    361,
+    362,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Mesenchyme",
+   "glossary_pdf": 422,
+   "id": "E.t.mesenchyme",
+   "hits": 153,
+   "chapters": {
+    "E01": 4,
+    "E06": 4,
+    "E07": 2,
+    "E10": 16,
+    "E11": 2,
+    "E12": 19,
+    "E13": 5,
+    "E14": 4,
+    "E15": 3,
+    "E16": 23,
+    "E17": 34,
+    "E18": 10,
+    "E19": 7,
+    "E20": 12,
+    "E21": 8
+   },
+   "sections": {
+    "E01.03": 4,
+    "E06.01": 1,
+    "E06.02": 2,
+    "E06.06": 1,
+    "E07.05": 2,
+    "E10.00": 4,
+    "E10.01": 7,
+    "E10.02": 2,
+    "E10.04": 3,
+    "E11.03": 1,
+    "E11.08": 1,
+    "E12.00": 2,
+    "E12.01": 4,
+    "E12.02": 13,
+    "E13.06": 4,
+    "E13.08": 1,
+    "E14.02": 4,
+    "E15.03": 1,
+    "E15.04": 2,
+    "E16.01": 13,
+    "E16.02": 7,
+    "E16.03": 3,
+    "E17.00": 3,
+    "E17.01": 4,
+    "E17.02": 1,
+    "E17.04": 12,
+    "E17.07": 2,
+    "E17.10": 1,
+    "E17.11": 6,
+    "E17.12": 3,
+    "E17.13": 1,
+    "E17.14": 1,
+    "E18.01": 3,
+    "E18.02": 4,
+    "E18.05": 3,
+    "E19.00": 1,
+    "E19.01": 1,
+    "E19.02": 3,
+    "E19.03": 1,
+    "E19.05": 1,
+    "E20.02": 4,
+    "E20.03": 1,
+    "E20.04": 3,
+    "E20.06": 2,
+    "E20.07": 1,
+    "E20.08": 1,
+    "E21.00": 3,
+    "E21.02": 2,
+    "E21.05": 3
+   },
+   "pdf_pages": [
+    25,
+    95,
+    99,
+    105,
+    113,
+    121,
+    166,
+    167,
+    168,
+    170,
+    171,
+    176,
+    178,
+    182,
+    183,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    210,
+    211,
+    220,
+    225,
+    244,
+    251,
+    253,
+    258,
+    279,
+    280,
+    286,
+    287,
+    288,
+    291,
+    295,
+    299,
+    301,
+    303,
+    304,
+    305,
+    306,
+    308,
+    309,
+    311,
+    312,
+    313,
+    315,
+    319,
+    321,
+    327,
+    328,
+    329,
+    330,
+    331,
+    337,
+    339,
+    346,
+    348,
+    351,
+    365,
+    367,
+    370,
+    371,
+    373,
+    374,
+    375,
+    378,
+    381,
+    382,
+    383,
+    384,
+    386,
+    388,
+    389,
+    391,
+    393
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.04",
+   "placed": true
+  },
+  {
+   "term": "Mesentery",
+   "glossary_pdf": 422,
+   "id": "E.t.mesentery",
+   "hits": 85,
+   "chapters": {
+    "E04": 1,
+    "E06": 3,
+    "E07": 17,
+    "E13": 3,
+    "E15": 52,
+    "E16": 7,
+    "E18": 1,
+    "E19": 1
+   },
+   "sections": {
+    "E04.06": 1,
+    "E06.02": 1,
+    "E06.03": 2,
+    "E07.00": 3,
+    "E07.02": 3,
+    "E07.05": 7,
+    "E07.06": 1,
+    "E07.07": 3,
+    "E13.06": 1,
+    "E13.08": 1,
+    "E13.09": 1,
+    "E15.03": 9,
+    "E15.04": 19,
+    "E15.05": 2,
+    "E15.06": 2,
+    "E15.07": 1,
+    "E15.08": 15,
+    "E15.10": 4,
+    "E16.01": 1,
+    "E16.02": 6,
+    "E18.05": 1,
+    "E19.03": 1
+   },
+   "pdf_pages": [
+    77,
+    103,
+    107,
+    115,
+    116,
+    121,
+    122,
+    123,
+    124,
+    211,
+    228,
+    238,
+    251,
+    252,
+    257,
+    259,
+    261,
+    263,
+    264,
+    267,
+    271,
+    274,
+    277,
+    286,
+    287,
+    289,
+    297,
+    365,
+    375
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Mesoderm",
+   "glossary_pdf": 422,
+   "id": "E.t.mesoderm",
+   "hits": 355,
+   "chapters": {
+    "E01": 1,
+    "E04": 16,
+    "E05": 61,
+    "E06": 85,
+    "E07": 36,
+    "E08": 6,
+    "E10": 19,
+    "E11": 31,
+    "E12": 5,
+    "E13": 20,
+    "E14": 7,
+    "E15": 30,
+    "E16": 18,
+    "E17": 8,
+    "E18": 5,
+    "E19": 1,
+    "E21": 6
+   },
+   "sections": {
+    "E01.05": 1,
+    "E04.03": 5,
+    "E04.04": 6,
+    "E04.05": 1,
+    "E04.06": 4,
+    "E05.00": 5,
+    "E05.03": 25,
+    "E05.04": 13,
+    "E05.05": 4,
+    "E05.06": 5,
+    "E05.07": 7,
+    "E05.08": 2,
+    "E06.00": 11,
+    "E06.01": 1,
+    "E06.02": 61,
+    "E06.03": 3,
+    "E06.06": 9,
+    "E07.00": 12,
+    "E07.02": 18,
+    "E07.04": 1,
+    "E07.05": 1,
+    "E07.06": 3,
+    "E07.07": 1,
+    "E08.02": 6,
+    "E10.00": 5,
+    "E10.01": 7,
+    "E10.02": 1,
+    "E10.03": 4,
+    "E10.04": 2,
+    "E11.00": 11,
+    "E11.02": 5,
+    "E11.03": 4,
+    "E11.08": 3,
+    "E11.10": 7,
+    "E11.11": 1,
+    "E12.00": 1,
+    "E12.02": 3,
+    "E12.03": 1,
+    "E13.00": 5,
+    "E13.01": 2,
+    "E13.02": 1,
+    "E13.04": 7,
+    "E13.06": 1,
+    "E13.07": 1,
+    "E13.08": 1,
+    "E13.09": 2,
+    "E14.00": 2,
+    "E14.03": 4,
+    "E14.05": 1,
+    "E15.02": 4,
+    "E15.03": 7,
+    "E15.04": 4,
+    "E15.05": 7,
+    "E15.06": 1,
+    "E15.08": 3,
+    "E15.09": 4,
+    "E16.00": 5,
+    "E16.01": 13,
+    "E17.00": 4,
+    "E17.01": 3,
+    "E17.05": 1,
+    "E18.02": 1,
+    "E18.04": 1,
+    "E18.05": 2,
+    "E18.07": 1,
+    "E19.04": 1,
+    "E21.00": 1,
+    "E21.02": 3,
+    "E21.06": 2
+   },
+   "pdf_pages": [
+    27,
+    71,
+    72,
+    73,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    87,
+    88,
+    89,
+    90,
+    91,
+    95,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    107,
+    112,
+    113,
+    115,
+    116,
+    120,
+    121,
+    123,
+    124,
+    129,
+    130,
+    131,
+    166,
+    168,
+    169,
+    171,
+    175,
+    177,
+    178,
+    179,
+    180,
+    182,
+    183,
+    184,
+    185,
+    186,
+    190,
+    191,
+    197,
+    198,
+    199,
+    201,
+    205,
+    211,
+    224,
+    225,
+    238,
+    242,
+    245,
+    247,
+    250,
+    251,
+    255,
+    257,
+    260,
+    261,
+    262,
+    263,
+    271,
+    272,
+    273,
+    275,
+    276,
+    277,
+    279,
+    280,
+    282,
+    285,
+    303,
+    305,
+    307,
+    316,
+    354,
+    357,
+    361,
+    369,
+    377,
+    389,
+    391,
+    394
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Mesonephric ducts (Wolffian ducts)",
+   "glossary_pdf": 422,
+   "id": "E.t.mesonephric-ducts-wolffian-ducts",
+   "hits": 43,
+   "chapters": {
+    "E16": 43
+   },
+   "sections": {
+    "E16.00": 1,
+    "E16.01": 19,
+    "E16.02": 19,
+    "E16.03": 2,
+    "E16.04": 2
+   },
+   "pdf_pages": [
+    275,
+    276,
+    277,
+    281,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    301,
+    302
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Mesonephros",
+   "glossary_pdf": 423,
+   "id": "E.t.mesonephros",
+   "hits": 27,
+   "chapters": {
+    "E06": 2,
+    "E16": 25
+   },
+   "sections": {
+    "E06.02": 2,
+    "E16.00": 3,
+    "E16.01": 11,
+    "E16.02": 8,
+    "E16.03": 3
+   },
+   "pdf_pages": [
+    103,
+    104,
+    275,
+    276,
+    277,
+    279,
+    282,
+    286,
+    287,
+    289,
+    290,
+    297,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Metanephros",
+   "glossary_pdf": 423,
+   "id": "E.t.metanephros",
+   "hits": 8,
+   "chapters": {
+    "E16": 8
+   },
+   "sections": {
+    "E16.00": 1,
+    "E16.01": 6,
+    "E16.03": 1
+   },
+   "pdf_pages": [
+    275,
+    276,
+    278,
+    282,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Metencephalon",
+   "glossary_pdf": 423,
+   "id": "E.t.metencephalon",
+   "hits": 33,
+   "chapters": {
+    "E18": 33
+   },
+   "sections": {
+    "E18.00": 2,
+    "E18.01": 3,
+    "E18.02": 21,
+    "E18.05": 5,
+    "E18.06": 2
+   },
+   "pdf_pages": [
+    332,
+    333,
+    335,
+    343,
+    344,
+    345,
+    346,
+    347,
+    351,
+    362,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Microphthalmia",
+   "glossary_pdf": 423,
+   "id": "E.t.microphthalmia",
+   "hits": 7,
+   "chapters": {
+    "E02": 1,
+    "E09": 3,
+    "E20": 3
+   },
+   "sections": {
+    "E02.02": 1,
+    "E09.01": 3,
+    "E20.07": 3
+   },
+   "pdf_pages": [
+    40,
+    151,
+    152,
+    387
+   ],
+   "primary_chapter": "E20",
+   "primary_section": "E20.07",
+   "placed": true
+  },
+  {
+   "term": "Midgut",
+   "glossary_pdf": 423,
+   "id": "E.t.midgut",
+   "hits": 31,
+   "chapters": {
+    "E06": 5,
+    "E07": 3,
+    "E13": 2,
+    "E15": 21
+   },
+   "sections": {
+    "E06.03": 4,
+    "E06.07": 1,
+    "E07.02": 1,
+    "E07.03": 2,
+    "E13.08": 1,
+    "E13.09": 1,
+    "E15.00": 2,
+    "E15.02": 2,
+    "E15.03": 3,
+    "E15.04": 2,
+    "E15.06": 3,
+    "E15.07": 4,
+    "E15.08": 1,
+    "E15.09": 1,
+    "E15.10": 3
+   },
+   "pdf_pages": [
+    106,
+    107,
+    114,
+    116,
+    117,
+    119,
+    228,
+    240,
+    249,
+    250,
+    251,
+    259,
+    263,
+    264,
+    266,
+    267,
+    273,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.07",
+   "placed": true
+  },
+  {
+   "term": "Mitosis",
+   "glossary_pdf": 423,
+   "id": "E.t.mitosis",
+   "hits": 11,
+   "chapters": {
+    "E02": 11
+   },
+   "sections": {
+    "E02.02": 8,
+    "E02.03": 2,
+    "E02.04": 1
+   },
+   "pdf_pages": [
+    34,
+    35,
+    38,
+    44,
+    45,
+    51
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Monozygotic twins",
+   "glossary_pdf": 423,
+   "id": "E.t.monozygotic-twins",
+   "hits": 6,
+   "chapters": {
+    "E08": 6
+   },
+   "sections": {
+    "E08.08": 2,
+    "E08.09": 3,
+    "E08.10": 1
+   },
+   "pdf_pages": [
+    140,
+    142,
+    143,
+    145
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.09",
+   "placed": true
+  },
+  {
+   "term": "Morphogen",
+   "glossary_pdf": 423,
+   "id": "E.t.morphogen",
+   "hits": 5,
+   "chapters": {
+    "E01": 3,
+    "E12": 2
+   },
+   "sections": {
+    "E01.05": 1,
+    "E01.06": 1,
+    "E01.07": 1,
+    "E12.02": 2
+   },
+   "pdf_pages": [
+    28,
+    29,
+    32,
+    192
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.07",
+   "placed": true
+  },
+  {
+   "term": "Mosaicism",
+   "glossary_pdf": 423,
+   "id": "E.t.mosaicism",
+   "hits": 7,
+   "chapters": {
+    "E02": 6,
+    "E08": 1
+   },
+   "sections": {
+    "E02.02": 5,
+    "E02.05": 1,
+    "E08.08": 1
+   },
+   "pdf_pages": [
+    38,
+    41,
+    43,
+    52,
+    140
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Mullerian inhibiting substance (MIS)",
+   "glossary_pdf": 423,
+   "id": "E.t.mullerian-inhibiting-substance-mis",
+   "hits": 17,
+   "chapters": {
+    "E13": 1,
+    "E15": 1,
+    "E16": 13,
+    "E19": 1,
+    "E21": 1
+   },
+   "sections": {
+    "E13.09": 1,
+    "E15.04": 1,
+    "E16.01": 1,
+    "E16.02": 8,
+    "E16.03": 1,
+    "E16.04": 3,
+    "E19.05": 1,
+    "E21.00": 1
+   },
+   "pdf_pages": [
+    240,
+    255,
+    279,
+    290,
+    291,
+    298,
+    301,
+    302,
+    378,
+    389
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Myelencephalon",
+   "glossary_pdf": 423,
+   "id": "E.t.myelencephalon",
+   "hits": 27,
+   "chapters": {
+    "E18": 27
+   },
+   "sections": {
+    "E18.00": 2,
+    "E18.01": 3,
+    "E18.02": 17,
+    "E18.05": 4,
+    "E18.06": 1
+   },
+   "pdf_pages": [
+    332,
+    333,
+    335,
+    343,
+    344,
+    345,
+    346,
+    362,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Myelomeningocele",
+   "glossary_pdf": 423,
+   "id": "E.t.myelomeningocele",
+   "hits": 3,
+   "chapters": {
+    "E18": 3
+   },
+   "sections": {
+    "E18.01": 3
+   },
+   "pdf_pages": [
+    342
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Myotome",
+   "glossary_pdf": 423,
+   "id": "E.t.myotome",
+   "hits": 23,
+   "chapters": {
+    "E06": 5,
+    "E10": 6,
+    "E11": 11,
+    "E12": 1
+   },
+   "sections": {
+    "E06.02": 4,
+    "E06.06": 1,
+    "E10.00": 1,
+    "E10.02": 5,
+    "E11.00": 3,
+    "E11.02": 6,
+    "E11.03": 1,
+    "E11.10": 1,
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    101,
+    102,
+    113,
+    166,
+    176,
+    179,
+    180,
+    181,
+    182,
+    184,
+    189
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.02",
+   "placed": true
+  },
+  {
+   "term": "Nephron",
+   "glossary_pdf": 423,
+   "id": "E.t.nephron",
+   "hits": 11,
+   "chapters": {
+    "E01": 1,
+    "E16": 10
+   },
+   "sections": {
+    "E01.03": 1,
+    "E16.01": 8,
+    "E16.03": 2
+   },
+   "pdf_pages": [
+    25,
+    278,
+    279,
+    280,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Neural crest cells",
+   "glossary_pdf": 423,
+   "id": "E.t.neural-crest-cells",
+   "hits": 90,
+   "chapters": {
+    "E06": 4,
+    "E09": 1,
+    "E10": 7,
+    "E11": 4,
+    "E13": 19,
+    "E15": 1,
+    "E17": 22,
+    "E18": 24,
+    "E19": 4,
+    "E21": 4
+   },
+   "sections": {
+    "E06.01": 4,
+    "E09.01": 1,
+    "E10.00": 1,
+    "E10.01": 5,
+    "E10.04": 1,
+    "E11.03": 2,
+    "E11.08": 2,
+    "E13.06": 12,
+    "E13.07": 3,
+    "E13.08": 2,
+    "E13.09": 2,
+    "E15.08": 1,
+    "E17.00": 2,
+    "E17.01": 2,
+    "E17.04": 14,
+    "E17.05": 1,
+    "E17.11": 1,
+    "E17.13": 1,
+    "E17.14": 1,
+    "E18.01": 6,
+    "E18.02": 2,
+    "E18.05": 12,
+    "E18.06": 1,
+    "E18.07": 3,
+    "E19.03": 1,
+    "E19.04": 2,
+    "E19.05": 1,
+    "E21.01": 1,
+    "E21.02": 1,
+    "E21.06": 2
+   },
+   "pdf_pages": [
+    95,
+    96,
+    155,
+    166,
+    168,
+    169,
+    170,
+    171,
+    178,
+    182,
+    183,
+    208,
+    214,
+    218,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    228,
+    238,
+    240,
+    272,
+    303,
+    305,
+    307,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    327,
+    330,
+    331,
+    333,
+    337,
+    338,
+    352,
+    354,
+    361,
+    363,
+    365,
+    367,
+    368,
+    369,
+    375,
+    377,
+    378,
+    390,
+    391,
+    394
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.04",
+   "placed": true
+  },
+  {
+   "term": "Neurocranium",
+   "glossary_pdf": 423,
+   "id": "E.t.neurocranium",
+   "hits": 11,
+   "chapters": {
+    "E10": 9,
+    "E17": 2
+   },
+   "sections": {
+    "E10.00": 1,
+    "E10.01": 6,
+    "E10.04": 2,
+    "E17.00": 2
+   },
+   "pdf_pages": [
+    166,
+    168,
+    169,
+    170,
+    178,
+    303
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Neuromeres",
+   "glossary_pdf": 423,
+   "id": "E.t.neuromeres",
+   "hits": 1,
+   "chapters": {
+    "E06": 1
+   },
+   "sections": {
+    "E06.02": 1
+   },
+   "pdf_pages": [
+    99
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Neuropores",
+   "glossary_pdf": 423,
+   "id": "E.t.neuropores",
+   "hits": 21,
+   "chapters": {
+    "E06": 11,
+    "E10": 2,
+    "E17": 2,
+    "E18": 6
+   },
+   "sections": {
+    "E06.01": 8,
+    "E06.06": 3,
+    "E10.01": 2,
+    "E17.00": 2,
+    "E18.00": 4,
+    "E18.01": 2
+   },
+   "pdf_pages": [
+    94,
+    95,
+    113,
+    170,
+    304,
+    332,
+    334
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.01",
+   "placed": true
+  },
+  {
+   "term": "Neurulation",
+   "glossary_pdf": 424,
+   "id": "E.t.neurulation",
+   "hits": 11,
+   "chapters": {
+    "E01": 2,
+    "E06": 5,
+    "E07": 1,
+    "E09": 1,
+    "E17": 1,
+    "E20": 1
+   },
+   "sections": {
+    "E01.06": 1,
+    "E01.07": 1,
+    "E06.00": 3,
+    "E06.01": 1,
+    "E06.07": 1,
+    "E07.00": 1,
+    "E09.01": 1,
+    "E17.11": 1,
+    "E20.06": 1
+   },
+   "pdf_pages": [
+    29,
+    32,
+    91,
+    95,
+    114,
+    115,
+    152,
+    326,
+    384
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.00",
+   "placed": true
+  },
+  {
+   "term": "Notochord",
+   "glossary_pdf": 424,
+   "id": "E.t.notochord",
+   "hits": 64,
+   "chapters": {
+    "E05": 25,
+    "E06": 15,
+    "E10": 6,
+    "E11": 5,
+    "E13": 1,
+    "E15": 4,
+    "E18": 6,
+    "E20": 2
+   },
+   "sections": {
+    "E05.00": 5,
+    "E05.03": 16,
+    "E05.04": 2,
+    "E05.07": 2,
+    "E06.00": 3,
+    "E06.01": 1,
+    "E06.02": 8,
+    "E06.06": 3,
+    "E10.00": 1,
+    "E10.01": 2,
+    "E10.02": 3,
+    "E11.00": 1,
+    "E11.02": 3,
+    "E11.03": 1,
+    "E13.00": 1,
+    "E15.05": 3,
+    "E15.06": 1,
+    "E18.01": 3,
+    "E18.02": 1,
+    "E18.03": 2,
+    "E20.07": 2
+   },
+   "pdf_pages": [
+    78,
+    81,
+    82,
+    83,
+    84,
+    89,
+    91,
+    92,
+    99,
+    100,
+    101,
+    102,
+    103,
+    105,
+    112,
+    113,
+    166,
+    169,
+    175,
+    176,
+    179,
+    180,
+    181,
+    182,
+    198,
+    262,
+    263,
+    340,
+    341,
+    350,
+    355,
+    356,
+    385
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Nucleosome",
+   "glossary_pdf": 424,
+   "id": "E.t.nucleosome",
+   "hits": 13,
+   "chapters": {
+    "E01": 13
+   },
+   "sections": {
+    "E01.00": 8,
+    "E01.01": 2,
+    "E01.02": 1,
+    "E01.06": 2
+   },
+   "pdf_pages": [
+    22,
+    23,
+    24,
+    31
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.00",
+   "placed": true
+  },
+  {
+   "term": "Nucleus pulposus",
+   "glossary_pdf": 424,
+   "id": "E.t.nucleus-pulposus",
+   "hits": 1,
+   "chapters": {
+    "E10": 1
+   },
+   "sections": {
+    "E10.02": 1
+   },
+   "pdf_pages": [
+    176
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.02",
+   "placed": true
+  },
+  {
+   "term": "Omentum",
+   "glossary_pdf": 424,
+   "id": "E.t.omentum",
+   "hits": 28,
+   "chapters": {
+    "E04": 1,
+    "E15": 27
+   },
+   "sections": {
+    "E04.04": 1,
+    "E15.04": 22,
+    "E15.07": 1,
+    "E15.08": 3,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    75,
+    252,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    265,
+    267,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Omphalocele",
+   "glossary_pdf": 424,
+   "id": "E.t.omphalocele",
+   "hits": 23,
+   "chapters": {
+    "E05": 1,
+    "E07": 8,
+    "E09": 4,
+    "E15": 10
+   },
+   "sections": {
+    "E05.05": 1,
+    "E07.03": 8,
+    "E09.01": 2,
+    "E09.02": 2,
+    "E15.08": 10
+   },
+   "pdf_pages": [
+    86,
+    117,
+    119,
+    151,
+    157,
+    160,
+    161,
+    268,
+    269,
+    270
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.03",
+   "placed": true
+  },
+  {
+   "term": "Organogenesis",
+   "glossary_pdf": 424,
+   "id": "E.t.organogenesis",
+   "hits": 6,
+   "chapters": {
+    "E06": 3,
+    "E09": 3
+   },
+   "sections": {
+    "E06.00": 1,
+    "E06.06": 2,
+    "E09.01": 3
+   },
+   "pdf_pages": [
+    91,
+    112,
+    148,
+    150
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Oropharyngeal membrane",
+   "glossary_pdf": 424,
+   "id": "E.t.oropharyngeal-membrane",
+   "hits": 20,
+   "chapters": {
+    "E05": 4,
+    "E06": 3,
+    "E07": 1,
+    "E13": 5,
+    "E15": 4,
+    "E17": 2,
+    "E18": 1
+   },
+   "sections": {
+    "E05.00": 3,
+    "E05.04": 1,
+    "E06.03": 3,
+    "E07.03": 1,
+    "E13.02": 5,
+    "E15.00": 3,
+    "E15.09": 1,
+    "E17.01": 2,
+    "E18.02": 1
+   },
+   "pdf_pages": [
+    78,
+    84,
+    106,
+    107,
+    117,
+    200,
+    201,
+    249,
+    273,
+    306,
+    350
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.00",
+   "placed": true
+  },
+  {
+   "term": "Outer cell mass",
+   "glossary_pdf": 424,
+   "id": "E.t.outer-cell-mass",
+   "hits": 4,
+   "chapters": {
+    "E03": 4
+   },
+   "sections": {
+    "E03.03": 2,
+    "E03.04": 1,
+    "E03.08": 1
+   },
+   "pdf_pages": [
+    61,
+    62,
+    68
+   ],
+   "primary_chapter": "E03",
+   "primary_section": "E03.03",
+   "placed": true
+  },
+  {
+   "term": "Paracrine signaling",
+   "glossary_pdf": 424,
+   "id": "E.t.paracrine-signaling",
+   "hits": 10,
+   "chapters": {
+    "E01": 10
+   },
+   "sections": {
+    "E01.03": 2,
+    "E01.04": 4,
+    "E01.05": 2,
+    "E01.07": 2
+   },
+   "pdf_pages": [
+    25,
+    26,
+    27,
+    32
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.04",
+   "placed": true
+  },
+  {
+   "term": "Paramesonephric ducts (mullerian ducts)",
+   "glossary_pdf": 424,
+   "id": "E.t.paramesonephric-ducts-mullerian-ducts",
+   "hits": 26,
+   "chapters": {
+    "E16": 26
+   },
+   "sections": {
+    "E16.01": 2,
+    "E16.02": 21,
+    "E16.04": 3
+   },
+   "pdf_pages": [
+    277,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    302
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Paraxial mesoderm",
+   "glossary_pdf": 424,
+   "id": "E.t.paraxial-mesoderm",
+   "hits": 37,
+   "chapters": {
+    "E05": 4,
+    "E06": 10,
+    "E10": 9,
+    "E11": 8,
+    "E16": 1,
+    "E17": 2,
+    "E19": 1,
+    "E21": 2
+   },
+   "sections": {
+    "E05.03": 2,
+    "E05.04": 2,
+    "E06.00": 1,
+    "E06.02": 8,
+    "E06.06": 1,
+    "E10.00": 2,
+    "E10.01": 4,
+    "E10.02": 1,
+    "E10.03": 1,
+    "E10.04": 1,
+    "E11.00": 4,
+    "E11.02": 1,
+    "E11.03": 1,
+    "E11.10": 2,
+    "E16.00": 1,
+    "E17.00": 2,
+    "E19.04": 1,
+    "E21.02": 1,
+    "E21.06": 1
+   },
+   "pdf_pages": [
+    82,
+    84,
+    91,
+    99,
+    100,
+    101,
+    103,
+    113,
+    166,
+    168,
+    169,
+    171,
+    175,
+    177,
+    178,
+    179,
+    180,
+    182,
+    184,
+    275,
+    303,
+    377,
+    391,
+    394
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.00",
+   "placed": true
+  },
+  {
+   "term": "Parenchyma",
+   "glossary_pdf": 424,
+   "id": "E.t.parenchyma",
+   "hits": 8,
+   "chapters": {
+    "E06": 2,
+    "E15": 6
+   },
+   "sections": {
+    "E06.04": 1,
+    "E06.07": 1,
+    "E15.02": 1,
+    "E15.04": 1,
+    "E15.06": 1,
+    "E15.08": 1,
+    "E15.09": 2
+   },
+   "pdf_pages": [
+    108,
+    114,
+    250,
+    260,
+    263,
+    270,
+    273
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.09",
+   "placed": true
+  },
+  {
+   "term": "Parietal",
+   "glossary_pdf": 424,
+   "id": "E.t.parietal",
+   "hits": 75,
+   "chapters": {
+    "E06": 16,
+    "E07": 21,
+    "E10": 12,
+    "E11": 10,
+    "E12": 2,
+    "E14": 4,
+    "E15": 7,
+    "E16": 1,
+    "E17": 1,
+    "E18": 1
+   },
+   "sections": {
+    "E06.02": 15,
+    "E06.03": 1,
+    "E07.00": 6,
+    "E07.02": 10,
+    "E07.06": 2,
+    "E07.07": 3,
+    "E10.00": 2,
+    "E10.01": 8,
+    "E10.03": 2,
+    "E11.00": 3,
+    "E11.02": 2,
+    "E11.03": 1,
+    "E11.08": 1,
+    "E11.10": 3,
+    "E12.00": 1,
+    "E12.03": 1,
+    "E14.03": 3,
+    "E14.04": 1,
+    "E15.03": 1,
+    "E15.04": 5,
+    "E15.10": 1,
+    "E16.02": 1,
+    "E17.00": 1,
+    "E18.05": 1
+   },
+   "pdf_pages": [
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    107,
+    115,
+    116,
+    123,
+    124,
+    166,
+    167,
+    168,
+    171,
+    174,
+    177,
+    179,
+    180,
+    182,
+    183,
+    184,
+    186,
+    197,
+    245,
+    246,
+    251,
+    252,
+    256,
+    260,
+    274,
+    300,
+    303,
+    364
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Parturition",
+   "glossary_pdf": 424,
+   "id": "E.t.parturition",
+   "hits": 5,
+   "chapters": {
+    "E08": 4,
+    "E09": 1
+   },
+   "sections": {
+    "E08.03": 1,
+    "E08.08": 2,
+    "E08.10": 1,
+    "E09.01": 1
+   },
+   "pdf_pages": [
+    132,
+    140,
+    145,
+    148
+   ],
+   "primary_chapter": "E08",
+   "primary_section": "E08.08",
+   "placed": true
+  },
+  {
+   "term": "Pericardioperitoneal canal",
+   "glossary_pdf": 424,
+   "id": "E.t.pericardioperitoneal-canal",
+   "hits": 12,
+   "chapters": {
+    "E07": 8,
+    "E14": 4
+   },
+   "sections": {
+    "E07.04": 3,
+    "E07.05": 5,
+    "E14.02": 1,
+    "E14.03": 2,
+    "E14.04": 1
+   },
+   "pdf_pages": [
+    120,
+    121,
+    244,
+    245,
+    246
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.05",
+   "placed": true
+  },
+  {
+   "term": "Peritoneal ligaments",
+   "glossary_pdf": 424,
+   "id": "E.t.peritoneal-ligaments",
+   "hits": 0,
+   "chapters": {},
+   "sections": {},
+   "pdf_pages": [],
+   "primary_chapter": null,
+   "primary_section": null,
+   "placed": false
+  },
+  {
+   "term": "Pharyngeal arches",
+   "glossary_pdf": 424,
+   "id": "E.t.pharyngeal-arches",
+   "hits": 53,
+   "chapters": {
+    "E06": 4,
+    "E10": 1,
+    "E13": 7,
+    "E14": 3,
+    "E17": 28,
+    "E18": 6,
+    "E19": 4
+   },
+   "sections": {
+    "E06.01": 3,
+    "E06.05": 1,
+    "E10.01": 1,
+    "E13.06": 2,
+    "E13.08": 4,
+    "E13.09": 1,
+    "E14.02": 2,
+    "E14.06": 1,
+    "E17.00": 4,
+    "E17.01": 10,
+    "E17.02": 3,
+    "E17.04": 3,
+    "E17.06": 2,
+    "E17.07": 1,
+    "E17.08": 3,
+    "E17.13": 2,
+    "E18.01": 1,
+    "E18.02": 4,
+    "E18.03": 1,
+    "E19.02": 1,
+    "E19.03": 1,
+    "E19.05": 2
+   },
+   "pdf_pages": [
+    95,
+    96,
+    110,
+    169,
+    218,
+    220,
+    225,
+    228,
+    240,
+    244,
+    248,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    311,
+    312,
+    317,
+    319,
+    320,
+    330,
+    337,
+    344,
+    345,
+    346,
+    355,
+    374,
+    375,
+    378
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.01",
+   "placed": true
+  },
+  {
+   "term": "Pharyngeal cleft",
+   "glossary_pdf": 425,
+   "id": "E.t.pharyngeal-cleft",
+   "hits": 16,
+   "chapters": {
+    "E17": 12,
+    "E19": 4
+   },
+   "sections": {
+    "E17.00": 2,
+    "E17.01": 1,
+    "E17.02": 1,
+    "E17.03": 6,
+    "E17.04": 1,
+    "E17.13": 1,
+    "E19.03": 2,
+    "E19.04": 2
+   },
+   "pdf_pages": [
+    304,
+    307,
+    309,
+    310,
+    314,
+    330,
+    375,
+    376
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.03",
+   "placed": true
+  },
+  {
+   "term": "Pharyngeal pouch",
+   "glossary_pdf": 425,
+   "id": "E.t.pharyngeal-pouch",
+   "hits": 24,
+   "chapters": {
+    "E06": 1,
+    "E14": 2,
+    "E17": 18,
+    "E19": 3
+   },
+   "sections": {
+    "E06.04": 1,
+    "E14.00": 2,
+    "E17.00": 1,
+    "E17.01": 1,
+    "E17.02": 7,
+    "E17.03": 5,
+    "E17.04": 1,
+    "E17.13": 3,
+    "E19.02": 1,
+    "E19.05": 2
+   },
+   "pdf_pages": [
+    108,
+    242,
+    304,
+    305,
+    309,
+    310,
+    311,
+    330,
+    373,
+    378
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.02",
+   "placed": true
+  },
+  {
+   "term": "Phenotype",
+   "glossary_pdf": 425,
+   "id": "E.t.phenotype",
+   "hits": 6,
+   "chapters": {
+    "E02": 2,
+    "E05": 1,
+    "E10": 1,
+    "E12": 1,
+    "E17": 1
+   },
+   "sections": {
+    "E02.02": 2,
+    "E05.05": 1,
+    "E10.01": 1,
+    "E12.02": 1,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    37,
+    42,
+    85,
+    172,
+    194,
+    315
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Philtrum",
+   "glossary_pdf": 425,
+   "id": "E.t.philtrum",
+   "hits": 10,
+   "chapters": {
+    "E09": 2,
+    "E17": 8
+   },
+   "sections": {
+    "E09.01": 2,
+    "E17.05": 1,
+    "E17.08": 1,
+    "E17.11": 5,
+    "E17.13": 1
+   },
+   "pdf_pages": [
+    155,
+    316,
+    320,
+    322,
+    323,
+    324,
+    330
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.11",
+   "placed": true
+  },
+  {
+   "term": "Phocomelia",
+   "glossary_pdf": 425,
+   "id": "E.t.phocomelia",
+   "hits": 2,
+   "chapters": {
+    "E09": 1,
+    "E12": 1
+   },
+   "sections": {
+    "E09.01": 1,
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    150,
+    193
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Pia mater",
+   "glossary_pdf": 425,
+   "id": "E.t.pia-mater",
+   "hits": 5,
+   "chapters": {
+    "E18": 4,
+    "E20": 1
+   },
+   "sections": {
+    "E18.01": 1,
+    "E18.02": 3,
+    "E20.04": 1
+   },
+   "pdf_pages": [
+    340,
+    346,
+    354,
+    383
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Placode",
+   "glossary_pdf": 425,
+   "id": "E.t.placode",
+   "hits": 58,
+   "chapters": {
+    "E06": 10,
+    "E17": 17,
+    "E18": 17,
+    "E19": 6,
+    "E20": 8
+   },
+   "sections": {
+    "E06.01": 8,
+    "E06.06": 2,
+    "E17.00": 6,
+    "E17.01": 3,
+    "E17.04": 1,
+    "E17.07": 1,
+    "E17.08": 5,
+    "E17.13": 1,
+    "E18.00": 1,
+    "E18.01": 1,
+    "E18.02": 2,
+    "E18.05": 12,
+    "E18.07": 1,
+    "E19.00": 2,
+    "E19.01": 1,
+    "E19.05": 3,
+    "E20.00": 4,
+    "E20.02": 2,
+    "E20.06": 1,
+    "E20.08": 1
+   },
+   "pdf_pages": [
+    95,
+    96,
+    97,
+    113,
+    303,
+    304,
+    306,
+    311,
+    319,
+    320,
+    330,
+    332,
+    334,
+    352,
+    361,
+    363,
+    369,
+    370,
+    371,
+    378,
+    379,
+    381,
+    384,
+    388
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.00",
+   "placed": true
+  },
+  {
+   "term": "Pleuropericardial folds",
+   "glossary_pdf": 425,
+   "id": "E.t.pleuropericardial-folds",
+   "hits": 8,
+   "chapters": {
+    "E07": 6,
+    "E14": 2
+   },
+   "sections": {
+    "E07.04": 2,
+    "E07.05": 4,
+    "E14.02": 1,
+    "E14.03": 1
+   },
+   "pdf_pages": [
+    120,
+    121,
+    244,
+    245
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.05",
+   "placed": true
+  },
+  {
+   "term": "Pleuroperitoneal folds",
+   "glossary_pdf": 425,
+   "id": "E.t.pleuroperitoneal-folds",
+   "hits": 1,
+   "chapters": {
+    "E07": 1
+   },
+   "sections": {
+    "E07.05": 1
+   },
+   "pdf_pages": [
+    122
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.05",
+   "placed": true
+  },
+  {
+   "term": "Polydactyly",
+   "glossary_pdf": 425,
+   "id": "E.t.polydactyly",
+   "hits": 9,
+   "chapters": {
+    "E10": 2,
+    "E12": 6,
+    "E16": 1
+   },
+   "sections": {
+    "E10.01": 2,
+    "E12.02": 4,
+    "E12.03": 2,
+    "E16.01": 1
+   },
+   "pdf_pages": [
+    171,
+    172,
+    194,
+    195,
+    197,
+    281
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Prechordal plate",
+   "glossary_pdf": 425,
+   "id": "E.t.prechordal-plate",
+   "hits": 15,
+   "chapters": {
+    "E05": 7,
+    "E18": 4,
+    "E20": 4
+   },
+   "sections": {
+    "E05.00": 5,
+    "E05.04": 1,
+    "E05.07": 1,
+    "E18.03": 2,
+    "E18.04": 1,
+    "E18.07": 1,
+    "E20.06": 1,
+    "E20.07": 3
+   },
+   "pdf_pages": [
+    78,
+    84,
+    89,
+    355,
+    356,
+    357,
+    369,
+    384,
+    385
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.00",
+   "placed": true
+  },
+  {
+   "term": "Primary heart field (PHF)",
+   "glossary_pdf": 425,
+   "id": "E.t.primary-heart-field-phf",
+   "hits": 16,
+   "chapters": {
+    "E13": 16
+   },
+   "sections": {
+    "E13.00": 7,
+    "E13.01": 1,
+    "E13.06": 1,
+    "E13.07": 3,
+    "E13.09": 4
+   },
+   "pdf_pages": [
+    198,
+    199,
+    214,
+    224,
+    238,
+    239
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.00",
+   "placed": true
+  },
+  {
+   "term": "Primary intestinal loop",
+   "glossary_pdf": 425,
+   "id": "E.t.primary-intestinal-loop",
+   "hits": 16,
+   "chapters": {
+    "E13": 1,
+    "E15": 15
+   },
+   "sections": {
+    "E13.08": 1,
+    "E15.07": 10,
+    "E15.08": 4,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    232,
+    264,
+    265,
+    266,
+    267,
+    268,
+    270,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.07",
+   "placed": true
+  },
+  {
+   "term": "Primary palate",
+   "glossary_pdf": 425,
+   "id": "E.t.primary-palate",
+   "hits": 10,
+   "chapters": {
+    "E17": 9,
+    "E18": 1
+   },
+   "sections": {
+    "E17.08": 2,
+    "E17.10": 2,
+    "E17.11": 4,
+    "E17.13": 1,
+    "E18.02": 1
+   },
+   "pdf_pages": [
+    320,
+    321,
+    323,
+    324,
+    327,
+    330,
+    353
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.11",
+   "placed": true
+  },
+  {
+   "term": "Primaxial domain",
+   "glossary_pdf": 425,
+   "id": "E.t.primaxial-domain",
+   "hits": 3,
+   "chapters": {
+    "E11": 3
+   },
+   "sections": {
+    "E11.00": 1,
+    "E11.10": 1,
+    "E11.11": 1
+   },
+   "pdf_pages": [
+    179,
+    184,
+    185
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.11",
+   "placed": true
+  },
+  {
+   "term": "Primitive body cavity",
+   "glossary_pdf": 425,
+   "id": "E.t.primitive-body-cavity",
+   "hits": 7,
+   "chapters": {
+    "E07": 6,
+    "E13": 1
+   },
+   "sections": {
+    "E07.00": 2,
+    "E07.02": 2,
+    "E07.06": 1,
+    "E07.07": 1,
+    "E13.01": 1
+   },
+   "pdf_pages": [
+    115,
+    116,
+    123,
+    124,
+    199
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Primitive node",
+   "glossary_pdf": 425,
+   "id": "E.t.primitive-node",
+   "hits": 18,
+   "chapters": {
+    "E05": 8,
+    "E06": 5,
+    "E08": 1,
+    "E18": 3,
+    "E20": 1
+   },
+   "sections": {
+    "E05.00": 2,
+    "E05.03": 4,
+    "E05.05": 1,
+    "E05.07": 1,
+    "E06.00": 1,
+    "E06.01": 4,
+    "E08.09": 1,
+    "E18.00": 2,
+    "E18.03": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    78,
+    80,
+    83,
+    86,
+    88,
+    91,
+    92,
+    143,
+    332,
+    356,
+    385
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Primitive pit",
+   "glossary_pdf": 425,
+   "id": "E.t.primitive-pit",
+   "hits": 4,
+   "chapters": {
+    "E05": 4
+   },
+   "sections": {
+    "E05.00": 1,
+    "E05.03": 2,
+    "E05.07": 1
+   },
+   "pdf_pages": [
+    78,
+    79,
+    81,
+    89
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Primitive streak",
+   "glossary_pdf": 425,
+   "id": "E.t.primitive-streak",
+   "hits": 48,
+   "chapters": {
+    "E02": 1,
+    "E03": 1,
+    "E05": 27,
+    "E06": 8,
+    "E08": 1,
+    "E13": 5,
+    "E16": 2,
+    "E18": 2,
+    "E20": 1
+   },
+   "sections": {
+    "E02.00": 1,
+    "E03.05": 1,
+    "E05.00": 3,
+    "E05.03": 13,
+    "E05.04": 7,
+    "E05.05": 2,
+    "E05.07": 2,
+    "E06.01": 6,
+    "E06.06": 2,
+    "E08.08": 1,
+    "E13.00": 2,
+    "E13.01": 1,
+    "E13.09": 2,
+    "E16.02": 2,
+    "E18.00": 1,
+    "E18.03": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    33,
+    63,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    88,
+    89,
+    92,
+    93,
+    113,
+    140,
+    198,
+    199,
+    238,
+    286,
+    295,
+    332,
+    356,
+    385
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.03",
+   "placed": true
+  },
+  {
+   "term": "Primordial germ cells",
+   "glossary_pdf": 425,
+   "id": "E.t.primordial-germ-cells",
+   "hits": 18,
+   "chapters": {
+    "E02": 5,
+    "E05": 1,
+    "E16": 12
+   },
+   "sections": {
+    "E02.00": 3,
+    "E02.03": 1,
+    "E02.04": 1,
+    "E05.05": 1,
+    "E16.02": 11,
+    "E16.04": 1
+   },
+   "pdf_pages": [
+    33,
+    45,
+    51,
+    85,
+    286,
+    287,
+    288,
+    302
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Processus vaginalis",
+   "glossary_pdf": 425,
+   "id": "E.t.processus-vaginalis",
+   "hits": 5,
+   "chapters": {
+    "E16": 5
+   },
+   "sections": {
+    "E16.02": 4,
+    "E16.03": 1
+   },
+   "pdf_pages": [
+    300,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Proctodeum",
+   "glossary_pdf": 425,
+   "id": "E.t.proctodeum",
+   "hits": 5,
+   "chapters": {
+    "E06": 1,
+    "E15": 4
+   },
+   "sections": {
+    "E06.04": 1,
+    "E15.08": 3,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    108,
+    271,
+    272,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Progress zone",
+   "glossary_pdf": 426,
+   "id": "E.t.progress-zone",
+   "hits": 1,
+   "chapters": {
+    "E12": 1
+   },
+   "sections": {
+    "E12.02": 1
+   },
+   "pdf_pages": [
+    191
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Promoter region",
+   "glossary_pdf": 426,
+   "id": "E.t.promoter-region",
+   "hits": 11,
+   "chapters": {
+    "E01": 9,
+    "E02": 1,
+    "E16": 1
+   },
+   "sections": {
+    "E01.00": 1,
+    "E01.01": 5,
+    "E01.02": 1,
+    "E01.06": 2,
+    "E02.02": 1,
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    22,
+    23,
+    24,
+    31,
+    42,
+    292
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.01",
+   "placed": true
+  },
+  {
+   "term": "Pronephros",
+   "glossary_pdf": 426,
+   "id": "E.t.pronephros",
+   "hits": 5,
+   "chapters": {
+    "E16": 5
+   },
+   "sections": {
+    "E16.00": 3,
+    "E16.01": 1,
+    "E16.03": 1
+   },
+   "pdf_pages": [
+    275,
+    276,
+    301
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.00",
+   "placed": true
+  },
+  {
+   "term": "Prosencephalon",
+   "glossary_pdf": 426,
+   "id": "E.t.prosencephalon",
+   "hits": 14,
+   "chapters": {
+    "E18": 12,
+    "E20": 2
+   },
+   "sections": {
+    "E18.00": 2,
+    "E18.02": 6,
+    "E18.03": 1,
+    "E18.04": 1,
+    "E18.06": 2,
+    "E20.07": 2
+   },
+   "pdf_pages": [
+    332,
+    348,
+    349,
+    350,
+    356,
+    357,
+    368,
+    385
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Rathke pouch",
+   "glossary_pdf": 426,
+   "id": "E.t.rathke-pouch",
+   "hits": 9,
+   "chapters": {
+    "E18": 9
+   },
+   "sections": {
+    "E18.02": 7,
+    "E18.06": 2
+   },
+   "pdf_pages": [
+    350,
+    368
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Rectouterine pouch (Douglas pouch)",
+   "glossary_pdf": 426,
+   "id": "E.t.rectouterine-pouch-douglas-pouch",
+   "hits": 3,
+   "chapters": {
+    "E04": 3
+   },
+   "sections": {
+    "E04.04": 2,
+    "E04.06": 1
+   },
+   "pdf_pages": [
+    75,
+    77
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.04",
+   "placed": true
+  },
+  {
+   "term": "Renal corpuscle",
+   "glossary_pdf": 426,
+   "id": "E.t.renal-corpuscle",
+   "hits": 1,
+   "chapters": {
+    "E16": 1
+   },
+   "sections": {
+    "E16.01": 1
+   },
+   "pdf_pages": [
+    276
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Retroperitoneal",
+   "glossary_pdf": 426,
+   "id": "E.t.retroperitoneal",
+   "hits": 6,
+   "chapters": {
+    "E13": 3,
+    "E15": 2,
+    "E16": 1
+   },
+   "sections": {
+    "E13.09": 3,
+    "E15.03": 2,
+    "E16.02": 1
+   },
+   "pdf_pages": [
+    238,
+    240,
+    251,
+    300
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.09",
+   "placed": true
+  },
+  {
+   "term": "Rhombencephalon",
+   "glossary_pdf": 426,
+   "id": "E.t.rhombencephalon",
+   "hits": 18,
+   "chapters": {
+    "E18": 11,
+    "E19": 6,
+    "E20": 1
+   },
+   "sections": {
+    "E18.00": 2,
+    "E18.01": 1,
+    "E18.02": 4,
+    "E18.03": 1,
+    "E18.06": 3,
+    "E19.00": 2,
+    "E19.01": 2,
+    "E19.02": 2,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    332,
+    333,
+    343,
+    344,
+    346,
+    356,
+    368,
+    370,
+    371,
+    374,
+    385
+   ],
+   "primary_chapter": "E19",
+   "primary_section": "E19.02",
+   "placed": true
+  },
+  {
+   "term": "Rhombomere",
+   "glossary_pdf": 426,
+   "id": "E.t.rhombomere",
+   "hits": 16,
+   "chapters": {
+    "E17": 6,
+    "E18": 10
+   },
+   "sections": {
+    "E17.04": 5,
+    "E17.13": 1,
+    "E18.03": 6,
+    "E18.04": 2,
+    "E18.05": 1,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    312,
+    313,
+    330,
+    355,
+    357,
+    361,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.03",
+   "placed": true
+  },
+  {
+   "term": "Round ligament of the liver (ligamentum teres hepatis)",
+   "glossary_pdf": 426,
+   "id": "E.t.round-ligament-of-the-liver-ligamentum-teres-hepatis",
+   "hits": 5,
+   "chapters": {
+    "E13": 4,
+    "E15": 1
+   },
+   "sections": {
+    "E13.08": 2,
+    "E13.09": 2,
+    "E15.04": 1
+   },
+   "pdf_pages": [
+    232,
+    237,
+    238,
+    240,
+    258
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.09",
+   "placed": true
+  },
+  {
+   "term": "Scaphocephaly",
+   "glossary_pdf": 426,
+   "id": "E.t.scaphocephaly",
+   "hits": 2,
+   "chapters": {
+    "E10": 2
+   },
+   "sections": {
+    "E10.01": 2
+   },
+   "pdf_pages": [
+    171,
+    173
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Sclerotome",
+   "glossary_pdf": 426,
+   "id": "E.t.sclerotome",
+   "hits": 48,
+   "chapters": {
+    "E06": 12,
+    "E10": 26,
+    "E11": 10
+   },
+   "sections": {
+    "E06.02": 10,
+    "E06.06": 2,
+    "E10.00": 5,
+    "E10.01": 1,
+    "E10.02": 15,
+    "E10.03": 2,
+    "E10.04": 3,
+    "E11.00": 1,
+    "E11.02": 7,
+    "E11.03": 2
+   },
+   "pdf_pages": [
+    101,
+    102,
+    103,
+    113,
+    166,
+    169,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.02",
+   "placed": true
+  },
+  {
+   "term": "Secondary heart field (SHF)",
+   "glossary_pdf": 426,
+   "id": "E.t.secondary-heart-field-shf",
+   "hits": 30,
+   "chapters": {
+    "E13": 30
+   },
+   "sections": {
+    "E13.00": 2,
+    "E13.01": 6,
+    "E13.02": 1,
+    "E13.03": 1,
+    "E13.04": 1,
+    "E13.05": 3,
+    "E13.06": 6,
+    "E13.07": 3,
+    "E13.08": 2,
+    "E13.09": 5
+   },
+   "pdf_pages": [
+    198,
+    199,
+    200,
+    202,
+    205,
+    206,
+    211,
+    214,
+    218,
+    220,
+    222,
+    224,
+    225,
+    228,
+    238
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Secondary palate",
+   "glossary_pdf": 426,
+   "id": "E.t.secondary-palate",
+   "hits": 9,
+   "chapters": {
+    "E17": 9
+   },
+   "sections": {
+    "E17.08": 1,
+    "E17.10": 3,
+    "E17.11": 5
+   },
+   "pdf_pages": [
+    320,
+    321,
+    324,
+    325,
+    327
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.11",
+   "placed": true
+  },
+  {
+   "term": "Septum primum",
+   "glossary_pdf": 426,
+   "id": "E.t.septum-primum",
+   "hits": 32,
+   "chapters": {
+    "E13": 32
+   },
+   "sections": {
+    "E13.06": 26,
+    "E13.08": 1,
+    "E13.09": 5
+   },
+   "pdf_pages": [
+    208,
+    209,
+    210,
+    211,
+    214,
+    215,
+    216,
+    237,
+    238,
+    239
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Septum secundum",
+   "glossary_pdf": 426,
+   "id": "E.t.septum-secundum",
+   "hits": 20,
+   "chapters": {
+    "E13": 20
+   },
+   "sections": {
+    "E13.06": 17,
+    "E13.08": 1,
+    "E13.09": 2
+   },
+   "pdf_pages": [
+    208,
+    209,
+    210,
+    211,
+    215,
+    219,
+    236,
+    238,
+    239
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Septum transversum",
+   "glossary_pdf": 426,
+   "id": "E.t.septum-transversum",
+   "hits": 28,
+   "chapters": {
+    "E07": 12,
+    "E13": 4,
+    "E15": 12
+   },
+   "sections": {
+    "E07.02": 1,
+    "E07.03": 2,
+    "E07.04": 5,
+    "E07.05": 3,
+    "E07.07": 1,
+    "E13.03": 3,
+    "E13.08": 1,
+    "E15.03": 1,
+    "E15.04": 7,
+    "E15.05": 2,
+    "E15.09": 1,
+    "E15.10": 1
+   },
+   "pdf_pages": [
+    116,
+    117,
+    120,
+    121,
+    122,
+    124,
+    202,
+    203,
+    231,
+    251,
+    252,
+    255,
+    257,
+    258,
+    260,
+    262,
+    273,
+    274
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.04",
+   "placed": true
+  },
+  {
+   "term": "Situs inversus",
+   "glossary_pdf": 426,
+   "id": "E.t.situs-inversus",
+   "hits": 12,
+   "chapters": {
+    "E05": 10,
+    "E13": 2
+   },
+   "sections": {
+    "E05.03": 2,
+    "E05.05": 5,
+    "E05.07": 3,
+    "E13.02": 1,
+    "E13.03": 1
+   },
+   "pdf_pages": [
+    83,
+    85,
+    86,
+    89,
+    200,
+    204
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.05",
+   "placed": true
+  },
+  {
+   "term": "Somatic (parietal) mesoderm",
+   "glossary_pdf": 426,
+   "id": "E.t.somatic-parietal-mesoderm",
+   "hits": 4,
+   "chapters": {
+    "E04": 3,
+    "E14": 1
+   },
+   "sections": {
+    "E04.03": 1,
+    "E04.04": 1,
+    "E04.06": 1,
+    "E14.03": 1
+   },
+   "pdf_pages": [
+    71,
+    73,
+    77,
+    245
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.06",
+   "placed": true
+  },
+  {
+   "term": "Somatopleure",
+   "glossary_pdf": 426,
+   "id": "E.t.somatopleure",
+   "hits": 1,
+   "chapters": {
+    "E07": 1
+   },
+   "sections": {
+    "E07.02": 1
+   },
+   "pdf_pages": [
+    116
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Somites",
+   "glossary_pdf": 427,
+   "id": "E.t.somites",
+   "hits": 136,
+   "chapters": {
+    "E01": 1,
+    "E05": 2,
+    "E06": 69,
+    "E07": 5,
+    "E10": 14,
+    "E11": 26,
+    "E12": 4,
+    "E13": 1,
+    "E15": 2,
+    "E17": 3,
+    "E18": 7,
+    "E20": 1,
+    "E21": 1
+   },
+   "sections": {
+    "E01.06": 1,
+    "E05.03": 1,
+    "E05.04": 1,
+    "E06.01": 10,
+    "E06.02": 42,
+    "E06.05": 9,
+    "E06.06": 7,
+    "E06.07": 1,
+    "E07.02": 2,
+    "E07.06": 1,
+    "E07.07": 2,
+    "E10.00": 5,
+    "E10.01": 1,
+    "E10.02": 7,
+    "E10.04": 1,
+    "E11.00": 7,
+    "E11.02": 8,
+    "E11.03": 3,
+    "E11.08": 4,
+    "E11.10": 3,
+    "E11.11": 1,
+    "E12.02": 3,
+    "E12.03": 1,
+    "E13.02": 1,
+    "E15.00": 2,
+    "E17.00": 2,
+    "E17.06": 1,
+    "E18.00": 3,
+    "E18.01": 3,
+    "E18.03": 1,
+    "E20.00": 1,
+    "E21.06": 1
+   },
+   "pdf_pages": [
+    29,
+    82,
+    84,
+    93,
+    94,
+    95,
+    99,
+    100,
+    101,
+    102,
+    103,
+    109,
+    110,
+    113,
+    114,
+    116,
+    123,
+    124,
+    166,
+    168,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    189,
+    197,
+    201,
+    249,
+    303,
+    317,
+    332,
+    334,
+    341,
+    355,
+    379,
+    394
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Somitomeres",
+   "glossary_pdf": 427,
+   "id": "E.t.somitomeres",
+   "hits": 29,
+   "chapters": {
+    "E05": 3,
+    "E06": 5,
+    "E07": 1,
+    "E10": 3,
+    "E11": 14,
+    "E17": 2,
+    "E18": 1
+   },
+   "sections": {
+    "E05.03": 1,
+    "E05.04": 1,
+    "E05.07": 1,
+    "E06.02": 4,
+    "E06.06": 1,
+    "E07.02": 1,
+    "E10.00": 2,
+    "E10.01": 1,
+    "E11.00": 4,
+    "E11.02": 1,
+    "E11.03": 3,
+    "E11.08": 5,
+    "E11.10": 1,
+    "E17.00": 2,
+    "E18.05": 1
+   },
+   "pdf_pages": [
+    82,
+    84,
+    89,
+    99,
+    113,
+    116,
+    166,
+    168,
+    179,
+    181,
+    182,
+    183,
+    184,
+    303,
+    361
+   ],
+   "primary_chapter": "E11",
+   "primary_section": "E11.08",
+   "placed": true
+  },
+  {
+   "term": "Sonic hedgehog",
+   "glossary_pdf": 427,
+   "id": "E.t.sonic-hedgehog",
+   "hits": 21,
+   "chapters": {
+    "E01": 3,
+    "E05": 1,
+    "E06": 2,
+    "E09": 1,
+    "E11": 2,
+    "E12": 2,
+    "E13": 1,
+    "E15": 2,
+    "E17": 2,
+    "E18": 3,
+    "E20": 2
+   },
+   "sections": {
+    "E01.05": 3,
+    "E05.03": 1,
+    "E06.02": 2,
+    "E09.01": 1,
+    "E11.02": 1,
+    "E11.03": 1,
+    "E12.02": 2,
+    "E13.04": 1,
+    "E15.02": 1,
+    "E15.03": 1,
+    "E17.04": 2,
+    "E18.01": 2,
+    "E18.03": 1,
+    "E20.06": 1,
+    "E20.07": 1
+   },
+   "pdf_pages": [
+    27,
+    28,
+    83,
+    101,
+    103,
+    155,
+    181,
+    182,
+    191,
+    192,
+    205,
+    250,
+    251,
+    312,
+    313,
+    340,
+    341,
+    356,
+    384,
+    385
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.05",
+   "placed": true
+  },
+  {
+   "term": "Spina bifida",
+   "glossary_pdf": 427,
+   "id": "E.t.spina-bifida",
+   "hits": 34,
+   "chapters": {
+    "E06": 4,
+    "E09": 7,
+    "E10": 8,
+    "E17": 1,
+    "E18": 13,
+    "E21": 1
+   },
+   "sections": {
+    "E06.01": 4,
+    "E09.01": 4,
+    "E09.02": 2,
+    "E09.03": 1,
+    "E10.03": 7,
+    "E10.04": 1,
+    "E17.04": 1,
+    "E18.01": 9,
+    "E18.02": 1,
+    "E18.04": 2,
+    "E18.06": 1,
+    "E21.03": 1
+   },
+   "pdf_pages": [
+    97,
+    98,
+    151,
+    153,
+    154,
+    158,
+    160,
+    162,
+    177,
+    178,
+    315,
+    341,
+    342,
+    343,
+    359,
+    360,
+    368,
+    392
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.03",
+   "placed": true
+  },
+  {
+   "term": "Spinal ganglion (dorsal root ganglion)",
+   "glossary_pdf": 427,
+   "id": "E.t.spinal-ganglion-dorsal-root-ganglion",
+   "hits": 4,
+   "chapters": {
+    "E18": 4
+   },
+   "sections": {
+    "E18.01": 3,
+    "E18.05": 1
+   },
+   "pdf_pages": [
+    333,
+    338,
+    363
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Spinal nerve",
+   "glossary_pdf": 427,
+   "id": "E.t.spinal-nerve",
+   "hits": 35,
+   "chapters": {
+    "E07": 1,
+    "E10": 1,
+    "E11": 1,
+    "E12": 2,
+    "E18": 30
+   },
+   "sections": {
+    "E07.06": 1,
+    "E10.02": 1,
+    "E11.00": 1,
+    "E12.02": 2,
+    "E18.01": 17,
+    "E18.05": 9,
+    "E18.06": 1,
+    "E18.07": 3
+   },
+   "pdf_pages": [
+    123,
+    176,
+    179,
+    190,
+    337,
+    338,
+    339,
+    340,
+    361,
+    363,
+    364,
+    365,
+    366,
+    368,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Splanchnic nerves",
+   "glossary_pdf": 427,
+   "id": "E.t.splanchnic-nerves",
+   "hits": 10,
+   "chapters": {
+    "E18": 10
+   },
+   "sections": {
+    "E18.05": 10
+   },
+   "pdf_pages": [
+    364,
+    365,
+    366
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Splanchnopleure",
+   "glossary_pdf": 427,
+   "id": "E.t.splanchnopleure",
+   "hits": 1,
+   "chapters": {
+    "E07": 1
+   },
+   "sections": {
+    "E07.02": 1
+   },
+   "pdf_pages": [
+    116
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Stenosis",
+   "glossary_pdf": 427,
+   "id": "E.t.stenosis",
+   "hits": 28,
+   "chapters": {
+    "E13": 14,
+    "E15": 13,
+    "E18": 1
+   },
+   "sections": {
+    "E13.02": 1,
+    "E13.03": 1,
+    "E13.06": 10,
+    "E13.07": 1,
+    "E13.09": 1,
+    "E15.04": 5,
+    "E15.07": 1,
+    "E15.08": 6,
+    "E15.10": 1,
+    "E18.04": 1
+   },
+   "pdf_pages": [
+    200,
+    202,
+    217,
+    220,
+    221,
+    222,
+    223,
+    224,
+    239,
+    254,
+    260,
+    264,
+    270,
+    271,
+    274,
+    360
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Stomodeum",
+   "glossary_pdf": 427,
+   "id": "E.t.stomodeum",
+   "hits": 14,
+   "chapters": {
+    "E06": 1,
+    "E15": 1,
+    "E17": 11,
+    "E18": 1
+   },
+   "sections": {
+    "E06.04": 1,
+    "E15.04": 1,
+    "E17.01": 7,
+    "E17.07": 2,
+    "E17.08": 1,
+    "E17.10": 1,
+    "E18.02": 1
+   },
+   "pdf_pages": [
+    108,
+    253,
+    305,
+    306,
+    319,
+    320,
+    321,
+    350
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.01",
+   "placed": true
+  },
+  {
+   "term": "Stroma",
+   "glossary_pdf": 427,
+   "id": "E.t.stroma",
+   "hits": 16,
+   "chapters": {
+    "E03": 2,
+    "E04": 8,
+    "E06": 1,
+    "E15": 1,
+    "E16": 1,
+    "E17": 1,
+    "E20": 2
+   },
+   "sections": {
+    "E03.01": 1,
+    "E03.07": 1,
+    "E04.00": 3,
+    "E04.03": 3,
+    "E04.05": 1,
+    "E04.06": 1,
+    "E06.04": 1,
+    "E15.02": 1,
+    "E16.02": 1,
+    "E17.13": 1,
+    "E20.04": 1,
+    "E20.08": 1
+   },
+   "pdf_pages": [
+    56,
+    67,
+    69,
+    71,
+    76,
+    77,
+    108,
+    250,
+    288,
+    330,
+    383,
+    388
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.03",
+   "placed": true
+  },
+  {
+   "term": "Surfactant",
+   "glossary_pdf": 427,
+   "id": "E.t.surfactant",
+   "hits": 13,
+   "chapters": {
+    "E14": 13
+   },
+   "sections": {
+    "E14.04": 3,
+    "E14.05": 4,
+    "E14.06": 6
+   },
+   "pdf_pages": [
+    246,
+    247,
+    248
+   ],
+   "primary_chapter": "E14",
+   "primary_section": "E14.06",
+   "placed": true
+  },
+  {
+   "term": "Suture",
+   "glossary_pdf": 427,
+   "id": "E.t.suture",
+   "hits": 40,
+   "chapters": {
+    "E01": 1,
+    "E09": 1,
+    "E10": 34,
+    "E12": 2,
+    "E18": 2
+   },
+   "sections": {
+    "E01.07": 1,
+    "E09.01": 1,
+    "E10.01": 33,
+    "E10.04": 1,
+    "E12.01": 1,
+    "E12.02": 1,
+    "E18.04": 2
+   },
+   "pdf_pages": [
+    32,
+    152,
+    168,
+    169,
+    170,
+    171,
+    173,
+    174,
+    178,
+    188,
+    196,
+    360
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Sympathetic trunks (chain ganglia)",
+   "glossary_pdf": 427,
+   "id": "E.t.sympathetic-trunks-chain-ganglia",
+   "hits": 10,
+   "chapters": {
+    "E06": 1,
+    "E18": 9
+   },
+   "sections": {
+    "E06.01": 1,
+    "E18.05": 8,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    96,
+    361,
+    363,
+    364,
+    365,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Syncytiotrophoblast",
+   "glossary_pdf": 427,
+   "id": "E.t.syncytiotrophoblast",
+   "hits": 19,
+   "chapters": {
+    "E03": 1,
+    "E04": 13,
+    "E05": 3,
+    "E08": 2
+   },
+   "sections": {
+    "E03.01": 1,
+    "E04.00": 4,
+    "E04.02": 2,
+    "E04.03": 1,
+    "E04.04": 2,
+    "E04.05": 3,
+    "E04.06": 1,
+    "E05.03": 1,
+    "E05.06": 1,
+    "E05.07": 1,
+    "E08.03": 1,
+    "E08.05": 1
+   },
+   "pdf_pages": [
+    56,
+    69,
+    70,
+    71,
+    72,
+    74,
+    76,
+    77,
+    79,
+    87,
+    89,
+    132,
+    137
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.00",
+   "placed": true
+  },
+  {
+   "term": "Syndactyly",
+   "glossary_pdf": 427,
+   "id": "E.t.syndactyly",
+   "hits": 8,
+   "chapters": {
+    "E02": 1,
+    "E10": 1,
+    "E11": 1,
+    "E12": 5
+   },
+   "sections": {
+    "E02.02": 1,
+    "E10.01": 1,
+    "E11.08": 1,
+    "E12.02": 4,
+    "E12.03": 1
+   },
+   "pdf_pages": [
+    39,
+    172,
+    183,
+    194,
+    195,
+    197
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  },
+  {
+   "term": "Syndrome",
+   "glossary_pdf": 427,
+   "id": "E.t.syndrome",
+   "hits": 162,
+   "chapters": {
+    "E01": 1,
+    "E02": 50,
+    "E03": 1,
+    "E04": 2,
+    "E05": 1,
+    "E08": 3,
+    "E09": 22,
+    "E10": 13,
+    "E11": 2,
+    "E12": 6,
+    "E13": 14,
+    "E14": 2,
+    "E16": 15,
+    "E17": 22,
+    "E18": 3,
+    "E19": 3,
+    "E20": 1,
+    "E21": 1
+   },
+   "sections": {
+    "E01.06": 1,
+    "E02.02": 43,
+    "E02.03": 2,
+    "E02.04": 4,
+    "E02.05": 1,
+    "E03.06": 1,
+    "E04.05": 2,
+    "E05.05": 1,
+    "E08.02": 1,
+    "E08.09": 2,
+    "E09.01": 12,
+    "E09.02": 7,
+    "E09.03": 1,
+    "E09.05": 2,
+    "E10.01": 11,
+    "E10.04": 2,
+    "E11.08": 1,
+    "E11.10": 1,
+    "E12.02": 6,
+    "E13.06": 10,
+    "E13.08": 4,
+    "E14.06": 2,
+    "E16.01": 8,
+    "E16.02": 7,
+    "E17.04": 12,
+    "E17.05": 4,
+    "E17.11": 6,
+    "E18.04": 3,
+    "E19.04": 2,
+    "E19.05": 1,
+    "E20.07": 1,
+    "E21.01": 1
+   },
+   "pdf_pages": [
+    29,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    51,
+    52,
+    65,
+    76,
+    86,
+    129,
+    143,
+    149,
+    150,
+    151,
+    152,
+    154,
+    155,
+    156,
+    158,
+    160,
+    161,
+    162,
+    163,
+    171,
+    172,
+    178,
+    183,
+    184,
+    194,
+    195,
+    196,
+    214,
+    215,
+    221,
+    222,
+    230,
+    231,
+    248,
+    280,
+    281,
+    298,
+    299,
+    315,
+    316,
+    325,
+    327,
+    358,
+    360,
+    377,
+    378,
+    386,
+    390
+   ],
+   "primary_chapter": "E02",
+   "primary_section": "E02.02",
+   "placed": true
+  },
+  {
+   "term": "Telencephalon",
+   "glossary_pdf": 427,
+   "id": "E.t.telencephalon",
+   "hits": 22,
+   "chapters": {
+    "E18": 22
+   },
+   "sections": {
+    "E18.00": 1,
+    "E18.01": 3,
+    "E18.02": 8,
+    "E18.03": 4,
+    "E18.05": 2,
+    "E18.06": 3,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    332,
+    333,
+    335,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    356,
+    361,
+    362,
+    368,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.02",
+   "placed": true
+  },
+  {
+   "term": "Teratogen",
+   "glossary_pdf": 427,
+   "id": "E.t.teratogen",
+   "hits": 25,
+   "chapters": {
+    "E05": 1,
+    "E08": 1,
+    "E09": 13,
+    "E10": 2,
+    "E12": 1,
+    "E13": 2,
+    "E17": 2,
+    "E18": 3
+   },
+   "sections": {
+    "E05.05": 1,
+    "E08.02": 1,
+    "E09.00": 1,
+    "E09.01": 10,
+    "E09.05": 2,
+    "E10.01": 2,
+    "E12.02": 1,
+    "E13.06": 2,
+    "E17.04": 1,
+    "E17.11": 1,
+    "E18.02": 1,
+    "E18.04": 2
+   },
+   "pdf_pages": [
+    85,
+    129,
+    147,
+    148,
+    149,
+    150,
+    151,
+    153,
+    154,
+    155,
+    163,
+    170,
+    171,
+    193,
+    214,
+    315,
+    326,
+    343,
+    360
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Teratology",
+   "glossary_pdf": 427,
+   "id": "E.t.teratology",
+   "hits": 5,
+   "chapters": {
+    "E09": 5
+   },
+   "sections": {
+    "E09.00": 1,
+    "E09.01": 4
+   },
+   "pdf_pages": [
+    147,
+    149,
+    150,
+    153
+   ],
+   "primary_chapter": "E09",
+   "primary_section": "E09.01",
+   "placed": true
+  },
+  {
+   "term": "Teratoma",
+   "glossary_pdf": 427,
+   "id": "E.t.teratoma",
+   "hits": 6,
+   "chapters": {
+    "E02": 2,
+    "E05": 3,
+    "E09": 1
+   },
+   "sections": {
+    "E02.00": 2,
+    "E05.05": 3,
+    "E09.02": 1
+   },
+   "pdf_pages": [
+    33,
+    85,
+    86,
+    161
+   ],
+   "primary_chapter": "E05",
+   "primary_section": "E05.05",
+   "placed": true
+  },
+  {
+   "term": "Thyroglossal duct",
+   "glossary_pdf": 427,
+   "id": "E.t.thyroglossal-duct",
+   "hits": 4,
+   "chapters": {
+    "E17": 4
+   },
+   "sections": {
+    "E17.06": 3,
+    "E17.07": 1
+   },
+   "pdf_pages": [
+    317,
+    318,
+    319
+   ],
+   "primary_chapter": "E17",
+   "primary_section": "E17.06",
+   "placed": true
+  },
+  {
+   "term": "Tracheoesophageal septum",
+   "glossary_pdf": 427,
+   "id": "E.t.tracheoesophageal-septum",
+   "hits": 8,
+   "chapters": {
+    "E14": 4,
+    "E15": 4
+   },
+   "sections": {
+    "E14.00": 1,
+    "E14.01": 1,
+    "E14.05": 1,
+    "E14.06": 1,
+    "E15.04": 3,
+    "E15.09": 1
+   },
+   "pdf_pages": [
+    242,
+    243,
+    247,
+    248,
+    252,
+    253,
+    254,
+    273
+   ],
+   "primary_chapter": "E14",
+   "primary_section": "E14.06",
+   "placed": true
+  },
+  {
+   "term": "Transcription factors",
+   "glossary_pdf": 428,
+   "id": "E.t.transcription-factors",
+   "hits": 89,
+   "chapters": {
+    "E01": 21,
+    "E05": 13,
+    "E06": 6,
+    "E10": 1,
+    "E11": 4,
+    "E12": 7,
+    "E13": 10,
+    "E14": 1,
+    "E15": 3,
+    "E16": 3,
+    "E17": 8,
+    "E18": 5,
+    "E20": 7
+   },
+   "sections": {
+    "E01.01": 8,
+    "E01.02": 3,
+    "E01.03": 2,
+    "E01.04": 2,
+    "E01.05": 2,
+    "E01.06": 2,
+    "E01.07": 2,
+    "E05.03": 10,
+    "E05.04": 1,
+    "E05.07": 1,
+    "E05.08": 1,
+    "E06.01": 3,
+    "E06.02": 2,
+    "E06.04": 1,
+    "E10.01": 1,
+    "E11.03": 2,
+    "E11.08": 2,
+    "E12.02": 7,
+    "E13.01": 1,
+    "E13.02": 1,
+    "E13.04": 4,
+    "E13.06": 1,
+    "E13.08": 1,
+    "E13.09": 2,
+    "E14.00": 1,
+    "E15.03": 1,
+    "E15.05": 1,
+    "E15.09": 1,
+    "E16.01": 1,
+    "E16.02": 2,
+    "E17.04": 6,
+    "E17.12": 1,
+    "E17.13": 1,
+    "E18.01": 2,
+    "E18.03": 1,
+    "E18.04": 1,
+    "E18.07": 1,
+    "E20.06": 3,
+    "E20.07": 4
+   },
+   "pdf_pages": [
+    23,
+    24,
+    25,
+    26,
+    28,
+    29,
+    31,
+    32,
+    81,
+    82,
+    83,
+    84,
+    89,
+    90,
+    96,
+    102,
+    105,
+    108,
+    171,
+    182,
+    183,
+    191,
+    192,
+    193,
+    196,
+    199,
+    200,
+    205,
+    214,
+    225,
+    238,
+    240,
+    242,
+    251,
+    262,
+    273,
+    279,
+    286,
+    292,
+    312,
+    315,
+    329,
+    330,
+    341,
+    356,
+    358,
+    369,
+    384,
+    385,
+    386
+   ],
+   "primary_chapter": "E01",
+   "primary_section": "E01.01",
+   "placed": true
+  },
+  {
+   "term": "Trophoblast",
+   "glossary_pdf": 428,
+   "id": "E.t.trophoblast",
+   "hits": 49,
+   "chapters": {
+    "E03": 11,
+    "E04": 21,
+    "E05": 8,
+    "E08": 6,
+    "E09": 3
+   },
+   "sections": {
+    "E03.03": 1,
+    "E03.04": 5,
+    "E03.05": 4,
+    "E03.08": 1,
+    "E04.00": 2,
+    "E04.02": 2,
+    "E04.03": 5,
+    "E04.04": 4,
+    "E04.05": 5,
+    "E04.06": 3,
+    "E05.06": 2,
+    "E05.07": 5,
+    "E05.08": 1,
+    "E08.02": 3,
+    "E08.03": 2,
+    "E08.05": 1,
+    "E09.02": 1,
+    "E09.03": 1,
+    "E09.05": 1
+   },
+   "pdf_pages": [
+    61,
+    62,
+    63,
+    64,
+    68,
+    69,
+    70,
+    71,
+    72,
+    75,
+    76,
+    77,
+    87,
+    88,
+    90,
+    129,
+    132,
+    137,
+    161,
+    162,
+    163
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.05",
+   "placed": true
+  },
+  {
+   "term": "Truncus arteriosus",
+   "glossary_pdf": 428,
+   "id": "E.t.truncus-arteriosus",
+   "hits": 20,
+   "chapters": {
+    "E09": 1,
+    "E13": 18,
+    "E17": 1
+   },
+   "sections": {
+    "E09.01": 1,
+    "E13.00": 2,
+    "E13.01": 1,
+    "E13.03": 4,
+    "E13.06": 8,
+    "E13.08": 2,
+    "E13.09": 1,
+    "E17.04": 1
+   },
+   "pdf_pages": [
+    156,
+    198,
+    199,
+    202,
+    203,
+    204,
+    210,
+    218,
+    220,
+    221,
+    222,
+    225,
+    240,
+    314
+   ],
+   "primary_chapter": "E13",
+   "primary_section": "E13.06",
+   "placed": true
+  },
+  {
+   "term": "Urachus",
+   "glossary_pdf": 428,
+   "id": "E.t.urachus",
+   "hits": 2,
+   "chapters": {
+    "E16": 2
+   },
+   "sections": {
+    "E16.01": 2
+   },
+   "pdf_pages": [
+    283,
+    284
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.01",
+   "placed": true
+  },
+  {
+   "term": "Urogenital ridge",
+   "glossary_pdf": 428,
+   "id": "E.t.urogenital-ridge",
+   "hits": 6,
+   "chapters": {
+    "E16": 6
+   },
+   "sections": {
+    "E16.01": 2,
+    "E16.02": 4
+   },
+   "pdf_pages": [
+    276,
+    277,
+    289,
+    291,
+    292
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Urorectal septum",
+   "glossary_pdf": 428,
+   "id": "E.t.urorectal-septum",
+   "hits": 14,
+   "chapters": {
+    "E15": 11,
+    "E16": 3
+   },
+   "sections": {
+    "E15.08": 9,
+    "E15.09": 1,
+    "E15.10": 1,
+    "E16.01": 1,
+    "E16.03": 1,
+    "E16.04": 1
+   },
+   "pdf_pages": [
+    271,
+    272,
+    273,
+    274,
+    285,
+    301,
+    302
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "Uterovesical pouch",
+   "glossary_pdf": 428,
+   "id": "E.t.uterovesical-pouch",
+   "hits": 2,
+   "chapters": {
+    "E16": 2
+   },
+   "sections": {
+    "E16.02": 2
+   },
+   "pdf_pages": [
+    291,
+    292
+   ],
+   "primary_chapter": "E16",
+   "primary_section": "E16.02",
+   "placed": true
+  },
+  {
+   "term": "Vasculogenesis",
+   "glossary_pdf": 428,
+   "id": "E.t.vasculogenesis",
+   "hits": 7,
+   "chapters": {
+    "E06": 4,
+    "E13": 3
+   },
+   "sections": {
+    "E06.02": 4,
+    "E13.01": 1,
+    "E13.08": 2
+   },
+   "pdf_pages": [
+    104,
+    105,
+    199,
+    225
+   ],
+   "primary_chapter": "E06",
+   "primary_section": "E06.02",
+   "placed": true
+  },
+  {
+   "term": "Ventral mesentery",
+   "glossary_pdf": 428,
+   "id": "E.t.ventral-mesentery",
+   "hits": 11,
+   "chapters": {
+    "E07": 2,
+    "E15": 9
+   },
+   "sections": {
+    "E07.02": 1,
+    "E07.07": 1,
+    "E15.03": 1,
+    "E15.04": 5,
+    "E15.05": 1,
+    "E15.10": 2
+   },
+   "pdf_pages": [
+    116,
+    124,
+    251,
+    252,
+    257,
+    261,
+    274
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.04",
+   "placed": true
+  },
+  {
+   "term": "Ventral primary ramus",
+   "glossary_pdf": 428,
+   "id": "E.t.ventral-primary-ramus",
+   "hits": 17,
+   "chapters": {
+    "E07": 1,
+    "E11": 3,
+    "E12": 2,
+    "E18": 11
+   },
+   "sections": {
+    "E07.06": 1,
+    "E11.03": 2,
+    "E11.10": 1,
+    "E12.02": 1,
+    "E12.03": 1,
+    "E18.01": 5,
+    "E18.05": 5,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    123,
+    182,
+    184,
+    190,
+    197,
+    338,
+    339,
+    363,
+    364,
+    365,
+    366,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Ventral root",
+   "glossary_pdf": 428,
+   "id": "E.t.ventral-root",
+   "hits": 7,
+   "chapters": {
+    "E18": 7
+   },
+   "sections": {
+    "E18.01": 4,
+    "E18.05": 2,
+    "E18.07": 1
+   },
+   "pdf_pages": [
+    338,
+    340,
+    363,
+    364,
+    369
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.01",
+   "placed": true
+  },
+  {
+   "term": "Visceral",
+   "glossary_pdf": 428,
+   "id": "E.t.visceral",
+   "hits": 112,
+   "chapters": {
+    "E03": 3,
+    "E05": 1,
+    "E06": 11,
+    "E07": 20,
+    "E11": 6,
+    "E13": 10,
+    "E14": 9,
+    "E15": 14,
+    "E16": 3,
+    "E18": 35
+   },
+   "sections": {
+    "E03.05": 3,
+    "E05.03": 1,
+    "E06.02": 8,
+    "E06.03": 1,
+    "E06.06": 2,
+    "E07.00": 5,
+    "E07.02": 9,
+    "E07.04": 1,
+    "E07.06": 2,
+    "E07.07": 3,
+    "E11.00": 2,
+    "E11.03": 1,
+    "E11.08": 2,
+    "E11.11": 1,
+    "E13.00": 3,
+    "E13.01": 1,
+    "E13.03": 1,
+    "E13.04": 2,
+    "E13.07": 1,
+    "E13.09": 2,
+    "E14.00": 1,
+    "E14.03": 6,
+    "E14.04": 2,
+    "E15.02": 3,
+    "E15.03": 3,
+    "E15.04": 4,
+    "E15.05": 1,
+    "E15.06": 2,
+    "E15.10": 1,
+    "E16.01": 1,
+    "E16.02": 2,
+    "E18.02": 21,
+    "E18.05": 12,
+    "E18.06": 2
+   },
+   "pdf_pages": [
+    63,
+    64,
+    81,
+    99,
+    100,
+    103,
+    104,
+    107,
+    113,
+    115,
+    116,
+    120,
+    123,
+    124,
+    179,
+    182,
+    183,
+    185,
+    198,
+    199,
+    202,
+    205,
+    224,
+    238,
+    242,
+    245,
+    246,
+    250,
+    251,
+    252,
+    253,
+    261,
+    263,
+    274,
+    285,
+    299,
+    300,
+    343,
+    344,
+    345,
+    346,
+    348,
+    350,
+    361,
+    362,
+    363,
+    364,
+    365,
+    368
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Visceral (splanchnic) layer",
+   "glossary_pdf": 428,
+   "id": "E.t.visceral-splanchnic-layer",
+   "hits": 20,
+   "chapters": {
+    "E06": 4,
+    "E07": 10,
+    "E11": 1,
+    "E13": 3,
+    "E16": 2
+   },
+   "sections": {
+    "E06.02": 4,
+    "E07.02": 6,
+    "E07.06": 1,
+    "E07.07": 3,
+    "E11.08": 1,
+    "E13.00": 1,
+    "E13.04": 1,
+    "E13.09": 1,
+    "E16.02": 2
+   },
+   "pdf_pages": [
+    100,
+    103,
+    104,
+    116,
+    123,
+    124,
+    183,
+    198,
+    205,
+    238,
+    299,
+    300
+   ],
+   "primary_chapter": "E07",
+   "primary_section": "E07.02",
+   "placed": true
+  },
+  {
+   "term": "Viscerocranium",
+   "glossary_pdf": 428,
+   "id": "E.t.viscerocranium",
+   "hits": 5,
+   "chapters": {
+    "E10": 4,
+    "E17": 1
+   },
+   "sections": {
+    "E10.01": 3,
+    "E10.04": 1,
+    "E17.00": 1
+   },
+   "pdf_pages": [
+    168,
+    169,
+    178,
+    303
+   ],
+   "primary_chapter": "E10",
+   "primary_section": "E10.01",
+   "placed": true
+  },
+  {
+   "term": "Vitelline duct",
+   "glossary_pdf": 428,
+   "id": "E.t.vitelline-duct",
+   "hits": 25,
+   "chapters": {
+    "E06": 3,
+    "E07": 2,
+    "E08": 4,
+    "E15": 13,
+    "E16": 2,
+    "E17": 1
+   },
+   "sections": {
+    "E06.01": 1,
+    "E06.04": 1,
+    "E06.07": 1,
+    "E07.04": 1,
+    "E07.06": 1,
+    "E08.01": 1,
+    "E08.03": 1,
+    "E08.05": 2,
+    "E15.00": 2,
+    "E15.04": 1,
+    "E15.06": 1,
+    "E15.07": 2,
+    "E15.08": 5,
+    "E15.10": 2,
+    "E16.01": 2,
+    "E17.00": 1
+   },
+   "pdf_pages": [
+    95,
+    108,
+    114,
+    120,
+    123,
+    126,
+    132,
+    137,
+    249,
+    252,
+    263,
+    264,
+    266,
+    268,
+    270,
+    274,
+    276,
+    277,
+    304
+   ],
+   "primary_chapter": "E15",
+   "primary_section": "E15.08",
+   "placed": true
+  },
+  {
+   "term": "White rami communicantes",
+   "glossary_pdf": 428,
+   "id": "E.t.white-rami-communicantes",
+   "hits": 1,
+   "chapters": {
+    "E18": 1
+   },
+   "sections": {
+    "E18.05": 1
+   },
+   "pdf_pages": [
+    365
+   ],
+   "primary_chapter": "E18",
+   "primary_section": "E18.05",
+   "placed": true
+  },
+  {
+   "term": "Yolk sac",
+   "glossary_pdf": 428,
+   "id": "E.t.yolk-sac",
+   "hits": 96,
+   "chapters": {
+    "E02": 5,
+    "E04": 18,
+    "E05": 10,
+    "E06": 24,
+    "E07": 10,
+    "E08": 11,
+    "E13": 3,
+    "E15": 11,
+    "E16": 4
+   },
+   "sections": {
+    "E02.00": 4,
+    "E02.04": 1,
+    "E04.03": 4,
+    "E04.04": 11,
+    "E04.05": 1,
+    "E04.06": 2,
+    "E05.00": 1,
+    "E05.03": 6,
+    "E05.04": 1,
+    "E05.06": 1,
+    "E05.07": 1,
+    "E06.01": 2,
+    "E06.02": 5,
+    "E06.03": 8,
+    "E06.04": 2,
+    "E06.05": 3,
+    "E06.06": 2,
+    "E06.07": 2,
+    "E07.02": 4,
+    "E07.03": 4,
+    "E07.06": 2,
+    "E08.01": 1,
+    "E08.03": 1,
+    "E08.04": 2,
+    "E08.05": 5,
+    "E08.06": 2,
+    "E13.08": 2,
+    "E13.09": 1,
+    "E15.00": 3,
+    "E15.03": 2,
+    "E15.04": 2,
+    "E15.06": 1,
+    "E15.07": 2,
+    "E15.10": 1,
+    "E16.02": 3,
+    "E16.04": 1
+   },
+   "pdf_pages": [
+    33,
+    51,
+    71,
+    72,
+    73,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    84,
+    87,
+    88,
+    92,
+    95,
+    99,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    110,
+    111,
+    112,
+    113,
+    114,
+    116,
+    117,
+    123,
+    126,
+    132,
+    133,
+    137,
+    138,
+    228,
+    231,
+    240,
+    249,
+    251,
+    252,
+    259,
+    263,
+    264,
+    274,
+    286,
+    287,
+    302
+   ],
+   "primary_chapter": "E04",
+   "primary_section": "E04.04",
+   "placed": true
+  },
+  {
+   "term": "Zone of polarizing activity (ZPA)",
+   "glossary_pdf": 428,
+   "id": "E.t.zone-of-polarizing-activity-zpa",
+   "hits": 19,
+   "chapters": {
+    "E12": 19
+   },
+   "sections": {
+    "E12.02": 16,
+    "E12.03": 3
+   },
+   "pdf_pages": [
+    191,
+    192,
+    193,
+    197
+   ],
+   "primary_chapter": "E12",
+   "primary_section": "E12.02",
+   "placed": true
+  }
+ ]
+}

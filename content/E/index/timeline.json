@@ -1,0 +1,627 @@
+{
+ "book": "E",
+ "note": "numbers only; cs (Carnegie stage) left null — filled from registry sources in X1 (GLOSSARY §7). Event labels are NOT stored; 'terms' are our glossary ids found in the chart caption.",
+ "days": [
+  {
+   "day_from": 1,
+   "day_to": 1,
+   "week": 1,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 2,
+   "day_to": 2,
+   "week": 1,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 3,
+   "day_to": 3,
+   "week": 1,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 4,
+   "day_to": 4,
+   "week": 1,
+   "cs": null,
+   "terms": [
+    "E.t.blastocyst"
+   ],
+   "sections": [
+    "E04.04"
+   ],
+   "pdf": 4
+  },
+  {
+   "day_from": 5,
+   "day_to": 5,
+   "week": 1,
+   "cs": null,
+   "terms": [
+    "E.t.blastocyst"
+   ],
+   "sections": [
+    "E04.04"
+   ],
+   "pdf": 5
+  },
+  {
+   "day_from": 6,
+   "day_to": 7,
+   "week": 1,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 9,
+   "day_to": 9,
+   "week": 2,
+   "cs": null,
+   "terms": [
+    "E.t.trophoblast"
+   ],
+   "sections": [
+    "E04.05"
+   ],
+   "pdf": 4
+  },
+  {
+   "day_from": 10,
+   "day_to": 11,
+   "week": 2,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 12,
+   "day_to": 12,
+   "week": 2,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 13,
+   "day_to": 13,
+   "week": 2,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 14,
+   "day_to": 14,
+   "week": 2,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 15,
+   "day_to": 15,
+   "week": 3,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 16,
+   "day_to": 16,
+   "week": 3,
+   "cs": null,
+   "terms": [
+    "E.t.gastrulation"
+   ],
+   "sections": [
+    "E05.05"
+   ],
+   "pdf": 4
+  },
+  {
+   "day_from": 17,
+   "day_to": 17,
+   "week": 3,
+   "cs": null,
+   "terms": [
+    "E.t.epiblast"
+   ],
+   "sections": [
+    "E05.03"
+   ],
+   "pdf": 4
+  },
+  {
+   "day_from": 18,
+   "day_to": 18,
+   "week": 3,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 19,
+   "day_to": 19,
+   "week": 3,
+   "cs": null,
+   "terms": [
+    "E.t.induction"
+   ],
+   "sections": [
+    "E01.03"
+   ],
+   "pdf": 5
+  },
+  {
+   "day_from": 20,
+   "day_to": 20,
+   "week": 3,
+   "cs": null,
+   "terms": [
+    "E.t.neurulation"
+   ],
+   "sections": [
+    "E06.00"
+   ],
+   "pdf": 5
+  },
+  {
+   "day_from": 21,
+   "day_to": 21,
+   "week": 3,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 22,
+   "day_to": 22,
+   "week": 4,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 23,
+   "day_to": 23,
+   "week": 4,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 24,
+   "day_to": 25,
+   "week": 4,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 26,
+   "day_to": 26,
+   "week": 4,
+   "cs": null,
+   "terms": [
+    "E.t.pharyngeal-arches"
+   ],
+   "sections": [
+    "E17.01"
+   ],
+   "pdf": 5
+  },
+  {
+   "day_from": 28,
+   "day_to": 28,
+   "week": 4,
+   "cs": null,
+   "terms": [
+    "E.t.neurulation"
+   ],
+   "sections": [
+    "E06.00"
+   ],
+   "pdf": 5
+  },
+  {
+   "day_from": 29,
+   "day_to": 29,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 30,
+   "day_to": 30,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 31,
+   "day_to": 31,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 32,
+   "day_to": 32,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 33,
+   "day_to": 33,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 34,
+   "day_to": 34,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 35,
+   "day_to": 35,
+   "week": 5,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 36,
+   "day_to": 36,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 37,
+   "day_to": 37,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 38,
+   "day_to": 38,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 39,
+   "day_to": 39,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 40,
+   "day_to": 40,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 41,
+   "day_to": 41,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 42,
+   "day_to": 42,
+   "week": 6,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 43,
+   "day_to": 43,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 44,
+   "day_to": 44,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 45,
+   "day_to": 45,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 46,
+   "day_to": 46,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 4
+  },
+  {
+   "day_from": 47,
+   "day_to": 47,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 48,
+   "day_to": 48,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  },
+  {
+   "day_from": 49,
+   "day_to": 49,
+   "week": 7,
+   "cs": null,
+   "terms": [],
+   "sections": [],
+   "pdf": 5
+  }
+ ],
+ "tables": [
+  {
+   "id": "T6.2",
+   "label": "Somites vs age",
+   "rows": [
+    {
+     "age_days": 20,
+     "somites": [
+      1,
+      4
+     ]
+    },
+    {
+     "age_days": 21,
+     "somites": [
+      4,
+      7
+     ]
+    },
+    {
+     "age_days": 22,
+     "somites": [
+      7,
+      10
+     ]
+    },
+    {
+     "age_days": 23,
+     "somites": [
+      10,
+      13
+     ]
+    },
+    {
+     "age_days": 24,
+     "somites": [
+      13,
+      17
+     ]
+    },
+    {
+     "age_days": 25,
+     "somites": [
+      17,
+      20
+     ]
+    },
+    {
+     "age_days": 26,
+     "somites": [
+      20,
+      23
+     ]
+    },
+    {
+     "age_days": 27,
+     "somites": [
+      23,
+      26
+     ]
+    },
+    {
+     "age_days": 28,
+     "somites": [
+      26,
+      29
+     ]
+    },
+    {
+     "age_days": 30,
+     "somites": [
+      34,
+      35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "T6.3",
+   "label": "CRL vs age",
+   "rows": [
+    {
+     "crl_mm": [
+      5,
+      8
+     ],
+     "age_weeks": 5
+    },
+    {
+     "crl_mm": [
+      10,
+      14
+     ],
+     "age_weeks": 6
+    },
+    {
+     "crl_mm": [
+      17,
+      22
+     ],
+     "age_weeks": 7
+    },
+    {
+     "crl_mm": [
+      28,
+      30
+     ],
+     "age_weeks": 8
+    }
+   ]
+  },
+  {
+   "id": "T8.1",
+   "label": "Fetal length and weight",
+   "rows": [
+    {
+     "age_weeks": [
+      9,
+      12
+     ],
+     "crl_cm": [
+      5,
+      8
+     ],
+     "weight_g": [
+      10,
+      45
+     ]
+    },
+    {
+     "age_weeks": [
+      13,
+      16
+     ],
+     "crl_cm": [
+      9,
+      14
+     ],
+     "weight_g": [
+      60,
+      200
+     ]
+    },
+    {
+     "age_weeks": [
+      17,
+      20
+     ],
+     "crl_cm": [
+      15,
+      19
+     ],
+     "weight_g": [
+      250,
+      450
+     ]
+    },
+    {
+     "age_weeks": [
+      21,
+      24
+     ],
+     "crl_cm": [
+      20,
+      23
+     ],
+     "weight_g": [
+      500,
+      820
+     ]
+    },
+    {
+     "age_weeks": [
+      25,
+      28
+     ],
+     "crl_cm": [
+      24,
+      27
+     ],
+     "weight_g": [
+      900,
+      1300
+     ]
+    }
+   ],
+   "incomplete": "5/8 rows read (OCR); finish by hand from the book"
+  }
+ ]
+}

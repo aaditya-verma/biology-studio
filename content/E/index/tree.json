@@ -1,0 +1,3089 @@
+{
+ "book": "E",
+ "title": "Langman's Medical Embryology, 14th edition",
+ "page_offset": 19,
+ "locator_note": "pdf = PDF page number; pages = printed page (pdf - offset). Titles are headings only (labels), no book text.",
+ "parts": [
+  {
+   "part": 1,
+   "title": "General Embryology",
+   "pdf_first": 20,
+   "chapters": [
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09"
+   ]
+  },
+  {
+   "part": 2,
+   "title": "Systems-Based Embryology",
+   "pdf_first": 164,
+   "chapters": [
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E21"
+   ]
+  },
+  {
+   "part": 3,
+   "title": "Appendix",
+   "pdf_first": 396,
+   "chapters": []
+  }
+ ],
+ "chapters": [
+  {
+   "ch": 1,
+   "id": "E01",
+   "title": "Introduction to Molecular Regulation and Signaling",
+   "part": 1,
+   "pdf_first": 22,
+   "pdf_last": 32,
+   "pages": [
+    3,
+    13
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E01.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 22,
+     "boxes": [],
+     "pdf_last": 22,
+     "pages": [
+      3,
+      3
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E01.01",
+     "title": "Gene Transcription",
+     "kind": "section",
+     "pdf_first": 22,
+     "boxes": [],
+     "pdf_last": 23,
+     "pages": [
+      3,
+      4
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E01.02",
+     "title": "Other Regulators of Gene Expression",
+     "kind": "section",
+     "pdf_first": 24,
+     "boxes": [],
+     "pdf_last": 24,
+     "pages": [
+      5,
+      5
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E01.03",
+     "title": "Induction and Organ Formation",
+     "kind": "section",
+     "pdf_first": 25,
+     "boxes": [],
+     "pdf_last": 25,
+     "pages": [
+      6,
+      6
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E01.04",
+     "title": "Cell Signaling",
+     "kind": "section",
+     "pdf_first": 25,
+     "boxes": [],
+     "pdf_last": 26,
+     "pages": [
+      6,
+      7
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E01.05",
+     "title": "Key Signaling Pathways for Development",
+     "kind": "section",
+     "pdf_first": 27,
+     "boxes": [],
+     "pdf_last": 28,
+     "pages": [
+      8,
+      9
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E01.06",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 29,
+     "boxes": [],
+     "pdf_last": 31,
+     "pages": [
+      10,
+      12
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E01.07",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 32,
+     "boxes": [],
+     "pdf_last": 32,
+     "pages": [
+      13,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 2,
+   "id": "E02",
+   "title": "Gametogenesis: Conversion of Germ Cells into Male and Female Gametes",
+   "part": 1,
+   "pdf_first": 33,
+   "pdf_last": 52,
+   "pages": [
+    14,
+    33
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E02.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 33,
+     "boxes": [],
+     "pdf_last": 33,
+     "pages": [
+      14,
+      14
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E02.01",
+     "title": "Primordial Germ Cells",
+     "kind": "section",
+     "pdf_first": 33,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 33,
+       "title": null
+      }
+     ],
+     "pdf_last": 33,
+     "pages": [
+      14,
+      14
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E02.02",
+     "title": "The Chromosome Theory of Inheritance",
+     "kind": "section",
+     "pdf_first": 34,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 36,
+       "title": "Birth Defects and Spontaneous Abortions: Chromosomal and Genetic Factors"
+      }
+     ],
+     "pdf_last": 43,
+     "pages": [
+      15,
+      24
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E02.03",
+     "title": "Morphological Changes During Maturation of the Gametes",
+     "kind": "section",
+     "pdf_first": 44,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 51,
+       "title": null
+      }
+     ],
+     "pdf_last": 50,
+     "pages": [
+      25,
+      31
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E02.04",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 51,
+     "boxes": [],
+     "pdf_last": 51,
+     "pages": [
+      32,
+      32
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E02.05",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 52,
+     "boxes": [],
+     "pdf_last": 52,
+     "pages": [
+      33,
+      33
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 3,
+   "id": "E03",
+   "title": "First Week of Development: Ovulation to Implantation",
+   "part": 1,
+   "pdf_first": 53,
+   "pdf_last": 68,
+   "pages": [
+    34,
+    49
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E03.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 53,
+     "boxes": [],
+     "pdf_last": 53,
+     "pages": [
+      34,
+      34
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E03.01",
+     "title": "Ovarian Cycle",
+     "kind": "section",
+     "pdf_first": 53,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 55,
+       "title": "Ovulation"
+      }
+     ],
+     "pdf_last": 56,
+     "pages": [
+      34,
+      37
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E03.02",
+     "title": "Fertilization",
+     "kind": "section",
+     "pdf_first": 57,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 60,
+       "title": "Contraceptive Methods"
+      }
+     ],
+     "pdf_last": 60,
+     "pages": [
+      38,
+      41
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E03.03",
+     "title": "Cleavage",
+     "kind": "section",
+     "pdf_first": 61,
+     "boxes": [],
+     "pdf_last": 61,
+     "pages": [
+      42,
+      42
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E03.04",
+     "title": "Blastocyst Formation",
+     "kind": "section",
+     "pdf_first": 62,
+     "boxes": [],
+     "pdf_last": 62,
+     "pages": [
+      43,
+      43
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E03.05",
+     "title": "Epiblast, Hypoblast, and Axis Formation",
+     "kind": "section",
+     "pdf_first": 63,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 64,
+       "title": null
+      }
+     ],
+     "pdf_last": 64,
+     "pages": [
+      44,
+      45
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E03.06",
+     "title": "Uterus at Time of Implantation",
+     "kind": "section",
+     "pdf_first": 65,
+     "boxes": [],
+     "pdf_last": 66,
+     "pages": [
+      46,
+      47
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E03.07",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 67,
+     "boxes": [],
+     "pdf_last": 67,
+     "pages": [
+      48,
+      48
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E03.08",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 68,
+     "boxes": [],
+     "pdf_last": 68,
+     "pages": [
+      49,
+      49
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 4,
+   "id": "E04",
+   "title": "Second Week of Development: Bilaminar Germ Disc",
+   "part": 1,
+   "pdf_first": 69,
+   "pdf_last": 77,
+   "pages": [
+    50,
+    58
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E04.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 69,
+     "boxes": [],
+     "pdf_last": 69,
+     "pages": [
+      50,
+      50
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E04.01",
+     "title": "Day 8",
+     "kind": "section",
+     "pdf_first": 69,
+     "boxes": [],
+     "pdf_last": 69,
+     "pages": [
+      50,
+      50
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E04.02",
+     "title": "Day 9",
+     "kind": "section",
+     "pdf_first": 70,
+     "boxes": [],
+     "pdf_last": 70,
+     "pages": [
+      51,
+      51
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E04.03",
+     "title": "Days 11 and 12",
+     "kind": "section",
+     "pdf_first": 71,
+     "boxes": [],
+     "pdf_last": 71,
+     "pages": [
+      52,
+      52
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E04.04",
+     "title": "Day 13",
+     "kind": "section",
+     "pdf_first": 72,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 74,
+       "title": "Abnormal Implantation"
+      }
+     ],
+     "pdf_last": 75,
+     "pages": [
+      53,
+      56
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E04.05",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 76,
+     "boxes": [],
+     "pdf_last": 76,
+     "pages": [
+      57,
+      57
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E04.06",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 77,
+     "boxes": [],
+     "pdf_last": 77,
+     "pages": [
+      58,
+      58
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 5,
+   "id": "E05",
+   "title": "Third Week of Development: Trilaminar Germ Disc",
+   "part": 1,
+   "pdf_first": 78,
+   "pdf_last": 90,
+   "pages": [
+    59,
+    71
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E05.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 78,
+     "boxes": [],
+     "pdf_last": 78,
+     "pages": [
+      59,
+      59
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E05.01",
+     "title": "Gastrulation: Formation of Embryonic Mesoderm and Endoderm",
+     "kind": "section",
+     "pdf_first": 78,
+     "boxes": [],
+     "pdf_last": 78,
+     "pages": [
+      59,
+      59
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E05.02",
+     "title": "Formation of the Notochord",
+     "kind": "section",
+     "pdf_first": 78,
+     "boxes": [],
+     "pdf_last": 78,
+     "pages": [
+      59,
+      59
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E05.03",
+     "title": "Establishment of the Body Axes",
+     "kind": "section",
+     "pdf_first": 79,
+     "boxes": [],
+     "pdf_last": 83,
+     "pages": [
+      60,
+      64
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E05.04",
+     "title": "Fate Map Established During Gastrulation",
+     "kind": "section",
+     "pdf_first": 84,
+     "boxes": [],
+     "pdf_last": 84,
+     "pages": [
+      65,
+      65
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E05.05",
+     "title": "Growth of the Embryonic Disc",
+     "kind": "section",
+     "pdf_first": 84,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 85,
+       "title": null
+      }
+     ],
+     "pdf_last": 86,
+     "pages": [
+      65,
+      67
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E05.06",
+     "title": "Further Development of the Trophoblast",
+     "kind": "section",
+     "pdf_first": 87,
+     "boxes": [],
+     "pdf_last": 87,
+     "pages": [
+      68,
+      68
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E05.07",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 88,
+     "boxes": [],
+     "pdf_last": 89,
+     "pages": [
+      69,
+      70
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E05.08",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 90,
+     "boxes": [],
+     "pdf_last": 90,
+     "pages": [
+      71,
+      71
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 6,
+   "id": "E06",
+   "title": "Third to Eighth Weeks: The Embryonic Period",
+   "part": 1,
+   "pdf_first": 91,
+   "pdf_last": 114,
+   "pages": [
+    72,
+    95
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E06.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 91,
+     "boxes": [],
+     "pdf_last": 91,
+     "pages": [
+      72,
+      72
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E06.01",
+     "title": "Derivatives of the Ectodermal Germ Layer",
+     "kind": "section",
+     "pdf_first": 91,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 91,
+       "title": "Molecular Regulation of Neural"
+      },
+      {
+       "kind": "molecular",
+       "pdf": 95,
+       "title": "Molecular Regulation of Neural Crest Induction"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 97,
+       "title": "Neural Tube Defects"
+      }
+     ],
+     "pdf_last": 98,
+     "pages": [
+      72,
+      79
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E06.02",
+     "title": "Derivatives of the Mesodermal Germ Layer",
+     "kind": "section",
+     "pdf_first": 99,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 101,
+       "title": "Molecular Regulation of Somite Formation"
+      },
+      {
+       "kind": "molecular",
+       "pdf": 101,
+       "title": "Molecular Regulation of Somite Differentiation"
+      },
+      {
+       "kind": "molecular",
+       "pdf": 105,
+       "title": "Molecular Regulation of Blood Vessel Formation"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 106,
+       "title": "Capillary Hemangiomas"
+      }
+     ],
+     "pdf_last": 105,
+     "pages": [
+      80,
+      86
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E06.03",
+     "title": "Derivatives of the Endodermal Germ Layer",
+     "kind": "section",
+     "pdf_first": 106,
+     "boxes": [],
+     "pdf_last": 107,
+     "pages": [
+      87,
+      88
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E06.04",
+     "title": "Patterning of the Anteroposterior Axis: Regulation by Homeobox Genes",
+     "kind": "section",
+     "pdf_first": 108,
+     "boxes": [],
+     "pdf_last": 108,
+     "pages": [
+      89,
+      89
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E06.05",
+     "title": "External Appearance During the Second Month",
+     "kind": "section",
+     "pdf_first": 109,
+     "boxes": [],
+     "pdf_last": 111,
+     "pages": [
+      90,
+      92
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E06.06",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 112,
+     "boxes": [],
+     "pdf_last": 113,
+     "pages": [
+      93,
+      94
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E06.07",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 114,
+     "boxes": [],
+     "pdf_last": 114,
+     "pages": [
+      95,
+      95
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 7,
+   "id": "E07",
+   "title": "The Gut Tube and the Body Cavities",
+   "part": 1,
+   "pdf_first": 115,
+   "pdf_last": 124,
+   "pages": [
+    96,
+    105
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E07.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 115,
+     "boxes": [],
+     "pdf_last": 115,
+     "pages": [
+      96,
+      96
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E07.01",
+     "title": "A Tube on Top of a Tube",
+     "kind": "section",
+     "pdf_first": 115,
+     "boxes": [],
+     "pdf_last": 115,
+     "pages": [
+      96,
+      96
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E07.02",
+     "title": "Formation of the Body Cavity",
+     "kind": "section",
+     "pdf_first": 116,
+     "boxes": [],
+     "pdf_last": 116,
+     "pages": [
+      97,
+      97
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E07.03",
+     "title": "Serous Membranes",
+     "kind": "section",
+     "pdf_first": 116,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 117,
+       "title": null
+      }
+     ],
+     "pdf_last": 119,
+     "pages": [
+      97,
+      100
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E07.04",
+     "title": "Diaphragm and Thoracic Cavity",
+     "kind": "section",
+     "pdf_first": 120,
+     "boxes": [],
+     "pdf_last": 120,
+     "pages": [
+      101,
+      101
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E07.05",
+     "title": "Formation of the Diaphragm",
+     "kind": "section",
+     "pdf_first": 121,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 122,
+       "title": "Diaphragmatic Hernias"
+      }
+     ],
+     "pdf_last": 122,
+     "pages": [
+      102,
+      103
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E07.06",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 123,
+     "boxes": [],
+     "pdf_last": 123,
+     "pages": [
+      104,
+      104
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E07.07",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 124,
+     "boxes": [],
+     "pdf_last": 124,
+     "pages": [
+      105,
+      105
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 8,
+   "id": "E08",
+   "title": "Third Month to Birth: The Fetus and Placenta",
+   "part": 1,
+   "pdf_first": 125,
+   "pdf_last": 146,
+   "pages": [
+    106,
+    127
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E08.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 125,
+     "boxes": [],
+     "pdf_last": 125,
+     "pages": [
+      106,
+      106
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E08.01",
+     "title": "Development of the Fetus",
+     "kind": "section",
+     "pdf_first": 125,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 129,
+       "title": "Low Birth Weight"
+      }
+     ],
+     "pdf_last": 128,
+     "pages": [
+      106,
+      109
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E08.02",
+     "title": "Fetal Membranes and Placenta",
+     "kind": "section",
+     "pdf_first": 129,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 131,
+       "title": "Preeclampsia"
+      }
+     ],
+     "pdf_last": 131,
+     "pages": [
+      110,
+      112
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E08.03",
+     "title": "Chorion Frondosum and Decidua Basalis",
+     "kind": "section",
+     "pdf_first": 132,
+     "boxes": [],
+     "pdf_last": 132,
+     "pages": [
+      113,
+      113
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E08.04",
+     "title": "Structure of the Placenta",
+     "kind": "section",
+     "pdf_first": 132,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 135,
+       "title": "Erythroblastosis Fetalis and Fetal Hydrops"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 137,
+       "title": "The Placental Barrier"
+      }
+     ],
+     "pdf_last": 136,
+     "pages": [
+      113,
+      117
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E08.05",
+     "title": "Amnion and Umbilical Cord",
+     "kind": "section",
+     "pdf_first": 137,
+     "boxes": [],
+     "pdf_last": 137,
+     "pages": [
+      118,
+      118
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E08.06",
+     "title": "Placental Changes at the End of Pregnancy",
+     "kind": "section",
+     "pdf_first": 138,
+     "boxes": [],
+     "pdf_last": 138,
+     "pages": [
+      119,
+      119
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E08.07",
+     "title": "Amniotic Fluid",
+     "kind": "section",
+     "pdf_first": 138,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 139,
+       "title": null
+      }
+     ],
+     "pdf_last": 139,
+     "pages": [
+      119,
+      120
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E08.08",
+     "title": "Fetal Membranes in Twins",
+     "kind": "section",
+     "pdf_first": 140,
+     "boxes": [],
+     "pdf_last": 140,
+     "pages": [
+      121,
+      121
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E08.09",
+     "title": "Parturition [birth]",
+     "kind": "section",
+     "pdf_first": 140,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 142,
+       "title": null
+      },
+      {
+       "kind": "clinical",
+       "pdf": 144,
+       "title": null
+      }
+     ],
+     "pdf_last": 144,
+     "pages": [
+      121,
+      125
+     ]
+    },
+    {
+     "sec": 10,
+     "id": "E08.10",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 145,
+     "boxes": [],
+     "pdf_last": 145,
+     "pages": [
+      126,
+      126
+     ]
+    },
+    {
+     "sec": 11,
+     "id": "E08.11",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 146,
+     "boxes": [],
+     "pdf_last": 146,
+     "pages": [
+      127,
+      127
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 9,
+   "id": "E09",
+   "title": "Birth Defects and Prenatal Diagnosis",
+   "part": 1,
+   "pdf_first": 147,
+   "pdf_last": 163,
+   "pages": [
+    128,
+    144
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E09.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 147,
+     "boxes": [],
+     "pdf_last": 147,
+     "pages": [
+      128,
+      128
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E09.01",
+     "title": "Birth Defects",
+     "kind": "section",
+     "pdf_first": 147,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 158,
+       "title": "Prevention of Birth Defects"
+      }
+     ],
+     "pdf_last": 157,
+     "pages": [
+      128,
+      138
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E09.02",
+     "title": "Prenatal Diagnosis",
+     "kind": "section",
+     "pdf_first": 158,
+     "boxes": [],
+     "pdf_last": 161,
+     "pages": [
+      139,
+      142
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E09.03",
+     "title": "Fetal Therapy",
+     "kind": "section",
+     "pdf_first": 162,
+     "boxes": [],
+     "pdf_last": 162,
+     "pages": [
+      143,
+      143
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E09.04",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 162,
+     "boxes": [],
+     "pdf_last": 162,
+     "pages": [
+      143,
+      143
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E09.05",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 163,
+     "boxes": [],
+     "pdf_last": 163,
+     "pages": [
+      144,
+      144
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 10,
+   "id": "E10",
+   "title": "The Axial Skeleton",
+   "part": 2,
+   "pdf_first": 166,
+   "pdf_last": 178,
+   "pages": [
+    147,
+    159
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E10.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 166,
+     "boxes": [],
+     "pdf_last": 166,
+     "pages": [
+      147,
+      147
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E10.01",
+     "title": "Skull",
+     "kind": "section",
+     "pdf_first": 166,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 170,
+       "title": "Craniofacial Defects and Skeletal Dysplasias Neural Crest Cells"
+      }
+     ],
+     "pdf_last": 174,
+     "pages": [
+      147,
+      155
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E10.02",
+     "title": "Vertebrae and the Vertebral Column",
+     "kind": "section",
+     "pdf_first": 175,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 176,
+       "title": null
+      }
+     ],
+     "pdf_last": 176,
+     "pages": [
+      156,
+      157
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E10.03",
+     "title": "Ribs and Sternum",
+     "kind": "section",
+     "pdf_first": 177,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 177,
+       "title": null
+      }
+     ],
+     "pdf_last": 177,
+     "pages": [
+      158,
+      158
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E10.04",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 178,
+     "boxes": [],
+     "pdf_last": 178,
+     "pages": [
+      159,
+      159
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E10.05",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 178,
+     "boxes": [],
+     "pdf_last": 178,
+     "pages": [
+      159,
+      159
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 11,
+   "id": "E11",
+   "title": "Muscular System",
+   "part": 2,
+   "pdf_first": 179,
+   "pdf_last": 185,
+   "pages": [
+    160,
+    166
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E11.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 179,
+     "boxes": [],
+     "pdf_last": 179,
+     "pages": [
+      160,
+      160
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E11.01",
+     "title": "Striated Skeletal Musculature",
+     "kind": "section",
+     "pdf_first": 179,
+     "boxes": [],
+     "pdf_last": 179,
+     "pages": [
+      160,
+      160
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E11.02",
+     "title": "Innervation of Axial Skeletal Muscles",
+     "kind": "section",
+     "pdf_first": 180,
+     "boxes": [],
+     "pdf_last": 181,
+     "pages": [
+      161,
+      162
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E11.03",
+     "title": "Molecular Regulation of Muscle Development",
+     "kind": "section",
+     "pdf_first": 182,
+     "boxes": [],
+     "pdf_last": 182,
+     "pages": [
+      163,
+      163
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E11.04",
+     "title": "Patterning of Muscles",
+     "kind": "section",
+     "pdf_first": 182,
+     "boxes": [],
+     "pdf_last": 182,
+     "pages": [
+      163,
+      163
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E11.05",
+     "title": "Head Musculature",
+     "kind": "section",
+     "pdf_first": 182,
+     "boxes": [],
+     "pdf_last": 182,
+     "pages": [
+      163,
+      163
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E11.06",
+     "title": "Skeletal Muscle and Tendons",
+     "kind": "section",
+     "pdf_first": 182,
+     "boxes": [],
+     "pdf_last": 182,
+     "pages": [
+      163,
+      163
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E11.07",
+     "title": "Limb Musculature",
+     "kind": "section",
+     "pdf_first": 182,
+     "boxes": [],
+     "pdf_last": 182,
+     "pages": [
+      163,
+      163
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E11.08",
+     "title": "Cardiac Muscle",
+     "kind": "section",
+     "pdf_first": 183,
+     "boxes": [],
+     "pdf_last": 183,
+     "pages": [
+      164,
+      164
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E11.09",
+     "title": "Smooth Muscle",
+     "kind": "section",
+     "pdf_first": 183,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 183,
+       "title": null
+      }
+     ],
+     "pdf_last": 183,
+     "pages": [
+      164,
+      164
+     ]
+    },
+    {
+     "sec": 10,
+     "id": "E11.10",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 184,
+     "boxes": [],
+     "pdf_last": 184,
+     "pages": [
+      165,
+      165
+     ]
+    },
+    {
+     "sec": 11,
+     "id": "E11.11",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 185,
+     "boxes": [],
+     "pdf_last": 185,
+     "pages": [
+      166,
+      166
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 12,
+   "id": "E12",
+   "title": "Limbs",
+   "part": 2,
+   "pdf_first": 186,
+   "pdf_last": 197,
+   "pages": [
+    167,
+    178
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E12.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 186,
+     "boxes": [],
+     "pdf_last": 186,
+     "pages": [
+      167,
+      167
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E12.01",
+     "title": "Limb Growth and Development",
+     "kind": "section",
+     "pdf_first": 186,
+     "boxes": [],
+     "pdf_last": 188,
+     "pages": [
+      167,
+      169
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E12.02",
+     "title": "Limb Musculature",
+     "kind": "section",
+     "pdf_first": 189,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 191,
+       "title": "Molecular Regulation of Limb Development"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 193,
+       "title": null
+      }
+     ],
+     "pdf_last": 196,
+     "pages": [
+      170,
+      177
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E12.03",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 197,
+     "boxes": [],
+     "pdf_last": 197,
+     "pages": [
+      178,
+      178
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E12.04",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 197,
+     "boxes": [],
+     "pdf_last": 197,
+     "pages": [
+      178,
+      178
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 13,
+   "id": "E13",
+   "title": "Cardiovascular System",
+   "part": 2,
+   "pdf_first": 198,
+   "pdf_last": 241,
+   "pages": [
+    179,
+    222
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E13.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 198,
+     "boxes": [],
+     "pdf_last": 198,
+     "pages": [
+      179,
+      179
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E13.01",
+     "title": "Establishment and Patterning of the Primary Heart Field",
+     "kind": "section",
+     "pdf_first": 198,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 200,
+       "title": "Laterality and Heart Defects"
+      }
+     ],
+     "pdf_last": 199,
+     "pages": [
+      179,
+      180
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E13.02",
+     "title": "Formation and Position of the Heart Tube",
+     "kind": "section",
+     "pdf_first": 200,
+     "boxes": [],
+     "pdf_last": 201,
+     "pages": [
+      181,
+      182
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E13.03",
+     "title": "Formation of the Cardiac Loop",
+     "kind": "section",
+     "pdf_first": 202,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 204,
+       "title": "Abnormalities of Cardiac Looping"
+      }
+     ],
+     "pdf_last": 204,
+     "pages": [
+      183,
+      185
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E13.04",
+     "title": "Molecular Regulation of Cardiac Development",
+     "kind": "section",
+     "pdf_first": 205,
+     "boxes": [],
+     "pdf_last": 205,
+     "pages": [
+      186,
+      186
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E13.05",
+     "title": "Development of the Sinus Venosus",
+     "kind": "section",
+     "pdf_first": 206,
+     "boxes": [],
+     "pdf_last": 206,
+     "pages": [
+      187,
+      187
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E13.06",
+     "title": "Formation of the Cardiac Septa",
+     "kind": "section",
+     "pdf_first": 207,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 212,
+       "title": null
+      },
+      {
+       "kind": "clinical",
+       "pdf": 214,
+       "title": "Heart Defects"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 221,
+       "title": "Heart Defects"
+      }
+     ],
+     "pdf_last": 223,
+     "pages": [
+      188,
+      204
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E13.07",
+     "title": "Formation of the Conducting System of the Heart",
+     "kind": "section",
+     "pdf_first": 224,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 224,
+       "title": null
+      }
+     ],
+     "pdf_last": 224,
+     "pages": [
+      205,
+      205
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E13.08",
+     "title": "Vascular Development",
+     "kind": "section",
+     "pdf_first": 225,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 229,
+       "title": null
+      }
+     ],
+     "pdf_last": 237,
+     "pages": [
+      206,
+      218
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E13.09",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 238,
+     "boxes": [],
+     "pdf_last": 240,
+     "pages": [
+      219,
+      221
+     ]
+    },
+    {
+     "sec": 10,
+     "id": "E13.10",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 241,
+     "boxes": [],
+     "pdf_last": 241,
+     "pages": [
+      222,
+      222
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 14,
+   "id": "E14",
+   "title": "Respiratory System",
+   "part": 2,
+   "pdf_first": 242,
+   "pdf_last": 248,
+   "pages": [
+    223,
+    229
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E14.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 242,
+     "boxes": [],
+     "pdf_last": 242,
+     "pages": [
+      223,
+      223
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E14.01",
+     "title": "Formation of the Lung Buds",
+     "kind": "section",
+     "pdf_first": 242,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 243,
+       "title": null
+      }
+     ],
+     "pdf_last": 243,
+     "pages": [
+      223,
+      224
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E14.02",
+     "title": "Larynx",
+     "kind": "section",
+     "pdf_first": 244,
+     "boxes": [],
+     "pdf_last": 244,
+     "pages": [
+      225,
+      225
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E14.03",
+     "title": "Trachea, Bronchi, and Lungs",
+     "kind": "section",
+     "pdf_first": 244,
+     "boxes": [],
+     "pdf_last": 245,
+     "pages": [
+      225,
+      226
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E14.04",
+     "title": "Maturation of the Lungs",
+     "kind": "section",
+     "pdf_first": 246,
+     "boxes": [],
+     "pdf_last": 246,
+     "pages": [
+      227,
+      227
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E14.05",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 247,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 248,
+       "title": null
+      }
+     ],
+     "pdf_last": 247,
+     "pages": [
+      228,
+      228
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E14.06",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 248,
+     "boxes": [],
+     "pdf_last": 248,
+     "pages": [
+      229,
+      229
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 15,
+   "id": "E15",
+   "title": "Digestive System",
+   "part": 2,
+   "pdf_first": 249,
+   "pdf_last": 274,
+   "pages": [
+    230,
+    255
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E15.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 249,
+     "boxes": [],
+     "pdf_last": 249,
+     "pages": [
+      230,
+      230
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E15.01",
+     "title": "Divisions of the Gut Tube",
+     "kind": "section",
+     "pdf_first": 249,
+     "boxes": [],
+     "pdf_last": 249,
+     "pages": [
+      230,
+      230
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E15.02",
+     "title": "Molecular Regulation of Gut Tube Development",
+     "kind": "section",
+     "pdf_first": 250,
+     "boxes": [],
+     "pdf_last": 250,
+     "pages": [
+      231,
+      231
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E15.03",
+     "title": "Mesentery",
+     "kind": "section",
+     "pdf_first": 251,
+     "boxes": [],
+     "pdf_last": 251,
+     "pages": [
+      232,
+      232
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E15.04",
+     "title": "Foregut",
+     "kind": "section",
+     "pdf_first": 252,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 254,
+       "title": null
+      },
+      {
+       "kind": "clinical",
+       "pdf": 260,
+       "title": null
+      }
+     ],
+     "pdf_last": 260,
+     "pages": [
+      233,
+      241
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E15.05",
+     "title": "Molecular Regulation of Liver Induction",
+     "kind": "section",
+     "pdf_first": 261,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 262,
+       "title": "HEPATO CYTE NUCLEAR TRANSCRIPTION"
+      }
+     ],
+     "pdf_last": 262,
+     "pages": [
+      242,
+      243
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E15.06",
+     "title": "Pancreas",
+     "kind": "section",
+     "pdf_first": 263,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 263,
+       "title": "Molecular Regulation of Pancreas"
+      }
+     ],
+     "pdf_last": 263,
+     "pages": [
+      244,
+      244
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E15.07",
+     "title": "Midgut",
+     "kind": "section",
+     "pdf_first": 263,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 264,
+       "title": null
+      }
+     ],
+     "pdf_last": 266,
+     "pages": [
+      244,
+      247
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E15.08",
+     "title": "Hindgut",
+     "kind": "section",
+     "pdf_first": 267,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 268,
+       "title": "Abnormalities of the Mesenteries"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 272,
+       "title": "Hindgut Abnormalities"
+      }
+     ],
+     "pdf_last": 272,
+     "pages": [
+      248,
+      253
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E15.09",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 273,
+     "boxes": [],
+     "pdf_last": 273,
+     "pages": [
+      254,
+      254
+     ]
+    },
+    {
+     "sec": 10,
+     "id": "E15.10",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 274,
+     "boxes": [],
+     "pdf_last": 274,
+     "pages": [
+      255,
+      255
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 16,
+   "id": "E16",
+   "title": "Urogenital System",
+   "part": 2,
+   "pdf_first": 275,
+   "pdf_last": 302,
+   "pages": [
+    256,
+    283
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E16.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 275,
+     "boxes": [],
+     "pdf_last": 275,
+     "pages": [
+      256,
+      256
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E16.01",
+     "title": "Urinary System",
+     "kind": "section",
+     "pdf_first": 275,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 279,
+       "title": "Molecular Regulation of Kidney Development"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 280,
+       "title": "Renal Tumors and Defects"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 282,
+       "title": "Abnormal Location of the Kidneys"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 285,
+       "title": null
+      }
+     ],
+     "pdf_last": 285,
+     "pages": [
+      256,
+      266
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E16.02",
+     "title": "Genital System",
+     "kind": "section",
+     "pdf_first": 286,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 292,
+       "title": "Molecular Regulation of Genital Duct Development"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 294,
+       "title": null
+      },
+      {
+       "kind": "clinical",
+       "pdf": 296,
+       "title": null
+      },
+      {
+       "kind": "clinical",
+       "pdf": 298,
+       "title": "Disorders of Sex Development"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 301,
+       "title": null
+      }
+     ],
+     "pdf_last": 300,
+     "pages": [
+      267,
+      281
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E16.03",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 301,
+     "boxes": [],
+     "pdf_last": 301,
+     "pages": [
+      282,
+      282
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E16.04",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 302,
+     "boxes": [],
+     "pdf_last": 302,
+     "pages": [
+      283,
+      283
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 17,
+   "id": "E17",
+   "title": "Head and Neck",
+   "part": 2,
+   "pdf_first": 303,
+   "pdf_last": 331,
+   "pages": [
+    284,
+    312
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E17.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 303,
+     "boxes": [],
+     "pdf_last": 304,
+     "pages": [
+      284,
+      285
+     ]
+    },
+    {
+     "sec": 1,
+     "id": "E17.01",
+     "title": "Pharyngeal Arches",
+     "kind": "section",
+     "pdf_first": 305,
+     "boxes": [],
+     "pdf_last": 308,
+     "pages": [
+      286,
+      289
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E17.02",
+     "title": "Pharyngeal Pouches",
+     "kind": "section",
+     "pdf_first": 309,
+     "boxes": [],
+     "pdf_last": 309,
+     "pages": [
+      290,
+      290
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E17.03",
+     "title": "Pharyngeal Clefts",
+     "kind": "section",
+     "pdf_first": 310,
+     "boxes": [],
+     "pdf_last": 310,
+     "pages": [
+      291,
+      291
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E17.04",
+     "title": "Molecular Regulation of Facial Development",
+     "kind": "section",
+     "pdf_first": 311,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 313,
+       "title": null
+      }
+     ],
+     "pdf_last": 315,
+     "pages": [
+      292,
+      296
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E17.05",
+     "title": "Tongue",
+     "kind": "section",
+     "pdf_first": 316,
+     "boxes": [],
+     "pdf_last": 316,
+     "pages": [
+      297,
+      297
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E17.06",
+     "title": "Thyroid Gland",
+     "kind": "section",
+     "pdf_first": 317,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 317,
+       "title": "Tongue-Tie"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 318,
+       "title": null
+      }
+     ],
+     "pdf_last": 318,
+     "pages": [
+      298,
+      299
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E17.07",
+     "title": "Face",
+     "kind": "section",
+     "pdf_first": 319,
+     "boxes": [],
+     "pdf_last": 319,
+     "pages": [
+      300,
+      300
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E17.08",
+     "title": "Intermaxillary Segment",
+     "kind": "section",
+     "pdf_first": 320,
+     "boxes": [],
+     "pdf_last": 320,
+     "pages": [
+      301,
+      301
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E17.09",
+     "title": "Secondary Palate",
+     "kind": "section",
+     "pdf_first": 320,
+     "boxes": [],
+     "pdf_last": 320,
+     "pages": [
+      301,
+      301
+     ]
+    },
+    {
+     "sec": 10,
+     "id": "E17.10",
+     "title": "Nasal Cavities",
+     "kind": "section",
+     "pdf_first": 321,
+     "boxes": [],
+     "pdf_last": 321,
+     "pages": [
+      302,
+      302
+     ]
+    },
+    {
+     "sec": 11,
+     "id": "E17.11",
+     "title": "Teeth",
+     "kind": "section",
+     "pdf_first": 321,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 324,
+       "title": null
+      }
+     ],
+     "pdf_last": 328,
+     "pages": [
+      302,
+      309
+     ]
+    },
+    {
+     "sec": 12,
+     "id": "E17.12",
+     "title": "Molecular Regulation of Tooth Development",
+     "kind": "section",
+     "pdf_first": 329,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 330,
+       "title": null
+      }
+     ],
+     "pdf_last": 329,
+     "pages": [
+      310,
+      310
+     ]
+    },
+    {
+     "sec": 13,
+     "id": "E17.13",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 330,
+     "boxes": [],
+     "pdf_last": 330,
+     "pages": [
+      311,
+      311
+     ]
+    },
+    {
+     "sec": 14,
+     "id": "E17.14",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 331,
+     "boxes": [],
+     "pdf_last": 331,
+     "pages": [
+      312,
+      312
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 18,
+   "id": "E18",
+   "title": "Central Nervous System",
+   "part": 2,
+   "pdf_first": 332,
+   "pdf_last": 369,
+   "pages": [
+    313,
+    350
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E18.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 332,
+     "boxes": [],
+     "pdf_last": 332,
+     "pages": [
+      313,
+      313
+     ]
+    },
+    {
+     "sec": 1,
+     "id": "E18.01",
+     "title": "Spinal Cord",
+     "kind": "section",
+     "pdf_first": 333,
+     "boxes": [
+      {
+       "kind": "molecular",
+       "pdf": 340,
+       "title": "Molecular Regulation of Nerve"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 341,
+       "title": "Neural Tube Defects"
+      }
+     ],
+     "pdf_last": 342,
+     "pages": [
+      314,
+      323
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E18.02",
+     "title": "Brain",
+     "kind": "section",
+     "pdf_first": 343,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 350,
+       "title": null
+      }
+     ],
+     "pdf_last": 354,
+     "pages": [
+      324,
+      335
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E18.03",
+     "title": "Molecular Regulation of Brain Development",
+     "kind": "section",
+     "pdf_first": 355,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 357,
+       "title": null
+      }
+     ],
+     "pdf_last": 356,
+     "pages": [
+      336,
+      337
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E18.04",
+     "title": "Cranial Nerves",
+     "kind": "section",
+     "pdf_first": 357,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 367,
+       "title": "Pheochromocytomas"
+      }
+     ],
+     "pdf_last": 360,
+     "pages": [
+      338,
+      341
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E18.05",
+     "title": "Autonomic Nervous System",
+     "kind": "section",
+     "pdf_first": 361,
+     "boxes": [],
+     "manual": true,
+     "pdf_last": 367,
+     "pages": [
+      342,
+      348
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E18.06",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 368,
+     "boxes": [],
+     "pdf_last": 368,
+     "pages": [
+      349,
+      349
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E18.07",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 369,
+     "boxes": [],
+     "pdf_last": 369,
+     "pages": [
+      350,
+      350
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 19,
+   "id": "E19",
+   "title": "Ear",
+   "part": 2,
+   "pdf_first": 370,
+   "pdf_last": 378,
+   "pages": [
+    351,
+    359
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E19.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 370,
+     "boxes": [],
+     "pdf_last": 370,
+     "pages": [
+      351,
+      351
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E19.01",
+     "title": "Internal Ear",
+     "kind": "section",
+     "pdf_first": 370,
+     "boxes": [],
+     "pdf_last": 372,
+     "pages": [
+      351,
+      353
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E19.02",
+     "title": "Middle Ear",
+     "kind": "section",
+     "pdf_first": 373,
+     "boxes": [],
+     "pdf_last": 374,
+     "pages": [
+      354,
+      355
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E19.03",
+     "title": "External Ear",
+     "kind": "section",
+     "pdf_first": 375,
+     "boxes": [],
+     "pdf_last": 375,
+     "pages": [
+      356,
+      356
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E19.04",
+     "title": "Hearing",
+     "kind": "section",
+     "pdf_first": 375,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 377,
+       "title": null
+      }
+     ],
+     "pdf_last": 377,
+     "pages": [
+      356,
+      358
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E19.05",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 378,
+     "boxes": [],
+     "pdf_last": 378,
+     "pages": [
+      359,
+      359
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E19.06",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 378,
+     "boxes": [],
+     "pdf_last": 378,
+     "pages": [
+      359,
+      359
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 20,
+   "id": "E20",
+   "title": "Eye",
+   "part": 2,
+   "pdf_first": 379,
+   "pdf_last": 388,
+   "pages": [
+    360,
+    369
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E20.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 379,
+     "boxes": [],
+     "pdf_last": 379,
+     "pages": [
+      360,
+      360
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E20.01",
+     "title": "Optic Cup and Lens Vesicle",
+     "kind": "section",
+     "pdf_first": 379,
+     "boxes": [],
+     "pdf_last": 380,
+     "pages": [
+      360,
+      361
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E20.02",
+     "title": "Retina, Iris, and Ciliary Body",
+     "kind": "section",
+     "pdf_first": 381,
+     "boxes": [],
+     "pdf_last": 381,
+     "pages": [
+      362,
+      362
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E20.03",
+     "title": "Lens",
+     "kind": "section",
+     "pdf_first": 381,
+     "boxes": [],
+     "pdf_last": 382,
+     "pages": [
+      362,
+      363
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E20.04",
+     "title": "Choroid, Sclera, and Cornea",
+     "kind": "section",
+     "pdf_first": 383,
+     "boxes": [],
+     "pdf_last": 383,
+     "pages": [
+      364,
+      364
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E20.05",
+     "title": "Vitreous Body",
+     "kind": "section",
+     "pdf_first": 383,
+     "boxes": [],
+     "pdf_last": 383,
+     "pages": [
+      364,
+      364
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E20.06",
+     "title": "Optic Nerve",
+     "kind": "section",
+     "pdf_first": 384,
+     "boxes": [],
+     "pdf_last": 384,
+     "pages": [
+      365,
+      365
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E20.07",
+     "title": "Molecular Regulation of Eye Development",
+     "kind": "section",
+     "pdf_first": 384,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 386,
+       "title": "Eye Abnormalities"
+      }
+     ],
+     "pdf_last": 387,
+     "pages": [
+      365,
+      368
+     ]
+    },
+    {
+     "sec": 8,
+     "id": "E20.08",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 388,
+     "boxes": [],
+     "pdf_last": 388,
+     "pages": [
+      369,
+      369
+     ]
+    },
+    {
+     "sec": 9,
+     "id": "E20.09",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 388,
+     "boxes": [],
+     "pdf_last": 388,
+     "pages": [
+      369,
+      369
+     ]
+    }
+   ]
+  },
+  {
+   "ch": 21,
+   "id": "E21",
+   "title": "Integumentary System",
+   "part": 2,
+   "pdf_first": 389,
+   "pdf_last": 395,
+   "pages": [
+    370,
+    376
+   ],
+   "sections": [
+    {
+     "sec": 0,
+     "id": "E21.00",
+     "title": "Chapter opener",
+     "kind": "opener",
+     "pdf_first": 389,
+     "boxes": [],
+     "pdf_last": 389,
+     "pages": [
+      370,
+      370
+     ],
+     "note": "opener shares its first page with section 01"
+    },
+    {
+     "sec": 1,
+     "id": "E21.01",
+     "title": "Skin",
+     "kind": "section",
+     "pdf_first": 389,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 390,
+       "title": "Pigmentary Disorders"
+      },
+      {
+       "kind": "clinical",
+       "pdf": 390,
+       "title": "Keratinization of the Skin"
+      }
+     ],
+     "pdf_last": 390,
+     "pages": [
+      370,
+      371
+     ]
+    },
+    {
+     "sec": 2,
+     "id": "E21.02",
+     "title": "Hair",
+     "kind": "section",
+     "pdf_first": 391,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 392,
+       "title": null
+      }
+     ],
+     "pdf_last": 391,
+     "pages": [
+      372,
+      372
+     ]
+    },
+    {
+     "sec": 3,
+     "id": "E21.03",
+     "title": "Fingernails and Toenails",
+     "kind": "section",
+     "pdf_first": 392,
+     "boxes": [],
+     "pdf_last": 392,
+     "pages": [
+      373,
+      373
+     ]
+    },
+    {
+     "sec": 4,
+     "id": "E21.04",
+     "title": "Sweat Glands",
+     "kind": "section",
+     "pdf_first": 392,
+     "boxes": [],
+     "pdf_last": 392,
+     "pages": [
+      373,
+      373
+     ]
+    },
+    {
+     "sec": 5,
+     "id": "E21.05",
+     "title": "Mammary Glands",
+     "kind": "section",
+     "pdf_first": 392,
+     "boxes": [
+      {
+       "kind": "clinical",
+       "pdf": 393,
+       "title": "Mammary Gland Abnormalities"
+      }
+     ],
+     "pdf_last": 393,
+     "pages": [
+      373,
+      374
+     ]
+    },
+    {
+     "sec": 6,
+     "id": "E21.06",
+     "title": "Summary",
+     "kind": "summary",
+     "pdf_first": 394,
+     "boxes": [],
+     "pdf_last": 394,
+     "pages": [
+      375,
+      375
+     ]
+    },
+    {
+     "sec": 7,
+     "id": "E21.07",
+     "title": "Problems to Solve",
+     "kind": "problems",
+     "pdf_first": 394,
+     "boxes": [],
+     "pdf_last": 395,
+     "pages": [
+      375,
+      376
+     ]
+    }
+   ]
+  }
+ ]
+}

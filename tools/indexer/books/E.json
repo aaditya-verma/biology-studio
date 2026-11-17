@@ -1,0 +1,104 @@
+{
+  "_purpose": "Book config for tools/indexer/index_book.py. Owner doc: claude/README.md (ids). Updated: 17 Nov 2026 · Bio · Build · I1 index",
+  "code": "E",
+  "title": "Langman's Medical Embryology, 14th edition",
+  "pdf_name": "Langmans Medical Embryology 14th Edition 2.pdf",
+  "pdf_pages": 429,
+  "_EDIT_page_offset": "printed page = pdf page - offset (checked on Figure Credits folio pdf 410 = p. 391 and Table 6.1 refs)",
+  "page_offset": 19,
+  "parts_pattern": "^Part \\d",
+  "skip_outline_titles": [
+    "Answers to Problems",
+    "Figure Credits",
+    "Glossary of Key Terms",
+    "Index",
+    "Appendix"
+  ],
+  "heading": {
+    "_EDIT": "major section heading = OCR'd square bullet + UPPERCASE line(s)",
+    "regex": "^(?:I|l|\\||■|-)\\s+([A-Z][A-Z0-9 ,:;'’\\-–—()/&\\[\\]]{2,})$",
+    "special": {
+      "SUMMARY": "summary",
+      "Problems to Solve": "problems",
+      "PROBLEMS TO SOLVE": "problems"
+    },
+    "_EDIT_reject": "headings with digits (gene labels like PAX6) or < 4 letters are figure labels, not sections",
+    "min_letters": 3,
+    "reject_regex": "^(?!DAYS? ?\\d).*\\d|^[IVXLl' ]+$",
+    "title_fixes": {
+      " 0F ": " OF ",
+      "DAY8": "DAY 8",
+      "MUSCU LATU RE": "MUSCULATURE"
+    },
+    "_EDIT_manual": "headings OCR joined onto a body line: add {chapter, pdf, title}",
+    "manual": [
+      {
+        "chapter": 18,
+        "pdf": 361,
+        "title": "AUTONOMIC NERVOUS SYSTEM"
+      }
+    ]
+  },
+  "boxes": {
+    "clinical": "^Clinical Correlates\\b",
+    "molecular": "^Molecular Regulation\\b"
+  },
+  "glossary": {
+    "pdf_first": 416,
+    "pdf_last": 428
+  },
+  "index": null,
+  "_index_note": "This PDF ends after the Glossary: the book's Index pages are missing (D-026). Terms are placed by full-text search instead.",
+  "timeline": {
+    "pdf_first": 3,
+    "pdf_last": 6,
+    "day_regex": "Day (\\d{1,2})(?:-(\\d{1,2}))?\\s+([A-Za-z][A-Za-z :-]{0,40})"
+  },
+  "numeric_tables": [
+    {
+      "id": "T6.2",
+      "label": "Somites vs age",
+      "cols": [
+        "age_days",
+        "somites"
+      ],
+      "start": "^Table 6\\.2$"
+    },
+    {
+      "id": "T6.3",
+      "label": "CRL vs age",
+      "cols": [
+        "crl_mm",
+        "age_weeks"
+      ],
+      "start": "^Table 6\\.3$"
+    },
+    {
+      "id": "T8.1",
+      "label": "Fetal length and weight",
+      "cols": [
+        "age_weeks",
+        "crl_cm",
+        "weight_g"
+      ],
+      "start": "^Table 8\\.1$",
+      "expected_rows": 8
+    }
+  ],
+  "_EDIT_ocr_fixes": "OCR misreads fixed before indexing (wrong -> right)",
+  "ocr_fixes": {
+    "Miillerian": "Mullerian",
+    "miillerian": "mullerian",
+    "Wolflian": "Wolffian",
+    "wolflian": "wolffian",
+    "Efl°erent": "Efferent",
+    "efl°erent": "efferent",
+    "MUSCU LATU RE": "MUSCULATURE",
+    "MUSCU-\nLATU RE": "MUSCULATURE",
+    "Pefiod": "Period"
+  },
+  "_EDIT_abbrev_skip": "abbreviations not used as search variants (collide with other terms)",
+  "abbrev_skip": [
+    "cns"
+  ]
+}

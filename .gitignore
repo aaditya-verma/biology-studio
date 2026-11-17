@@ -1,0 +1,15 @@
+# Biology Studio — never commit these (RULES I8, F4, G1). Owner doc: studio-docs/build/setup-guide.md
+out/
+partial/
+apps/
+models/
+node_modules/
+*.pdf
+# EDIT: renders and audio live in Drive, not the repo (D-008)
+*.mp4
+*.mov
+*.wav
+*.blend1
+__pycache__/
+.DS_Store
+Thumbs.db

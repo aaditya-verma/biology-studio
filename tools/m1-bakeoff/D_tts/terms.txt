@@ -1,0 +1,20 @@
+gastrulation
+primitive streak
+primitive node
+epiblast
+hypoblast
+bilaminar disc
+trilaminar disc
+ectoderm
+mesoderm
+endoderm
+notochord
+notochordal process
+prechordal plate
+oropharyngeal membrane
+cloacal membrane
+invagination
+somite
+Carnegie stage
+sacrococcygeal teratoma
+caudal dysgenesis

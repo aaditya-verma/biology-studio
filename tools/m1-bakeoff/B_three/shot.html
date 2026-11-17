@@ -1,0 +1,14 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>M1-ps01 three.js</title>
+<style>html,body{margin:0;background:#14171c}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/B_three/node_modules/three/build/three.module.js"}}</script>
+</head><body><canvas id="c"></canvas>
+<script type="module">
+import { init } from '/B_three/shot.js';
+const app = await init(document.getElementById('c'));
+window.renderFrame = f => { app.renderFrame(f); return document.getElementById('c').toDataURL('image/png'); };
+window.appInfo = { gpu: app.gpu, three: app.threeVersion, frames: app.shot.fps * app.shot.duration_s };
+// opened by hand: play the shot once in real time
+if (!navigator.webdriver) { let f = 0; const n = window.appInfo.frames; const tick = () => { app.renderFrame(f); f = (f + 1) % n; setTimeout(tick, 1000 / app.shot.fps); }; tick(); }
+window.ready = true;
+</script></body></html>

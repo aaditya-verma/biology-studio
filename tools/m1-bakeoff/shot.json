@@ -1,0 +1,41 @@
+{
+  "id": "M1-ps01",
+  "version": 1,
+  "title": "Primitive streak forming on the bilaminar disc, days 15-17",
+  "notes": [
+    "Single source of truth for all bake-off methods (Blender, three.js, AI video overlay).",
+    "Units: 1 scene unit = 0.1 mm. Axes: +x cranial, -x caudal, +z dorsal, -z ventral, y = left/right.",
+    "Day/size values from dossier ch05 section 1 (R20 from R06): book check pending X1, so every value is marked approx (≈).",
+    "Look-only references: Langman ch 5 and R01 CS7 model. Nothing traced or imported (RULES G5).",
+    "Not shown in this shot (on purpose): notochordal process, primitive pit, individual ingressing cells, amnion, yolk sac."
+  ],
+  "fps": 24,
+  "duration_s": 20,
+  "width": 1280,
+  "height": 720,
+  "seed": 1517,
+  "camera": { "type": "ortho", "ortho_width_units": 6.0, "elevation_deg": 55, "distance": 20 },
+  "timeline": { "hold_start_s": 2.0, "hold_end_s": 4.0, "day_start": 15, "day_end": 17, "stage": "CS07" },
+  "disc": { "length_units": [2.5, 4.0], "width_ratio": [0.85, 0.72], "pear": [0.0, 0.35], "segments": 96 },
+  "layers": { "epiblast_thick": 0.22, "gap": 0.14, "hypoblast_thick": 0.10, "cut_y_frac": -0.30 },
+  "streak": { "start_frac": 0.04, "tip_frac": [0.30, 0.50], "width": 0.10, "height": 0.03 },
+  "node": { "radius": 0.09, "height": 0.06 },
+  "mesoderm": { "spread": [0.0, 0.85], "delay": 0.10 },
+  "endoderm": { "spread": [0.0, 0.65], "delay": 0.30 },
+  "colors": {
+    "background": "#14171c",
+    "epiblast": "#56B4E9",
+    "hypoblast": "#D9D2B4",
+    "mesoderm": "#D55E00",
+    "endoderm": "#F0E442",
+    "streak": "#CC79A7",
+    "text": "#F2F2F2"
+  },
+  "opacity": { "epiblast": 0.5, "mesoderm": 0.85 },
+  "overlay": {
+    "stamp": "day {day} · {stage} · ≈{size} mm",
+    "disclaimer": "colours illustrative · layer thickness not to scale · ≈ values pending X1",
+    "scale_bar_mm": 0.1
+  },
+  "ai_prompt": "Scientific 3D animation, orthographic three-quarter view of a small flat oval two-layer disc on a dark slate background: a translucent sky-blue upper layer over a pale sand lower layer. A thin pink groove grows from the narrow end along the midline toward the centre, ending in a small pink knot. An orange-red sheet spreads outward between the two layers from the groove, and a yellow patch replaces the lower layer from the midline. Slow, smooth, clean shading, no text, no camera shake, static camera."
+}

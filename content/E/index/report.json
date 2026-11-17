@@ -1,0 +1,24 @@
+{
+ "book": "E",
+ "chapters_found": 21,
+ "chapters_indexed": 21,
+ "sections": 178,
+ "boxes": {
+  "clinical": 62,
+  "molecular": 10
+ },
+ "glossary_terms": 265,
+ "placed": 262,
+ "placed_pct": 98.9,
+ "unplaced": [
+  "Annulus fibrosis",
+  "Fossa ovalis",
+  "Peritoneal ligaments"
+ ],
+ "xref_edges": 178,
+ "timeline_days": 44,
+ "index_pages": "missing from PDF",
+ "check_chapters_ok": true,
+ "check_glossary_ok": true,
+ "id_changes": []
+}
