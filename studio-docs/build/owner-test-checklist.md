@@ -1,12 +1,12 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Build · A0 shell — T3a (app shell) written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Review · T3a results — T3a passed.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
 **Devices (D-033, RULES C13):** every check with a screen runs on the **phone (portrait + landscape)**, a **tablet (portrait + landscape)** and the **laptop**. No tablet to hand → use the laptop browser's device mode (Chrome: F12 › device toolbar › iPad / Android tablet) and note "emulated". Report layout problems as *device + orientation + screen + what's wrong*.
 
-**Apps:** none live yet.
+**Apps:** A0 shell live at https://aaditya-verma.github.io/biology-studio/ (GitHub Pages, D-035).
 
 **Status, 17 Nov 2026:** T1 written; opens when the laptop run puts clips in Drive. T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
 
@@ -48,7 +48,7 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — **part A0 OPEN** (shell + Book map); 3D (V1) and cards (C1) parts follow
+## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map); 3D (V1) and cards (C1) parts follow
 **T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
 1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
 2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
@@ -58,7 +58,7 @@ Follow `build/setup-guide.md` §1–§5.
 6. **Settings → Colour key:** every layer shows colour + pattern + label with ✓ marks; switch Theme to Dark and look again.
 7. **Install** (phone): browser menu → Add to Home screen (works fully once the app is on GitHub Pages; the preview may not offer it).
 8. **Testing mode:** Settings → Turn on testing mode → tap a ✎ → the edit prompt opens; Copy works. Turn it off again.
-- **Result T3a:** ☐ pass ☐ problems · navigation: ☐ easy ☐ lost (where?) · Back/Up: ☐ right ☐ wrong (where?) · colours/patterns readable: ☐ yes ☐ no (which?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
+- **Result T3a (18 Nov 2026, on GitHub Pages):** ☑ pass · navigation: ☑ easy · Back/Up: ☑ right · Notochord ⚑ / CS07–12 cited / NMC AN: ☑ yes · crosstab + cell list: ☑ works · colours/patterns readable (light + dark): ☑ yes · install: ☑ worked · testing mode ✎ + Copy: ☑ worked · devices: phone P ☑ L ☑ · tablet P ☑ L ☑ (real/emulated + model not stated) · laptop ☑ · rotate keeps place: ☑ yes · layout problems: none · owner: "All are checked"; more feedback will come during later builds.
 
 **T3b — 3D + Part 0 cards:** steps written by the C1 build chat.
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
