@@ -37,8 +37,8 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | three.js on the phone with +50k / +150k / +300k test triangles (Measure) | ≥ 30 / ≥ 30 / ? fps | | |
 | Headless stills (SwiftShader, 960×540) — 8 stills, cloud workspace | — | 3 scenes: 852–2 460 triangles, 9–22 draw calls; run ≈ 7 s (19 Nov 2026) | cloud (not a device) |
 | Tablet model / OS / browser (owner's or Professor's) | — (not recorded yet) | GPU Adreno 730 (Snapdragon 8 Gen 1 class) · Chrome 157 Android (desktop UA) · screen 1024×640 CSS px @2.5 (≈2560×1600) · model hidden — owner to add | owner's tablet, 19 Nov 2026 |
-| three.js on the tablet: fps at 150k triangles, portrait + landscape | ≥ 30 fps | | |
-| Triangles before stutter on the tablet | ~300k | | |
+| three.js on the tablet: fps at 150k triangles, portrait + landscape | ≥ 30 fps | **Portrait: ~60 fps (display rate) at 1–2.5k (3 scenes), ~100k, ~300k and ~600k drawn triangles; 5th-percentile 52–57 fps** (canvas 1197×1046 @2). Landscape not measured yet | owner's tablet (Adreno 730, Chrome 157), 19 Nov 2026, app v2 Measure |
+| Triangles before stutter on the tablet | ~300k | **> 600k** (no drop below the display rate at 600k drawn triangles; ceiling not reached) | owner's tablet, 19 Nov 2026 |
 | Laptop browser (Chrome) fps at 150k / 400k triangles, 1080p window | ≥ 60 / ≥ 30 fps | | |
 | Drive stream: seconds to first frame, 720p (phone, mobile data) | 2–4 s | | |
 | Drive stream: seconds to first frame, 1080p (tablet/laptop, Wi-Fi) | 2–5 s | | |
