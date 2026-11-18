@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -37,6 +37,8 @@
 
 ## 5. Production terms
 - **Scene:** a file describing shapes, keyframes by day, labels and camera for one card or shot (`docs/scene-spec.md`).
+- **Axes (embryo):** cranial = head end · caudal = tail end · dorsal = back (epiblast side) · ventral = belly · left/right = the embryo's own, not the viewer's. **Planes:** sagittal divides left from right · transverse (cross-section) divides head end from tail end · frontal (coronal) divides back from belly. Conventions, not book facts (shown as Terms in 3D scenes, D-036).
+- **Day key:** a day in a scene with its stage, size, cite and mark; between keys the scene eases. **Stamp:** the always-on `Day · CS · ≈size` line on the 3D stage. **Cut plane:** a slice through the scene (cross-section = transverse, lengthwise = sagittal) that shows the layers' cut faces. **Axis gizmo:** the corner key Cr/Cd, D/V, L/R. **Still:** one fixed render of a scene at a day, compared on every change (`tools/stills`, C11).
 - **Shot:** one continuous piece of an episode, made from one scene. **Storyboard:** one frame per beat. **Shot list:** shots with duration and day range.
 - **Render:** turning a scene into video frames. **Master:** the final full-quality episode file. **Clip:** a 10–20 s cut used on a card.
 - **Rendition:** one encode of a master at a set resolution (720p for phones; 1080p for tablet/desktop if M1 allows — D-033).

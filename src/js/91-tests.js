@@ -8,10 +8,17 @@ function appTests(){
     [1280,720,1,'dev-d'],[1366,768,1,'dev-d'],[1920,1080,1,'dev-d'],[800,1280,0,'dev-tp']];
   dc.forEach(([w,h,f,e])=>t('device '+w+'×'+h+(f?' mouse':' touch'),deviceClass(w,h,!!f)===e,deviceClass(w,h,!!f)));
   // router: parse ↔ hash round trip, Up
-  ['today','map','map=E05','concept=E05.02.01','x=layer&y=day','settings','colours'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
+  ['today','map','map=E05','concept=E05.02.01','x=layer&y=day','settings','colours','scene','scene=sc-E00.01.04','scene=sc-E00.01.04&day=16','scene=sc-E00.01.04&day=15.5','day=16'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
   t('route unknown → home',parseHash('#nope').name===CONFIG.home);
   t('up concept → chapter',JSON.stringify(upOf(parseHash('#concept=E05.02.01')))===JSON.stringify({name:'map',ch:'E05'}));
   t('up home → none',upOf(parseHash('#today'))===null);
+  // 3D viewer addresses (V1)
+  t('scene day parsed',parseHash('#scene=sc-E00.01.04&day=16').day===16&&parseHash('#scene=sc-E00.01.04').day===undefined);
+  t('scene bad day ignored',parseHash('#scene=sc-E00.01.04&day=x').day===undefined);
+  t('up scene → list',JSON.stringify(upOf(parseHash('#scene=sc-E00.01.04')))===JSON.stringify({name:'scene'}));
+  t('viewer config',CONFIG.viewer&&CONFIG.viewer.dprCap===2&&CONFIG.viewer.scaleSteps.length>3);
+  t('strings for viewer',STR.vw&&Object.keys(STR.vw.axes).length===6&&STR.vw.tabs.layers);
+  t('motion setting back-filled',stFill({}).settings.motion==='system');
   // storage: fill keeps old saves working (A1/A4); merge never drops (unions)
   const old={rev:3,visited:{a:5}};const f=stFill(JSON.parse(JSON.stringify(old)));t('fill back-fills',f.settings&&f.answers&&f.last&&f.visited.a===5&&f.rev===3);
   const m=stMerge({rev:2,visited:{a:1,b:9},answers:{q:{t:1,v:'x'}},savedAt:1},{rev:4,visited:{a:7},answers:{q:{t:5,v:'y'},r:{t:2}},savedAt:2});

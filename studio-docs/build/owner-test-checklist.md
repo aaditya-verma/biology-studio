@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 18 Nov 2026 · Bio · Review · T3a results — T3a passed.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — T3b (3D) written; before: T3a passed.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -48,7 +48,7 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + Part 0 cards *(~15 min: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map); 3D (V1) and cards (C1) parts follow
+## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · T3b 3D viewer (V1) open · T3c cards (C1) follow
 **T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
 1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
 2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
@@ -60,7 +60,19 @@ Follow `build/setup-guide.md` §1–§5.
 8. **Testing mode:** Settings → Turn on testing mode → tap a ✎ → the edit prompt opens; Copy works. Turn it off again.
 - **Result T3a (18 Nov 2026, on GitHub Pages):** ☑ pass · navigation: ☑ easy · Back/Up: ☑ right · Notochord ⚑ / CS07–12 cited / NMC AN: ☑ yes · crosstab + cell list: ☑ works · colours/patterns readable (light + dark): ☑ yes · install: ☑ worked · testing mode ✎ + Copy: ☑ worked · devices: phone P ☑ L ☑ · tablet P ☑ L ☑ (real/emulated + model not stated) · laptop ☑ · rotate keeps place: ☑ yes · layout problems: none · owner: "All are checked"; more feedback will come during later builds.
 
-**T3b — 3D + Part 0 cards:** steps written by the C1 build chat.
+**T3b — 3D viewer (V1, ~10 min; cards part follows in C1).** Open https://aaditya-verma.github.io/biology-studio/ on the phone (pull to refresh once so v2 loads), then a tablet (or the laptop's device mode, marked emulated), then the laptop.
+1. **Today → Start here → 3D · Two layers become three.** The stage shows `Day 15 · CS06 · ≈0.20 mm`, a scale bar, the Cr/Cd·D/V·L/R key and the disclaimer line.
+2. **Day:** drag the slider 15 → 17, then tap ▶ Play. Mesoderm (orange, diagonal lines) spreads between the layers; endoderm (yellow, lines) appears under it; the stamp shows `CS06–07` between key days. On the laptop: `[` `]` step a day, Space plays.
+3. **Turn + zoom:** drag to turn, pinch (phone) or scroll (laptop) to zoom, double-tap to reset. The scale bar changes length and label as you zoom.
+4. **Layers:** turn Epiblast off, then on. Each toggle shows colour + pattern + name.
+5. **Cut:** Cut tab → Cross-section → View → Face the cut: the layers show as stacked bands with labels on them.
+6. **Rotate** phone and tablet mid-scene: same day, same view, same tab.
+7. **3D list** (3D in the bar/rail) → Axes & planes → Layers → turn on the three planes; then **Days, stages & scale**: play 15 → 18 against the 1 mm ruler.
+8. **Settings → Motion → Reduce**, then Play again: it jumps day to day, views snap. Set it back.
+9. **fps (phone, once):** open https://aaditya-verma.github.io/biology-studio/?debug=viewer#scene=sc-E00.01.04 → Debug tab → **Measure fps** (~30 s, keep the screen on) → **Copy** → paste into a chat (fills pipeline reference §2).
+- **Result T3b:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · labels readable / on the right structure: ☐ yes ☐ no (which?) · cut face clear: ☐ yes ☐ no · day/stage/size makes sense: ☐ yes ☐ confusing · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
+
+**T3c — Part 0 cards:** steps written by the C1 build chat.
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
 ## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L1)

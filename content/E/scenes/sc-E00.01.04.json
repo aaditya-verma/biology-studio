@@ -1,0 +1,229 @@
+{
+ "spec": 1,
+ "id": "sc-E00.01.04",
+ "version": 1,
+ "book": "E",
+ "cards": [
+  "E00.01.04",
+  "E05.01.01",
+  "E05.01.04"
+ ],
+ "title": "Two layers become three",
+ "summary": "The colour key on a real moment: the two-layer disc becomes three germ layers (days 15–17).",
+ "units": {
+  "mm_per_unit": 0.1
+ },
+ "days": [
+  {
+   "day": 15,
+   "stage": "CS06",
+   "size_mm": 0.2,
+   "cite": "E06.06 Tbl 6.4 · R06 CS6, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 2.0,
+    "width_ratio": 0.85,
+    "pear": 0.0,
+    "tip_frac": 0.3,
+    "meso": 0.0,
+    "endo": 0.0
+   }
+  },
+  {
+   "day": 17,
+   "stage": "CS07",
+   "size_mm": 0.4,
+   "cite": "E06.06 Tbl 6.4 · R06 CS7, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 4.0,
+    "width_ratio": 0.72,
+    "pear": 0.35,
+    "tip_frac": 0.5,
+    "meso": 0.75,
+    "endo": 0.85
+   }
+  }
+ ],
+ "start_day": 15,
+ "layers": [
+  {
+   "id": "epiblast",
+   "token": "epi",
+   "label": "Epiblast",
+   "opacity": 0.35
+  },
+  {
+   "id": "hypoblast",
+   "token": "hypo",
+   "label": "Hypoblast"
+  },
+  {
+   "id": "mesoderm",
+   "token": "meso",
+   "label": "Mesoderm",
+   "opacity": 0.9
+  },
+  {
+   "id": "endoderm",
+   "token": "endo",
+   "label": "Endoderm"
+  },
+  {
+   "id": "streak",
+   "token": "ctx",
+   "ring": true,
+   "label": "Primitive streak + node"
+  }
+ ],
+ "parts": [
+  {
+   "kind": "disc",
+   "layers": {
+    "epiblast": "epiblast",
+    "hypoblast": "hypoblast",
+    "mesoderm": "mesoderm",
+    "endoderm": "endoderm",
+    "streak": "streak",
+    "node": "streak"
+   },
+   "epiblast_thick": 0.22,
+   "gap": 0.14,
+   "hypoblast_thick": 0.1,
+   "segments": 96,
+   "streak": {
+    "start_frac": 0.04,
+    "width": 0.1,
+    "height": 0.03
+   },
+   "node": {
+    "radius": 0.09,
+    "height": 0.06
+   },
+   "meso_delay": 0.3,
+   "endo_delay": 0.0
+  }
+ ],
+ "labels": [
+  {
+   "layer": "mesoderm",
+   "text": "Mesoderm",
+   "days": [
+    15.8,
+    17
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "endoderm",
+   "text": "Endoderm",
+   "days": [
+    15.4,
+    17
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "streak",
+   "at": "streak",
+   "text": "Primitive streak",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 2
+  },
+  {
+   "layer": "streak",
+   "at": "node",
+   "text": "Primitive node",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 3
+  },
+  {
+   "layer": "epiblast",
+   "text": "Epiblast",
+   "days": [
+    15,
+    16.7
+   ],
+   "priority": 4
+  },
+  {
+   "layer": "epiblast",
+   "text": "Epiblast → ectoderm",
+   "days": [
+    16.8,
+    17
+   ],
+   "priority": 4
+  },
+  {
+   "layer": "hypoblast",
+   "text": "Hypoblast",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 5
+  }
+ ],
+ "facts": [
+  {
+   "text": "Gastrulation turns the two-layer disc into the three germ layers: ectoderm, mesoderm and endoderm.",
+   "cite": "E05.01 · R05b",
+   "mark": "✔✔"
+  },
+  {
+   "text": "The primitive streak first shows in the caudal midline of the disc; its cranial end is the primitive node.",
+   "cite": "E05.01 · R06 CS6, CS8",
+   "mark": "✔✔"
+  },
+  {
+   "text": "Epiblast cells move to the streak, detach and slip beneath the epiblast (invagination).",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "text": "The first cells in replace the hypoblast and become endoderm.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "text": "Later cells settle between the two layers as mesoderm and spread sideways and toward the head.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "text": "Cells that stay in the epiblast become ectoderm — so all three layers come from the epiblast.",
+   "cite": "E05.01, E05.07",
+   "mark": "✔"
+  }
+ ],
+ "camera": {
+  "azimuth_deg": -90,
+  "elevation_deg": 40,
+  "fit_mm": 0.5
+ },
+ "cut": {
+  "axis": "y",
+  "at": -0.3,
+  "on": true
+ },
+ "disclaimers": [
+  "colours illustrative",
+  "layer thickness not to scale",
+  "notochordal process not shown",
+  "oropharyngeal and cloacal membranes not shown",
+  "amnion and yolk sac not shown"
+ ],
+ "stills": [
+  15,
+  16,
+  17
+ ],
+ "debug": false
+}

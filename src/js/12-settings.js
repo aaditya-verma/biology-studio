@@ -1,11 +1,12 @@
-/* Biology Studio — Settings (theme, storage + save log, backup, testing mode, version) and the Colour key (D-031 re-check on this screen).
+/* Biology Studio — Settings (theme, motion (V1, H5), storage + save log, backup, testing mode, version) and the Colour key (D-031 re-check on this screen).
    Owner doc: build/design-plan.md §4.4–4.5. EDIT: words in STR; colour tokens in src/css/app.css :root. */
 'use strict';
 SCREENS.settings=function(v){
   ROUTE.crumbs=[{label:STR.settingsTitle}];const th=state.settings.theme,L=slogRead().slice().reverse();
   const fmt=e=>new Date(e.t).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})+'  '+e.ev+(e.to!=null?' → rev '+e.to:'')+(e.err?'  '+e.err:'')+(e.why?'  '+e.why:'');
   v.innerHTML=`<h1>${esc(STR.settingsTitle)}</h1><div class="settings">
-   <section class="card"><h2>${esc(STR.themeT)}</h2><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-pressed="${th===k}">${esc(l)}</button>`).join('')}</div></section>
+   <section class="card"><h2>${esc(STR.themeT)}</h2><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-pressed="${th===k}">${esc(l)}</button>`).join('')}</div>
+     <h3 class="sm" style="margin-top:12px">${esc(STR.motionT)}</h3><div class="seg" role="group" aria-label="${esc(STR.motionT)}">${Object.entries(STR.motions).map(([k,l])=>`<button type="button" data-motion-set="${k}" aria-pressed="${(state.settings.motion||'system')===k}">${esc(l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.motionHint)}</p></section>
    <section class="card"><h2>${esc(STR.colourKeyT)}</h2><p class="sm mut">${esc(STR.colourKeyHint)}</p><div class="row" style="margin:8px 0">${['epi','hypo','ecto','meso','endo','crest','ctx'].map(k=>`<span class="sw L-${k}" title="${esc(STR.ckLayers[k])}"></span>`).join('')}</div>
      <button type="button" class="btn" data-go="colours">${esc(STR.colourKeyT)}</button></section>
    <section class="card"><h2>${esc(STR.storageT)}</h2><p class="sm">${STORE.mode==='idb'?esc(STR.saved)+' · IndexedDB '+esc(CONFIG.idb.name)+' · '+esc(STR.rev)+' '+STORE.rev:esc(STR.savedTest)}${STORE.err?` · <span class="bad">${esc(STORE.err)}</span>`:''}</p>
@@ -19,6 +20,7 @@ SCREENS.settings=function(v){
 };
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-theme-set]');if(t){setTheme(t.dataset.themeSet);return;}
+  const mo=e.target.closest('[data-motion-set]');if(mo){state.settings.motion=mo.dataset.motionSet;state.settings.t=Date.now();stSave();render();return;}
   if(e.target.closest('[data-act=export]')){stExport();return;}
   if(e.target.closest('[data-act=testmode]')){setFlags({test:!FLAGS.test,debug:new Set(FLAGS.test?[]:['test'])});location.reload();}
 });

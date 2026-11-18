@@ -1,0 +1,225 @@
+{
+ "spec": 1,
+ "id": "sc-E00.01.01",
+ "version": 1,
+ "book": "E",
+ "cards": [
+  "E00.01.01"
+ ],
+ "title": "Axes & planes",
+ "summary": "Which way is head, back and left on a flat disc — and the three ways to slice it.",
+ "units": {
+  "mm_per_unit": 0.1
+ },
+ "days": [
+  {
+   "day": 15,
+   "stage": "CS06",
+   "size_mm": 0.2,
+   "cite": "E06.06 Tbl 6.4 · R06 CS6, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 2.0,
+    "width_ratio": 0.85,
+    "pear": 0.0,
+    "tip_frac": 0.3,
+    "meso": 0,
+    "endo": 0
+   }
+  },
+  {
+   "day": 17,
+   "stage": "CS07",
+   "size_mm": 0.4,
+   "cite": "E06.06 Tbl 6.4 · R06 CS7, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 4.0,
+    "width_ratio": 0.72,
+    "pear": 0.35,
+    "tip_frac": 0.5,
+    "meso": 0,
+    "endo": 0
+   }
+  }
+ ],
+ "start_day": 17,
+ "layers": [
+  {
+   "id": "epiblast",
+   "token": "epi",
+   "label": "Epiblast",
+   "opacity": 1.0
+  },
+  {
+   "id": "hypoblast",
+   "token": "hypo",
+   "label": "Hypoblast"
+  },
+  {
+   "id": "streak",
+   "token": "ctx",
+   "ring": true,
+   "label": "Primitive streak + node"
+  },
+  {
+   "id": "axes",
+   "token": "guide",
+   "label": "Axes"
+  },
+  {
+   "id": "sagittal",
+   "token": "guide",
+   "label": "Sagittal plane",
+   "on": false
+  },
+  {
+   "id": "transverse",
+   "token": "guide",
+   "label": "Transverse plane",
+   "on": false
+  },
+  {
+   "id": "frontal",
+   "token": "guide",
+   "label": "Frontal plane",
+   "on": false
+  }
+ ],
+ "parts": [
+  {
+   "kind": "disc",
+   "layers": {
+    "epiblast": "epiblast",
+    "hypoblast": "hypoblast",
+    "streak": "streak",
+    "node": "streak"
+   },
+   "epiblast_thick": 0.22,
+   "gap": 0.14,
+   "hypoblast_thick": 0.1,
+   "segments": 96,
+   "streak": {
+    "start_frac": 0.04,
+    "width": 0.1,
+    "height": 0.03
+   },
+   "node": {
+    "radius": 0.09,
+    "height": 0.06
+   },
+   "meso_delay": 0.1,
+   "endo_delay": 0.3
+  },
+  {
+   "kind": "axes",
+   "layer": "axes",
+   "length_mm": 0.32
+  },
+  {
+   "kind": "planes",
+   "size_mm": 0.6,
+   "planes": [
+    {
+     "id": "sagittal",
+     "normal": "y",
+     "layer": "sagittal"
+    },
+    {
+     "id": "transverse",
+     "normal": "x",
+     "layer": "transverse"
+    },
+    {
+     "id": "frontal",
+     "normal": "z",
+     "layer": "frontal"
+    }
+   ]
+  }
+ ],
+ "labels": [
+  {
+   "layer": "streak",
+   "at": "streak",
+   "text": "Primitive streak",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "streak",
+   "at": "node",
+   "text": "Primitive node",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 2
+  },
+  {
+   "layer": "epiblast",
+   "text": "Epiblast",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 3
+  }
+ ],
+ "facts": [
+  {
+   "text": "The primitive streak first shows in the caudal midline of the disc; its cranial end is the primitive node.",
+   "cite": "E05.01 · R06 CS6, CS8",
+   "mark": "✔✔"
+  },
+  {
+   "text": "The streak marks the long axis: it lies at the caudal end, and the head (cranial) end is opposite it.",
+   "cite": "E05.01, E05.03",
+   "mark": "✔"
+  },
+  {
+   "text": "The head–tail and back–belly axes are already set before the streak appears.",
+   "cite": "E05.03",
+   "mark": "✔"
+  },
+  {
+   "text": "Dorsal = the epiblast side, facing the amniotic cavity; ventral = the hypoblast side, facing the yolk sac.",
+   "cite": "E04.01, E04.04 · R06 CS6",
+   "mark": "✔✔"
+  }
+ ],
+ "camera": {
+  "azimuth_deg": -60,
+  "elevation_deg": 35,
+  "fit_mm": 0.75
+ },
+ "cut": {
+  "axis": "x",
+  "at": 0.0,
+  "on": false
+ },
+ "disclaimers": [
+  "colours illustrative",
+  "layer thickness not to scale",
+  "notochordal process not shown",
+  "amnion and yolk sac not shown"
+ ],
+ "stills": [
+  15,
+  17
+ ],
+ "debug": false,
+ "terms": [
+  {
+   "term": "Left / right",
+   "text": "The embryo's own left and right, not the viewer's."
+  },
+  {
+   "term": "Planes",
+   "text": "Sagittal planes divide left from right; transverse planes (cross-sections) divide head end from tail end; frontal (coronal) planes divide back from belly."
+  }
+ ]
+}

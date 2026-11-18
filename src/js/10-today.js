@@ -12,7 +12,8 @@ SCREENS.today=function(v){
     <section class="card"><h2>${esc(STR.continueT)}</h2>${recent.length?recent.map(row).join(''):`<p class="mut sm">${esc(STR.continueNone)}</p>`}</section>
     <section class="card"><h2>${esc(STR.startT)}</h2>
       <button type="button" class="lrow" data-go="map=E00"><span class="sw L-none" aria-hidden="true"></span><span class="nm">${esc(STR.startPart0)}</span><span class="id">E00</span></button>
-      <button type="button" class="lrow" data-go="map=E05"><span class="sw L-meso" aria-hidden="true"></span><span class="nm">${esc(STR.startGastr)}</span><span class="id">E05</span></button></section>
+      <button type="button" class="lrow" data-go="map=E05"><span class="sw L-meso" aria-hidden="true"></span><span class="nm">${esc(STR.startGastr)}</span><span class="id">E05</span></button>
+      <button type="button" class="lrow" data-go="scene=sc-E00.01.04"><span class="sw L-endo" aria-hidden="true"></span><span class="nm">${esc(STR.start3d)}</span><span class="id">3D</span></button></section>
     <section class="card"><h2>${esc(STR.mapStatsT)}</h2><div class="stats">
       <div class="stat"><b>${C.length||'…'}</b><span class="sm mut">${esc(STR.concepts)}</span></div>
       <div class="stat"><b>${chs||'…'}</b><span class="sm mut">${esc(STR.chapters)}</span></div>

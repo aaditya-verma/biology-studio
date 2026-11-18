@@ -31,10 +31,13 @@
   --tap:44px; --rail-w:84px; --bar-h:64px; --top-h:56px; --maxw:1280px;
   --shadow:0 1px 2px rgb(20 22 26 / .08),0 2px 8px rgb(20 22 26 / .06);
   --focus:3px solid var(--accent);
+  /* EDIT: 3D stage background (V1) — always the dark surface D-031 was measured on */
+  --stage-bg:#14161A;
   color-scheme:light;
 }
 /* ---------- 1b. Tokens: dark ---------- */
-:root[data-theme="dark"]{
+/* .stage-dark = the 3D stage: a dark island in both themes (same values, one home — V1) */
+:root[data-theme="dark"],.stage-dark{
   --bg:#14161A; --surface:#1C1F24; --surface-2:#252930; --ink:#ECEDEF; --muted:#A9AEB7; --line:#343840; --line-strong:#737985;
   --good:#7CC79A; --warn:#E3AE63; --bad:#EE9184;
   /* edges on dark (D-031): only ectoderm needs one; the rest pass 3.5:1 as fills */
@@ -230,3 +233,90 @@ html.dev-tl .settings,html.dev-d .settings{grid-template-columns:repeat(2,minmax
 .ck .fill{height:72px;border-width:0 0 2px 0;border-style:solid;display:flex;align-items:flex-end;padding:6px 8px;font-weight:700}
 .ck .t{padding:8px;font-size:var(--fs-xs)}
 .ok{color:var(--good);font-weight:700} .bad{color:var(--bad);font-weight:700}
+
+/* ---------- 8. 3D viewer (V1; design plan §2 3D row: phone canvas + bottom sheet · phone landscape canvas │ strip · tablet portrait canvas + panel · tablet landscape + desktop canvas │ side panel) ---------- */
+.stage-dark{color:var(--ink)}
+#view:has(.vw){max-width:1800px}
+.vw{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);align-items:start}
+.vw-stage{position:relative;background:var(--stage-bg);border-radius:var(--r);overflow:hidden;height:clamp(250px,52dvh,560px);border:1px solid var(--line)}
+.vw-cv{position:absolute;inset:0}
+.vw-canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.vw-canvas:active{cursor:grabbing}
+.vw-lead{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;stroke:var(--ink);fill:var(--ink);stroke-width:1.3}
+.vw-lbls{position:absolute;inset:0;pointer-events:none}
+.vw-lb{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;background:rgb(20 22 26 / .88);border:1px solid var(--line-strong);
+  font-size:var(--fs-xs);font-weight:600;line-height:1.5;white-space:nowrap;color:var(--ink);will-change:transform}
+.vw-lb .sw{width:13px;height:13px;border-radius:3px;border-width:1.5px}
+.vw-lb.ax{font-weight:700;padding:1px 7px;background:rgb(20 22 26 / .74)}
+.vw-lb.hov{border-color:var(--accent-on-dark)}
+.L-acc{background:var(--accent);border-color:var(--accent-text)}
+.stage-dark .L-acc{border-color:var(--accent-on-dark)}
+.vw-stamp{position:absolute;left:10px;top:10px;padding:3px 10px;border-radius:8px;background:rgb(20 22 26 / .88);font-size:var(--fs-sm);font-variant-numeric:tabular-nums;max-width:calc(100% - 20px)}
+.vw-disc{position:absolute;left:10px;top:calc(10px + 1.75em + 8px);max-width:min(64%,420px);font-size:var(--fs-xs);color:var(--muted);line-height:1.35;background:rgb(20 22 26 / .78);border-radius:6px}
+.vw-dbtn{display:block;min-height:var(--tap);padding:0 10px;background:none;border:0;color:var(--ink);font:inherit;font-size:var(--fs-xs);font-weight:600;cursor:pointer;text-align:left}
+.vw-disc ul{margin:0;padding:0 10px 8px 24px} .vw-dbtn[aria-expanded="false"]+ul{display:none}
+.vw-terms dt{font-weight:700;margin-top:6px} .vw-terms dd{margin:0 0 4px}
+html.dev-p .vw-stage{height:clamp(220px,50dvh,560px)}
+@media (max-height:700px){html.dev-p .vw-stage{height:44dvh}}
+html.dev-pl .vw-tabs{position:sticky;top:-10px;z-index:1;background:var(--surface);display:grid;grid-template-columns:repeat(auto-fit,minmax(5.4em,1fr));gap:0}
+html.dev-pl .vw-tabs button{padding:0 4px;font-size:var(--fs-xs);min-width:0}
+.vw-giz{position:absolute;left:8px;bottom:8px;width:88px;height:88px}
+.vw-scale{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:var(--fs-xs);font-weight:600;background:rgb(20 22 26 / .7);padding:4px 8px;border-radius:6px}
+.vw-scale i{display:block;height:7px;border:2px solid var(--ink);border-top:0;min-width:10px}
+.vw-msg{position:absolute;left:0;right:0;top:45%;text-align:center;padding:0 16px;color:var(--muted)}
+.vw-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);min-width:0}
+.vw-head h1{font-size:var(--fs-h2);margin:2px 0 8px}
+.vw-day{display:flex;align-items:center;gap:6px}
+.vw-range{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
+.vw-range.wide{margin-top:10px}
+.vw input[type=range]{width:100%;min-height:var(--tap);accent-color:var(--accent);margin:0}
+[data-theme="dark"] .vw input[type=range]{accent-color:var(--accent-on-dark)}
+.vw-keys{position:relative;height:1.6em;margin:0 calc(var(--tap) * 2 + 18px) 4px calc(var(--tap) + 12px)}
+.vw-keys span{position:absolute;top:0;transform:translateX(-50%);font-size:var(--fs-xs);color:var(--muted);white-space:nowrap}
+.vw-keys span.on{color:var(--ink);font-weight:700}
+.vw-tabs{margin:8px 0 10px;display:flex}
+.vw-tabs button{flex:1 1 auto}
+.vw-sec{display:none}
+.vw[data-tab="layers"] [data-sec="layers"],.vw[data-tab="cut"] [data-sec="cut"],.vw[data-tab="view"] [data-sec="view"],.vw[data-tab="about"] [data-sec="about"],.vw[data-tab="debug"] [data-sec="debug"]{display:block}
+.vw-h{display:none;font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 6px}
+.vw-tg{display:flex;flex-wrap:wrap;gap:6px}
+.vw-t{min-height:var(--tap);display:inline-flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--line-strong);border-radius:999px;background:var(--surface);cursor:pointer;font-weight:600;color:var(--ink);max-width:100%}
+.vw-t:hover{background:var(--surface-2)}
+.vw-t[aria-pressed="true"]{border:2px solid var(--accent-text);padding:0 11px}
+.vw-t[aria-pressed="false"]{color:var(--muted)}
+.vw-t[aria-pressed="false"] .sw{opacity:.35}
+.vw-t[aria-pressed="true"]::after{content:"✓";color:var(--accent-text);font-weight:800}
+.vw .seg{margin-top:10px}
+.vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
+.vw-hint{margin-top:10px}
+.vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}
+.vw-list{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.vw-item h2{margin-top:4px}
+/* phone portrait: canvas on top, controls in a bottom sheet (thumb reach) */
+html.dev-p .vw{gap:0}
+html.dev-p .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0}
+html.dev-p .vw-panel{border-radius:0 0 var(--r) var(--r);border-top:0;position:relative;padding-top:18px}
+html.dev-p .vw-panel::before{content:"";position:absolute;left:50%;top:6px;width:36px;height:4px;border-radius:2px;background:var(--line-strong);transform:translateX(-50%)}
+html.dev-p .vw-head h1{font-size:var(--fs)}
+/* phone landscape: full-height canvas │ side strip */
+html.dev-pl .vw{grid-template-columns:minmax(0,1fr) minmax(230px,36%);gap:var(--gap)}
+html.dev-pl .vw-stage,html.dev-pl .vw-panel{height:calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 2 * var(--pad))}
+html.dev-pl .vw-stage{min-height:200px}
+html.dev-pl .vw-panel{overflow:auto;padding:10px}
+html.dev-pl .vw-head h1{font-size:var(--fs)}
+html.dev-pl .vw-disc{max-width:70%}
+/* tablet portrait: canvas + bottom panel */
+html.dev-tp .vw-stage{height:clamp(340px,56dvh,900px)}
+/* tablet landscape + desktop: canvas │ side panel, every section shown, no tabs */
+html.dev-tl .vw{grid-template-columns:minmax(0,1fr) minmax(300px,32%)}
+html.dev-d .vw{grid-template-columns:minmax(0,1fr) minmax(320px,380px)}
+html.dev-tl .vw-stage,html.dev-tl .vw-panel,html.dev-d .vw-stage,html.dev-d .vw-panel{height:calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 2 * var(--pad))}
+html.dev-tl .vw-panel,html.dev-d .vw-panel{overflow:auto}
+html.test.dev-tl .vw-stage,html.test.dev-tl .vw-panel,html.test.dev-d .vw-stage,html.test.dev-d .vw-panel{height:calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 2 * var(--pad) - 3.4em)}
+html.dev-tl .vw-tabs,html.dev-d .vw-tabs{display:none}
+html.dev-tl .vw-sec,html.dev-d .vw-sec{display:block}
+html.dev-tl .vw-h,html.dev-d .vw-h{display:block}
+/* still mode (tools/stills): the stage alone at 960×540 */
+html.still .top,html.still .nav,html.still .vw-panel,html.still #dbg,html.still .banner{display:none!important}
+html.still body{padding:0!important} html.still #view{padding:0!important;max-width:none!important}
+html.still .vw{display:block} html.still .vw-stage{width:960px;height:540px;border-radius:0;border:0}

@@ -1,6 +1,6 @@
 # Biology Studio — Start here
 
-*(Purpose: what this project is, the doc map and id formats. Updated: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
+*(Purpose: what this project is, the doc map and id formats. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — docs/scene-spec.md in the doc map. Before: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
 
 An engine that takes a book or a biology topic, indexes it, maps its concepts, checks them against trusted outside sources, turns them into concept cards and story-led 3D explainer videos (voice-over + subtitles), and helps the learner remember them. **First book: Langman's Medical Embryology, 14th edition** (429 pp, 21 chapters in 3 parts). Other books and topics follow the same pipeline (D-015). We work like a small science-animation studio: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers (`build/studio-playbook.md`, D-020). Lean on usage, docs always current, debug flags and edit hooks everywhere (RULES §I, D-022).
 
@@ -54,7 +54,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - `build/owner-test-checklist.md` — owner checks T1…
 - `build/setup-guide.md` — set up a second laptop + person: accounts, invites, own book, Claude Project, tools, daily working, troubleshooting (D-025).
 - `build/ideas-backlog.md` — parked ideas, the only place for them (no pick before the use gate).
-- Later: `build/studio-brief.md`, `build/design-plan.md`, `docs/card-spec.md`, `docs/scene-spec.md`.
+- `docs/scene-spec.md` (repo root `docs/`) — the 3D scene format (V1, RULES C2). Later: `build/studio-brief.md`, `docs/card-spec.md`.
 - **Repo** `aaditya-verma/biology-studio` (private until A0, D-027): `studio-docs/` (these docs — the only copy) · `tools/indexer/` (I1 script + `books/<code>.json` + README) · `content/E/index/` (I1 JSON: tree, terms, xrefs, timeline, report) · `tools/m1-bakeoff/` · `sync.bat` (one-click git pull/commit/push) · `THIRD_PARTY.md` (H10). Laptop clone: `<Studio home>\repo\biology-studio\`; the old `tools\` and `content\` folders in Studio home are retired after the clone (outputs in `out\` stay).
 
 ### Logs and templates

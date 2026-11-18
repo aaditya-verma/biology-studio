@@ -1,6 +1,6 @@
 # Working instructions (for every chat in this project)
 
-*(Purpose: how every chat works — roles, owner per fact, chat types, end-of-chat duties, §6 paste. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §1 device layouts, §2 device owner line, §3 Build line, §6 paste gains the device rule (D-033).)*
+*(Purpose: how every chat works — roles, owner per fact, chat types, end-of-chat duties, §6 paste. Updated: 19 Nov 2026 · Bio · Build · V1 viewer (§2 scene spec ✅). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §1 device layouts, §2 device owner line, §3 Build line, §6 paste gains the device rule (D-033).)*
 
 ## 1. Roles Claude plays here (the studio crew)
 Stance: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers behind him. The full crew (10 roles), review gates and craft standards are in `build/studio-playbook.md` (D-020). Pick one primary role per chat; say which only if unclear. **A different role reviews** before a gate passes; cards, scripts and public outputs get a fresh-eyes reviewer (a separate agent or a fresh chat).
@@ -21,7 +21,7 @@ Stance: a lead biology researcher who is also designer, teacher and storyteller,
 - Order to cover all important concepts → `curriculum/roadmap.md` (K1).
 - Card list and status per chapter → `curriculum/book-index-part1.md` / `-part2.md`.
 - Episode list, tags and audience profiles → `curriculum/episodes-catalog.md`.
-- Card data format → `docs/card-spec.md`; scene format → `docs/scene-spec.md` (written in S1 / V1).
+- Card data format → `docs/card-spec.md`; scene format → `docs/scene-spec.md` (V1 ✅).
 - Laptop, phone, tablet, desktop, render and voice numbers → `build/pipeline-reference.md`, **Measured** column only.
 - Scope, architecture, build order, ready prompts → `build/master-plan.md`.
 - Device classes, layout per screen per device, test matrix, layout-check → `build/design-plan.md` §2 (moved from `build/design-plan.md` §2 in A0) (D-033). Tokens, shell, screens, testing mode, layout-check → `build/design-plan.md`.

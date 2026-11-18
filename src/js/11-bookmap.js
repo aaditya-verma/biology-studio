@@ -108,7 +108,8 @@ function bmConcept(o){const M=MAPD.M,V=M.vocab,sec=M.sections.find(s=>s.id===o.s
    <dt>${esc(STR.related)}</dt><dd>${lk(o.related)}</dd>
    <dt>${esc(STR.showsUp)}</dt><dd><div class="links">${Object.keys(o.recurs).filter(c=>o.recurs[c]>0).map(c=>`<button type="button" class="lk" data-go="map=${esc(c)}">${esc(c)}</button>`).join('')||STR.none}</div></dd>
    <dt>${esc(STR.terms)}</dt><dd>${o.terms.concat(o.terms_loose).map(t=>esc(M.terms[t]?.term)).filter(Boolean).join(' · ')||STR.none}</dd>
-   <dt>${esc(STR.cardEp)}</dt><dd>${esc(STR.planned)}</dd></dl></article>`;}
+   <dt>${esc(STR.cardEp)}</dt><dd>${esc(STR.planned)}</dd>
+   ${scenesFor(o.id).length?`<dt>${esc(STR.nav.scene)}</dt><dd><div class="links">${scenesFor(o.id).map(s=>`<button type="button" class="lk" data-go="scene=${esc(s.id)}">${esc(STR.vw.open)} · ${esc(s.title)}</button>`).join('')}</div></dd>`:''}</dl></article>`;}
 function bmWire(v){   // only the search box needs its own listener (it is re-created with the tree)
   const q=$('#bmq',v);if(q)q.addEventListener('input',()=>{BM.q=q.value;const pos=q.selectionStart;bmRefreshTree();const n=$('#bmq');if(n){n.focus();try{n.setSelectionRange(pos,pos);}catch(_){}}});
 }

@@ -8,7 +8,7 @@
 let state=null;
 const STORE={mode:'mem',db:null,rev:0,timer:0,busy:false,again:false,err:null,merged:0};
 /* EDIT: the saved shape. Add a field here AND a default in stFill (never rename or remove — A1). */
-function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',t:0},last:{route:'today'},visited:{},answers:{}};}
+function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',motion:'system',t:0},last:{route:'today'},visited:{},answers:{}};}
 function stFill(s){const d=stNew();s=s&&typeof s==='object'?s:{};
   for(const k of Object.keys(d))if(s[k]===undefined)s[k]=d[k];
   s.settings=Object.assign({},d.settings,s.settings);s.last=Object.assign({},d.last,s.last);

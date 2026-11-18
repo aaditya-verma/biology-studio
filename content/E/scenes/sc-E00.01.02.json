@@ -1,0 +1,220 @@
+{
+ "spec": 1,
+ "id": "sc-E00.01.02",
+ "version": 1,
+ "book": "E",
+ "cards": [
+  "E00.01.02",
+  "E00.01.03"
+ ],
+ "title": "Days, stages & scale",
+ "summary": "How fast the disc grows in week 3, against a 1 mm ruler.",
+ "units": {
+  "mm_per_unit": 0.1
+ },
+ "days": [
+  {
+   "day": 15,
+   "stage": "CS06",
+   "size_mm": 0.2,
+   "cite": "E06.06 Tbl 6.4 · R06 CS6, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 2.0,
+    "width_ratio": 0.85,
+    "pear": 0.0,
+    "tip_frac": 0.3,
+    "meso": 0.0,
+    "endo": 0.0
+   }
+  },
+  {
+   "day": 17,
+   "stage": "CS07",
+   "size_mm": 0.4,
+   "cite": "E06.06 Tbl 6.4 · R06 CS7, R08",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 4.0,
+    "width_ratio": 0.72,
+    "pear": 0.35,
+    "tip_frac": 0.5,
+    "meso": 0.75,
+    "endo": 0.85
+   }
+  },
+  {
+   "day": 18,
+   "stage": "CS08",
+   "size_mm": 1.25,
+   "cite": "E06.01 Fig 6.1 · R06 CS8, R08 (1–1.5 mm)",
+   "mark": "✔✔",
+   "params": {
+    "length_units": 12.5,
+    "width_ratio": 0.62,
+    "pear": 0.45,
+    "tip_frac": 0.22,
+    "meso": 0.95,
+    "endo": 0.9
+   }
+  }
+ ],
+ "start_day": 15,
+ "layers": [
+  {
+   "id": "epiblast",
+   "token": "epi",
+   "label": "Epiblast",
+   "opacity": 0.5
+  },
+  {
+   "id": "hypoblast",
+   "token": "hypo",
+   "label": "Hypoblast"
+  },
+  {
+   "id": "mesoderm",
+   "token": "meso",
+   "label": "Mesoderm",
+   "opacity": 0.9
+  },
+  {
+   "id": "endoderm",
+   "token": "endo",
+   "label": "Endoderm"
+  },
+  {
+   "id": "streak",
+   "token": "ctx",
+   "ring": true,
+   "label": "Primitive streak + node"
+  },
+  {
+   "id": "ruler",
+   "token": "guide",
+   "label": "1 mm ruler"
+  }
+ ],
+ "parts": [
+  {
+   "kind": "disc",
+   "layers": {
+    "epiblast": "epiblast",
+    "hypoblast": "hypoblast",
+    "mesoderm": "mesoderm",
+    "endoderm": "endoderm",
+    "streak": "streak",
+    "node": "streak"
+   },
+   "epiblast_thick": 0.22,
+   "gap": 0.14,
+   "hypoblast_thick": 0.1,
+   "segments": 96,
+   "streak": {
+    "start_frac": 0.04,
+    "width": 0.1,
+    "height": 0.03
+   },
+   "node": {
+    "radius": 0.09,
+    "height": 0.06
+   },
+   "meso_delay": 0.3,
+   "endo_delay": 0.0
+  },
+  {
+   "kind": "ruler",
+   "layer": "ruler",
+   "length_mm": 1.0,
+   "tick_mm": 0.1,
+   "at": [
+    -5.0,
+    -5.2
+   ]
+  }
+ ],
+ "labels": [
+  {
+   "layer": "streak",
+   "at": "streak",
+   "text": "Primitive streak",
+   "days": [
+    15,
+    18
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "streak",
+   "at": "node",
+   "text": "Primitive node",
+   "days": [
+    15,
+    18
+   ],
+   "priority": 2
+  },
+  {
+   "layer": "ruler",
+   "at": "ruler",
+   "text": "1 mm",
+   "days": [
+    15,
+    18
+   ],
+   "priority": 3
+  }
+ ],
+ "facts": [
+  {
+   "text": "The book dates embryos in days after fertilization; Carnegie stages group embryos by their form, so a stage spans a few days.",
+   "cite": "E06.06 Tbl 6.4 · R05f, R06",
+   "mark": "✔✔"
+  },
+  {
+   "text": "CS06 (days 14–15): ≈0.2 mm. CS07 (days 16–18): ≈0.4 mm. The book's 18-day embryo, already CS08: ≈1.25 mm.",
+   "cite": "E06.06 Tbl 6.4, E06.01 Fig 6.1 · R06, R08",
+   "mark": "✔✔"
+  },
+  {
+   "text": "Newer evidence gives some stages older ages than the book's table; we show the book's days.",
+   "cite": "E06.06 · R02, R05f (D-030)",
+   "mark": "⚑"
+  },
+  {
+   "text": "The near-round disc becomes pear-shaped — broad at the head end, narrow at the tail end.",
+   "cite": "E05.05 · R06 CS8, R02 CS8",
+   "mark": "✔✔"
+  },
+  {
+   "text": "Most growth is at the head end; the streak region stays about the same size.",
+   "cite": "E05.05",
+   "mark": "✔"
+  }
+ ],
+ "camera": {
+  "azimuth_deg": -90,
+  "elevation_deg": 60,
+  "fit_mm": 1.35
+ },
+ "cut": {
+  "axis": "y",
+  "at": -0.3,
+  "on": false
+ },
+ "disclaimers": [
+  "colours illustrative",
+  "layer thickness not to scale",
+  "sizes ≈: sources differ",
+  "days 17→18: sizes from two book sources; real growth is gradual",
+  "shape simplified: neural groove and notochordal process not shown",
+  "oropharyngeal and cloacal membranes not shown",
+  "amnion and yolk sac not shown"
+ ],
+ "stills": [
+  15,
+  17,
+  18
+ ],
+ "debug": false
+}

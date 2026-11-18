@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2).
+"""Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -27,6 +27,7 @@ PREVIEW = [("phone", 390, 844), ("phone", 844, 390), ("tablet", 820, 1180), ("ta
 SCREENS = {
     "today": "today", "map": "map", "chapter": "map=E05", "concept": "concept=E05.02.01",
     "crosstab": "x=layer&y=day", "cell": "x=layer&y=day&cell=meso%7CWk%203", "settings": "settings", "colours": "colours",
+    "scenes": "scene", "viewer": "scene=sc-E00.01.04&day=16", "viewer-axes": "scene=sc-E00.01.01&day=17",
 }
 
 
@@ -107,6 +108,10 @@ async def run(a):
                         else:
                             await page.evaluate(f"location.hash='#{route}'")
                         await page.wait_for_timeout(120)
+                        if route.startswith("scene="):   # 3D viewer: wait for the engine + first frame (V1)
+                            sid = route.split("=")[1].split("&")[0]
+                            await page.wait_for_function(f"window.VW_READY===true && ROUTE.id==='{sid}'", timeout=30000)
+                            await page.wait_for_timeout(80)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
                         got_theme = await page.evaluate("document.documentElement.dataset.theme")
                         want = expected_class(kind, w, h)
@@ -146,11 +151,11 @@ async def run(a):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
-                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings"):
+                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes"):
                             path = out / "shots" / f"{cls}_{w}x{h}_125_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " 125", []).append((f"{w}×{h} {sname} 125%", path))
-                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab"):
+                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer"):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " dark", []).append((f"{w}×{h} {sname}", path))
@@ -170,6 +175,21 @@ async def run(a):
             report["rotate"].append(dict(st, size=f"{vw}x{vh}", ok=ok, y0=y0))
             if not ok:
                 report["issues"].append({"kind": "rotate", "what": json.dumps(st), "at": f"{vw}x{vh}"})
+        await ctx.close()
+        # rotate keeps place in the 3D viewer (§2 rule 2, V1): day, camera, cut and open tab survive portrait → landscape → portrait
+        ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+        page = await ctx.new_page()
+        await page.goto(f"{base}?test=1&debug=0#scene=sc-E00.01.04&day=16")
+        await page.wait_for_function("window.VW_READY===true", timeout=30000)
+        await page.evaluate("SC.eng.orbitBy(30,-10); scSave(); document.querySelector('[data-vw=tab][data-t=view]').click()")
+        s0 = await page.evaluate("({h:location.hash, cam:SC.eng.state(), tab:SC.tab})")
+        for vw, vh in [(844, 390), (390, 844)]:
+            await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(250)
+            st = await page.evaluate("({h:location.hash, cam:SC.eng.state(), tab:SC.tab, cls:DEV.cls, w:SC.canvas.clientWidth})")
+            ok = st["h"] == s0["h"] and abs(st["cam"]["az"] - s0["cam"]["az"]) < 1e-6 and st["cam"]["day"] == s0["cam"]["day"] and st["tab"] == "view" and st["w"] > 100
+            report["rotate"].append({"size": f"{vw}x{vh} viewer", "ok": ok, "h": st["h"], "cls": st["cls"]})
+            if not ok:
+                report["issues"].append({"kind": "rotate", "what": "viewer " + json.dumps(st), "at": f"{vw}x{vh}"})
         await ctx.close()
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
         report["flows"] = []

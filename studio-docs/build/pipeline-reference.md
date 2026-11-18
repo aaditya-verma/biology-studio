@@ -1,6 +1,6 @@
 # Pipeline reference — Expected vs Measured
 
-*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
+*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows (phone fps pending the owner's Measure); before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
 
 Rule C4: build only on the **Measured** column. Expected values are rough starting guesses, to be replaced by measurements (M1 onwards). Fill "Checked on" with date + device. Local-first on the owner's NVIDIA laptop (D-014, RULES C12).
 
@@ -33,6 +33,9 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | Phone model / Android / Chrome version | — | | |
 | three.js on owner's phone: fps, 50k-triangle embryo scene | ≥ 30 fps | | |
 | Triangles before stutter on the phone | ~150k | | |
+| three.js on the phone: the 3 Part 0 scenes (~1–2.5k triangles each; `?debug=viewer` › Measure) | ≥ 30 fps (display rate) | | |
+| three.js on the phone with +50k / +150k / +300k test triangles (Measure) | ≥ 30 / ≥ 30 / ? fps | | |
+| Headless stills (SwiftShader, 960×540) — 8 stills, cloud workspace | — | 3 scenes: 852–2 460 triangles, 9–22 draw calls; run ≈ 7 s (19 Nov 2026) | cloud (not a device) |
 | Tablet model / OS / browser (owner's or Professor's) | — (not recorded yet) | | |
 | three.js on the tablet: fps at 150k triangles, portrait + landscape | ≥ 30 fps | | |
 | Triangles before stutter on the tablet | ~300k | | |
@@ -42,7 +45,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | Episode file size per minute, 720p H.264 | ~8–12 MB | | |
 | Episode file size per minute, 1080p H.264 (proposed rung) | ~15–25 MB | | |
 | Free storage on the phone for the cache | — | | |
-| `tools/layout-check` full sweep time (13 sizes × orientations × 125 % × light/dark) | ~2–5 min on the laptop | | |
+| `tools/layout-check` full sweep time (13 sizes × orientations × 125 % × light/dark) | ~2–5 min on the laptop | V1: 924 checks ≈ 6 min in the cloud workspace (not the laptop) | cloud |
 
 ## 3. Production toolchain
 | Item | Expected | Measured | Checked on |

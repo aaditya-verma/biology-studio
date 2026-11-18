@@ -1,11 +1,12 @@
-# Status — updated 17 Nov 2026
+# Status — updated 19 Nov 2026
 
-*(Purpose: current state + all pendencies — nothing else. Updated: 18 Nov 2026 · Bio · Review · T3a results (pass; D-034 kept); before: A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
+*(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Build · V1 viewer (D-036; phone fps pending); before: T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: Aaditya · Bio · Build · V1 viewer · 18 Nov 2026, 01:45 IST
+- Build lock: free (V1 released 19 Nov 2026)
 
 ## Now
+- **V1 3D viewer built** (app v2, D-036): `#scene` list · `#scene=<id>&day=<d>` · `#day=<d>`; one engine + canvas (`src/js/14-scene3d.mjs`, three.js r170 vendored in `lib/three-r170/`, loaded only when a scene opens); day scrubber + Play, layer toggles (colour + pattern + label), on-structure labels (priority, never overlapping), cut plane (cross-section / lengthwise, opaque patterned caps), views, axis gizmo, scale bar, `Day · CS · ≈size` stamp, disclaimers line; per-class layouts (design plan §4.6); keys `[ ]` Space arrows `+ − 0 L C` (focus-scoped); Settings › **Motion**. **3 Part 0 scenes** in `content/E/scenes/`: `sc-E00.01.01` Axes & planes · `sc-E00.01.02` Days, stages & scale (1 mm ruler, days 15–18) · `sc-E00.01.04` Two layers become three (days 15–17). New `docs/scene-spec.md`, `tools/scene-check` (C3), `tools/stills` (C11, 8 baselines), layout-check + viewer (924 checks, 125 % viewer shots, viewer rotate), CI runs all three. `?debug=viewer` → triangles/draw calls + **Measure fps**. Gates (separate reviewers): G-Sci FAIL → fixed → pass · G-Eng FAIL → fixed → pass with note · G-Art FAIL → fixed → pass with notes · G-A11y pass with notes → fixed → pass.
 - **T3a passed** (18 Nov): owner checked every item on phone, tablet and laptop, both orientations, light + dark — no problems, D-034 choices kept. App live: https://aaditya-verma.github.io/biology-studio/ (Pages on, install works).
 - **A0 app shell done** (v1, D-034): `index.html` + `src/` + `content/strings.js` + PWA (`manifest.webmanifest`, `sw.js`). Device classes `dev-p/pl/tp/tl/d` with per-class layouts (design plan §2), history addresses + Up + Android-Back guard, IndexedDB `biostudio` + guarded saves + save log + backup, testing mode `?test=1`, `?debug=<areas>` overlay, ✎ edit hooks, all words in `strings.js`. **Book map** = K1 explorer ported (phone drill-down · tablet 2 panes · desktop 3 panes; X1 fields shown). **Colour key** measures D-031/D-034 contrast on the device. `tools/layout-check` + CI (`.github/workflows/checks.yml`): **672/672 clean** (13 sizes × orientations × 100/125 % × light/dark × 8 screens) + 27 in-app tests + rotate + real-mode flows. Kit `shot.json` v2 + overlay key patterns and the K1 explorer switched to D-031. `build/design-plan.md` new (§8a moved there). Preview: https://claude.ai/artifact/GuWVVUt5kb3uVyjSXVWf1a. Gates (separate reviewers): G-Eng ✅, G-A11y ✅, G-Art ✅ (all with notes, fixes applied).
 - **Docs reconciled** (18 Nov): the four upload-only chats of 17 Nov are now in the repo — **quality bar + host + Short profile** (D-032, was upload D-028; `research/quality-references.md` added; new step **M1b**), **device rule** (D-033, was upload D-029; RULES C13, master plan §8a, `tools/layout-check`, owner checks on phone + tablet + laptop), and one merged **A0 prompt** (master plan §13). The upload's colour pick (its D-027) is not ported — D-031 replaced it. The 24 uploaded Project docs are now safe to delete (reminders).
@@ -25,7 +26,7 @@
 1. **Owner: run the M1 kit** on the laptop (README in the kit; ~20 min setup, then `python bakeoff.py all`; AI clip per `C_ai\README.md`). Then in chat `Bio · Build · M1 bake-off`: "results are in" → the chat reads `out\RESULTS.md` from the laptop, fills Measured, runs G-Sci/G-Art (look) with a separate reviewer, and logs.
 2. **Professor:** once invited, follows the setup guide and runs **T5** (`Bio · Review · Laptop 2 setup`).
 3. **Owner: T2** — explorer + roadmap check on phone, tablet and laptop (`build/owner-test-checklist.md` T2, ~15 min).
-4. ~~Owner: T3a~~ ✅ 18 Nov. **V1 viewer** — `Bio · Build · V1 viewer` (prompt: master plan §13). In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
+4. **Owner: phone fps for V1** — open https://aaditya-verma.github.io/biology-studio/?debug=viewer#scene=sc-E00.01.04 → Debug → Measure fps → Copy → paste into the V1 chat (or `Bio · Review · V1 fps`) → pipeline reference §2 Measured. Then **T3b** (owner checklist, 3D). Then **S1 studio** — `Bio · Build · S1 studio` (prompt: master plan §13). In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
 5. **T1** (owner, phone + one look on tablet/laptop) once clips are in Drive → pick from D-024.
 6. **M1b Host shot** — `Bio · Build · M1b host shot` (after M1 numbers; prompt: master plan §13) → owner check **T1b**.
 7. **S1** → **C1** → **P1 S1E01** (MBBS + General + Short; host from M1b; with animatic) → **R1** → **L1** → **use gate**.
@@ -35,19 +36,24 @@
 - **K1 leftovers (X1 per chapter, E05 done):** AN codes, marks and cited `cs` missing outside E05 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
 - **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows.
 - Roadmap episode numbers after S1E01 are provisional until added to the episode catalog.
-- A0 notes for later: in-app **reduced-motion switch** → V1 (nothing animates yet; the OS setting is honoured) · light control borders on grey panels 3.4:1 (passes 3:1) · the published K1 explorer artifact got D-031 colours but keeps its old layouts — the app's Book map replaces it.
+- **V1 phone fps not Measured yet** (needs the owner's phone; C4 — budgets stay Expected until then). Tablet + laptop fps rows too.
+- **V1 notes (reviewers, not blocking):** streak faint at day 18 on the see-through epiblast · leader lines can cross in phone landscape at 125 % · cross-section through the node hides the groove's raised edges (use cut ≈ −0.3) · WebGL context-loss redraw untested on a real phone · first CI run must confirm the stills match on GitHub's machines (else re-baseline from CI after review) · scene `version` stays 1 until first ship (bump on every change after).
+- **M1 kit `shot.json` still fills streak + node with the accent** (D-034 (4)); D-036 (4) moved the app to `ctx` + accent outline — align the kit in the M1 chat (or keep the kit as is: owner says).
+- A0 notes for later: in-app reduced-motion switch ✅ V1 · light control borders on grey panels 3.4:1 (passes 3:1) · the published K1 explorer artifact got D-031 colours but keeps its old layouts — the app's Book map replaces it.
 - **Tablet for owner checks:** model not recorded (pipeline reference §2); T3a passed on a tablet but real vs emulated wasn't stated. Which tablet do you or the Professor have? None → checks use the laptop's device mode, marked "emulated".
 - Host design (name, look, voice) — picked in M1b from 2–3 concepts.
 - M1 shot: days 15–17 and disc ≈ 0.2 → 0.4 mm now cited (dossier §1, CS06–07 ✔✔); streak length has no book value — stays ≈. The shot leaves the notochordal process out (D-029: scenes follow the book).
 - NMC AN codes were read from a university reprint of the 2024 table — confirm against NMC Vol I when available ≈.
 - **D-025 (c)** still proposed: Professor as human G-Sci reviewer? (a) decided, (b) rejected → D-027.
 - Professor's name, Google address and **GitHub username** — needed for invites (repo: Settings → Collaborators → Add people).
-- `THIRD_PARTY.md` licences are ≈ — check each against its licence file before V1 vendors three.js (A0 added no third-party code: system fonts, own icons; CI uses Playwright + Pillow).
+- `THIRD_PARTY.md`: three.js r170 licence checked ✔ (V1); the other licences stay ≈ until checked against their files.
 - Laptop: after cloning the repo into `repo\biology-studio\`, the old `tools\` + `content\` in Studio home are retired (keep `out\`).
 - Google Cloud project "Biology Studio" not created yet; add the Professor as an OAuth test user when it is (D1).
 
 ## Owner reminders
-- [ ] **Press Sync now** (Project knowledge) — this chat changed docs (D-034, design plan).
+- [ ] **Press Sync now** (Project knowledge) — V1 changed docs (D-036, design plan, scene spec, checklist T3b).
+- [ ] **Measure fps on your phone** (Next 4) and paste the result into a chat; then do **T3b**.
+- [ ] **Confirm D-036** (V1 choices; esp. (4) streak + node = grey + plum outline instead of a plum fill) at T3b.
 - [ ] **Delete the 24 uploaded Project docs** (Project → knowledge; keep the GitHub `studio-docs/` source). All their content is in the repo now (18 Nov doc reconcile). Then a chat checks it still sees this STATUS.
 - [ ] **Re-paste `claude/INSTRUCTIONS.md` §6** into Project → Custom instructions — it gained the device line (D-033). (Professor's Project too, once set up.)
 - [ ] **Tell a chat which tablet you can test on** (or "none" → emulated).

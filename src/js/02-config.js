@@ -7,12 +7,24 @@ const CONFIG={
   saveDelayMs:400,                            // debounce between a change and the write
   saveLogMax:20,
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
-  nav:['today','map','settings'],             // EDIT: order of the main nav
-  routes:['today','map','concept','x','settings','colours'],   // first key of the hash; see src/js/05-router.js
+  nav:['today','map','scene','settings'],             // EDIT: order of the main nav
+  routes:['today','map','concept','x','scene','day','settings','colours'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
   device:{phone:600,tablet:1024},
   xt:{x:'layer',y:'day'},                     // default crosstab
-  debugAreas:['map','layout','store','router','device','test']
+  debugAreas:['map','viewer','layout','store','router','device','test'],
+  // EDIT: 3D viewer (V1; design plan §2 3D row, RULES H8). Budgets stay "Expected" until pipeline reference §2 is Measured (C4).
+  viewer:{
+    scenesUrl:'content/E/scenes/',            // EDIT: scene files (docs/scene-spec.md)
+    engine:'src/js/14-scene3d.mjs',           // loaded on first open (three.js r170 in lib/three-r170/)
+    dprCap:2,                                 // §2 rule 7
+    budget:{phoneTris:150000,phoneFps:30},    // H8 until Measured
+    scaleSteps:[0.01,0.02,0.05,0.1,0.2,0.5,1,2,5],   // mm — scale bar picks the largest that fits 130 px
+    secPerDay:2.5,                            // Play speed (full motion)
+    stepMs:1600,                              // Play with reduced motion: jump key to key
+    tweenMs:450,                              // view preset camera move (0 with reduced motion)
+    measure:{phaseMs:4000,warmFrames:10,orbitDegPerS:20,stress:[50000,150000,300000]}   // ?debug=viewer › Measure fps
+  }
 };

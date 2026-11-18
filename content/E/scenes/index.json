@@ -1,0 +1,45 @@
+{
+ "spec": 1,
+ "book": "E",
+ "scenes": [
+  {
+   "id": "sc-E00.01.01",
+   "title": "Axes & planes",
+   "summary": "Which way is head, back and left on a flat disc — and the three ways to slice it.",
+   "cards": [
+    "E00.01.01"
+   ],
+   "days": [
+    15,
+    17
+   ]
+  },
+  {
+   "id": "sc-E00.01.02",
+   "title": "Days, stages & scale",
+   "summary": "How fast the disc grows in week 3, against a 1 mm ruler.",
+   "cards": [
+    "E00.01.02",
+    "E00.01.03"
+   ],
+   "days": [
+    15,
+    18
+   ]
+  },
+  {
+   "id": "sc-E00.01.04",
+   "title": "Two layers become three",
+   "summary": "The colour key on a real moment: the two-layer disc becomes three germ layers (days 15–17).",
+   "cards": [
+    "E00.01.04",
+    "E05.01.01",
+    "E05.01.04"
+   ],
+   "days": [
+    15,
+    17
+   ]
+  }
+ ]
+}
