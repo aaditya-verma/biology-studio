@@ -30,7 +30,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 ## 2. Viewing devices & playback (phone · tablet · desktop — D-033)
 | Item | Expected | Measured | Checked on |
 |---|---|---|---|
-| Phone model / Android / Chrome version | — | | |
+| Phone model / Android / Chrome version | — | GPU Adreno 740 (Snapdragon 8 Gen 2 class) · Chrome 158 Android · screen 360×804 CSS px @3 (canvas capped @2 → 660×632) · model name hidden by Chrome's reduced user agent — owner to add | owner's phone, 19 Nov 2026 |
 | three.js on owner's phone: fps, 50k-triangle embryo scene | ≥ 30 fps | | |
 | Triangles before stutter on the phone | ~150k | | |
 | three.js on the phone: the 3 Part 0 scenes (~1–2.5k triangles each; `?debug=viewer` › Measure) | ≥ 30 fps (display rate) | | |

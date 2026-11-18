@@ -235,7 +235,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
         V.anchors.ruler = { layer: part.layer, p: [x0 + len / 2, y0 - 0.3, 0] };
       }
     }
-    if (V.stress) { const k = new THREE.Mesh(V.stress.geo, mat(V.scene.layers[0].id)); k.position.set(0, 0, -1.2); addObj(k, '_stress'); }
+    if (V.stress) { const k = new THREE.Mesh(V.stress.geo, V.stress.mat); k.position.set(0, 0, -1.2); k.userData.keepGeo = true; addObj(k, '_stress'); }   // opaque, single pass: N test triangles = N drawn
     if (V.scene.debug || V.dbg) {   // I5: world axes + bounding boxes
       const ah = new THREE.AxesHelper(2); ah.userData.ownMat = true; addObj(ah, '_debug');
       for (const m of V.hoverables) { const b = new THREE.BoxHelper(m, 0xff2bd0); b.userData.ownMat = true; addObj(b, '_debug'); }
@@ -322,8 +322,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     /* benchmark (?debug=viewer › Measure): render continuously with a slow orbit; frame times → fps */
     continuous(on, orbitDegPerS = 0) { V.cont = on; V.orbit = orbitDegPerS ? orbitDegPerS / 12 : 0; V.ft = []; V.lastT = 0; kick(); },
     frameTimes() { return V.ft.slice(); },
-    setStress(tris) { if (V.stress) { V.stress.geo.dispose(); V.stress = null; }
-      if (tris > 0) { const radial = 16, tub = Math.max(8, Math.round(tris / (2 * radial))); V.stress = { geo: new THREE.TorusKnotGeometry(0.9, 0.22, tub, radial), tris: tub * radial * 2 }; }
+    setStress(tris) { if (V.stress) { V.stress.geo.dispose(); V.stress.mat.dispose(); V.stress = null; }
+      if (tris > 0) { const radial = 16, tub = Math.max(8, Math.round(tris / (2 * radial))); V.stress = { geo: new THREE.TorusKnotGeometry(0.9, 0.22, tub, radial), mat: new THREE.MeshStandardMaterial({ color: 0x8a909c, roughness: 0.6 }), tris: tub * radial * 2 }; }
       build(); kick(); return V.stress ? V.stress.tris : 0; },
     dispose() { cancelAnimationFrame(V.raf); clear(); disposeMats(); renderer.dispose(); },
   };

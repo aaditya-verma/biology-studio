@@ -251,10 +251,11 @@ addEventListener('hashchange',scLeave);addEventListener('popstate',scLeave);
 /* ---------- ?debug=viewer › Measure fps (owner's phone → pipeline reference §2, H8, C4) ---------- */
 async function scMeasure(){
   const E=SC.eng,S0=scCur(),out=$('#vwMeasOut'),btn=$('#vwMeas');if(!E||!SC.idx||SC.meas)return;SC.meas=1;btn.disabled=true;
-  const keep=E.state(),lines=[],wait=ms=>new Promise(r=>setTimeout(r,ms)),C=CONFIG.viewer.measure;
+  const keep=E.state(),lines=[],wait=ms=>new Promise(r=>setTimeout(r,ms)),C=CONFIG.viewer.measure,cp=$('[data-vw=mcopy]'),msg=$('#vwMeasMsg');
+  const total=SC.idx.scenes.length+C.stress.length;let n=0;if(cp)cp.disabled=true;   // Copy only once the run is done
   const stat=ft=>{const s=ft.slice(C.warmFrames).sort((a,b)=>a-b);if(!s.length)return {avg:0,p5:0,n:0};const avg=1000*s.length/s.reduce((a,b)=>a+b,0),p95=s[Math.floor(s.length*0.95)];return {avg:+avg.toFixed(1),p5:+(1000/p95).toFixed(1),n:s.length};};
   const left=()=>SC.meas===2||scCur()!==S0;
-  const phase=async(name)=>{if(left())throw new Error('left');out.value=lines.concat(STR.vw.measuring(name)).join('\n');E.continuous(true,C.orbitDegPerS);await wait(C.phaseMs);const r=stat(E.frameTimes()),i=E.info();E.continuous(false);
+  const phase=async(name)=>{if(left())throw new Error('left');n++;if(msg)msg.textContent=STR.vw.measStep(n,total);out.value=lines.concat(STR.vw.measuring(name)).join('\n');E.continuous(true,C.orbitDegPerS);await wait(C.phaseMs);const r=stat(E.frameTimes()),i=E.info();E.continuous(false);
     lines.push(`${name}: ${r.avg} fps avg · ${r.p5} fps (5th pct) · ${i.triangles} tris · ${i.calls} calls`);out.value=lines.join('\n');return r;};
   lines.push(`Biology Studio v${APP.v} · ${new Date().toISOString().slice(0,16)} · ${DEV.cls} ${DEV.input} · screen ${screen.width}×${screen.height} @${devicePixelRatio} · canvas ${E.info().px} (dpr cap ${CONFIG.viewer.dprCap})`,
     `GPU ${E.gpu()} · three r${SC.mod.REVISION}`,navigator.userAgent);
@@ -262,7 +263,7 @@ async function scMeasure(){
   try{for(const s of SC.idx.scenes){const S=await scFile(s.id);E.setScene(S,{day:(S.days[0].day+S.days[S.days.length-1].day)/2});await wait(300);await phase(s.id);}
     E.setScene(S0,keep);for(const n of C.stress){E.setStress(n);await wait(300);await phase(S0.id+' + '+Math.round(n/1000)+'k stress');}}
   catch(e){aborted=true;}
-  finally{E.continuous(false);E.setStress(0);SC.meas=0;
+  finally{E.continuous(false);E.setStress(0);SC.meas=0;if(cp)cp.disabled=false;if(msg)msg.textContent=aborted?'':STR.vw.measReady;
     if(!aborted&&scCur()===S0){E.setScene(S0,keep);btn.disabled=false;lines.push(STR.vw.measDone);out.value=lines.join('\n');scOverlay();}
     else{SC.cur=null;if(scCur())render();}}   // moved on mid-run: the next mount rebuilds its own scene (G-Eng)
 }
