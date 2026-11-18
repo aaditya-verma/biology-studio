@@ -262,7 +262,7 @@ async function scMeasure(){
   let aborted=false;
   try{for(const s of SC.idx.scenes){const S=await scFile(s.id);E.setScene(S,{day:(S.days[0].day+S.days[S.days.length-1].day)/2});await wait(300);await phase(s.id);}
     E.setScene(S0,keep);for(const n of C.stress){E.setStress(n);await wait(300);await phase(S0.id+' + '+Math.round(n/1000)+'k stress');}}
-  catch(e){aborted=true;}
+  catch(e){aborted=true;lines.push(STR.vw.measStopped(e&&e.message||String(e)));out.value=lines.join('\n');console.error('[viewer] measure',e);}   // never stop silently
   finally{E.continuous(false);E.setStress(0);SC.meas=0;if(cp)cp.disabled=false;if(msg)msg.textContent=aborted?'':STR.vw.measReady;
     if(!aborted&&scCur()===S0){E.setScene(S0,keep);btn.disabled=false;lines.push(STR.vw.measDone);out.value=lines.join('\n');scOverlay();}
     else{SC.cur=null;if(scCur())render();}}   // moved on mid-run: the next mount rebuilds its own scene (G-Eng)

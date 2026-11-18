@@ -48,7 +48,7 @@ const STR={
     mm:m=>(m<0.1?(m*1000)+' µm':m+' mm'), cardsT:'Cards:', marksKey:'Marks: ✔✔ book + Tier 1 source agree · ✔ book only · ⚑ disagree (logged) · ✚ beyond the book · ≈ not yet cited.',
     tech:(r,g)=>'three.js r'+r+' · '+g, labelsShown:a=>a.length?'Labels on screen: '+a.join(', ')+'.':'',
     measure:'Measure fps (~30 s)', boxes:'Bounding boxes', measOut:'Measurement results', measHint:'Plays every scene, then adds 50k, 150k and 300k test triangles. Keep the screen on; then Copy and paste the result into the chat.',
-    measuring:n=>'Measuring '+n+'…', measStep:(n,t)=>'Step '+n+' of '+t+' — wait for Done', measReady:'Done — Copy now', measDone:'Done — tap Copy and paste this into the chat.',
+    measuring:n=>'Measuring '+n+'…', measStep:(n,t)=>'Step '+n+' of '+t+' — wait for Done', measReady:'Done — Copy now', measStopped:m=>'Stopped early: '+(m==='left'?'you left the scene':m)+' — paste this too.', measDone:'Done — tap Copy and paste this into the chat.',
     discLine:d=>d.slice(0,2).join(' · ')+(d.length>2?' · +'+(d.length-2)+' more':''), discT:'Simplified on purpose', termsT:'Terms (conventions, not book facts)',
     cutText:(axis,at)=>'Cut at '+Math.round((at+1)*50)+' % from the '+(axis==='x'?'caudal end':'right side'),
     viewText:(az,el,cut)=>{const a=((az%360)+540)%360-180,side=Math.abs(a+90)<45?'the right side':Math.abs(a-90)<45?'the left side':Math.abs(a)<45?'the head end':'the tail end';
