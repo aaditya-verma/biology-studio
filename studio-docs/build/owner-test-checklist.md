@@ -48,7 +48,7 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · T3b 3D viewer (V1) open · T3c cards (C1) follow
+## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · **T3b ✅ 19 Nov 2026** (3D viewer) · T3c cards (C1) follow
 **T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
 1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
 2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
@@ -70,7 +70,7 @@ Follow `build/setup-guide.md` §1–§5.
 7. **3D list** (3D in the bar/rail) → Axes & planes → Layers → turn on the three planes; then **Days, stages & scale**: play 15 → 18 against the 1 mm ruler.
 8. **Settings → Motion → Reduce**, then Play again: it jumps day to day, views snap. Set it back.
 9. **fps (phone, once):** open https://aaditya-verma.github.io/biology-studio/?debug=viewer#scene=sc-E00.01.04 → Debug tab → **Measure fps** (~30 s, keep the screen on) → **Copy** → paste into a chat (fills pipeline reference §2).
-- **Result T3b:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · labels readable / on the right structure: ☐ yes ☐ no (which?) · cut face clear: ☐ yes ☐ no · day/stage/size makes sense: ☐ yes ☐ confusing · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
+- **Result T3b (19 Nov 2026, app v3 on GitHub Pages):** ☑ pass · 3D smooth: ☑ yes · labels readable / on the right structure: ☑ yes · cut face clear: ☑ yes · day/stage/size makes sense: ☑ yes · Reduce motion: ☑ works · devices: phone P ☑ L ☑ · tablet P ☑ L ☑ (real/emulated not stated) · laptop ☑ · rotate keeps place: ☑ yes · layout problems: none · fps (step 9): done earlier (phone 60, tablet P 60) · D-036 confirmed · owner: "All pass".
 
 **T3c — Part 0 cards:** steps written by the C1 build chat.
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):

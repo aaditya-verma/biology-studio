@@ -1,7 +1,8 @@
 # Build log
 
-*(Purpose: the changelog — newest first, one line per event: date · step · what happened · links · by whom (RULES I8). Updated: 19 Nov 2026 · Bio · Build · V1 viewer.)*
+*(Purpose: the changelog — newest first, one line per event: date · step · what happened · links · by whom (RULES I8). Updated: 19 Nov 2026 · Bio · Review · T3b results.)*
 
+- 19 Nov 2026 · **T3b passed — D-036 confirmed** · `Bio · Review · T3b results` · by Aaditya. Owner: "All pass" on phone P+L, tablet P+L, laptop (app v3). No fixes. D-036 proposed → confirmed. Kit `shot.json` alignment stays open for the M1 chat. Docs: owner checklist T3b, review log, DECISIONS, STATUS.
 - 19 Nov 2026 · **V1 phone fps Measured — V1 ✅** · same chat · by Aaditya. Owner's phone (Adreno 740, Chrome 158, portrait, app v3): 3 scenes 60–62 fps avg (5th pct 50–52); +50k/150k/300k test triangles 60 fps avg (5th pct 54/54/50) → pipeline reference §2 Measured; master plan V1 ✅. T3b open.
 - 19 Nov 2026 · **V1 tablet fps Measured** · same chat · by Aaditya. Owner's tablet (Adreno 730, portrait, app v2): 3 scenes ~60 fps (5th pct 52–55); +stress 100k/300k/600k drawn triangles still ~60 fps (5th pct 54–57) → pipeline reference §2 Measured; budget ceiling not reached. Phone run + tablet landscape pending.
 - 19 Nov 2026 · **V1 Measure fix (app v3)** · same chat · by Aaditya. The owner's first Measure paste was copied mid-run (first line only). Copy is now disabled until Done, with a step counter; the test mesh is opaque single-pass (a transparent double-sided material drew it twice: 150k → 300k triangles). Phone GPU recorded (Adreno 740, Chrome 158) and tablet GPU (Adreno 730, Chrome 157; second paste, also cut mid-run on cached v2); Measure now prints why if it stops early; fps still pending. SW cache v3.
