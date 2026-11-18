@@ -3,7 +3,7 @@
 *(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Review · T3b results (pass, D-036 confirmed); before: V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: free (V1 released 19 Nov 2026)
+- Build lock: Aaditya · Bio · Build · S1 studio · 19 Nov 2026, 02:35 IST
 
 ## Now
 - **T3b passed** (19 Nov): owner checked the 3D viewer (app v3) on phone, tablet and laptop, both orientations — no problems, no fixes. **D-036 confirmed** (streak + node = grey `ctx` fill + plum outline). **V1 closed.**
