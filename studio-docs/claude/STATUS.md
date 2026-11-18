@@ -26,7 +26,7 @@
 1. **Owner: run the M1 kit** on the laptop (README in the kit; ~20 min setup, then `python bakeoff.py all`; AI clip per `C_ai\README.md`). Then in chat `Bio · Build · M1 bake-off`: "results are in" → the chat reads `out\RESULTS.md` from the laptop, fills Measured, runs G-Sci/G-Art (look) with a separate reviewer, and logs.
 2. **Professor:** once invited, follows the setup guide and runs **T5** (`Bio · Review · Laptop 2 setup`).
 3. **Owner: T2** — explorer + roadmap check on phone, tablet and laptop (`build/owner-test-checklist.md` T2, ~15 min).
-4. **Owner: phone fps for V1** — open https://aaditya-verma.github.io/biology-studio/?debug=viewer#scene=sc-E00.01.04 → Debug → Measure fps → Copy → paste into the V1 chat (or `Bio · Review · V1 fps`) → pipeline reference §2 Measured. Then **T3b** (owner checklist, 3D). Then **S1 studio** — `Bio · Build · S1 studio` (prompt: master plan §13). In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
+4. ~~Phone fps for V1~~ ✅ 19 Nov (60 fps). **Owner: T3b** (owner checklist, 3D, ~10 min; step 9 done). Then **S1 studio** — `Bio · Build · S1 studio` (prompt: master plan §13). In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
 5. **T1** (owner, phone + one look on tablet/laptop) once clips are in Drive → pick from D-024.
 6. **M1b Host shot** — `Bio · Build · M1b host shot` (after M1 numbers; prompt: master plan §13) → owner check **T1b**.
 7. **S1** → **C1** → **P1 S1E01** (MBBS + General + Short; host from M1b; with animatic) → **R1** → **L1** → **use gate**.
@@ -36,7 +36,7 @@
 - **K1 leftovers (X1 per chapter, E05 done):** AN codes, marks and cited `cs` missing outside E05 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
 - **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows.
 - Roadmap episode numbers after S1E01 are provisional until added to the episode catalog.
-- **V1 phone fps not Measured yet** (needs a full Measure run on the owner's phone, app v3; C4 — the phone budget stays Expected until then). Tablet portrait ✅ Measured (~60 fps up to 600k triangles); tablet landscape + laptop rows open.
+- V1 fps **Measured** (19 Nov): phone (Adreno 740) 60 fps on all 3 scenes and up to 300k triangles (5th pct ≥ 50); tablet portrait (Adreno 730) 60 fps up to 600k. Open: tablet landscape + laptop rows; phone/tablet model names (Chrome hides them). Budget H8 (150k phone) can rise once a heavier real scene is Measured — not before (C4).
 - **V1 notes (reviewers, not blocking):** streak faint at day 18 on the see-through epiblast · leader lines can cross in phone landscape at 125 % · cross-section through the node hides the groove's raised edges (use cut ≈ −0.3) · WebGL context-loss redraw untested on a real phone · stills matched on GitHub's machines (CI green 19 Nov) · scene `version` stays 1 until first ship (bump on every change after).
 - **M1 kit `shot.json` still fills streak + node with the accent** (D-034 (4)); D-036 (4) moved the app to `ctx` + accent outline — align the kit in the M1 chat (or keep the kit as is: owner says).
 - A0 notes for later: in-app reduced-motion switch ✅ V1 · light control borders on grey panels 3.4:1 (passes 3:1) · the published K1 explorer artifact got D-031 colours but keeps its old layouts — the app's Book map replaces it.
@@ -52,7 +52,7 @@
 
 ## Owner reminders
 - [ ] **Press Sync now** (Project knowledge) — V1 changed docs (D-036, design plan, scene spec, checklist T3b).
-- [ ] **Measure fps on your phone** (Next 4) and paste the result into a chat; then do **T3b**.
+- [ ] **T3b** 3D check (Next 4) — fps step already done.
 - [ ] **Confirm D-036** (V1 choices; esp. (4) streak + node = grey + plum outline instead of a plum fill) at T3b.
 - [ ] **Delete the 24 uploaded Project docs** (Project → knowledge; keep the GitHub `studio-docs/` source). All their content is in the repo now (18 Nov doc reconcile). Then a chat checks it still sees this STATUS.
 - [ ] **Re-paste `claude/INSTRUCTIONS.md` §6** into Project → Custom instructions — it gained the device line (D-033). (Professor's Project too, once set up.)

@@ -31,10 +31,10 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | Item | Expected | Measured | Checked on |
 |---|---|---|---|
 | Phone model / Android / Chrome version | — | GPU Adreno 740 (Snapdragon 8 Gen 2 class) · Chrome 158 Android · screen 360×804 CSS px @3 (canvas capped @2 → 660×632) · model name hidden by Chrome's reduced user agent — owner to add | owner's phone, 19 Nov 2026 |
-| three.js on owner's phone: fps, 50k-triangle embryo scene | ≥ 30 fps | | |
-| Triangles before stutter on the phone | ~150k | | |
-| three.js on the phone: the 3 Part 0 scenes (~1–2.5k triangles each; `?debug=viewer` › Measure) | ≥ 30 fps (display rate) | | |
-| three.js on the phone with +50k / +150k / +300k test triangles (Measure) | ≥ 30 / ≥ 30 / ? fps | | |
+| three.js on owner's phone: fps, 50k-triangle embryo scene | ≥ 30 fps | **60 fps avg (display rate), 5th pct 53.8** at ~51k triangles (portrait, canvas 660×632 @2) | owner's phone (Adreno 740, Chrome 158), 19 Nov 2026, app v3 Measure |
+| Triangles before stutter on the phone | ~150k | **> 300k** (60 fps avg, 5th pct 50 at 301k; ceiling not reached) | owner's phone (Adreno 740, Chrome 158), 19 Nov 2026, app v3 Measure |
+| three.js on the phone: the 3 Part 0 scenes (~1–2.5k triangles each; `?debug=viewer` › Measure) | ≥ 30 fps (display rate) | **60–62 fps avg · 5th pct 50–52** (sc-E00.01.01 / .02 / .04) | owner's phone (Adreno 740, Chrome 158), 19 Nov 2026, app v3 Measure |
+| three.js on the phone with +50k / +150k / +300k test triangles (Measure) | ≥ 30 / ≥ 30 / ? fps | **60 / 60 / 60 fps avg · 5th pct 53.8 / 53.8 / 50** | owner's phone (Adreno 740, Chrome 158), 19 Nov 2026, app v3 Measure |
 | Headless stills (SwiftShader, 960×540) — 8 stills, cloud workspace | — | 3 scenes: 852–2 460 triangles, 9–22 draw calls; run ≈ 7 s (19 Nov 2026) | cloud (not a device) |
 | Tablet model / OS / browser (owner's or Professor's) | — (not recorded yet) | GPU Adreno 730 (Snapdragon 8 Gen 1 class) · Chrome 157 Android (desktop UA) · screen 1024×640 CSS px @2.5 (≈2560×1600) · model hidden — owner to add | owner's tablet, 19 Nov 2026 |
 | three.js on the tablet: fps at 150k triangles, portrait + landscape | ≥ 30 fps | **Portrait: ~60 fps (display rate) at 1–2.5k (3 scenes), ~100k, ~300k and ~600k drawn triangles; 5th-percentile 52–57 fps** (canvas 1197×1046 @2). Landscape not measured yet | owner's tablet (Adreno 730, Chrome 157), 19 Nov 2026, app v2 Measure |
