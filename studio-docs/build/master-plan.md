@@ -1,6 +1,6 @@
 # Biology Studio — master build plan
 
-*(Purpose: scope, architecture, build steps and ready prompts. Updated: 19 Nov 2026 · Bio · Build · S1 studio — S1 ✅, C1 prompt; before: V1 viewer (V1 built, S1 prompt), A0 ✅.)*
+*(Purpose: scope, architecture, build steps and ready prompts. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 — X1 row, Ch 6 ✅, X1 Ch 7 prompt, C1 reads D-039; before: S1 studio (S1 ✅, C1 prompt), V1 viewer (V1 built, S1 prompt), A0 ✅.)*
 
 **Status:** approved scope, 17 Nov 2026 (owner answers D-012…D-017, D-019). All 8 questions settled. Best practices, crew and review gates → `build/studio-playbook.md` (D-020). Usage, upkeep, debug flags and edit hooks → RULES §I (D-022). Quality bar → `research/quality-references.md` (D-032). Optimal layouts on every device → §8a + RULES C13 (D-033). Built so far: M1 kit (run pending), I1 index, H1 repo, K1 concept map, X1 Ch 5 + Ch 6, A0 app shell (v1).
 **Rich version with 5 flowcharts:** https://claude.ai/artifact/92iZDWeXzzA9GcNcru2ZwK (this markdown is the owner copy for chats; the artifact still shows the old name and lacks X1/K1/gates — see STATUS reminders).
