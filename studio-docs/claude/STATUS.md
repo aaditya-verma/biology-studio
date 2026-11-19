@@ -3,7 +3,7 @@
 *(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 (D-039); before: S1 studio (Studio + card-check, E05.01.01 reviewed, D-037 proposed, D-038); before: T3b results (pass, D-036 confirmed), V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: free (S1 released 19 Nov 2026)
+- Build lock: Aaditya · Bio · Build · W1 progress map · 19 Nov 2026, 21:49 IST
 
 ## Now
 - **X1 Ch 6 done** (19 Nov, D-039): `research/dossiers/ch06-embryonic-period.md` — staging table CS11–CS23 (R08 · R06 · R02), 48 Tier A fact lines (✔✔ 12 · ✔ 33 · ⚑ 1 · ✚ 2 · ≈ 0), Tier B–D table, 16 misconceptions, AN map, 2 clinical correlates confirmed (NTDs + folic acid; haemangioma frequency). 5 ⚑ → **D-039 (owner picks)**: somite total, month-2 feature days, R02 ages (amends D-030 wording), marrow timing, haemangioma frequency/sites. AN codes + marks + cited `cs` on all 23 Ch 6 concepts (map.json, concept-map.md; roadmap unchanged). GLOSSARY §7 CS11–CS23; registry R05l–y. Gate: G-Sci fresh-eyes pass with fixes (9 MUST + 10 SHOULD applied).
