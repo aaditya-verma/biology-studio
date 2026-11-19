@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 20 Nov 2026 · Bio · Build · Visual style commit.)*
 
 ## Lock
-- Build lock: free (Visual style commit released 20 Nov 2026, 01:45 IST)
+- Build lock: Aaditya · Bio · Content · C1 Part 0 + Ch 5 · 20 Nov 2026, 02:05 IST
 
 ## Now
 - **Visual style ported** (20 Nov, D-041): build/visual-style.md + G-Sci video checklist (playbook §2); RULES D8 amended; QR03 logged. VS.q1 + VS.q2 closed.
