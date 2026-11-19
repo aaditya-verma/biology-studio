@@ -230,7 +230,7 @@ json.dump(rep, open(f'{a.out}/map-report.json', 'w'), indent=1, ensure_ascii=Fal
 # ---------- concept-map.md ----------
 L = []
 L.append('# Concept map — Langman 14e (E)\n')
-L.append('*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (AN + marks for E05).)*\n')
+L.append('*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 (AN + marks for E06; E05 on 17 Nov).)*\n')
 L.append(f"**{len(out_concepts)} concepts** in {len(bysec)} sections (all {len(content_secs)} content sections covered; Summary / Problems sections carry none). "
          "Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).\n")
 L.append('**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. '

@@ -1,6 +1,6 @@
 # tools/map — K1 concept map builder
 
-Purpose: turns `concepts.txt` (our concept rows) + `research.txt` (X1 layer: AN codes, marks, cited stages per concept) + I1 index (`content/E/index/`) into `content/E/map.json`, `curriculum/concept-map.md` and `curriculum/roadmap.md`. Owner doc: `build/master-plan.md` §5. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (research.txt added).
+Purpose: turns `concepts.txt` (our concept rows) + `research.txt` (X1 layer: AN codes, marks, cited stages per concept) + I1 index (`content/E/index/`) into `content/E/map.json`, `curriculum/concept-map.md` and `curriculum/roadmap.md`. Owner doc: `build/master-plan.md` §5. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 (E06 rows in research.txt).
 
 Run from this folder (Python 3, no packages):
 ```

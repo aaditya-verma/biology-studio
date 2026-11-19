@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -69,7 +69,7 @@
 - **Layout check:** `tools/layout-check` — the headless sweep over the test matrix with automatic checks (RULES C8, C13). **Contact sheet:** its grid of screenshots per device class, reviewed at G-Art.
 
 ## 7. Carnegie stages
-A stage is set by **form**, not by age or length (R05f). Day = classic estimate, days after fertilization ≈ postovulatory (R08 from R06; the book's days agree). R02's revised ages run ~3–7 days older from CS6 on — see D-030; on screen we show the book day. Same day ranges fill `content/E/index/timeline.json` `cs` (via `tools/indexer/carnegie.json`). Key events: CS06–CS10 done in X1 Ch 05 (dossier ch05 §1); other rows filled by each chapter's X1.
+A stage is set by **form**, not by age or length (R05f). Day = classic estimate, days after fertilization ≈ postovulatory (R08 from R06; the book's days agree). R02's revised ages run ~3–7 days older at CS6–CS13 and converge or run younger later — see D-030, D-039 (c); on screen we show the book day. Same day ranges fill `content/E/index/timeline.json` `cs` (via `tools/indexer/carnegie.json`). Key events: CS06–CS10 done in X1 Ch 05 (dossier ch05 §1), CS11–CS23 in X1 Ch 06 (dossier ch06 §1; sizes = R08 greatest length, show "≈ size"; ✚ = R08 feature with no book event, More only); CS01–CS05 filled by X1 Ch 03–04.
 
 | Stage | Approx. day | Size (≈) | Key events (our words) | Taught in |
 |---|---|---|---|---|
@@ -83,19 +83,19 @@ A stage is set by **form**, not by age or length (R05f). Day = classic estimate,
 | **CS08** | 17–19 | 1–1.5 mm | Primitive pit, notochordal and neurenteric canals; neural groove; pear-shaped disc `[E05.02, E05.05 · R06, R05a, R02]` ✔✔ | E05.02.01–02, E05.05.01 |
 | **CS09** | 19–21 | 1.2–2.5 mm | First 1–3 somite pairs; neural folds; heart area and pericardial cavity `[E06.02, E06.06 · R08, R02]` ✔✔ | Ch 6 bridge (S1) |
 | **CS10** | 22–23 | 2–3.5 mm | 4–12 somite pairs (book: 5–12); neural folds begin to fuse (neck region first) `[E06.06 · R06, R08]` ✔✔ | Ch 6 (S1) |
-| CS11 | 23–26 | | | |
-| CS12 | 26–30 | | | |
-| CS13 | 28–32 | | | |
-| CS14 | 31–35 | | | |
-| CS15 | 35–38 | | | |
-| CS16 | 37–42 | | | |
-| CS17 | 42–44 | | | |
-| CS18 | 44–48 | | | |
-| CS19 | 48–51 | | | |
-| CS20 | 51–53 | | | |
-| CS21 | 53–54 | | | |
-| CS22 | 54–56 | | | |
-| CS23 | 56–60 | | | |
+| **CS11** | 23–26 | 2.5–4.5 mm | 13–20 somite pairs; rostral (cranial) neuropore closes (~day 25); optic vesicles; folding under way; oropharyngeal membrane ruptures `[E06.01, E06.06 · R06, R08, R05l]` ✔✔ | E06.01.03, E06.03.01 |
+| **CS12** | 26–30 | 3–5 mm | 21–29 pairs; caudal neuropore closes (~day 28); 3 pharyngeal arches; upper limb buds `[E06.01, E06.06 · R06, R08, R05l]` ✔✔ | E06.01.03, E06.05.01 |
+| **CS13** | 28–32 | 4–6 mm | 30+ pairs; four limb buds; lens disc (placode); otic vesicle; 4th arch `[E06.06 · R08]` ✔✔ | E06.01.06, E06.05.01 |
+| **CS14** | 31–35 | 5–7 mm | Lens pit and optic cup `[R08]` ✚ · body tightly C-shaped `[E06.06]` ✔ | E06.05.01 |
+| **CS15** | 35–38 | 7–9 mm | Lens vesicle; nasal pits; hand plate (arms paddle-shaped) `[E06.05, E06.06 · R08]` ✔✔ | E06.05.01 |
+| **CS16** | 37–42 | 8–11 mm | Auricular hillocks; foot plate `[E06.06 · R08]` ✔✔ · retinal pigment visible (R08; book 43–49 d) ⚑ D-039 b | E06.05.01 |
+| **CS17** | 42–44 | 11–14 mm | Finger rays `[R08]` (book: hand and foot rays from day 36) ⚑ D-039 b | E06.05.01 |
+| **CS18** | 44–48 | 13–17 mm | Eyelids begin; nipples appear `[E06.06 · R08]` ✔✔ · toe rays ⚑ D-039 b · elbow region, ossification may begin `[R08]` ✚ | E06.05.01 |
+| **CS19** | 48–51 | 16–18 mm | Trunk lengthens and straightens `[R08]` ✚ (no book event) | E06.05.01 |
+| **CS20** | 51–53 | 18–22 mm | Arms longer, bent at the elbows `[E06.06 · R08]` ✔✔ | E06.05.01 |
+| **CS21** | 53–54 | 22–24 mm | Fingers and toes free `[E06.06]` ✔ · hands and feet approach each other `[R08]` ✚ | E06.05.01 |
+| **CS22** | 54–56 | 23–28 mm | Eyelids and external ear more developed `[R08]` ✚ (no book event) | E06.05.01 |
+| **CS23** | 56–60 | 27–31 mm | End of the embryonic period (~CRL 30 mm) `[E06.05, E06.06 · R08, R02]` ✔✔ · head more rounded `[R08]` ✚ | E06.00.01, E06.05.02 |
 
 ## 8. Project terms
 - **Owner doc:** the one doc that owns a fact (INSTRUCTIONS §2); it wins on conflict.

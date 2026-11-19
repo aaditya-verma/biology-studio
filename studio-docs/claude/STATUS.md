@@ -1,11 +1,12 @@
 # Status — updated 19 Nov 2026
 
-*(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Build · S1 studio (Studio + card-check, E05.01.01 reviewed, D-037 proposed, D-038); before: T3b results (pass, D-036 confirmed), V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
+*(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 (D-039); before: S1 studio (Studio + card-check, E05.01.01 reviewed, D-037 proposed, D-038); before: T3b results (pass, D-036 confirmed), V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
 - Build lock: free (S1 released 19 Nov 2026)
 
 ## Now
+- **X1 Ch 6 done** (19 Nov, D-039): `research/dossiers/ch06-embryonic-period.md` — staging table CS11–CS23 (R08 · R06 · R02), 48 Tier A fact lines (✔✔ 12 · ✔ 33 · ⚑ 1 · ✚ 2 · ≈ 0), Tier B–D table, 16 misconceptions, AN map, 2 clinical correlates confirmed (NTDs + folic acid; haemangioma frequency). 5 ⚑ → **D-039 (owner picks)**: somite total, month-2 feature days, R02 ages (amends D-030 wording), marrow timing, haemangioma frequency/sites. AN codes + marks + cited `cs` on all 23 Ch 6 concepts (map.json, concept-map.md; roadmap unchanged). GLOSSARY §7 CS11–CS23; registry R05l–y. Gate: G-Sci fresh-eyes pass with fixes (9 MUST + 10 SHOULD applied).
 - **S1 Studio built** (app v4, D-038; testing mode only): `#studio` card list + new draft · `#studio=<id>[&gate=…]` draft │ review │ sources (phone: review only, line by line) · `#calib`. Card spec `docs/card-spec.md` (C2); cards in `content/E/cards/`. `tools/card-check` (C3; `--only --dry-run --debug --preview --json --write-sources --calibrate --selftest --parity`) + `validate_citation` (tree.json sections, registry ids) — the same rules run in the app (`src/js/15-cards.js`); parity 33/33, selftest 32/32, **calibration 5/5**. Import links: a PubMed link, PMID, DOI or R-id becomes a cited line with a suggested mark. Review card per gate (G-Sci, G-Learn, G-A11y, G-Owner); a reviewer must differ from the maker in role and agent; any content edit clears the passes. layout-check green (1260 checks, 13/13 flows incl. 8 Studio flows, 8/8 rotations). CI runs card-check.
 - **First card round trip: E05.01.01 "Gastrulation in one picture" → Reviewed** (linked to sc-E00.01.04, day 16). Round 1: G-Sci + G-Learn fail (wording, m3, q3, terms). Round 2: G-Sci pass, G-Learn fail (terms). Round 3: both pass, recorded through the Studio. Separate reviewer agents each round. **Gates: G-Eng + G-A11y pass (round 3, separate reviewer).** G-Learn's pass depends on **D-037** (proposed: a D2 exception, 5 new terms).
 - **T3b passed** (19 Nov): owner checked the 3D viewer (app v3) on phone, tablet and laptop, both orientations — no problems, no fixes. **D-036 confirmed** (streak + node = grey `ctx` fill + plum outline). **V1 closed.**
@@ -29,7 +30,7 @@
 1. **Owner: run the M1 kit** on the laptop (README in the kit; ~20 min setup, then `python bakeoff.py all`; AI clip per `C_ai\README.md`). Then in chat `Bio · Build · M1 bake-off`: "results are in" → the chat reads `out\RESULTS.md` from the laptop, fills Measured, runs G-Sci/G-Art (look) with a separate reviewer, and logs.
 2. **Professor:** once invited, follows the setup guide and runs **T5** (`Bio · Review · Laptop 2 setup`).
 3. **Owner: T2** — explorer + roadmap check on phone, tablet and laptop (`build/owner-test-checklist.md` T2, ~15 min).
-4. ~~S1 studio~~ ✅ 19 Nov. **Next: C1 cards** — `Bio · Content · C1 Part 0 + Ch 5` (prompt: master plan §13); it starts by settling **D-037** with you. In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
+4. ~~S1 studio~~ ✅ 19 Nov. **Next: C1 cards** — `Bio · Content · C1 Part 0 + Ch 5` (prompt: master plan §13); it starts by settling **D-037** with you. In parallel, no lock: ~~X1 Ch 6~~ ✅ 19 Nov → **X1 Ch 7** — `Bio · Research · X1 Ch 07`.
 5. **T1** (owner, phone + one look on tablet/laptop) once clips are in Drive → pick from D-024.
 6. **M1b Host shot** — `Bio · Build · M1b host shot` (after M1 numbers; prompt: master plan §13) → owner check **T1b**.
 7. ~~S1~~ ✅ → **C1** → **P1 S1E01** (MBBS + General + Short; host from M1b; with animatic) → **R1** → **L1** → **use gate**.
@@ -39,8 +40,8 @@
 - **card-check robustness (minor, G-Eng R3):** a badly typed card (body/objective as a number, `terms.new: null`, a null fact) makes Python stop with a traceback instead of an E-schema line (CI still fails, so nothing ships). C1: add type guards in both checkers + selftest cases.
 - **S1 notes (not blocking):** q2's right option is the only one not starting with "It" (a small cue; reviewer polish for C1) · card parts Remember / Clinical link / Where it shows up are reserved in the spec; C1 adds their rules first · Studio drafts live in memory only (testing mode): export before closing the tab (the tab warns) · E05.01.01 stays `version: 1` until first ship.
 - **M1 numbers** — blocked on the laptop run (this chat's bridge can't run commands; cloud workspace has no GPU). M1b waits on them (VRAM decides the local host-shot models); the **1080p rung** (D-033, proposed) waits on M1's 1080p timing.
-- **K1 leftovers (X1 per chapter, E05 done):** AN codes, marks and cited `cs` missing outside E05 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
-- **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows.
+- **K1 leftovers (X1 per chapter, E05 + E06 done):** AN codes, marks and cited `cs` missing outside E05–E06 · Ch 6 concepts without an AN79 code (crest/ectoderm derivatives, intermediate mesoderm, vessels, blood, haemangioma, folding, gut, Hox, month 2) → system topics in later X1 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
+- **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows · **E06.02 is pp 80–87, not 80–86** (haemangioma box p 87; X1 Ch 06) · `timeline.json` stops at day 49 (the front chart) — add Table 6.4 as a numeric table so days 27 and 50–56 get `cs` (next I1 run). Other E06 locators checked ✔.
 - Roadmap episode numbers after S1E01 are provisional until added to the episode catalog.
 - V1 fps **Measured** (19 Nov): phone (Adreno 740) 60 fps on all 3 scenes and up to 300k triangles (5th pct ≥ 50); tablet portrait (Adreno 730) 60 fps up to 600k. Open: tablet landscape + laptop rows; phone/tablet model names (Chrome hides them). Budget H8 (150k phone) can rise once a heavier real scene is Measured — not before (C4).
 - **V1 notes (reviewers, not blocking):** streak faint at day 18 on the see-through epiblast · leader lines can cross in phone landscape at 125 % · cross-section through the node hides the groove's raised edges (use cut ≈ −0.3) · WebGL context-loss redraw untested on a real phone · stills matched on GitHub's machines (CI green 19 Nov) · scene `version` stays 1 until first ship (bump on every change after).
@@ -57,7 +58,7 @@
 - Google Cloud project "Biology Studio" not created yet; add the Professor as an OAuth test user when it is (D1).
 
 ## Owner reminders
-- [ ] **Press Sync now** (Project knowledge): S1 changed STATUS, DECISIONS, the build and review logs, the master plan, the design plan, README, INSTRUCTIONS and the registry.
+- [ ] **Press Sync now** (Project knowledge): X1 Ch 06 changed STATUS, DECISIONS (D-039), GLOSSARY, registry, concept map, master plan, build log + new Ch 6 dossier; S1 changed STATUS, DECISIONS, the build and review logs, the master plan, the design plan, README, INSTRUCTIONS and the registry.
 - [ ] **Decide D-037** (2 min; see the pendencies): keep the exception, or option (a). Reply in the C1 chat.
 - [ ] Optional: try the Studio at https://aaditya-verma.github.io/biology-studio/?test=1#studio=E05.01.01 on the phone (review pane) and the laptop (3 panes).
 - [ ] **Say in the M1 chat:** align the kit's `shot.json` with the app (grey + plum outline) or keep the accent fill.
@@ -65,7 +66,7 @@
 - [ ] **Re-paste `claude/INSTRUCTIONS.md` §6** into Project → Custom instructions — it gained the device line (D-033). (Professor's Project too, once set up.)
 - [ ] **Tell a chat which tablet you can test on** (or "none" → emulated).
 - [ ] **Put the two reference reels** in Drive › research/quality-refs/ (reference only, never in the repo).
-- [ ] **Skim the ⚑ list** (2 min, X1 owner check): D-029 notochord, D-030 stage ages / SCT frequency / SSRI line — say if you want a different handling.
+- [ ] **Skim the ⚑ list** (2 min, X1 owner check): D-029 notochord, D-030 stage ages / SCT frequency / SSRI line — say if you want a different handling. **New: D-039 (a–e) from Ch 6 — pick an option per item (recommendations given).** **New: D-037 (a–e) from Ch 6 — pick an option per item (recommendations given).**
 - [ ] **T2 explorer check** (Next 3) — https://claude.ai/artifact/Bg2DUqLgdqC3NgroWMEvin; tap ✎ Test once to see edit prompts.
 - [ ] **Skim the I1 section tables** (`curriculum/book-index-part1.md`, `-part2.md`) — K1 used these ids; say if any look wrong.
 - [ ] Optional: if your print copy has the Index (it's missing from the PDF), photograph those pages to Drive › book/ — a later I1 re-run can calibrate term placement against it.

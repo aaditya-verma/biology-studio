@@ -184,6 +184,132 @@
    "pmid": "24941178"
   },
   {
+   "id": "R05l",
+   "tier": 1,
+   "name": "O'Rahilly R, Müller F",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/tera.10007",
+   "pmid": "11948562"
+  },
+  {
+   "id": "R05m",
+   "tier": 1,
+   "name": "O'Rahilly R, Müller F",
+   "licence": "© Karger → facts only",
+   "ref_only": false,
+   "doi": "10.1159/000068948",
+   "pmid": "12649586"
+  },
+  {
+   "id": "R05n",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/aja.1001770103",
+   "pmid": "3535481"
+  },
+  {
+   "id": "R05o",
+   "tier": 1,
+   "name": "Ivanovs A et al",
+   "licence": "Open in PMC (JEM licence ≈ check before reuse) → facts only",
+   "ref_only": false,
+   "doi": "10.1084/jem.20111688",
+   "pmid": "22042975"
+  },
+  {
+   "id": "R05p",
+   "tier": 1,
+   "name": "Charbord P, Tavian M, Humeau L, Péault B",
+   "licence": "© ASH → facts only",
+   "ref_only": false,
+   "doi": null,
+   "pmid": "8639768"
+  },
+  {
+   "id": "R05q",
+   "tier": 1,
+   "name": "Matsuda M et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/s41586-020-2144-9",
+   "pmid": "32238941"
+  },
+  {
+   "id": "R05r",
+   "tier": 1,
+   "name": "Kilcline C, Frieden IJ",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1111/j.1525-1470.2008.00626.x",
+   "pmid": "18429772"
+  },
+  {
+   "id": "R05s",
+   "tier": 1,
+   "name": "Munden A et al",
+   "licence": "PMC author manuscript → facts only",
+   "ref_only": false,
+   "doi": "10.1111/bjd.12804",
+   "pmid": "24641194"
+  },
+  {
+   "id": "R05t",
+   "tier": 1,
+   "name": "MRC Vitamin Study Research Group",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": null,
+   "pmid": "1677062"
+  },
+  {
+   "id": "R05u",
+   "tier": 1,
+   "name": "Czeizel AE, Dudás I",
+   "licence": "© MMS → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJM199212243272602",
+   "pmid": "1307234"
+  },
+  {
+   "id": "R05v",
+   "tier": 1,
+   "name": "Williams J et al",
+   "licence": "US federal work, likely public domain ≈ → facts only",
+   "ref_only": false,
+   "doi": null,
+   "pmid": "25590678"
+  },
+  {
+   "id": "R05w",
+   "tier": 1,
+   "name": "Kibar Z et al",
+   "licence": "© MMS → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJMoa060651",
+   "pmid": "17409324"
+  },
+  {
+   "id": "R05x",
+   "tier": 1,
+   "name": "Bhide P et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/bdra.23153",
+   "pmid": "23873811"
+  },
+  {
+   "id": "R05y",
+   "tier": 1,
+   "name": "Sinha A et al",
+   "licence": "Open access in PMC (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1007/s00381-024-06627-x",
+   "pmid": "39365302"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -285,7 +411,8 @@
   "D-035",
   "D-036",
   "D-037",
-  "D-038"
+  "D-038",
+  "D-039"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",

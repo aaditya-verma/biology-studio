@@ -1,10 +1,10 @@
 # Concept map — Langman 14e (E)
 
-*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (AN + marks for E05).)*
+*(Purpose: every chapter → section → concept, with crosstabs; source for the explorer and `content/E/map.json`. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 (AN + marks for E06; E05 on 17 Nov).)*
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -138,31 +138,31 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E06.00.01 | Embryonic period: weeks 3–8 | A | TC | core | 15–56 | multi | early | E05.01.04 | 7 |  | ≈ |
-| E06.01.01 | Neural induction and neural plate | A | G | core | 18–19 | ecto | cns | E05.03.03, E05.02.01 | 77 |  | ≈ |
-| E06.01.02 | Neurulation | A | F | core | 19–28 | ecto | cns | E06.01.01 | 73 |  | ≈ |
-| E06.01.03 | Neuropores close | A | T | x | 25–28 | ecto | cns | E06.01.02 | 2 |  | ≈ |
-| E06.01.04 | Neural crest cells | A | G | core | 19–28 | crest | cns | E06.01.02 | 46 |  | ≈ |
-| E06.01.05 | Neural crest derivatives | B | GA | x |  | crest | cns | E06.01.04 | 10 |  | ≈ |
-| E06.01.06 | Ectoderm derivatives and placodes | B | GA | x |  | ecto | cns | E06.01.01 | 18 |  | ≈ |
-| E06.01.07 | Neural tube defects | C | C | x | 25–28 | ecto | defects | E06.01.03 | 1 |  | ≈ |
-| E06.02.01 | Paraxial, intermediate and lateral plate mesoderm | A | G | core | 17–21 | meso | early | E05.04.02 | 154 |  | ≈ |
-| E06.02.02 | Somites | A | TG | core | 20–35 | meso | msk | E06.02.01 | 59 |  | ≈ |
-| E06.02.03 | Segmentation clock | D | M | s | 20–35 | meso | msk | E06.02.02, E01.05.05 |  |  | ≈ |
-| E06.02.04 | Somite differentiation | A | G | core | 22–35 | meso | msk | E06.02.02 | 32 |  | ≈ |
-| E06.02.05 | Intermediate mesoderm | A | G | x | 20–28 | meso | uro | E06.02.01 | 20 |  | ≈ |
-| E06.02.06 | Lateral plate mesoderm | A | GF | core | 17–21 | meso | cav | E06.02.01 | 77 |  | ≈ |
-| E06.02.07 | Vasculogenesis and angiogenesis | B | S | x | 17–28 | meso | cv | E06.02.01 | 8 |  | ≈ |
-| E06.02.08 | Sites of blood formation | B | ST | x |  | meso | cv | E06.02.07 |  |  | ≈ |
-| E06.02.09 | Capillary haemangiomas | C | C | d |  | meso | defects | E06.02.07 |  |  | ≈ |
-| E06.03.01 | Body folding | A | F | core | 21–28 | multi | early | E05.05.01, E06.02.06 | 63 |  | ≈ |
-| E06.03.02 | Foregut, midgut, hindgut | A | FG | core | 22–28 | endo | gi | E06.03.01 | 34 |  | ≈ |
-| E06.03.03 | Endoderm derivatives | A | GA | x |  | endo | gi | E06.03.02 |  |  | ≈ |
-| E06.04.01 | Hox genes pattern the head–tail axis | D | M | x |  | multi | mol | E01.01.02 | 1 |  | ≈ |
-| E06.05.01 | External appearance in month 2 | B | T | s | 29–56 | multi | early | E06.03.01 | 3 |  | ≈ |
-| E06.05.02 | Estimating embryo age | B | T | s | 20–56 | multi | early | E06.05.01, E06.02.02 |  |  | ≈ |
+| E06.00.01 | Embryonic period: weeks 3–8 | A | TC | core | 15–56 | multi | early | E05.01.04 | 7 | AN79.5, AN79.6 | ✔ |
+| E06.01.01 | Neural induction and neural plate | A | G | core | 18–19 | ecto | cns | E05.03.03, E05.02.01 | 77 | AN79.3 | ✔ |
+| E06.01.02 | Neurulation | A | F | core | 19–28 | ecto | cns | E06.01.01 | 73 | AN79.3 | ✔ |
+| E06.01.03 | Neuropores close | A | T | x | 25–28 | ecto | cns | E06.01.02 | 2 | AN79.3 | ✔ |
+| E06.01.04 | Neural crest cells | A | G | core | 19–28 | crest | cns | E06.01.02 | 46 | AN79.3 | ✔ |
+| E06.01.05 | Neural crest derivatives | B | GA | x |  | crest | cns | E06.01.04 | 10 | AN79.3 | ✔ |
+| E06.01.06 | Ectoderm derivatives and placodes | B | GA | x |  | ecto | cns | E06.01.01 | 18 |  | ✔ |
+| E06.01.07 | Neural tube defects | C | C | x | 25–28 | ecto | defects | E06.01.03 | 1 | AN79.5, AN79.6 | ✔ |
+| E06.02.01 | Paraxial, intermediate and lateral plate mesoderm | A | G | core | 17–21 | meso | early | E05.04.02 | 154 | AN79.4 | ✔ |
+| E06.02.02 | Somites | A | TG | core | 20–35 | meso | msk | E06.02.01 | 59 | AN79.4 | ⚑ |
+| E06.02.03 | Segmentation clock | D | M | s | 20–35 | meso | msk | E06.02.02, E01.05.05 |  |  | ✔ |
+| E06.02.04 | Somite differentiation | A | G | core | 22–35 | meso | msk | E06.02.02 | 32 | AN79.4 | ✔ |
+| E06.02.05 | Intermediate mesoderm | A | G | x | 20–28 | meso | uro | E06.02.01 | 20 |  | ✔ |
+| E06.02.06 | Lateral plate mesoderm | A | GF | core | 17–21 | meso | cav | E06.02.01 | 77 | AN79.4 | ✔ |
+| E06.02.07 | Vasculogenesis and angiogenesis | B | S | x | 17–28 | meso | cv | E06.02.01 | 8 |  | ✔ |
+| E06.02.08 | Sites of blood formation | B | ST | x |  | meso | cv | E06.02.07 |  |  | ⚑ |
+| E06.02.09 | Capillary haemangiomas | C | C | d |  | meso | defects | E06.02.07 |  |  | ⚑ |
+| E06.03.01 | Body folding | A | F | core | 21–28 | multi | early | E05.05.01, E06.02.06 | 63 |  | ✔ |
+| E06.03.02 | Foregut, midgut, hindgut | A | FG | core | 22–28 | endo | gi | E06.03.01 | 34 |  | ✔ |
+| E06.03.03 | Endoderm derivatives | A | GA | x |  | endo | gi | E06.03.02 |  |  | ✔ |
+| E06.04.01 | Hox genes pattern the head–tail axis | D | M | x |  | multi | mol | E01.01.02 | 1 |  | ✔ |
+| E06.05.01 | External appearance in month 2 | B | T | s | 29–56 | multi | early | E06.03.01 | 3 |  | ⚑ |
+| E06.05.02 | Estimating embryo age | B | T | s | 20–56 | multi | early | E06.05.01, E06.02.02 |  | AN79.6 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E06.00.01 — “The most dangerous time for teratogens is late pregnancy.” · E06.01.02 — “The neural tube closes all at once.” · E06.01.04 — “Neural crest is part of the CNS.” · E06.02.02 — “Somites are segments of the neural tube.” · E06.02.04 — “The dermatome forms the epidermis.” · E06.02.07 — “The two words mean the same thing.” · E06.03.01 — “The whole yolk sac becomes the gut.”
+*Misconceptions to refute (cited in the chapter dossier):* E06.00.01 — “The most dangerous time for teratogens is late pregnancy.” · E06.01.02 — “The neural tube closes all at once.” · E06.01.04 — “Neural crest is part of the CNS.” · E06.02.02 — “Somites are segments of the neural tube.” · E06.02.04 — “The dermatome forms the epidermis.” · E06.02.07 — “The two words mean the same thing.” · E06.03.01 — “The whole yolk sac becomes the gut.”
 
 ## E07 — The Gut Tube and the Body Cavities · pp 96–105 · 9 concepts
 
