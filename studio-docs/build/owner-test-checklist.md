@@ -15,9 +15,9 @@ Run on real devices. Write each result on its **Result** line, then tick it in `
 ## T6. Progress map *(~6 min: phone, then tablet or laptop)* — OPEN (W1)
 Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull to refresh once so v5 loads), then a tablet (or the laptop's device mode, marked emulated), then the laptop.
 1. **Map:** lanes by chat type (Ideation · Build · Research · Content · Episode · Review · Ideas). Each box shows its id and status as colour **and** pattern **and** a word; the key under the map lists them. Phone portrait: the map runs top → bottom; landscape and larger: left → right.
-2. Tap **C1**: the step page shows needs (S1, X1.05, X1.06 ✓), unblocks (P1, L1), gates, D-ids, last log line and your D-037 answer. **Copy prompt** copies the ready prompt; the chat name shows above it.
+2. Tap **C1**: the step page shows needs (S1, X1.05, X1.06 ✓), unblocks (P1, L1), gates, D-ids, last log line and your open D-037 question (C1.q1); a grey note says it waits only for the build lock if a build chat holds it. **Copy prompt** copies the ready prompt; the chat name shows above it.
 3. Tap **P1**: a red "Can't start — needs C1 (ready), M1b (planned)" line shows.
-4. **Board:** Now · Ready · Blocked · Done. Phone: one section under another; tablet: two columns; laptop: four.
+4. **Board:** Now · Ready · Blocked · Done. Phone: one section under another; phone landscape and tablets: two columns (tablet landscape four if ≥ 1200 px wide); laptop: four.
 5. **Your inputs:** oldest first; tap one → its step; **Copy reply** copies a line to paste into that step's chat.
 6. **Rotate** phone and tablet on a step page: same step, same place.
 7. Turn on testing mode (Settings): ✎ on a step opens an edit prompt pointing at `build/steps.json`.
