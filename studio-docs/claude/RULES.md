@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
+*(Purpose: the non-negotiables. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -45,7 +45,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **D5.** Accuracy beats drama: a metaphor never changes what happens biologically.
 - **D6.** Clinical content is factual and humane: diagrams, never shock images.
 - **D7.** Every season has a recap / "connect the dots" episode across chapters.
-- **D8.** On-screen text is labels, day and scale only; the voice carries the sentences; a label sits on its structure as it is named (teaching methods 4–5).
+- **D8.** On-screen text is labels, day, scale, B2 disclaimers and **chapter titles of 4 words or fewer** (Shorts, D-041); the voice carries the sentences; a label sits on its structure as it is named (teaching methods 4–5). Captions/subtitles are accessibility text, not on-screen text (H5).
 - **D9.** Folding and layer shots end on the cross-section view learners meet in exams (teaching method 10).
 
 ## E. Docs

@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — §8 five look terms (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -114,3 +114,8 @@ A stage is set by **form**, not by age or length (R05f). Day = classic estimate,
 - **Build lock:** the line in STATUS § Lock that a Build chat takes first and frees at the end, so only one build runs across both people (RULES I8).
 - **Handoff note:** what a collaborator chat sends the owner while only the owner edits docs (templates §10).
 - **Laptop 1 / Laptop 2:** owner's / collaborator's render machine in `build/pipeline-reference.md`.
+- **Glassy tissue / SSS:** subsurface scattering — light enters a surface and spreads inside before leaving, so tissue looks soft and translucent. Rendered in Blender; faked in the app.
+- **Grade (colour grade):** the overall colour tint added to a shot. Ours touches background, light and `ctx` only; germ layers keep their D-031 colours.
+- **Chapter title:** ≤ 4-word thin-caps title at the top of each 8-s chapter of a Short (D8, D-041).
+- **Chapter grammar:** the 6 × 8 s Short structure: hook, four ideas, payoff on the section view.
+- **Swatch-chip frame:** a debug frame rendered per shot that shows each layer's graded colour beside its token, with ΔE00.

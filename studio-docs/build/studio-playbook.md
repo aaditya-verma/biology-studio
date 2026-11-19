@@ -1,6 +1,6 @@
 # Studio playbook — how the crew works, and the craft standards
 
-*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
+*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — §2 G-Sci video checklist, §6.1 look summary → build/visual-style.md (D-041). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
 
 **Stance:** we work like a small science-animation studio. A lead biologist-researcher who is also designer, teacher and storyteller, with a team of engineers behind him. Facts first, clarity over realism, story for attention, measurement for truth.
 
@@ -34,6 +34,21 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 | **G-Eng** Engineering | Tests green, `tools/layout-check` green on the design-plan §2 matrix, budgets met, reproducible build/render, nothing secret or copyrighted committed | Engineers + QA | Builds, renders |
 | **G-A11y** Accessibility | Captions, contrast, colour-blind safe, no flashing, reduced motion, 125 % text, keyboard + touch reachable | QA | Everything shipped |
 | **G-Owner** | Watches/uses on real devices — phone, tablet, laptop (owner checks Tn) | Owner | Next build (use gate) |
+
+**G-Sci video checklist** (animatic and final; each item pass/fail + timestamp; the reviewer is not the maker and not the G-Art reviewer):
+1. **Stage** — day/CS on screen match the dossier staging table (D-030/D-039 conventions); features fit that day (somite count, neuropores, folds).
+2. **Scale** — scale bar matches the dossier value for that stage, cited with its CS; consistent across cuts; zooms are announced.
+3. **Orientation** — cranial/caudal, dorsal/ventral, left/right correct; no mirror flips. Layer order dorsal → ventral: amnion · epiblast/ectoderm · mesoderm · hypoblast/endoderm · yolk sac. After folding, ectoderm outside, endoderm inside. Left-right cues: node at the cranial end of the streak; heart tube loops to the right.
+4. **Topology** — layers stay continuous; cavity vs solid right; oropharyngeal and cloacal membranes shown as two layers only (ectoderm + endoderm, no mesoderm).
+5. **Layer identity** — D-031 token colours. Definitive endoderm = ingressed epiblast cells displacing the hypoblast (never a hypoblast recolour); ectoderm = epiblast left after gastrulation; all three layers come from epiblast.
+6. **Motion** — right direction (ingression through the streak, then lateral + cranial); plausible speed; no "stretch" where the process is proliferation or ingression. Folding: cephalocaudal + lateral (week 4); heart and septum transversum swing ventral-caudal; disc edges meet ventrally at the umbilical ring. Time compression shown on screen ("day 15 → 17"). Notochord middle-first (D-029) carries ⚑ and the book version (item 11).
+7. **Counts** — somite pairs fit the day (dossier staging table); neuropore state fits the day; pharyngeal arches five, numbered 1, 2, 3, 4, 6 (5th absent or rudimentary — never shown), appearing cranial → caudal; arch arteries appear and regress in sequence, never all at once.
+8. **Look-induced errors** (build/visual-style.md) — SSS doesn't imply a lumen; dust doesn't read as cells; depth of field doesn't blur the named structure; glow doesn't imply signalling unless labelled; graded layers within ΔE00 ≤ 8.
+9. **Simplifications** — omissions listed in the shot sheet; "simplified / not to scale / colours illustrative" on screen where true (B2).
+10. **Labels** — appear as the structure is shown (D8), point at the right thing, use GLOSSARY terms.
+11. **Citations** — every spoken fact has a section + mark; no ≈; a ⚑ gives the book answer.
+12. **AI shots** — host only, no anatomy, credited (H9).
+Templates refer here; don't copy the list (RULES I3).
 
 ## 3. Research craft
 1. **Claim → cite → mark.** Break a section into atomic claims; each gets its book section, registry sources and a mark (✔✔ ✔ ⚑ ✚ ≈).
@@ -80,7 +95,7 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 **Explainer / MBBS cuts** keep learning pace: hold 1–2 s after each reveal, chapter markers, captions as a toggle.
 
 ## 6. Visual & motion craft (science animation)
-1. **Clarity over realism — but cinematic.** Target look (QR bar): subsurface-scattering tissue, translucent membranes, volumetric light, shallow depth of field on the subject, a graded palette; detail only where it teaches.
+1. **Clarity over realism — but cinematic.** **Look (owner doc: `build/visual-style.md`, D-041).** 9:16 Short frame with safe zones; 6 × 8 s chapter grammar for Shorts only; thin-caps chapter titles ≤ 4 words (D8); glassy SSS tissue (cheap fake in the app); warm grade on background + ctx only, layers within ΔE00 ≤ 8 of D-031; plum accent = ring + label, never fill; macro depth of field with the named structure sharp; background-only dust, off in reduced motion; cuts every 1–3 s, one move per shot; safe zones include the right action rail.
 2. **Colour has meaning:** germ-layer tokens (RULES B3, D-031) with patterns; `--g-ctx` neutral for non-layer tissue; the accent `--accent` only as a "look here" ring/outline + label (+ motion in video), never a fill or a layer colour.
 3. **Visual hierarchy:** the subject is lit, sharp and saturated; context is dimmer and desaturated; at most one moving focus at a time.
 4. **Always oriented:** axis gizmo (cranial/caudal, dorsal/ventral), scale bar and day/stage stamp on every 3D shot (B2).

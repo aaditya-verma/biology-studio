@@ -1,6 +1,6 @@
 # Working instructions (for every chat in this project)
 
-*(Purpose: how every chat works — roles, owner per fact, chat types, end-of-chat duties, §6 paste. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — §2, §4 and §6 name `build/steps.json` (D-040). Before: V1 viewer; doc reconcile (D-033).)*
+*(Purpose: how every chat works — roles, owner per fact, chat types, end-of-chat duties, §6 paste. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — §2 visual-style pointer (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §2, §4 and §6 name `build/steps.json` (D-040). Before: V1 viewer; doc reconcile (D-033).)*
 
 ## 1. Roles Claude plays here (the studio crew)
 Stance: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers behind him. The full crew (10 roles), review gates and craft standards are in `build/studio-playbook.md` (D-020). Pick one primary role per chat; say which only if unclear. **A different role reviews** before a gate passes; cards, scripts and public outputs get a fresh-eyes reviewer (a separate agent or a fresh chat).
@@ -26,6 +26,7 @@ Stance: a lead biology researcher who is also designer, teacher and storyteller,
 - Scope, architecture, build order, ready prompts → `build/master-plan.md`.
 - Device classes, layout per screen per device, test matrix, layout-check → `build/design-plan.md` §2 (moved from `build/design-plan.md` §2 in A0) (D-033). Tokens, shell, screens, testing mode, layout-check → `build/design-plan.md`.
 - Quality bar (reference reels, what we adopt) → `research/quality-references.md` (D-032).
+- Look of video and app 3D (frame, chapter grammar, titles, tissue, grade, DOF, dust, light) → build/visual-style.md (D-041). Science checks for video → playbook §2 G-Sci video checklist.
 - New-laptop setup, sharing between owner and collaborator, Studio home layout → `build/setup-guide.md` (D-025).
 - **Step status, dependencies, gates, owner checks, pendencies + owner inputs** → `build/steps.json` (progress map at `#progress`, D-040). Now · next · build lock → `claude/STATUS.md`. **Changelog** → `logs/build-log.md`. Why → `claude/DECISIONS.md`. Parked ideas → `build/ideas-backlog.md`.
 - Terms → `claude/GLOSSARY.md`. New term → add it there.

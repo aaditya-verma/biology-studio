@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "19 Nov 2026 · Bio · Build · W1 progress map",
+ "updated": "20 Nov 2026 · Bio · Build · Visual style commit",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -86,7 +86,7 @@
    "chat": "Bio · Ideation (quality refs)",
    "status": "done",
    "needs": ["M0"],
-   "unblocks": [],
+   "unblocks": ["VS"],
    "lock": false,
    "gates": {},
    "check": null,
@@ -118,6 +118,26 @@
    ]
   },
   {
+   "id": "VS",
+   "title": "Visual style + G-Sci video checklist",
+   "type": "Ideation",
+   "chat": "Bio · Ideation · Visual style",
+   "status": "done",
+   "needs": ["QB"],
+   "unblocks": [],
+   "lock": false,
+   "gates": {"G-Sci": "pass", "G-Art": "pass"},
+   "check": null,
+   "decisions": ["D-041"],
+   "prompt": null,
+   "log": "20 Nov 2026 · Visual style + G-Sci video checklist (D-041)",
+   "todo": [],
+   "inputs": [
+    {"id": "VS.q1", "kind": "action", "ask": "Name QR03's source account/link (file is in Drive › research/quality-refs/, 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-041"},
+    {"id": "VS.q2", "kind": "action", "ask": "Create the missing D-025 Drive folders audio/ assets/ index/ backup/ (research/ and research/quality-refs/ were made 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-025"}
+   ]
+  },
+  {
    "id": "M1",
    "title": "M1 bake-off — renderer, voice, encode numbers",
    "type": "Build",
@@ -134,7 +154,8 @@
    "todo": [
     "Numbers blocked on the laptop run (cloud workspace has no GPU); M1b and the 1080p rung (D-033) wait on them",
     "Shot: days 15–17 and disc ≈ 0.2 → 0.4 mm cited (dossier §1); streak length stays ≈; notochordal process left out (D-029)",
-    "Laptop GPU/VRAM not yet recorded"
+    "Laptop GPU/VRAM not yet recorded",
+    "Align kit `shot.json`: streak + node = `ctx` fill + plum outline (D-036, visual-style §5)"
    ],
    "inputs": [
     {"id": "M1.q1", "kind": "action", "ask": "Run the M1 kit on the laptop (README in the kit; ~20 min setup, then python bakeoff.py all; AI clip per C_ai\\README.md), keep it plugged in", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -154,11 +175,12 @@
    "lock": true,
    "gates": {"G-Art": "open", "G-A11y": "open"},
    "check": {"id": "T1b", "state": "open"},
-   "decisions": ["D-024", "D-032"],
+   "decisions": ["D-024", "D-032", "D-041"],
    "prompt": "M1b",
    "log": "—",
    "todo": [
-    "Host design (name, look, voice) picked here from 2–3 concepts"
+    "Host design (name, look, voice) picked here from 2–3 concepts",
+    "Follows build/visual-style.md (D-041)"
    ],
    "inputs": []
   },
@@ -420,10 +442,12 @@
    "lock": false,
    "gates": {"G-Sci": "open", "G-Learn": "open", "G-Story": "open", "G-Art": "open"},
    "check": null,
-   "decisions": ["D-016", "D-032"],
+   "decisions": ["D-016", "D-032", "D-041"],
    "prompt": null,
    "log": "—",
-   "todo": [],
+   "todo": [
+    "Follows build/visual-style.md (D-041)"
+   ],
    "inputs": []
   },
   {

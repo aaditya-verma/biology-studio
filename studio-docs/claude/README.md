@@ -1,6 +1,6 @@
 # Biology Studio — Start here
 
-*(Purpose: what this project is, the doc map and id formats. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — steps.json in the doc map, W + progress-map ids, `tracker` debug area. Before: S1 studio — docs/card-spec.md in the doc map. Before: 19 Nov 2026 · Bio · Build · V1 viewer — docs/scene-spec.md in the doc map. Before: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
+*(Purpose: what this project is, the doc map and id formats. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — build/visual-style.md in the doc map (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — steps.json in the doc map, W + progress-map ids, `tracker` debug area. Before: S1 studio — docs/card-spec.md in the doc map. Before: 19 Nov 2026 · Bio · Build · V1 viewer — docs/scene-spec.md in the doc map. Before: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
 
 An engine that takes a book or a biology topic, indexes it, maps its concepts, checks them against trusted outside sources, turns them into concept cards and story-led 3D explainer videos (voice-over + subtitles), and helps the learner remember them. **First book: Langman's Medical Embryology, 14th edition** (429 pp, 21 chapters in 3 parts). Other books and topics follow the same pipeline (D-015). We work like a small science-animation studio: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers (`build/studio-playbook.md`, D-020). Lean on usage, docs always current, debug flags and edit hooks everywhere (RULES §I, D-022).
 
@@ -49,6 +49,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 ### Build (how it is made)
 - `build/master-plan.md` — the master build plan (scope, steps, ready prompts). Rich version with flowcharts: https://claude.ai/artifact/92iZDWeXzzA9GcNcru2ZwK (not yet showing X1/K1, the playbook, the host, the device layouts or the new name).
 - `build/studio-playbook.md` — crew roles, 7 review gates, craft standards (research, teaching, story, host + Short profile §5b, visual, sound, accessibility, engineering), production pipeline, Definition of Done, metrics.
+- `build/visual-style.md` — how our videos look (D-041).
 - `build/design-plan.md` — the app's design system: tokens (D-031/D-034), device classes + layout per screen (moved from master plan §8a), shell, addresses, screens, storage, testing mode, ✎ hooks, `tools/layout-check`.
 - `build/pipeline-reference.md` — Expected vs **Measured** numbers (laptop, phone, tablet, desktop, renders, voice). Build only on Measured.
 - `build/steps.json` — **progress map data**: every step's status, needs/unblocks, gates, owner check, D-ids, last log line, to-dos and owner inputs (D-040). Drawn at https://aaditya-verma.github.io/biology-studio/#progress; checked by `tools/tracker/check.py` (format: `tools/tracker/README.md`).
