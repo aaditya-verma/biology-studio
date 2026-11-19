@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — T3b (3D) written; before: T3a passed.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -11,6 +11,21 @@ Run on real devices. Write each result on its **Result** line, then tick it in `
 **Status, 17 Nov 2026:** T1 written; opens when the laptop run puts clips in Drive. T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
 
 ---
+
+## T6. Progress map *(~6 min: phone, then tablet or laptop)* — OPEN (W1)
+Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull to refresh once so v5 loads), then a tablet (or the laptop's device mode, marked emulated), then the laptop.
+1. **Map:** lanes by chat type (Ideation · Build · Research · Content · Episode · Review · Ideas). Each box shows its id and status as colour **and** pattern **and** a word; the key under the map lists them. Phone portrait: the map runs top → bottom; landscape and larger: left → right.
+2. Tap **C1**: the step page shows needs (S1, X1.05, X1.06 ✓), unblocks (P1, L1), gates, D-ids, last log line and your D-037 answer. **Copy prompt** copies the ready prompt; the chat name shows above it.
+3. Tap **P1**: a red "Can't start — needs C1 (ready), M1b (planned)" line shows.
+4. **Board:** Now · Ready · Blocked · Done. Phone: one section under another; tablet: two columns; laptop: four.
+5. **Your inputs:** oldest first; tap one → its step; **Copy reply** copies a line to paste into that step's chat.
+6. **Rotate** phone and tablet on a step page: same step, same place.
+7. Turn on testing mode (Settings): ✎ on a step opens an edit prompt pointing at `build/steps.json`.
+- **Result:** ☐ pass ☐ problems · map readable on the phone: ☐ yes ☐ no (where?) · can't-start line right: ☐ yes · board columns right: ☐ yes · inputs list complete: ☐ yes ☐ missing (which?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes · layout problems (device + screen):
+
+## T1b. Host shot *(phone + tablet/laptop)* — PLANNED (M1b writes the steps)
+Steps written by the M1b build chat: pick the host concept, then judge the 5-s 9:16 shot against QR01/QR02.
+- **Result:** ☐ pass ☐ problems · host pick: ___ · notes:
 
 ## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — WAITING FOR CLIPS (M1)
 Before: on the laptop, `python bakeoff.py all` (+ `C_ai\README.md` for the AI clip), then upload `out\for_drive\` to Drive › Embryo Studio › renders › bakeoff. Keep `out\blind_key.json` closed.

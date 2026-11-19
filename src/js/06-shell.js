@@ -10,6 +10,7 @@ const ICONS={today:'<path d="M4 6h16v14H4z"/><path d="M4 10h16M9 3v4M15 3v4"/>',
   play:'<path d="M7 4.5v15l12-7.5z"/>',pause:'<path d="M8 5v14M16 5v14"/>',
   back:'<path d="M15 5l-7 7 7 7"/>',up:'<path d="M12 19V5M5 12l7-7 7 7"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/>',
   studio:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/><path d="M14 20h6"/>',
+  progress:'<circle cx="5" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 6h3.5l5.5 5M7.5 18h3.5l5.5-5"/>',
   moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>'};
 const icon=(k,sz=22)=>`<svg viewBox="0 0 24 24" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]||''}</svg>`;
 
@@ -29,7 +30,7 @@ function buildShell(){
   $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
   if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
-const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio'}[r.name]||r.name);
+const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress'}[r.name]||r.name);
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];

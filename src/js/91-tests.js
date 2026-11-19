@@ -23,6 +23,23 @@ function appTests(){
   t('up studio card → list',JSON.stringify(upOf(parseHash('#studio=E05.01.01')))===JSON.stringify({name:'studio'}));
   t('up calib → studio',JSON.stringify(upOf(parseHash('#calib')))===JSON.stringify({name:'studio'}));
   t('studio nav only in testing mode',navItems().includes('studio')===!!FLAGS.test);
+  // progress map (W1, D-040): addresses, Up, nav only in testing mode, rules on a fixture
+  ['progress','progress=board','progress=inputs','step=C1','step=X1.07'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
+  t('progress bad view → map',parseHash('#progress=nope').view==='map'&&hashOf(parseHash('#progress=map'))==='progress');
+  t('up step → progress',JSON.stringify(upOf(parseHash('#step=C1')))===JSON.stringify({name:'progress'}));
+  t('progress nav only in testing mode',navItems().includes('progress')===!!FLAGS.test);
+  t('tracker rules',TR_RULES.statuses.length===9&&TR_RULES.met.join()==='owner check,done'&&Object.keys(TR_SLUG).length===9&&TR_RULES.statuses.every(s=>STR.tr.st[s]&&STR.tr.stShort[s]&&STR.tr.stHelp[s]));
+  (()=>{const S=[{id:'A',status:'done',needs:[],inputs:[]},{id:'B',status:'owner check',needs:['A'],inputs:[]},{id:'C',status:'ready',needs:['B'],inputs:[],lock:true,chat:'Bio · Build · C'},
+      {id:'D',status:'planned',needs:['C'],inputs:[{id:'D.q1',status:'open',blocks:true}]}],by={};S.forEach(s=>by[s.id]=s);
+    t('can start when needs met (owner check counts)',trBlockers(by.C,by,{text:null}).length===0);
+    t('lock held by another chat blocks',trBlockers(by.C,by,trLockOf('- Build lock: Professor · Bio · Build · X · 1 Nov 2026, 10:00 IST')).some(b=>b.k==='lock'));
+    t('own lock does not block',trBlockers(by.C,by,trLockOf('- Build lock: Aaditya · Bio · Build · C · 1 Nov 2026, 10:00 IST')).length===0&&trBlockers(by.C,by,trLockOf('- Build lock: Aaditya · Bio · Build · C2 · 1 Nov 2026, 10:00 IST')).length===1);
+    t('unmet need + blocking answer listed',(()=>{const b=trBlockers(by.D,by,{text:null});return b.length===2&&b[0].id==='C'&&b[1].k==='input';})());
+    t('depths',JSON.stringify(trDepths(S))===JSON.stringify({A:0,B:1,C:2,D:3}));
+    t('loop is cut, flagged',(()=>{const L=[{id:'X',status:'planned',needs:['Y']},{id:'Y',status:'planned',needs:['X']}];const d=trDepths(L);return d.X!=null&&trIssues({steps:L}).some(i=>i.includes('loop'));})());
+    t('started with unmet need flagged',trIssues({steps:[{id:'P',status:'planned',needs:[]},{id:'Q',status:'in progress',needs:['P']}]}).length===1);})();
+  t('lock line parsed',(()=>{const L=trLockOf('## Lock\n- Build lock: Aaditya · Bio · Build · W1 · 19 Nov 2026, 21:49 IST\n');return L.text&&L.at===Date.UTC(2026,10,19,16,19)&&trLockOf('- Build lock: free (x)').text===null;})());
+  t('prompt extracted',(()=>{const keep=TR.plan;TR.plan='x\n**Ready prompt — K9** (chat)\n> line one\n> line two\n\n**Ready prompt — K10**\n> other';const p=trPrompt('K9');TR.plan=keep;return p==='line one\nline two';})());
   t('card rules mirror spec',CARD_RULES.budget.general===90&&CARD_RULES.budget.mbbs===160&&CARD_RULES.limits.sentence===25&&CARD_RULES.limits.newTerms===3);
   t('cite parse',(()=>{const p=parseCite('E05.01, E06.06 Tbl 6.4 · R06 CS6, E10');return p.sections.length===2&&p.sources[0].id==='R06'&&p.xrefs[0].ch==='E10';})());
   t('cite range refused',(()=>{try{parseCite('E05.01–02');return false;}catch(_){return true;}})());

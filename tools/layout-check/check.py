@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
+W1: + progress map (Map, Board, Your inputs, 3 step pages), step page rotate, map with done shown, progress outside testing mode.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -30,6 +31,8 @@ SCREENS = {
     "crosstab": "x=layer&y=day", "cell": "x=layer&y=day&cell=meso%7CWk%203", "settings": "settings", "colours": "colours",
     "scenes": "scene", "viewer": "scene=sc-E00.01.04&day=16", "viewer-axes": "scene=sc-E00.01.01&day=17",
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
+    "progress": "progress", "progress-board": "progress=board", "progress-inputs": "progress=inputs",
+    "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
 }
 
 
@@ -77,7 +80,7 @@ async def run(a):
     texts = [100] if a.preview else [100, 125]
     screens = {k: v for k, v in SCREENS.items() if not a.only or k == a.only}
     out = Path(a.out); (out / "shots").mkdir(parents=True, exist_ok=True)
-    report = {"started": time.strftime("%Y-%m-%d %H:%M:%S"), "base": base, "runs": [], "issues": [], "tests": None, "colours": [], "rotate": []}
+    report = {"started": time.strftime("%Y-%m-%d %H:%M:%S"), "base": base, "runs": [], "issues": [], "tests": None, "colours": [], "rotate": [], "_out": str(out)}
     shots = {}  # class -> list of (label, path)
     async with async_playwright() as p:
         kw = {"args": ["--no-sandbox"]}
@@ -116,6 +119,8 @@ async def run(a):
                             await page.wait_for_timeout(80)
                         if route.startswith(("studio", "calib")):   # Studio: wait for cards + sources (S1)
                             await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
+                        if route.startswith(("progress", "step")):   # progress map: wait for steps.json + draw (W1)
+                            await page.wait_for_function(f"window.TR_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
                         got_theme = await page.evaluate("document.documentElement.dataset.theme")
                         want = expected_class(kind, w, h)
@@ -155,11 +160,11 @@ async def run(a):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
-                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib"):
+                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib", "progress", "step"):
                             path = out / "shots" / f"{cls}_{w}x{h}_125_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " 125", []).append((f"{w}×{h} {sname} 125%", path))
-                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card"):
+                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card", "progress", "progress-board", "step"):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " dark", []).append((f"{w}×{h} {sname}", path))
@@ -198,6 +203,9 @@ async def run(a):
         # Studio (S1): rotate keeps the card, gate and draft edits; a review round trip in the UI (draft → reviewed); reviewer = maker is blocked; an edit reopens
         if not a.only or a.only.startswith(("studio", "calib")):
             await studio_flows(browser, base, report)
+        # progress map (W1): rotate keeps the step page and scroll; the map with Done shown fits every class
+        if not a.only or a.only.startswith(("progress", "step")):
+            await tracker_flows(browser, base, report, vps if not a.preview else PREVIEW)
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
         report.setdefault("flows", [])
         ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
@@ -219,6 +227,8 @@ async def run(a):
         report["flows"].append({"flow": "malformed address falls back", "ok": bad in ("today", "concept"), "seen": bad})
         st = await page.evaluate("location.hash='#studio'; new Promise(r=>setTimeout(()=>r({nav:!!document.querySelector('[data-nav=studio]'), msg:document.querySelector('#view').textContent.includes('testing mode only')}),200))")
         report["flows"].append({"flow": "Studio hidden outside testing mode", "ok": (not st["nav"]) and st["msg"], "seen": st})
+        st = await page.evaluate("location.hash='#progress'; new Promise(r=>{const t0=Date.now();(function w(){if(window.TR_READY==='progress'||Date.now()-t0>8000)r({nav:!!document.querySelector('[data-nav=progress]'), nodes:document.querySelectorAll('.tr-node').length});else setTimeout(w,100);})();})")
+        report["flows"].append({"flow": "progress opens outside testing mode, not in the nav", "ok": (not st["nav"]) and st["nodes"] > 5, "seen": st})
         for f in report["flows"]:
             if not f["ok"]:
                 report["issues"].append({"kind": "flow", "what": f["flow"] + " " + json.dumps(f.get("seen", "")), "at": "390x844 real mode"})
@@ -228,7 +238,10 @@ async def run(a):
     for t in report["tests"] or []:
         if not t["ok"]:
             report["issues"].append({"kind": "app-test", "what": t["name"] + " " + str(t["info"]), "at": "?test=1"})
+    for cls, label, path in report.pop("_extra", []):
+        shots.setdefault(cls, []).append((label, Path(path)))
     contact(shots, out)
+    report.pop("_out", None)
     (out / "report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
     write_md(report, out, len(vps), themes, texts, screens)
     return report
@@ -316,6 +329,43 @@ async def studio_flows(browser, base, report):
     sc = await page.evaluate("document.querySelector('.st-score').textContent")
     ok("Studio: calibration — suggester 5/5", "suggester 5/5" in sc, sc)
     await ctx.close()
+
+
+async def tracker_flows(browser, base, report, vps):
+    """W1: the step page keeps its place on rotate; the Map with Done + Ideas shown has no layout issue on any class."""
+    report.setdefault("flows", [])
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+    page = await ctx.new_page()
+    await page.goto(f"{base}?test=1&debug=0#step=C1")
+    await page.wait_for_function("window.TR_READY==='step=C1'", timeout=20000)
+    await page.evaluate("scrollTo(0,500)")
+    for vw, vh in [(844, 390), (390, 844)]:
+        await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(250)
+        st = await page.evaluate("({h:location.hash, cls:DEV.cls, y:scrollY, t:document.querySelector('#cpT')&&document.querySelector('#cpT').textContent})")
+        ok = st["h"] == "#step=C1" and st["cls"] == ("dev-pl" if vw > vh else "dev-p") and st["y"] > 0
+        report["rotate"].append({"size": f"{vw}x{vh} step", "ok": ok, "h": st["h"], "cls": st["cls"]})
+        if not ok:
+            report["issues"].append({"kind": "rotate", "what": "step " + json.dumps(st), "at": f"{vw}x{vh}"})
+    await ctx.close()
+    seen = set()
+    for kind, w, h in vps:
+        touch = kind != "desktop"
+        ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=touch, is_mobile=touch)
+        await ctx.add_init_script("sessionStorage.setItem('biostudio.tracker',JSON.stringify({done:true,ideas:true}))")
+        page = await ctx.new_page()
+        await page.goto(f"{base}?test=1&debug=0#progress")
+        await page.wait_for_function("window.TR_READY==='progress' && document.querySelectorAll('.tr-node').length>20", timeout=20000)
+        iss = await page.evaluate("layoutAudit()")
+        cls = await page.evaluate("DEV.cls")
+        for i in iss:
+            report["issues"].append(dict(i, at=f"{w}x{h} progress (done shown)"))
+        report["flows"].append({"flow": f"map with done shown {w}x{h}", "ok": not iss, "seen": len(iss)})
+        if cls not in seen:
+            seen.add(cls)
+            path = Path(report.get("_out", "out/layout-check")) / "shots" / f"{cls}_{w}x{h}_progress-all.png"
+            await page.screenshot(path=str(path), full_page=True)
+            report.setdefault("_extra", []).append((cls, f"{w}×{h} progress (done shown)", str(path)))
+        await ctx.close()
 
 
 def contact(shots, out):

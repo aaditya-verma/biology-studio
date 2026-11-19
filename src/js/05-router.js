@@ -1,6 +1,7 @@
 /* Biology Studio — addresses + history (master plan §8). Owner doc: build/design-plan.md §3.
    Every place has an address: #today · #map · #map=E05 · #concept=E05.02.01 · #x=layer&y=day · #settings · #colours
-   · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode; later: #card= · #ep=…&t=). Back/Forward = the browser's history; Up = the parent address.
+   · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode)
+   · #progress · #progress=board · #progress=inputs · #step=C1 (W1 progress map; later: #card= · #ep=…&t=). Back/Forward = the browser's history; Up = the parent address.
    Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves. */
 'use strict';
 let ROUTE={name:'today',raw:'today'};
@@ -13,16 +14,19 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   if(name==='scene'){r.id=p.get('scene')||null;const d=p.get('day');if(r.id&&d!=null&&d!==''&&isFinite(+d))r.day=+d;}
   if(name==='day'){const d=p.get('day');r.day=isFinite(+d)?+d:null;}
   if(name==='studio'){r.id=p.get('studio')||null;const g=p.get('gate');if(r.id&&g&&Object.hasOwn(CARD_RULES.gates,g))r.gate=g;}
+  if(name==='progress'){const v=p.get('progress');r.view=['board','inputs'].includes(v)?v:'map';}
+  if(name==='step')r.id=p.get('step')||null;
   if(name==='x'){r.x=p.get('x')||CONFIG.xt.x;r.y=p.get('y')||CONFIG.xt.y;if(p.get('cell'))r.cell=p.get('cell');}
   return r;}
 function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch:'map';case 'concept':return 'concept='+r.id;
   case 'scene':return r.id?'scene='+r.id+(r.day!=null?'&day='+(Math.abs(r.day-Math.round(r.day))<0.05?Math.round(r.day):(+r.day).toFixed(1)):''):'scene';
   case 'day':return 'day='+r.day;
   case 'studio':return r.id?'studio='+r.id+(r.gate&&r.gate!=='G-Sci'?'&gate='+r.gate:''):'studio';
+  case 'progress':return r.view&&r.view!=='map'?'progress='+r.view:'progress';case 'step':return r.id?'step='+r.id:'progress';
   case 'x':return 'x='+r.x+'&y='+r.y+(r.cell?'&cell='+encodeURIComponent(r.cell):'');default:return r.name;}}
 function upOf(r){switch(r.name){case 'concept':return {name:'map',ch:r.ch};case 'map':return r.ch?{name:'map'}:{name:'today'};
   case 'x':return {name:'map'};case 'scene':return r.id?{name:'scene'}:{name:'today'};case 'day':return {name:'scene'};case 'colours':return {name:'settings'};
-  case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};default:return r.name===CONFIG.home?null:{name:CONFIG.home};}}
+  case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};case 'step':return {name:'progress'};default:return r.name===CONFIG.home?null:{name:CONFIG.home};}}
 function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));
   if(opts.replace){history.replaceState(history.state,'',h);routeChanged();}
   else if(location.hash===h)routeChanged();else location.hash=h;}   // a hash change = one history entry
@@ -43,5 +47,5 @@ function routerStart(){
 function routeChanged(){const prev=ROUTE;ROUTE=parseHash(location.hash);
   if(!history.state)history.replaceState({bs:'app'},'',location.hash||'#'+CONFIG.home);   // every entry is marked: reloads never add a second base
   dlog('router',prev.raw,'→',ROUTE.raw);
-  if(state&&!['settings','colours','studio','calib'].includes(ROUTE.name)){state.last.route=hashOf(ROUTE);stSave();}
+  if(state&&!['settings','colours','studio','calib','progress','step'].includes(ROUTE.name)){state.last.route=hashOf(ROUTE);stSave();}
   render(prev||{});}

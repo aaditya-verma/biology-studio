@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: C8 matrix pointer, new C13, H8 tablet/desktop line, I5 `layout` area (D-033).)*
+*(Purpose: the non-negotiables. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -80,10 +80,10 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 
 ## I. Usage, upkeep & editability (D-022 — owner standing rule)
 - **I1. Optimise for usage.** One step per chat; read only the docs the step needs (INSTRUCTIONS §2); point to docs by path, never paste them. Claude proactively says **"start a new chat"** — with a ready prompt + chat name — when the step is done, the topic changes, or the chat gets long (~25 turns or many large reads).
-- **I2. Docs always current, in the same chat.** Every change updates, before the chat ends: STATUS (now · next · **pendencies**), `logs/build-log.md` (**changelog**), DECISIONS, the owner doc (plan, glossary, registry, backlog, checklist, catalog, pipeline reference…) and the README doc map if a doc is added or renamed. A stale doc is a bug: fix it when found.
-- **I3. One place for each list.** Pendencies → STATUS § Blocked + Owner reminders only. Ideas → `build/ideas-backlog.md` only. History → build log only. Terms → GLOSSARY only. Superseded text is removed (history lives in the log and DECISIONS), not left beside the new.
+- **I2. Docs always current, in the same chat.** Every change updates, before the chat ends: **update `build/steps.json`** (step status, gates, check, last log line, to-dos, owner inputs; then `tools/tracker/check.py --write`, D-040), STATUS (now · next · lock), `logs/build-log.md` (**changelog**), DECISIONS, the owner doc (plan, glossary, registry, backlog, checklist, catalog, pipeline reference…) and the README doc map if a doc is added or renamed. A stale doc is a bug: fix it when found.
+- **I3. One place for each list.** Step status, dependencies, pendencies and owner inputs → `build/steps.json` only (D-040; STATUS keeps now · next · lock). Ideas → `build/ideas-backlog.md` only. History → build log only. Terms → GLOSSARY only. Superseded text is removed (history lives in the log and DECISIONS), not left beside the new.
 - **I4. Every doc says what it is.** First lines: one-line purpose + `Updated: <date> · <step/chat>`. Added the next time a doc is touched.
-- **I5. Debug flags everywhere, off by default.** App: `?debug=1` or per area `?debug=map,viewer,sync,audio,layout` (one module `src/js/01-debug.js`; overlay shows version, ids, fps, triangles, state size, device class; logs tagged `[area]`); `?test=1` testing mode. Tools: every script takes `--dry-run`, `--debug`, `--only <id>`, `--preview` (low-res, fast). Scenes: `debug: true` shows axes and bounding boxes. Debug never shows in published videos or the default app.
+- **I5. Debug flags everywhere, off by default.** App: `?debug=1` or per area `?debug=map,viewer,sync,audio,layout,studio,tracker` (one module `src/js/01-debug.js`; overlay shows version, ids, fps, triangles, state size, device class; logs tagged `[area]`); `?test=1` testing mode. Tools: every script takes `--dry-run`, `--debug`, `--only <id>`, `--preview` (low-res, fast). Scenes: `debug: true` shows axes and bounding boxes. Debug never shows in published videos or the default app.
 - **I6. Edit hooks.** Every changeable value has one home: look in `:root` tokens (`app.css`), settings in `src/js/02-config.js`, content in `content/<book>/…` data (never in code), UI words in `content/strings.js`. Code marks edit points with `// EDIT:` and each file starts with purpose + owner doc. In testing mode, a ✎ on any card, scene, episode or map node shows its id and file path and copies a ready "edit this" prompt.
 - **I7. No confusion.** One name per thing (GLOSSARY), fixed file/id patterns (README), owner doc wins on conflict and the other doc is fixed in the same chat. If a request is ambiguous or conflicts with a rule or decision, Claude says so and asks before acting.
 

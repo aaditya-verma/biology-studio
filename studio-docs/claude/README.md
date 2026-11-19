@@ -1,6 +1,6 @@
 # Biology Studio — Start here
 
-*(Purpose: what this project is, the doc map and id formats. Updated: 19 Nov 2026 · Bio · Build · S1 studio — docs/card-spec.md in the doc map. Before: 19 Nov 2026 · Bio · Build · V1 viewer — docs/scene-spec.md in the doc map. Before: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
+*(Purpose: what this project is, the doc map and id formats. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — steps.json in the doc map, W + progress-map ids, `tracker` debug area. Before: S1 studio — docs/card-spec.md in the doc map. Before: 19 Nov 2026 · Bio · Build · V1 viewer — docs/scene-spec.md in the doc map. Before: 18 Nov 2026 · Bio · Build · A0 shell — design-plan added to the doc map.); `layout` debug area (D-033). Renamed from "Embryo Studio", D-015.)*
 
 An engine that takes a book or a biology topic, indexes it, maps its concepts, checks them against trusted outside sources, turns them into concept cards and story-led 3D explainer videos (voice-over + subtitles), and helps the learner remember them. **First book: Langman's Medical Embryology, 14th edition** (429 pp, 21 chapters in 3 parts). Other books and topics follow the same pipeline (D-015). We work like a small science-animation studio: a lead biology researcher who is also designer, teacher and storyteller, with a team of engineers (`build/studio-playbook.md`, D-020). Lean on usage, docs always current, debug flags and edit hooks everywhere (RULES §I, D-022).
 
@@ -16,7 +16,7 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 | **Sources** | Book is the spine; human-embryo atlases, peer-reviewed papers and the NMC curriculum confirm, correct and add depth (D-011). |
 | **Cost** | Free first; paid only suggested, owner approves (D-013). |
 | **App** | Not built yet. One app, two homes — GitHub Pages viewer (PWA, three.js) + claude.ai Studio (D-003, D-006); media on Drive (D-008). Repo `biology-studio`. |
-| **Status** | I1 index, H1 repo, K1 concept map and X1 Ch 5 done (17 Nov 2026); M1 bake-off run pending; next A0 shell (+ X1 Ch 6). See `claude/STATUS.md`. |
+| **Status** | Live progress map: https://aaditya-verma.github.io/biology-studio/#progress (data `build/steps.json`); now · next · lock in `claude/STATUS.md`. |
 
 ---
 
@@ -51,7 +51,8 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - `build/studio-playbook.md` — crew roles, 7 review gates, craft standards (research, teaching, story, host + Short profile §5b, visual, sound, accessibility, engineering), production pipeline, Definition of Done, metrics.
 - `build/design-plan.md` — the app's design system: tokens (D-031/D-034), device classes + layout per screen (moved from master plan §8a), shell, addresses, screens, storage, testing mode, ✎ hooks, `tools/layout-check`.
 - `build/pipeline-reference.md` — Expected vs **Measured** numbers (laptop, phone, tablet, desktop, renders, voice). Build only on Measured.
-- `build/owner-test-checklist.md` — owner checks T1…
+- `build/steps.json` — **progress map data**: every step's status, needs/unblocks, gates, owner check, D-ids, last log line, to-dos and owner inputs (D-040). Drawn at https://aaditya-verma.github.io/biology-studio/#progress; checked by `tools/tracker/check.py` (format: `tools/tracker/README.md`).
+- `build/owner-test-checklist.md` — owner checks T1… (steps per check; open/pass state lives in steps.json)
 - `build/setup-guide.md` — set up a second laptop + person: accounts, invites, own book, Claude Project, tools, daily working, troubleshooting (D-025).
 - `build/ideas-backlog.md` — parked ideas, the only place for them (no pick before the use gate).
 - `docs/scene-spec.md` (repo root `docs/`) — the 3D scene format (V1, RULES C2).
@@ -78,9 +79,10 @@ An engine that takes a book or a biology topic, indexes it, maps its concepts, c
 - **Source:** `R00`–`R39` (registry); tools `T01`…; teaching evidence `M01`…; quality references `QR01`…; citation `[E05.02 · R01 CS8]`.
 - **Confidence marks:** ✔✔ book + Tier 1 agree · ✔ book only · ⚑ disagree (logged) · ✚ beyond the book · ≈ blocks final.
 - **Review gates:** G-Sci · G-Learn · G-Story · G-Art · G-Eng · G-A11y · G-Owner (playbook §2).
-- **Decision:** `D-001`… · **Owner check:** `T1`, `T1b`… · **Build step:** `M0, R0, M1, M1b, H1, I1, K1, X1, A0, V1, S1, C1, P1, R1, L1`.
+- **Decision:** `D-001`… · **Owner check:** `T1`, `T1b`… · **Build step:** `M0, R0, M1, M1b, H1, I1, K1, X1, A0, V1, S1, W1, C1, P1, R1, L1` (W = progress map, D-040).
+- **Progress-map step ids** (`build/steps.json`): the build steps above · `X1.<ch>` research per chapter (`X1.07`) · `GATE` use gate · `D1` `G1` after the gate · `IB<nn>` parked backlog idea = backlog item number (`IB01`) · Ideation rows `PB` playbook · `UR` usage rule · `QB` quality bar · `DR` device rule. **Owner input:** `<step>.q<n>` (`C1.q1`).
 - **Chat name:** `Bio · <Type> · <Step or id>` — types: Ideation · Research · Build · Content · Episode · Review · Fix.
-- **Debug areas:** `map · viewer · sync · audio · player · deck · studio · layout` (`?debug=map,viewer`); add new areas here. The explorer artifact uses `#debug` (artifact links are plain `#name`: `#c-E05-01-02`, `#x-layer-day`). Tool log tags: `[map]` `[pdf] [tree] [terms] [xrefs] [timeline]`.
+- **Debug areas:** `map · viewer · sync · audio · player · deck · studio · tracker · layout` (`?debug=map,viewer`); add new areas here. The explorer artifact uses `#debug` (artifact links are plain `#name`: `#c-E05-01-02`, `#x-layer-day`). Tool log tags: `[map]` `[pdf] [tree] [terms] [xrefs] [timeline]`.
 
 Ids are permanent once shipped: never renumber or reuse (RULES A2).
 

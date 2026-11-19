@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -99,7 +99,12 @@ A stage is set by **form**, not by age or length (R05f). Day = classic estimate,
 
 ## 8. Project terms
 - **Owner doc:** the one doc that owns a fact (INSTRUCTIONS §2); it wins on conflict.
-- **Pendencies:** open questions, blocks and owner to-dos — kept only in STATUS § Blocked + Owner reminders.
+- **Pendencies:** open questions, blocks and owner to-dos — kept only in `build/steps.json` (a step's `todo` and `inputs`; D-040).
+- **Progress map:** the app page `#progress` (Map · Board · Your inputs) and `#step=<id>` that draws `build/steps.json` live from the repo: every step in lanes by chat type, coloured and patterned by status, with what blocks it (W1, D-040).
+- **`steps.json`:** `studio-docs/build/steps.json`, the owner doc for step status, needs (`unblocks` derived), gates, owner checks, D-ids, last log line, to-dos and owner inputs; checked by `tools/tracker/check.py`.
+- **Owner input:** something the owner owes a step — decide, answer or do — id `<step>.q<n>`; listed oldest first under Your inputs. **Blocking input:** one marked `blocks`, so the step can't start until it is answered.
+- **Can start now (◎):** a planned or ready step whose needs are done (or only wait on an owner check), with no blocking input open and the build lock free (or its own).
+- **Proposed status:** a collaborator chat's suggested status change (`proposed_by`); the owner confirms it.
 - **Changelog:** `logs/build-log.md`, newest first.
 - **Review gate:** a check an artefact must pass (G-Sci, G-Learn, G-Story, G-Art, G-Eng, G-A11y, G-Owner; playbook §2).
 - **Usage check:** the 1–3 suggestions at the end of a chat to keep the project lean.
