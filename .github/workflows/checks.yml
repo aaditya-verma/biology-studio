@@ -1,6 +1,6 @@
 # Biology Studio — automatic checks (RULES C3, C8, C13; build/design-plan.md §7). Runs on every push and pull request to main, and by hand.
-# 1. map data checks (tools/map, dry run)  2. scene-check (C3)  3. stills (C11, WebGL via SwiftShader)  4. layout-check: §2 matrix incl. the 3D viewer,
-# in-app tests, rotate, D-031 colour re-check.
+# 1. map data checks (tools/map, dry run)  2. scene-check (C3)  3. card-check (C3; + selftest, calibration, Python ↔ app parity — S1)  4. stills (C11, WebGL via SwiftShader)
+# 5. layout-check: §2 matrix incl. the 3D viewer and Studio, in-app tests, rotate, Studio flows, D-031 colour re-check.
 # Reports + contact sheets are uploaded as artifacts (download from the run page). EDIT: Python/Playwright versions here —
 # Playwright is pinned to the version the still baselines were made with (tools/stills; a new Chromium = re-baseline after review).
 name: checks
@@ -25,6 +25,12 @@ jobs:
         run: python build_map.py --dry-run
       - name: Scene check (C3)
         run: python tools/scene-check/check.py
+      - name: Card check (C3) — cards, index, sources.json, selftest, calibration, parity
+        run: |
+          python tools/card-check/check.py
+          python tools/card-check/check.py --selftest
+          python tools/card-check/check.py --calibrate
+          python tools/card-check/check.py --parity
       - name: Still regression (C11)
         run: python tools/stills/stills.py
       - name: Layout check (13 sizes × orientations × 100/125 % × light/dark)

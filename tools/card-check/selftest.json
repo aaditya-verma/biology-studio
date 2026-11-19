@@ -1,0 +1,283 @@
+{
+ "note": "Broken copies of the base card; each must raise its code (python: check.py --selftest; app: --parity runs the same cases). EDIT: add a case per new rule.",
+ "base": "E05.01.01",
+ "cases": [
+  {
+   "name": "verb not allowed",
+   "set": {
+    "objective.verb": "understand",
+    "objective.text": "Understand gastrulation."
+   },
+   "expect": "E-objective"
+  },
+  {
+   "name": "two verbs",
+   "set": {
+    "objective.text": "Explain gastrulation and order its steps."
+   },
+   "expect": "E-objective"
+  },
+  {
+   "name": "mbbs level missing",
+   "del": [
+    "body.mbbs"
+   ],
+   "expect": "E-level"
+  },
+  {
+   "name": "sentence without ref",
+   "set": {
+    "body.general": "Gastrulation makes three layers."
+   },
+   "expect": "E-ref"
+  },
+  {
+   "name": "ref to no fact",
+   "set": {
+    "body.general": "Gastrulation makes three layers [f42]."
+   },
+   "expect": "E-ref"
+  },
+  {
+   "name": "over budget",
+   "set": {
+    "body.general": "One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]. One two three four five six seven eight nine ten [f1]."
+   },
+   "expect": "E-words"
+  },
+  {
+   "name": "long sentence",
+   "set": {
+    "facts.2.text": "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix."
+   },
+   "expect": "E-sentence"
+  },
+  {
+   "name": "double tick without Tier 1",
+   "set": {
+    "facts.0.cite": "E05.01"
+   },
+   "expect": "E-mark"
+  },
+  {
+   "name": "unknown section",
+   "set": {
+    "facts.0.cite": "E99.01 · R05b"
+   },
+   "expect": "E-cite"
+  },
+  {
+   "name": "unknown source",
+   "set": {
+    "facts.2.cite": "E05.01 · R99"
+   },
+   "expect": "E-cite"
+  },
+  {
+   "name": "range cite",
+   "set": {
+    "facts.2.cite": "E05.01–02"
+   },
+   "expect": "E-cite"
+  },
+  {
+   "name": "approx in reviewed",
+   "set": {
+    "status": "reviewed",
+    "facts.2.mark": "≈",
+    "review": {}
+   },
+   "expect": "E-approx"
+  },
+  {
+   "name": "plus in main",
+   "set": {
+    "facts.8.where": "main"
+   },
+   "expect": "E-mark"
+  },
+  {
+   "name": "flag without decision",
+   "set": {
+    "facts.2.mark": "⚑"
+   },
+   "expect": "E-mark"
+  },
+  {
+   "name": "flag with unknown decision",
+   "set": {
+    "facts.2.mark": "⚑",
+    "facts.2.decision": "D-999"
+   },
+   "expect": "E-mark"
+  },
+  {
+   "name": "four new terms",
+   "set": {
+    "terms.new": [
+     "E.t.gastrulation",
+     "E.t.primitive-streak",
+     "E.t.mesoderm",
+     "E.t.notochord"
+    ],
+    "terms.exception": null
+   },
+   "expect": "E-terms"
+  },
+  {
+   "name": "unknown term",
+   "set": {
+    "terms.known": [
+     "E.t.no-such-term"
+    ]
+   },
+   "expect": "E-terms"
+  },
+  {
+   "name": "answer out of range",
+   "set": {
+    "checks.0.answer": 7
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "repeated options",
+   "set": {
+    "checks.0.options": [
+     "Epiblast",
+     "Epiblast",
+     "Hypoblast"
+    ]
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "no refutation",
+   "set": {
+    "checks.0.refutes": null,
+    "checks.1.refutes": null,
+    "checks.2.refutes": null
+   },
+   "expect": "E-checks"
+  },
+  {
+   "name": "spatial verb, no spatial check",
+   "set": {
+    "objective.verb": "identify",
+    "objective.text": "Identify the three germ layers.",
+    "checks.2.type": "mcq",
+    "checks.2.answer": 0
+   },
+   "expect": "E-checks"
+  },
+  {
+   "name": "missing scene",
+   "set": {
+    "scene.id": "sc-nope"
+   },
+   "expect": "E-scene"
+  },
+  {
+   "name": "reviewed without gates",
+   "set": {
+    "status": "reviewed",
+    "review": {}
+   },
+   "expect": "E-status"
+  },
+  {
+   "name": "reviewer = maker",
+   "set": {
+    "status": "reviewed",
+    "review.G-Sci": {
+     "result": "pass",
+     "by": "Aaditya",
+     "role": "Lead scientist",
+     "agent": "Bio · Build · S1 studio",
+     "date": "19 Nov 2026",
+     "checklist": {},
+     "lines": {}
+    }
+   },
+   "expect": "E-status"
+  },
+  {
+   "name": "id not in map",
+   "set": {
+    "id": "E99.99.99"
+   },
+   "expect": "E-id"
+  },
+  {
+   "name": "misconception uncited",
+   "set": {
+    "misconceptions.0.cite": ""
+   },
+   "expect": "E-mis"
+  },
+  {
+   "name": "answer is a bool",
+   "set": {
+    "checks.0.answer": true
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "scene path escape",
+   "set": {
+    "scene.id": "../map"
+   },
+   "expect": "E-scene"
+  },
+  {
+   "name": "fact id with newline",
+   "set": {
+    "facts.0.id": "f1\n"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "day not a number",
+   "set": {
+    "scene.day": "abc"
+   },
+   "expect": "E-scene"
+  },
+  {
+   "name": "terms exception not logged",
+   "set": {
+    "terms.exception": "D-999"
+   },
+   "expect": "E-terms"
+  },
+  {
+   "name": "six new terms even with exception",
+   "set": {
+    "terms.exception": "D-001",
+    "terms.new": [
+     "E.t.gastrulation",
+     "E.t.primitive-streak",
+     "E.t.ectoderm",
+     "E.t.mesoderm",
+     "E.t.endoderm",
+     "E.t.notochord"
+    ]
+   },
+   "expect": "E-terms"
+  },
+  {
+   "name": "fact id not a string",
+   "set": {
+    "facts.0.id": 5
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "fact text not a string",
+   "set": {
+    "facts.2.text": 7
+   },
+   "expect": "E-schema"
+  }
+ ]
+}

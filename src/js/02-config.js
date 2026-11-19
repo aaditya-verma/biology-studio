@@ -8,7 +8,8 @@ const CONFIG={
   saveLogMax:20,
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
   nav:['today','map','scene','settings'],             // EDIT: order of the main nav
-  routes:['today','map','concept','x','scene','day','settings','colours'],   // first key of the hash; see src/js/05-router.js
+  navTest:['studio'],                                 // EDIT: nav items shown only in testing mode (S1 Studio)
+  routes:['today','map','concept','x','scene','day','settings','colours','studio','calib'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
@@ -26,5 +27,12 @@ const CONFIG={
     stepMs:1600,                              // Play with reduced motion: jump key to key
     tweenMs:450,                              // view preset camera move (0 with reduced motion)
     measure:{phaseMs:4000,warmFrames:10,orbitDegPerS:20,stress:[50000,150000,300000]}   // ?debug=viewer › Measure fps
+  },
+  // EDIT: cards + Studio (S1; docs/card-spec.md). Studio is testing mode only (?test=1) — nothing it does is saved; export the JSON and commit it.
+  cards:{
+    dir:'content/E/cards/',                   // card files + index.json + calibration.json
+    sources:'content/E/sources.json',         // derived by tools/card-check --write-sources (registry, decisions, sections, terms)
+    checkDelayMs:250,                         // live card-check after typing
+    roles:['Lead scientist','Research librarian','Learning designer','Story director / writer','Art director','QA & accessibility','Owner']   // playbook §1
   }
 };

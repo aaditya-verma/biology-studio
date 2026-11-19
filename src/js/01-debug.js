@@ -1,5 +1,5 @@
 /* Biology Studio — debug flags, tagged logs and the overlay (RULES I5). Owner doc: build/design-plan.md §7.
-   Flags: ?test=1 (testing mode: ✎ edit hooks, overlay, nothing saved) · ?debug=1 (all areas) or ?debug=map,viewer,layout,store,router,device,test (viewer: fps, triangles, draw calls + Measure fps).
+   Flags: ?test=1 (testing mode: ✎ edit hooks, overlay, nothing saved) · ?debug=1 (all areas) or ?debug=map,viewer,studio,layout,store,router,device,test (viewer: fps, triangles, draw calls + Measure fps; studio: loads, card-check counts, gate decisions, exports + overlay line).
    Flags also survive in sessionStorage (Settings › Testing mode). Off by default; never on in published output. */
 'use strict';
 const FLAGS=(()=>{
@@ -16,7 +16,7 @@ function dlog(area,...a){if(dbgOn(area))console.log('['+area+']',...a);}
 function setFlags(o){Object.assign(FLAGS,o);try{sessionStorage.setItem('biostudio.flags',JSON.stringify({test:FLAGS.test,debug:[...FLAGS.debug].join(',')}));}catch(_){}}
 
 /* overlay: version, route + ids, fps, state size, device class, viewport, dpr, pointer */
-const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:''};
+const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:'',studio:''};
 function dbgStart(){
   if(!FLAGS.debug.size)return;
   if(!DBG.el){DBG.el=document.createElement('div');DBG.el.id='dbg';DBG.el.setAttribute('aria-hidden','true');document.body.appendChild(DBG.el);}
@@ -37,6 +37,7 @@ function dbgPaint(){
     'device '+(d.cls||'?')+' · '+(d.input||'?')+' · '+innerWidth+'×'+innerHeight+' @'+devicePixelRatio,
     'flags  '+(FLAGS.test?'test ':'')+[...FLAGS.debug].join(','),
     dbgOn('viewer')&&typeof ROUTE!=='undefined'&&ROUTE.name==='scene'?DBG.viewer:'',
+    dbgOn('studio')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='studio'||ROUTE.name==='calib')?DBG.studio:'',
     DBG.extra].filter(Boolean).join('\n');
 }
 function dbgNote(s){DBG.extra=s;dbgPaint();}

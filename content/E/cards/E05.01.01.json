@@ -1,0 +1,317 @@
+{
+ "spec": 1,
+ "id": "E05.01.01",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "Gastrulation in one picture",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how the two-layered disc becomes three germ layers in week 3, all made from the epiblast."
+ },
+ "body": {
+  "general": "How does a flat disc of two cell layers become three? In week 3 the disc turns into three layers; this is called gastrulation [f1]. It starts when a groove, the primitive streak, appears on the top layer, the epiblast [f2]. Epiblast cells crowd into the groove and slip underneath [f3]. The first ones push out the bottom layer and become endoderm [f4]. Later ones fill the middle as mesoderm [f5]. Cells left on top become ectoderm [f6]. So all three layers come from the epiblast [f7].",
+  "mbbs": "Gastrulation is the week-3 process that turns the bilaminar disc into three germ layers: ectoderm, mesoderm and endoderm [f1]. It begins when the primitive streak appears on the epiblast, around days 14–15 (CS6) [f2]. Epiblast cells migrate to the streak, lose their links to neighbours and slip beneath it (invagination) [f3]. The first cells through displace the hypoblast and form definitive endoderm [f4]. Later cells spread between epiblast and endoderm as intraembryonic mesoderm [f5]. Cells that stay in the epiblast become ectoderm [f6]. So all three germ layers, and every tissue they build, come from the epiblast [f7]. Week 3 also opens the period most sensitive to teratogens, weeks 3 to 8 [f8]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Gastrulation is the week-3 process that forms the three germ layers: ectoderm, mesoderm and endoderm.",
+   "cite": "E05.01 · R05b",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05b: human gastrula at CS7, 16–19 d"
+  },
+  {
+   "id": "f2",
+   "text": "It starts when the primitive streak appears on the epiblast, around days 14–15 (Carnegie stage 6).",
+   "cite": "E05.01, E06.06 Tbl 6.4 · R06 CS6",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06 has the streak at ~13 d post-ovulation, within the ±1–2 d spread (dossier §1)"
+  },
+  {
+   "id": "f3",
+   "text": "Epiblast cells move toward the streak, let go of their neighbours and slip underneath; this inward move is invagination.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The first cells to move in push into the hypoblast and replace it, forming the embryo's endoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Later cells settle between the epiblast and the new endoderm as mesoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Cells that stay in the epiblast become ectoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "So all three germ layers come from the epiblast, and together they build every tissue of the embryo.",
+   "cite": "E05.01, E05.07",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "Gastrulation opens the period most sensitive to teratogens, weeks 3 to 8.",
+   "cite": "E05.05 CC · E09",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Beyond Langman: human single-cell and spatial studies of CS7 embryos find epiblast, streak, new mesoderm, endoderm and primordial germ cells side by side.",
+   "cite": "· R05b, R05c",
+   "mark": "✚",
+   "where": "more"
+  },
+  {
+   "id": "f10",
+   "text": "Beyond Langman (mouse study): a few cells of the old lower layer mix into the new gut endoderm rather than all being pushed aside.",
+   "cite": "· R05e",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.gastrulation",
+   "E.t.primitive-streak",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ],
+  "known": [
+   "E.t.epiblast",
+   "E.t.hypoblast"
+  ],
+  "exception": "D-037"
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The hypoblast becomes the endoderm.",
+   "right": "Epiblast cells move in and replace the hypoblast; they form the endoderm.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The three layers come from different starting layers.",
+   "right": "All three come from the epiblast.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m3",
+   "wrong": "Epiblast and ectoderm are the same thing.",
+   "right": "The epiblast is the upper layer of the two-layered disc; ectoderm is only the part of it left behind after cells move in.",
+   "cite": "E05.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "All three germ layers come from which layer?",
+   "options": [
+    "Hypoblast",
+    "Epiblast",
+    "Trophoblast",
+    "Yolk-sac wall"
+   ],
+   "answer": 1,
+   "why": "Epiblast cells move in through the streak to make endoderm and mesoderm; the cells left behind become ectoderm.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "What happens to the hypoblast during gastrulation?",
+   "options": [
+    "It turns into the endoderm",
+    "Epiblast cells replace it as endoderm",
+    "It becomes the mesoderm",
+    "It rolls up into the notochord"
+   ],
+   "answer": 1,
+   "why": "The first epiblast cells through the streak displace the hypoblast and form the endoderm themselves.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q3",
+   "type": "order",
+   "prompt": "Put the steps of gastrulation in order.",
+   "options": [
+    "The primitive streak appears on the epiblast",
+    "Epiblast cells move in through the streak",
+    "The first cells replace the hypoblast as endoderm",
+    "Later cells spread between the layers as mesoderm"
+   ],
+   "why": "Cells go in through the streak; the first ones make endoderm, and the ones after them make mesoderm.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "These three layers go on to build every tissue of the body [f7].",
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 16
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Build · S1 studio",
+  "date": "19 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "S1 reviewer agent (round 3)",
+   "date": "19 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "adult": "ok"
+   },
+   "notes": ""
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "S1 reviewer agent (round 3)",
+   "date": "19 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok"
+   },
+   "notes": "Pass on condition that the owner confirms D-037 (D2 exception, 5 new terms) at G-Owner; if the owner picks option (a), the edit reopens the card."
+  }
+ },
+ "log": [
+  {
+   "date": "19 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 + §5",
+   "by": "Lead scientist · Bio · Build · S1 studio"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · S1 reviewer agent (round 1)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · S1 reviewer agent (round 1)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "round-1 fixes: body.general.1 + split, m3 right, q3 four steps (no refute), q2 option, terms per D-037",
+   "by": "Lead scientist · Bio · Build · S1 studio"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Sci pass (round 2: all lines ok)",
+   "by": "Research librarian · S1 reviewer agent (round 2)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Learn fail (round 2): terms — colour-key premise does not hold (not a prerequisite; it is this card's own scene)",
+   "by": "Learning designer · S1 reviewer agent (round 2)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "round-2 fixes: terms per D-037 (D2 exception, 5 new; colour-key premise dropped), q2 right option shortened",
+   "by": "Lead scientist · Bio · Build · S1 studio"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "passes cleared: content changed (round-2 fixes) — both gates to review again",
+   "by": "Studio rule (card-spec §5)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · S1 reviewer agent (round 3)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · S1 reviewer agent (round 3)"
+  },
+  {
+   "date": "19 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  }
+ ]
+}

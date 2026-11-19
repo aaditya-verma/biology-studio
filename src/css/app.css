@@ -320,3 +320,73 @@ html.dev-tl .vw-h,html.dev-d .vw-h{display:block}
 html.still .top,html.still .nav,html.still .vw-panel,html.still #dbg,html.still .banner{display:none!important}
 html.still body{padding:0!important} html.still #view{padding:0!important;max-width:none!important}
 html.still .vw{display:block} html.still .vw-stage{width:960px;height:540px;border-radius:0;border:0}
+
+/* ---------- 9. Studio (S1; testing mode; design plan §2 Studio row + §4.7): phone + phone landscape = review only · tablet portrait = draft over review
+   (sources below) · tablet landscape = draft │ review (sources under draft) · desktop = draft │ review │ sources ---------- */
+#view:has(.st){max-width:1800px}
+.st-home{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+html.dev-pl .st-home,html.dev-tp .st-home,html.dev-tl .st-home{grid-template-columns:repeat(2,minmax(0,1fr))}
+html.dev-d .st-home{grid-template-columns:repeat(3,minmax(0,1fr))}
+.st-home select{width:100%;min-width:0;flex:1 1 12em}
+.st-row .badge{flex:none}
+.st-s-draft{border-style:dashed} .st-s-reviewed{border-color:var(--good);color:var(--good)} .st-s-shipped{border-color:var(--ink);font-weight:700}
+.st-dirty{color:var(--warn);font-weight:700}
+.warn{color:var(--warn);font-weight:700}
+.st{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "phone" "review";align-items:start}
+.st-head{grid-area:head} .st-phone{grid-area:phone;margin:0} .st-draft{grid-area:draft} .st-review{grid-area:review} .st-src{grid-area:src}
+.st-head h1{margin:0;font-size:var(--fs-h2);min-width:0;overflow-wrap:anywhere}
+.st-head .row{margin-top:4px}
+.st-pane{min-width:0}
+.st-pane .pane{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);min-width:0}
+/* phone portrait + landscape: review only (C13) */
+html.dev-p .st-draft,html.dev-p .st-src,html.dev-pl .st-draft,html.dev-pl .st-src{display:none}
+html.dev-tp .st-phone,html.dev-tl .st-phone,html.dev-d .st-phone{display:none}
+/* tablet portrait: draft over review, sources below */
+html.dev-tp .st{grid-template-areas:"head" "draft" "review" "src"}
+/* tablet landscape: draft │ review; sources under draft */
+html.dev-tl .st{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"head head" "draft review" "src review"}
+html.dev-tl .st-review .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
+/* desktop: draft │ review │ sources (3 panes, each scrolls) */
+html.dev-d .st{grid-template-columns:minmax(0,1.25fr) minmax(0,1.1fr) minmax(280px,.85fr);grid-template-areas:"head head head" "draft review src"}
+html.dev-d .st-pane .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
+.st-findbox{flex:1 1 16em;min-width:0} .st-bar{align-items:flex-start;margin-top:6px}
+.st-findbox[open]{flex-basis:100%;order:2}
+.st-fl label.st-big{font-size:var(--fs);color:var(--ink);font-weight:700}
+.st-gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.5em,1fr));border-radius:var(--r)} .st-findbox summary{cursor:pointer;min-height:var(--tap);display:flex;align-items:center}
+.st-find{margin:4px 0;padding-left:0;list-style:none;font-size:var(--fs-sm);max-height:40dvh;overflow:auto}
+.st-f{padding:4px 0;border-top:1px solid var(--line);overflow-wrap:anywhere} .st-f.E b{color:var(--bad)} .st-f.W b{color:var(--warn)}
+.st-form h3{margin:18px 0 6px;font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.st-grid{display:grid;gap:8px 12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.st-fl{display:flex;flex-direction:column;gap:2px;min-width:0;margin:6px 0}
+.st-fl.wide{grid-column:1/-1}
+.st-fl label{font-size:var(--fs-xs);color:var(--muted);font-weight:600}
+.st-fl input,.st-fl select{width:100%}
+.st textarea{width:100%;min-height:calc(var(--tap) * 1.5);border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface);padding:8px 10px;font:inherit;line-height:1.45;resize:vertical}
+.st-item{border:1px solid var(--line);border-radius:var(--r-sm);padding:4px 10px 8px;margin:8px 0;min-width:0}
+.st-item legend{font:var(--fs-xs) var(--mono);font-weight:700;padding:0 4px}
+.btn.sm{min-height:var(--tap);font-size:var(--fs-sm);padding:0 12px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.st-gates{margin:4px 0 8px}
+.st-who{border:1px solid var(--line);border-radius:var(--r-sm);padding:4px 10px 8px;margin:8px 0;min-width:0}
+.st-who legend{font-weight:700;font-size:var(--fs-sm);padding:0 4px}
+.st-cks{display:grid;gap:4px}
+.st-ck{display:flex;align-items:center;gap:10px;min-height:var(--tap);cursor:pointer;font-size:var(--fs-sm)}
+.st-ck input{width:22px;height:22px;flex:none;accent-color:var(--accent)}   /* the whole label row is the tap target (≥ --tap); layout-check skips the box itself */
+[data-theme="dark"] .st-ck input{accent-color:var(--accent-on-dark)}
+.st-line{border-top:1px solid var(--line);padding:8px 0;display:grid;gap:6px;grid-template-columns:minmax(0,1fr)}
+.st-line[data-v="ok"]{box-shadow:inset 3px 0 0 var(--good);padding-left:8px}
+.st-line[data-v="fix"]{box-shadow:inset 3px 0 0 var(--bad);padding-left:8px}
+.st-lt{font-size:var(--fs-sm);overflow-wrap:anywhere;max-width:var(--measure)}
+.st-lid{font-weight:700;margin-right:4px;color:var(--muted)}
+.st-lb{display:flex;gap:6px;flex-wrap:wrap}
+.st-lb .btn{flex:1 1 7em}
+html.dev-d .st-lb .btn,html.dev-tl .st-lb .btn{flex:0 0 auto}
+.st-opts{margin:4px 0;padding-left:1.4em}
+.st-res{margin-top:12px;padding:8px 0;border-top:1px solid var(--line)}   /* not sticky: it would cover line buttons in the scrolling panes (layout-check fixed-over) */
+.st-cline{font-size:var(--fs-sm);background:var(--surface-2);border-radius:var(--r-sm);padding:8px;overflow-wrap:anywhere}
+.st-reg ul{padding-left:1.1em;max-height:40dvh;overflow:auto}
+.st-reg summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
+.st-cal{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));margin:var(--gap) 0}
+.st-cal .card p{overflow-wrap:anywhere}
+.st-score{margin:var(--gap) 0 0}
+.st-cal .seg button{min-width:var(--tap);font-size:var(--fs)}

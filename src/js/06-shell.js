@@ -9,6 +9,7 @@ const ICONS={today:'<path d="M4 6h16v14H4z"/><path d="M4 10h16M9 3v4M15 3v4"/>',
   scene:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>',fwd:'<path d="M9 5l7 7-7 7"/>',
   play:'<path d="M7 4.5v15l12-7.5z"/>',pause:'<path d="M8 5v14M16 5v14"/>',
   back:'<path d="M15 5l-7 7 7 7"/>',up:'<path d="M12 19V5M5 12l7-7 7 7"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/>',
+  studio:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/><path d="M14 20h6"/>',
   moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>'};
 const icon=(k,sz=22)=>`<svg viewBox="0 0 24 24" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]||''}</svg>`;
 
@@ -19,15 +20,16 @@ function applyTheme(){const m=themeMode(),dark=m==='dark'||(m==='system'&&matchM
 function setTheme(m){state.settings.theme=m;state.settings.t=Date.now();try{localStorage.setItem(CONFIG.keys.theme,m);}catch(_){}applyTheme();stSave();render();}
 try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(themeMode()==='system'){applyTheme();render();}});}catch(_){}
 
+const navItems=()=>CONFIG.nav.concat(FLAGS.test?CONFIG.navTest:[]);
 function buildShell(){
-  $('#nav').innerHTML=CONFIG.nav.map(k=>`<button type="button" data-nav="${k}" aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('');
+  $('#nav').innerHTML=navItems().map(k=>`<button type="button" data-nav="${k}" aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('');
   $('#editChatL').textContent=STR.editChat;$('#editCopy').textContent=STR.copy;$('#editClose').textContent=STR.close;$('#editTxt').setAttribute('aria-label',STR.editT);
   $('#brand').textContent=STR.app;
   $('#backb').innerHTML=icon('back',20);$('#backb').setAttribute('aria-label',STR.back);$('#backb').title=STR.back;
   $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
   if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
-const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene'}[r.name]||r.name);
+const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio'}[r.name]||r.name);
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];
@@ -41,10 +43,14 @@ const SCREENS={};
 const view=()=>$('#view');
 function render(prev){
   const t0=performance.now(),f=SCREENS[ROUTE.name]||SCREENS[CONFIG.home];ROUTE.crumbs=null;
-  const ae=document.activeElement,keep=ae&&ae.id&&ae.closest&&ae.closest('#view')&&ae.matches('select,input')?ae.id:null;   // a control in the page caused this: keep focus on it
+  const ae=document.activeElement,inView=ae&&ae.closest&&ae.closest('#view'),keep=inView&&ae.id&&ae.matches('select,input,textarea')?ae.id:null,   // a control in the page caused this: keep focus on it
+    fk=inView&&!keep&&ae.dataset&&ae.dataset.fk?ae.dataset.fk:null,   // …or a button that marks itself with data-fk (Studio, calibration)
+    sel=keep&&ae.matches('input[type=text],input:not([type]),textarea')?[ae.selectionStart,ae.selectionEnd,ae.scrollTop]:null;   // caret + scroll survive a redraw
   try{f(view(),prev||{});}catch(e){console.error(e);view().innerHTML=`<div class="card"><b>${esc(STR.drawFail)}</b><p class="mut">${esc(e.message)}</p></div>`;}
   syncShell();if(FLAGS.test)testBanner();
-  if(keep&&document.getElementById(keep)){document.getElementById(keep).focus({preventScroll:true});}
+  const fkEl=fk&&document.querySelector(`#view [data-fk="${CSS.escape(fk)}"]`);
+  if(keep&&document.getElementById(keep)){const k=document.getElementById(keep);k.focus({preventScroll:true});if(sel&&k.setSelectionRange){try{k.setSelectionRange(sel[0],sel[1]);k.scrollTop=sel[2];}catch(_){}}}
+  else if(fkEl)fkEl.focus({preventScroll:true});
   else if(prev&&prev.raw!==undefined&&prev.raw!==ROUTE.raw&&!$('dialog[open]')){   // route changed: move focus to the new page (screen readers hear it; Tab starts here)
     const t=$('#cpT')||$('#view h1');if(t){if(!t.hasAttribute('tabindex'))t.setAttribute('tabindex','-1');t.focus({preventScroll:DEV.cls==='dev-d'});}}
   dbgNote('render '+ROUTE.name+' '+(performance.now()-t0).toFixed(1)+' ms');

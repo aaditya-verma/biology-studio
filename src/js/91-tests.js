@@ -16,6 +16,18 @@ function appTests(){
   t('scene day parsed',parseHash('#scene=sc-E00.01.04&day=16').day===16&&parseHash('#scene=sc-E00.01.04').day===undefined);
   t('scene bad day ignored',parseHash('#scene=sc-E00.01.04&day=x').day===undefined);
   t('up scene → list',JSON.stringify(upOf(parseHash('#scene=sc-E00.01.04')))===JSON.stringify({name:'scene'}));
+  // Studio (S1)
+  ['studio','studio=E05.01.01','studio=E05.01.01&gate=G-Learn','calib'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
+  t('studio gate default dropped',hashOf(parseHash('#studio=E05.01.01&gate=G-Sci'))==='studio=E05.01.01');
+  t('studio bad gate ignored',parseHash('#studio=E05.01.01&gate=nope').gate===undefined&&parseHash('#studio=E05.01.01&gate=constructor').gate===undefined);
+  t('up studio card → list',JSON.stringify(upOf(parseHash('#studio=E05.01.01')))===JSON.stringify({name:'studio'}));
+  t('up calib → studio',JSON.stringify(upOf(parseHash('#calib')))===JSON.stringify({name:'studio'}));
+  t('studio nav only in testing mode',navItems().includes('studio')===!!FLAGS.test);
+  t('card rules mirror spec',CARD_RULES.budget.general===90&&CARD_RULES.budget.mbbs===160&&CARD_RULES.limits.sentence===25&&CARD_RULES.limits.newTerms===3);
+  t('cite parse',(()=>{const p=parseCite('E05.01, E06.06 Tbl 6.4 · R06 CS6, E10');return p.sections.length===2&&p.sources[0].id==='R06'&&p.xrefs[0].ch==='E10';})());
+  t('cite range refused',(()=>{try{parseCite('E05.01–02');return false;}catch(_){return true;}})());
+  t('words skip refs',cWords('Three layers form [f1].')===3&&cSentences('A b [f1]. C d? E.').length===3);
+  t('strings for studio',STR.st&&Object.keys(STR.st.checklist).length===17&&STR.nav.studio);
   t('viewer config',CONFIG.viewer&&CONFIG.viewer.dprCap===2&&CONFIG.viewer.scaleSteps.length>3);
   t('strings for viewer',STR.vw&&Object.keys(STR.vw.axes).length===6&&STR.vw.tabs.layers);
   t('motion setting back-filled',stFill({}).settings.motion==='system');

@@ -1,11 +1,13 @@
 # Status — updated 19 Nov 2026
 
-*(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Review · T3b results (pass, D-036 confirmed); before: V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
+*(Purpose: current state + all pendencies — nothing else. Updated: 19 Nov 2026 · Bio · Build · S1 studio (Studio + card-check, E05.01.01 reviewed, D-037 proposed, D-038); before: T3b results (pass, D-036 confirmed), V1 viewer (D-036), T3a results (pass), A0 shell (D-034), hosting D-035. Finished work lives in `logs/build-log.md`.)*
 
 ## Lock
-- Build lock: Aaditya · Bio · Build · S1 studio · 19 Nov 2026, 02:35 IST
+- Build lock: free (S1 released 19 Nov 2026)
 
 ## Now
+- **S1 Studio built** (app v4, D-038; testing mode only): `#studio` card list + new draft · `#studio=<id>[&gate=…]` draft │ review │ sources (phone: review only, line by line) · `#calib`. Card spec `docs/card-spec.md` (C2); cards in `content/E/cards/`. `tools/card-check` (C3; `--only --dry-run --debug --preview --json --write-sources --calibrate --selftest --parity`) + `validate_citation` (tree.json sections, registry ids) — the same rules run in the app (`src/js/15-cards.js`); parity 33/33, selftest 32/32, **calibration 5/5**. Import links: a PubMed link, PMID, DOI or R-id becomes a cited line with a suggested mark. Review card per gate (G-Sci, G-Learn, G-A11y, G-Owner); a reviewer must differ from the maker in role and agent; any content edit clears the passes. layout-check green (1260 checks, 13/13 flows incl. 8 Studio flows, 8/8 rotations). CI runs card-check.
+- **First card round trip: E05.01.01 "Gastrulation in one picture" → Reviewed** (linked to sc-E00.01.04, day 16). Round 1: G-Sci + G-Learn fail (wording, m3, q3, terms). Round 2: G-Sci pass, G-Learn fail (terms). Round 3: both pass, recorded through the Studio. Separate reviewer agents each round. **Gates: G-Eng + G-A11y pass (round 3, separate reviewer).** G-Learn's pass depends on **D-037** (proposed: a D2 exception, 5 new terms).
 - **T3b passed** (19 Nov): owner checked the 3D viewer (app v3) on phone, tablet and laptop, both orientations — no problems, no fixes. **D-036 confirmed** (streak + node = grey `ctx` fill + plum outline). **V1 closed.**
 - **V1 3D viewer built** (app v2, D-036): `#scene` list · `#scene=<id>&day=<d>` · `#day=<d>`; one engine + canvas (`src/js/14-scene3d.mjs`, three.js r170 vendored in `lib/three-r170/`, loaded only when a scene opens); day scrubber + Play, layer toggles (colour + pattern + label), on-structure labels (priority, never overlapping), cut plane (cross-section / lengthwise, opaque patterned caps), views, axis gizmo, scale bar, `Day · CS · ≈size` stamp, disclaimers line; per-class layouts (design plan §4.6); keys `[ ]` Space arrows `+ − 0 L C` (focus-scoped); Settings › **Motion**. **3 Part 0 scenes** in `content/E/scenes/`: `sc-E00.01.01` Axes & planes · `sc-E00.01.02` Days, stages & scale (1 mm ruler, days 15–18) · `sc-E00.01.04` Two layers become three (days 15–17). New `docs/scene-spec.md`, `tools/scene-check` (C3), `tools/stills` (C11, 8 baselines), layout-check + viewer (924 checks, 125 % viewer shots, viewer rotate), CI runs all three. `?debug=viewer` → triangles/draw calls + **Measure fps**. Gates (separate reviewers): G-Sci FAIL → fixed → pass · G-Eng FAIL → fixed → pass with note · G-Art FAIL → fixed → pass with notes · G-A11y pass with notes → fixed → pass.
 - **T3a passed** (18 Nov): owner checked every item on phone, tablet and laptop, both orientations, light + dark — no problems, D-034 choices kept. App live: https://aaditya-verma.github.io/biology-studio/ (Pages on, install works).
@@ -27,12 +29,15 @@
 1. **Owner: run the M1 kit** on the laptop (README in the kit; ~20 min setup, then `python bakeoff.py all`; AI clip per `C_ai\README.md`). Then in chat `Bio · Build · M1 bake-off`: "results are in" → the chat reads `out\RESULTS.md` from the laptop, fills Measured, runs G-Sci/G-Art (look) with a separate reviewer, and logs.
 2. **Professor:** once invited, follows the setup guide and runs **T5** (`Bio · Review · Laptop 2 setup`).
 3. **Owner: T2** — explorer + roadmap check on phone, tablet and laptop (`build/owner-test-checklist.md` T2, ~15 min).
-4. ~~Phone fps for V1~~ ✅ · ~~T3b~~ ✅ 19 Nov. **Next build: S1 studio** — `Bio · Build · S1 studio` (prompt: master plan §13). In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
+4. ~~S1 studio~~ ✅ 19 Nov. **Next: C1 cards** — `Bio · Content · C1 Part 0 + Ch 5` (prompt: master plan §13); it starts by settling **D-037** with you. In parallel, no lock: **X1 Ch 6** — `Bio · Research · X1 Ch 06`.
 5. **T1** (owner, phone + one look on tablet/laptop) once clips are in Drive → pick from D-024.
 6. **M1b Host shot** — `Bio · Build · M1b host shot` (after M1 numbers; prompt: master plan §13) → owner check **T1b**.
-7. **S1** → **C1** → **P1 S1E01** (MBBS + General + Short; host from M1b; with animatic) → **R1** → **L1** → **use gate**.
+7. ~~S1~~ ✅ → **C1** → **P1 S1E01** (MBBS + General + Short; host from M1b; with animatic) → **R1** → **L1** → **use gate**.
 
 ## Blocked / open questions (pendencies)
+- **D-037 (owner):** keep the D2 exception for E05.01.01 (5 new terms), or option (a): make E00.01.04 a prerequisite and have the Part 0 colour-key card name the three layers. The C1 chat asks first; the G-Learn pass holds only until you decide.
+- **card-check robustness (minor, G-Eng R3):** a badly typed card (body/objective as a number, `terms.new: null`, a null fact) makes Python stop with a traceback instead of an E-schema line (CI still fails, so nothing ships). C1: add type guards in both checkers + selftest cases.
+- **S1 notes (not blocking):** q2's right option is the only one not starting with "It" (a small cue; reviewer polish for C1) · card parts Remember / Clinical link / Where it shows up are reserved in the spec; C1 adds their rules first · Studio drafts live in memory only (testing mode): export before closing the tab (the tab warns) · E05.01.01 stays `version: 1` until first ship.
 - **M1 numbers** — blocked on the laptop run (this chat's bridge can't run commands; cloud workspace has no GPU). M1b waits on them (VRAM decides the local host-shot models); the **1080p rung** (D-033, proposed) waits on M1's 1080p timing.
 - **K1 leftovers (X1 per chapter, E05 done):** AN codes, marks and cited `cs` missing outside E05 · map.json `cs_approx` stays derived elsewhere · ⚑ candidate: adult spinal-cord end level (E18.01.05) · deferred Tier D detail concepts (crest induction, somite signals, PDX1, limb D-V / TBX4-5).
 - **I1 locator gaps (≈, X1 per chapter):** no Index pages in the PDF (D-026) · E05.01/E05.02 are pp 59–60, not p 59 (checked in X1; fix in the next I1 run) · E08.08/E08.09 twin vs parturition terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows.
@@ -52,7 +57,9 @@
 - Google Cloud project "Biology Studio" not created yet; add the Professor as an OAuth test user when it is (D1).
 
 ## Owner reminders
-- [ ] **Press Sync now** (Project knowledge) — T3b results changed STATUS, checklist, review log, DECISIONS, build log.
+- [ ] **Press Sync now** (Project knowledge): S1 changed STATUS, DECISIONS, the build and review logs, the master plan, the design plan, README, INSTRUCTIONS and the registry.
+- [ ] **Decide D-037** (2 min; see the pendencies): keep the exception, or option (a). Reply in the C1 chat.
+- [ ] Optional: try the Studio at https://aaditya-verma.github.io/biology-studio/?test=1#studio=E05.01.01 on the phone (review pane) and the laptop (3 panes).
 - [ ] **Say in the M1 chat:** align the kit's `shot.json` with the app (grey + plum outline) or keep the accent fill.
 - [ ] **Delete the 24 uploaded Project docs** (Project → knowledge; keep the GitHub `studio-docs/` source). All their content is in the repo now (18 Nov doc reconcile). Then a chat checks it still sees this STATUS.
 - [ ] **Re-paste `claude/INSTRUCTIONS.md` §6** into Project → Custom instructions — it gained the device line (D-033). (Professor's Project too, once set up.)

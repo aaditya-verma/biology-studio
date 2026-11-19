@@ -1,0 +1,13 @@
+{
+ "spec": 1,
+ "book": "E",
+ "source": "research/dossiers/ch05-gastrulation.md §2 (X1, 17 Nov 2026)",
+ "note": "5 sample facts with the marks the X1 dossier gave them (G-Sci passed). #calib and card-check --calibrate score the mark suggester against them; a person also scores themselves in #calib. Our words; cites as in the dossier.",
+ "facts": [
+  {"id": "c1", "concept": "E05.01.01", "text": "Gastrulation is the week-3 process that forms the three germ layers: ectoderm, mesoderm and endoderm.", "cite": "E05.01 · R05b", "mark": "✔✔"},
+  {"id": "c2", "concept": "E05.01.03", "text": "Epiblast cells move toward the streak, let go of their neighbours and slip underneath (invagination).", "cite": "E05.01", "mark": "✔"},
+  {"id": "c3", "concept": "E05.02.01", "text": "The book has the definitive notochord forming head-first; human specimens show it first forms in the middle and spreads both ways.", "cite": "E05.02 · R05a", "decision": "D-029", "mark": "⚑"},
+  {"id": "c4", "concept": "E05.01.04", "text": "Beyond Langman: human CS7 data show epiblast, streak, new mesoderm, endoderm and primordial germ cells side by side.", "cite": "· R05b, R05c", "mark": "✚"},
+  {"id": "c5", "concept": "E05.01.01", "text": "Gastrulation opens the period most sensitive to teratogens, weeks 3 to 8.", "cite": "E05.05 CC · E09", "mark": "✔"}
+ ]
+}

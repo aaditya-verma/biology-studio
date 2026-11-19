@@ -1,6 +1,6 @@
 # Source registry — who we trust, for what
 
-*(Purpose: owner doc for sources **and tools**. Created 17 Nov 2026, D-011. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05 (R05a–j, R08 added; R30 copy noted). Add a source or tool here before citing or installing it anywhere.)*
+*(Purpose: owner doc for sources **and tools**. Created 17 Nov 2026, D-011. Updated: 19 Nov 2026 · Bio · Build · S1 studio (PMIDs added to R05a, R05b, R05e, R05j, R05k so pasted PubMed links resolve; `content/E/sources.json` is derived from this file by `tools/card-check --write-sources`). Before: 17 Nov 2026 · X1 Ch 05 (R05a–j, R08 added; R30 copy noted). Add a source or tool here before citing or installing it anywhere.)*
 
 **Rule in one line:** Langman 14e is the spine. Trusted outside sources **confirm**, **correct** (logged, never silent), **add depth** (labelled), and shape **how** we teach and draw. RULES B6–B8, G5.
 
@@ -34,17 +34,17 @@
 ### R05 papers in use (Tier 1; cite as `R05a` etc.; facts only, own words — licence decides any reuse)
 | Id | Paper | Used for | Licence → our use |
 |---|---|---|---|
-| R05a | de Bree K, de Bakker BS, Oostra RJ. The development of the human notochord. *PLoS ONE* 2018;13:e0205752. doi:10.1371/journal.pone.0205752 | Notochord order/timing (⚑ D-029); neurenteric canal; prechordal plate; CS day ranges | CC BY 4.0 → may adapt with credit |
-| R05b | Tyser RCV et al. Single-cell transcriptomic characterization of a gastrulating human embryo. *Nature* 2021;600:285–289. doi:10.1038/s41586-021-04158-y | Human gastrula at CS7 (16–19 d): cell types present | © Springer Nature (author manuscript in PMC) → facts only |
+| R05a | de Bree K, de Bakker BS, Oostra RJ. The development of the human notochord. *PLoS ONE* 2018;13:e0205752. doi:10.1371/journal.pone.0205752 · PMID 30346967 | Notochord order/timing (⚑ D-029); neurenteric canal; prechordal plate; CS day ranges | CC BY 4.0 → may adapt with credit |
+| R05b | Tyser RCV et al. Single-cell transcriptomic characterization of a gastrulating human embryo. *Nature* 2021;600:285–289. doi:10.1038/s41586-021-04158-y · PMID 34789876 | Human gastrula at CS7 (16–19 d): cell types present | © Springer Nature (author manuscript in PMC) → facts only |
 | R05c | Cui L et al. Spatial transcriptomic characterization of a Carnegie stage 7 human embryo. *Nat Cell Biol* 2025;27:360–369. doi:10.1038/s41556-024-01597-3 | AVE present in human CS7; early mesoderm subtypes | © Springer Nature → facts only |
 | R05d | Xiao Z et al. 3D reconstruction of a gastrulating human embryo. *Cell* 2024;187:2855–2874. doi:10.1016/j.cell.2024.03.041 | CS8 3D reference (signalling centres) — not yet used for a mark | © Elsevier → facts only |
-| R05e | Kwon GS, Viotti M, Hadjantonakis AK. The endoderm of the mouse embryo arises by dynamic widespread intercalation of embryonic and extraembryonic lineages. *Dev Cell* 2008;15:509–520. doi:10.1016/j.devcel.2008.07.017 | ✚ (mouse) — old layer cells mix into gut endoderm; label species | © Elsevier (author manuscript in PMC) → facts only |
+| R05e | Kwon GS, Viotti M, Hadjantonakis AK. The endoderm of the mouse embryo arises by dynamic widespread intercalation of embryonic and extraembryonic lineages. *Dev Cell* 2008;15:509–520. doi:10.1016/j.devcel.2008.07.017 · PMID 18854136 | ✚ (mouse) — old layer cells mix into gut endoderm; label species | © Elsevier (author manuscript in PMC) → facts only |
 | R05f | O'Rahilly R, Müller F. Developmental stages in human embryos: revised and new measurements. *Cells Tissues Organs* 2010;192:73–84. doi:10.1159/000289817 | Stage ≠ age; ages are estimates (D-030) | © Karger → abstract facts only |
 | R05g | Swamy R, Embleton N, Hale J. Sacrococcygeal teratoma over two decades. *Prenat Diagn* 2008;28:1048–51. doi:10.1002/pd.2122 | SCT birth prevalence ~1 in 27,000 (⚑ D-030) | © Wiley → facts only |
 | R05h | Hambraeus M et al. Sacrococcygeal teratoma: a population-based study. *J Pediatr Surg* 2016;51:481–5. doi:10.1016/j.jpedsurg.2015.09.007 | SCT ~1 in 14,000 (southern Sweden) | © Elsevier → facts only |
 | R05i | Ayed A et al. Sacrococcygeal teratoma, West Midlands 1995–2012. *Prenat Diagn* 2015;35:1037–47. doi:10.1002/pd.4641 | SCT 0.30 per 10,000 births; mostly diagnosed prenatally | © Wiley → facts only |
-| R05j | Breuer K et al. Exome sequencing in cardiovascular laterality defects. *Eur J Hum Genet* 2022;30:946–954. doi:10.1038/s41431-022-01100-2 | Laterality defects ~1.1/10,000; mostly with complex CHD | Open access in PMC (licence ≈ check before reuse) → facts only |
-| R05k | Huybrechts KF et al. Antidepressant use in pregnancy and the risk of cardiac defects. *N Engl J Med* 2014;370:2397–407. doi:10.1056/NEJMoa1312828 | SSRIs: no substantial heart-defect increase after adjustment (⚑ D-030) | © MMS (PMC author manuscript) → facts only |
+| R05j | Breuer K et al. Exome sequencing in cardiovascular laterality defects. *Eur J Hum Genet* 2022;30:946–954. doi:10.1038/s41431-022-01100-2 · PMID 35474353 | Laterality defects ~1.1/10,000; mostly with complex CHD | Open access in PMC (licence ≈ check before reuse) → facts only |
+| R05k | Huybrechts KF et al. Antidepressant use in pregnancy and the risk of cardiac defects. *N Engl J Med* 2014;370:2397–407. doi:10.1056/NEJMoa1312828 · PMID 24941178 | SSRIs: no substantial heart-defect increase after adjustment (⚑ D-030) | © MMS (PMC author manuscript) → facts only |
 
 ## Tier 2 — other textbooks (confirm only)
 | Id | Source | Use |

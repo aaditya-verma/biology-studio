@@ -3,8 +3,8 @@
 'use strict';
 const STR={
   app:'Biology Studio',
-  nav:{today:'Today',map:'Book map',scene:'3D',settings:'Settings'},
-  navHint:{today:'Where to start and what is next',map:'Every concept in the book, mapped',scene:'3D scenes: turn, scrub the days, slice',settings:'Theme, motion, storage, backup, colour key'},
+  nav:{today:'Today',map:'Book map',scene:'3D',settings:'Settings',studio:'Studio'},
+  navHint:{today:'Where to start and what is next',map:'Every concept in the book, mapped',scene:'3D scenes: turn, scrub the days, slice',settings:'Theme, motion, storage, backup, colour key',studio:'Draft and review cards (testing mode)'},
   back:'Back', up:'Up', close:'Close', search:'Search', clear:'Clear', all:'All', none:'—',
   leaveHint:'Press Back again to leave Biology Studio',
   testFlag:'Testing mode — nothing is saved', testShort:'✎ test',
@@ -53,6 +53,44 @@ const STR={
     cutText:(axis,at)=>'Cut at '+Math.round((at+1)*50)+' % from the '+(axis==='x'?'caudal end':'right side'),
     viewText:(az,el,cut)=>{const a=((az%360)+540)%360-180,side=Math.abs(a+90)<45?'the right side':Math.abs(a-90)<45?'the left side':Math.abs(a)<45?'the head end':'the tail end';
       return 'Viewed from '+(el>70?'the back (dorsal)':el<-70?'the belly (ventral)':side+(el>20?', from above':el<-20?', from below':''))+(cut&&cut.on?'; cut '+(cut.axis==='x'?'across':'lengthwise'):'')+'.';}},
+  // Studio (S1; testing mode only; docs/card-spec.md)
+  retry:'Try again',
+  st:{title:'Studio', makerT:'Made by (maker)', lead:'Draft and review concept cards. Every fact cited and marked; a different role reviews than the one that made it. Nothing here is saved — export the card and commit it.',
+    needTest:'Studio works in testing mode only.', needTestHint:'Testing mode shows ✎ edit hooks and saves nothing — Studio edits leave the app only by Export.',
+    loading:'Loading cards…', loadFail:'Could not load the cards', none:'No cards yet.', noCard:id=>'No card '+id+'.',
+    cardsT:'Cards', newT:'New draft', newHint:'Start a card for a researched concept (X1 done, no card yet).', newPick:'Concept', newB:'Start draft', newNone:'Every researched concept has a card.',
+    calibT:'Calibration', calibHint:'Score 5 dossier facts: pick a mark for each, then compare with the dossier and the mark suggester.', calibB:'Open calibration',
+    statusT:'Status', status:{draft:'Draft',reviewed:'Reviewed',shipped:'Shipped',retired:'Retired'},
+    findings:(e,w)=>e+' error'+(e===1?'':'s')+' · '+w+' warning'+(w===1?'':'s'), clean:'card-check clean',
+    open:'Open', version:v=>'v'+v, dirty:'Edited — not exported', exportT:'Export', copyJson:'Copy JSON', download:'Download .json', copiedJson:'Card JSON copied. Commit it as content/E/cards/<id>.json and update index.json (card-check says if it is out of step).',
+    panes:{draft:'Draft',review:'Review',sources:'Sources'}, phoneNote:'Drafting needs a tablet or laptop. On a phone, review line by line.',
+    // draft pane
+    fTitle:'Title', fTier:'Tier', fVerb:'Verb', fObjective:'Objective (one verb)', fBody:'Body', fLevel:l=>({general:'General',school:'School',neet:'NEET',mbbs:'MBBS',pg:'PG'}[l]||l),
+    words:(n,b)=>n+' / '+b+' words', addLevel:'Add level', removeLevel:'Remove level', fFacts:'Facts', fText:'Text', fCite:'Cite', fMark:'Mark', fWhere:'Where', where:{main:'Main',more:'More'}, fDecision:'Decision',
+    addFact:'Add fact', removeFact:'Remove', suggested:m=>'suggested '+m, citeOk:'cite ok', fTerms:'Terms', fNew:'New (≤ 3)', fKnown:'Known', fException:'D2 exception (≤ 5 new; logged D-entry)', termsHint:'Glossary ids, comma-separated (E.t.primitive-streak)',
+    fMis:'Misconceptions', fWrong:'Wrong idea', fRight:'Right idea', addMis:'Add misconception', fChecks:'Checks', fPrompt:'Prompt', fType:'Type', types:{mcq:'Pick one',order:'Put in order'},
+    fOptions:'Options (one per line; for “Put in order”, the right order)', fAnswer:'Right option', fWhy:'Why (shown after answering)', fRefutes:'Refutes', addCheck:'Add check',
+    fAdult:'This becomes… (optional)', fScene:'Scene', fDay:'Day', findT:'card-check', findNone:'No findings.',
+    reopened:'Content changed — the passes are cleared; it needs review again.',
+    // review pane
+    gateT:'Gate', reviewer:'Reviewer', rBy:'Name', rRole:'Role', rAgent:'Chat or agent', maker:(m)=>'Made by '+m.by+' · '+m.role+' · '+m.agent,
+    sameAsMaker:'A different role and a different chat or agent must review (H2, fresh eyes).', checklistT:'Checklist', linesT:'Lines',
+    ok:'OK', fix:'Fix', fixNote:'What to fix', pass:'Pass', fail:'Fail', passNeeds:'Pass needs: every line OK, every box ticked, a different reviewer and card-check with no errors.',
+    gateDone:(g,r,by)=>g+': '+r+' by '+by, promoted:'G-Sci and G-Learn passed — card is now Reviewed.', failed:g=>g+' failed — copy the fix prompt.',
+    fixPrompt:'Copy fix prompt', noLines:'This gate is a checklist only.', ans:'answer', order:'order',
+    checklist:{cited:'Every fact cited + marked',sections:'Cites point at the right sections',accuracy:'Anatomy, timing and scale right vs book + Tier 1',flags:'⚑ has its D-entry and the book answer',plus:'✚ only in More',noapprox:'No ≈ left',
+      objective:'Objective is one testable verb',checks:'Checks test the objective',refutes:'A Check refutes a misconception',terms:'≤ 3 new terms, explained at General',budget:'Within word budget, one idea per sentence',adult:'“This becomes…” where it fits (D4)',
+      alt:'Text alternative for every visual',input:'Checks work by keyboard and touch',colour:'No colour-only cue in the text',text125:'Fits at 125 % text',owner:'Owner has read it on a real device'},
+    gateQ:{'G-Sci':'Is every fact right, cited and marked?','G-Learn':'Does it teach and test one objective?','G-A11y':'Can everyone use it?','G-Owner':'Owner OK to ship?'},
+    // sources pane
+    importT:'Import a reference', importPh:'PubMed link, PMID, DOI, R05a or [E05.01 · R06 CS6]', importB:'Make cited line', importNone:'Paste a reference first.',
+    notInReg:'Not in the source registry — add it to research/source-registry.md first (B6); a ready row is below.', regRow:'Registry row (copy into the registry)',
+    secT:'Book section', locT:'Locator (optional)', lineT:'Cited line', addAsFact:'Add as fact', copyLine:'Copy line', lineCopied:'Line copied.', added:'Fact added to the draft.',
+    sectionsT:ch=>'Sections of '+ch, registryT:'Source registry', tier:t=>t==='C'?'Curriculum':'Tier '+t, refOnly:'reference only',
+    // calibration
+    calTitle:'Calibration', calLead:'Five facts from the Ch 5 dossier. Pick the mark you would give each one, then compare with the dossier (G-Sci passed) and the mark suggester.',
+    calYou:'You', calDossier:'Dossier', calRules:'Suggester', calScore:(y,n,r)=>'You '+y+'/'+n+' · suggester '+r+'/'+n,
+    calRulesT:'How the suggester marks', calRules1:'Decision logged → ⚑ · no book section → ✚ · book + a Tier 1 source → ✔✔ · otherwise ✔. It proposes; a reviewer decides (only a person can see that a Tier 1 source disagrees).'},
   // Settings
   settingsTitle:'Settings', themeT:'Theme', themes:{system:'Device',light:'Light',dark:'Dark'},
   motionT:'Motion', motions:{system:'Device',reduce:'Reduce',full:'Full'}, motionHint:'Reduce = no smooth camera moves; Play jumps from key day to key day.',

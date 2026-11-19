@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
+S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -28,6 +29,7 @@ SCREENS = {
     "today": "today", "map": "map", "chapter": "map=E05", "concept": "concept=E05.02.01",
     "crosstab": "x=layer&y=day", "cell": "x=layer&y=day&cell=meso%7CWk%203", "settings": "settings", "colours": "colours",
     "scenes": "scene", "viewer": "scene=sc-E00.01.04&day=16", "viewer-axes": "scene=sc-E00.01.01&day=17",
+    "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
 }
 
 
@@ -112,6 +114,8 @@ async def run(a):
                             sid = route.split("=")[1].split("&")[0]
                             await page.wait_for_function(f"window.VW_READY===true && ROUTE.id==='{sid}'", timeout=30000)
                             await page.wait_for_timeout(80)
+                        if route.startswith(("studio", "calib")):   # Studio: wait for cards + sources (S1)
+                            await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
                         got_theme = await page.evaluate("document.documentElement.dataset.theme")
                         want = expected_class(kind, w, h)
@@ -151,11 +155,11 @@ async def run(a):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
-                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes"):
+                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib"):
                             path = out / "shots" / f"{cls}_{w}x{h}_125_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " 125", []).append((f"{w}×{h} {sname} 125%", path))
-                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer"):
+                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card"):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " dark", []).append((f"{w}×{h} {sname}", path))
@@ -191,8 +195,11 @@ async def run(a):
             if not ok:
                 report["issues"].append({"kind": "rotate", "what": "viewer " + json.dumps(st), "at": f"{vw}x{vh}"})
         await ctx.close()
+        # Studio (S1): rotate keeps the card, gate and draft edits; a review round trip in the UI (draft → reviewed); reviewer = maker is blocked; an edit reopens
+        if not a.only or a.only.startswith(("studio", "calib")):
+            await studio_flows(browser, base, report)
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
-        report["flows"] = []
+        report.setdefault("flows", [])
         ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
         page = await ctx.new_page()
         await page.goto(f"{base}#concept=E05.02.01")
@@ -210,6 +217,8 @@ async def run(a):
         report["flows"].append({"flow": "Back at home asks before leaving", "ok": ok_guard, "seen": guard})
         bad = await page.evaluate("location.hash='#concept=%E0%A4'; new Promise(r=>setTimeout(()=>r(ROUTE.name),150))")
         report["flows"].append({"flow": "malformed address falls back", "ok": bad in ("today", "concept"), "seen": bad})
+        st = await page.evaluate("location.hash='#studio'; new Promise(r=>setTimeout(()=>r({nav:!!document.querySelector('[data-nav=studio]'), msg:document.querySelector('#view').textContent.includes('testing mode only')}),200))")
+        report["flows"].append({"flow": "Studio hidden outside testing mode", "ok": (not st["nav"]) and st["msg"], "seen": st})
         for f in report["flows"]:
             if not f["ok"]:
                 report["issues"].append({"kind": "flow", "what": f["flow"] + " " + json.dumps(f.get("seen", "")), "at": "390x844 real mode"})
@@ -223,6 +232,90 @@ async def run(a):
     (out / "report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
     write_md(report, out, len(vps), themes, texts, screens)
     return report
+
+
+async def studio_flows(browser, base, report):
+    report.setdefault("flows", [])
+    ok = lambda name, cond, seen="": report["flows"].append({"flow": name, "ok": bool(cond), "seen": seen})
+    # 1. rotate keeps place: card, gate, an unsaved edit and the scroll position (phone → landscape → portrait; tablet portrait → landscape)
+    for (w, h) in [(390, 844), (820, 1180)]:
+        ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=True, is_mobile=True)
+        page = await ctx.new_page()
+        await page.goto(f"{base}?test=1&debug=0#studio=E05.01.01&gate=G-Learn")
+        await page.wait_for_function("window.ST_READY==='studio=E05.01.01&gate=G-Learn'", timeout=20000)
+        await page.evaluate("ST.draft['E05.01.01'].title='Rotate test'; scrollTo(0,300)")
+        for vw, vh in [(h, w), (w, h)]:
+            await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(250)
+            st = await page.evaluate("({h:location.hash, t:ST.draft['E05.01.01'].title, y:scrollY, cls:DEV.cls, gate:document.querySelector('.st').dataset.gate})")
+            good = st["h"] == "#studio=E05.01.01&gate=G-Learn" and st["t"] == "Rotate test" and st["gate"] == "G-Learn" and st["y"] > 0
+            report["rotate"].append({"size": f"{vw}x{vh} studio", "ok": good, "h": st["h"], "cls": st["cls"]})
+            if not good:
+                report["issues"].append({"kind": "rotate", "what": "studio " + json.dumps(st), "at": f"{vw}x{vh}"})
+        await ctx.close()
+    # 2. review round trip in the UI on a desktop (in memory; nothing is saved in testing mode)
+    ctx = await browser.new_context(viewport={"width": 1440, "height": 900})
+    page = await ctx.new_page()
+    await page.goto(f"{base}?test=1&debug=0#studio=E05.01.01")
+    await page.wait_for_function("window.ST_READY==='studio=E05.01.01'", timeout=20000)
+    await page.evaluate("ST.draft['E05.01.01'].status='draft'; ST.draft['E05.01.01'].review={}; ST.rv={}; render()")
+
+    async def who(by, role, agent):
+        await page.fill("#sdBy", by); await page.select_option("#sdRole", role); await page.fill("#sdAgent", agent)
+
+    async def sign(gate):
+        if gate != "G-Sci":
+            await page.click(f"[data-st-gate='{gate}']"); await page.wait_for_timeout(80)
+        for k in await page.evaluate("[...document.querySelectorAll('[data-st-ck]')].filter(i=>!i.checked).map(i=>i.dataset.stCk)"):
+            await page.click(f"[data-st-ck='{k}']")   # each click redraws the review pane: query by name, never hold handles
+        for ln in await page.evaluate("[...document.querySelectorAll('[data-st-v=ok]')].map(b=>b.dataset.ln)"):
+            await page.click(f"[data-st-v='ok'][data-ln='{ln}']")
+    # maker reviewing own card is blocked
+    await who("Aaditya", "Lead scientist", "Bio · Build · S1 studio")
+    await sign("G-Sci")
+    blocked = await page.evaluate("document.querySelector('[data-st-act=pass]').disabled && document.querySelector('#sdWhoNote').textContent.length>0")
+    ok("Studio: maker can't pass their own card (H2)", blocked)
+    await who("Layout-check", "Research librarian", "layout-check flow")
+    passable = await page.evaluate("!document.querySelector('[data-st-act=pass]').disabled")
+    await page.fill("#sdAgent", ""); await page.type("#sdAgent", "chatX"); typed = await page.evaluate("document.querySelector('#sdAgent').value")
+    ok("Studio: typing in the reviewer fields keeps the caret", typed == "chatX", typed)
+    await page.fill("#sdAgent", "layout-check flow")
+    await page.focus("#sdCk-cited"); await page.keyboard.press("Space"); await page.keyboard.press("Space")
+    fid = await page.evaluate("document.activeElement.id")
+    ok("Studio: keyboard on a checklist box keeps focus", fid == "sdCk-cited", fid)
+    await page.click("[data-st-act=pass]"); await page.wait_for_timeout(80)
+    await who("Layout-check", "Learning designer", "layout-check flow")
+    await sign("G-Learn")
+    await page.click("[data-st-act=pass]"); await page.wait_for_timeout(80)
+    r = await page.evaluate("(()=>{const c=ST.draft['E05.01.01'];return {st:c.status, sci:c.review['G-Sci'].result, learn:c.review['G-Learn'].result, f:cardCheck(c,c.id,ST.ctx).filter(i=>i.lvl==='E').map(i=>i.code+' '+i.line)}})()")
+    ok("Studio: G-Sci + G-Learn by other roles → reviewed, card-check clean", passable and r["st"] == "reviewed" and not r["f"], r)
+    fo = await page.evaluate("({a:document.activeElement.id, dis:document.querySelector('[data-st-act=pass]').disabled})")
+    ok("Studio: after Pass, focus is on the result and Pass is off", fo["a"] == "sdGateDone" and fo["dis"], fo)
+    # an edit after review sends the card back to draft
+    await page.focus("#stp-title"); await page.keyboard.press("End"); await page.keyboard.type("XYZ"); await page.wait_for_timeout(350)
+    tv = await page.evaluate("document.querySelector('#stp-title').value")
+    ok("Studio: typing that clears passes keeps the caret", tv == "Gastrulation in one pictureXYZ", tv)
+    r2 = await page.evaluate("({st:ST.draft['E05.01.01'].status, rv:Object.keys(ST.draft['E05.01.01'].review).length})")
+    ok("Studio: editing a reviewed card reopens it as draft", r2["st"] == "draft" and r2["rv"] == 0, r2)
+    stale = await page.evaluate("Object.entries(ST.rv).filter(([k,r])=>k.startsWith('E05.01.01|')&&(Object.values(r.checklist).some(Boolean)||Object.values(r.lines).some(Boolean))).length")
+    ok("Studio: an edit drops the review ticks", stale == 0, stale)
+    # a failed line gives a fix prompt
+    await page.evaluate("ST.draft['E05.01.01'].title='Gastrulation in one picture'; ST.rv={}; render()")
+    await page.click("[data-st-gate='G-Sci']"); await page.wait_for_timeout(80)
+    await who("Layout-check", "Research librarian", "layout-check flow")
+    await page.click("[data-st-v='fix'][data-ln='f3']"); await page.fill("[data-st-note='f3']", "test note")
+    await page.click("[data-st-act=fail]"); await page.wait_for_timeout(80)
+    fp = await page.evaluate("ST.draft['E05.01.01'].review['G-Sci'].lines.f3")
+    has = await page.evaluate("!!document.querySelector('[data-st-act=fixprompt]')")
+    ok("Studio: a Fix line fails the gate and offers a fix prompt", fp == "fix: test note" and has, fp)
+    # import links → a cited line
+    await page.fill("#sdImp", "https://pubmed.ncbi.nlm.nih.gov/30346967/"); await page.fill("#sdImpLoc", "CS8"); await page.wait_for_timeout(60)
+    line = await page.evaluate("document.querySelector('.st-cline').textContent")
+    ok("Studio: a PubMed link becomes a cited line", "[E05.01 · R05a CS8] ✔✔" in line, line)
+    # calibration
+    await page.evaluate("location.hash='#calib'"); await page.wait_for_function("window.ST_READY==='calib'", timeout=20000)
+    sc = await page.evaluate("document.querySelector('.st-score').textContent")
+    ok("Studio: calibration — suggester 5/5", "suggester 5/5" in sc, sc)
+    await ctx.close()
 
 
 def contact(shots, out):

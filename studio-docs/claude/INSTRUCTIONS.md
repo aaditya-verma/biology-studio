@@ -21,7 +21,7 @@ Stance: a lead biology researcher who is also designer, teacher and storyteller,
 - Order to cover all important concepts → `curriculum/roadmap.md` (K1).
 - Card list and status per chapter → `curriculum/book-index-part1.md` / `-part2.md`.
 - Episode list, tags and audience profiles → `curriculum/episodes-catalog.md`.
-- Card data format → `docs/card-spec.md`; scene format → `docs/scene-spec.md` (V1 ✅).
+- Card data format → `docs/card-spec.md` (S1 ✅); scene format → `docs/scene-spec.md` (V1 ✅). Studio (draft + review cards) → app `?test=1#studio`.
 - Laptop, phone, tablet, desktop, render and voice numbers → `build/pipeline-reference.md`, **Measured** column only.
 - Scope, architecture, build order, ready prompts → `build/master-plan.md`.
 - Device classes, layout per screen per device, test matrix, layout-check → `build/design-plan.md` §2 (moved from `build/design-plan.md` §2 in A0) (D-033). Tokens, shell, screens, testing mode, layout-check → `build/design-plan.md`.

@@ -1,6 +1,6 @@
 # Design plan — tokens, devices, shell, screens
 
-*(Purpose: the app's design system and screen layouts — tokens, type, spacing, device classes (moved here from master plan §8a), shell, screens, storage, debug and checks. Updated: 19 Nov 2026 · Bio · Build · V1 viewer (v2: 3D viewer §4.6, motion setting, viewer checks); before: A0 shell (v1).)*
+*(Purpose: the app's design system and screen layouts — tokens, type, spacing, device classes (moved here from master plan §8a), shell, screens, storage, debug and checks. Updated: 19 Nov 2026 · Bio · Build · S1 studio (Studio row now in the app, `?debug=studio`). Before: 19 Nov 2026 · Bio · Build · V1 viewer (v2: 3D viewer §4.6, motion setting, viewer checks); before: A0 shell (v1).)*
 
 Owner doc for: colour/type/spacing tokens, the five device classes and the layout of every screen on each, navigation and addresses, testing mode, ✎ edit hooks, `tools/layout-check`. Rules: RULES B3, C8, C13, H5, I5–I6. Decisions: D-031 (colours), D-033 (devices), D-019 (storage). Code: `index.html`, `src/css/app.css`, `src/js/`, `content/strings.js`.
 
@@ -47,7 +47,7 @@ Input is separate from class: `.in-touch` (coarse pointer) / `.in-mouse` (fine +
 | Player 16:9 | video on top; transcript + card rail below | full-bleed video, overlay controls | video on top; transcript + rail below | video │ transcript + rail | video │ transcript + rail |
 | Player 9:16 (Short) | full screen | centred; extras behind a button | centred; transcript below | centred; transcript + cards beside | same; never stretched or cropped |
 | 3D viewer | full-width canvas; controls in a bottom sheet | full-screen canvas; controls in a side strip | canvas + bottom panel | canvas │ side panel (layers, labels, day) | canvas │ side panel; hover labels, wheel zoom, shortcuts |
-| Studio (claude.ai) | review only: approve / fix line by line | as phone portrait | draft over review | draft │ review | draft │ review │ sources (3 panes) |
+| Studio (app, testing mode `#studio`; S1 ✅) | review only: approve / fix line by line | as phone portrait | draft over review | draft │ review | draft │ review │ sources (3 panes) |
 
 **Common rules:**
 1. Layouts change by class (panes, rails, drawers, side panels) — never just stretched or shrunk.
@@ -86,6 +86,7 @@ IndexedDB `biostudio` (stores `state`, `answers`, `files`). State record `{schem
 
 ## 7. Debug, testing, checks (RULES I5–I6, C8, C13)
 - `?test=1` testing mode: ✎ on every chapter, concept, screen and token → shows id + file and copies a ready "edit this" prompt (`Bio · Fix · <id>`); nothing saved; overlay on (add `&debug=0` to hide it).
+- `?debug=studio` (S1): overlay adds card id · status · gate · error/warning counts · edited; console logs loads, card-check counts, gate decisions, exports. Studio itself is testing mode only (`#studio`, `#calib`), saves nothing and exports cards as JSON (D-038); `tools/card-check` (+ `--parity` with the app's rules) and layout-check's Studio flows run in CI.
 - `?debug=viewer`: overlay adds scene id, triangles, draw calls, canvas px @ dpr, three.js revision; the viewer gets a **Debug** tab with **Measure fps (~30 s)** (every scene with a slow orbit, then +50k/150k/300k test triangles; avg + 5th-percentile fps per phase; Copy → paste into a chat → pipeline reference §2) and **Bounding boxes** (I5).
 - `?debug=1` or `?debug=map,viewer,layout,store,router,device,test`: overlay (version, route, ids, fps, state size + rev, device class, viewport, dpr, pointer) and `[area]` console logs; `layout` adds a **Check layout** button. `&boxes` outlines every box.
 - `appTests()` (in `src/js/91-tests.js`): device classes, routes ↔ addresses (incl. scene/day), Up, storage fill/merge (incl. motion), tokens, strings, viewer config.
