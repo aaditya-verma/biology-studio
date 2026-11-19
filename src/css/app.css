@@ -329,6 +329,8 @@ html.dev-pl .st-home,html.dev-tp .st-home,html.dev-tl .st-home{grid-template-col
 html.dev-d .st-home{grid-template-columns:repeat(3,minmax(0,1fr))}
 .st-home select{width:100%;min-width:0;flex:1 1 12em}
 .st-row .badge{flex:none}
+.st-home>section:first-child{grid-column:1/-1}   /* the card list gets the full width (titles are long) */
+.st-row{flex-wrap:wrap} .st-row .nm{white-space:normal;overflow-wrap:anywhere;min-width:min(100%,12em);flex:1 1 12em}
 .st-s-draft{border-style:dashed} .st-s-reviewed{border-color:var(--good);color:var(--good)} .st-s-shipped{border-color:var(--ink);font-weight:700}
 .st-dirty{color:var(--warn);font-weight:700}
 .warn{color:var(--warn);font-weight:700}

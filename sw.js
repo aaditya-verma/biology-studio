@@ -5,7 +5,7 @@
    Registers only on https (GitHub Pages / artifact hosts), so a local http.server test never exercises it.
    EDIT: bump CACHE with APP.v (src/js/00-version.js) and the ?v= in index.html — old caches are deleted on activate (RULES C6). */
 const CACHE='biostudio-v4';
-const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=3','content/strings.js?v=4',
+const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=4','content/strings.js?v=4',
   'src/js/00-version.js?v=4','src/js/01-debug.js?v=3','src/js/02-config.js?v=3','src/js/03-device.js?v=1','src/js/04-storage.js?v=2','src/js/05-router.js?v=3',
   'src/js/06-shell.js?v=3','src/js/10-today.js?v=2','src/js/11-bookmap.js?v=2','src/js/12-settings.js?v=2','src/js/13-viewer.js?v=3','src/js/15-cards.js?v=1','src/js/16-studio.js?v=1','src/js/90-layout-audit.js?v=2','src/js/91-tests.js?v=3','src/js/99-boot.js?v=2',
   'assets/icon.svg','assets/icon-192.png','assets/icon-512.png','assets/icon-maskable-512.png','content/E/map.json','content/E/scenes/index.json'];
