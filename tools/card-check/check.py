@@ -29,10 +29,10 @@ BUDGET = {"general": 90, "school": 110, "neet": 140, "mbbs": 160, "pg": 200}
 REQUIRED_LEVELS = ["general", "mbbs"]
 MARKS = ["✔✔", "✔", "⚑", "✚", "≈"]
 STATUSES = ["draft", "reviewed", "shipped", "retired"]
-LIMITS = {"sentence_words": 25, "new_terms": 3, "new_terms_exception": 5, "min_checks": 2, "options": (3, 5)}
+LIMITS = {"sentence_words": 25, "new_terms": 3, "new_terms_exception": 5, "min_checks": 2, "options": (3, 5), "remember": (2, 5), "shows_up": 6}
 GATES = {   # EDIT: review-card checklists (card-spec §5); lines = which review lines the gate signs off
-    "G-Sci": {"checklist": ["cited", "sections", "accuracy", "flags", "plus", "noapprox"], "lines": ["body", "fact", "mis", "adult"]},
-    "G-Learn": {"checklist": ["objective", "checks", "refutes", "terms", "budget", "adult"], "lines": ["obj", "terms", "check", "mis"]},
+    "G-Sci": {"checklist": ["cited", "sections", "accuracy", "flags", "plus", "noapprox"], "lines": ["body", "fact", "mis", "adult", "clinical", "remember"]},
+    "G-Learn": {"checklist": ["objective", "checks", "refutes", "terms", "budget", "adult"], "lines": ["obj", "terms", "check", "mis", "remember", "shows"]},
     "G-A11y": {"checklist": ["alt", "input", "colour", "text125"], "lines": []},
     "G-Owner": {"checklist": ["owner"], "lines": []},
 }
@@ -64,7 +64,7 @@ def sentences(t):
 
 def review_lines(card):
     """Every review line id by kind (card-spec §5)."""
-    L = {"obj": ["obj"], "terms": ["terms"], "body": [], "fact": [], "mis": [], "check": [], "adult": []}
+    L = {"obj": ["obj"], "terms": ["terms"], "body": [], "fact": [], "mis": [], "check": [], "adult": [], "clinical": [], "remember": [], "shows": []}
     for lvl, txt in (card.get("body") or {}).items():
         L["body"] += [f"body.{lvl}.{i + 1}" for i in range(len(sentences(txt)))]
     L["fact"] = [f.get("id") for f in card.get("facts") or []]
@@ -72,6 +72,11 @@ def review_lines(card):
     L["check"] = [q.get("id") for q in card.get("checks") or []]
     if card.get("adult"):
         L["adult"] = ["adult"]
+    if card.get("clinical"):
+        L["clinical"] = ["clinical"]
+    L["remember"] = [r.get("id") for r in card.get("remember") or [] if isinstance(r, dict)]
+    if card.get("shows_up"):
+        L["shows"] = ["shows_up"]
     return L
 
 
@@ -97,7 +102,7 @@ def card_check(card, stem, ctx):
     src = ctx["src"]
     # 1. schema
     want = {"spec": int, "id": str, "version": int, "book": str, "status": str, "title": str, "tier": str, "objective": dict, "body": dict,
-            "facts": list, "terms": dict, "misconceptions": list, "checks": list, "scene": dict, "made": dict, "review": dict, "log": list}
+            "facts": list, "terms": dict, "misconceptions": list, "checks": list, "scene": dict, "made": dict, "review": dict, "log": list, "remember": list}
     for k, t in want.items():
         if not (is_int(card.get(k)) if t is int else isinstance(card.get(k), t)):
             E("E-schema", k, f"'{k}' missing or not {t.__name__}")
@@ -134,7 +139,7 @@ def card_check(card, stem, ctx):
 
     def sent_rules(txt, prefix):
         for i, s in enumerate(sentences(txt)):
-            ln = f"{prefix}.{i + 1}" if prefix != "adult" else "adult"
+            ln = f"{prefix}.{i + 1}" if prefix not in ("adult", "clinical") else prefix
             if words(s) > LIMITS["sentence_words"]:
                 E("E-sentence", ln, f"{words(s)} words > {LIMITS['sentence_words']}")
             refs = [r.strip() for m in REF_RE.findall(s) for r in m.split(",")]
@@ -153,6 +158,50 @@ def card_check(card, stem, ctx):
         sent_rules(txt, f"body.{lvl}")
     if card.get("adult"):
         sent_rules(card["adult"], "adult")
+    if "clinical" in card and not (isinstance(card["clinical"], str) and card["clinical"].strip()):
+        E("E-schema", "clinical", "clinical must be text (leave it out if the concept has no clinical link)")
+    elif card.get("clinical"):
+        sent_rules(card["clinical"], "clinical")
+    # 5b. Remember prompts (card-spec §2: recall Q + answer with fact refs to main facts)
+    rlo, rhi = LIMITS["remember"]
+    rem = card["remember"]
+    if not (rlo <= len(rem) <= rhi):
+        E("E-remember", "remember", f"{len(rem)} prompts — need {rlo}–{rhi}")
+    main_ids = [f.get("id") for f in card["facts"] if f.get("where") == "main"]
+    rseen = set()
+    for r in rem:
+        if not isinstance(r, dict):
+            E("E-remember", "remember", "each prompt is {id, q, a}")
+            continue
+        rid = jstr(r.get("id") or "r?")
+        if not re.fullmatch(r"r\d+", rid) or rid in rseen:
+            E("E-remember", rid, "prompt id must be r1, r2… and unique")
+        rseen.add(rid)
+        q, ans = jstr(r.get("q") or "").strip(), jstr(r.get("a") or "").strip()
+        if not q.endswith("?"):
+            E("E-remember", rid, "q must be a question (ends with ?)")
+        if not ans:
+            E("E-remember", rid, "a (the answer) missing")
+        for t in (q, ans):
+            if words(t) > LIMITS["sentence_words"]:
+                E("E-sentence", rid, f"{words(t)} words > {LIMITS['sentence_words']}")
+        refs = [x.strip() for m in REF_RE.findall(ans) for x in m.split(",")]
+        if ans and not refs:
+            E("E-ref", rid, "answer has no fact ref [f1]")
+        for x in refs:
+            if x not in main_ids:
+                E("E-ref", rid, f"ref {x} is not a main fact (Remember tests the card, not More)")
+    # 5c. Where it shows up (concept ids)
+    if "shows_up" in card:
+        su = card["shows_up"]
+        if not isinstance(su, list) or not su or len(su) > LIMITS["shows_up"]:
+            E("E-shows", "shows_up", f"shows_up must be a list of 1–{LIMITS['shows_up']} concept ids")
+        else:
+            for x in su:
+                if x not in ctx["map_ids"] or x == card["id"]:
+                    E("E-shows", "shows_up", f"{jstr(x)} is not another concept in map.json")
+            if len(set(map(jstr, su))) != len(su):
+                E("E-shows", "shows_up", "concept ids repeat")
     # 6. facts: cited + marked (B1, B6, B7)
     seen = set()
     for f in card["facts"]:

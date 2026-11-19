@@ -1,0 +1,181 @@
+{
+ "spec": 1,
+ "id": "E05.01.02",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Primitive streak",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe the primitive streak: where it forms, its parts and how long it lasts."
+ },
+ "body": {
+  "general": "Where does gastrulation begin? Around day 15 a groove, the primitive streak, forms in the midline at the tail end of the disc [f1]. Its head end swells into a small knot, the primitive node, around a dip called the primitive pit [f2]. The streak marks the long axis: the head end is the opposite end [f3]. It keeps feeding cells inward until the end of week 4, then shrinks and disappears [f4].",
+  "mbbs": "The primitive streak first appears as a faint line in the caudal midline of the epiblast [f1]. By days 15–16 (stage 6) it is a narrow groove with raised edges [f1]. Its cranial end is the primitive node, a slightly raised area around the primitive pit [f2]. The streak defines the cranial–caudal axis: it lies caudally, and the cranial end is opposite [f3]. It keeps making cells until the end of week 4, then regresses quickly and disappears [f4]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The streak first shows as a faint line in the caudal midline; by days 15–16 it is a narrow groove with raised edges.",
+   "cite": "E05.01 · R06 CS6",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06: streak at ~13 d post-ovulation, within the ±1–2 d spread (dossier §1)"
+  },
+  {
+   "id": "f2",
+   "text": "Its cranial end is the primitive node, a small raised area around the primitive pit.",
+   "cite": "E05.01 · R06 CS8",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "It marks the body's long axis: the head end is opposite the streak, which lies caudally.",
+   "cite": "E05.01, E05.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "It keeps adding cells until the end of week 4, then shrinks fast and disappears.",
+   "cite": "E05.05",
+   "mark": "✔",
+   "where": "main",
+   "note": "R05a: gastrulation area still present caudally to ~CS10 — consistent, not a direct confirmation"
+  },
+  {
+   "id": "f5",
+   "text": "Leftover streak cells in the sacrococcygeal region can form a sacrococcygeal teratoma, a tumour with tissue from all three germ layers.",
+   "cite": "E05.05 CC · R05g, R05h, R05i",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "It is the most common tumour in newborns.",
+   "cite": "E05.05 CC",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.primitive-node",
+   "E.t.primitive-pit",
+   "E.t.teratoma"
+  ],
+  "known": [
+   "E.t.primitive-streak",
+   "E.t.gastrulation",
+   "E.t.epiblast",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The primitive streak is permanent and becomes the spine.",
+   "right": "It shrinks and disappears after week 4; leftovers can form a sacrococcygeal teratoma.",
+   "cite": "E05.05",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The primitive streak is the notochord.",
+   "right": "The streak is where cells move in; the notochord is a rod built later from some of those cells.",
+   "cite": "E05.01, E05.02",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "What happens to the primitive streak after week 4?",
+   "options": [
+    "It shrinks and disappears",
+    "It becomes the spinal cord",
+    "It becomes the vertebral column",
+    "It turns into the notochord"
+   ],
+   "answer": 0,
+   "why": "The streak regresses fast after week 4 and leaves no adult structure.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Where is the primitive node?",
+   "options": [
+    "At the cranial end of the streak",
+    "At the caudal end of the streak",
+    "At the rim of the disc",
+    "Under the hypoblast"
+   ],
+   "answer": 0,
+   "why": "The node is the raised area at the streak's cranial end, around the primitive pit.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which best describes the primitive streak?",
+   "options": [
+    "The groove where epiblast cells move in",
+    "The rod that signals the spine to form",
+    "The first part of the spinal cord"
+   ],
+   "answer": 0,
+   "why": "The streak is a groove of moving cells; the notochord is a separate rod made later.",
+   "tests": "objective",
+   "refutes": "m2"
+  }
+ ],
+ "adult": "The streak leaves no adult part; what lasts is the head-to-tail axis it marked [f3,f4].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Where does the primitive streak form?",
+   "a": "In the caudal midline of the disc, as a groove by days 15–16 [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "What lies at the cranial end of the streak?",
+   "a": "The primitive node, around the primitive pit [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "When does the streak disappear?",
+   "a": "After the end of week 4, when it shrinks fast [f4]."
+  }
+ ],
+ "clinical": "If streak cells survive in the sacrococcygeal region, they can form a sacrococcygeal teratoma with tissue from all three germ layers [f5]. It is the most common tumour in newborns [f6].",
+ "shows_up": [
+  "E05.01.03",
+  "E05.03.01",
+  "E05.05.03"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 15
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.01.02), §3, §5 #4, #6",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

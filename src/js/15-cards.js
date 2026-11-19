@@ -8,9 +8,9 @@ const CARD_RULES={
   spatial:['identify','label','locate','order'],
   budget:{general:90,school:110,neet:140,mbbs:160,pg:200}, required:['general','mbbs'],
   marks:['✔✔','✔','⚑','✚','≈'], statuses:['draft','reviewed','shipped','retired'],
-  limits:{sentence:25,newTerms:3,newTermsEx:5,minChecks:2,opt:[3,5]},
-  gates:{'G-Sci':{checklist:['cited','sections','accuracy','flags','plus','noapprox'],lines:['body','fact','mis','adult']},
-    'G-Learn':{checklist:['objective','checks','refutes','terms','budget','adult'],lines:['obj','terms','check','mis']},
+  limits:{sentence:25,newTerms:3,newTermsEx:5,minChecks:2,opt:[3,5],remember:[2,5],showsUp:6},
+  gates:{'G-Sci':{checklist:['cited','sections','accuracy','flags','plus','noapprox'],lines:['body','fact','mis','adult','clinical','remember']},
+    'G-Learn':{checklist:['objective','checks','refutes','terms','budget','adult'],lines:['obj','terms','check','mis','remember','shows']},
     'G-A11y':{checklist:['alt','input','colour','text125'],lines:[]},
     'G-Owner':{checklist:['owner'],lines:[]}},
   needs:{reviewed:['G-Sci','G-Learn'],shipped:['G-Sci','G-Learn','G-A11y','G-Owner']}
@@ -60,16 +60,17 @@ function suggestMark(parsed,decision,src){if(!parsed)return '≈';if(decision)re
   const reg=Object.fromEntries(src.registry.map(r=>[r.id,r]));return parsed.sources.some(s=>(reg[s.id]||{}).tier===1)?'✔✔':'✔';}
 
 /* ---------- review lines (card-spec §5) ---------- */
-function cardLines(card){const L={obj:['obj'],terms:['terms'],body:[],fact:[],mis:[],check:[],adult:[]};
+function cardLines(card){const L={obj:['obj'],terms:['terms'],body:[],fact:[],mis:[],check:[],adult:[],clinical:[],remember:[],shows:[]};
   for(const [lvl,t] of Object.entries(card.body||{}))cSentences(t).forEach((_,i)=>L.body.push(`body.${lvl}.${i+1}`));
-  L.fact=(card.facts||[]).map(f=>f.id);L.mis=(card.misconceptions||[]).map(m=>m.id);L.check=(card.checks||[]).map(q=>q.id);if(card.adult)L.adult=['adult'];return L;}
+  L.fact=(card.facts||[]).map(f=>f.id);L.mis=(card.misconceptions||[]).map(m=>m.id);L.check=(card.checks||[]).map(q=>q.id);if(card.adult)L.adult=['adult'];if(card.clinical)L.clinical=['clinical'];
+  L.remember=(card.remember||[]).filter(r=>r!==null&&typeof r==='object'&&!Array.isArray(r)).map(r=>r.id);const su=card.shows_up;if(Array.isArray(su)?su.length:(su!==null&&typeof su==='object'?Object.keys(su).length:su))L.shows=['shows_up'];return L;}
 const gateLines=(card,g)=>{const L=cardLines(card);return CARD_RULES.gates[g].lines.flatMap(k=>L[k]);};
 
 /* ---------- cardCheck: mirror of tools/card-check/check.py card_check() ---------- */
 function cardCheck(card,stem,ctx){
   const R=CARD_RULES,out=[],E=(code,line,msg)=>out.push({lvl:'E',code,line,msg}),W=(code,line,msg)=>out.push({lvl:'W',code,line,msg}),src=ctx.src;
   const isObj=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
-  const want={spec:'int',id:'str',version:'int',book:'str',status:'str',title:'str',tier:'str',objective:'dict',body:'dict',facts:'list',terms:'dict',misconceptions:'list',checks:'list',scene:'dict',made:'dict',review:'dict',log:'list'};
+  const want={spec:'int',id:'str',version:'int',book:'str',status:'str',title:'str',tier:'str',objective:'dict',body:'dict',facts:'list',terms:'dict',misconceptions:'list',checks:'list',scene:'dict',made:'dict',review:'dict',log:'list',remember:'list'};
   const ok={int:Number.isInteger,str:x=>typeof x==='string',dict:isObj,list:Array.isArray};
   for(const [k,t] of Object.entries(want))if(!ok[t](card[k]))E('E-schema',k,`'${k}' missing or not ${t}`);
   if(out.length)return out;
@@ -85,7 +86,7 @@ function cardCheck(card,stem,ctx){
   else if(new RegExp('\\b(?:and|then|,)\\s+('+R.verbs.join('|')+')\\b').test(text.toLowerCase()))E('E-objective','obj','one verb per objective');
   const fids=card.facts.map(f=>f.id);
   for(const lvl of R.required)if(!String(card.body[lvl]||'').trim())E('E-level','body.'+lvl,`level '${lvl}' missing`);
-  const sentRules=(txt,prefix)=>cSentences(txt).forEach((s,i)=>{const ln=prefix==='adult'?'adult':`${prefix}.${i+1}`;
+  const sentRules=(txt,prefix)=>cSentences(txt).forEach((s,i)=>{const ln=(prefix==='adult'||prefix==='clinical')?prefix:`${prefix}.${i+1}`;
     if(cWords(s)>R.limits.sentence)E('E-sentence',ln,`${cWords(s)} words > ${R.limits.sentence}`);
     const refs=cRefs(s);if(!refs.length&&!stripRefs(s).endsWith('?'))E('E-ref',ln,'sentence has no fact ref [f1] (only a question may go without)');
     for(const r of refs)if(!fids.includes(r))E('E-ref',ln,`ref ${r} points at no fact`);});
@@ -94,6 +95,24 @@ function cardCheck(card,stem,ctx){
     if(cWords(txt)>R.budget[lvl])E('E-words','body.'+lvl,`${cWords(txt)} words > ${R.budget[lvl]} for ${lvl}`);
     sentRules(txt,'body.'+lvl);}
   if(card.adult)sentRules(card.adult,'adult');
+  if('clinical' in card&&!(typeof card.clinical==='string'&&card.clinical.trim()))E('E-schema','clinical','clinical must be text (leave it out if the concept has no clinical link)');
+  else if(card.clinical)sentRules(card.clinical,'clinical');
+  /* Remember prompts + Where it shows up (card-spec §2) */
+  const [rlo,rhi]=R.limits.remember,rem=card.remember;
+  if(!(rem.length>=rlo&&rem.length<=rhi))E('E-remember','remember',`${rem.length} prompts — need ${rlo}–${rhi}`);
+  const mainIds=card.facts.filter(f=>f.where==='main').map(f=>f.id),rseen=new Set();
+  for(const r of rem){if(!isObj(r)){E('E-remember','remember','each prompt is {id, q, a}');continue;}
+    const rid=String(r.id||'r?');if(!/^r\d+$/.test(rid)||rseen.has(rid))E('E-remember',rid,'prompt id must be r1, r2… and unique');rseen.add(rid);
+    const q=String(r.q||'').trim(),a=String(r.a||'').trim();
+    if(!q.endsWith('?'))E('E-remember',rid,'q must be a question (ends with ?)');
+    if(!a)E('E-remember',rid,'a (the answer) missing');
+    for(const t of [q,a])if(cWords(t)>R.limits.sentence)E('E-sentence',rid,`${cWords(t)} words > ${R.limits.sentence}`);
+    const refs=cRefs(a);if(a&&!refs.length)E('E-ref',rid,'answer has no fact ref [f1]');
+    for(const x of refs)if(!mainIds.includes(x))E('E-ref',rid,`ref ${x} is not a main fact (Remember tests the card, not More)`);}
+  if('shows_up' in card){const su=card.shows_up;
+    if(!Array.isArray(su)||!su.length||su.length>R.limits.showsUp)E('E-shows','shows_up',`shows_up must be a list of 1–${R.limits.showsUp} concept ids`);
+    else{for(const x of su)if(!ctx.mapIds.has(x)||x===card.id)E('E-shows','shows_up',`${String(x)} is not another concept in map.json`);
+      if(new Set(su.map(String)).size!==su.length)E('E-shows','shows_up','concept ids repeat');}}
   const seen=new Set(),reg=Object.fromEntries(src.registry.map(r=>[r.id,r]));
   for(const f of card.facts){const fid=String(f.id||'f?');
     if(typeof f.id!=='string'||!/^f\d+$/.test(fid)||seen.has(fid))E('E-schema',fid,'fact id must be f1, f2… and unique');seen.add(fid);

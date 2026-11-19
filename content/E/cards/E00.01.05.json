@@ -1,0 +1,137 @@
+{
+ "spec": 1,
+ "id": "E00.01.05",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Reading a section",
+ "tier": "A",
+ "objective": {
+  "verb": "identify",
+  "text": "Identify the layers on a transverse section through the week-3 disc."
+ },
+ "body": {
+  "general": "What does a slice through the disc show? A transverse cut goes across the disc, like slicing bread, so you see it from side to side [f1]. The top of the slice is the back (dorsal), the bottom is the belly side (ventral) [f2]. On day 17, a slice through the groove at the tail end shows ectoderm on top, mesoderm in the middle and endoderm below [f3]. At the groove you can see cells dipping down into the middle [f4].",
+  "mbbs": "A transverse section cuts across the cranial–caudal axis, so it shows the disc from left to right [f1]. Dorsal is at the top: the epiblast side, facing the amniotic cavity; ventral is the endoderm side, facing the yolk sac [f2]. A day-17 section through the primitive streak shows epiblast (future ectoderm) on top, mesoderm spreading sideways in the middle and endoderm below [f3]. At the streak, epiblast cells are caught dipping through the groove into the middle layer [f4]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "A transverse section cuts across the head–tail (cranial–caudal) axis, so it shows the disc from left to right.",
+   "cite": "E05.01, E05.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Dorsal is the epiblast side, facing the amniotic cavity; ventral is the lower side, facing the yolk sac.",
+   "cite": "E04.01, E04.04 · R06 CS6",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Through the streak on day 17, a section shows epiblast (future ectoderm) on top, mesoderm spreading in the middle and endoderm below.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "At the streak, epiblast cells move down through the groove into the space between the layers.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.primitive-streak"
+  ],
+  "known": [
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "A transverse section shows the head end and the tail end.",
+   "right": "It cuts across the head–tail axis, so it shows left and right, back and belly.",
+   "cite": "E05.03",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The top of a section is the belly side.",
+   "right": "Dorsal (the back) is the upper, epiblast side.",
+   "cite": "E04.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "order",
+   "prompt": "On a transverse section through the streak on day 17, put the layers in order from dorsal to ventral.",
+   "options": [
+    "Epiblast (future ectoderm)",
+    "Mesoderm",
+    "Endoderm"
+   ],
+   "why": "Dorsal is on top: epiblast, then the new mesoderm, then endoderm facing the yolk sac.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which directions can you see on a transverse section of the disc?",
+   "options": [
+    "Left–right and back–belly",
+    "Head–tail and back–belly",
+    "Head–tail and left–right"
+   ],
+   "answer": 0,
+   "why": "A transverse cut crosses the head–tail axis, so head and tail are not in the slice.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Which way does a transverse section cut the disc?",
+   "a": "Across the head–tail axis, showing left to right [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "On a day-17 section through the streak, which layer is in the middle?",
+   "a": "Mesoderm, spreading between epiblast and endoderm [f3]."
+  }
+ ],
+ "shows_up": [
+  "E05.01.03",
+  "E06.02.01",
+  "E06.03.01"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from sc-E00.01.01 + sc-E00.01.04 facts (V1) + dossier ch05 §2",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

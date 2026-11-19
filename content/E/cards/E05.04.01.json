@@ -1,0 +1,173 @@
+{
+ "spec": 1,
+ "id": "E05.04.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "What each layer builds",
+ "tier": "A",
+ "objective": {
+  "verb": "relate",
+  "text": "Relate each germ layer to the main tissues it builds."
+ },
+ "body": {
+  "general": "Which layer made your brain, your bones and your gut lining? Where a cell goes in through the streak decides what it becomes [f1]. Ectoderm builds the parts that face or sense the outside: the brain, nerves, skin surface and sense organs [f2]. Mesoderm builds bones, muscles, the heart, vessels, blood, kidneys and gonads [f3]. Endoderm lines the gut and airways and forms the working cells of the liver and pancreas [f4].",
+  "mbbs": "Langman's fate map shows that the place a cell passes through the node or streak decides its fate [f1]. Ectoderm forms the central and peripheral nervous systems, the sensory epithelia of ear, nose and eye, and the epidermis with hair and nails [f2]. It also forms the pituitary, the mammary and sweat glands and tooth enamel [f6]. Mesoderm forms vertebrae and ribs, skeletal muscle, dermis, the urogenital system, heart, vessels and blood cells [f3]. Endoderm lines the gut, respiratory tract and bladder, and forms the working cells of the thyroid, liver and pancreas [f4]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Where a cell passes through the node or streak decides what it becomes.",
+   "cite": "E05.04",
+   "mark": "✔",
+   "where": "main",
+   "note": "book fate map from animal mapping; R05c shows early mesoderm subtypes in human CS7 but not their entry points (dossier §2)"
+  },
+  {
+   "id": "f2",
+   "text": "Ectoderm builds the nervous system, the sensory linings of ear, nose and eye, and the epidermis with hair and nails.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Ectoderm also builds the pituitary, skin glands such as mammary and sweat glands, and tooth enamel.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Mesoderm builds vertebrae and ribs, skeletal muscle, dermis, kidneys and gonads, the heart, vessels and blood cells.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Endoderm lines the gut, airways, bladder and urethra, and forms the working cells of the thyroid, liver and pancreas.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Beyond Langman: human stage-7 data show early mesoderm subtypes already forming, though not where each one entered.",
+   "cite": "· R05c",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm",
+   "E.t.primitive-streak",
+   "E.t.germ-layers"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Ectoderm only makes skin.",
+   "right": "It also makes the whole nervous system, the sense-organ linings, the pituitary and tooth enamel.",
+   "cite": "E06.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The bladder is mesoderm, like the rest of the urogenital system.",
+   "right": "Its lining is endoderm; kidneys, gonads and ducts are mesoderm.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Which germ layer builds the brain and spinal cord?",
+   "options": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm"
+   ],
+   "answer": 0,
+   "why": "The nervous system is ectoderm, the layer that faces and senses the outside.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "The lining of the urinary bladder comes from which layer?",
+   "options": [
+    "Endoderm",
+    "Mesoderm",
+    "Ectoderm"
+   ],
+   "answer": 0,
+   "why": "Kidneys and gonads are mesoderm, but the bladder lining is endoderm.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which tissue comes from mesoderm?",
+   "options": [
+    "Heart muscle",
+    "Liver working cells",
+    "Epidermis",
+    "Tooth enamel"
+   ],
+   "answer": 0,
+   "why": "Heart, vessels, blood, bone and muscle are mesoderm; the others are endoderm or ectoderm.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "Every adult organ can be traced to one, two or all three of these layers [f2,f3,f4].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What decides what a gastrulating cell becomes?",
+   "a": "Where it passes through the node or streak [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Which layer lines the gut and airways?",
+   "a": "Endoderm [f4]."
+  },
+  {
+   "id": "r3",
+   "q": "What are three things mesoderm builds?",
+   "a": "For example bone, skeletal muscle and the heart [f3]."
+  }
+ ],
+ "shows_up": [
+  "E05.04.02",
+  "E06.01.06",
+  "E06.02.01"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.04.01) + ch06 §2 (derivatives), §5 #9, #11; map def",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

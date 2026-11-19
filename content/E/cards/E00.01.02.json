@@ -1,0 +1,167 @@
+{
+ "spec": 1,
+ "id": "E00.01.02",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Dating an embryo",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how an embryo's age is counted in days and Carnegie stages."
+ },
+ "body": {
+  "general": "How old is an embryo on 'day 16'? Embryology counts days from fertilization [f1]. Doctors count a pregnancy from the last period, about two weeks earlier, so week 3 here is about week 5 of pregnancy [f2]. Carnegie stages sort embryos by shape, not age, so one stage covers a few days [f1]. Stage 6, when gastrulation starts, is days 14–15 [f3]. Sources differ a little on stage ages, so this app always shows the book's day [f4].",
+  "mbbs": "Langman dates embryos in days after fertilization [f1]. Clinical (gestational) age counts from the last menstrual period, about two weeks earlier, so developmental week 3 is about gestational week 5 [f2]. That is often before the pregnancy is known [f2]. Carnegie stages group embryos by external form, not age or length, so each stage spans several days [f1]. Stage 6 (days 14–15) has the first primitive streak; stage 7 (days 16–18) has the notochordal process [f3]. Stage ages are estimates, so on screen we give the book's day [f4]. Birth comes about 38 weeks after fertilization, which is 40 gestational weeks [f6]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The book dates embryos in days after fertilization; Carnegie stages group embryos by their form, so a stage spans a few days.",
+   "cite": "E06.06 Tbl 6.4 · R05f, R06",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Week 3 after fertilization is about gestational week 5, counted from the last menstrual period, often before a pregnancy is known.",
+   "cite": "E05.05 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Carnegie stage 6 (days 14–15) shows the first primitive streak; stage 7 (days 16–18) shows the notochordal process.",
+   "cite": "E06.06 Tbl 6.4 · R06, R08",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "On screen we give the book's day for each event; stage ages from other sources are estimates.",
+   "cite": "E06.06 Tbl 6.4 · R02, R05f",
+   "mark": "⚑",
+   "where": "main",
+   "decision": "D-030"
+  },
+  {
+   "id": "f5",
+   "text": "⚑ Newer evidence (D-030, D-039): one stage table runs older than the classic ages at stages 6–13, and equal or younger later.",
+   "cite": "E06.06 · R02, R08",
+   "mark": "⚑",
+   "where": "more",
+   "decision": "D-039"
+  },
+  {
+   "id": "f6",
+   "text": "Birth comes about 266 days (38 weeks) after fertilization, or about 280 days (40 weeks) after the last menstrual period.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": []
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Gestational age and fertilization age are the same number.",
+   "right": "Gestational age counts from the last menstrual period, about two weeks before fertilization.",
+   "cite": "E05.05 CC",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "A Carnegie stage is a fixed age in days.",
+   "right": "A stage is set by the embryo's form, so each stage spans a few days and sources give different ages.",
+   "cite": "E06.06 · R05f",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "A pregnancy is 5 weeks from the last period. About how many weeks since fertilization?",
+   "options": [
+    "About 3",
+    "About 5",
+    "About 7"
+   ],
+   "answer": 0,
+   "why": "Gestational age starts about two weeks before fertilization, so 5 gestational weeks is about week 3 of development.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "What decides an embryo's Carnegie stage?",
+   "options": [
+    "Its form (which features it has)",
+    "Its exact age in days",
+    "Its length alone"
+   ],
+   "answer": 0,
+   "why": "Stages are defined by features; ages and lengths are only estimates for each stage.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Gastrulation starts at Carnegie stage 6. Which days does the book give for it?",
+   "options": [
+    "Days 14–15",
+    "Days 7–8",
+    "Days 21–22",
+    "Days 28–30"
+   ],
+   "answer": 0,
+   "why": "The book's table puts the first streak at days 14–15, which is stage 6.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "The same two-week gap explains due dates: about 38 weeks of development is counted as 40 weeks of pregnancy [f6].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Embryology counts days from what event?",
+   "a": "Fertilization [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Week 3 of development is about which week of pregnancy?",
+   "a": "About gestational week 5, counted from the last period [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "What sets a Carnegie stage?",
+   "a": "The embryo's form, not its age [f1]."
+  }
+ ],
+ "shows_up": [
+  "E06.05.02",
+  "E08.01.03"
+ ],
+ "scene": {
+  "id": "sc-E00.01.02",
+  "day": 15
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from sc-E00.01.02 facts (V1) + dossier ch05 §1, §5 #7 + D-030/D-039 (c)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

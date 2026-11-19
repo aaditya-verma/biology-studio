@@ -16,8 +16,8 @@
 | E00.01.01 | Axes & planes | A | F | core |  | none | ori |  | 223 |  | ≈ |
 | E00.01.02 | Days, weeks & Carnegie stages | A | T | core |  | none | ori |  | 2 |  | ≈ |
 | E00.01.03 | Scale | A | T | core |  | none | ori |  |  |  | ≈ |
-| E00.01.04 | Colour key | A | G | core |  | none | ori |  |  |  | ≈ |
-| E00.01.05 | Reading a section | A | F | core |  | none | ori | E00.01.01 |  |  | ≈ |
+| E00.01.04 | Colour key | A | G | core |  | none | ori |  | 226 |  | ≈ |
+| E00.01.05 | Reading a section | A | F | core |  | none | ori | E00.01.01, E00.01.04 |  |  | ≈ |
 | E00.01.06 | How to use the app | A |  | s |  | none | ori |  |  |  | ≈ |
 
 *Misconceptions to refute (≈ until X1):* E00.01.02 — “Gestational age and fertilization age are the same number.”
@@ -113,7 +113,7 @@
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | E05.00.01 | Prechordal plate | B | F | x | 14–18 | endo | early | E04.01.01 | 2 | AN78.4 | ✔ |
 | E05.00.02 | Oropharyngeal and cloacal membranes | B | F | x | 14–21 | multi | early | E05.00.01 | 1 | AN79.1 | ✔ |
-| E05.01.01 | Gastrulation in one picture | A | GF | core | 15–21 | multi | early | E04.01.01 | 224 | AN79.1 | ✔ |
+| E05.01.01 | Gastrulation in one picture | A | GF | core | 15–21 | multi | early | E04.01.01, E00.01.04 | 224 | AN79.1 | ✔ |
 | E05.01.02 | Primitive streak | A | TF | core | 15–28 | multi | early | E05.01.01, E00.01.01 | 221 | AN79.1 | ✔ |
 | E05.01.03 | Cells move in | A | GF | core | 15–21 | meso | early | E05.01.02 | 215 | AN79.1 | ✔ |
 | E05.01.04 | Three germ layers from the epiblast | A | G | core | 16–21 | multi | early | E05.01.03 | 9 | AN79.1 | ✔ |
@@ -613,7 +613,7 @@
 | E09.01.01 Types of birth defects | 19: E01, E02, E03, E04, E05, E06, E08, E09, E10, E11, E12, E13, E14, E16, E17, E18, E19, E20, E21 |
 | E17.03.02 Arch and pouch defects | 19: E01, E02, E03, E04, E05, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E00.01.01 Axes & planes | 18: E00, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
-| E06.01.01 Neural induction and neural plate | 18: E01, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
+| E00.01.04 Colour key | 18: E00, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 
 Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs → Concept × Chapter).
 
@@ -622,7 +622,7 @@ Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs �
 
 | | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| E00 | · | · | · | · | · | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| E00 | · | · | · | · | · | 2 | 2 | 2 | 3 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 | E01 | · | · | 2 | 3 | · | 5 | 10 | 1 | 3 | 3 | 5 | 6 | 10 | 7 | 4 | 10 | 6 | 5 | 9 | 1 | 9 | 1 |
 | E02 | · | · | · | 7 | 6 | 7 | 6 | 6 | 6 | 6 | 5 | 5 | 5 | 6 | 6 | 6 | 8 | 5 | 6 | 5 | 5 | 5 |
 | E03 | · | 1 | 7 | · | 11 | 10 | 10 | 8 | 10 | 9 | 7 | 8 | 7 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 7 | 7 |
@@ -662,12 +662,12 @@ Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs �
 | E03.04.01 Blastocyst | 264 | 3 |
 | E03.05.01 Epiblast and hypoblast | 241 | 4 |
 | E04.01.01 Bilaminar disc | 236 | 4 |
+| E00.01.04 Colour key | 226 | 2 |
 | E05.01.01 Gastrulation in one picture | 224 | 3 |
 | E00.01.01 Axes & planes | 223 | 2 |
 | E05.01.02 Primitive streak | 221 | 4 |
 | E05.01.03 Cells move in | 215 | 3 |
 | E05.04.02 Streak position decides mesoderm type | 158 | 2 |
 | E06.02.01 Paraxial, intermediate and lateral plate mesoderm | 154 | 4 |
-| E05.02.01 Notochord | 84 | 3 |
 
 **Map checks (K1):** every content section has ≥ 1 concept (✅) · every concept has tier, thread or system, importance, locator · no orphan or circular prerequisites ✅ · glossary terms linked by name 205/265, + 60 attached to their primary section's first concept, 0 unplaced (I1 gap).

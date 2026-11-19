@@ -1,0 +1,149 @@
+{
+ "spec": 1,
+ "id": "E05.01.04",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Epiblast is not ectoderm",
+ "tier": "A",
+ "objective": {
+  "verb": "distinguish",
+  "text": "Distinguish the epiblast from the ectoderm it leaves behind."
+ },
+ "body": {
+  "general": "Is the epiblast just another name for ectoderm? No [f1,f3]. The epiblast is the top layer of the two-layered disc in week 2 [f1]. In week 3 many of its cells move in through the streak and become endoderm and mesoderm [f2]. Only the cells left behind are ectoderm [f3]. So the epiblast is the parent of all three germ layers, and ectoderm is just one of them [f4].",
+  "mbbs": "The epiblast is the dorsal layer of the bilaminar disc in week 2 [f1]. In week 3 its cells ingress through the primitive streak to form endoderm and mesoderm [f2]. Only the cells that stay behind become ectoderm [f3]. So all three germ layers derive from the epiblast, and together they build every tissue of the embryo [f4]. 'Epiblast' names the week-2 layer; 'ectoderm' names what remains of it after gastrulation [f1,f3]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The epiblast is the upper layer of the two-layered disc in week 2.",
+   "cite": "E04.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "In week 3, epiblast cells moving in through the streak form endoderm and mesoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The cells that stay in the epiblast become ectoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "So all three germ layers come from the epiblast, and together they build every tissue of the embryo.",
+   "cite": "E05.01, E05.07",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Beyond Langman: human single-cell and spatial studies at stage 7 find epiblast, streak, new mesoderm, endoderm and primordial germ cells side by side.",
+   "cite": "· R05b, R05c",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.germ-layers"
+  ],
+  "known": [
+   "E.t.epiblast",
+   "E.t.hypoblast",
+   "E.t.primitive-streak",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Epiblast and ectoderm are the same thing.",
+   "right": "The epiblast is the week-2 upper layer; ectoderm is only the part left after cells move in.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The three germ layers come from different starting layers.",
+   "right": "All three come from the epiblast.",
+   "cite": "E05.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Which statement is right?",
+   "options": [
+    "Ectoderm is the part of the epiblast left after cells move in",
+    "Ectoderm and epiblast are two names for one layer",
+    "Ectoderm comes from the hypoblast"
+   ],
+   "answer": 0,
+   "why": "The epiblast gives rise to all three layers; ectoderm is what stays behind.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "All three germ layers come from which layer?",
+   "options": [
+    "Epiblast",
+    "Hypoblast",
+    "Ectoderm"
+   ],
+   "answer": 0,
+   "why": "Endoderm and mesoderm move in from the epiblast, and ectoderm is the epiblast left behind.",
+   "tests": "objective",
+   "refutes": "m2"
+  }
+ ],
+ "adult": "Every tissue of the body traces back to the epiblast [f4].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What is the epiblast?",
+   "a": "The upper layer of the two-layered disc in week 2 [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Which part of the epiblast becomes ectoderm?",
+   "a": "The cells that stay behind instead of moving in [f3]."
+  }
+ ],
+ "shows_up": [
+  "E05.04.01",
+  "E06.00.01",
+  "E06.01.06"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.01.04), §5 #2–3",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

@@ -3,7 +3,7 @@
  "id": "E05.01.01",
  "version": 1,
  "book": "E",
- "status": "reviewed",
+ "status": "draft",
  "title": "Gastrulation in one picture",
  "tier": "A",
  "objective": {
@@ -91,16 +91,15 @@
  "terms": {
   "new": [
    "E.t.gastrulation",
-   "E.t.primitive-streak",
-   "E.t.ectoderm",
-   "E.t.mesoderm",
-   "E.t.endoderm"
+   "E.t.primitive-streak"
   ],
   "known": [
    "E.t.epiblast",
-   "E.t.hypoblast"
-  ],
-  "exception": "D-037"
+   "E.t.hypoblast",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
  },
  "misconceptions": [
   {
@@ -171,6 +170,28 @@
   }
  ],
  "adult": "These three layers go on to build every tissue of the body [f7].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What does gastrulation make?",
+   "a": "Three germ layers, ectoderm, mesoderm and endoderm, in week 3 [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Which layer do all three germ layers come from?",
+   "a": "The epiblast [f7]."
+  },
+  {
+   "id": "r3",
+   "q": "What happens to the hypoblast?",
+   "a": "The first epiblast cells through the streak push it aside and form endoderm [f4]."
+  }
+ ],
+ "shows_up": [
+  "E05.01.02",
+  "E05.04.01",
+  "E05.05.02"
+ ],
  "scene": {
   "id": "sc-E00.01.04",
   "day": 16
@@ -181,82 +202,7 @@
   "agent": "Bio · Build · S1 studio",
   "date": "19 Nov 2026"
  },
- "review": {
-  "G-Sci": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "Research librarian",
-   "agent": "S1 reviewer agent (round 3)",
-   "date": "19 Nov 2026",
-   "checklist": {
-    "cited": true,
-    "sections": true,
-    "accuracy": true,
-    "flags": true,
-    "plus": true,
-    "noapprox": true
-   },
-   "lines": {
-    "body.general.1": "ok",
-    "body.general.2": "ok",
-    "body.general.3": "ok",
-    "body.general.4": "ok",
-    "body.general.5": "ok",
-    "body.general.6": "ok",
-    "body.general.7": "ok",
-    "body.general.8": "ok",
-    "body.mbbs.1": "ok",
-    "body.mbbs.2": "ok",
-    "body.mbbs.3": "ok",
-    "body.mbbs.4": "ok",
-    "body.mbbs.5": "ok",
-    "body.mbbs.6": "ok",
-    "body.mbbs.7": "ok",
-    "body.mbbs.8": "ok",
-    "f1": "ok",
-    "f2": "ok",
-    "f3": "ok",
-    "f4": "ok",
-    "f5": "ok",
-    "f6": "ok",
-    "f7": "ok",
-    "f8": "ok",
-    "f9": "ok",
-    "f10": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "m3": "ok",
-    "adult": "ok"
-   },
-   "notes": ""
-  },
-  "G-Learn": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "S1 reviewer agent (round 3)",
-   "date": "19 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": true,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "m3": "ok"
-   },
-   "notes": "Pass on condition that the owner confirms D-037 (D2 exception, 5 new terms) at G-Owner; if the owner picks option (a), the edit reopens the card."
-  }
- },
+ "review": {},
  "log": [
   {
    "date": "19 Nov 2026",
@@ -312,6 +258,16 @@
    "date": "19 Nov 2026",
    "ev": "status → reviewed",
    "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "D-037 answered (a) by the owner: E00.01.04 is now a prerequisite and names the three layers, so terms = 2 new (gastrulation, primitive streak) + 5 known; exception removed; Remember r1–r3 and Where it shows up added (card-spec C1 parts)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci, G-Learn): content changed — both gates to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
   }
  ]
 }

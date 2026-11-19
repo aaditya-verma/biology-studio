@@ -48,7 +48,7 @@ function sdHome(v){
 }
 function sdNew(id){const c=MAPD.byId[id];if(!c)return;const sc=scenesFor(id)[0],d=sdToday();
   ST.draft[id]={spec:1,id,version:1,book:CONFIG.book,status:'draft',title:c.name,tier:c.tier,objective:{verb:'explain',text:''},body:{general:'',mbbs:''},
-    facts:[{id:'f1',text:'',cite:c.sec,mark:'≈',where:'main'}],terms:{new:[],known:(c.terms||[]).slice()},misconceptions:[],checks:[],scene:{id:sc?sc.id:''},
+    facts:[{id:'f1',text:'',cite:c.sec,mark:'≈',where:'main'}],terms:{new:[],known:(c.terms||[]).slice()},misconceptions:[],checks:[],remember:[],scene:{id:sc?sc.id:''},
     made:{by:ST.who.by||'',role:'Lead scientist',agent:'Studio (testing mode)',date:d},review:{},log:[{date:d,ev:'draft started in Studio',by:'Lead scientist · Studio'}]};
   ST.orig[id]='';go('studio='+id);}
 
@@ -99,6 +99,9 @@ function sdDraftHtml(c){
    <h3>${esc(S.fTerms)}</h3><p class="xs mut">${esc(S.termsHint)}</p><div class="st-grid">${sdField(S.fNew,'terms.new',c.terms.new,'list',{wide:1,nospell:1})}${sdField(S.fKnown,'terms.known',c.terms.known,'list',{wide:1,nospell:1})}${sdField(S.fException,'terms.exception',c.terms.exception,'opt',{nospell:1,ph:'D-037'})}</div>
    <h3>${esc(S.fMis)}</h3>${c.misconceptions.map(mis).join('')}<button type="button" class="btn" data-st-act="addmis">+ ${esc(S.addMis)}</button>
    <h3>${esc(S.fChecks)}</h3>${c.checks.map(chk).join('')}<button type="button" class="btn" data-st-act="addcheck">+ ${esc(S.addCheck)}</button>
+   <h3>${esc(S.fRemember)}</h3>${(c.remember||[]).map((r,i)=>`<fieldset class="st-item" id="sdRem${i}"><legend>${esc(r.id)}</legend>${sdField(S.fQ,`remember.${i}.q`,r.q,'str',{wide:1})}${sdField(S.fA,`remember.${i}.a`,r.a,'str',{wide:1})}
+    <button type="button" class="btn ghost sm" data-st-act="rmrem" data-i="${i}">${esc(S.removeRem)} ${esc(r.id)}</button></fieldset>`).join('')}<button type="button" class="btn" data-st-act="addrem">+ ${esc(S.addRem)}</button>
+   ${sdField(S.fClinical,'clinical',c.clinical,'opt',{area:1})}${sdField(S.fShows,'shows_up',c.shows_up,'optlist',{wide:1,nospell:1,ph:S.showsHint})}
    <h3>${esc(S.fScene)}</h3>${sdField(S.fAdult,'adult',c.adult,'opt',{area:1})}
    <div class="st-grid">${sdField(S.fScene,'scene.id',c.scene.id,'str',{select:[['','—'],...((SC.idx&&SC.idx.scenes)||[]).map(s=>[s.id,s.id+' · '+s.title])]})}${sdField(S.fDay,'scene.day',c.scene.day,'num',{nospell:1,num:1})}</div>
   </div>`;
@@ -107,7 +110,7 @@ function sdCiteNote(f){if(!ST.ctx)return '';const v=validateCitation(f.cite,ST.c
   return v.errors.length?`<span class="bad">✗ ${esc(v.errors.join('; '))}</span>`:`<span class="ok">✓ ${esc(STR.st.citeOk)}</span> · <span class="mut">${esc(STR.st.suggested(s))}</span>`;}
 function sdSetPath(o,path,v){const ks=path.split('.');for(const k of ks.slice(0,-1))o=Array.isArray(o)?o[+k]:(o[k]=o[k]||{});const k=ks[ks.length-1];
   if(v===undefined){if(Array.isArray(o))o.splice(+k,1);else delete o[k];}else if(Array.isArray(o))o[+k]=v;else o[k]=v;}
-function sdConv(val,k){switch(k){case 'lines':return val.split('\n').map(s=>s.trim()).filter(Boolean);case 'list':return val.split(/[\s,]+/).filter(Boolean);
+function sdConv(val,k){switch(k){case 'lines':return val.split('\n').map(s=>s.trim()).filter(Boolean);case 'list':return val.split(/[\s,]+/).filter(Boolean);case 'optlist':{const l=val.split(/[\s,]+/).filter(Boolean);return l.length?l:undefined;}
   case 'int':return val===''?undefined:parseInt(val,10);case 'num':return val===''?undefined:+val;case 'opt':return val.trim()===''?undefined:val;default:return val;}}
 function sdTouched(c){   // any content edit: drop the review ticks; clear every pass (failed reviews stay as history); a reviewed/shipped card goes back to draft
   Object.keys(ST.rv).filter(k=>k.startsWith(c.id+'|')).forEach(k=>delete ST.rv[k]);
@@ -144,6 +147,9 @@ function sdLineHtml(c,ln){const S=STR.st,src=ST.ctx&&ST.ctx.src,refs=t=>esc(stri
   if(ln==='obj')return `<b>${esc(c.objective.verb)}</b> · ${esc(c.objective.text)}`;
   if(ln==='terms')return `${c.terms.new.map(t=>`<b>${esc(src&&src.terms[t]||t)}</b>`).join(', ')}${c.terms.known.length?` · <span class="mut">${c.terms.known.map(t=>esc(src&&src.terms[t]||t)).join(', ')}</span>`:''}`;
   if(ln==='adult')return refs(c.adult);
+  if(ln==='clinical')return `<span class="xs mut">${esc(S.fClinical)}</span> ${refs(c.clinical)}`;
+  if(ln==='shows_up')return `<span class="xs mut">${esc(S.fShows)}</span> ${(c.shows_up||[]).map(x=>`<span class="mono">${esc(x)}</span> ${esc((MAPD.byId[x]||{}).name||'?')}`).join(' · ')}`;
+  const rr=(c.remember||[]).find(x=>x&&x.id===ln);if(rr)return `<span class="xs mut">${esc(S.fRemember)}</span> ${esc(rr.q)} → ${refs(rr.a)}`;
   let m=ln.match(/^body\.(\w+)\.(\d+)$/);if(m)return `<span class="xs mut">${esc(S.fLevel(m[1]))}</span> ${refs(cSentences(c.body[m[1]]||'')[+m[2]-1]||'')}`;
   const f=c.facts.find(x=>x.id===ln);if(f)return `${esc(f.text)} <span class="mono xs">[${esc(f.cite)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b>${f.where==='more'?' <span class="badge">More</span>':''}${f.decision?` <span class="badge">${esc(f.decision)}</span>`:''}`;
   const mi=c.misconceptions.find(x=>x.id===ln);if(mi)return `✗ ${esc(mi.wrong)} → ✓ ${esc(mi.right)} <span class="mono xs">[${esc(mi.cite)}]</span> <b class="mark">${esc(mi.mark)}</b>`;
@@ -241,11 +247,11 @@ document.addEventListener('click',e=>{
     const content={addfact:()=>c.facts.push({id:nid(c.facts,'f'),text:'',cite:(MAPD.byId[c.id]||{}).sec||'',mark:'≈',where:'main'}),rmfact:()=>c.facts.splice(+a.dataset.i,1),
       addmis:()=>c.misconceptions.push({id:nid(c.misconceptions,'m'),wrong:'',right:'',cite:'',mark:'✔'}),
       addcheck:()=>c.checks.push({id:nid(c.checks,'q'),type:'mcq',prompt:'',options:['','',''],answer:0,why:'',tests:'objective'}),
-      addlevel:()=>{c.body[a.dataset.l]='';},rmlevel:()=>{delete c.body[a.dataset.l];},
+      addlevel:()=>{c.body[a.dataset.l]='';},addrem:()=>{c.remember=c.remember||[];c.remember.push({id:nid(c.remember,'r'),q:'',a:''});},rmrem:()=>c.remember.splice(+a.dataset.i,1),rmlevel:()=>{delete c.body[a.dataset.l];},
       addimp:()=>{const p=sdImpParse(ST.imp.text,ST.ctx.src),cite=p.kind==='cite'?p.cite:((ST.imp.sec?ST.imp.sec+' · ':'· ')+p.hit.id+((ST.imp.loc||p.loc)?' '+(ST.imp.loc||p.loc):'')),v=validateCitation(cite,ST.ctx.src);
         c.facts.push({id:nid(c.facts,'f'),text:ST.imp.fact.trim(),cite,mark:suggestMark(v.parsed,null,ST.ctx.src),where:v.parsed&&v.parsed.sections.length?'main':'more'});toast(STR.st.added);}};
     if(content[k]){content[k]();sdTouched(c);
-      const fo={addfact:()=>sdPid(`facts.${c.facts.length-1}.text`),addmis:()=>sdPid(`misconceptions.${c.misconceptions.length-1}.wrong`),addcheck:()=>sdPid(`checks.${c.checks.length-1}.prompt`),addlevel:()=>sdPid('body.'+a.dataset.l)}[k];
+      const fo={addfact:()=>sdPid(`facts.${c.facts.length-1}.text`),addmis:()=>sdPid(`misconceptions.${c.misconceptions.length-1}.wrong`),addcheck:()=>sdPid(`checks.${c.checks.length-1}.prompt`),addlevel:()=>sdPid('body.'+a.dataset.l),addrem:()=>sdPid(`remember.${c.remember.length-1}.q`)}[k];
       ST.focus=fo?fo():'sdDraftH';render();return;}
     if(k==='copyline'){sdCopy(a.dataset.line,STR.st.lineCopied);return;}
     const g=ROUTE.gate||'G-Sci';
@@ -259,9 +265,9 @@ document.addEventListener('click',e=>{
   const sb=e.target.closest('[data-st-sec]');if(sb){ST.imp.sec=sb.dataset.stSec;const i=$('#sdImpSec');if(i)i.value=ST.imp.sec;sdImpRefresh();return;}
   const fl=e.target.closest('[data-st-line]');if(fl&&c){sdFocusLine(c,fl.dataset.stLine);return;}
 });
-function sdFocusLine(c,ln){let id=null;const fi=c.facts.findIndex(f=>f.id===ln),mi=c.misconceptions.findIndex(m=>m.id===ln),qi=c.checks.findIndex(q=>q.id===ln),m=ln.match(/^body\.(\w+)/);
-  if(fi>=0)id=sdPid(`facts.${fi}.text`);else if(mi>=0)id=sdPid(`misconceptions.${mi}.wrong`);else if(qi>=0)id=sdPid(`checks.${qi}.prompt`);else if(m)id=sdPid('body.'+m[1]);
-  else id={obj:sdPid('objective.text'),terms:sdPid('terms.new'),scene:sdPid('scene.id'),adult:sdPid('adult'),card:sdPid('title'),checks:sdPid('checks.0.prompt')}[ln];
+function sdFocusLine(c,ln){let id=null;const ri=(c.remember||[]).findIndex(r=>r&&r.id===ln),fi=c.facts.findIndex(f=>f.id===ln),mi=c.misconceptions.findIndex(m=>m.id===ln),qi=c.checks.findIndex(q=>q.id===ln),m=ln.match(/^body\.(\w+)/);
+  if(ri>=0)id=sdPid(`remember.${ri}.q`);else if(fi>=0)id=sdPid(`facts.${fi}.text`);else if(mi>=0)id=sdPid(`misconceptions.${mi}.wrong`);else if(qi>=0)id=sdPid(`checks.${qi}.prompt`);else if(m)id=sdPid('body.'+m[1]);
+  else id={obj:sdPid('objective.text'),terms:sdPid('terms.new'),scene:sdPid('scene.id'),adult:sdPid('adult'),clinical:sdPid('clinical'),shows_up:sdPid('shows_up'),remember:sdPid('remember.0.q'),card:sdPid('title'),checks:sdPid('checks.0.prompt')}[ln];
   let el=id&&document.getElementById(id);if(!el||!el.offsetParent)el=document.getElementById('ln-'+ln.replace(/\./g,'-'));   // phone: the review line
   if(el){el.scrollIntoView({block:'center'});if(el.matches('input,textarea,select'))el.focus({preventScroll:true});else{el.setAttribute('tabindex','-1');el.focus({preventScroll:true});}}}
 

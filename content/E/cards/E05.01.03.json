@@ -1,0 +1,186 @@
+{
+ "spec": 1,
+ "id": "E05.01.03",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Cells move in",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how epiblast cells move through the primitive streak to form endoderm and mesoderm."
+ },
+ "body": {
+  "general": "How does a flat sheet of cells grow new layers under itself? Cells of the top layer, the epiblast, crawl toward the streak [f1]. There they let go of their neighbours and slip under the sheet [f1]. The first cells through push out the old bottom layer and become endoderm [f2]. The next ones fill the gap between the layers as mesoderm and spread sideways and toward the head [f3,f4]. Cells that never go in become ectoderm [f5].",
+  "mbbs": "Epiblast cells migrate to the primitive streak, change shape, detach from their neighbours and slip beneath the epiblast; this inward movement is invagination [f1]. The first cells to ingress invade the hypoblast and displace it, forming definitive endoderm [f2]. Later cells come to lie between epiblast and endoderm as intraembryonic mesoderm [f3]. Mesoderm spreads laterally and cranially and meets the extraembryonic mesoderm at the disc margin [f4]. Cells that remain in the epiblast form ectoderm [f5]. Mesoderm goes on to build muscle, bone, connective tissue, the heart, vessels and blood [f6]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Epiblast cells move toward the streak, change shape, let go of their neighbours and slip underneath; this inward move is called invagination.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "The first cells in push into the hypoblast and replace it, forming the embryo's endoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Later cells settle between the epiblast and the new endoderm as mesoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Mesoderm spreads sideways and toward the head, and meets the extraembryonic mesoderm at the edge of the disc.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Cells that stay in the epiblast become ectoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Mesoderm goes on to build muscle, bone, connective tissue, the heart, vessels and blood.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "In the streak, FGF8 loosens the links between cells (E-cadherin) and, with BRACHYURY (T), steers cells toward mesoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f8",
+   "text": "Beyond Langman (mouse study): a few cells of the old lower layer mix into the new gut endoderm rather than all being pushed aside.",
+   "cite": "· R05e",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.epiblast",
+   "E.t.hypoblast",
+   "E.t.primitive-streak",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The hypoblast becomes the endoderm.",
+   "right": "Epiblast cells move in and replace the hypoblast; they form the endoderm.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Mesoderm comes from the hypoblast.",
+   "right": "Mesoderm is made of epiblast cells that moved in through the streak.",
+   "cite": "E05.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Where do the cells of the new endoderm come from?",
+   "options": [
+    "Epiblast cells that moved in through the streak",
+    "The hypoblast, which turns into endoderm",
+    "The wall of the yolk sac"
+   ],
+   "answer": 0,
+   "why": "The first epiblast cells through the streak displace the hypoblast and become endoderm.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "order",
+   "prompt": "Put one moving cell's journey in order.",
+   "options": [
+    "It moves toward the streak",
+    "It lets go of its neighbours",
+    "It slips under the epiblast",
+    "It spreads between the layers as mesoderm"
+   ],
+   "why": "Cells reach the streak, detach, go under, then spread out between the layers.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Mesoderm is made from which cells?",
+   "options": [
+    "Epiblast cells that moved in",
+    "Hypoblast cells",
+    "Cells from outside the embryo"
+   ],
+   "answer": 0,
+   "why": "All intraembryonic mesoderm comes from epiblast cells that ingressed at the streak.",
+   "tests": "objective",
+   "refutes": "m2"
+  }
+ ],
+ "adult": "The mesoderm cells that slip in here go on to build muscle, bone, the heart and blood [f6].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What is invagination in gastrulation?",
+   "a": "Epiblast cells letting go of their neighbours and slipping under at the streak [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Which cells become endoderm?",
+   "a": "The first epiblast cells through the streak, which replace the hypoblast [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "Which cells become ectoderm?",
+   "a": "Those that stay in the epiblast [f5]."
+  }
+ ],
+ "shows_up": [
+  "E05.01.04",
+  "E05.02.01",
+  "E05.04.02"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 16
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.01.03), §5 #1–2; ch06 §2 (mesoderm derivatives)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

@@ -5,10 +5,10 @@
    three.js (lib/) and the 3D engine are cached on first use (not precached: first load stays light, H8).
    Registers only on https (GitHub Pages / artifact hosts), so a local http.server test never exercises it.
    EDIT: bump CACHE with APP.v (src/js/00-version.js) and the ?v= in index.html — old caches are deleted on activate (RULES C6). */
-const CACHE='biostudio-v5';
-const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=5','content/strings.js?v=5',
-  'src/js/00-version.js?v=5','src/js/01-debug.js?v=4','src/js/02-config.js?v=4','src/js/03-device.js?v=1','src/js/04-storage.js?v=2','src/js/05-router.js?v=4',
-  'src/js/06-shell.js?v=4','src/js/10-today.js?v=2','src/js/11-bookmap.js?v=2','src/js/12-settings.js?v=2','src/js/13-viewer.js?v=3','src/js/15-cards.js?v=1','src/js/16-studio.js?v=1','src/js/17-tracker.js?v=1','src/js/90-layout-audit.js?v=3','src/js/91-tests.js?v=4','src/js/99-boot.js?v=2',
+const CACHE='biostudio-v6';
+const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=5','content/strings.js?v=6',
+  'src/js/00-version.js?v=6','src/js/01-debug.js?v=4','src/js/02-config.js?v=4','src/js/03-device.js?v=1','src/js/04-storage.js?v=2','src/js/05-router.js?v=4',
+  'src/js/06-shell.js?v=4','src/js/10-today.js?v=2','src/js/11-bookmap.js?v=2','src/js/12-settings.js?v=2','src/js/13-viewer.js?v=3','src/js/15-cards.js?v=2','src/js/16-studio.js?v=2','src/js/17-tracker.js?v=1','src/js/90-layout-audit.js?v=3','src/js/91-tests.js?v=4','src/js/99-boot.js?v=2',
   'assets/icon.svg','assets/icon-192.png','assets/icon-512.png','assets/icon-maskable-512.png','content/E/map.json','content/E/scenes/index.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});

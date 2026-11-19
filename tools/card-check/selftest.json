@@ -278,6 +278,93 @@
     "facts.2.text": 7
    },
    "expect": "E-schema"
+  },
+  {
+   "name": "remember missing",
+   "del": [
+    "remember"
+   ],
+   "expect": "E-schema"
+  },
+  {
+   "name": "one remember prompt",
+   "set": {
+    "remember": [
+     {
+      "id": "r1",
+      "q": "What does gastrulation make?",
+      "a": "Three germ layers [f1]."
+     }
+    ]
+   },
+   "expect": "E-remember"
+  },
+  {
+   "name": "remember q not a question",
+   "set": {
+    "remember.0.q": "Gastrulation makes"
+   },
+   "expect": "E-remember"
+  },
+  {
+   "name": "remember bad id",
+   "set": {
+    "remember.1.id": "r1"
+   },
+   "expect": "E-remember"
+  },
+  {
+   "name": "remember answer without ref",
+   "set": {
+    "remember.0.a": "Three germ layers."
+   },
+   "expect": "E-ref"
+  },
+  {
+   "name": "remember ref to a More fact",
+   "set": {
+    "remember.0.a": "Cells mix in [f10]."
+   },
+   "expect": "E-ref"
+  },
+  {
+   "name": "clinical empty",
+   "set": {
+    "clinical": ""
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "clinical sentence without ref",
+   "set": {
+    "clinical": "Week 3 is a sensitive time."
+   },
+   "expect": "E-ref"
+  },
+  {
+   "name": "shows_up unknown concept",
+   "set": {
+    "shows_up": [
+     "E99.01.01"
+    ]
+   },
+   "expect": "E-shows"
+  },
+  {
+   "name": "shows_up names itself",
+   "set": {
+    "shows_up": [
+     "E05.01.01"
+    ]
+   },
+   "expect": "E-shows"
+  },
+  {
+   "name": "shows_up empty",
+   "set": {
+    "shows_up": []
+   },
+   "expect": "E-shows"
   }
  ]
 }

@@ -1,0 +1,156 @@
+{
+ "spec": 1,
+ "id": "E00.01.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Head, tail, back, belly",
+ "tier": "A",
+ "objective": {
+  "verb": "name",
+  "text": "Name the three axes of the flat week-3 embryonic disc."
+ },
+ "body": {
+  "general": "Which end of a flat disc is the head? Its head–tail and back–belly directions are fixed before gastrulation starts [f1]. Head to tail is the long axis: a groove forms at the tail end, so the head end is opposite it [f2,f3]. Back to belly runs through the disc: the upper layer faces the back, the lower layer faces the belly [f4]. Left and right are the embryo's own sides, not yours [f5].",
+  "mbbs": "The disc has cranial–caudal and dorsal–ventral axes before the primitive streak appears [f1]. The cranial–caudal axis is the long axis: the streak forms in the caudal midline, and the cranial end lies opposite it [f2,f3]. The dorsal–ventral axis runs through the disc: dorsal is the upper side facing the amniotic cavity, ventral the lower side facing the yolk sac [f4]. The left–right axis is set during gastrulation and always means the embryo's own left and right [f5]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The head–tail and back–belly axes are already set before the primitive streak appears.",
+   "cite": "E05.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "The primitive streak first shows in the caudal midline of the disc; its cranial end is the primitive node.",
+   "cite": "E05.01 · R06 CS6",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The streak marks the long axis: it lies at the caudal (tail) end, and the cranial (head) end is opposite it.",
+   "cite": "E05.01, E05.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Dorsal is the epiblast side, facing the amniotic cavity; ventral is the hypoblast side, facing the yolk sac.",
+   "cite": "E04.01, E04.04 · R06 CS6",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Left and right are set during gastrulation; they are the embryo's own left and right sides.",
+   "cite": "E05.03",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.primitive-streak"
+  ],
+  "known": []
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Left and right mean the viewer's left and right.",
+   "right": "They are the embryo's own sides, whichever way you look at it.",
+   "cite": "E05.03",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The groove (primitive streak) forms at the head end.",
+   "right": "It forms in the caudal midline; the head end is opposite it.",
+   "cite": "E05.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "On the week-3 disc, where is the head (cranial) end?",
+   "options": [
+    "Opposite the groove that forms at the tail end",
+    "Where the groove forms",
+    "On the underside, facing the yolk sac",
+    "It is not set until week 4"
+   ],
+   "answer": 0,
+   "why": "The streak forms caudally, so the cranial end is the opposite end; the axis is set even before the streak.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "You face an embryo the way you face a person. Its left side is on…",
+   "options": [
+    "Your right",
+    "Your left",
+    "Either side; left and right are not fixed"
+   ],
+   "answer": 0,
+   "why": "Left and right are the embryo's own sides, so when you face it, its left is on your right.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which side of the disc is dorsal (the back)?",
+   "options": [
+    "The upper side, facing the amniotic cavity",
+    "The lower side, facing the yolk sac",
+    "The rim of the disc"
+   ],
+   "answer": 0,
+   "why": "Dorsal is the epiblast side, which faces the amniotic cavity; ventral faces the yolk sac.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "These three axes become the body's own head-to-toe, back-to-front and left–right directions [f1,f5].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Which way does the long axis of the disc run?",
+   "a": "Head (cranial) to tail (caudal); the streak marks the tail end [f3]."
+  },
+  {
+   "id": "r2",
+   "q": "Which side of the disc is dorsal?",
+   "a": "The upper (epiblast) side, facing the amniotic cavity [f4]."
+  }
+ ],
+ "shows_up": [
+  "E00.01.05",
+  "E05.01.02",
+  "E05.03.01"
+ ],
+ "scene": {
+  "id": "sc-E00.01.01",
+  "day": 15
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from sc-E00.01.01 facts (V1, G-Sci passed) + dossier ch05 §2",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

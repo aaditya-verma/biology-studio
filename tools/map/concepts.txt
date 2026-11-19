@@ -6,7 +6,7 @@ axes|Axes & planes|A|F|c|none|ori||| Cranial–caudal, dorsal–ventral and left
 dating0|Days, weeks & Carnegie stages|A|T|c|none|ori||| How embryos are dated; fertilization age vs gestational (LMP) age; the stage ruler.|Gestational age and fertilization age are the same number.
 scale0|Scale|A|T|c|none|ori||| A zoom ruler from 0.1 mm to 30 cm, shown on every 3D view.|
 colourkey|Colour key|A|G|c|none|ori||| Fixed germ-layer colours with patterns and labels, safe for colour-blind viewers.|
-section0|Reading a section|A|F|c|none|ori||axes| How a flat slice relates to the 3D shape it cuts through.|
+section0|Reading a section|A|F|c|none|ori||axes,colourkey| How a flat slice relates to the 3D shape it cuts through.|
 appuse|How to use the app|A||s|none|ori||| Watch it · Try it · Remember deck · Check.|
 @ E01.00
 chromatin|Chromatin and nucleosomes|B|M|s|none|mol||| DNA wound on histone spools; how tightly it is packed decides which genes can be read.|
@@ -91,7 +91,7 @@ mole|Hydatidiform mole and hCG|C|C|x|extra|defects||troph2| Trophoblast overgrow
 prechordal|Prechordal plate|B|F|x|endo|early|14-18|bilam| A thickened area at the cranial end that marks the head and signals the forebrain.|
 oromem|Oropharyngeal and cloacal membranes|B|F|x|multi|early|14-21|prechordal| Places where ectoderm and endoderm touch with no mesoderm: future mouth and future anus.|
 @ E05.01
-gastrul|Gastrulation in one picture|A|G F|c|multi|early|15-21|bilam| In week 3 the two-layered disc becomes three layers: ectoderm, mesoderm, endoderm.|
+gastrul|Gastrulation in one picture|A|G F|c|multi|early|15-21|bilam,colourkey| In week 3 the two-layered disc becomes three layers: ectoderm, mesoderm, endoderm.|
 streak|Primitive streak|A|T F|c|multi|early|15-28|gastrul,axes| A groove on the epiblast with a node and pit at its head; it marks the body axis.|The primitive streak is permanent (it shrinks and vanishes).
 ingress|Cells move in|A|G F|c|meso|early|15-21|streak| Epiblast cells leave the surface and pass through the streak to make the new layers.|The hypoblast becomes the endoderm (epiblast cells replace it).
 layers3|Three germ layers from the epiblast|A|G|c|multi|early|16-21|ingress| Epiblast makes all three layers: what stays is ectoderm, what moves in is mesoderm and endoderm.|Mesoderm comes from the hypoblast.

@@ -71,6 +71,7 @@ const STR={
     fMis:'Misconceptions', fWrong:'Wrong idea', fRight:'Right idea', addMis:'Add misconception', fChecks:'Checks', fPrompt:'Prompt', fType:'Type', types:{mcq:'Pick one',order:'Put in order'},
     fOptions:'Options (one per line; for “Put in order”, the right order)', fAnswer:'Right option', fWhy:'Why (shown after answering)', fRefutes:'Refutes', addCheck:'Add check',
     fAdult:'This becomes… (optional)', fScene:'Scene', fDay:'Day', findT:'card-check', findNone:'No findings.',
+    fRemember:'Remember (2–5 recall prompts)', fQ:'Question', fA:'Answer (with fact refs [f1])', addRem:'Add prompt', removeRem:'Remove', fClinical:'Clinical link (optional, with fact refs)', fShows:'Where it shows up (concept ids, optional)', showsHint:'Concept ids, comma-separated (E10.02.01)',
     reopened:'Content changed — the passes are cleared; it needs review again.',
     // review pane
     gateT:'Gate', reviewer:'Reviewer', rBy:'Name', rRole:'Role', rAgent:'Chat or agent', maker:(m)=>'Made by '+m.by+' · '+m.role+' · '+m.agent,

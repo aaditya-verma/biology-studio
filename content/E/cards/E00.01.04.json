@@ -1,0 +1,143 @@
+{
+ "spec": 1,
+ "id": "E00.01.04",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Colour key: the three germ layers",
+ "tier": "A",
+ "objective": {
+  "verb": "name",
+  "text": "Name the three germ layers in their order in the week-3 disc."
+ },
+ "body": {
+  "general": "What are the three layers that build a body? They are the germ layers: ectoderm, mesoderm and endoderm [f1]. Ectoderm is the top layer, on the back side [f2]. Mesoderm is the middle layer [f3]. Endoderm is the bottom layer, facing the yolk sac [f4]. Together, these three build every tissue of the body [f5].",
+  "mbbs": "By the end of week 3 the embryo has three germ layers: ectoderm, mesoderm and endoderm [f1]. Ectoderm lies dorsally, on top [f2]. Mesoderm lies between ectoderm and endoderm [f3]. Endoderm lies ventrally, facing the yolk sac [f4]. Every tissue of the embryo comes from one of these three [f5]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "By the end of week 3 the embryo has three germ layers: ectoderm, mesoderm and endoderm.",
+   "cite": "E05.01 · R05b",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Ectoderm is the top (dorsal) layer.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Mesoderm is the middle layer, between ectoderm and endoderm.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Endoderm is the bottom (ventral) layer, facing the yolk sac.",
+   "cite": "E05.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Together the three germ layers build every tissue of the embryo.",
+   "cite": "E05.01, E05.07",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ],
+  "known": []
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Endoderm is the middle layer ('endo' sounds like 'inside').",
+   "right": "Mesoderm is the middle layer; endoderm is the bottom layer, facing the yolk sac.",
+   "cite": "E05.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Mesoderm comes from the hypoblast, so the layers have different starting points.",
+   "right": "All three germ layers come from the epiblast.",
+   "cite": "E05.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "order",
+   "prompt": "Put the germ layers in order from the back (dorsal) side down.",
+   "options": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm"
+   ],
+   "why": "Ectoderm is on top, mesoderm in the middle, endoderm at the bottom facing the yolk sac.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which germ layer sits in the middle?",
+   "options": [
+    "Mesoderm",
+    "Endoderm",
+    "Ectoderm"
+   ],
+   "answer": 0,
+   "why": "'Meso' means middle: mesoderm lies between ectoderm and endoderm.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "adult": "Every tissue of the adult body traces back to one of these three layers [f5].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What are the three germ layers, top to bottom?",
+   "a": "Ectoderm, mesoderm, endoderm [f2,f3,f4]."
+  },
+  {
+   "id": "r2",
+   "q": "Which germ layer faces the yolk sac?",
+   "a": "Endoderm, the bottom layer [f4]."
+  }
+ ],
+ "shows_up": [
+  "E05.01.01",
+  "E05.01.04",
+  "E05.04.01"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from sc-E00.01.04 facts (V1) + dossier ch05 §2, §5; D-037 (a)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

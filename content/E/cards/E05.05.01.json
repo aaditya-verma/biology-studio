@@ -1,0 +1,144 @@
+{
+ "spec": 1,
+ "id": "E05.05.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "The disc becomes a pear",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the embryonic disc changes shape during week 3."
+ },
+ "body": {
+  "general": "Why does the round disc turn into a pear? It grows from about 0.2 mm to over 1 mm in a few days [f4]. Most of the growth is at the head end, fed by cells streaming forward from the streak [f2]. So the disc becomes broad at the head end and narrow at the tail end [f1]. The head end starts forming its parts in mid-week 3, while the tail end is still gastrulating until the end of week 4 [f3].",
+  "mbbs": "During week 3 the flat, almost round disc elongates into a pear shape: broad cranially, narrow caudally [f1]. Growth is mainly cranial, supplied by cells migrating forward from the streak; the streak region stays about the same size [f2]. The disc grows from about 0.2 mm at days 14–15 to about 1.25 mm by day 18 [f4]. Cranial structures begin to differentiate by mid-week 3, while gastrulation continues caudally until the end of week 4 [f3]. Development therefore runs in a cranial-to-caudal direction [f5]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The flat, nearly round disc grows into a pear shape: broad at the head end, narrow at the tail end.",
+   "cite": "E05.05 · R06 CS8, R02 CS8",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Most growth is at the head end, fed by cells streaming forward from the streak; the streak region stays about the same size.",
+   "cite": "E05.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Head structures start to form in mid-week 3, while the tail end is still gastrulating until the end of week 4.",
+   "cite": "E05.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "So the embryo develops head end first.",
+   "cite": "E05.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The disc grows from about 0.2 mm on days 14–15 to about 1.25 mm by day 18.",
+   "cite": "E06.06 Tbl 6.4, E06.01 Fig 6.1 · R06, R08",
+   "mark": "✔✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.primitive-streak",
+   "E.t.gastrulation"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Gastrulation is over by the end of week 3.",
+   "right": "It goes on at the tail end until the end of week 4.",
+   "cite": "E05.05",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The disc grows evenly all over.",
+   "right": "Most growth is at the head end; the streak region stays about the same size.",
+   "cite": "E05.05",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "By the end of week 3, what shape is the disc?",
+   "options": [
+    "Broad at the head end, narrow at the tail end",
+    "Still round",
+    "Broad at the tail end, narrow at the head end",
+    "A closed tube"
+   ],
+   "answer": 0,
+   "why": "Growth is mostly cranial, so the head end broadens into a pear shape.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Until when does gastrulation go on at the tail end?",
+   "options": [
+    "About the end of week 4",
+    "The end of week 3",
+    "Day 15",
+    "The end of week 8"
+   ],
+   "answer": 0,
+   "why": "The caudal end is still gastrulating until the end of week 4, after the head end has started to differentiate.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "adult": "This head-first lead is why the head end of the embryo takes shape before the tail end [f3,f5].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Why does the disc become pear-shaped?",
+   "a": "Most growth is at the head end, fed by cells from the streak [f2]."
+  },
+  {
+   "id": "r2",
+   "q": "How long does gastrulation go on at the tail end?",
+   "a": "Until the end of week 4 [f3]."
+  }
+ ],
+ "shows_up": [
+  "E00.01.03",
+  "E06.03.01"
+ ],
+ "scene": {
+  "id": "sc-E00.01.02",
+  "day": 18
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §1, §2 (E05.05.01), §5 #8; sc-E00.01.02 facts",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}

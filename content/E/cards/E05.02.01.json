@@ -1,0 +1,182 @@
+{
+ "spec": 1,
+ "id": "E05.02.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Notochord",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the notochord forms in the midline of the disc."
+ },
+ "body": {
+  "general": "What is the first stiff rod in the embryo's midline? Cells go in at the node, at the head end of the streak, and travel straight forward along the midline [f1]. For a short time they lie inside the endoderm as a flat plate [f2]. The plate then peels off and rolls up into a solid rod, the notochord [f3]. The book says the rod forms head end first [f4]. It signals the spine to form, but does not become it [f5,f7].",
+  "mbbs": "Prenotochordal cells invaginate at the primitive node and migrate cranially in the midline as far as the prechordal plate [f1]. For a time they are intercalated in the endoderm as the notochordal plate [f2]. The plate then detaches from the endoderm and forms a solid rod, the definitive notochord [f3]. In Langman the cranial end forms first, by about day 17, and caudal parts are added as the streak regresses [f4]. The notochord lies beneath the neural tube and signals the axial skeleton; in adults it survives only in the nucleus pulposus [f5,f7]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Prenotochordal cells enter at the primitive node and move straight forward in the midline up to the prechordal plate.",
+   "cite": "E05.02 · R05a, R06 CS7",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "For a short time they sit within the endoderm layer as the notochordal plate.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The plate then lifts off the endoderm and rolls into a solid rod, the definitive notochord.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The book has the head end of the definitive notochord forming first, by about day 17, with tail parts added as the streak moves back.",
+   "cite": "E05.02 · R05a",
+   "mark": "⚑",
+   "where": "main",
+   "decision": "D-029"
+  },
+  {
+   "id": "f5",
+   "text": "The notochord lies under the neural tube and signals to build the axial skeleton.",
+   "cite": "E05.02, E05.07",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "In adults only bits of it remain, in the nucleus pulposus at the core of each intervertebral disc.",
+   "cite": "E05.02 · E10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "⚑ Newer evidence (D-029): in human embryos the finished rod first appears mid-body and grows both ways, at stages 11–12 (about days 23–30).",
+   "cite": "E05.02 · R05a",
+   "mark": "⚑",
+   "where": "more",
+   "decision": "D-029"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.notochord",
+   "E.t.prechordal-plate",
+   "E.t.nucleus-pulposus"
+  ],
+  "known": [
+   "E.t.primitive-node",
+   "E.t.primitive-streak",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The notochord becomes the vertebral column.",
+   "right": "It signals the vertebrae to form; only the nucleus pulposus keeps notochord cells.",
+   "cite": "E05.02 · E10",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The notochord is the spinal cord.",
+   "right": "It lies beneath the neural plate and tube and signals to it.",
+   "cite": "E05.02 · E06",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "In the adult, where do notochord cells remain?",
+   "options": [
+    "In the nucleus pulposus of the discs",
+    "In the vertebral bodies",
+    "In the spinal cord",
+    "Nowhere at all"
+   ],
+   "answer": 0,
+   "why": "The notochord signals the spine to form, but only the nucleus pulposus keeps its cells.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "order",
+   "prompt": "Put the notochord's formation in order.",
+   "options": [
+    "Cells go in at the primitive node",
+    "They move forward in the midline",
+    "They sit in the endoderm as a plate",
+    "The plate rolls into a solid rod"
+   ],
+   "why": "Node, then forward migration, then the notochordal plate, then the solid rod.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "According to Langman, which end of the definitive notochord forms first?",
+   "options": [
+    "The head (cranial) end",
+    "The middle",
+    "The tail (caudal) end"
+   ],
+   "answer": 0,
+   "why": "Langman: head end first, by about day 17. Newer human data say middle first (More, D-029); exams follow the book.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "In adults its only remnant is the nucleus pulposus, the core of each intervertebral disc [f7].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Where do notochord cells go in?",
+   "a": "At the primitive node [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "What happens to the notochordal plate?",
+   "a": "It lifts off the endoderm and rolls into a solid rod [f3]."
+  },
+  {
+   "id": "r3",
+   "q": "What remains of the notochord in adults?",
+   "a": "Bits in the nucleus pulposus of each disc [f7]."
+  }
+ ],
+ "shows_up": [
+  "E06.01.01",
+  "E10.02.01",
+  "E10.02.02"
+ ],
+ "scene": {
+  "id": "sc-E00.01.04",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "20 Nov 2026",
+   "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.02.01), §4, §5 #5, #10; D-029",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  }
+ ]
+}
