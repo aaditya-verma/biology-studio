@@ -3,7 +3,7 @@
  "id": "E00.01.03",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "How small is it?",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe the embryo's size from week 3 to the end of week 8."
  },
  "body": {
-  "general": "How big is an embryo when gastrulation starts? On days 14–15 the disc is about 0.2 mm across [f1]. By days 16–18 it is about 0.4 mm [f2]. The book's 18-day embryo is about 1.25 mm long [f3]. By the end of week 8 it is about 3 cm from crown to rump [f5]. Sources measure in different ways, so these sizes are approximate [f4].",
+  "general": "How big is an embryo in its third week? On days 14–15 the disc is about 0.2 mm across [f1]. By days 16–18 it is about 0.4 mm [f2]. The book's 18-day embryo is about 1.25 mm long [f3]. By the end of week 8 it is about 3 cm from the top of the head to the bottom (crown to rump) [f5]. Sources measure in different ways, so these sizes are approximate [f4].",
   "mbbs": "At stage 6 (days 14–15) the disc is about 0.2 mm; at stage 7 (days 16–18) about 0.4 mm [f1,f2]. The book's 18-day embryo, already stage 8, is about 1.25 mm long [f3]. By the end of week 8 the crown–rump length is about 28–30 mm [f5]. Sizes differ by source because fixed and living embryos, and disc width and greatest length, are not measured the same way [f4]."
  },
  "facts": [
@@ -59,7 +59,7 @@
   {
    "id": "m1",
    "wrong": "A week-3 embryo is about a centimetre long.",
-   "right": "It is under half a millimetre on days 14–18; about 3 cm comes only at the end of week 8.",
+   "right": "In week 3 it grows from about 0.2 mm to a few millimetres; about 3 cm comes only at the end of week 8.",
    "cite": "E06.06 Tbl 6.4, E06.05 Tbl 6.3 · R08",
    "mark": "✔✔"
   }
@@ -68,7 +68,7 @@
   {
    "id": "q1",
    "type": "mcq",
-   "prompt": "About how big is the disc when gastrulation starts (days 14–15)?",
+   "prompt": "About how big is the disc on days 14–15?",
    "options": [
     "About 0.2 mm",
     "About 2 cm",
@@ -82,19 +82,19 @@
   },
   {
    "id": "q2",
-   "type": "order",
-   "prompt": "Put these sizes in order, smallest first.",
+   "type": "mcq",
+   "prompt": "The book's 18-day embryo is about how long?",
    "options": [
-    "Day 15 disc, about 0.2 mm",
-    "Day 17 disc, about 0.4 mm",
-    "Day 18 embryo, about 1.25 mm",
-    "End of week 8, about 3 cm"
+    "About 1.25 mm",
+    "About 12.5 mm",
+    "About 0.1 mm",
+    "About 3 cm"
    ],
-   "why": "The embryo grows from a fraction of a millimetre in week 3 to about 3 cm by the end of week 8.",
+   "answer": 0,
+   "why": "By day 18 the embryo is just over a millimetre; 3 cm is not reached until the end of week 8.",
    "tests": "objective"
   }
  ],
- "adult": "From a 0.2 mm disc, the embryo reaches about 3 cm by the end of week 8 [f1,f5].",
  "remember": [
   {
    "id": "r1",
@@ -121,12 +121,145 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "q1 no longer uses gastrulation; the card has no unexplained terms left."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "Only a check prompt changed; every G-Sci line re-read and still right."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 14 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.02 (ruler label '1 mm'). All sizes stated in text with units. 'shown as approximate' (f4) refers to on-screen sizes generally, not a visual pointer. Advisory: en-dash ranges ('28–30 mm') as E00.01.02."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from sc-E00.01.02 facts (V1) + dossier ch05 §1 + ch06 §1 (CS23)",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: m1 right no longer contradicts f3 (day 21 ≈ few mm); General drops 'gastrulation', glosses crown to rump; q2 → mcq on the day-18 size; adult removed (no adult anchor fits a size card)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-2 fixes: q1 prompt drops 'when gastrulation starts'",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -3,7 +3,7 @@
  "id": "E05.05.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "The disc becomes a pear",
  "tier": "A",
  "objective": {
@@ -12,7 +12,7 @@
  },
  "body": {
   "general": "Why does the round disc turn into a pear? It grows from about 0.2 mm to over 1 mm in a few days [f4]. Most of the growth is at the head end, fed by cells streaming forward from the streak [f2]. So the disc becomes broad at the head end and narrow at the tail end [f1]. The head end starts forming its parts in mid-week 3, while the tail end is still gastrulating until the end of week 4 [f3].",
-  "mbbs": "During week 3 the flat, almost round disc elongates into a pear shape: broad cranially, narrow caudally [f1]. Growth is mainly cranial, supplied by cells migrating forward from the streak; the streak region stays about the same size [f2]. The disc grows from about 0.2 mm at days 14–15 to about 1.25 mm by day 18 [f4]. Cranial structures begin to differentiate by mid-week 3, while gastrulation continues caudally until the end of week 4 [f3]. Development therefore runs in a cranial-to-caudal direction [f5]."
+  "mbbs": "Over week 3 the round disc stretches into a pear, wide at the head end and slim at the tail [f1]. Growth is mainly cranial, supplied by cells migrating forward from the streak; the streak region stays about the same size [f2]. The disc grows from about 0.2 mm at days 14–15 to about 1.25 mm by day 18 [f4]. Cranial structures begin to differentiate by mid-week 3, while gastrulation continues caudally until the end of week 4 [f3]. Development therefore runs in a cranial-to-caudal direction [f5]."
  },
  "facts": [
   {
@@ -48,6 +48,13 @@
    "text": "The disc grows from about 0.2 mm on days 14–15 to about 1.25 mm by day 18.",
    "cite": "E06.06 Tbl 6.4, E06.01 Fig 6.1 · R06, R08",
    "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The neural tube is broad at the head end, where it makes the brain, and narrow caudally, where it makes the spinal cord.",
+   "cite": "E06.01",
+   "mark": "✔",
    "where": "main"
   }
  ],
@@ -93,20 +100,33 @@
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "Until when does gastrulation go on at the tail end?",
+   "prompt": "Why does the head end of the disc become broad?",
    "options": [
-    "About the end of week 4",
-    "The end of week 3",
-    "Day 15",
-    "The end of week 8"
+    "Most new cells stream forward from the streak to the head end",
+    "The tail end shrinks away",
+    "The disc folds over at the head end"
    ],
    "answer": 0,
-   "why": "The caudal end is still gastrulating until the end of week 4, after the head end has started to differentiate.",
+   "why": "Cells pour forward from the streak, so the head end grows most while the streak region stays about the same size.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Is the disc's shape change finished by the end of week 3?",
+   "options": [
+    "No: the tail end is still gastrulating until the end of week 4",
+    "Yes: gastrulation stops on day 21",
+    "Yes: the tail end finishes first"
+   ],
+   "answer": 0,
+   "why": "The head end starts forming its parts in mid-week 3, but the tail end keeps gastrulating until the end of week 4.",
    "tests": "objective",
    "refutes": "m1"
   }
  ],
- "adult": "This head-first lead is why the head end of the embryo takes shape before the tail end [f3,f5].",
+ "adult": "The broad head end carries the wide front of the future nervous system, which becomes the brain [f6].",
  "remember": [
   {
    "id": "r1",
@@ -120,8 +140,8 @@
   }
  ],
  "shows_up": [
-  "E00.01.03",
-  "E06.03.01"
+  "E06.03.01",
+  "E06.05.02"
  ],
  "scene": {
   "id": "sc-E00.01.02",
@@ -133,12 +153,150 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The adult line now reads plainly at General ('future nervous system ... brain')."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f5": "ok",
+    "f4": "ok",
+    "f6": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "Adult line ('future nervous system' broad at the head end → brain) is supported by f6 (E06.01 ✔)."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 62 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.02. Pear shape described in words (broad head end, narrow tail end). Longest options 61-62 chars (q2 opt 0, q3 opt 0), under ~70; fit 2 lines at 125 % on phone. Scene disclaimers 'sizes ≈: sources differ' and 'days 17→18' use ≈ and → that carry meaning when read aloud; scene owner should give spoken text ('about', 'to'); not a card issue."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from research/dossiers/ch05-gastrulation.md §1, §2 (E05.05.01), §5 #8; sc-E00.01.02 facts",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: MBBS sentence 1 reworded; q2 → why the head end broadens (shape objective); q3 keeps the 'over by week 3' refutation; adult anchor → brain (f6, E06.01); shows_up forward only",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail (round 2): checklist 'adult' unticked, every line ok — adult line uses 'neural tube' unexplained at General. Entered by hand: the Studio's Fail needs a fix line (to-do)",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-2 fixes: adult line: 'neural tube' → 'the future nervous system' (plain at General)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -63,7 +63,7 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · **T3b ✅ 19 Nov 2026** (3D viewer) · T3c cards (C1) follow — it adds reading cards in the Studio review pane (`?test=1#studio`) on each device and your **G-Owner** on E05.01.01 (with D-037)
+## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · **T3b ✅ 19 Nov 2026** (3D viewer) · **T3c open** (C1, 20 Nov 2026): read the cards in the Studio review pane on each device and give your **G-Owner** on E05.01.01
 **T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
 1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
 2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
@@ -87,7 +87,14 @@ Follow `build/setup-guide.md` §1–§5.
 9. **fps (phone, once):** open https://aaditya-verma.github.io/biology-studio/?debug=viewer#scene=sc-E00.01.04 → Debug tab → **Measure fps** (~30 s, keep the screen on) → **Copy** → paste into a chat (fills pipeline reference §2).
 - **Result T3b (19 Nov 2026, app v3 on GitHub Pages):** ☑ pass · 3D smooth: ☑ yes · labels readable / on the right structure: ☑ yes · cut face clear: ☑ yes · day/stage/size makes sense: ☑ yes · Reduce motion: ☑ works · devices: phone P ☑ L ☑ · tablet P ☑ L ☑ (real/emulated not stated) · laptop ☑ · rotate keeps place: ☑ yes · layout problems: none · fps (step 9): done earlier (phone 60, tablet P 60) · D-036 confirmed · owner: "All pass".
 
-**T3c — Part 0 cards:** steps written by the C1 build chat.
+**T3c — cards in the Studio (C1, ~15 min: phone, tablet, laptop).** Open https://aaditya-verma.github.io/biology-studio/?test=1#studio (pull to refresh once so **v6** loads; Settings shows the version). The Studio saves nothing; you only read and judge.
+1. **Card list:** 12 cards — 5 Part 0 (E00.01.01–05; E00.01.06 waits for L1, D-042) + 7 Ch 5 Tier A. Each shows its status (Reviewed once both gates pass) and ✓ when card-check is clean.
+2. **Phone (portrait, then landscape):** open **E05.01.01 Gastrulation in one picture**. You get the review pane only. Read every line: General and MBBS sentences, facts with their [cites] and marks, misconceptions, Checks (✓ marks the right option), the new **Remember** prompts (r1–r3) and **Where it shows up**. Switch gates with the G-Sci / G-Learn / G-A11y / G-Owner buttons: G-Sci and G-Learn show the reviewers' passes.
+3. **Tablet** (portrait: draft above review; landscape: draft │ review): open **E00.01.04 Colour key** and **E05.02.01 Notochord**. Check the colour key now names the three layers in plain words (your D-037 answer) and the notochord gives the book answer with the ⚑ "Newer evidence" line in More.
+4. **Laptop** (draft │ review │ sources): skim the other cards. Rotate/resize once mid-card: same card, same pane.
+5. **Read for sense, not rules:** would a non-medical reader follow the General text? Is anything wrong, unclear or dull? Note card id + line id (e.g. `E05.01.03 body.general.2`).
+6. **G-Owner on E05.01.01:** if you're happy, open its G-Owner gate, put your name, role **Owner**, agent `T3c`, tick the box and tap **Pass** — then tell the next chat "G-Owner pass E05.01.01" (or tap Copy JSON and paste it). Shipping also needs G-A11y, which C1 passed on the text.
+- **Result T3c:** ☐ pass · cards readable on phone / tablet / laptop: ☐ ☐ ☐ · General makes sense to a non-medical reader: ☐ · D-037 (a) reads well in the colour key: ☐ · G-Owner E05.01.01: ☐ pass ☐ fix · notes (card + line): ___
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
 ## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L1)

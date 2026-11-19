@@ -3,7 +3,7 @@
  "id": "E05.01.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Primitive streak",
  "tier": "A",
  "objective": {
@@ -12,7 +12,7 @@
  },
  "body": {
   "general": "Where does gastrulation begin? Around day 15 a groove, the primitive streak, forms in the midline at the tail end of the disc [f1]. Its head end swells into a small knot, the primitive node, around a dip called the primitive pit [f2]. The streak marks the long axis: the head end is the opposite end [f3]. It keeps feeding cells inward until the end of week 4, then shrinks and disappears [f4].",
-  "mbbs": "The primitive streak first appears as a faint line in the caudal midline of the epiblast [f1]. By days 15–16 (stage 6) it is a narrow groove with raised edges [f1]. Its cranial end is the primitive node, a slightly raised area around the primitive pit [f2]. The streak defines the cranial–caudal axis: it lies caudally, and the cranial end is opposite [f3]. It keeps making cells until the end of week 4, then regresses quickly and disappears [f4]."
+  "mbbs": "The primitive streak first appears as a faint line in the caudal midline of the epiblast [f1]. By days 15–16 it is a narrow groove with raised edges [f1]. At its cranial end sits the primitive node, a low mound with the primitive pit at its centre [f2]. The streak defines the cranial–caudal axis: it lies caudally, and the cranial end is opposite [f3]. It keeps making cells until the end of week 4, then regresses quickly and disappears [f4]."
  },
  "facts": [
   {
@@ -25,7 +25,7 @@
   },
   {
    "id": "f2",
-   "text": "Its cranial end is the primitive node, a small raised area around the primitive pit.",
+   "text": "Its cranial end is the primitive node, a low mound with the primitive pit at its centre.",
    "cite": "E05.01 · R06 CS8",
    "mark": "✔✔",
    "where": "main"
@@ -47,9 +47,9 @@
   },
   {
    "id": "f5",
-   "text": "Leftover streak cells in the sacrococcygeal region can form a sacrococcygeal teratoma, a tumour with tissue from all three germ layers.",
-   "cite": "E05.05 CC · R05g, R05h, R05i",
-   "mark": "✔✔",
+   "text": "Leftover streak cells in the sacrococcygeal region can form a sacrococcygeal teratoma.",
+   "cite": "E05.05 CC",
+   "mark": "✔",
    "where": "main"
   },
   {
@@ -57,6 +57,13 @@
    "text": "It is the most common tumour in newborns.",
    "cite": "E05.05 CC",
    "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "This tumour holds tissue from all three germ layers and is often found on scans before birth.",
+   "cite": "E05.05 CC · R05g, R05h, R05i",
+   "mark": "✔✔",
    "where": "main"
   }
  ],
@@ -154,7 +161,7 @@
    "a": "After the end of week 4, when it shrinks fast [f4]."
   }
  ],
- "clinical": "If streak cells survive in the sacrococcygeal region, they can form a sacrococcygeal teratoma with tissue from all three germ layers [f5]. It is the most common tumour in newborns [f6].",
+ "clinical": "If streak cells survive near the tailbone (the sacrococcygeal region), they can form a tumour called a sacrococcygeal teratoma [f5]. It holds tissue from all three germ layers [f7]. It is the most common tumour in newborns [f6].",
  "shows_up": [
   "E05.01.03",
   "E05.03.01",
@@ -170,12 +177,134 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "f5 split is right: origin ✔ book-only, three layers + prenatal detection ✔✔ (dossier §3 scope). Node wording is now our own."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "'Near the tailbone' gloss added; the card is clean."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 39 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Streak, node, pit located in words (caudal midline, cranial end). Clinical text expands 'sacrococcygeal region' as 'near the tailbone'. No colour or visual cue."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.01.02), §3, §5 #4, #6",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: MBBS drops '(stage 6)' for days 15–16; node reworded in our own words (body + f2); f5 split: origin ✔ (f5) + three layers / prenatal ✔✔ (f7); Clinical link glosses 'near the tailbone'",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

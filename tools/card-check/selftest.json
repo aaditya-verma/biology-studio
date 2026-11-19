@@ -365,6 +365,55 @@
     "shows_up": []
    },
    "expect": "E-shows"
+  },
+  {
+   "name": "body level not text",
+   "set": {
+    "body.general": 5
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "fact item not an object",
+   "set": {
+    "facts.0": "f1"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "misconception item not an object",
+   "set": {
+    "misconceptions.0": "m1"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "check item not an object",
+   "set": {
+    "checks.0": "q1"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "terms.new not a list",
+   "set": {
+    "terms.new": "E.t.gastrulation"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "objective text not text",
+   "set": {
+    "objective.text": 5
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "check options not a list",
+   "set": {
+    "checks.0.options": "abc"
+   },
+   "expect": "E-schema"
   }
  ]
 }

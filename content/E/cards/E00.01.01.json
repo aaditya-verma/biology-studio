@@ -3,7 +3,7 @@
  "id": "E00.01.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Head, tail, back, belly",
  "tier": "A",
  "objective": {
@@ -11,8 +11,8 @@
   "text": "Name the three axes of the flat week-3 embryonic disc."
  },
  "body": {
-  "general": "Which end of a flat disc is the head? Its head–tail and back–belly directions are fixed before gastrulation starts [f1]. Head to tail is the long axis: a groove forms at the tail end, so the head end is opposite it [f2,f3]. Back to belly runs through the disc: the upper layer faces the back, the lower layer faces the belly [f4]. Left and right are the embryo's own sides, not yours [f5].",
-  "mbbs": "The disc has cranial–caudal and dorsal–ventral axes before the primitive streak appears [f1]. The cranial–caudal axis is the long axis: the streak forms in the caudal midline, and the cranial end lies opposite it [f2,f3]. The dorsal–ventral axis runs through the disc: dorsal is the upper side facing the amniotic cavity, ventral the lower side facing the yolk sac [f4]. The left–right axis is set during gastrulation and always means the embryo's own left and right [f5]."
+  "general": "Which end of a flat disc is the head? Its head–tail and back–belly directions are fixed before the body's layers start to form [f1]. Head to tail (cranial–caudal) is the long axis: a groove, the primitive streak, forms at the tail end, and the head end is opposite [f2,f3]. Back to belly (dorsal–ventral) runs through the disc: the upper side is the back [f4]. Left and right are the embryo's own sides, not yours [f5].",
+  "mbbs": "The disc has cranial–caudal and dorsal–ventral axes before the primitive streak appears [f1]. The cranial–caudal axis is the long axis: the streak forms in the caudal midline, and the cranial end lies opposite it [f2,f3]. The dorsal–ventral axis runs through the disc: dorsal is the upper side and ventral the lower side [f4]. The left–right axis is set while the layers form and always means the embryo's own left and right [f5]."
  },
  "facts": [
   {
@@ -77,44 +77,56 @@
   {
    "id": "q1",
    "type": "mcq",
-   "prompt": "On the week-3 disc, where is the head (cranial) end?",
+   "prompt": "The long axis of the disc, from head end to tail end, is called the…",
    "options": [
-    "Opposite the groove that forms at the tail end",
-    "Where the groove forms",
-    "On the underside, facing the yolk sac",
-    "It is not set until week 4"
+    "Cranial–caudal axis",
+    "Dorsal–ventral axis",
+    "Left–right axis"
    ],
    "answer": 0,
-   "why": "The streak forms caudally, so the cranial end is the opposite end; the axis is set even before the streak.",
-   "tests": "objective",
-   "refutes": "m2"
+   "why": "Cranial means toward the head and caudal toward the tail; the streak marks the caudal end.",
+   "tests": "objective"
   },
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "You face an embryo the way you face a person. Its left side is on…",
+   "prompt": "On the embryo, 'left' and 'right' mean…",
    "options": [
-    "Your right",
-    "Your left",
-    "Either side; left and right are not fixed"
+    "The embryo's own left and right",
+    "The viewer's left and right",
+    "Whichever side is drawn on the left"
    ],
    "answer": 0,
-   "why": "Left and right are the embryo's own sides, so when you face it, its left is on your right.",
+   "why": "Left and right are always the embryo's own sides, however you look at it.",
    "tests": "objective",
    "refutes": "m1"
   },
   {
    "id": "q3",
    "type": "mcq",
-   "prompt": "Which side of the disc is dorsal (the back)?",
+   "prompt": "The axis that runs from the back side to the belly side is called the…",
    "options": [
-    "The upper side, facing the amniotic cavity",
-    "The lower side, facing the yolk sac",
-    "The rim of the disc"
+    "Dorsal–ventral axis",
+    "Cranial–caudal axis",
+    "Left–right axis"
    ],
    "answer": 0,
-   "why": "Dorsal is the epiblast side, which faces the amniotic cavity; ventral faces the yolk sac.",
+   "why": "Dorsal means the back (the upper side of the disc); ventral means the belly side.",
    "tests": "objective"
+  },
+  {
+   "id": "q4",
+   "type": "mcq",
+   "prompt": "Where on the disc does the primitive streak form?",
+   "options": [
+    "At the tail (caudal) end, in the midline",
+    "At the head (cranial) end",
+    "Along the rim of the disc"
+   ],
+   "answer": 0,
+   "why": "The streak forms in the caudal midline, so the head end is the opposite end.",
+   "tests": "objective",
+   "refutes": "m2"
   }
  ],
  "adult": "These three axes become the body's own head-to-toe, back-to-front and left–right directions [f1,f5].",
@@ -127,7 +139,7 @@
   {
    "id": "r2",
    "q": "Which side of the disc is dorsal?",
-   "a": "The upper (epiblast) side, facing the amniotic cavity [f4]."
+   "a": "The upper side, the back [f4]."
   }
  ],
  "shows_up": [
@@ -145,12 +157,154 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "q4": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The MBBS text now says 'while the layers form', so no term is left unlisted. Naming checks match the objective."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "Round-2 wording ('while the layers form' = during gastrulation, f5) is accurate; facts and cites unchanged."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 40 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.01. Axes named in words (head/tail, back/belly, embryo's own left/right). 'look at it' in m1/q2.why is generic, not a pointer to the scene. Advisory (app-wide): en-dash pairs like 'head–tail' read fine; no symbol carries unique meaning here."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from sc-E00.01.01 facts (V1, G-Sci passed) + dossier ch05 §2",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: obj checks are naming checks (q1, q3) + q2 left–right + q4 streak position; General glosses cranial–caudal and dorsal–ventral, names the streak, drops 'gastrulation'; MBBS and r2 drop amniotic cavity / yolk sac / epiblast",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-2 fixes: MBBS: 'during gastrulation' → 'while the layers form' (no unlisted term)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

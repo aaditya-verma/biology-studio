@@ -3,16 +3,16 @@
  "id": "E05.02.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Notochord",
  "tier": "A",
  "objective": {
   "verb": "describe",
-  "text": "Describe how the notochord forms in the midline of the disc."
+  "text": "Describe how the notochord forms in the midline and what is left of it in the adult."
  },
  "body": {
   "general": "What is the first stiff rod in the embryo's midline? Cells go in at the node, at the head end of the streak, and travel straight forward along the midline [f1]. For a short time they lie inside the endoderm as a flat plate [f2]. The plate then peels off and rolls up into a solid rod, the notochord [f3]. The book says the rod forms head end first [f4]. It signals the spine to form, but does not become it [f5,f7].",
-  "mbbs": "Prenotochordal cells invaginate at the primitive node and migrate cranially in the midline as far as the prechordal plate [f1]. For a time they are intercalated in the endoderm as the notochordal plate [f2]. The plate then detaches from the endoderm and forms a solid rod, the definitive notochord [f3]. In Langman the cranial end forms first, by about day 17, and caudal parts are added as the streak regresses [f4]. The notochord lies beneath the neural tube and signals the axial skeleton; in adults it survives only in the nucleus pulposus [f5,f7]."
+  "mbbs": "Prenotochordal cells invaginate at the primitive node and migrate cranially along the midline [f1]. For a time they are intercalated in the endoderm as the notochordal plate [f2]. The plate then detaches from the endoderm and forms a solid rod, the definitive notochord [f3]. In Langman the cranial end forms first, by about day 17, and caudal parts are added as the streak regresses [f4]. The notochord lies beneath the neural tube and signals the axial skeleton; in adults it survives only in the nucleus pulposus [f5,f7]."
  },
  "facts": [
   {
@@ -70,8 +70,8 @@
  "terms": {
   "new": [
    "E.t.notochord",
-   "E.t.prechordal-plate",
-   "E.t.nucleus-pulposus"
+   "E.t.nucleus-pulposus",
+   "E.t.intervertebral-disc"
   ],
   "known": [
    "E.t.primitive-node",
@@ -171,12 +171,139 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The widened objective covers q1, and the load is 3 (notochord, nucleus pulposus, intervertebral disc)."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f7": "ok",
+    "f6": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Objective change fine; ⚑ D-029 handled as required (book answer main, newer evidence in More)."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 36 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04 (scene has no notochord label; disclaimer 'notochordal process not shown'), so text must and does carry everything. Order check: 4 short steps. Advisory: q3.why '(More, D-029)' exposes an internal decision id to learners; optional reword 'see Newer evidence in More'. f6 '⚑' backed by words 'Newer evidence'."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.02.01), §4, §5 #5, #10; D-029",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: objective widened to the adult remnant (q1 tests it); prechordal plate dropped from MBBS; intervertebral disc listed (3 new: notochord, nucleus pulposus, intervertebral disc)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -3,7 +3,7 @@
  "id": "E00.01.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Dating an embryo",
  "tier": "A",
  "objective": {
@@ -11,8 +11,8 @@
   "text": "Explain how an embryo's age is counted in days and Carnegie stages."
  },
  "body": {
-  "general": "How old is an embryo on 'day 16'? Embryology counts days from fertilization [f1]. Doctors count a pregnancy from the last period, about two weeks earlier, so week 3 here is about week 5 of pregnancy [f2]. Carnegie stages sort embryos by shape, not age, so one stage covers a few days [f1]. Stage 6, when gastrulation starts, is days 14–15 [f3]. Sources differ a little on stage ages, so this app always shows the book's day [f4].",
-  "mbbs": "Langman dates embryos in days after fertilization [f1]. Clinical (gestational) age counts from the last menstrual period, about two weeks earlier, so developmental week 3 is about gestational week 5 [f2]. That is often before the pregnancy is known [f2]. Carnegie stages group embryos by external form, not age or length, so each stage spans several days [f1]. Stage 6 (days 14–15) has the first primitive streak; stage 7 (days 16–18) has the notochordal process [f3]. Stage ages are estimates, so on screen we give the book's day [f4]. Birth comes about 38 weeks after fertilization, which is 40 gestational weeks [f6]."
+  "general": "How old is an embryo on 'day 16'? Embryology counts days from fertilization [f1]. Doctors count a pregnancy from the last period, about two weeks earlier, so week 3 here is about week 5 of pregnancy [f2]. Carnegie stages sort embryos by shape, not age, so one stage covers a few days [f1]. Stage 6, when the three body layers start to form (gastrulation), is days 14–15 [f3]. Sources disagree on stage ages, so this app always shows the book's day [f4].",
+  "mbbs": "Langman dates embryos in days after fertilization [f1]. Clinical (gestational) age counts from the last menstrual period, about two weeks earlier, so developmental week 3 is about gestational week 5 [f2]. That is often before the pregnancy is known [f2]. Carnegie stages group embryos by external form, not age or length, so each stage spans several days [f1]. Gastrulation begins at stage 6 (days 14–15) [f3]. Stage ages are estimates, so on screen we give the book's day [f4]. Birth comes about 38 weeks after fertilization, which is 40 gestational weeks [f6]."
  },
  "facts": [
   {
@@ -31,8 +31,8 @@
   },
   {
    "id": "f3",
-   "text": "Carnegie stage 6 (days 14–15) shows the first primitive streak; stage 7 (days 16–18) shows the notochordal process.",
-   "cite": "E06.06 Tbl 6.4 · R06, R08",
+   "text": "Carnegie stage 6 (days 14–15) shows the first primitive streak, the start of gastrulation; stage 7 is days 16–18.",
+   "cite": "E06.06 Tbl 6.4, E05.01 · R06, R08",
    "mark": "✔✔",
    "where": "main"
   },
@@ -61,7 +61,9 @@
   }
  ],
  "terms": {
-  "new": [],
+  "new": [
+   "E.t.gastrulation"
+  ],
   "known": []
  },
  "misconceptions": [
@@ -75,7 +77,7 @@
   {
    "id": "m2",
    "wrong": "A Carnegie stage is a fixed age in days.",
-   "right": "A stage is set by the embryo's form, so each stage spans a few days and sources give different ages.",
+   "right": "A stage is set by the embryo's form, so each stage spans a few days.",
    "cite": "E06.06 · R05f",
    "mark": "✔✔"
   }
@@ -156,12 +158,135 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fixes hold: 'disagree' replaces 'a little', m2 keeps only the form clause, f3 now cites E05.01 for the start of gastrulation."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "All round-1 points fixed: gastrulation is listed and glossed at General, and the checks test dating and staging."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 32 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.02. Advisory: day ranges written with en dash ('days 14–15'); some screen readers at default punctuation say 'days 14 15'. Suggest an app-level fix (render ranges as '14 to 15' in aria text) rather than card edits. f4/f5 '⚑' is backed by the words 'Newer evidence', so the flag symbol carries no unique meaning; 'D-030/D-039' ids are internal but harmless."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from sc-E00.01.02 facts (V1) + dossier ch05 §1, §5 #7 + D-030/D-039 (c)",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: General glosses gastrulation; 'differ a little' → 'disagree'; MBBS drops streak + notochordal process names; m2 right keeps only the form clause; terms new = gastrulation",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -3,7 +3,7 @@
  "id": "E05.04.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "What each layer builds",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Relate each germ layer to the main tissues it builds."
  },
  "body": {
-  "general": "Which layer made your brain, your bones and your gut lining? Where a cell goes in through the streak decides what it becomes [f1]. Ectoderm builds the parts that face or sense the outside: the brain, nerves, skin surface and sense organs [f2]. Mesoderm builds bones, muscles, the heart, vessels, blood, kidneys and gonads [f3]. Endoderm lines the gut and airways and forms the working cells of the liver and pancreas [f4].",
+  "general": "Which layer made your brain, your bones and your gut lining? Where a cell goes in through the streak decides what it becomes [f1]. Ectoderm builds the parts that face or sense the outside: the brain, nerves, skin surface and the sensing linings of eye, ear and nose [f2]. Mesoderm builds bones, muscles, the heart, vessels, blood, kidneys and gonads [f3]. Endoderm lines the gut, airways and bladder and forms the working cells of the liver and pancreas [f4].",
   "mbbs": "Langman's fate map shows that the place a cell passes through the node or streak decides its fate [f1]. Ectoderm forms the central and peripheral nervous systems, the sensory epithelia of ear, nose and eye, and the epidermis with hair and nails [f2]. It also forms the pituitary, the mammary and sweat glands and tooth enamel [f6]. Mesoderm forms vertebrae and ribs, skeletal muscle, dermis, the urogenital system, heart, vessels and blood cells [f3]. Endoderm lines the gut, respiratory tract and bladder, and forms the working cells of the thyroid, liver and pancreas [f4]."
  },
  "facts": [
@@ -57,6 +57,13 @@
    "cite": "· R05c",
    "mark": "✚",
    "where": "more"
+  },
+  {
+   "id": "f7",
+   "text": "Together the three germ layers build every tissue of the embryo.",
+   "cite": "E05.01, E05.07",
+   "mark": "✔",
+   "where": "main"
   }
  ],
  "terms": {
@@ -129,7 +136,7 @@
    "tests": "objective"
   }
  ],
- "adult": "Every adult organ can be traced to one, two or all three of these layers [f2,f3,f4].",
+ "adult": "Every adult tissue traces back to one of these three layers [f7].",
  "remember": [
   {
    "id": "r1",
@@ -162,12 +169,133 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f6": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f7": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "'Sensing linings' matches f2; adult line backed by new f7 [E05.01, E05.07] ✔."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The bladder lining is now in the General text, so q2 is answerable at every level."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 19 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Fates listed in words; no colour-coded layer references. Options are layer names or tissue names, all short."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.04.01) + ch06 §2 (derivatives), §5 #9, #11; map def",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: General: sensing linings (not whole sense organs) + bladder lining (q2 answerable at General); adult line backed by new f7",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

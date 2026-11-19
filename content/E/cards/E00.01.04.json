@@ -3,16 +3,16 @@
  "id": "E00.01.04",
  "version": 1,
  "book": "E",
- "status": "draft",
- "title": "Colour key: the three germ layers",
+ "status": "reviewed",
+ "title": "Colour key: the three layers",
  "tier": "A",
  "objective": {
   "verb": "name",
-  "text": "Name the three germ layers in their order in the week-3 disc."
+  "text": "Name the three layers in their order in the week-3 disc."
  },
  "body": {
-  "general": "What are the three layers that build a body? They are the germ layers: ectoderm, mesoderm and endoderm [f1]. Ectoderm is the top layer, on the back side [f2]. Mesoderm is the middle layer [f3]. Endoderm is the bottom layer, facing the yolk sac [f4]. Together, these three build every tissue of the body [f5].",
-  "mbbs": "By the end of week 3 the embryo has three germ layers: ectoderm, mesoderm and endoderm [f1]. Ectoderm lies dorsally, on top [f2]. Mesoderm lies between ectoderm and endoderm [f3]. Endoderm lies ventrally, facing the yolk sac [f4]. Every tissue of the embryo comes from one of these three [f5]."
+  "general": "What are the three layers that build a body? They are ectoderm, mesoderm and endoderm [f1]. Ectoderm is the top layer, on the back side [f2]. Mesoderm is the middle layer [f3]. Endoderm is the bottom layer, on the belly side [f4]. Together, these three build every tissue of the body [f5].",
+  "mbbs": "By the end of week 3 the embryo has three layers: ectoderm, mesoderm and endoderm [f1]. Ectoderm lies dorsally, on top [f2]. Mesoderm lies between ectoderm and endoderm [f3]. Endoderm lies ventrally, on the belly side [f4]. Every tissue of the embryo comes from one of these three [f5]."
  },
  "facts": [
   {
@@ -63,14 +63,7 @@
   {
    "id": "m1",
    "wrong": "Endoderm is the middle layer ('endo' sounds like 'inside').",
-   "right": "Mesoderm is the middle layer; endoderm is the bottom layer, facing the yolk sac.",
-   "cite": "E05.01",
-   "mark": "✔"
-  },
-  {
-   "id": "m2",
-   "wrong": "Mesoderm comes from the hypoblast, so the layers have different starting points.",
-   "right": "All three germ layers come from the epiblast.",
+   "right": "Mesoderm is the middle layer; endoderm is the bottom layer, on the belly side.",
    "cite": "E05.01",
    "mark": "✔"
   }
@@ -79,20 +72,20 @@
   {
    "id": "q1",
    "type": "order",
-   "prompt": "Put the germ layers in order from the back (dorsal) side down.",
+   "prompt": "Put the layers in order from the back (dorsal) side down.",
    "options": [
     "Ectoderm",
     "Mesoderm",
     "Endoderm"
    ],
-   "why": "Ectoderm is on top, mesoderm in the middle, endoderm at the bottom facing the yolk sac.",
+   "why": "Ectoderm is on top, mesoderm in the middle, endoderm at the bottom on the belly side.",
    "tests": "objective",
    "refutes": "m1"
   },
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "Which germ layer sits in the middle?",
+   "prompt": "Which layer sits in the middle?",
    "options": [
     "Mesoderm",
     "Endoderm",
@@ -108,12 +101,12 @@
  "remember": [
   {
    "id": "r1",
-   "q": "What are the three germ layers, top to bottom?",
+   "q": "What are the three layers, top to bottom?",
    "a": "Ectoderm, mesoderm, endoderm [f2,f3,f4]."
   },
   {
    "id": "r2",
-   "q": "Which germ layer faces the yolk sac?",
+   "q": "Which layer is on the belly (ventral) side?",
    "a": "Endoderm, the bottom layer [f4]."
   }
  ],
@@ -132,12 +125,152 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Germ layers and yolk sac are gone; the card teaches exactly the three layer names (3 new terms)."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "'Layers' and 'on the belly side' match f1 and f4 (ventral); m1 and r1 accurate."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 8 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Body and checks place layers by position (top/back, middle, bottom/belly), never by colour; meets B3/H5. Title 'Colour key: the three layers' names the scene's key but cues nothing by colour; advisory only: a screen-reader user gets no colour key, so the Part 0 key itself (D-042) must carry pattern + label (B3), which the scene labels do. Order check: 3 one-word steps."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from sc-E00.01.04 facts (V1) + dossier ch05 §2, §5; D-037 (a)",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: m2 dropped (epiblast/hypoblast not taught yet); yolk sac → belly side in body + r2; 'germ layers' left to E05.01.01 so new terms stay 3 (lead ruling, no exception)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-2 fixes: obj, q1, q2, m1, r1: 'germ layers' → 'layers', 'facing the yolk sac' → 'on the belly side'",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

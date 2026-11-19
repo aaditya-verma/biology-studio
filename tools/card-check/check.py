@@ -108,6 +108,23 @@ def card_check(card, stem, ctx):
             E("E-schema", k, f"'{k}' missing or not {t.__name__}")
     if out:
         return out
+    # 1b. shapes inside the fields (a badly typed card is reported, never a traceback — G-Eng R3)
+    if not all(isinstance(v, str) for v in card["body"].values()):
+        E("E-schema", "body", "every level text must be text")
+    for k in ["facts", "misconceptions", "checks"]:
+        if any(not isinstance(x, dict) for x in card[k]):
+            E("E-schema", k, f"each item in '{k}' must be an object")
+    for k in ["new", "known"]:
+        v = card["terms"].get(k, [])
+        if not isinstance(v, list) or any(not isinstance(t, str) for t in v):
+            E("E-schema", "terms", f"terms.{k} must be a list of glossary ids")
+    if not isinstance(card["objective"].get("verb", ""), str) or not isinstance(card["objective"].get("text", ""), str):
+        E("E-schema", "obj", "objective verb and text must be text")
+    for q in card["checks"]:
+        if isinstance(q, dict) and "options" in q and not isinstance(q["options"], list):
+            E("E-schema", "checks", "check options must be a list")
+    if out:
+        return out
     if card["spec"] != 1 or card["version"] < 1 or card["status"] not in STATUSES or card["tier"] not in "ABCD" or len(card["tier"]) != 1:
         E("E-schema", "card", "spec must be 1, version ≥ 1, status draft/reviewed/shipped/retired, tier A–D")
     for k in ["by", "role", "agent", "date"]:

@@ -74,6 +74,14 @@ function cardCheck(card,stem,ctx){
   const ok={int:Number.isInteger,str:x=>typeof x==='string',dict:isObj,list:Array.isArray};
   for(const [k,t] of Object.entries(want))if(!ok[t](card[k]))E('E-schema',k,`'${k}' missing or not ${t}`);
   if(out.length)return out;
+  /* shapes inside the fields (a badly typed card is reported, never a crash — G-Eng R3) */
+  if(!Object.values(card.body).every(v=>typeof v==='string'))E('E-schema','body','every level text must be text');
+  for(const k of ['facts','misconceptions','checks'])if(card[k].some(x=>!isObj(x)))E('E-schema',k,`each item in '${k}' must be an object`);
+  for(const k of ['new','known']){const v=k in card.terms?card.terms[k]:[];if(!Array.isArray(v)||v.some(t=>typeof t!=='string'))E('E-schema','terms',`terms.${k} must be a list of glossary ids`);}
+  const ov='verb' in card.objective?card.objective.verb:'',ot='text' in card.objective?card.objective.text:'';
+  if(typeof ov!=='string'||typeof ot!=='string')E('E-schema','obj','objective verb and text must be text');
+  for(const q of card.checks)if(isObj(q)&&'options' in q&&!Array.isArray(q.options))E('E-schema','checks','check options must be a list');
+  if(out.length)return out;
   if(card.spec!==1||card.version<1||!R.statuses.includes(card.status)||!['A','B','C','D'].includes(card.tier))E('E-schema','card','spec must be 1, version ≥ 1, status draft/reviewed/shipped/retired, tier A–D');
   for(const k of ['by','role','agent','date'])if(!card.made[k])E('E-schema','made',`made.${k} missing`);
   const st=card.status,final=st==='reviewed'||st==='shipped';

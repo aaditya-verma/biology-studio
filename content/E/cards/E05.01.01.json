@@ -3,7 +3,7 @@
  "id": "E05.01.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Gastrulation in one picture",
  "tier": "A",
  "objective": {
@@ -11,8 +11,8 @@
   "text": "Explain how the two-layered disc becomes three germ layers in week 3, all made from the epiblast."
  },
  "body": {
-  "general": "How does a flat disc of two cell layers become three? In week 3 the disc turns into three layers; this is called gastrulation [f1]. It starts when a groove, the primitive streak, appears on the top layer, the epiblast [f2]. Epiblast cells crowd into the groove and slip underneath [f3]. The first ones push out the bottom layer and become endoderm [f4]. Later ones fill the middle as mesoderm [f5]. Cells left on top become ectoderm [f6]. So all three layers come from the epiblast [f7].",
-  "mbbs": "Gastrulation is the week-3 process that turns the bilaminar disc into three germ layers: ectoderm, mesoderm and endoderm [f1]. It begins when the primitive streak appears on the epiblast, around days 14–15 (CS6) [f2]. Epiblast cells migrate to the streak, lose their links to neighbours and slip beneath it (invagination) [f3]. The first cells through displace the hypoblast and form definitive endoderm [f4]. Later cells spread between epiblast and endoderm as intraembryonic mesoderm [f5]. Cells that stay in the epiblast become ectoderm [f6]. So all three germ layers, and every tissue they build, come from the epiblast [f7]. Week 3 also opens the period most sensitive to teratogens, weeks 3 to 8 [f8]."
+  "general": "How does a flat disc of two cell layers become three? In week 3 the disc turns into three layers, called germ layers; this process is gastrulation [f1]. It starts when a groove, the primitive streak, appears on the top layer, the epiblast [f2]. Epiblast cells crowd into the groove and slip underneath [f3]. The first ones push out the bottom layer and become endoderm [f4]. Later ones fill the middle as mesoderm [f5]. Cells left on top become ectoderm [f6]. So all three layers come from the epiblast [f7].",
+  "mbbs": "Gastrulation is the week-3 process that turns the bilaminar disc into three germ layers: ectoderm, mesoderm and endoderm [f1]. It begins when the primitive streak appears on the epiblast, around days 14–15 (CS6) [f2]. Epiblast cells migrate to the streak, lose their links to neighbours and slip beneath it (invagination) [f3]. The first cells through displace the hypoblast and form definitive endoderm [f4]. Later cells spread between epiblast and endoderm as intraembryonic mesoderm [f5]. Cells that stay in the epiblast become ectoderm [f6]. So all three germ layers, and every tissue they build, come from the epiblast [f7]."
  },
  "facts": [
   {
@@ -71,7 +71,7 @@
    "text": "Gastrulation opens the period most sensitive to teratogens, weeks 3 to 8.",
    "cite": "E05.05 CC · E09",
    "mark": "✔",
-   "where": "main"
+   "where": "more"
   },
   {
    "id": "f9",
@@ -91,7 +91,8 @@
  "terms": {
   "new": [
    "E.t.gastrulation",
-   "E.t.primitive-streak"
+   "E.t.primitive-streak",
+   "E.t.germ-layers"
   ],
   "known": [
    "E.t.epiblast",
@@ -202,7 +203,103 @@
   "agent": "Bio · Build · S1 studio",
   "date": "19 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Germ layers is glossed at General, giving 3 new terms with no exception, and teratogen has moved to More. The checks refute dossier ch05 #1-2."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Germ layers glossed at General; teratogen fact f8 moved to More (✔, cited), no main sentence depends on it."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 49 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Title 'Gastrulation in one picture' is a figure of speech; body explains the whole process in text. Order check: 4 steps, longest 49 chars. Advisory: f9 (More) says 'CS7 embryos' and mbbs body '(CS6)' without expansion; mbbs is fine, but the More fact is level-neutral, so suggest 'Carnegie stage 7 (CS7)' in f9. Scene label 'Epiblast → ectoderm' (sc-E00.01.04): arrow carries meaning; suggest scene owner set its spoken/aria text to 'epiblast becoming ectoderm' (scene issue, not this card)."
+  }
+ },
  "log": [
   {
    "date": "19 Nov 2026",
@@ -268,6 +365,46 @@
    "date": "20 Nov 2026",
    "ev": "reopened; passes cleared (G-Sci, G-Learn): content changed — both gates to review again (card-spec §5; hand edit, logged here)",
    "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: 'germ layers' named + glossed at General and listed new (3 new: gastrulation, primitive streak, germ layers); teratogen sentence out of MBBS, f8 → More (belongs to E05.05.02)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

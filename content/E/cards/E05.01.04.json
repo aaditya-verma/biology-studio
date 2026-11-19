@@ -3,7 +3,7 @@
  "id": "E05.01.04",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Epiblast is not ectoderm",
  "tier": "A",
  "objective": {
@@ -52,10 +52,9 @@
   }
  ],
  "terms": {
-  "new": [
-   "E.t.germ-layers"
-  ],
+  "new": [],
   "known": [
+   "E.t.germ-layers",
    "E.t.epiblast",
    "E.t.hypoblast",
    "E.t.primitive-streak",
@@ -98,16 +97,17 @@
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "All three germ layers come from which layer?",
+   "prompt": "On day 13 the top layer of the disc is the epiblast. After cells have moved in, what is the part left on top called?",
    "options": [
+    "Ectoderm",
     "Epiblast",
-    "Hypoblast",
-    "Ectoderm"
+    "Mesoderm",
+    "Hypoblast"
    ],
    "answer": 0,
-   "why": "Endoderm and mesoderm move in from the epiblast, and ectoderm is the epiblast left behind.",
+   "why": "The name changes with the job: the cells left on top after gastrulation are ectoderm, one of the epiblast's three products.",
    "tests": "objective",
-   "refutes": "m2"
+   "refutes": "m1"
   }
  ],
  "adult": "Every tissue of the body traces back to the epiblast [f4].",
@@ -138,12 +138,134 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "0 new terms (germ layers known via E05.01.01); q2 now tests the epiblast/ectoderm distinction directly."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 2)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "No content changes; still accurate."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 61 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Distinction epiblast/ectoderm made in words with week anchors. Longest option 61 chars (q1 opt 0), under limit; wraps to 2 lines on phone at 125 %, acceptable."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from research/dossiers/ch05-gastrulation.md §2 (E05.01.04), §5 #2–3",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: germ layers known via E05.01.01 (0 new terms); q2 now tests epiblast vs ectoderm (not a copy of E05.01.01 q1)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
  ]
 }

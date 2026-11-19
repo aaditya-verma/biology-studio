@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — §8 five look terms (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — §6 Remember prompt, Clinical link, Where it shows up (D-042). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §8 five look terms (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -54,6 +54,7 @@
 - **Part 0:** orientation cards (`E00.01.nn`) — axes, staging, scale, colour key, reading a section, how to use the app.
 - **Card statuses:** Read → Understood (Check passed) → Can explain.
 - **Remember deck:** spaced review of read cards at 1, 3, 7, 21, 60 days.
+- **Card parts (C1, `docs/card-spec.md`):** **Remember prompt** — a short recall question + answer on a card (2–5 per card) that feeds the Remember deck · **Clinical link** — the card's clinical sentences (book Clinical Correlates), cited · **Where it shows up** — other concepts where the idea returns.
 - **Core / support tags:** an episode's cards weighted ×2 / ×1. **Ready to watch:** weighted share Understood.
 - **Unlock count:** how many episodes use a card as core; the top ones are written first.
 - **≈ line:** a fact without a valid citation or with low confidence; blocks "final".

@@ -3,7 +3,7 @@
  "id": "E00.01.05",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Reading a section",
  "tier": "A",
  "objective": {
@@ -11,8 +11,8 @@
   "text": "Identify the layers on a transverse section through the week-3 disc."
  },
  "body": {
-  "general": "What does a slice through the disc show? A transverse cut goes across the disc, like slicing bread, so you see it from side to side [f1]. The top of the slice is the back (dorsal), the bottom is the belly side (ventral) [f2]. On day 17, a slice through the groove at the tail end shows ectoderm on top, mesoderm in the middle and endoderm below [f3]. At the groove you can see cells dipping down into the middle [f4].",
-  "mbbs": "A transverse section cuts across the cranial–caudal axis, so it shows the disc from left to right [f1]. Dorsal is at the top: the epiblast side, facing the amniotic cavity; ventral is the endoderm side, facing the yolk sac [f2]. A day-17 section through the primitive streak shows epiblast (future ectoderm) on top, mesoderm spreading sideways in the middle and endoderm below [f3]. At the streak, epiblast cells are caught dipping through the groove into the middle layer [f4]."
+  "general": "What does a slice through the disc show? A transverse cut goes across the disc, like slicing bread, so you see it from side to side [f1]. The top of the slice is the back (dorsal), the bottom is the belly side (ventral) [f2]. On day 17, a slice through the groove at the tail end shows the top layer (future ectoderm), mesoderm in the middle and endoderm below [f3]. At the groove you can see cells dipping down into the middle [f4].",
+  "mbbs": "A transverse section cuts across the cranial–caudal axis, so it shows the disc from left to right [f1]. Dorsal, the back, is at the top; ventral, the belly side, is at the bottom [f2]. A day-17 section through the primitive streak shows the top layer (future ectoderm), mesoderm spreading sideways in the middle and endoderm below [f3]. At the streak, top-layer cells are caught dipping through the groove into the middle layer [f4]."
  },
  "facts": [
   {
@@ -42,13 +42,19 @@
    "cite": "E05.01",
    "mark": "✔",
    "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "In week 4 the disc folds into a tube-like body, with ectoderm on the outside and endoderm lining the inside.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
   }
  ],
  "terms": {
-  "new": [
-   "E.t.primitive-streak"
-  ],
+  "new": [],
   "known": [
+   "E.t.primitive-streak",
    "E.t.ectoderm",
    "E.t.mesoderm",
    "E.t.endoderm"
@@ -65,7 +71,7 @@
   {
    "id": "m2",
    "wrong": "The top of a section is the belly side.",
-   "right": "Dorsal (the back) is the upper, epiblast side.",
+   "right": "Dorsal (the back) is the upper, top-layer side.",
    "cite": "E04.01",
    "mark": "✔"
   }
@@ -76,11 +82,11 @@
    "type": "order",
    "prompt": "On a transverse section through the streak on day 17, put the layers in order from dorsal to ventral.",
    "options": [
-    "Epiblast (future ectoderm)",
+    "Top layer (future ectoderm)",
     "Mesoderm",
     "Endoderm"
    ],
-   "why": "Dorsal is on top: epiblast, then the new mesoderm, then endoderm facing the yolk sac.",
+   "why": "Dorsal is on top: the top layer (future ectoderm), then the new mesoderm, then endoderm.",
    "tests": "objective",
    "refutes": "m2"
   },
@@ -108,7 +114,7 @@
   {
    "id": "r2",
    "q": "On a day-17 section through the streak, which layer is in the middle?",
-   "a": "Mesoderm, spreading between epiblast and endoderm [f3]."
+   "a": "Mesoderm, spreading between the top layer and endoderm [f3]."
   }
  ],
  "shows_up": [
@@ -126,12 +132,148 @@
   "agent": "Bio · Content · C1 Part 0 + Ch 5",
   "date": "20 Nov 2026"
  },
- "review": {},
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C1 G-Learn reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The stray 'epiblast' is gone from m2; 0 new terms."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C1 G-Sci reviewer agent (round 3)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "m2 'top-layer side' is accurate (dorsal = epiblast side, E04.01)."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "C1 G-A11y reviewer agent (round 1)",
+   "date": "20 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 27 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Transverse section described fully in words (dorsal top, ventral bottom, layer order). Advisory wording: general body 'so you see it from side to side' and 'At the groove you can see cells dipping down', and q2 prompt 'can you see', describe what any section shows, not the scene, so meaning is carried; optional reword to 'shows'. Order check: 3 short steps."
+  }
+ },
  "log": [
   {
    "date": "20 Nov 2026",
    "ev": "drafted from sc-E00.01.01 + sc-E00.01.04 facts (V1) + dossier ch05 §2",
    "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-1 fixes: day-17 top layer = future ectoderm, not ectoderm; epiblast not named (no new terms; streak known via E00.01.01); q1 option + r2 follow; adult anchor added with f5 (folding, E06.03)",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "round-2 fixes: m2 right: 'epiblast side' → 'top-layer side'",
+   "by": "Lead scientist · Bio · Content · C1 Part 0 + Ch 5"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio"
+  },
+  {
+   "date": "20 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
   }
- ]
+ ],
+ "adult": "Later sections show the folded embryo, with ectoderm outside and endoderm lining the gut inside [f5]."
 }

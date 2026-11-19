@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "20 Nov 2026 · Bio · Build · Visual style commit (VS.q1 closed)",
+ "updated": "20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 (C1 gates passed; T3c open; D-037 answered → D-042)",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -414,21 +414,26 @@
    "title": "C1 cards — Part 0 + Ch 5 Tier A",
    "type": "Content",
    "chat": "Bio · Content · C1 Part 0 + Ch 5",
-   "status": "ready",
+   "status": "owner check",
    "needs": ["S1", "X1.05", "X1.06"],
    "unblocks": ["P1", "L1"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Learn": "open", "G-A11y": "open"},
+   "gates": {"G-Sci": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T3c", "state": "open"},
-   "decisions": ["D-016", "D-029", "D-030", "D-037", "D-038", "D-039"],
+   "decisions": ["D-016", "D-029", "D-030", "D-037", "D-038", "D-039", "D-042"],
    "prompt": "C1 cards",
-   "log": "—",
+   "log": "20 Nov 2026 · C1 cards (app v6) — 12 cards Reviewed (5 Part 0 + 7 Ch 5 Tier A), G-Sci 3 rounds, G-Learn 3 rounds, G-A11y pass; Remember / Clinical link / Where it shows up in spec + card-check",
    "todo": [
-    "card-check robustness (G-Eng R3): badly typed cards make Python stop with a traceback — add type guards in both checkers + selftest cases",
-    "S1 notes: q2’s right option is the only one not starting with \"It\" · reserved card parts Remember / Clinical link / Where it shows up get their rules first · Studio drafts live in memory only (export before closing) · E05.01.01 stays version 1 until first ship"
+    "Studio: Fail needs a 'fix' line — a checklist-only fail (E05.05.01 G-Learn round 2) had to be logged by hand; allow Fail when a checklist item is unticked",
+    "E05.02.01 notochord has no scene that shows it (W-scene-cards kept on purpose) — a notochord scene in a later V-step",
+    "E00.01.06 How to use the app — write at L1 (D-042)",
+    "G-Sci note for the owner: E00.01.02 f1 is ✔✔, but 'stages are set by form' rests on R05f/R06 only (the book gives no stages, D-030) — confirm ✔✔ or split the fact at the next card edit",
+    "G-A11y optional: read ranges '14–15' as '14 to 15' app-wide; scene sc-E00.01.04 label 'Epiblast → ectoderm' and sc-E00.01.02 disclaimers ('≈', '→') need spoken text (scene owner)",
+    "Republish the K1 explorer artifact with the new map.json (2 prerequisite edges added, D-042) — C9"
    ],
    "inputs": [
-    {"id": "C1.q1", "kind": "decide", "ask": "D-037: keep the D2 exception for E05.01.01 (5 new terms), or option (a) — E00.01.04 becomes a prerequisite and the colour-key card names the three layers", "asked_in": "Bio · Build · S1 studio", "asked": "2026-11-19", "answer": null, "status": "open", "d": "D-037"}
+    {"id": "C1.q1", "kind": "decide", "ask": "D-037: keep the D2 exception for E05.01.01 (5 new terms), or option (a) — E00.01.04 becomes a prerequisite and the colour-key card names the three layers", "asked_in": "Bio · Build · S1 studio", "asked": "2026-11-19", "answer": "Option (a), 20 Nov 2026 02:05 IST (D-042)", "status": "answered", "d": "D-037"},
+    {"id": "C1.q2", "kind": "action", "ask": "T3c (~15 min): read the 12 cards in the Studio review pane on phone, tablet and laptop; give G-Owner on E05.01.01 (owner checklist T3c)", "asked_in": "Bio · Content · C1 Part 0 + Ch 5", "asked": "2026-11-20", "answer": null, "status": "open", "d": null}
    ]
   },
   {
@@ -442,11 +447,12 @@
    "lock": false,
    "gates": {"G-Sci": "open", "G-Learn": "open", "G-Story": "open", "G-Art": "open"},
    "check": null,
-   "decisions": ["D-016", "D-032", "D-041"],
-   "prompt": null,
+   "decisions": ["D-016", "D-029", "D-032", "D-041", "D-042"],
+   "prompt": "P1 S1E01",
    "log": "—",
    "todo": [
-    "Follows build/visual-style.md (D-041)"
+    "Follows build/visual-style.md (D-041)",
+    "Cards ready: E05.01.01–04 core, E05.02.01 + E00.01.04 support (all Reviewed, C1); script facts come from them"
    ],
    "inputs": []
   },
@@ -481,7 +487,10 @@
    "decisions": ["D-010"],
    "prompt": null,
    "log": "—",
-   "todo": [],
+   "todo": [
+    "Write card E00.01.06 How to use the app once Watch it / Try it / Remember deck exist (D-042)",
+    "Remember deck reads each card's remember[] prompts (card-spec §2)"
+   ],
    "inputs": []
   },
   {
