@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 19 Nov 2026 · Bio · Build · W1 progress map.)*
 
 ## Lock
-- Build lock: free (W1 released 19 Nov 2026, 23:05 IST)
+- Build lock: Aaditya · Bio · Build · Visual style commit · 20 Nov 2026, 01:20 IST
 
 ## Now
 - **W1 progress map done** (app v5, D-040): `build/steps.json` (51 rows: every plan step, X1 per chapter, C1, P1, R1, L1, use gate, D1/G1, 25 parked ideas) · `tools/tracker/check.py` in CI · `#progress` Map · Board · Your inputs + `#step=<id>`. STATUS, RULES I2/I3, INSTRUCTIONS §2/§4/§6 and master plan §12 now point to it. Owner check **T6** open.
