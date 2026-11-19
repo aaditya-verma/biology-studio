@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "20 Nov 2026 · Bio · Build · Visual style commit",
+ "updated": "20 Nov 2026 · Bio · Build · Visual style commit (VS.q2 closed)",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -134,7 +134,7 @@
    "todo": [],
    "inputs": [
     {"id": "VS.q1", "kind": "action", "ask": "Name QR03's source account/link (file is in Drive › research/quality-refs/, 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-041"},
-    {"id": "VS.q2", "kind": "action", "ask": "Create the missing D-025 Drive folders audio/ assets/ index/ backup/ (research/ and research/quality-refs/ were made 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-025"}
+    {"id": "VS.q2", "kind": "action", "ask": "Create the missing D-025 Drive folders audio/ assets/ index/ backup/ (research/ and research/quality-refs/ were made 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": "Done — audio/, assets/, index/, backup/ created in Drive (owner, 20 Nov 2026, 01:48 IST)", "status": "closed", "d": "D-025"}
    ]
   },
   {
