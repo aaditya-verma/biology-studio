@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -156,7 +156,7 @@
 | E06.02.08 | Sites of blood formation | B | ST | x |  | meso | cv | E06.02.07 |  |  | ⚑ |
 | E06.02.09 | Capillary haemangiomas | C | C | d |  | meso | defects | E06.02.07 |  |  | ⚑ |
 | E06.03.01 | Body folding | A | F | core | 21–28 | multi | early | E05.05.01, E06.02.06 | 63 |  | ✔ |
-| E06.03.02 | Foregut, midgut, hindgut | A | FG | core | 22–28 | endo | gi | E06.03.01 | 34 |  | ✔ |
+| E06.03.02 | Foregut, midgut, hindgut | A | FG | core | 22–28 | endo | gi | E06.03.01 | 34 | AN52.6 | ✔ |
 | E06.03.03 | Endoderm derivatives | A | GA | x |  | endo | gi | E06.03.02 |  |  | ✔ |
 | E06.04.01 | Hox genes pattern the head–tail axis | D | M | x |  | multi | mol | E01.01.02 | 1 |  | ✔ |
 | E06.05.01 | External appearance in month 2 | B | T | s | 29–56 | multi | early | E06.03.01 | 3 |  | ⚑ |
@@ -168,17 +168,17 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E07.01.01 | Body plan after folding | A | F | core | 22–28 | multi | cav | E06.03.01, E06.01.02 |  |  | ≈ |
-| E07.02.01 | Intraembryonic body cavity | A | FG | core | 19–28 | meso | cav | E06.02.06 | 5 |  | ≈ |
-| E07.02.02 | Somatopleure vs splanchnopleure | A | G | x | 19–28 | meso | cav | E07.02.01 | 4 |  | ≈ |
-| E07.03.01 | Serous membranes and mesenteries | A | A | core | 22–35 | meso | cav | E07.02.02 | 3 |  | ≈ |
-| E07.03.02 | Body wall defects | C | C | x |  | multi | defects | E06.03.01 |  |  | ≈ |
-| E07.04.01 | Septum transversum | B | F | x | 22–28 | meso | cav | E06.03.01 | 7 |  | ≈ |
-| E07.04.02 | Separating pleural from pericardial cavities | B | F | x | 28–49 | meso | cav | E07.04.01 | 3 |  | ≈ |
-| E07.05.01 | Diaphragm from four parts | A | FA | core | 28–56 | meso | cav | E07.04.01, E07.04.02 | 1 |  | ≈ |
-| E07.05.02 | Congenital diaphragmatic hernia | C | C | x |  | meso | defects | E07.05.01 |  |  | ≈ |
+| E07.01.01 | Body plan after folding | A | F | core | 22–28 | multi | cav | E06.03.01, E06.01.02 |  | AN52.6 | ✔ |
+| E07.02.01 | Intraembryonic body cavity | A | FG | core | 19–28 | meso | cav | E06.02.06 | 5 | AN79.4 | ✔ |
+| E07.02.02 | Somatopleure vs splanchnopleure | A | G | x | 19–28 | meso | cav | E07.02.01 | 4 | AN79.4 | ✔ |
+| E07.03.01 | Serous membranes and mesenteries | A | A | core | 22–35 | meso | cav | E07.02.02 | 3 | AN79.4, AN25.2 | ✔ |
+| E07.03.02 | Body wall defects | C | C | x |  | multi | defects | E06.03.01 |  | AN52.4, AN79.5, AN79.6 | ⚑ |
+| E07.04.01 | Septum transversum | B | F | x | 22–28 | meso | cav | E06.03.01 | 7 | AN52.5 | ✔ |
+| E07.04.02 | Separating pleural from pericardial cavities | B | F | x | 28–49 | meso | cav | E07.04.01 | 3 | AN25.2 | ✔ |
+| E07.05.01 | Diaphragm from four parts | A | FA | core | 28–56 | meso | cav | E07.04.01, E07.04.02 | 1 | AN52.5 | ✔ |
+| E07.05.02 | Congenital diaphragmatic hernia | C | C | x |  | meso | defects | E07.05.01 |  | AN52.5, AN47.14 | ⚑ |
 
-*Misconceptions to refute (≈ until X1):* E07.02.02 — “The somatopleure lines the gut.” · E07.03.02 — “Omphalocele and gastroschisis are the same defect.” · E07.05.01 — “The diaphragm forms where it ends up (it starts high in the neck).”
+*Misconceptions to refute (cited in the chapter dossier):* E07.02.02 — “The somatopleure lines the gut.” · E07.03.02 — “Omphalocele and gastroschisis are the same defect.” · E07.04.01 — “The septum transversum becomes the central tendon.” · E07.05.01 — “The diaphragm forms where it ends up (it starts high in the neck).”
 
 ## E08 — Third Month to Birth: The Fetus and Placenta · pp 106–127 · 18 concepts
 
@@ -629,7 +629,7 @@ Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs �
 | E04 | · | 1 | 5 | 7 | · | 11 | 7 | 5 | 11 | 5 | 2 | 2 | 2 | 6 | 3 | 6 | 7 | 4 | 3 | 2 | 3 | 2 |
 | E05 | · | 9 | 8 | 7 | 11 | · | 16 | 13 | 14 | 8 | 11 | 12 | 9 | 19 | 12 | 16 | 11 | 13 | 14 | 10 | 11 | 10 |
 | E06 | · | 14 | 2 | 4 | 7 | 13 | · | 14 | 11 | 5 | 12 | 11 | 10 | 16 | 10 | 16 | 9 | 15 | 15 | 10 | 8 | 13 |
-| E07 | · | 3 | · | 1 | 4 | 4 | 4 | · | 3 | 1 | 3 | 3 | 3 | 5 | 4 | 6 | 5 | 3 | 4 | 4 | 1 | 3 |
+| E07 | · | 4 | · | 1 | 4 | 5 | 4 | · | 3 | 1 | 4 | 4 | 4 | 5 | 4 | 6 | 5 | 4 | 4 | 4 | 2 | 4 |
 | E08 | · | · | · | 1 | 4 | 5 | 4 | 3 | · | 5 | · | · | 3 | 4 | 3 | 3 | · | 3 | 3 | · | 3 | · |
 | E09 | · | 1 | 2 | 1 | 1 | 3 | 2 | · | 4 | · | 4 | 1 | 3 | 3 | 1 | · | 1 | 3 | 3 | 1 | 1 | 1 |
 | E10 | · | 3 | · | · | · | 2 | 6 | 1 | · | 3 | · | 3 | 3 | 4 | 2 | 3 | 2 | 4 | 7 | 2 | 2 | 2 |

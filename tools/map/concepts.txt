@@ -152,10 +152,10 @@ somsplanch|Somatopleure vs splanchnopleure|A|G|x|meso|cav|19-28|ieccav| Parietal
 serous|Serous membranes and mesenteries|A|A|c|meso|cav|22-35|somsplanch| Peritoneum, pleura and pericardium; mesenteries are double layers holding the gut.|
 bodywall|Body wall defects|C|C|x|multi|defects||folding| Omphalocele (gut in a sac at the cord), gastroschisis (beside the cord, no sac), ectopia cordis, bladder exstrophy.|Omphalocele and gastroschisis are the same defect.
 @ E07.04
-septtr|Septum transversum|B|F|x|meso|cav|22-28|folding| A thick mesoderm plate between heart and yolk stalk; it gives the liver's frame and the diaphragm's central tendon.|
+septtr|Septum transversum|B|F|x|meso|cav|22-28|folding| A thick mesoderm plate between heart and yolk stalk; it gives the liver's connective tissue and the ventral mesentery and is the base the diaphragm forms on.|The septum transversum becomes the central tendon.
 pleurop|Separating pleural from pericardial cavities|B|F|x|meso|cav|28-49|septtr| Pleuropericardial folds close the canals between them, carrying the phrenic nerves.|
 @ E07.05
-diaphragm|Diaphragm from four parts|A|F A|c|meso|cav|28-56|septtr,pleurop| Septum transversum, pleuroperitoneal membranes, oesophageal mesentery and body-wall muscle; innervated C3–C5.|The diaphragm forms where it ends up (it starts high in the neck).
+diaphragm|Diaphragm from four parts|A|F A|c|meso|cav|28-56|septtr,pleurop| Pleuroperitoneal membranes (central tendon + scaffold) grow over the septum transversum; muscle from C3–C5 somites; oesophageal mesentery gives the crura; nerve C3–C5.|The diaphragm forms where it ends up (it starts high in the neck).
 cdh|Congenital diaphragmatic hernia|C|C|x|meso|defects||diaphragm| A posterolateral (usually left) hole lets gut into the chest and stunts the lung.|
 @ E08.01
 fetalgrowth|Fetal period growth|B|T|s|multi|plac|57-266|month2| Months 3–9: length grows most in months 3–5, weight in the last two months.|

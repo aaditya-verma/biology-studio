@@ -310,6 +310,15 @@
    "pmid": "39365302"
   },
   {
+   "id": "R05z",
+   "tier": 1,
+   "name": "Mekonen HK, Hikspoors JPJM, Mommen G, Köhler SE, Lamers WH",
+   "licence": "Open access in PMC (licence ≈ check before reuse) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/joa.12380",
+   "pmid": "26467243"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -415,7 +424,8 @@
   "D-039",
   "D-040",
   "D-041",
-  "D-042"
+  "D-042",
+  "D-043"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",
