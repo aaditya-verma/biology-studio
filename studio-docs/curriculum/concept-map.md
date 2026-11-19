@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -184,26 +184,26 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E08.01.01 | Fetal period growth | B | T | s | 57–266 | multi | plac | E06.05.01 | 1 |  | ≈ |
-| E08.01.02 | Growth restriction and prematurity | C | C | s |  | multi | defects | E08.01.01 |  |  | ≈ |
-| E08.01.03 | Time of birth | A | T | x | 266–266 | none | plac | E00.01.02 | 1 |  | ≈ |
-| E08.02.01 | Chorion and fetal membranes | B | G | core |  | extra | plac | E05.06.01 | 10 |  | ≈ |
-| E08.02.02 | Preeclampsia | C | C | x |  | extra | defects | E04.03.01, E08.04.01 |  |  | ≈ |
-| E08.03.01 | Chorion frondosum and laeve; deciduae | A | A | x | 57–120 | extra | plac | E08.02.01 | 7 |  | ≈ |
-| E08.04.01 | Structure of the placenta | A | A | core | 120–266 | extra | plac | E08.03.01 | 6 |  | ≈ |
-| E08.04.02 | The placental membrane | A | A | x |  | extra | plac | E08.04.01 | 1 |  | ≈ |
-| E08.04.03 | Placenta as an endocrine organ | B |  | x |  | extra | plac | E08.04.01 |  |  | ≈ |
-| E08.04.04 | Rh disease and fetal hydrops | C | C | x |  | extra | defects | E08.04.02 |  |  | ≈ |
-| E08.04.05 | Placenta accreta and previa | C | C | x |  | extra | defects | E08.04.01 |  |  | ≈ |
-| E08.05.01 | Umbilical cord | A | A | x | 28–266 | extra | plac | E04.04.03 | 2 |  | ≈ |
-| E08.06.01 | Placenta at term | B |  | s | 250–266 | extra | plac | E08.04.01 |  |  | ≈ |
-| E08.07.01 | Amniotic fluid | B |  | x |  | extra | plac | E04.01.02 | 1 |  | ≈ |
-| E08.07.02 | Polyhydramnios and oligohydramnios | C | C | x |  | extra | defects | E08.07.01 |  |  | ≈ |
-| E08.08.01 | Twins and their membranes | B |  | x |  | extra | plac | E03.04.01, E08.02.01 | 1 |  | ≈ |
-| E08.08.02 | Twin complications | C | C | s |  | extra | defects | E08.08.01 |  |  | ≈ |
-| E08.09.01 | Parturition (labour) | B |  | s | 266–266 | none | plac | E08.01.03 |  |  | ≈ |
+| E08.01.01 | Fetal period growth | B | T | s | 57–266 | multi | plac | E06.05.01 | 1 | AN80.6 | ✔ |
+| E08.01.02 | Growth restriction and prematurity | C | C | s |  | multi | defects | E08.01.01 |  | AN80.6 | ✔ |
+| E08.01.03 | Time of birth | A | T | x | 266–266 | none | plac | E00.01.02 | 1 | AN80.6 | ⚑ |
+| E08.02.01 | Chorion and fetal membranes | B | G | core |  | extra | plac | E05.06.01 | 10 | AN80.1 | ✔ |
+| E08.02.02 | Preeclampsia | C | C | x |  | extra | defects | E04.03.01, E08.04.01 |  | AN80.3 | ✔✔ |
+| E08.03.01 | Chorion frondosum and laeve; deciduae | A | A | x | 57–120 | extra | plac | E08.02.01 | 7 | AN80.1, AN80.3 | ✔ |
+| E08.04.01 | Structure of the placenta | A | A | core | 120–266 | extra | plac | E08.03.01 | 6 | AN80.3 | ✔ |
+| E08.04.02 | The placental membrane | A | A | x |  | extra | plac | E08.04.01 | 1 | AN80.3 | ✔ |
+| E08.04.03 | Placenta as an endocrine organ | B |  | x |  | extra | plac | E08.04.01 |  | AN80.5 | ⚑ |
+| E08.04.04 | Rh disease and fetal hydrops | C | C | x |  | extra | defects | E08.04.02 |  | AN80.3 | ✔ |
+| E08.04.05 | Placenta accreta and previa | C | C | x |  | extra | defects | E08.04.01 |  | AN80.3 | ✔ |
+| E08.05.01 | Umbilical cord | A | A | x | 28–266 | extra | plac | E04.04.03 | 2 | AN80.2, AN80.7 | ✔ |
+| E08.06.01 | Placenta at term | B |  | s | 250–266 | extra | plac | E08.04.01 |  | AN80.3 | ✔ |
+| E08.07.01 | Amniotic fluid | B |  | x |  | extra | plac | E04.01.02 | 1 | AN80.1 | ⚑ |
+| E08.07.02 | Polyhydramnios and oligohydramnios | C | C | x |  | extra | defects | E08.07.01 |  | AN80.1 | ✔ |
+| E08.08.01 | Twins and their membranes | B |  | x |  | extra | plac | E03.04.01, E08.02.01 | 1 | AN80.4 | ⚑ |
+| E08.08.02 | Twin complications | C | C | s |  | extra | defects | E08.08.01 |  | AN80.4 | ✔ |
+| E08.09.01 | Parturition (labour) | B |  | s | 266–266 | none | plac | E08.01.03 |  | AN80.5 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E08.01.03 — “Forty weeks is counted from fertilization.” · E08.04.01 — “Maternal and fetal blood mix in the placenta.” · E08.04.02 — “The placenta blocks drugs and microbes.” · E08.05.01 — “Umbilical arteries carry oxygen-rich blood.” · E08.08.01 — “All identical twins share one placenta.”
+*Misconceptions to refute (cited in the chapter dossier):* E08.01.03 — “Forty weeks is counted from fertilization.” · E08.04.01 — “Maternal and fetal blood mix in the placenta.” · E08.04.02 — “The placenta blocks drugs and microbes.” · E08.05.01 — “Umbilical arteries carry oxygen-rich blood.” · E08.08.01 — “All identical twins share one placenta.”
 
 ## E09 — Birth Defects and Prenatal Diagnosis · pp 128–144 · 7 concepts
 

@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "20 Nov 2026 · Bio · Research · X1 Ch 07 (X1.07 done, G-Sci pass; D-043 owner input; I1 Ch 7 locator gaps; X1.08 ready)",
+ "updated": "20 Nov 2026 · Bio · Research · X1 Ch 08 (X1.08 done, G-Sci pass; D-044 owner input; I1 Ch 8 locator gaps; X1.09 ready)",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -225,7 +225,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E08.08/E08.09 terms look swapped · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · Table 8.1 5/8 rows · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -317,14 +317,38 @@
    "title": "X1 research · Ch 8 fetus + placenta",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 08",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.07"],
+   "unblocks": ["X1.09"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-044"],
+   "prompt": null,
+   "log": "20 Nov 2026 · X1 Research · Ch 8 — 31 Tier A lines, fetal-period staging (no CS), clinical correlates confirmed, 4 ⚑ + 1 K1 note → D-044 (G-Sci pass with fixes)",
+   "todo": [
+    "Tier 1 fetal-size standard (e.g. INTERGROWTH-21st) to raise the §1 sizes to ✔✔",
+    "D-044 a: read the Csapo 1972–73 lutectomy papers (no PubMed abstract) before any card uses the progesterone hand-over",
+    "Tier 1 sources for the preeclampsia More lines (postpartum onset; organ dysfunction instead of proteinuria) and an LMP-clock source for gut return on scans",
+    "AN80 wording read from a teaching-site copy — check against NMC Vol I with AN81 in Ch 9 ≈"
+   ],
+   "inputs": [
+    {"id": "X1.08.q1", "kind": "decide", "ask": "D-044 (a–e) from Ch 8: pick an option per item (progesterone hand-over, CRL accuracy, share of DZ twins, accreta/previa concept name, amniotic fluid curve) — recommendations given", "asked_in": "Bio · Research · X1 Ch 08", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-044"}
+   ]
+  },
+  {
+   "id": "X1.09",
+   "title": "X1 research · Ch 9 birth defects + prenatal diagnosis",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 09",
+   "status": "ready",
+   "needs": ["X1.08"],
    "unblocks": [],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": ["D-011", "D-026"],
-   "prompt": "X1 Ch 8",
+   "decisions": ["D-011", "D-026", "D-044"],
+   "prompt": "X1 Ch 9",
    "log": "—",
    "todo": [],
    "inputs": []

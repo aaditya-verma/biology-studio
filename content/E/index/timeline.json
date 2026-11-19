@@ -619,9 +619,51 @@
       900,
       1300
      ]
+    },
+    {
+     "age_weeks": [
+      29,
+      32
+     ],
+     "crl_cm": [
+      28,
+      30
+     ],
+     "weight_g": [
+      1400,
+      2100
+     ]
+    },
+    {
+     "age_weeks": [
+      33,
+      36
+     ],
+     "crl_cm": [
+      31,
+      34
+     ],
+     "weight_g": [
+      2200,
+      2900
+     ]
+    },
+    {
+     "age_weeks": [
+      37,
+      38
+     ],
+     "crl_cm": [
+      35,
+      36
+     ],
+     "weight_g": [
+      3000,
+      3400
+     ]
     }
    ],
-   "incomplete": "5/8 rows read (OCR); finish by hand from the book"
+   "checked": "8/8 rows checked against the PDF page image, 20 Nov 2026 (X1 Ch 08)"
   }
  ]
 }
