@@ -1,0 +1,320 @@
+{
+ "spec": 1,
+ "id": "E00.01.06",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "kind": "guide",
+ "title": "How to use the app",
+ "tier": "A",
+ "objective": {
+  "verb": "name",
+  "text": "Name a card's three steps, in order."
+ },
+ "body": {
+  "general": "How do you really learn a card? Each card teaches one idea [f1]. Keep it open for a moment, and it counts as Read [f2]. Pass its Check, every question right in one go, and it is Understood [f3]. Then explain it out loud and compare with the model answer: that is Can explain [f4]. Try it lets you turn the 3D embryo and scrub through the days [f5]. Your Remember deck brings the card's prompts back 1 day later, then 3, then 7 days apart [f6].",
+  "mbbs": "Each card teaches one idea and opens with what you will be able to do [f1]. Keeping a card open for a moment marks it Read [f2]. Its Check tests that objective; every question right in one run marks it Understood [f3]. Explaining it aloud, then comparing with the model answer, marks it Can explain [f4]. Try it opens the card's 3D scene: turn it and scrub the days; Open full 3D adds slicing [f5]. The card's Remember prompts join your deck once you read it [f6]. They come back 1 day later, then 3, then 7 days apart while you get them right [f6]. Today shows how many prompts are due [f7]. The small numbers after a sentence open its facts, each with a source and a confidence mark [f8]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Each card teaches one idea and opens with what you will be able to do.",
+   "cite": "APP Card",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "A card counts as Read once it has been open for a moment (1.5 s).",
+   "cite": "APP Status",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Getting every question of a card's Check right in one run marks the card Understood.",
+   "cite": "APP Check",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "After Understood, you explain the idea out loud and compare with a model answer to mark it Can explain.",
+   "cite": "APP Explain",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Try it shows the card's 3D scene, which you can turn and scrub through the days; Open full 3D adds slicing.",
+   "cite": "APP Try it",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "A card's Remember prompts join your deck when you read it. They come back 1 day later, then 3, then every 7 days while you get them right.",
+   "cite": "APP Deck",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Today shows how many Remember prompts are due.",
+   "cite": "APP Today",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "The small number after a sentence opens the facts behind it, each with its source and confidence mark.",
+   "cite": "APP Card",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Watch it will link each card to its episode; until episodes exist it says Coming soon.",
+   "cite": "APP Watch it",
+   "mark": "ⓘ",
+   "where": "more"
+  },
+  {
+   "id": "f10",
+   "text": "A missed prompt that was due comes back the next day and starts its spacing again. Any miss also repeats once at the end of that session.",
+   "cite": "APP Deck",
+   "mark": "ⓘ",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": []
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Once you have read a card, you have learned it.",
+   "right": "Read is only the first step: pass the Check, then explain it in your own words.",
+   "cite": "APP Status",
+   "mark": "ⓘ"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "order",
+   "prompt": "Put a card's three steps in order, first to last.",
+   "options": [
+    "Read",
+    "Understood",
+    "Can explain"
+   ],
+   "why": "You read the card first, pass its Check to reach Understood, then explain it to reach Can explain.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "What marks a card Understood?",
+   "options": [
+    "Every Check question right in one run",
+    "Most Check questions right",
+    "Keeping the card open a while"
+   ],
+   "answer": 0,
+   "why": "Keeping a card open makes it Read; only a clean run of the whole Check makes it Understood.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which step comes right after Understood?",
+   "options": [
+    "Can explain",
+    "Read",
+    "New"
+   ],
+   "answer": 0,
+   "why": "After Understood you explain the idea in your own words and compare with the model answer: that is Can explain.",
+   "tests": "objective"
+  }
+ ],
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What are a card's three steps, in order?",
+   "a": "Read, Understood, Can explain [f2,f3,f4]."
+  },
+  {
+   "id": "r2",
+   "q": "What marks a card Understood?",
+   "a": "Every Check question right in one run [f3]."
+  },
+  {
+   "id": "r3",
+   "q": "When do Remember prompts come back?",
+   "a": "1 day after you read the card, then 3, then 7 days apart while you get them right [f6]."
+  }
+ ],
+ "scene": {
+  "id": "sc-E00.01.01",
+  "day": 16
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Build · L1 learning core",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "L1 G-Sci reviewer agent (round 3)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Every ⓘ line checked against the app as built (18-learn.js, 02-config.js learn, 13-viewer.js inline panel): Read after 1.5 s, clean-run Check, model answer, 1·3·7 spacing on Got it, early practice keeps the schedule, inline Try it = turn + scrub, slicing in Open full 3D. All 11 APP cites name the right screen."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "L1 G-Learn reviewer agent (round 3)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Objective names the three steps plainly; q2 and q3 no longer guessable from wording; spacing stated the same way in body, facts, r3 and the deck lead. General 81/90, MBBS 122/160, longest sentence 18 words."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA & accessibility",
+   "agent": "L1 G-A11y reviewer agent (round 3)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "notes": "alt: the only visual is sc-E00.01.01 (named region, text description, label list); input: q1 order + q2/q3 mcq by keyboard and touch; colour: no colour-only cue; text125: fits at 390 and 1366."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted (guide card, D-050)",
+   "by": "Lead scientist · Bio · Build · L1 learning core"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail (round 1): f2, f5, f6, r3 and their body lines did not match the app",
+   "by": "Research librarian · L1 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail (round 1): obj wording, q2 + q3 guessable, r3 spacing",
+   "by": "Learning designer · L1 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "edited (round 2): objective, body, f2, f5, f6, f10, q2, q3, r3 per the round-1 notes",
+   "by": "Lead scientist · Bio · Build · L1 learning core"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail (round 2): f10 only — early practice no longer resets a prompt that is not due",
+   "by": "Research librarian · L1 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass (round 2) cleared by the f10 edit; re-confirmed in round 3",
+   "by": "Lead scientist · Bio · Build · L1 learning core"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "edited (round 3): f10 per G-Sci round 2",
+   "by": "Lead scientist · Bio · Build · L1 learning core"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · L1 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · L1 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rules (card-spec §5) · Bio · Build · L1 learning core"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · L1 G-A11y reviewer agent (round 3)"
+  }
+ ]
+}

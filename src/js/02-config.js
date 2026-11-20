@@ -7,15 +7,15 @@ const CONFIG={
   saveDelayMs:400,                            // debounce between a change and the write
   saveLogMax:20,
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
-  nav:['today','map','scene','settings'],             // EDIT: order of the main nav
+  nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
-  routes:['today','map','concept','x','scene','day','settings','colours','studio','calib','progress','step'],   // first key of the hash; see src/js/05-router.js
+  routes:['today','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
   device:{phone:600,tablet:1024},
   xt:{x:'layer',y:'day'},                     // default crosstab
-  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker'],
+  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn'],
   // EDIT: 3D viewer (V1; design plan §2 3D row, RULES H8). Budgets stay "Expected" until pipeline reference §2 is Measured (C4).
   viewer:{
     scenesUrl:'content/E/scenes/',            // EDIT: scene files (docs/scene-spec.md)
@@ -39,5 +39,15 @@ const CONFIG={
     sources:'content/E/sources.json',         // derived by tools/card-check --write-sources (registry, decisions, sections, terms)
     checkDelayMs:250,                         // live card-check after typing
     roles:['Lead scientist','Research librarian','Learning designer','Story director / writer','Art director','QA & accessibility','Owner']   // playbook §1
+  },
+  // EDIT: learning core (L1; docs/card-spec.md §7, design plan §4.8). Statuses Read → Understood → Can explain (B4).
+  learn:{
+    show:['reviewed','shipped'],              // card statuses a learner sees (testing mode also shows drafts)
+    levels:['general','mbbs'],                // level toggle order; a card's optional levels (school, neet, pg) join when it has them
+    level:'general',                          // default level for a new save
+    deckDays:[1,3,7],                         // Remember deck spacing in days: step 0 → +1 d, 1 → +3 d, 2+ → +7 d (master plan §9 lists 21/60 later)
+    deckSession:20,                           // most prompts in one deck session
+    readMs:1500,                              // a card counts as Read after it has been open this long
+    groups:['E00','E05']                      // EDIT: card list order (chapters with cards)
   }
 };

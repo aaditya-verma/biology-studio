@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Fix · M1b merge — M1b Step 2 rows (D-048/D-049), C1 done (T3c + G-Owner pass)",
+ "updated": "21 Nov 2026 · Bio · Build · L1 learning core — L1 → owner check (T7), gates pass, D-050, V2 prompt; lock released",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -510,7 +510,6 @@
    "todo": [
     "Studio: Fail needs a 'fix' line — a checklist-only fail (E05.05.01 G-Learn round 2) had to be logged by hand; allow Fail when a checklist item is unticked",
     "E05.02.01 notochord has no scene that shows it (W-scene-cards kept on purpose) — a notochord scene in a later V-step",
-    "E00.01.06 How to use the app — write at L1 (D-042)",
     "G-Sci note for the owner: E00.01.02 f1 is ✔✔, but 'stages are set by form' rests on R05f/R06 only (the book gives no stages, D-030) — confirm ✔✔ or split the fact at the next card edit",
     "G-A11y optional: read ranges '14–15' as '14 to 15' app-wide; scene sc-E00.01.04 label 'Epiblast → ectoderm' and sc-E00.01.02 disclaimers ('≈', '→') need spoken text (scene owner)",
     "Republish the K1 explorer artifact with the new map.json (2 prerequisite edges added, D-042) — C9"
@@ -563,24 +562,26 @@
    "id": "L1",
    "title": "L1 learning core — reader, statuses, Check, Remember deck, Try it 3D",
    "type": "Build",
-   "chat": "Bio · Build · L1 learning",
-   "status": "planned",
+   "chat": "Bio · Build · L1 learning core",
+   "status": "owner check",
    "needs": ["C1"],
    "unblocks": ["V2", "L2", "L3"],
    "lock": true,
-   "gates": {"G-Eng": "open", "G-Learn": "open"},
-   "check": {"id": "T7", "state": "open"},
-   "decisions": ["D-010", "D-042", "D-047"],
+   "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
+   "check": {"id": "T7", "state": "open", "since": "2026-11-21"},
+   "decisions": ["D-010", "D-042", "D-047", "D-050"],
    "prompt": "L1 learning core",
-   "log": "—",
+   "log": "21 Nov 2026 · L1 learning core (app v7) — Cards tab, card reader (Try it inline 3D, Watch it Coming soon), Check, Can explain, Remember deck 1·3·7, Today queue; guide card E00.01.06 Reviewed (D-050); G-Eng, G-Learn, G-A11y pass (2 rounds); layout-check green; T7 open",
    "todo": [
-    "App-first (D-047): no video needed — R1 link cut; the player moved to L3",
-    "Write card E00.01.06 How to use the app once Try it / Remember deck exist (D-042; Watch it says \"Coming soon\" until L3)",
-    "Remember deck reads each card's remember[] prompts (card-spec §2)",
-    "Write owner check T7 in build/owner-test-checklist.md",
-    "T3c note (owner, 21 Nov): tablet P · Studio · debug overlay covers text top-right — make it tap-to-hide (src/js/01-debug.js)"
+    "Understood can be passed by an instant retry from short-term memory — consider a short wait or a fresh question on retry (G-Learn SHOULD → L2)",
+    "Offline: Today/Cards can count due prompts of a card that failed to load, #deck skips them (G-Eng nit)",
+    "E00.01.06 Try it uses sc-E00.01.01 as a demo scene (W-scene-cards kept on purpose)",
+    "Remember deck 21/60-day steps (master plan §9) wait for the use gate's data (D-050)",
+    "Republish the claude.ai Studio copy if it shows cards (C9) — no copy affected by L1 (Studio is in-app)"
    ],
-   "inputs": []
+   "inputs": [
+    {"id": "L1.q1", "kind": "decide", "ask": "D-050: confirm guide cards (kind guide, APP cites, mark ⓘ), statuses (Read 1.5 s, Understood = clean Check run, Can explain self-check), 1·3·7 deck, learners see Reviewed cards — or say what to change (T7 step 9)", "asked_in": "Bio · Build · L1 learning core", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-050"}
+   ]
   },
   {
    "id": "V2",
@@ -593,15 +594,14 @@
    "lock": true,
    "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
    "check": {"id": "T8", "state": "open"},
-   "decisions": ["D-036", "D-047"],
-   "prompt": null,
+   "decisions": ["D-036", "D-047", "D-050"],
+   "prompt": "V2 3D drills",
    "log": "—",
    "todo": [
     "Drills as Check types (backlog 4–6, 10–11 → IB04 Rotate to match, IB05 Which day is this?, IB06 Order the frames, IB10 Label it, IB11 Folded or not?)",
     "New scenes: notochord (E05.02.01, C1 to-do) + the rest of Ch 5 Tier A; then Ch 6–8 scenes as C2 cards need them",
     "Carry V1 reviewer notes (streak at day 18, leader lines in phone landscape at 125 %, cut ≈ −0.3, WebGL context loss)",
-    "Write owner check T8",
-    "Ready prompt written by the chat before it (master plan §13)"
+    "Write owner check T8"
    ],
    "inputs": []
   },

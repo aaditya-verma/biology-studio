@@ -106,7 +106,9 @@ function sdDraftHtml(c){
    <div class="st-grid">${sdField(S.fScene,'scene.id',c.scene.id,'str',{select:[['','—'],...((SC.idx&&SC.idx.scenes)||[]).map(s=>[s.id,s.id+' · '+s.title])]})}${sdField(S.fDay,'scene.day',c.scene.day,'num',{nospell:1,num:1})}</div>
   </div>`;
 }
-function sdCiteNote(f){if(!ST.ctx)return '';const v=validateCitation(f.cite,ST.ctx.src),s=suggestMark(v.parsed,f.decision,ST.ctx.src);
+function sdCiteNote(f){if(!ST.ctx)return '';
+  if(appCite(f.cite)!==null){return `<span class="mut">ⓘ ${esc(STR.st.appCite)}</span>`;}   // guide card (D-050): card-check reports a misuse
+  const v=validateCitation(f.cite,ST.ctx.src),s=suggestMark(v.parsed,f.decision,ST.ctx.src);
   return v.errors.length?`<span class="bad">✗ ${esc(v.errors.join('; '))}</span>`:`<span class="ok">✓ ${esc(STR.st.citeOk)}</span> · <span class="mut">${esc(STR.st.suggested(s))}</span>`;}
 function sdSetPath(o,path,v){const ks=path.split('.');for(const k of ks.slice(0,-1))o=Array.isArray(o)?o[+k]:(o[k]=o[k]||{});const k=ks[ks.length-1];
   if(v===undefined){if(Array.isArray(o))o.splice(+k,1);else delete o[k];}else if(Array.isArray(o))o[+k]=v;else o[k]=v;}

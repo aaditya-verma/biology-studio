@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Build · L1 learning core — T7 written. Before: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -23,9 +23,18 @@ Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull
 7. Turn on testing mode (Settings): ✎ on a step opens an edit prompt pointing at `build/steps.json`.
 - **Result:** ☐ pass ☐ problems · map readable on the phone: ☐ yes ☐ no (where?) · can't-start line right: ☐ yes · board columns right: ☐ yes · inputs list complete: ☐ yes ☐ missing (which?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes · layout problems (device + screen):
 
-## T7. Learning core *(phone, tablet, laptop)* — PLANNED (L1 writes the steps)
-Read a card, pass its Check, use the Remember deck and Try it 3D on each device.
-- **Result:** ☐ pass ☐ problems · notes: ___
+## T7. Learning core *(~20 min: phone, then tablet, then laptop; + 1 min tomorrow)* — OPEN (L1, 21 Nov 2026)
+Open the app **without** `?test=1`: https://aaditya-verma.github.io/biology-studio/ — pull to refresh once so **v7** loads (Settings shows the version). This time your taps are saved on the device. Tap **Export backup** in Settings first (A3).
+1. **Cards tab (phone, portrait):** 13 cards in two groups, each with a ring + word: ○ New, ◔ Read, ◑ Understood, ● Can explain.
+2. **Open E05.01.01 Gastrulation in one picture.** Title, General/MBBS switch and "You will be able to" sit above the 3D. Wait 2 s: the chip turns **Read**. Turn the 3D and scrub the days; **Open full 3D** keeps the day. Tap a small number after a sentence: its facts open with source + mark.
+3. **Check:** answer one question wrong on purpose. You should see ✗, the right answer and why. Finish → "Read the card again, then retry". Try again (options reshuffle) and get all right → **Understood**.
+4. **Can explain:** say the objective out loud, tap **Show a model answer**, then **I explained it** → **Can explain**.
+5. **Rotate** to landscape mid-Check: same question, same day in 3D, same place on the page.
+6. **E00.01.06 How to use the app** (the new guide card, marks ⓘ): does it describe the app as you just used it? Anything wrong or unclear → note the line.
+7. **Tablet** (or laptop device mode, "emulated"): portrait = 3D on top, text below; landscape = 3D │ text. **Laptop:** 3D │ text │ card rail; the 3D stays in view while the text scrolls. Try the Check with the keyboard only (Tab, Enter/Space).
+8. **Remember deck:** Today shows "Nothing due today" (prompts first come back tomorrow). **Tomorrow:** Today shows the due count → **Review now** → answer from memory, Show answer, Got it / Not yet. Note: anything confusing?
+9. **G-Owner** on D-050 (guide cards + ⓘ, statuses, 1-3-7 deck, Reviewed cards shown to learners): say "D-050 confirmed" or what to change.
+- **Result T7:** ☐ pass ☐ problems · statuses move as described: ☐ · Check feedback clear: ☐ · Can explain makes sense: ☐ · rotate keeps place: ☐ · E00.01.06 matches the app: ☐ · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · deck next day: ☐ · D-050: ☐ confirmed ☐ change: ___ · notes (screen + device + what): ___
 
 ## T8. 3D drills + new scenes *(phone, tablet, laptop)* — PLANNED (V2 writes the steps)
 - **Result:** ☐ pass ☐ problems · notes: ___

@@ -7,7 +7,7 @@ const CARD_RULES={
   verbs:['explain','describe','identify','label','locate','order','compare','distinguish','predict','name','trace','relate'],
   spatial:['identify','label','locate','order'],
   budget:{general:90,school:110,neet:140,mbbs:160,pg:200}, required:['general','mbbs'],
-  marks:['✔✔','✔','⚑','✚','≈'], statuses:['draft','reviewed','shipped','retired'],
+  marks:['✔✔','✔','⚑','✚','≈','ⓘ'], kinds:['concept','guide'], appLocs:['Today','Cards','Card','Check','Explain','Deck','Try it','Watch it','Status','Settings'], statuses:['draft','reviewed','shipped','retired'],
   limits:{sentence:25,newTerms:3,newTermsEx:5,minChecks:2,opt:[3,5],remember:[2,5],showsUp:6},
   gates:{'G-Sci':{checklist:['cited','sections','accuracy','flags','plus','noapprox'],lines:['body','fact','mis','adult','clinical','remember']},
     'G-Learn':{checklist:['objective','checks','refutes','terms','budget','adult'],lines:['obj','terms','check','mis','remember','shows']},
@@ -67,6 +67,12 @@ function cardLines(card){const L={obj:['obj'],terms:['terms'],body:[],fact:[],mi
 const gateLines=(card,g)=>{const L=cardLines(card);return CARD_RULES.gates[g].lines.flatMap(k=>L[k]);};
 
 /* ---------- cardCheck: mirror of tools/card-check/check.py card_check() ---------- */
+/* guide cards (D-050): a fact about the app cites `APP <screen>` and is marked ⓘ — same rules as check.py app_cite/app_rules */
+function appCite(c){if(typeof c!=='string')return null;const m=/^APP(?: (.+))?$/.exec(c.trim().replace(/^\[+|\]+$/g,'').trim());return m?(m[1]||''):null;}
+function appRules(cite,mk,line,guide,E){const loc=appCite(cite);
+  if(!guide)E('E-cite',line,'APP cites belong to guide cards only (kind: guide)');
+  else if(loc&&!CARD_RULES.appLocs.includes(loc))E('E-cite',line,`unknown app screen '${loc}' (${CARD_RULES.appLocs.join(', ')})`);
+  if(mk!=='ⓘ')E('E-mark',line,'an APP cite is marked ⓘ');}
 function cardCheck(card,stem,ctx){
   const R=CARD_RULES,out=[],E=(code,line,msg)=>out.push({lvl:'E',code,line,msg}),W=(code,line,msg)=>out.push({lvl:'W',code,line,msg}),src=ctx.src;
   const isObj=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
@@ -84,7 +90,9 @@ function cardCheck(card,stem,ctx){
   if(out.length)return out;
   if(card.spec!==1||card.version<1||!R.statuses.includes(card.status)||!['A','B','C','D'].includes(card.tier))E('E-schema','card','spec must be 1, version ≥ 1, status draft/reviewed/shipped/retired, tier A–D');
   for(const k of ['by','role','agent','date'])if(!card.made[k])E('E-schema','made',`made.${k} missing`);
-  const st=card.status,final=st==='reviewed'||st==='shipped';
+  const st=card.status,final=st==='reviewed'||st==='shipped',kind=card.kind??'concept',guide=kind==='guide';
+  if(!R.kinds.includes(kind))E('E-schema','card',`kind must be one of ${R.kinds.join(', ')}`);
+  else if(guide&&!String(card.id).startsWith('E00.'))E('E-kind','card','a guide card lives in Part 0 (E00) only');
   if(card.id!==stem)E('E-id','card',`id ${card.id} ≠ file name ${stem}`);
   if(!ctx.mapIds.has(card.id))E('E-id','card',`${card.id} is not a concept in map.json`);
   const ob=card.objective,verb=ob.verb||'',text=String(ob.text||'').trim();
@@ -127,9 +135,11 @@ function cardCheck(card,stem,ctx){
     if(typeof f.text!=='string'||!f.text.trim())E('E-schema',fid,'fact text missing or not text');
     for(const s of cSentences(f.text||''))if(cWords(s)>R.limits.sentence)E('E-sentence',fid,`${cWords(s)} words > ${R.limits.sentence}`);
     if(f.where!=='main'&&f.where!=='more')E('E-schema',fid,"where must be 'main' or 'more'");
+    if(appCite(f.cite)!==null){appRules(f.cite,f.mark,fid,guide,E);continue;}
     const v=validateCitation(f.cite,src);v.errors.forEach(e=>E('E-cite',fid,e));
     const mk=f.mark;
     if(!R.marks.includes(mk)){E('E-mark',fid,'mark missing or unknown');continue;}
+    if(mk==='ⓘ'){E('E-mark',fid,'ⓘ needs an APP cite in a guide card');continue;}
     if(!v.parsed)continue;const p=v.parsed,t1=p.sources.some(s=>(reg[s.id]||{}).tier===1);
     if(mk==='✔✔'&&!(p.sections.length&&t1))E('E-mark',fid,'✔✔ needs a book section and a Tier 1 source');
     if(mk==='✔'&&!p.sections.length)E('E-mark',fid,'✔ needs a book section');
@@ -147,7 +157,8 @@ function cardCheck(card,stem,ctx){
   const mids=[];
   for(const m of card.misconceptions){const mid=m.id||'m?';mids.push(mid);
     for(const k of ['wrong','right','cite','mark'])if(!m[k])E('E-mis',mid,`${k} missing`);
-    if(m.cite)validateCitation(m.cite,src).errors.forEach(e=>E('E-cite',mid,e));
+    if(m.cite&&appCite(m.cite)!==null)appRules(m.cite,m.mark,mid,guide,E);
+    else if(m.cite){validateCitation(m.cite,src).errors.forEach(e=>E('E-cite',mid,e));if(m.mark==='ⓘ')E('E-mark',mid,'ⓘ needs an APP cite in a guide card');}
     if(m.mark&&!R.marks.includes(m.mark))E('E-mark',mid,`unknown mark ${m.mark}`);
     if(m.mark==='≈')(final?E:W)(final?'E-approx':'W-approx',mid,'≈ blocks reviewed/shipped');}
   const qs=card.checks;

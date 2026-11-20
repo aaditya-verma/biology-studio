@@ -414,6 +414,35 @@
     "checks.0.options": "abc"
    },
    "expect": "E-schema"
+  },
+  {
+   "name": "APP cite outside a guide card",
+   "set": {
+    "facts.0.cite": "APP Deck",
+    "facts.0.mark": "ⓘ"
+   },
+   "expect": "E-cite"
+  },
+  {
+   "name": "guide card outside Part 0",
+   "set": {
+    "kind": "guide"
+   },
+   "expect": "E-kind"
+  },
+  {
+   "name": "unknown kind",
+   "set": {
+    "kind": "lesson"
+   },
+   "expect": "E-schema"
+  },
+  {
+   "name": "ⓘ on a book fact",
+   "set": {
+    "facts.0.mark": "ⓘ"
+   },
+   "expect": "E-mark"
   }
  ]
 }

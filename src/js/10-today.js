@@ -1,14 +1,15 @@
 /* Biology Studio — Today (§8a: 1 column phone · 2 columns phone landscape / tablet · 2–3 columns tablet landscape · 3 columns desktop).
-   Owner doc: build/design-plan.md §4.1. Shell-only for A0: continue, start here, map stats, what's coming. Full Today = L1. EDIT: words in STR. */
+   Owner doc: build/design-plan.md §4.1. L1: Remember queue + cards first (18-learn.js lnTodayHtml); then continue, start here, map stats, what's coming. Full Today plan (On the go / Study) = L2. EDIT: words in STR. */
 'use strict';
 SCREENS.today=function(v){
   ROUTE.crumbs=[{label:STR.todayTitle}];
   const M=MAPD.M,C=MAPD.C;if(!M&&!MAPD.err)mapLoad().then(()=>{if(ROUTE.name==='today')render();});
+  if(!LN.idx&&!LN.err)lnLoad().then(()=>{if(ROUTE.name==='today')render();},()=>{});
   const recent=Object.entries(state.visited).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id])=>MAPD.byId[id]).filter(Boolean);
   const x1=C.filter(o=>o.x1).length,chs=M?M.chapters.length:0;
   const row=o=>`<button type="button" class="lrow" data-go="concept=${esc(o.id)}"><span class="sw L-${esc(o.layer)}" aria-hidden="true"></span><span class="nm">${esc(o.name)}</span><span class="id">${esc(o.id)}</span></button>`;
   v.innerHTML=`<h1>${esc(STR.todayTitle)}</h1><p class="mut" style="max-width:var(--measure)">${esc(STR.todayLead)}</p>
-  <div class="today">
+  <div class="today">${lnTodayHtml()}
     <section class="card"><h2>${esc(STR.continueT)}</h2>${recent.length?recent.map(row).join(''):`<p class="mut sm">${esc(STR.continueNone)}</p>`}</section>
     <section class="card"><h2>${esc(STR.startT)}</h2>
       <button type="button" class="lrow" data-go="map=E00"><span class="sw L-none" aria-hidden="true"></span><span class="nm">${esc(STR.startPart0)}</span><span class="id">E00</span></button>

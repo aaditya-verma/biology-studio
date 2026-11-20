@@ -2,6 +2,7 @@
 """Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
 W1: + progress map (Map, Board, Your inputs, 3 step pages), step page rotate, map with done shown, progress outside testing mode.
+L1: + cards list, card reader (concept, guide, clinical), Remember deck; card mid-Check survives rotate (question, 3D day, scroll).
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -33,6 +34,7 @@ SCREENS = {
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
     "progress": "progress", "progress-board": "progress=board", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
+    "cards": "cards", "card": "card=E05.01.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
 }
 
 
@@ -119,6 +121,11 @@ async def run(a):
                             await page.wait_for_timeout(80)
                         if route.startswith(("studio", "calib")):   # Studio: wait for cards + sources (S1)
                             await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
+                        if route.startswith(("cards", "card=", "deck")):   # L1: cards loaded + drawn; a card also waits for its inline 3D
+                            await page.wait_for_function(f"window.LN_READY==={json.dumps(route)}", timeout=20000)
+                            if route.startswith("card="):
+                                await page.wait_for_function("window.VW_READY===true", timeout=30000)
+                                await page.wait_for_timeout(80)
                         if route.startswith(("progress", "step")):   # progress map: wait for steps.json + draw (W1)
                             await page.wait_for_function(f"window.TR_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
@@ -206,6 +213,9 @@ async def run(a):
         # progress map (W1): rotate keeps the step page and scroll; the map with Done shown fits every class
         if not a.only or a.only.startswith(("progress", "step")):
             await tracker_flows(browser, base, report, vps if not a.preview else PREVIEW)
+        # L1 learning core: mid-Check rotate keeps the question, 3D day and scroll; real mode: statuses + deck survive a reload
+        if not a.only or a.only.startswith(("card", "deck")):
+            await learn_flows(browser, base, report)
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
         report.setdefault("flows", [])
         ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
@@ -328,6 +338,67 @@ async def studio_flows(browser, base, report):
     await page.evaluate("location.hash='#calib'"); await page.wait_for_function("window.ST_READY==='calib'", timeout=20000)
     sc = await page.evaluate("document.querySelector('.st-score').textContent")
     ok("Studio: calibration — suggester 5/5", "suggester 5/5" in sc, sc)
+    await ctx.close()
+
+
+async def learn_flows(browser, base, report):
+    """L1: rotate mid-Check keeps place; a passed Check, Can explain and the deck survive a reload (real mode, IndexedDB); an old save opens."""
+    report.setdefault("flows", [])
+    def ok(name, cond, info=""):   # failed flows become issues at the end of run() (one place)
+        report["flows"].append({"flow": "L1 " + name, "ok": bool(cond), "seen": str(info)[:300]})
+    card = json.loads((ROOT / "content" / "E" / "cards" / "E00.01.04.json").read_text())
+    # 1. rotate mid-Check (testing mode): question index, 3D day and scroll survive phone portrait → landscape → portrait
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+    page = await ctx.new_page()
+    await page.goto(f"{base}?test=1&debug=0#card=E00.01.04")
+    await page.wait_for_function("window.LN_READY==='card=E00.01.04' && window.VW_READY===true", timeout=30000)
+    await page.click("[data-ln=start]")
+    q = card["checks"][0]
+    if q["type"] == "mcq":
+        await page.click(f'[data-ln=pick][data-o="{q["answer"]}"]')
+    else:
+        await page.click("[data-ln=order]")
+    await page.click("[data-ln=next]")
+    await page.evaluate("document.querySelector('#lnCheck').scrollIntoView()")
+    s0 = await page.evaluate("({h:location.hash,i:LN.ck['E00.01.04'].i,day:SC.st['sc-E00.01.04'].day,y:scrollY})")
+    for vw, vh in [(844, 390), (390, 844)]:
+        await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(250)
+        st = await page.evaluate("({h:location.hash,i:LN.ck['E00.01.04'].i,day:SC.st['sc-E00.01.04'].day,y:scrollY,cls:DEV.cls,q:!!document.querySelector('#lnQ'),w:SC.canvas.clientWidth})")
+        good = st["h"] == s0["h"] and st["i"] == 1 and st["day"] == s0["day"] and st["q"] and st["y"] > 0 and st["w"] > 100
+        report["rotate"].append({"size": f"{vw}x{vh} card", "ok": good, "h": st["h"], "cls": st["cls"]})
+        if not good:
+            report["issues"].append({"kind": "rotate", "what": "card " + json.dumps(st), "at": f"{vw}x{vh}"})
+    await ctx.close()
+    # 2. real mode: pass the Check, explain, reload → statuses + deck kept; the deck schedules Got it at +3 days
+    ctx = await browser.new_context(viewport={"width": 1366, "height": 768})
+    page = await ctx.new_page()
+    await page.goto(f"{base}#card=E00.01.04")
+    await page.wait_for_function("window.LN_READY==='card=E00.01.04' && STORE.mode==='idb'", timeout=30000)
+    await page.click("[data-ln=start]")
+    for q in card["checks"]:
+        if q["type"] == "mcq":
+            await page.click(f'[data-ln=pick][data-o="{q["answer"]}"]')
+        else:
+            await page.evaluate("(()=>{const c=LN.ck['E00.01.04'];c.ord=c.ord.slice().sort((a,b)=>a-b);})()")   # the right order = the options as listed (card-spec)
+            await page.click("[data-ln=order]")
+        await page.click("[data-ln=next]")
+    res = await page.inner_text("#lnRes")
+    ok("Card: a clean Check run marks Understood", "Understood" in res, res)
+    await page.click("[data-ln=exshow]"); await page.click("[data-ln=exyes]")
+    await page.wait_for_timeout(900)
+    await page.reload(); await page.wait_for_function("window.LN_READY==='card=E00.01.04'", timeout=30000)
+    st = await page.evaluate("({s:lnStatus('E00.01.04'),d:Object.keys(state.deck).length,rev:STORE.rev})")
+    ok("Card: Can explain + deck survive a reload (IndexedDB)", st["s"] == "exp" and st["d"] == len(card["remember"]), st)
+    await page.evaluate("for(const k in state.deck)state.deck[k].due=Date.now()-1000;stSave()"); await page.wait_for_timeout(700)
+    await page.evaluate("location.hash='#deck'"); await page.wait_for_function("window.LN_READY==='deck'", timeout=20000)
+    await page.click("[data-ln=dstart]"); await page.click("[data-ln=dshow]"); await page.click("[data-ln=dgot]")
+    d = await page.evaluate("(()=>{const x=Object.values(state.deck).find(v=>v.n===1);return x?Math.round((x.due-lnDay0(Date.now()))/864e5):null;})()")
+    ok("Deck: Got it brings a prompt back in 3 days", d == 3, d)
+    # 3. an old (v6) save opens and is back-filled (A1, A4)
+    await page.evaluate("""(async()=>{const tx=STORE.db.transaction('state','readwrite');tx.objectStore('state').put({schema:1,rev:STORE.rev,app:6,visited:{'E05.01.01':5},answers:{},settings:{theme:'light',motion:'system',t:1},last:{route:'today'}},'main');await new Promise(r=>tx.oncomplete=r);})()""")
+    await page.goto(f"{base}#card=E05.01.01"); await page.reload(); await page.wait_for_function("window.LN_READY==='card=E05.01.01'", timeout=30000)
+    st = await page.evaluate("({c:typeof state.cards,d:typeof state.deck,l:state.settings.level,v:state.visited['E05.01.01']})")
+    ok("Old save (v6) opens with cards + deck back-filled", st == {"c": "object", "d": "object", "l": "general", "v": 5}, st)
     await ctx.close()
 
 

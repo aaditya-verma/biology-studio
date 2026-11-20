@@ -27,7 +27,10 @@ VERBS = ["explain", "describe", "identify", "label", "locate", "order", "compare
 SPATIAL = {"identify", "label", "locate", "order"}
 BUDGET = {"general": 90, "school": 110, "neet": 140, "mbbs": 160, "pg": 200}
 REQUIRED_LEVELS = ["general", "mbbs"]
-MARKS = ["✔✔", "✔", "⚑", "✚", "≈"]
+MARKS = ["✔✔", "✔", "⚑", "✚", "≈", "ⓘ"]
+KINDS = ["concept", "guide"]   # guide = a Part 0 card about the app itself (D-050): facts cite APP <screen>, mark ⓘ
+APP_LOCS = ["Today", "Cards", "Card", "Check", "Explain", "Deck", "Try it", "Watch it", "Status", "Settings"]
+APP_RE = re.compile(r"^APP(?: (.+))?$")
 STATUSES = ["draft", "reviewed", "shipped", "retired"]
 LIMITS = {"sentence_words": 25, "new_terms": 3, "new_terms_exception": 5, "min_checks": 2, "options": (3, 5), "remember": (2, 5), "shows_up": 6}
 GATES = {   # EDIT: review-card checklists (card-spec §5); lines = which review lines the gate signs off
@@ -132,6 +135,12 @@ def card_check(card, stem, ctx):
             E("E-schema", "made", f"made.{k} missing")
     st = card["status"]
     final = st in ("reviewed", "shipped")
+    kind = card.get("kind", "concept")
+    guide = kind == "guide"
+    if kind not in KINDS:
+        E("E-schema", "card", f"kind must be one of {', '.join(KINDS)}")
+    elif guide and not str(card["id"]).startswith("E00."):
+        E("E-kind", "card", "a guide card lives in Part 0 (E00) only")
     # 2. id
     if card["id"] != stem:
         E("E-id", "card", f"id {card['id']} ≠ file name {stem}")
@@ -233,6 +242,9 @@ def card_check(card, stem, ctx):
                 E("E-sentence", fid, f"{words(s)} words > {LIMITS['sentence_words']}")
         if f.get("where") not in ("main", "more"):
             E("E-schema", fid, "where must be 'main' or 'more'")
+        if app_cite(f.get("cite")) is not None:
+            app_rules(f.get("cite"), f.get("mark"), fid, guide, E)
+            continue
         errs, p = validate_citation(f.get("cite"), src)
         for e in errs:
             E("E-cite", fid, e)
@@ -258,10 +270,14 @@ def card_check(card, stem, ctx):
         for k in ["wrong", "right", "cite", "mark"]:
             if not m.get(k):
                 E("E-mis", mid, f"{k} missing")
-        if m.get("cite"):
+        if m.get("cite") and app_cite(m["cite"]) is not None:
+            app_rules(m["cite"], m.get("mark"), mid, guide, E)
+        elif m.get("cite"):
             errs, _ = validate_citation(m["cite"], src)
             for e in errs:
                 E("E-cite", mid, e)
+            if m.get("mark") == "ⓘ":
+                E("E-mark", mid, "ⓘ needs an APP cite in a guide card")
         if m.get("mark") and m["mark"] not in MARKS:
             E("E-mark", mid, f"unknown mark {m['mark']}")
         if m.get("mark") == "≈":
@@ -331,10 +347,32 @@ def card_check(card, stem, ctx):
     return out
 
 
+def app_cite(cite):
+    """'APP Deck' -> 'Deck' ('' for a bare APP); None if the cite is not an app cite (D-050)."""
+    if not isinstance(cite, str):
+        return None
+    m = APP_RE.match(cite.strip().strip("[]").strip())
+    return (m.group(1) or "") if m else None
+
+
+def app_rules(cite, mk, line, guide, E):
+    """Guide cards (D-050): a fact about the app cites APP <screen> and is marked ⓘ; checked against the app by the owner (T7)."""
+    loc = app_cite(cite)
+    if not guide:
+        E("E-cite", line, "APP cites belong to guide cards only (kind: guide)")
+    elif loc and loc not in APP_LOCS:
+        E("E-cite", line, f"unknown app screen '{loc}' ({', '.join(APP_LOCS)})")
+    if mk != "ⓘ":
+        E("E-mark", line, "an APP cite is marked ⓘ")
+
+
 def mark_rules(f, p, fid, card, src, final, E, W):
     mk = f.get("mark")
     if mk not in MARKS:
         E("E-mark", fid, f"mark missing or unknown ({' '.join(MARKS)})")
+        return
+    if mk == "ⓘ":
+        E("E-mark", fid, "ⓘ needs an APP cite in a guide card")
         return
     if p is None:
         return

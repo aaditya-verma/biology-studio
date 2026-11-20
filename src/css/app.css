@@ -163,7 +163,8 @@ html.test .edit{display:inline-flex;align-items:center;justify-content:center}
 
 /* debug overlay (?debug=…) — never in published output (I5) */
 #dbg{position:fixed;z-index:70;right:calc(8px + env(safe-area-inset-right));top:calc(var(--top-h) + 8px + env(safe-area-inset-top));max-width:min(340px,80vw);
-  background:rgb(10 12 14 / .88);color:#DFF7E6;font:11px/1.45 var(--mono);padding:8px 10px;border-radius:8px;pointer-events:none;white-space:pre-wrap}
+  background:rgb(10 12 14 / .88);color:#DFF7E6;font:11px/1.45 var(--mono);padding:8px 10px;border-radius:8px;white-space:pre-wrap;cursor:pointer}
+#dbg.min{max-height:1.45em;overflow:hidden;padding:2px 10px;opacity:.85}   /* tap to shrink (T3c note, L1) */
 html.dbg-boxes *{outline:1px solid rgb(255 0 120 / .35)}
 
 /* ---------- 5. Today (§8a: 1 col phone · 2 col phone landscape/tablet portrait · rail + 2–3 col tablet landscape · 3 col desktop) ---------- */
@@ -500,3 +501,124 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .tr-todo{margin:0;padding-left:1.2em} .tr-todo li{margin:4px 0;overflow-wrap:anywhere}
 .tr-idea-t{max-width:var(--measure)}
 .tr-data{margin-top:var(--gap)} .tr-dbg pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:50dvh;overflow:auto}
+
+/* ---------- L1 learning core: #cards · #card=<id> · #deck (design plan §2 Card row, §4.8; RULES C13, H5) ---------- */
+/* EDIT: card layout per class — phone: 3D on top, text below · phone landscape: 3D │ text · tablet portrait: 3D on top, text at reading width ·
+   tablet landscape: 3D │ text · desktop: 3D │ text (≤ 70 ch) │ card rail. The 3D column is sticky on the two-pane classes. */
+#view:has(.ln-card){max-width:1800px}
+.ln-lead{max-width:var(--measure)}
+.ln-card{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);align-items:start;grid-template-areas:"head" "media" "text"}
+.ln-head{grid-area:head;min-width:0;max-width:var(--measure);width:100%} .ln-media{grid-area:media} .ln-text{grid-area:text} .ln-rail{grid-area:rail}
+.ln-media{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ln-text{min-width:0;max-width:var(--measure);width:100%}
+.ln-text>section,.ln-text>details{margin-top:calc(var(--gap) + 4px)}
+.ln-text>section:first-child{margin-top:0}
+.ln-h{font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 6px;font-weight:700}
+.ln-head h1{margin:4px 0 8px}
+.ln-head .row{gap:8px;flex-wrap:wrap}
+.ln-lv{margin-top:2px}
+.ln-body p,.ln-adult p,.ln-clin p{margin:0 0 .55em}
+.ln-obj{margin-top:10px}
+.ln-obj p{margin:0}
+.ln-try .row{align-items:baseline;gap:8px;flex-wrap:wrap}
+.ln-watch{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;border:1px dashed var(--line-strong);border-radius:var(--r)}
+.ln-watch .ln-h{margin:0}
+.ln-rail{display:none}
+.ln-ref{display:inline;margin-left:2px;padding:1px 5px;vertical-align:super;font:600 var(--fs-xs)/1 var(--font);text-decoration:none;
+  color:var(--accent-text);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:6px;cursor:pointer;white-space:nowrap}
+.ln-ref:hover{background:var(--surface)}
+.ln-ref[aria-expanded="true"]{border:2px solid var(--accent-text)}
+.ln-refbox{display:block;margin:6px 0 4px;padding:8px 10px;background:var(--surface-2);border-left:3px solid var(--accent-text);border-radius:var(--r-sm);font-size:var(--fs-sm)}
+.ln-refbox>span{display:block}
+.ln-refbox.hidden{display:none}
+.ln-mi{padding:8px 0;border-top:1px solid var(--line)}
+.ln-mi p{margin:2px 0}
+.ln-mi s{text-decoration-thickness:1px;color:var(--muted)}
+.ln-ok{color:var(--good);font-weight:800}
+.ln-x{color:var(--bad);font-weight:800}
+/* statuses: shape + word, never colour alone (H5) */
+.ln-st{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-xs);font-weight:600;white-space:nowrap;padding:1px 8px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface)}
+.ln-pie{flex:none}
+.ln-st.st-none{color:var(--muted)}
+.ln-st.st-und,.ln-st.st-exp{border-color:var(--accent-text);color:var(--ink)}
+.ln-st.st-exp{border-width:2px}
+.ln-row .ln-st{flex:none}
+.ln-row[aria-current="page"]{background:var(--surface-2);box-shadow:inset 3px 0 0 var(--accent-text)}
+/* Check */
+.ln-check .ln-q{margin:4px 0 10px}
+.ln-opts{display:flex;flex-direction:column;gap:8px}
+.ln-opt{min-height:var(--tap);text-align:left;padding:8px 14px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.ln-opt:hover{background:var(--surface-2)}
+.ln-opt[aria-disabled="true"]{cursor:default}
+.ln-opt.ok{border:2px solid var(--good);font-weight:700}
+.ln-opt.no{border:2px dashed var(--bad)}
+.ln-order{padding:0;margin:6px 0 10px;list-style:none;counter-reset:o}
+.ln-order li{display:flex;align-items:center;gap:8px;padding:4px 4px 4px 10px;border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:6px;background:var(--surface);counter-increment:o}
+.ln-order li::before{content:counter(o) ".";font-weight:700;color:var(--muted)}
+.ln-ot{flex:1;min-width:0}
+.ln-mv{display:flex;gap:4px}
+.ln-dn svg{transform:rotate(180deg)}
+.ln-fb{margin-top:10px;padding:10px 12px;border-radius:var(--r-sm);background:var(--surface-2);border-left:4px solid var(--accent-text)}
+.ln-fb p{margin:0 0 6px}
+.ln-res{font-weight:700}
+.ln-fb:focus,.ln-res:focus,.ln-model:focus,.ln-dk [tabindex="-1"]:focus,#lnQ:focus{outline:2px solid var(--accent-text);outline-offset:3px}   /* focused panels show where you are (G-A11y) */
+.ln-model{margin:8px 0;padding:8px 12px;background:var(--surface-2);border-radius:var(--r-sm)}
+.ln-model h3{margin:0 0 4px}
+.ln-rq{padding-left:0;list-style:none;margin:0}
+.ln-rq li{border-top:1px solid var(--line)}
+.ln-rq summary,.ln-more summary,.ln-src summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
+.ln-more summary .ln-h,.ln-src summary .ln-h{margin:0}
+.ln-rq details p{margin:0 0 8px}
+.ln-facts{padding-left:1.1em}
+.ln-facts li{margin-bottom:4px}
+.ln-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ln-chips .btn{flex:0 1 auto}
+.ln-pn{margin-top:calc(var(--gap) * 2);gap:8px;flex-wrap:wrap}
+.ln-pn .btn{flex:0 1 auto;max-width:100%}
+/* the inline 3D (Try it): stage + compact panel, stacked on every class */
+.vw.inl{grid-template-columns:minmax(0,1fr)!important;gap:0}
+.vw.inl .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0;height:clamp(220px,40dvh,460px)}
+.vw.inl .vw-panel{height:auto!important;overflow:visible;border-radius:0 0 var(--r) var(--r);border-top:0;padding:8px var(--pad) 10px}
+.vw.inl .vw-panel::before{display:none}
+.vw.inl .vw-head{gap:8px;align-items:center}
+.vw.inl .vw-it{font-size:var(--fs);margin:0}
+.vw-inl-act{gap:10px;align-items:center;flex-wrap:wrap;margin-top:2px}
+.vw-inl-act .btn{flex:0 0 auto}
+/* lists */
+.ln-list{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+.ln-counts{list-style:none;padding:0;margin:0 0 8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.ln-counts li{display:flex;align-items:center;gap:8px}
+.ln-today .lrow .ln-st{flex:none}
+.ln-deck{max-width:var(--measure)}
+.ln-dk .ln-dq{font-size:1.15em;margin:12px 0}
+.ln-da{padding:10px 12px;background:var(--surface-2);border-radius:var(--r-sm);margin-bottom:10px}
+.ln-da p{margin:0}
+.ln-grade .btn,.ln-dk>.btn{flex:1 1 9em}
+/* phone portrait: 3D on top (~40 %), text below */
+html.dev-p .vw.inl .vw-stage{height:clamp(200px,40dvh,380px)}
+html.dev-p .vw.inl .vw-panel{padding-top:8px}
+/* phone landscape: 3D │ text; the 3D column stays in view */
+html.dev-pl .ln-card{grid-template-columns:minmax(0,55fr) minmax(0,45fr);grid-template-areas:"media head" "media text";grid-template-rows:auto 1fr}
+html.dev-pl .vw.inl .vw-stage{height:max(200px,calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 2 * var(--pad) - 40px))}   /* the 3D near full height; it scrolls with the page (a sticky column taller than the screen would hide its controls) */
+html.dev-pl .vw.inl .vw-head,html.dev-pl .vw-inl-act .xs,html.dev-pl .ln-try .row .xs,html.dev-pl .ln-watch .xs{display:none}
+html.dev-pl .ln-watch{padding:4px 10px}
+/* tablet portrait: 3D on top (~45 %), text below at reading width */
+html.dev-tp .vw.inl .vw-stage{height:clamp(300px,45dvh,640px)}
+html.dev-tp .ln-text,html.dev-tp .ln-head{margin:0 auto}
+/* tablet landscape + desktop: 3D │ text (+ card rail on desktop) */
+html.dev-tl .ln-card{grid-template-columns:minmax(0,1fr) minmax(0,min(46%,68ch));grid-template-areas:"media head" "media text";grid-template-rows:auto 1fr}
+html.dev-d .ln-card{grid-template-columns:minmax(360px,1fr) minmax(0,min(62ch,44%)) minmax(190px,230px);grid-template-areas:"media head rail" "media text rail";grid-template-rows:auto 1fr}
+/* the 3D column is exactly one screen tall and sticky; the stage takes what the title, day row and Watch it leave — fits at any text size */
+html.dev-tl .ln-media,html.dev-d .ln-media{position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 8px);height:calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 8px - var(--pad))}
+html.dev-tl .ln-try,html.dev-d .ln-try{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+html.dev-tl #lnVw,html.dev-d #lnVw{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+html.dev-tl .vw.inl,html.dev-d .vw.inl{flex:1 1 auto;min-height:0;grid-template-rows:minmax(0,1fr) auto;align-items:stretch}
+html.dev-tl .ln-watch,html.dev-d .ln-watch{flex:none}
+html.dev-tl .vw.inl .vw-stage,html.dev-d .vw.inl .vw-stage{height:auto;min-height:200px}
+html.dev-d .ln-rail{display:block;position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 8px);max-height:calc(100dvh - var(--top-h) - 2 * var(--pad));overflow:auto}
+html.dev-d .ln-rail .ln-row{flex-wrap:wrap;row-gap:2px}
+html.dev-d .ln-rail .ln-row .nm{flex:1 1 100%}
+html.dev-d .ln-pn{display:none}
+html.dev-pl .ln-list,html.dev-tp .ln-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+html.dev-tl .ln-list,html.dev-d .ln-list{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1400px}
+html.dev-pl .ln-sum,html.dev-tp .ln-sum{grid-column:1 / -1}

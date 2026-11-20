@@ -4,7 +4,7 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 /* EDIT: icons (24×24 stroke) */
-const ICONS={today:'<path d="M4 6h16v14H4z"/><path d="M4 10h16M9 3v4M15 3v4"/>',map:'<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>',
+const ICONS={cards:'<rect x="4" y="5" width="13" height="15" rx="2"/><path d="M8 3h10a2 2 0 0 1 2 2v12"/><path d="M7.5 10h6M7.5 14h4"/>',today:'<path d="M4 6h16v14H4z"/><path d="M4 10h16M9 3v4M15 3v4"/>',map:'<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>',
   settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
   scene:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>',fwd:'<path d="M9 5l7 7-7 7"/>',
   play:'<path d="M7 4.5v15l12-7.5z"/>',pause:'<path d="M8 5v14M16 5v14"/>',
@@ -30,7 +30,7 @@ function buildShell(){
   $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
   if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
-const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress'}[r.name]||r.name);
+const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today'}[r.name]||r.name);
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];

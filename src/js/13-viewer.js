@@ -42,7 +42,9 @@ function scList(v){
 }
 
 /* ---------- the viewer ---------- */
-function scViewer(v,S){
+/* o.inline (L1 card · Try it): the same stage (stamp, scale, gizmo, labels, disclaimers — B2, H4) with a compact panel
+   (title, day row, Open full 3D) inside the card; one engine + canvas still (SC.inline = the card's scene id). */
+function scViewer(v,S,o={}){
   const st=SC.st[S.id]||(SC.st[S.id]={});
   if(ROUTE.day!=null&&isFinite(+ROUTE.day))st.day=+ROUTE.day;
   if(st.day==null)st.day=S.start_day??S.days[0].day;
@@ -51,7 +53,7 @@ function scViewer(v,S){
   const on=id=>st.layersOn?st.layersOn[id]!==false:(lay.find(l=>l.id===id)||{}).on!==false;
   const cut=st.cut||S.cut,dbg=dbgOn('viewer');
   const facts=S.facts.map(f=>`<li><span>${esc(f.text)}</span> <span class="xs mut">[${esc(f.cite)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b></li>`).join('');
-  v.innerHTML=`<div class="vw" id="vw" data-id="${esc(S.id)}" data-tab="${esc(SC.tab)}">
+  v.innerHTML=`<div class="vw${o.inline?' inl':''}" id="vw" data-id="${esc(S.id)}" data-tab="${esc(SC.tab)}">
   <section class="vw-stage stage-dark" id="vwStage" tabindex="0" aria-label="${esc(STR.vw.stageLabel(S.title))}" aria-describedby="vwLblList">
     <div class="vw-cv" id="vwCv"></div>
     <svg class="vw-lead" id="vwLead" aria-hidden="true"></svg><div class="vw-lbls" id="vwLbls" aria-hidden="true"></div>
@@ -63,8 +65,9 @@ function scViewer(v,S){
     <p class="vw-msg" id="vwMsg" role="status">${esc(STR.vw.loading3d)}</p>
   </section>
   <section class="vw-panel" aria-label="${esc(STR.vw.controls)}">
-    <div class="vw-head"><div class="row"><span class="mono mut">${esc(S.id)} · v${S.version}</span><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
-      <h1 id="cpT" tabindex="-1">${esc(S.title)}</h1></div>
+    ${o.inline?`<div class="vw-head row"><h3 class="vw-it" title="${esc(S.id)} · v${S.version}">${esc(S.title)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>`
+    :`<div class="vw-head"><div class="row"><span class="mono mut">${esc(S.id)} · v${S.version}</span><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
+      <h1 id="cpT" tabindex="-1">${esc(S.title)}</h1></div>`}
     <div class="vw-day" role="group" aria-label="${esc(STR.vw.dayGroup)}">
       <button type="button" class="btn icon" data-vw="dprev" aria-label="${esc(STR.vw.dayPrev)}" title="${esc(STR.vw.dayPrev)} ( [ )">${icon('back',20)}</button>
       <label class="vw-range"><span class="sr">${esc(STR.vw.day)}</span><input type="range" id="vwDay" min="${d0}" max="${d1}" step="0.1" value="${st.day}"></label>
@@ -72,6 +75,7 @@ function scViewer(v,S){
       <button type="button" class="btn icon" data-vw="play" id="vwPlay" aria-label="${esc(STR.vw.play)}" title="${esc(STR.vw.play)} (Space)">${icon('play',20)}</button>
     </div>
     <div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>
+    ${o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull">${icon('scene',18)} ${esc(STR.ln.openFull)}</button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
     <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-pressed="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
     <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" aria-pressed="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
     <div class="vw-sec" data-sec="cut"><h2 class="vw-h">${esc(STR.vw.heads.cut)}</h2>
@@ -89,7 +93,7 @@ function scViewer(v,S){
       <p class="xs mut">${esc(STR.vw.marksKey)}</p><p class="xs mut" id="vwTech"></p></div>
     ${dbg?`<div class="vw-sec" data-sec="debug"><h2 class="vw-h">${esc(STR.vw.heads.debug)}</h2><p class="xs mut">${esc(STR.vw.measHint)}</p>
       <div class="row"><button type="button" class="btn" data-vw="measure" id="vwMeas">${esc(STR.vw.measure)}</button><button type="button" class="btn" data-vw="dbgbox">${esc(STR.vw.boxes)}</button></div>
-      <textarea id="vwMeasOut" readonly aria-label="${esc(STR.vw.measOut)}" rows="8"></textarea><div class="row"><button type="button" class="btn" data-vw="mcopy">${esc(STR.copy)}</button><span class="sm mut" id="vwMeasMsg" role="status"></span></div></div>`:''}
+      <textarea id="vwMeasOut" readonly aria-label="${esc(STR.vw.measOut)}" rows="8"></textarea><div class="row"><button type="button" class="btn" data-vw="mcopy">${esc(STR.copy)}</button><span class="sm mut" id="vwMeasMsg" role="status"></span></div></div>`:''}`}
     <p class="sr" id="vwLblList"></p>
   </section></div>`;
   scMount(S,st);
@@ -110,12 +114,12 @@ function scMount(S,st){
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
     if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
-    $('#vwMsg').classList.add('hidden');$('#vwTech').textContent=STR.vw.tech(mod.REVISION,E.gpu());
+    $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
     scLabelsDom(S);SC.ready=true;scDay(SC.st[S.id].day,true);requestAnimationFrame(()=>requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;}));
   }).catch(e=>{console.error(e);scDay(SC.st[S.id].day,true);const m=$('#vwMsg');if(m){m.textContent=STR.vw.noGL+' ('+e.message+')';m.classList.remove('hidden');}});
 }
 function scSave(){const S=scCur();if(!S||!SC.eng)return;Object.assign(SC.st[S.id],SC.eng.state());}
-function scCur(){const id=ROUTE.name==='scene'&&ROUTE.id;return id?SC.loaded[id]:null;}
+function scCur(){const id=ROUTE.name==='scene'?ROUTE.id:ROUTE.name==='card'?SC.inline:null;return id?SC.loaded[id]||null:null;}
 
 /* day: stamp, slider, address (replaceState: scrubbing never floods history) */
 function scDay(d,quiet){const S=scCur();if(!S)return;const K=S.days;d=Math.max(K[0].day,Math.min(K[K.length-1].day,Math.round(d*10)/10));
@@ -126,6 +130,7 @@ function scDay(d,quiet){const S=scCur();if(!S)return;const K=S.days;d=Math.max(K
     if(sl)sl.setAttribute('aria-valuetext',STR.vw.dayLong(p.day)+', '+p.stage+', '+p.size);}
   else if(stp&&!p){stp.textContent=STR.vw.dayLong(Math.round(d));}
   $$('.vw-keys span').forEach(b=>b.classList.toggle('on',Math.abs(+b.dataset.d-d)<0.05));
+  const fl=$('#vwFull');if(fl)fl.dataset.go='scene='+S.id+'&day='+fmtDay(d);   // Try it › Open full 3D keeps the day
   if(!quiet&&SC.eng)SC.eng.setDay(d);
   const now=parseHash(location.hash);if(now.name!=='scene'||now.id!==S.id)return;   // the user has moved on (Back, nav): never rewrite their entry (G-Eng)
   ROUTE.day=d;const h='#scene='+S.id+'&day='+fmtDay(d);if(location.hash!==h)history.replaceState(history.state,'',h);
@@ -234,7 +239,7 @@ document.addEventListener('click',e=>{
 document.addEventListener('input',e=>{if(e.target.id==='vwDay'){scStop();scDay(+e.target.value);}
   else if(e.target.id==='vwCut'&&SC.eng){SC.eng.setCut({at:+e.target.value});e.target.setAttribute('aria-valuetext',STR.vw.cutText(SC.eng.state().cut.axis,+e.target.value));scSave();}});
 document.addEventListener('keydown',e=>{
-  if(ROUTE.name!=='scene'||!ROUTE.id||!SC.eng||$('dialog[open]'))return;if(e.ctrlKey||e.metaKey||e.altKey)return;   // browser shortcuts stay the browser's (G-Eng)
+  if(!scCur()||!SC.eng||$('dialog[open]'))return;if(e.ctrlKey||e.metaKey||e.altKey)return;   // browser shortcuts stay the browser's (G-Eng)
   if(!e.target.closest||!e.target.closest('#vw')||e.target.matches('input:not([type=range]),textarea,select'))return;   // keys only while focus is in the viewer (WCAG 2.1.4)
   const k=e.key,S=scCur(),st=S&&SC.st[S.id],onStage=e.target.id==='vwStage';if(!st)return;
   if(k==='['){e.preventDefault();scStop();scDay(Math.ceil(st.day-1-1e-6));}else if(k===']'){e.preventDefault();scStop();scDay(Math.floor(st.day+1+1e-6));}
@@ -245,7 +250,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* leaving a scene (Back, nav, a link) stops Play + Measure before the router reads the new address (listener added before routerStart) */
-function scLeave(){const r=parseHash(location.hash);if(r.name==='scene'&&r.id===SC.viewing)return;scStop();if(SC.meas)SC.meas=2;if(SC.ro){SC.ro.disconnect();SC.ro=null;}}
+function scLeave(){const r=parseHash(location.hash);if(r.name==='scene'&&r.id===SC.viewing)return;if(r.name!=='card')SC.inline=null;scStop();if(SC.meas)SC.meas=2;if(SC.ro){SC.ro.disconnect();SC.ro=null;}}
 addEventListener('hashchange',scLeave);addEventListener('popstate',scLeave);
 
 /* ---------- ?debug=viewer › Measure fps (owner's phone → pipeline reference §2, H8, C4) ---------- */

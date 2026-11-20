@@ -52,6 +52,19 @@ function appTests(){
   const old={rev:3,visited:{a:5}};const f=stFill(JSON.parse(JSON.stringify(old)));t('fill back-fills',f.settings&&f.answers&&f.last&&f.visited.a===5&&f.rev===3);
   const m=stMerge({rev:2,visited:{a:1,b:9},answers:{q:{t:1,v:'x'}},savedAt:1},{rev:4,visited:{a:7},answers:{q:{t:5,v:'y'},r:{t:2}},savedAt:2});
   t('merge unions',m.visited.a===7&&m.visited.b===9&&m.answers.q.v==='y'&&m.answers.r&&m.rev===4);
+  // L1 learning core: addresses, Up, nav, statuses, deck spacing, back-fill + merge (A1)
+  ['cards','card=E05.01.01','deck'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
+  t('card bad id → list',parseHash('#card=nope').name==='cards'&&parseHash('#card=').name==='cards');
+  t('up card → cards · deck → today',JSON.stringify(upOf(parseHash('#card=E05.01.01')))===JSON.stringify({name:'cards'})&&JSON.stringify(upOf(parseHash('#deck')))===JSON.stringify({name:'today'}));
+  t('cards in the learner nav',CONFIG.nav.includes('cards')&&navOf(parseHash('#card=E05.01.01'))==='cards');
+  t('learn config',CONFIG.learn.deckDays.join()==='1,3,7'&&CONFIG.learn.show.includes('reviewed')&&!CONFIG.learn.show.includes('draft'));
+  t('L1 fields back-filled',(()=>{const f=stFill({rev:2,visited:{}});return f.cards&&f.deck&&f.settings.level==='general'&&f.last.card===null;})());
+  t('L1 merge: statuses keep earliest, deck newer wins',(()=>{const m=stMerge({cards:{a:{read:5,checks:1,best:.5,t:5}},deck:{'a#r1':{step:1,due:9,t:3}},savedAt:1},{cards:{a:{read:7,und:8,checks:2,best:1,t:8}},deck:{'a#r1':{step:0,due:4,t:6}},savedAt:2});
+    return m.cards.a.read===5&&m.cards.a.und===8&&m.cards.a.checks===2&&m.cards.a.best===1&&m.deck['a#r1'].step===0;})());
+  t('deck day maths',(()=>{const t0=new Date(2026,10,21,22,30).getTime();return new Date(lnAddDays(t0,1)).getDate()===22&&new Date(lnAddDays(t0,7)).getDate()===28&&new Date(lnAddDays(t0,3)).getHours()===0;})());
+  t('status pie shapes',['none','read','und','exp'].every(s=>lnPie(s).includes('<svg'))&&STR.ln.st.exp&&STR.ln.st.und);
+  t('guide card rules (D-050)',appCite('APP Deck')==='Deck'&&appCite('APP')===''&&appCite('E05.01')===null&&CARD_RULES.marks.includes('ⓘ'));
+  t('strings for learn',STR.ln&&STR.nav.cards&&STR.navHint.cards&&typeof STR.ln.passed==='function'&&STR.marks['ⓘ']);
   // tokens present (B3)
   const cs=getComputedStyle(document.documentElement);t('germ tokens set',['epi','hypo','ecto','meso','endo','crest','ctx'].every(k=>cs.getPropertyValue('--g-'+k).trim()));
   t('accent set',cs.getPropertyValue('--accent').trim().toLowerCase()==='#994774');

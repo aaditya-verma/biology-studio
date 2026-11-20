@@ -1,4 +1,4 @@
-/* Biology Studio — saved state (RULES §A). Owner doc: build/design-plan.md §6. IndexedDB `biostudio` (D-019): stores state / answers / files.
+/* Biology Studio — saved state (RULES §A). Owner doc: build/design-plan.md §6. L1 adds cards (statuses) + deck (Remember) + settings.level. IndexedDB `biostudio` (D-019): stores state / answers / files.
    · A1: fields are only ever added; stFill() back-fills them on load, so old saves keep working (A4).
    · Writes are guarded (DrumPath v35 lesson): the stored rev is read and the new record written in ONE transaction;
      if another tab wrote since, this tab merges the stored copy in first (unions, furthest, newer) and tries again.
@@ -8,17 +8,25 @@
 let state=null;
 const STORE={mode:'mem',db:null,rev:0,timer:0,busy:false,again:false,err:null,merged:0};
 /* EDIT: the saved shape. Add a field here AND a default in stFill (never rename or remove — A1). */
-function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',motion:'system',t:0},last:{route:'today'},visited:{},answers:{}};}
+function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',motion:'system',level:CONFIG.learn.level,t:0},last:{route:'today',card:null},visited:{},answers:{},
+  cards:{},   // L1: {<card id>:{read,und,exp: first time (ms) each status was reached · checks: runs · best: best score · t: last change}} (B4)
+  deck:{}};}  // L1: Remember deck {<card id>#<r id>:{step, due (ms, local midnight), n: reviews, lapses, t: last change}}
 function stFill(s){const d=stNew();s=s&&typeof s==='object'?s:{};
   for(const k of Object.keys(d))if(s[k]===undefined)s[k]=d[k];
   s.settings=Object.assign({},d.settings,s.settings);s.last=Object.assign({},d.last,s.last);
   if(typeof s.visited!=='object'||!s.visited)s.visited={};if(typeof s.answers!=='object'||!s.answers)s.answers={};
+  if(typeof s.cards!=='object'||!s.cards||Array.isArray(s.cards))s.cards={};if(typeof s.deck!=='object'||!s.deck||Array.isArray(s.deck))s.deck={};   // L1 back-fill (A1, A4)
   return s;}
 /* merge two saves: visited = newest time per id; answers = union by key, newer wins; settings = newer save wins; rev = max */
 function stMerge(a,b){a=stFill(a);b=stFill(b);const newer=(b.savedAt||0)>(a.savedAt||0)?b:a,m=stFill(JSON.parse(JSON.stringify(newer)));
   m.settings=JSON.parse(JSON.stringify((b.settings.t||0)>(a.settings.t||0)?b.settings:a.settings));   // settings: the one changed last wins
   m.visited={...a.visited};for(const[k,t]of Object.entries(b.visited))m.visited[k]=Math.max(m.visited[k]||0,t);
   m.answers={...a.answers};for(const[k,v]of Object.entries(b.answers)){const o=m.answers[k];if(!o||(v&&v.t||0)>(o.t||0))m.answers[k]=v;}
+  /* L1: card statuses never go back — each status keeps its earliest time; counts keep the larger; deck prompt = the one changed last */
+  m.cards={};for(const id of new Set([...Object.keys(a.cards),...Object.keys(b.cards)])){const x=a.cards[id]||{},y=b.cards[id]||{},o=(x.t||0)>(y.t||0)?{...y,...x}:{...x,...y};   // keep any future field (A1); then the rules
+    for(const k of ['read','und','exp']){const v=[x[k],y[k]].filter(n=>typeof n==='number'&&n>0);if(v.length)o[k]=Math.min(...v);else delete o[k];}
+    o.checks=Math.max(x.checks||0,y.checks||0);o.best=Math.max(x.best||0,y.best||0);o.t=Math.max(x.t||0,y.t||0);m.cards[id]=o;}
+  m.deck={...a.deck};for(const[k,v]of Object.entries(b.deck)){const o=m.deck[k];if(!o||(v&&v.t||0)>(o.t||0))m.deck[k]=v;}
   m.rev=Math.max(a.rev||0,b.rev||0);m.created=Math.min(a.created||Infinity,b.created||Infinity);return m;}
 
 /* save log (this device only) */
@@ -79,5 +87,9 @@ function stExport(){const blob=new Blob([JSON.stringify({kind:'biostudio-backup'
 async function stImport(file){const j=JSON.parse(await file.text());if(!j||j.kind!=='biostudio-backup'||!j.state||typeof j.state!=='object')throw new Error(STR.importBad);
   if((j.app||0)>APP.v)throw new Error(STR.importNewer);
   const v=j.state.visited;if(v&&typeof v==='object')for(const k of Object.keys(v))if(typeof v[k]!=='number'||!/^E\d\d\.\d\d\.\d\d$/.test(k))delete v[k];
+  const c=j.state.cards;if(c&&typeof c==='object')for(const k of Object.keys(c))if(!/^E\d\d\.\d\d\.\d\d$/.test(k)||!c[k]||typeof c[k]!=='object')delete c[k];
+  const num=(o,ks)=>{for(const k of ks)if(k in o){const n=+o[k];if(isFinite(n))o[k]=n;else delete o[k];}};   // a backup is outside data: numbers stay numbers (G-Eng)
+  if(c&&typeof c==='object')for(const k of Object.keys(c))num(c[k],['read','und','exp','checks','best','t']);
+  const dk=j.state.deck;if(dk&&typeof dk==='object')for(const k of Object.keys(dk)){if(!/^E\d\d\.\d\d\.\d\d#r\d+$/.test(k)||!dk[k]||typeof dk[k]!=='object'){delete dk[k];continue;}num(dk[k],['due','step','n','lapses','t']);if(typeof dk[k].due!=='number')delete dk[k];}
   state=stMerge(state,j.state);slog('import',{from:j.app});stSave();return true;}
 const stTouch=(id)=>{state.visited[id]=Date.now();stSave();};
