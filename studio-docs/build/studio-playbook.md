@@ -1,6 +1,6 @@
 # Studio playbook — how the crew works, and the craft standards
 
-*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — §2 G-Sci video checklist, §6.1 look summary → build/visual-style.md (D-041). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
+*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §2 G-Sci items 13–18, §5/§5b Explainer/MBBS → Lesson, §6.1 summary + §8.5 → visual-style §10–§16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §2 G-Sci video checklist, §6.1 look summary → build/visual-style.md (D-041). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
 
 **Stance:** we work like a small science-animation studio. A lead biologist-researcher who is also designer, teacher and storyteller, with a team of engineers behind him. Facts first, clarity over realism, story for attention, measurement for truth.
 
@@ -48,6 +48,13 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 10. **Labels** — appear as the structure is shown (D8), point at the right thing, use GLOSSARY terms.
 11. **Citations** — every spoken fact has a section + mark; no ≈; a ⚑ gives the book answer.
 12. **AI shots** — host only, no anatomy, credited (H9).
+13. **Segment colours** — segment mode stated by the legend chip; each segment matches `content/E/segments.json` and the previous Part; splits/merges follow visual-style §11 at the right day; each segment and derivative has a cite + mark; colours change only by a morph.
+14. **Labels + leaders** — every dot sits on the named structure; lines don't cross; the anchor is still on the structure at the end of the move (visual-style §12).
+15. **Real media** — the image shows what the voice says (stage, view, structure); orientation + scale correct or "scale not given"; unaltered except logged edits; ledger row exists (visual-style §13, §16).
+16. **Clinical link** — cites the book section + mark; the fault shown matches the mechanism the book gives; humane (D6; visual-style §14).
+17. **Honesty tags** — the right tag (visual-style §15 order) on every exaggerated, unscaled or time-compressed shot; `exam_fact` exaggerations are said in the voice; no exaggeration changes number, order, side, topology or sequence (visual-style §15).
+18. **Series continuity** — the Part opens on the last Part's end state (`endstate.json`); recap facts match its `recap_facts`.
+*(G-Art checks the look of visual-style §10–§15; G-A11y checks label/tag contrast, colour chips + patterns, caption band clear.)*
 Templates refer here; don't copy the list (RULES I3).
 
 ## 3. Research craft
@@ -74,7 +81,7 @@ Templates refer here; don't copy the list (RULES I3).
 4. **Stakes:** what goes wrong if this step fails (the clinical correlate), told humanely (D6).
 5. **Season arc + motifs:** one season question, a recurring guide voice, visual motifs (the colour key, the day ruler) that pay off later; each episode teases the next.
 6. **Payoff and recap:** the answer lands as a visual, then 2 Checks.
-7. **Audience cuts from one scene set:** MBBS cut (terms, clinical depth), General cut (everyday words, one analogy more, no exam detail), Short (9:16, ≤ 60 s, one idea).
+7. **Audience cuts from one scene set:** MBBS cut (terms, clinical depth), General cut (everyday words, one analogy more, no exam detail). Two formats (visual-style §10): **Lesson** (16:9, 6–10 min per Part; was "Explainer/MBBS", D-046) and **Short** (9:16, ≤ 60 s, one idea).
 
 ## 5b. Host character and the Short profile (D-032)
 **Host (profile field `host`):** cell/embryo character (**default**) · animal · stylised human · none.
@@ -92,10 +99,10 @@ Templates refer here; don't copy the list (RULES I3).
 3. **Kinetic captions** = styled subtitles (toggleable): one phrase at a time, key term highlighted, outline for contrast, Latin + Devanagari, inside the 9:16 safe area (clear of app buttons at the bottom and right).
 4. Same loudness target (H6).
 
-**Explainer / MBBS cuts** keep learning pace: hold 1–2 s after each reveal, chapter markers, captions as a toggle.
+**Lessons** (16:9; was Explainer/MBBS, D-046) keep learning pace: hold 1–2 s after each reveal, chapter markers, captions as a toggle; frame, recap and clinical slots in visual-style §10, §14–§15.
 
 ## 6. Visual & motion craft (science animation)
-1. **Clarity over realism — but cinematic.** **Look (owner doc: `build/visual-style.md`, D-041).** 9:16 Short frame with safe zones; 6 × 8 s chapter grammar for Shorts only; thin-caps chapter titles ≤ 4 words (D8); glassy SSS tissue (cheap fake in the app); warm grade on background + ctx only, layers within ΔE00 ≤ 8 of D-031; plum accent = ring + label, never fill; macro depth of field with the named structure sharp; background-only dust, off in reduced motion; cuts every 1–3 s, one move per shot; safe zones include the right action rail.
+1. **Clarity over realism — but cinematic.** **Look (owner doc: `build/visual-style.md`, D-041).** 9:16 Short frame with safe zones; 6 × 8 s chapter grammar for Shorts only; thin-caps chapter titles ≤ 4 words (D8); glassy SSS tissue (cheap fake in the app); warm grade on background + ctx only, layers within ΔE00 ≤ 8 of D-031; plum accent = ring + label, never fill; macro depth of field with the named structure sharp; background-only dust, off in reduced motion; cuts every 1–3 s, one move per shot; safe zones include the right action rail. **D-046 (§10–§16):** two formats from one scene (Short 9:16 + Lesson 16:9); segment colour mode, colour = origin across Parts; labels with leader lines; real media tagged and unaltered; clinical slots in Lessons; Part recaps + honesty tags; CC0/CC BY/PD real media only.
 2. **Colour has meaning:** germ-layer tokens (RULES B3, D-031) with patterns; `--g-ctx` neutral for non-layer tissue; the accent `--accent` only as a "look here" ring/outline + label (+ motion in video), never a fill or a layer colour.
 3. **Visual hierarchy:** the subject is lit, sharp and saturated; context is dimmer and desaturated; at most one moving focus at a time.
 4. **Always oriented:** axis gizmo (cranial/caudal, dorsal/ventral), scale bar and day/stage stamp on every 3D shot (B2).
@@ -116,7 +123,7 @@ Templates refer here; don't copy the list (RULES I3).
 2. **Contrast** at least WCAG AA (4.5:1 text); colour never the only cue (patterns + labels).
 3. **No flashing** above 3 per second; a reduced-motion option for the viewer and player.
 4. **Transcript describes key visuals** for screen-reader users.
-5. **Humane clinical content;** diverse bodies in adult anchors; no real patient images without consent and licence.
+5. **Humane clinical content;** diverse bodies in adult anchors; no real patient images without consent and licence — rules for footage, X-rays and other real imagery: `build/visual-style.md` §16.
 6. **Disclose AI-generated material** in credits; AI-made visuals never carry anatomy without passing G-Sci.
 
 ## 9. Engineering practice (the team behind the studio)

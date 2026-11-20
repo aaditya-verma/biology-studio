@@ -1,6 +1,6 @@
 # Third-party licences (RULES H10)
 
-*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 18 Nov 2026 · Bio · Build · V1 viewer — three.js r170 vendored into the app; its licence checked against the file.)*
+*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — real-media section mirroring the registry § Media (D-046). Before: 18 Nov 2026 · Bio · Build · V1 viewer — three.js r170 vendored into the app; its licence checked against the file.)*
 
 Licences marked ✔ were checked against the project's own licence file; the rest stay ≈ until checked. "Repo" = may be committed; "Laptop" = installed per person, never committed.
 
@@ -24,3 +24,10 @@ Licences marked ✔ were checked against the project's own licence file; the res
 | Z-Anatomy meshes | video only (D-021) | CC BY-SA 4.0 (BodyParts3D CC BY-SA 2.1 JP) | Laptop/Drive only — never repo/app |
 
 Credit line for any video using Z-Anatomy (D-021): "Adult anatomy: Z-Anatomy (CC BY-SA 4.0), based on BodyParts3D © DBCLS (CC BY-SA 2.1 JP), modified".
+
+## Real images and footage in videos (D-046)
+Mirror of `studio-docs/research/source-registry.md` § Media (owner of the rows; rules: `studio-docs/build/visual-style.md` §16). CC0, CC BY or public domain only — never CC BY-SA, NC or ND. Videos only; these files never enter the repo or app.
+
+| Id | What | Credit | Licence | Lives |
+|---|---|---|---|---|
+| — | *(none yet)* | | | |

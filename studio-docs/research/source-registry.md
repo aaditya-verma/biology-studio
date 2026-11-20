@@ -1,6 +1,6 @@
 # Source registry — who we trust, for what
 
-*(Purpose: owner doc for sources **and tools**. Created 17 Nov 2026, D-011. Updated: 20 Nov 2026 · Bio · Research · X1 Ch 08 (R05ap–bk added with PMIDs; R30 AN80 wording read). Before: 20 Nov 2026 · X1 Ch 07 (R05z–ao added with PMIDs; R06 stage chapters CS9–19 read for Ch 7; R30 AN79 checked against NMC Vol I 2024). Before: 19 Nov 2026 · X1 Ch 06 (R05l–y; R08 full table; R02 ages, D-039 c). Before: S1 studio (PMIDs added to R05a, R05b, R05e, R05j, R05k so pasted PubMed links resolve; `content/E/sources.json` is derived from this file by `tools/card-check --write-sources`). Before: 17 Nov 2026 · X1 Ch 05 (R05a–j, R08 added; R30 copy noted). Add a source or tool here before citing or installing it anywhere.)*
+*(Purpose: owner doc for sources **and tools**. Created 17 Nov 2026, D-011. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port (new § Media ledger for real images and footage, D-046). Before: 20 Nov 2026 · Bio · Research · X1 Ch 08 (R05ap–bk added with PMIDs; R30 AN80 wording read). Before: 20 Nov 2026 · X1 Ch 07 (R05z–ao added with PMIDs; R06 stage chapters CS9–19 read for Ch 7; R30 AN79 checked against NMC Vol I 2024). Before: 19 Nov 2026 · X1 Ch 06 (R05l–y; R08 full table; R02 ages, D-039 c). Before: S1 studio (PMIDs added to R05a, R05b, R05e, R05j, R05k so pasted PubMed links resolve; `content/E/sources.json` is derived from this file by `tools/card-check --write-sources`). Before: 17 Nov 2026 · X1 Ch 05 (R05a–j, R08 added; R30 copy noted). Add a source or tool here before citing or installing it anywhere.)*
 
 **Rule in one line:** Langman 14e is the spine. Trusted outside sources **confirm**, **correct** (logged, never silent), **add depth** (labelled), and shape **how** we teach and draw. RULES B6–B8, G5.
 
@@ -153,6 +153,13 @@ All free. **Use** column follows RULES F4/G4: *Repo* = code may be vendored in t
 | T42 | **Workbox** | app | Offline caching (PWA) | MIT → Repo |
 | T50 | **PubMed** connector | X1 | Tier-1 paper search | Connected |
 | T51 | **Hugging Face** connector | M1, X1 | Find models + check licences; paper search | Connected 17 Nov 2026 |
+
+## Media — real images and footage in videos (added 20 Nov 2026, D-046)
+Ledger for every non-own image or clip (microscopy, ultrasound, X-ray/CT/MRI, real footage) before it enters a video. Rules: `build/visual-style.md` §16 — **CC0, CC BY or public domain only** (no CC BY-SA, no NC/ND, no stock/YouTube/clinic/textbook images without a logged written licence). Licence page saved as PDF in Drive › research/licences/. Mirrored in `THIRD_PARTY.md`. Ids `M01`… are permanent (A2). A Wikimedia Commons file is judged per file (Wikipedia text stays "not used" below).
+
+| Id | What (URL) | Author / credit | Licence | Retrieved | Changes made | Used in |
+|---|---|---|---|---|---|---|
+| — | *(none yet)* | | | | | |
 
 ## Not used
 Exam-coaching blogs, flashcard decks, YouTube channels, AI-written pages, Wikipedia (may point to a source; never cited).

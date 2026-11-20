@@ -1,0 +1,7 @@
+{
+  "_purpose": "Segment colour mode (build/visual-style.md §11, D-046): regions inside one germ layer that keep one colour from origin to adult derivative across every Part, Short, card and app 3D. Owner doc for the format: docs/scene-spec.md §10. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port.",
+  "_edit": "# EDIT: add an organ when its chapter's X1 runs (heart first, X1 Ch 13); hues are picked with the swatch page (?debug=segments / --swatch), never before. Ids are permanent (RULES A2). Token values live in src/css/app.css as --s-<organ>-<seg>, never here (RULES B3, I6).",
+  "spec": 1,
+  "book": "E",
+  "organs": []
+}

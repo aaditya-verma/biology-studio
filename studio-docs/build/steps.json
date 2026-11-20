@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "20 Nov 2026 · Bio · Build · M1 bake-off (part 2: write-up — M1 → owner check, T1 open, M1.q1 answered, D-045)",
+ "updated": "20 Nov 2026 · Bio · Fix · Visual style 2 port (VS2 + VS2P done, VS2.q1 open, D-046)",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -124,7 +124,7 @@
    "chat": "Bio · Ideation · Visual style",
    "status": "done",
    "needs": ["QB"],
-   "unblocks": [],
+   "unblocks": ["VS2"],
    "lock": false,
    "gates": {"G-Sci": "pass", "G-Art": "pass"},
    "check": null,
@@ -136,6 +136,50 @@
     {"id": "VS.q1", "kind": "action", "ask": "Name QR03's source account/link (file is in Drive › research/quality-refs/, 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": "https://youtube.com/shorts/DI7oat-HzhY (owner, 20 Nov 2026, 01:51 IST); logged in quality-references QR03", "status": "closed", "d": "D-041"},
     {"id": "VS.q2", "kind": "action", "ask": "Create the missing D-025 Drive folders audio/ assets/ index/ backup/ (research/ and research/quality-refs/ were made 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": "Done — audio/, assets/, index/, backup/ created in Drive (owner, 20 Nov 2026, 01:48 IST)", "status": "closed", "d": "D-025"}
    ]
+  },
+  {
+   "id": "VS2",
+   "title": "Visual style 2 — QR04 + QR05 (formats, segment colours, labels, media, licences)",
+   "type": "Ideation",
+   "chat": "Bio · Ideation · Visual style 2",
+   "status": "done",
+   "needs": ["VS"],
+   "unblocks": ["VS2P"],
+   "lock": false,
+   "gates": {},
+   "check": null,
+   "decisions": ["D-046"],
+   "prompt": null,
+   "log": "20 Nov 2026 · Visual style 2 — draft E–J, owner answers H1–H4 + H6 (D-046)",
+   "todo": [
+    "Measure QR04 + QR05 on the laptop (ffprobe/ffmpeg: length, fps, cut rate, labels per frame, loudness, real vs 3D share) → quality-references rows (draft J)",
+    "Segment hue sets per organ: pick with the swatch page when X1 Ch 13 (heart) runs",
+    "Lesson length per Part: check against W1 use data after L1"
+   ],
+   "inputs": [
+    {"id": "VS2.q1", "kind": "ask", "ask": "QR04/QR05 (D-046 H5): (a) is QR04 heart Part 3 and QR05 fertilisation Part 1? (b) channel/account + link for each; (d) what is the \"Record_2026-11-17-03-43-37…\" file in Drive › research/quality-refs/?", "asked_in": "Bio · Ideation · Visual style 2", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-046"}
+   ]
+  },
+  {
+   "id": "VS2P",
+   "title": "Visual style 2 port — visual-style §10–§16, G-Sci 13–18",
+   "type": "Fix",
+   "chat": "Bio · Fix · Visual style 2 port",
+   "status": "done",
+   "needs": ["VS2"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Sci": "pass", "G-Art": "pass"},
+   "check": null,
+   "decisions": ["D-046"],
+   "prompt": null,
+   "log": "20 Nov 2026 · Visual style 2 port — visual-style §10–§16, playbook G-Sci 13–18, RULES A2/D6/D8/G4, registry § Media, scene spec §10, segments.json (D-046)",
+   "todo": [
+    "Code for the new fields (shot-sheet mode/labels/media/exaggerations/cams, segments.json, endstate.json) + scene-check rules — with P1/R1 (scene spec §10 is spec only)",
+    "Debug flags ?debug=segments, ?debug=labels and --swatch segment chips — build with the first segment-mode scene (X1 Ch 13 / V-step)",
+    "Delete the Project draft claude/drafts/visual-style-and-gsci-checklist-draft.md (owner; ported) — and handoff-visual-style-D041.md if done"
+   ],
+   "inputs": []
   },
   {
    "id": "M1",

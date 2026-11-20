@@ -1,12 +1,12 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
+*(Purpose: the non-negotiables. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — D8 media tags/credits, Part chip, legend, honesty tags; G4 real media CC0/PD/CC BY; A2 segment + media ids; D6 real imaging per visual-style §16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
 ## A. Data & progress
 - **A1.** Never break saved progress. State lives in IndexedDB `biostudio` (D-015). Only **add** fields and back-fill them on load.
-- **A2.** Card, episode and scene ids are permanent once shipped. Fix wording freely; never renumber or reuse. A retired item keeps its id and is hidden.
+- **A2.** Card, episode, scene, segment and media-ledger ids are permanent once shipped. Fix wording freely; never renumber or reuse. A retired item keeps its id and is hidden.
 - **A3.** Before any deploy that touches state or content data, tell the owner to tap **Export backup**.
 - **A4.** Views must cope with old data (missing new fields).
 
@@ -43,9 +43,9 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **D3.** Every episode opens with a question or a clinical mystery and answers it by the end.
 - **D4.** Anchor to the adult: "this becomes…" in the same episode or card.
 - **D5.** Accuracy beats drama: a metaphor never changes what happens biologically.
-- **D6.** Clinical content is factual and humane: diagrams, never shock images.
+- **D6.** Clinical content is factual and humane: diagrams by default; real imaging only per build/visual-style.md §16; never shock images.
 - **D7.** Every season has a recap / "connect the dots" episode across chapters.
-- **D8.** On-screen text is labels, day, scale, B2 disclaimers and **chapter titles of 4 words or fewer** (Shorts, D-041); the voice carries the sentences; a label sits on its structure as it is named (teaching methods 4–5). Captions/subtitles are accessibility text, not on-screen text (H5).
+- **D8.** On-screen text is labels, day, scale, B2 disclaimers and honesty tags, **chapter titles of 4 words or fewer** (Shorts, D-041), **media tags + credits, the Part chip and the colour legend** (D-046; build/visual-style.md §10–§15); the voice carries the sentences; a label sits on its structure as it is named (teaching methods 4–5). Captions/subtitles are accessibility text, not on-screen text (H5).
 - **D9.** Folding and layer shots end on the cross-section view learners meet in exams (teaching method 10).
 
 ## E. Docs
@@ -63,7 +63,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **G1.** No book sentences, figures, tables or page images in the repo, app or videos.
 - **G2.** Facts are restated in our own words with a section citation; every visual is our own 3D or diagram (except G4's licensed assets).
 - **G3.** Page photos may be used in Studio for analysis only; the output is never a reproduction.
-- **G4.** Third-party assets only with an approved licence (MIT/Apache/CC-BY), credited. **One exception (D-021):** Z-Anatomy adult meshes (CC BY-SA, registry T07) may appear in rendered video only; such a video is released CC BY-SA 4.0 with the credit line from D-021; the meshes never enter the repo or app.
+- **G4.** Third-party assets only with an approved licence (MIT/Apache/CC-BY; for real images and footage CC0, CC BY or public domain only — never CC BY-SA, build/visual-style.md §16, D-046), credited and logged. **One exception (D-021):** Z-Anatomy adult meshes (CC BY-SA, registry T07) may appear in rendered video only; such a video is released CC BY-SA 4.0 with the credit line from D-021; the meshes never enter the repo or app.
 - **G5.** Sources marked NC, ND or "no reuse" (registry Licence column) are **reference only**: look, then draw our own. Never trace, import, screenshot or quote at length.
 
 ## H. Production craft & review (D-020; details in `build/studio-playbook.md`)

@@ -1,6 +1,6 @@
 # Scene spec — the one definition of a 3D scene (RULES C2)
 
-*(Purpose: the scene file format that drives the 3D viewer, stills and (later) video shots — one scene, three outputs (D-006). Updated: 18 Nov 2026 · Bio · Build · V1 viewer. Seeded from the M1 kit's `tools/m1-bakeoff/shot.json` v2 + `common/scene_math.py`. Change this spec first, then the code (`src/js/14-scene3d.mjs`, `tools/scene-check`).)*
+*(Purpose: the scene file format that drives the 3D viewer, stills and (later) video shots — one scene, three outputs (D-006). Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §10 video shot-sheet fields, segments.json, endstate.json (D-046; spec only, no code yet). Before: 18 Nov 2026 · Bio · Build · V1 viewer. Seeded from the M1 kit's `tools/m1-bakeoff/shot.json` v2 + `common/scene_math.py`. Change this spec first, then the code (`src/js/14-scene3d.mjs`, `tools/scene-check`).)*
 
 ## 1. Where scenes live
 - One JSON file per scene: `content/<book>/scenes/<id>.json`; the list is `content/<book>/scenes/index.json` (`{"spec":1,"scenes":[{"id","title","summary","cards","days":[first,last]}]}`).
@@ -69,3 +69,19 @@ Day/stage/size stamp (`Day 16 · CS06–07 · ≈0.3 mm`; announced politely, bu
 - Phone budget (H8): ≤ 150k triangles, ≥ 30 fps — `tools/stills` reports triangles and draw calls per still; `?debug=viewer` shows them live and has **Measure fps**.
 - `tools/scene-check` (C3): required fields, param ranges (0–1; `length_units`, `fit_mm` > 0), no `accent` fill, id = file name, ascending day keys with stage + size + cite + mark, tokens only (no colours), labels/parts point at real layers, cards exist in the map, stamp size vs geometry (±15 %), `debug` false, `stills` days inside the range.
 - `tools/stills` (C11): renders every scene at its `stills` days (fixed 960×540 canvas, labels off) and compares with `tools/stills/baseline/`; a difference must be intended (`--update` after review).
+
+## 10. Video shot sheet + series files (D-046 — spec only; code and checks come with P1/R1)
+Look rules: `build/visual-style.md` §10–§16. Each shot in an episode's shot sheet points at one scene (`scene`, `day`) and adds:
+| Field | Type | Rule |
+|---|---|---|
+| `mode` | `"layer"` \| `"segment"` | colour mode for the whole shot, never mixed (§11), except the `--g-crest` overlay ring and the fertilisation chromosome tints; `segment` needs `organ` (an id in `content/E/segments.json`) and shows the legend chip |
+| `cam_short`, `cam_lesson` | camera (as §3 `camera`) | same scene state, two framings (9:16 Short, 16:9 Lesson, §10); never re-model for a format |
+| `labels[]` | as §7 + `chip` (token) | leader-line labels (§12): ≤ 3 on screen (Short), ≤ 6 (Lesson); GLOSSARY terms |
+| `media[]` | `{id, kind, from_s, to_s, overlay}` | non-3D items (§13); `id` = a registry § Media row (`M01`…); `kind` ∈ `diagram microscopy ultrasound xray ct mri footage host`; a missing ledger row fails the check |
+| `exaggerations[]` | `{what, how_much, why, exam_fact}` | §15; the honesty tag shown comes from this list; `exam_fact: true` → the voice says so |
+| `tag` | one of the §15 fixed honesty tags \| null | shown for the whole shot |
+| `clinical` | bool | shot is part of a "Clinical link" slot (§14; Lessons only) |
+
+**Segments file** `content/E/segments.json`: `{spec, book, organs:[{id, name, cite, mark, segments:[{id, name, token, pattern, cite, mark, derivatives:[{id, name, cite, mark, split:"light"|"dark"|null, merge_into:<segment id>|null, day}]}]}]}` — ≤ 6 segments per organ; `token` names a CSS var `--s-<organ>-<seg>` (no colour values in the file, B3); `day` = when the split or merge happens (checked against the scene's day keys); segment and derivative ids permanent (A2).
+
+**End state** `endstate.json` per Part (next to its shot sheet): `{part, scene, day, camera, mode, organ, visible:[layer, segment or derivative ids], recap_facts:[fact ids]}` = the last frame + the facts the next Part's recap may use. Part N+1's first shot must match it (G-Sci item 18; the render check diffs it).

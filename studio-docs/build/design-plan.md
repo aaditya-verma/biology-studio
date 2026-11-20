@@ -1,6 +1,6 @@
 # Design plan — tokens, devices, shell, screens
 
-*(Purpose: the app's design system and screen layouts — tokens, type, spacing, device classes (moved here from master plan §8a), shell, screens, storage, debug and checks. Updated: 19 Nov 2026 · Bio · Build · W1 progress map (§2 progress + step rows, §4.7, `?debug=tracker`). Before: S1 studio (Studio row, `?debug=studio`). Before: 19 Nov 2026 · Bio · Build · V1 viewer (v2: 3D viewer §4.6, motion setting, viewer checks); before: A0 shell (v1).)*
+*(Purpose: the app's design system and screen layouts — tokens, type, spacing, device classes (moved here from master plan §8a), shell, screens, storage, debug and checks. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port (§2 Player 16:9 = Lesson preview, D-046). Before: 19 Nov 2026 · Bio · Build · W1 progress map (§2 progress + step rows, §4.7, `?debug=tracker`). Before: S1 studio (Studio row, `?debug=studio`). Before: 19 Nov 2026 · Bio · Build · V1 viewer (v2: 3D viewer §4.6, motion setting, viewer checks); before: A0 shell (v1).)*
 
 Owner doc for: colour/type/spacing tokens, the five device classes and the layout of every screen on each, navigation and addresses, testing mode, ✎ edit hooks, `tools/layout-check`. Rules: RULES B3, C8, C13, H5, I5–I6. Decisions: D-031 (colours), D-033 (devices), D-019 (storage). Code: `index.html`, `src/css/app.css`, `src/js/`, `content/strings.js`.
 
@@ -44,7 +44,7 @@ Input is separate from class: `.in-touch` (coarse pointer) / `.in-mouse` (fine +
 | Today | 1 column | 2 columns, slim header | 2-column grid | nav rail + 2–3 columns | nav rail + 3 columns, max width ~1280 px |
 | Explorer / Book map | drill-down, one level per screen, breadcrumb; heatmap scrolls with sticky headers | heatmap full width; tree in a drawer | tree rail + detail | tree │ heatmap or concept (2 panes) | tree │ heatmap │ concept page (3 panes) |
 | Card | 3D on top (~40 % height), text below | 3D left ~55 % │ text right | 3D on top (~45 %), text below at reading width | 3D left │ text right | 3D left │ text right (≤ 70 ch) + card rail |
-| Player 16:9 | video on top; transcript + card rail below | full-bleed video, overlay controls | video on top; transcript + rail below | video │ transcript + rail | video │ transcript + rail |
+| Player 16:9 (Lesson) | video on top as a preview (tap → full-screen landscape); transcript + card rail below; labels' terms in the transcript (visual-style §10) | full-bleed video, overlay controls | video on top; transcript + rail below | video │ transcript + rail | video │ transcript + rail |
 | Player 9:16 (Short) | full screen | centred; extras behind a button | centred; transcript below | centred; transcript + cards beside | same; never stretched or cropped |
 | 3D viewer | full-width canvas; controls in a bottom sheet | full-screen canvas; controls in a side strip | canvas + bottom panel | canvas │ side panel (layers, labels, day) | canvas │ side panel; hover labels, wheel zoom, shortcuts |
 | Studio (app, testing mode `#studio`; S1 ✅) | review only: approve / fix line by line | as phone portrait | draft over review | draft │ review | draft │ review │ sources (3 panes) |
