@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -22,6 +22,22 @@ Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull
 6. **Rotate** phone and tablet on a step page: same step, same place.
 7. Turn on testing mode (Settings): ✎ on a step opens an edit prompt pointing at `build/steps.json`.
 - **Result:** ☐ pass ☐ problems · map readable on the phone: ☐ yes ☐ no (where?) · can't-start line right: ☐ yes · board columns right: ☐ yes · inputs list complete: ☐ yes ☐ missing (which?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes · layout problems (device + screen):
+
+## T7. Learning core *(phone, tablet, laptop)* — PLANNED (L1 writes the steps)
+Read a card, pass its Check, use the Remember deck and Try it 3D on each device.
+- **Result:** ☐ pass ☐ problems · notes: ___
+
+## T8. 3D drills + new scenes *(phone, tablet, laptop)* — PLANNED (V2 writes the steps)
+- **Result:** ☐ pass ☐ problems · notes: ___
+
+## T8b. Trace a cell *(phone, tablet, laptop)* — PLANNED (V3 writes the steps)
+- **Result:** ☐ pass ☐ problems · notes: ___
+
+## T9. Lessons, Today, Mixed review *(phone, tablet, laptop)* — PLANNED (L2 writes the steps)
+- **Result:** ☐ pass ☐ problems · notes: ___
+
+## T3d. Ch 6–8 cards *(phone, tablet, laptop)* — PLANNED (C2 writes the steps, like T3c)
+- **Result:** ☐ pass ☐ problems · notes: ___
 
 ## T1b. Host shot *(phone + tablet/laptop)* — PLANNED (M1b writes the steps)
 Steps written by the M1b build chat: pick the host concept, then judge the 5-s 9:16 shot against QR01/QR02.
@@ -98,6 +114,6 @@ Follow `build/setup-guide.md` §1–§5.
 - **Result T3c:** ☐ pass · cards readable on phone / tablet / laptop: ☐ ☐ ☐ · General makes sense to a non-medical reader: ☐ · D-037 (a) reads well in the colour key: ☐ · G-Owner E05.01.01: ☐ pass ☐ fix · notes (card + line): ___
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
-## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L1)
+## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L3 player; D-047)
 Steps written by the L1 build chat. Watch the MBBS cut; a non-medical friend watches the General cut if possible.
 - **Result:** ☐ pass ☐ problems · ☐ biologically right ☐ off at (time) · ☐ watched to the end ☐ drifted at (time) · story ☐ gripping ☐ flat · voice pace ☐ right ☐ fast · 3D ☐ clear ☐ lost track at (time) · General cut understood by a non-medical viewer: ☐ yes ☐ no · Check: __ / __ · 24 h: __ / __ · 7 d: __ / __ · player on tablet/laptop: ☐ good ☐ problems (what?)
