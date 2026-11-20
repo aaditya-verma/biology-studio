@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 20 Nov 2026 · Bio · Build · M1 bake-off.)*
 
 ## Lock
-- Build lock: free (M1 bake-off released 20 Nov 2026, 10:45 IST; held from 10:20 IST · by Aaditya)
+- Build lock: Aaditya · Bio · Fix · Visual style 2 port · 20 Nov 2026, 20:55 IST
 
 ## Now
 - **M1 run measured** (20 Nov, D-045): GTX 1060 6 GB · 20 s shot = Cycles 45 min, Eevee 14.5 min, three.js 9 s; x264 beats Pascal NVENC on size. Method C (AI) and 1080p pending. G-Sci pass (notes) · G-Art fail (Eevee artefact, key unreadable on phone — scene-spec fixes). Owner check **T1** open.
