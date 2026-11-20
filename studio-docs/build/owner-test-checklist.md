@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -39,9 +39,20 @@ Read a card, pass its Check, use the Remember deck and Try it 3D on each device.
 ## T3d. Ch 6–8 cards *(phone, tablet, laptop)* — PLANNED (C2 writes the steps, like T3c)
 - **Result:** ☐ pass ☐ problems · notes: ___
 
-## T1b. Host shot *(phone + tablet/laptop)* — PLANNED (M1b writes the steps)
-Steps written by the M1b build chat: pick the host concept, then judge the 5-s 9:16 shot against QR01/QR02.
-- **Result:** ☐ pass ☐ problems · host pick: ___ · notes:
+## T1b. Host shot: Nani Koshika test *(~15 min laptop run + ~10 min phone, tablet/laptop)* — OPEN (M1b Step 2, 20 Nov 2026)
+Host picked: **Nani Koshika** (D-048), voice Kokoro `af_heart` ×0.9, route H-a = our 3D model in Blender (D-049).
+Before: run the kit — `repo\biology-studio\tools\m1b-host\README.md` (setup ~10 min: fonts + `pip install --upgrade pillow soundfile`). Then `python host.py selftest` → `python host.py all --preview` (~5–10 min) → if it looks sane, `python host.py all` (~10–25 min, plugged in). If a step fails, paste the last 30 lines into the chat.
+1. Upload `out\M1b-host01\for_drive\` to Drive › Biology Studio › renders › bakeoff › host.
+2. **Sheet** (`…_character-sheet.png`) on the phone: is it clearly Nani from the reference (egg body, wine shawl + fringe, round spectacles on a chain, book)? Front and side the same character? Are all 6 faces readable at phone size — neutral, warm smile, **open-eye surprise**, **doubt**, laugh, thinking?
+3. **Shot** (`…_720x1280_captioned.mp4`), full screen, sound on, then sound off:
+   - Same Nani in both angles (cut at 2.5 s)? Lips match the words? Blinks feel natural?
+   - Light: warm, cinematic, soft background; nothing flickers.
+   - Captions: one phrase at a time, key words on a pearl pill, the Hindi line "चपटी डिस्क से पूरा शरीर?" from 2.5 s, all clear of the app buttons (bottom + right).
+   - Voice: pace OK (130–150 wpm), warm, no odd sounds.
+4. Against **QR01/QR02** (quality-references §1): would a student stop scrolling for this? Score 1–5 for look, face, lip-sync, captions.
+5. Once on a tablet (both orientations) and once on the laptop: nothing blurry or oversized.
+6. Reply in one message: pass / problems + the 4 scores + notes. If look or face scores ≤ 2, the chat brings the paid options (H-c, costs in DECISIONS D-049) for you to pick.
+- **Result:** ☐ pass ☐ problems · scores look _ / face _ / lip-sync _ / captions _ · notes:
 
 ## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — OPEN (M1, 20 Nov 2026)
 Before: the laptop run is done (20 Nov). Upload `D:\Projects\biology_studio\tools\m1-bakeoff\out\for_drive\` (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff. Keep `out\blind_key.json` closed.
@@ -80,7 +91,7 @@ Follow `build/setup-guide.md` §1–§5.
 8. Skim one chapter you know well in `curriculum/concept-map.md` — anything missing or wrong?
 - **Result:** ☐ pass ☐ problems · coverage: ☐ complete ☐ missing (which?) · crosstabs: ☐ useful ☐ confusing (which?) · navigation: ☐ easy ☐ lost (where?) · roadmap order: ☐ makes sense ☐ change (what?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · layout problems (device + screen):
 
-## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · **T3b ✅ 19 Nov 2026** (3D viewer) · **T3c open** (C1, 20 Nov 2026): read the cards in the Studio review pane on each device and give your **G-Owner** on E05.01.01
+## T3. App shell + 3D + Part 0 cards *(~15 min each: phone, tablet, laptop)* — **T3a ✅ 18 Nov 2026** (shell + Book map) · **T3b ✅ 19 Nov 2026** (3D viewer) · **T3c ✅ 21 Nov 2026** (C1, opened 20 Nov 2026): read the cards in the Studio review pane on each device and give your **G-Owner** on E05.01.01
 **T3a — A0 shell (~10 min).** Open the app preview (link in STATUS › Owner reminders) on the phone, then a tablet (or the laptop browser's device mode, marked emulated), then the laptop.
 1. **Today:** read it once. Tap **Book map** in the bar (phone) or rail (tablet landscape / laptop).
 2. **Book map:** phone — tap Ch 5 → Notochord; tablet/laptop — the chapter list stays on the left, the concept opens beside it (laptop: three panes). Check the concept shows **Confidence ⚑**, **Stage CS07–12 · cited**, **NMC AN** codes.
@@ -111,7 +122,7 @@ Follow `build/setup-guide.md` §1–§5.
 4. **Laptop** (draft │ review │ sources): skim the other cards. Rotate/resize once mid-card: same card, same pane.
 5. **Read for sense, not rules:** would a non-medical reader follow the General text? Is anything wrong, unclear or dull? Note card id + line id (e.g. `E05.01.03 body.general.2`).
 6. **G-Owner on E05.01.01:** if you're happy, open its G-Owner gate, put your name, role **Owner**, agent `T3c`, tick the box and tap **Pass** — then tell the next chat "G-Owner pass E05.01.01" (or tap Copy JSON and paste it). Shipping also needs G-A11y, which C1 passed on the text.
-- **Result T3c:** ☐ pass · cards readable on phone / tablet / laptop: ☐ ☐ ☐ · General makes sense to a non-medical reader: ☐ · D-037 (a) reads well in the colour key: ☐ · G-Owner E05.01.01: ☐ pass ☐ fix · notes (card + line): ___
+- **Result T3c:** ☑ pass (21 Nov 2026, 03:43 IST · by Aaditya, reported in the L1 chat) · G-Owner E05.01.01: ☑ pass · notes: tablet P · Studio · debug overlay covers text top-right; make it tap-to-hide (→ steps.json L1 to-do). ___
 - **Result:** ☐ pass ☐ problems · 3D smooth: ☐ yes ☐ stutters (where?) · cards: ☐ clear ☐ too dense · navigation: ☐ easy ☐ lost (where?) · devices: phone P ☐ L ☐ · tablet P ☐ L ☐ (☐ emulated) · laptop ☐ · rotate keeps place: ☐ yes ☐ no · layout problems (device + screen):
 
 ## T4. S1E01 Gastrulation *(~5 min on the phone + ~2 min next day + ~2 min at 7 days; one watch on tablet or laptop)* — PLANNED (R1, L3 player; D-047)

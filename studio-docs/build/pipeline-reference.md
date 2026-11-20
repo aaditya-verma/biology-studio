@@ -1,6 +1,6 @@
 # Pipeline reference — Expected vs Measured
 
-*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
+*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 21 Nov 2026 · Bio · Fix · M1b merge — §1 idle row (P8 · 6 W · 43 °C, from M1b Step 1). Before: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
 
 Rule C4: build only on the **Measured** column. Expected values are rough starting guesses, to be replaced by measurements (M1 onwards). Fill "Checked on" with date + device. Local-first on the owner's NVIDIA laptop (D-014, RULES C12).
 
@@ -14,7 +14,7 @@ Rule C4: build only on the **Measured** column. Expected values are rough starti
 | Blender OptiX available | yes on RTX cards | **yes** — Blender 4.5.10 LTS Cycles ran OPTIX on the GTX 1060 (no RT cores, so no hardware ray-trace speed-up) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | ffmpeg NVENC (h264_nvenc / hevc_nvenc) works | yes | **yes** — h264_nvenc, hevc_nvenc listed (av1_nvenc listed but Pascal has no AV1 encoder — don't use). **FFmpeg pinned to 7.1.1** (gyan full build): 8.x+ needs a newer NVENC API than the 580 driver | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | Toolchain (Studio home `apps\`, caches on D:) | — | Blender 4.5.10 LTS portable · Node 26.13 · Python 3.11.9 venv · three.js r170 + Playwright Chromium 159 · Kokoro-82M (CUDA) · Piper `en_US-ryan-high` (CPU) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
-| GPU temperature at idle | — | **~80 °C** (owner) — hot for idle; run long jobs plugged in, on a stand; watch for throttling in R1 | owner, 20 Nov 2026 |
+| GPU temperature at idle | — | **P8 · 6 W · 43 °C** (NVIDIA overlay off, Power management mode Normal; replaces the earlier ~80 °C reading) | owner, 20 Nov 2026 |
 
 **How to fill:** `python bakeoff.py hw` (kit, §7) writes all of these to `out\hw.json`. By hand: Anaconda Prompt → `nvidia-smi` (top-right box: driver + CUDA; middle: GPU name, `xxxxMiB` total = VRAM) · Task Manager › Performance › GPU (Dedicated GPU memory) / CPU / Memory · Blender › Edit › Preferences › System › Cycles Render Devices › OptiX (your GPU listed = yes).
 

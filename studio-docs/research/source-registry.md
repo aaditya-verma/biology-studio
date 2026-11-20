@@ -148,9 +148,14 @@ All free. **Use** column follows RULES F4/G4: *Repo* = code may be vendored in t
 | T33 | **XTTS v2** | — | Voice cloning | Non-commercial (CPML) → Laptop only if ever used, credited (F4) |
 | T34 | **WhisperX** | P1 | Word-level subtitle timing (forced alignment) | BSD → Laptop |
 | T35 | **ffmpeg** (NVENC) | P1 | Assemble, encode, burn subtitles | LGPL/GPL → Laptop |
+| T36 | **Inter** + **Noto Sans Devanagari** (fonts; Mukta as alternative) | M1b, P1 | Caption + title type, Latin + Devanagari (visual-style §3) | SIL OFL 1.1 → Laptop `apps\fonts\`; burned into renders; fonts not committed |
+| T37 | **Pillow** (+ raqm/HarfBuzz) | M1b, P1 | Kinetic captions; Devanagari shaping | MIT-CMU (HarfBuzz MIT) → Laptop |
+| T38 | **Hedra Character-3** *(paid, not used — F2)* | M1b (option H-c) | Talking character from one image + audio; lip-sync | Paid credits; checked 20 Nov 2026: ~6–7 credits/s at 720p; plans $15–20 to $75–100/mo (sources differ); commercial use on paid plans |
+| T39 | **Kling** (image-to-video, native lip-sync) *(paid, not used — F2)* | M1b (option H-c) | Cinematic image-to-video with lip movement | Paid; free daily credits watermarked, no commercial use; paid ~$7–10/mo up (checked 20 Nov 2026) |
 | T40 | **ts-fsrs** | app | Spaced-repetition scheduling (FSRS) | MIT → Repo |
 | T41 | **Dexie.js** | app | IndexedDB wrapper (`biostudio`, A1) | Apache 2.0 → Repo |
 | T42 | **Workbox** | app | Offline caching (PWA) | MIT → Repo |
+| T43 | **Runway Act-Two** *(paid, not used — F2)* | M1b (option H-c) | Transfers an acted driving video onto a character image | Paid; 5 credits/s, Standard $15/mo = 625 credits (checked 20 Nov 2026) |
 | T50 | **PubMed** connector | X1 | Tier-1 paper search | Connected |
 | T51 | **Hugging Face** connector | M1, X1 | Find models + check licences; paper search | Connected 17 Nov 2026 |
 

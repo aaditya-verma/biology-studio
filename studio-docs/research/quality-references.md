@@ -35,4 +35,4 @@ Also in that folder: an unnamed "Record_2026-11-17-03-43-37_….mp4" (10.9 MB, i
 8. **QR04 + QR05 (D-046, 20 Nov 2026):** adopted as `build/visual-style.md` §10–§16 — Short + Lesson (16:9) from one scene, segment colour mode (colour = origin across Parts), labels with leader lines, mixed media rules, clinical slots, Part recaps + honesty tags, media licences (CC0/CC BY/PD only). Science checks: playbook §2 G-Sci items 13–18.
 
 ## 4. Open
-- Host design: the M1b chat proposes 2–3 cell/embryo host concepts (name, look, voice, personality) for the owner to pick.
+- Host concepts proposed (D-048); owner picked **Nani Koshika** (20 Nov 2026), reference = Canva turnaround MAHbd5r-vTY (laptop only). Step 2 test shot judged in T1b.
