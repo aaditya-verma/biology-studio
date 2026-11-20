@@ -1,6 +1,6 @@
 # Pipeline reference — Expected vs Measured
 
-*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows (phone fps pending the owner's Measure); before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
+*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
 
 Rule C4: build only on the **Measured** column. Expected values are rough starting guesses, to be replaced by measurements (M1 onwards). Fill "Checked on" with date + device. Local-first on the owner's NVIDIA laptop (D-014, RULES C12).
 
@@ -8,11 +8,13 @@ Rule C4: build only on the **Measured** column. Expected values are rough starti
 | Item | Expected | Measured | Checked on |
 |---|---|---|---|
 | Maker / OS family | — | MSI · Windows x64 | 17 Nov 2026 · desktop-app bridge |
-| GPU model + driver (`nvidia-smi`) | NVIDIA gaming GPU (owner: runs Adobe apps, F1 games) | | |
-| VRAM | 6–16 GB (decides local video models) | | |
-| CPU / RAM / free disk / OS version | — | | |
-| Blender OptiX available | yes on RTX cards | | |
-| ffmpeg NVENC (h264_nvenc / hevc_nvenc) works | yes | | |
+| GPU model + driver (`nvidia-smi`) | NVIDIA gaming GPU (owner: runs Adobe apps, F1 games) | **GTX 1060 (Pascal, no RT/tensor cores)** · driver **581.57**, CUDA 13.0 (renders ran on 551.86; encodes re-run on 581.57). 580 branch = last for Pascal → stay on it | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| VRAM | 6–16 GB (decides local video models) | **6 GB** (6144 MiB) — bottom of range; Wan 2.2 5B not run (M1 Method C) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| CPU / RAM / free disk / OS version | — | i7-8750H 6C/12T · 16 GB (15.9) · 298 GB free on D: · Windows 10 Home 22H2 (19045) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Blender OptiX available | yes on RTX cards | **yes** — Blender 4.5.10 LTS Cycles ran OPTIX on the GTX 1060 (no RT cores, so no hardware ray-trace speed-up) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| ffmpeg NVENC (h264_nvenc / hevc_nvenc) works | yes | **yes** — h264_nvenc, hevc_nvenc listed (av1_nvenc listed but Pascal has no AV1 encoder — don't use). **FFmpeg pinned to 7.1.1** (gyan full build): 8.x+ needs a newer NVENC API than the 580 driver | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Toolchain (Studio home `apps\`, caches on D:) | — | Blender 4.5.10 LTS portable · Node 26.13 · Python 3.11.9 venv · three.js r170 + Playwright Chromium 159 · Kokoro-82M (CUDA) · Piper `en_US-ryan-high` (CPU) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| GPU temperature at idle | — | **~80 °C** (owner) — hot for idle; run long jobs plugged in, on a stand; watch for throttling in R1 | owner, 20 Nov 2026 |
 
 **How to fill:** `python bakeoff.py hw` (kit, §7) writes all of these to `out\hw.json`. By hand: Anaconda Prompt → `nvidia-smi` (top-right box: driver + CUDA; middle: GPU name, `xxxxMiB` total = VRAM) · Task Manager › Performance › GPU (Dedicated GPU memory) / CPU / Memory · Blender › Edit › Preferences › System › Cycles Render Devices › OptiX (your GPU listed = yes).
 
@@ -50,16 +52,16 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 ## 3. Production toolchain
 | Item | Expected | Measured | Checked on |
 |---|---|---|---|
-| Blender Eevee 720p, seconds per frame | ~0.5–3 s on a gaming GPU | | |
-| Blender Cycles + OptiX 720p, seconds per frame (64 spp, denoised) | ~2–10 s | | |
-| Same at 1080p (decides the 1080p rung, design plan §2) | ~2–2.5× the 720p time | | |
-| 20 s shot at 24 fps, total — Blender Eevee / Cycles | ~5–15 min / ~20–60 min | | |
-| 20 s shot — headless three.js recorded to frames (WebGL on GPU?) | minutes | | |
-| 20 s shot — Wan 2.2 TI2V-5B (ComfyUI): time per ~5 s clip, VRAM peak, control, accuracy | — | | |
-| 720p H.264 NVENC (p5, cq 23) — MB for 20 s, per method | ~3–5 MB | | |
-| 720p H.264 x264 veryfast crf 23 — MB for 20 s (fallback) | ~3–5 MB | | |
-| Local TTS voice 1 Kokoro-82M `af_heart`: quality, 20 terms, wpm | — | | |
-| Local TTS voice 2 Piper `en_US-ryan-high`: same | — | | |
+| Blender Eevee 720p, seconds per frame | ~0.5–3 s on a gaming GPU | **1.81 s** (Eevee Next) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Blender Cycles + OptiX 720p, seconds per frame (64 spp, denoised) | ~2–10 s | **5.60 s** (OptiX, OptiX denoise) | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Same at 1080p (decides the 1080p rung, design plan §2) | ~2–2.5× the 720p time | **not measured** — kit ran 720p only; pending (M1 to-do; D-033 rung waits) | |
+| 20 s shot at 24 fps, total — Blender Eevee / Cycles | ~5–15 min / ~20–60 min | **14.5 min / 44.8 min** (866 s / 2 689 s wall, 480/480 frames) → a 90 s episode ≈ 65 min Eevee / 3.4 h Cycles | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| 20 s shot — headless three.js recorded to frames (WebGL on GPU?) | minutes | **8.9 s** (0.019 s/frame; 10.9 s wall) — WebGL on the GPU via ANGLE/D3D11, not SwiftShader | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| 20 s shot — Wan 2.2 TI2V-5B (ComfyUI): time per ~5 s clip, VRAM peak, control, accuracy | — | **not run** — 6 GB is likely too small locally; probably online-only (free tier) — pending, D-045 | |
+| 720p H.264 NVENC (p5, cq 23) — MB for 20 s, per method | ~3–5 MB | Cycles **0.63** · Eevee **2.75** · three.js **0.78** MB; encode 8.0 / 5.3 / 3.4 s | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| 720p H.264 x264 veryfast crf 23 — MB for 20 s (fallback) | ~3–5 MB | Cycles **0.26** · Eevee **0.30** · three.js **0.27** MB; encode 5.3 / 3.9 / 3.0 s — **x264 smaller and no slower** than Pascal NVENC at 720p/20 s | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Local TTS voice 1 Kokoro-82M `af_heart`: quality, 20 terms, wpm | — | GPU: load 43 s; 20 terms + sentence in 20.1 s (first term 15.7 s warm-up, then ~0.15 s each); **165 wpm**. Quality + wrong terms: T1 | owner's MSI, 20 Nov 2026 · `out\hw.json` |
+| Local TTS voice 2 Piper `en_US-ryan-high`: same | — | CPU: 49.7 s total (includes Python start per call); **197 wpm** (fast for teaching). Quality + wrong terms: T1 | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | Subtitle drift over 90 s after alignment | < 100 ms | | |
 | ffmpeg NVENC assemble time for 90 s | < 30 s | | |
 
@@ -76,10 +78,13 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 |---|---|---|---|
 | 17 Nov 2026 | Kit dry-run in the cloud workspace (no GPU) | Shared geometry, projection, labels, overlay and x264 encode work: 2D spec preview, 480 frames in 18 s (CPU), 20 s clip 0.43 MB. **Not a laptop measurement** | Run the kit on the laptop |
 | 17 Nov 2026 | Laptop render runs | Pending — chat bridge can move files but not run commands | Owner: `python bakeoff.py all` |
+| 20 Nov 2026 | M1 kit run, Laptop 1 (`bakeoff.py all`) | Done: Cycles 44.8 min, Eevee 14.5 min, three.js 9 s for the 20 s shot; NVENC + x264 both OK; Kokoro + Piper OK; 3 blind clips. Method C (AI) not run. 1080p not timed | T1 on the phone; owner picks D-024/D-045; 1080p + Method C pending |
+| 20 Nov 2026 | Encode | Pascal NVENC (p5 cq 23) files 2.4–9× larger than x264 veryfast crf 23 and not faster at 20 s | Re-measure on a 90 s assemble in R1; default encoder per D-045 |
 
 ## 6. Known setup facts
 - Book PDF: Langman 14e, 429 pp, ~211 MB; in Drive › Projects › Embryo Studio › book/ (uploaded 17 Nov 2026; keep private).
 - Render machine: owner's MSI NVIDIA gaming laptop, Windows, Anaconda installed (D-014). Owner reads and approves on the phone.
+- Laptop 1 driver: Pascal's last branch is 580 → keep driver 581.x; FFmpeg stays **7.1.1** for NVENC (8.x+ needs a newer NVENC API); Blender stays on 4.5 LTS until a newer release is checked against Pascal. Pin these in R1's kit README.
 - Network access in Claude sessions can be off; package installs and model downloads run on the laptop.
 - The chat bridge (desktop app) can read/write files under connected folders; it can't run commands unless a device shell tool is offered.
 - Exchange format between Blender and three.js: glTF (.glb).

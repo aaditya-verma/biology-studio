@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "20 Nov 2026 · Bio · Research · X1 Ch 08 (X1.08 done, G-Sci pass; D-044 owner input; I1 Ch 8 locator gaps; X1.09 ready)",
+ "updated": "20 Nov 2026 · Bio · Build · M1 bake-off (part 2: write-up — M1 → owner check, T1 open, M1.q1 answered, D-045)",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -142,26 +142,29 @@
    "title": "M1 bake-off — renderer, voice, encode numbers",
    "type": "Build",
    "chat": "Bio · Build · M1 bake-off",
-   "status": "in progress",
+   "status": "owner check",
    "needs": ["M0"],
    "unblocks": ["M1b", "R1"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Art": "open"},
-   "check": {"id": "T1", "state": "open", "since": "2026-11-17"},
-   "decisions": ["D-009", "D-023", "D-024", "D-033"],
+   "gates": {"G-Sci": "pass", "G-Art": "fail"},
+   "check": {"id": "T1", "state": "open", "since": "2026-11-20"},
+   "decisions": ["D-009", "D-023", "D-024", "D-033", "D-045"],
    "prompt": "M1",
-   "log": "17 Nov 2026 · M1 bake-off (part 1: kit) — kit on the laptop; run pending",
+   "log": "20 Nov 2026 · M1 bake-off (part 2: write-up) — laptop numbers Measured, D-045 options, T1 open",
    "todo": [
-    "Numbers blocked on the laptop run (cloud workspace has no GPU); M1b and the 1080p rung (D-033) wait on them",
-    "Shot: days 15–17 and disc ≈ 0.2 → 0.4 mm cited (dossier §1); streak length stays ≈; notochordal process left out (D-029)",
-    "Laptop GPU/VRAM not yet recorded",
-    "Align kit `shot.json`: streak + node = `ctx` fill + plum outline (D-036, visual-style §5)"
+    "1080p not timed — time one method at 1080p (D-033 rung waits)",
+    "Method C (Wan 2.2 5B) not run — 6 GB VRAM; likely online free tier only (D-045); pending",
+    "G-Sci note: day-15 stamp says CS07 → CS06, start size ≈0.20 mm (dossier §1); streak drawn as a ridge, not a groove; 'broader cranially' hard to read — fix in the scene spec, not re-render",
+    "G-Art fail: Eevee mesoderm through epiblast renders near-black; three.js inner layers washed out; colour key + disclaimer unreadable on a phone (C13); key swatches lack patterns (B3); node label halo differs; epiblast rim z-fight risk — carry to R1/V1 scene spec",
+    "Align kit `shot.json`: streak + node = `ctx` fill + plum outline (D-036, visual-style §5)",
+    "Pin driver 581.x, FFmpeg 7.1.1, Blender 4.5 LTS in R1's kit README (pipeline reference §6)"
    ],
    "inputs": [
-    {"id": "M1.q1", "kind": "action", "ask": "Run the M1 kit on the laptop (README in the kit; ~20 min setup, then python bakeoff.py all; AI clip per C_ai\\README.md), keep it plugged in", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
+    {"id": "M1.q1", "kind": "action", "ask": "Run the M1 kit on the laptop (README in the kit; ~20 min setup, then python bakeoff.py all; AI clip per C_ai\\README.md), keep it plugged in", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": "Done — kit run on the laptop (owner, 20 Nov 2026, ~10:08 IST): renders on driver 551.86, encodes re-run on 581.57; FFmpeg pinned 7.1.1; Method C not run", "status": "answered", "d": null},
     {"id": "M1.q2", "kind": "decide", "ask": "Align the kit’s shot.json with the app (grey ctx + plum outline, D-036) or keep the accent fill — recommended: align", "asked_in": "Bio · Build · V1 viewer", "asked": "2026-11-19", "answer": null, "status": "open", "d": "D-036"},
-    {"id": "M1.q3", "kind": "decide", "ask": "Pick the renderer + voice from D-024 after T1", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-024"},
-    {"id": "M1.q4", "kind": "action", "ask": "Optional: download the free 3D Atlas of Human Embryology PDFs (3dembryoatlas.com) to Drive › research/ (needed for the G-Sci look check vs R01 CS7)", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": null}
+    {"id": "M1.q3", "kind": "decide", "ask": "Pick renderer (O1–O3), voice (V-a/V-b) and encoder (E1/E2) from D-024 + D-045 after T1", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-045"},
+    {"id": "M1.q4", "kind": "action", "ask": "Optional: download the free 3D Atlas of Human Embryology PDFs (3dembryoatlas.com) to Drive › research/ (needed for the G-Sci look check vs R01 CS7)", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
+    {"id": "M1.q5", "kind": "action", "ask": "Upload out\\for_drive\\ (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff, then do T1 on the phone", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-20", "answer": null, "status": "open", "d": null}
    ]
   },
   {
@@ -169,7 +172,7 @@
    "title": "M1b host shot — host design + 5-s 9:16 test",
    "type": "Build",
    "chat": "Bio · Build · M1b host shot",
-   "status": "planned",
+   "status": "ready",
    "needs": ["M1"],
    "unblocks": ["P1"],
    "lock": true,
@@ -180,7 +183,8 @@
    "log": "—",
    "todo": [
     "Host design (name, look, voice) picked here from 2–3 concepts",
-    "Follows build/visual-style.md (D-041)"
+    "Follows build/visual-style.md (D-041)",
+    "Uses the voice picked in M1.q3 (T1); 6 GB VRAM limits local image/video models (D-045)"
    ],
    "inputs": []
   },

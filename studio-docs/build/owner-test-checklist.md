@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -8,7 +8,7 @@ Run on real devices. Write each result on its **Result** line, then tick it in `
 
 **Apps:** A0 shell live at https://aaditya-verma.github.io/biology-studio/ (GitHub Pages, D-035).
 
-**Status, 17 Nov 2026:** T1 written; opens when the laptop run puts clips in Drive. T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
+**Status, 17 Nov 2026:** T1 written (opened 20 Nov, M1 run done). T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
 
 ---
 
@@ -27,9 +27,10 @@ Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull
 Steps written by the M1b build chat: pick the host concept, then judge the 5-s 9:16 shot against QR01/QR02.
 - **Result:** ☐ pass ☐ problems · host pick: ___ · notes:
 
-## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — WAITING FOR CLIPS (M1)
-Before: on the laptop, `python bakeoff.py all` (+ `C_ai\README.md` for the AI clip), then upload `out\for_drive\` to Drive › Embryo Studio › renders › bakeoff. Keep `out\blind_key.json` closed.
-1. Open Drive › renders › bakeoff on the phone. Up to 4 clips of the same 20 s shot: `clip-A … clip-D` (Blender Cycles, Blender Eevee, three.js, AI video — in random order).
+## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — OPEN (M1, 20 Nov 2026)
+Before: the laptop run is done (20 Nov). Upload `D:\Projects\biology_studio\tools\m1-bakeoff\out\for_drive\` (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff. Keep `out\blind_key.json` closed.
+1. Open Drive › renders › bakeoff on the phone. **3 clips** of the same 20 s shot: `clip-A … clip-C` (Blender Cycles, Blender Eevee, three.js — in random order). The AI clip (Method C) was not run (6 GB VRAM; D-045) — skip D.
+   Known (reviewer, stills): the day-15 stamp says CS07 (should be CS06, fixed in the scene spec later); the colour key and disclaimer are too small to read on a phone — judge the shot, not the key size.
 2. Watch each full screen, once with sound off.
 2b. Watch your favourite clip once on a tablet (both orientations) and once on the laptop: labels legible, nothing looks oversized or blurry.
 3. For each, judge:
@@ -39,7 +40,7 @@ Before: on the laptop, `python bakeoff.py all` (+ `C_ai\README.md` for the AI cl
    - **Look:** clear and attractive enough for a medical student to keep watching.
 4. Listen to `voice1_kokoro.wav` and `voice2_piper.wav` (20 terms in the order of `D_tts\terms.txt`, then one sentence). Note any term said wrong.
 5. Then open `blind_key.json` and reply in the M1 chat with your picks (options in DECISIONS D-024).
-- **Result:** ☐ pass ☐ problems — A: ☐ clear ☐ confusing · B: ☐ clear ☐ confusing · C: ☐ clear ☐ confusing · D: ☐ clear ☐ confusing · pick: ___ ☐ mix · voice: ☐ 1 ☐ 2 ☐ neither · mispronounced terms: ___ · tablet/laptop: ☐ fine ☐ labels too small/large ☐ blurry · notes:
+- **Result:** ☐ pass ☐ problems — A: ☐ clear ☐ confusing · B: ☐ clear ☐ confusing · C: ☐ clear ☐ confusing · pick (D-024/D-045 O1–O3): ___ · encode E1/E2: ___ · favourite clip: ___ ☐ mix · voice: ☐ 1 ☐ 2 ☐ neither · mispronounced terms: ___ · tablet/laptop: ☐ fine ☐ labels too small/large ☐ blurry · notes:
 
 ## T5. Laptop 2 setup — the Professor *(~1 h 30 min on the laptop, once)* — OPEN: repo ready (H1 ✅ 17 Nov 2026); waits for the Professor's GitHub invite
 Follow `build/setup-guide.md` §1–§5.
