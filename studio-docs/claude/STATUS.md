@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 21 Nov 2026 · Bio · Build · V2 3D drills. Before: Bio · Review · T7 learning core.)*
 
 ## Lock
-- Build lock: free (V2 3D drills released 21 Nov 2026, 15:20 IST; held from 13:05 IST · by Aaditya)
+- Build lock: Aaditya · Bio · Fix · L1 polish · 21 Nov 2026, 15:25 IST
 
 ## Now
 - **V2 3D drills built** (21 Nov, app **v8**, D-054): drills as Check types — *Rotate to match · Which day is this? · Order the frames · Label it · Folded or not?*; new scene **sc-E05.02.01 notochord** (strand → plate → rod, head end first); drills on E05.02.01 (frames, label) + E05.05.01 (day), both Reviewed again; V1 notes fixed (streak d18, leader lines, cut −0.3, context loss). Gates G-Sci, G-Learn, G-Eng, G-Art, G-A11y pass. **T8 pass** (21 Nov, phone) → **V2 done**; D-054 confirmed (D-055); 3 phone notes + the phone fps run → L1F.
