@@ -242,12 +242,12 @@ limbinn|Limb musculature and innervation|B|S A|s|meso|limb||limbmus,dermyo| Nerv
 limbdef|Limb defects|C|C|x|meso|defects||limbshape| Amelia, meromelia (e.g. thalidomide phocomelia), polydactyly, syndactyly, split hand.|
 clubfoot|Clubfoot and other limb anomalies|C|C|s|meso|defects||limbshape| Clubfoot, hip dysplasia, arthrogryposis, amniotic bands.|
 @ E13.00
-heartfirst|The heart works first|A|T|c|meso|cv|21-22|vessels,hearttube| The first organ to function; it begins beating at about day 22.|
+heartfirst|The heart works first|A|T|c|meso|cv|21-21|vessels,hearttube| The first organ to function; it begins beating at about day 21, while still a tube.|
 @ E13.01
 phf|Primary heart field|B|S G|c|meso|cv|16-18|streakfate| Splanchnic mesoderm cranial to the neural plate forms a crescent of heart precursors.|
 shf|Secondary heart field|B|S|x|meso|cv|20-35|phf| Cells added later make the outflow tract, right ventricle and parts of the atria.|
 @ E13.02
-hearttube|Heart tube forms|A|F|c|meso|cv|19-22|phf,folding| Body folding brings two endocardial tubes together; they fuse into one tube in the pericardial cavity.|
+hearttube|Heart tube forms|A|F|c|meso|cv|19-22|phf,folding| Folding brings the heart crescent together; it fuses only at its caudal end, and the outflow tract and ventricle form by expansion, giving one tube in the pericardial cavity.|
 tubeparts|Parts of the heart tube|A|S|c|meso|cv|22-28|hearttube| Inflow (sinus venosus), atrium, ventricle and outflow (bulbus: conus and truncus).|
 @ E13.03
 looping|Cardiac looping|A|F|c|meso|cv|23-28|tubeparts| The tube bends to the right so the atria move up and back and the ventricle down and forward.|

@@ -1,6 +1,6 @@
 # Setup guide — run Biology Studio on a second laptop
 
-*(Purpose: §0 = the reviewer's zero-setup start; §0a–§8 = full setup for a collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 21 Nov 2026 · Bio · Build · H2 reviewer mode — §0 Reviewer: start here (D-060, D-061). Before: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
+*(Purpose: §0 = the reviewer's zero-setup start; §0a–§8 = full setup for a collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 22 Nov 2026 · Bio · Research · X1 Ch 13 — §3 + §5 step 2: private `references\` folder in Studio home that chats stage from (D-069). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode — §0 Reviewer: start here (D-060, D-061). Before: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
 
 **Reviewing only?** Read **§0** and stop there — nothing to install.
 
@@ -65,7 +65,7 @@
 - Google Cloud test user: only later, when the app's Drive sync is built (D1). Nothing to do now.
 
 ## 3. Your copy of the book (5 min)
-Put your own Langman's Medical Embryology 14e PDF in **your** Drive in a private folder `Biology Studio – private/book/`. Never upload it to the shared folders, the repo, or a shared chat. Chats that need it (I1 index, C1 cards) will ask you to attach it.
+Put your own Langman's Medical Embryology 14e PDF in **`<Studio home>\references\book\`** on your laptop (§5 step 2; keep a backup in your private Drive folder `Biology Studio – private/book/` if you like). Never upload it to the shared folders, the repo, or a shared chat. Chats that need it (I1 index, X1 research, C cards) stage it from `references\` once you connect Studio home to the chat in the desktop app (+ → Add folder) — no attaching each time (D-069).
 
 ## 4. Claude Project (15 min)
 1. Install the **Claude desktop app** for Windows (claude.ai/download) and sign in — chats can then read and write files in your laptop's Studio folder.
@@ -86,7 +86,9 @@ Use **Anaconda Prompt** (or Miniconda Prompt) for every command. After installin
    apps\      Blender portable (optional), ComfyUI — never in the repo
    models\    voices, AI weights — laptop only
    repo\      the biology-studio repo clone
+   references\  your private source files chats stage from — never in the repo (D-069)
    ```
+   **`references\` layout** (one place, so connecting Studio home to a chat covers every file it needs): `book\` — your Langman 14e PDF (`langman-14e.pdf`); `nmc\` — `UG-Curriculum-Vol-I.pdf`, `-Vol-II.pdf`, `-Vol-III.pdf` (from nmc.org.in) and the 2024 MGMUHS reprint if you have it; `papers\` — full-text PDFs you download for a chat (name them by registry id, e.g. `R05en.pdf`); `misc\` — anything else a prompt asks for. It sits beside `repo\`, not inside it, so it can never be committed (RULES G1, I8 (5)). The folder's own `README.md` lists what belongs there.
    Wherever a doc says `D:\Projects\biology_studio`, use your own Studio home.
 3. **Install the tools** (one line each):
    - Python: `winget install Anaconda.Miniconda3` (skip if Anaconda is installed)

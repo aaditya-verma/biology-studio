@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -276,34 +276,34 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E13.00.01 | The heart works first | A | T | core | 21–22 | meso | cv | E06.02.07, E13.02.01 |  |  | ≈ |
-| E13.01.01 | Primary heart field | B | SG | core | 16–18 | meso | cv | E05.04.02 | 20 |  | ≈ |
-| E13.01.02 | Secondary heart field | B | S | x | 20–35 | meso | cv | E13.01.01 |  |  | ≈ |
-| E13.02.01 | Heart tube forms | A | F | core | 19–22 | meso | cv | E13.01.01, E06.03.01 | 17 |  | ≈ |
-| E13.02.02 | Parts of the heart tube | A | S | core | 22–28 | meso | cv | E13.02.01 | 14 |  | ≈ |
-| E13.03.01 | Cardiac looping | A | F | core | 23–28 | meso | cv | E13.02.02 | 11 |  | ≈ |
-| E13.03.02 | Dextrocardia and heterotaxy | C | C | x |  | meso | defects | E13.03.01, E05.05.04 |  |  | ≈ |
-| E13.04.01 | Molecular regulation of the heart | D | M | s |  | meso | cv | E13.01.01 |  |  | ≈ |
-| E13.05.01 | Sinus venosus | B | S | x | 28–56 | meso | cv | E13.02.02 | 1 |  | ≈ |
-| E13.06.01 | How septa form | A | S | core | 27–37 | meso | cv | E13.03.01 | 9 |  | ≈ |
-| E13.06.02 | Atrial septation | A | S | x | 28–42 | meso | cv | E13.06.01 | 3 |  | ≈ |
-| E13.06.03 | Atrial septal defects | C | C | x |  | meso | defects | E13.06.02 |  |  | ≈ |
-| E13.06.04 | AV canal and valves | B | S | x | 28–42 | meso | cv | E13.06.01 | 1 |  | ≈ |
-| E13.06.05 | Outflow tract septation | A | SG | x | 35–56 | crest | cv | E13.06.01, E06.01.04 | 1 |  | ≈ |
-| E13.06.06 | Ventricular septum | B | S | x | 35–49 | meso | cv | E13.06.01 | 1 |  | ≈ |
-| E13.06.07 | VSD, tetralogy, transposition, truncus | C | C | x |  | multi | defects | E13.06.06, E13.06.05 |  |  | ≈ |
-| E13.06.08 | Valve defects and hypoplastic left heart | C | C | s |  | meso | defects | E13.06.04 |  |  | ≈ |
-| E13.07.01 | Conducting system | B | S | s |  | meso | cv | E13.05.01 |  |  | ≈ |
-| E13.08.01 | Pharyngeal arch arteries and their fates | A | SA | core | 28–49 | meso | cv | E17.01.01 | 4 |  | ≈ |
-| E13.08.02 | Recurrent laryngeal nerve asymmetry | B | A | x |  | none | cv | E13.08.01 |  |  | ≈ |
-| E13.08.03 | Vitelline and umbilical arteries | B | SA | x |  | meso | cv | E06.02.07 |  |  | ≈ |
-| E13.08.04 | Vitelline, umbilical and cardinal veins | B | SA | x | 28–56 | meso | cv | E06.02.07 | 3 |  | ≈ |
-| E13.08.05 | Arterial defects | C | C | x |  | meso | defects | E13.08.01 |  |  | ≈ |
-| E13.08.06 | Fetal circulation | A | S | core | 57–266 | multi | cv | E13.08.04, E13.06.02, E13.08.01, E08.05.01 | 1 |  | ≈ |
-| E13.08.07 | Changes at birth and adult remnants | A | SA | core | 266–266 | multi | cv | E13.08.06 |  |  | ≈ |
-| E13.08.08 | Lymphatic system | C | S | d |  | meso | cv | E13.08.04 |  |  | ≈ |
+| E13.00.01 | The heart works first | A | T | core | 21–21 | meso | cv | E06.02.07, E13.02.01 |  | AN25.2, AN79.4 | ✔ |
+| E13.01.01 | Primary heart field | B | SG | core | 16–18 | meso | cv | E05.04.02 | 20 | AN25.2, AN79.4 | ✔ |
+| E13.01.02 | Secondary heart field | B | S | x | 20–35 | meso | cv | E13.01.01 |  | AN25.2 | ✔ |
+| E13.02.01 | Heart tube forms | A | F | core | 19–22 | meso | cv | E13.01.01, E06.03.01 | 17 | AN25.2, AN22.1 | ✔ |
+| E13.02.02 | Parts of the heart tube | A | S | core | 22–28 | meso | cv | E13.02.01 | 14 | AN25.2, AN22.2 | ✔ |
+| E13.03.01 | Cardiac looping | A | F | core | 23–28 | meso | cv | E13.02.02 | 11 | AN25.2 | ✔ |
+| E13.03.02 | Dextrocardia and heterotaxy | C | C | x |  | meso | defects | E13.03.01, E05.05.04 |  | AN25.5 | ✔ |
+| E13.04.01 | Molecular regulation of the heart | D | M | s |  | meso | cv | E13.01.01 |  |  | ✔ |
+| E13.05.01 | Sinus venosus | B | S | x | 28–56 | meso | cv | E13.02.02 | 1 | AN25.2, AN22.2, AN22.5, AN25.6 | ✔ |
+| E13.06.01 | How septa form | A | S | core | 27–37 | meso | cv | E13.03.01 | 9 | AN25.2 | ✔ |
+| E13.06.02 | Atrial septation | A | S | x | 28–42 | meso | cv | E13.06.01 | 3 | AN25.2, AN22.2 | ⚑ |
+| E13.06.03 | Atrial septal defects | C | C | x |  | meso | defects | E13.06.02 |  | AN25.4 | ⚑ |
+| E13.06.04 | AV canal and valves | B | S | x | 28–42 | meso | cv | E13.06.01 | 1 | AN25.2, AN22.2 | ✔ |
+| E13.06.05 | Outflow tract septation | A | SG | x | 35–56 | crest | cv | E13.06.01, E06.01.04 | 1 | AN25.2 | ✔ |
+| E13.06.06 | Ventricular septum | B | S | x | 35–49 | meso | cv | E13.06.01 | 1 | AN25.2, AN22.2 | ✔✔ |
+| E13.06.07 | VSD, tetralogy, transposition, truncus | C | C | x |  | multi | defects | E13.06.06, E13.06.05 |  | AN25.4, AN25.5 | ⚑ |
+| E13.06.08 | Valve defects and hypoplastic left heart | C | C | s |  | meso | defects | E13.06.04 |  |  | ⚑ |
+| E13.07.01 | Conducting system | B | S | s |  | meso | cv | E13.05.01 |  | AN22.7 | ✔ |
+| E13.08.01 | Pharyngeal arch arteries and their fates | A | SA | core | 28–49 | meso | cv | E17.01.01 | 4 | AN25.6, AN23.4 | ⚑ |
+| E13.08.02 | Recurrent laryngeal nerve asymmetry | B | A | x |  | none | cv | E13.08.01 |  | AN38.3, AN25.6 | ✔ |
+| E13.08.03 | Vitelline and umbilical arteries | B | SA | x |  | meso | cv | E06.02.07 |  | AN22.3 | ✔ |
+| E13.08.04 | Vitelline, umbilical and cardinal veins | B | SA | x | 28–56 | meso | cv | E06.02.07 | 3 | AN25.6, AN23.3, AN5.5 | ✔ |
+| E13.08.05 | Arterial defects | C | C | x |  | meso | defects | E13.08.01 |  | AN25.5 | ⚑ |
+| E13.08.06 | Fetal circulation | A | S | core | 57–266 | multi | cv | E13.08.04, E13.06.02, E13.08.01, E08.05.01 | 1 | AN25.3, AN5.2 | ✔ |
+| E13.08.07 | Changes at birth and adult remnants | A | SA | core | 266–266 | multi | cv | E13.08.06 |  | AN25.3 | ⚑ |
+| E13.08.08 | Lymphatic system | C | S | d |  | meso | cv | E13.08.04 |  | AN5.1, AN23.2, AN23.7 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E13.06.02 — “The foramen ovale closes before birth.” · E13.08.01 — “All six arches are present at the same time.” · E13.08.06 — “The fetal lungs oxygenate the blood.”
+*Misconceptions to refute (cited in the chapter dossier):* E13.06.02 — “The foramen ovale closes before birth.” · E13.08.01 — “All six arches are present at the same time.” · E13.08.06 — “The fetal lungs oxygenate the blood.”
 
 ## E14 — Respiratory System · pp 223–229 · 8 concepts
 
