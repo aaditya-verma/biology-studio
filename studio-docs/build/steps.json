@@ -368,7 +368,7 @@
    "title": "K2 map data — links + precomputed layout",
    "type": "Build",
    "chat": "Bio · Build · K2 map data",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["K1", "L2"],
    "unblocks": ["K3"],
    "lock": true,
@@ -380,10 +380,12 @@
    "todo": [
     "Ready prompt in master plan §13 (written by the merge fix that restored D-071)",
     "becomes / defect links only where a dossier cites them, never guessed (D-071 f)",
-    "Writes the K3 prompt in master plan §13"
+    "Writes the K3 prompt in master plan §13",
+    "Built at risk: L2 owner check T9 still open (log it; K1 owner check T2 also open)"
    ],
    "inputs": [],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Build · K2 map data", "by": "Aaditya", "start": "2026-11-22 03:12", "outcome": "partial", "note": "route A (cloud clone, push from chat)"}]
   },
   {
    "id": "K3",
