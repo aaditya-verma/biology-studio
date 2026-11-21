@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -261,16 +261,16 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E12.01.01 | Limb buds | A | SF | core | 26–28 | meso | limb | E06.02.06 | 8 |  | ≈ |
-| E12.01.02 | Shaping and rotating the limbs | A | F | core | 33–56 | meso | limb | E12.01.01 | 2 |  | ≈ |
-| E12.01.03 | Limb bone growth | B | S | x | 42–266 | meso | limb | E10.01.01, E12.01.01 |  |  | ≈ |
-| E12.02.01 | Apical ectodermal ridge | D | M | x | 26–49 | ecto | limb | E12.01.01, E01.05.04 |  |  | ≈ |
-| E12.02.02 | Zone of polarizing activity | D | M | x | 28–49 | meso | limb | E12.01.01, E01.05.01 |  |  | ≈ |
-| E12.02.03 | Limb musculature and innervation | B | SA | s |  | meso | limb | E11.07.01, E11.02.03 |  |  | ≈ |
-| E12.02.04 | Limb defects | C | C | x |  | meso | defects | E12.01.02 |  |  | ≈ |
-| E12.02.05 | Clubfoot and other limb anomalies | C | C | s |  | meso | defects | E12.01.02 |  |  | ≈ |
+| E12.01.01 | Limb buds | A | SF | core | 26–28 | meso | limb | E06.02.06 | 8 | AN13.8, AN20.10, AN79.4 | ✔ |
+| E12.01.02 | Shaping and rotating the limbs | A | F | core | 33–56 | meso | limb | E12.01.01 | 2 | AN13.8, AN20.10, AN2.4, AN2.5 | ✔ |
+| E12.01.03 | Limb bone growth | B | S | x | 42–266 | meso | limb | E10.01.01, E12.01.01 |  | AN2.1, AN2.2, AN14.3, AN8.5 | ≈ |
+| E12.02.01 | Apical ectodermal ridge | D | M | x | 26–49 | ecto | limb | E12.01.01, E01.05.04 |  |  | ✔ |
+| E12.02.02 | Zone of polarizing activity | D | M | x | 28–49 | meso | limb | E12.01.01, E01.05.01 |  |  | ⚑ |
+| E12.02.03 | Limb musculature and innervation | B | SA | s |  | meso | limb | E11.07.01, E11.02.03 |  | AN13.2, AN4.1, AN7.5, AN10.3 | ✔ |
+| E12.02.04 | Limb defects | C | C | x |  | meso | defects | E12.01.02 |  | AN13.8, AN20.10, AN79.6 | ⚑ |
+| E12.02.05 | Clubfoot and other limb anomalies | C | C | s |  | meso | defects | E12.01.02 |  | AN19.6, AN17.3, AN20.10 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E12.01.02 — “Arms and legs rotate the same way.”
+*Misconceptions to refute (cited in the chapter dossier):* E12.01.02 — “Arms and legs rotate the same way.”
 
 ## E13 — Cardiovascular System · pp 179–222 · 26 concepts
 

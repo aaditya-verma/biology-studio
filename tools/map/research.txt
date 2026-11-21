@@ -109,3 +109,12 @@ E11.07.01||✔|14-22
 E11.08.01|AN3.1,AN67.2|✔|
 E11.09.01|AN3.1,AN67.2|✔|
 E11.09.02|AN74.4|⚑|
+# --- E12 · X1 22 Nov 2026 (dossier ch12-limbs.md; staging from the human limb atlas R05ds + R08 classic ages, D-030; limb muscle staging stays in Ch 11; AN codes read from NMC UG Curriculum Vol I (owner download) — limbs are regional topics AN8–AN20, no lower-limb dermatome code (D-067 f); ⚑ → D-067) ---
+E12.01.01|AN13.8,AN20.10,AN79.4|✔|12-13
+E12.01.02|AN13.8,AN20.10,AN2.4,AN2.5|✔|14-23
+E12.01.03|AN2.1,AN2.2,AN14.3,AN8.5|≈|23-23
+E12.02.01||✔|14-19
+E12.02.02||⚑|14-19
+E12.02.03|AN13.2,AN4.1,AN7.5,AN10.3|✔|13-19
+E12.02.04|AN13.8,AN20.10,AN79.6|⚑|
+E12.02.05|AN19.6,AN17.3,AN20.10|✔|

@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -335,7 +335,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11) · Ch 12: E12.01 pp 167–169 confirmed, but E12.02's Clinical Correlates box ends on p 178 (recorded 170–177), the same page as the Summary"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -540,14 +540,45 @@
    "title": "X1 research · Ch 12 limbs",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 12",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.11"],
+   "unblocks": ["X1.13"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-039", "D-064", "D-066", "D-067"],
+   "prompt": "X1 Ch 12",
+   "log": "22 Nov 2026 · X1 Research · Ch 12 — bud → fetal ossification staged against the human limb atlas (R05ds) + R08 ages; Tier A limb buds + shaping and rotation; 18 misconceptions; clinical rows regrouped by mechanism after G-Sci; 13 new sources R05dz–R05em (R05ed retired as a duplicate of R05cd); AN map read from NMC Vol I — no lower-limb dermatome code → D-067 a–f",
+   "todo": [
+    "R01 3D Atlas: check the CS18–23 models show the hand plate, digital rays and interdigital notches before the 'Five rays, one hand' scene (look only, NC-ND)",
+    "Human source for the AER itself, for the five-part AER split and for interdigital apoptosis in human embryos — none retrieved",
+    "Human source for the week-7 limb rotation — none retrieved; the claim is book-only",
+    "Population rates: limb malformations (book 6 per 10,000) and syndactyly (book 1 in 2,000) — try EUROCAT/ICBDSR; R05em's 1-in-626 upper-limb figure is a lead to chase, not a figure to quote (D-067 d)",
+    "Bone age: no Tier 1 source retrieved (Greulich–Pyle / Tanner–Whitehouse)",
+    "Are the distal-femoral and proximal-tibial centres present at term? The book says both epiphyses are cartilage at birth; AN14.3 treats them as the forensic marker — the line stays ≈",
+    "Thalidomide window: retrieve the primary timing source (Lenz / Nowack) behind R05cd's 20–36 days",
+    "Full text not read: R05dz (limb timing) and R05ea (initial ossification) — both would settle the ossification order and the week-12 line",
+    "2024 wording (MGMUHS reprint) of the Ch 12 AN codes — only the 2018 Vol I text was read",
+    "Build the E12.02.04 Check around the chapter's own Problems question (absent radius / digital defect → look for other malformations); R05el answers it"
+   ],
+   "inputs": [
+    {"id": "X1.12.q1", "kind": "decide", "ask": "D-067 (a–e) from Ch 12: pick an option per item (thalidomide window + which clock, retinoic acid's role, digit identity by time vs concentration, the two quotable rates, whether cards carry the hip-dysplasia prevention line) — recommendations given; (f) is the curriculum note, notes only", "asked_in": "Bio · Research · X1 Ch 12", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-067"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 12", "by": "Aaditya", "start": "2026-11-22 00:41", "end": "2026-11-22 02:05", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (15 MUST, 15 SHOULD applied)"}]
+  },
+  {
+   "id": "X1.13",
+   "title": "X1 research · Ch 13 cardiovascular system",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 13",
+   "status": "ready",
+   "needs": ["X1.12"],
    "unblocks": [],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": ["D-011", "D-026", "D-030", "D-064", "D-066"],
-   "prompt": "X1 Ch 12",
+   "decisions": ["D-011", "D-026", "D-030", "D-064", "D-066", "D-067"],
+   "prompt": "X1 Ch 13",
    "log": "—",
    "todo": [],
    "inputs": []
