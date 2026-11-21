@@ -1,7 +1,7 @@
 /* Biology Studio — addresses + history (master plan §8). Owner doc: build/design-plan.md §3.
    Every place has an address: #today · #map · #map=E05 · #concept=E05.02.01 · #x=layer&y=day · #settings · #colours
    · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode)
-   · #progress · #progress=board · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
+   · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
    · #review · #review=news · #review=mine · #rcard=E06.02.01 · #rtour · #rtour=2 · #updates · #updates=2 (H2 Reviewer mode). Back/Forward = the browser's history; Up = the parent address.
    Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves. */
 'use strict';
@@ -15,7 +15,7 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   if(name==='scene'){r.id=p.get('scene')||null;const d=p.get('day');if(r.id&&d!=null&&d!==''&&isFinite(+d))r.day=+d;}
   if(name==='day'){const d=p.get('day');r.day=isFinite(+d)?+d:null;}
   if(name==='studio'){r.id=p.get('studio')||null;const g=p.get('gate');if(r.id&&g&&Object.hasOwn(CARD_RULES.gates,g))r.gate=g;}
-  if(name==='progress'){const v=p.get('progress');r.view=['board','inputs'].includes(v)?v:'map';}
+  if(name==='progress'){const v=p.get('progress');r.view=['board','plan','inputs'].includes(v)?v:'map';}
   if(name==='step')r.id=p.get('step')||null;
   if(name==='card'){r.id=p.get('card')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'cards',raw:h};}   // L1 reader; a bad id → the card list
   if(name==='review'){const v=p.get('review');r.view=['news','mine'].includes(v)?v:'todo';}   // H2 Reviewer mode

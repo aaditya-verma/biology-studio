@@ -28,6 +28,11 @@ function appTests(){
   t('progress bad view → map',parseHash('#progress=nope').view==='map'&&hashOf(parseHash('#progress=map'))==='progress');
   t('up step → progress',JSON.stringify(upOf(parseHash('#step=C1')))===JSON.stringify({name:'progress'}));
   t('progress nav only in testing mode',navItems().includes('progress')===!!FLAGS.test);
+  t('plan: route',parseHash('#progress=plan').view==='plan'&&hashOf(parseHash('#progress=plan'))==='progress=plan');
+  t('plan: scheduler loaded',typeof trPlan==='function'&&PLAN_DEF.rows.length===5&&PLAN_DEF.rows.every(r=>STR.tr.pl.rows[r]));
+  (()=>{const d={queue:['B'],steps:[{id:'A',type:'Build',status:'done',lock:true,needs:[],inputs:[]},{id:'B',type:'Build',status:'planned',lock:true,needs:['A'],inputs:[]},
+      {id:'C',type:'Research',status:'ready',lock:false,needs:['A'],inputs:[]},{id:'D',type:'Review',status:'planned',lock:false,uses:['prof'],needs:[],inputs:[]}]},P=trPlan(d,'2026-11-21');
+    t('plan: dates + rows + prof never planned',P.dates.B.start==='2026-11-21'&&P.dates.B.row==='lock'&&P.dates.C.row==='research'&&!P.dates.D&&P.prof.length===1&&P.critical.length>0);})();
   t('tracker rules',TR_RULES.statuses.length===9&&TR_RULES.met.join()==='owner check,done'&&Object.keys(TR_SLUG).length===9&&TR_RULES.statuses.every(s=>STR.tr.st[s]&&STR.tr.stShort[s]&&STR.tr.stHelp[s]));
   (()=>{const S=[{id:'A',status:'done',needs:[],inputs:[]},{id:'B',status:'owner check',needs:['A'],inputs:[]},{id:'C',status:'ready',needs:['B'],inputs:[],lock:true,chat:'Bio · Build · C'},
       {id:'D',status:'planned',needs:['C'],inputs:[{id:'D.q1',status:'open',blocks:true}]}],by={};S.forEach(s=>by[s.id]=s);

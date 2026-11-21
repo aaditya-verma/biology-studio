@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
-W1: + progress map (Map, Board, Your inputs, 3 step pages), step page rotate, map with done shown, progress outside testing mode.
+W1: + progress map (Map, Board, Your inputs, 3 step pages); W2: + Plan (progress=plan, D-063), step page rotate, map with done shown, progress outside testing mode.
 L1: + cards list, card reader (concept, guide, clinical), Remember deck; card mid-Check survives rotate (question, 3D day, scroll).
 L1F: + D-053 fold (Check hides the card text; Read again ends the run unscored), saved app/savedAt, pins clear of overlays + pinned labels after a
     label drill, the day drill keeps the ruler clear of overlays (2 phone sizes), mid-word titles (in-app audit). V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
@@ -35,7 +35,7 @@ SCREENS = {
     "crosstab": "x=layer&y=day", "cell": "x=layer&y=day&cell=meso%7CWk%203", "settings": "settings", "colours": "colours",
     "scenes": "scene", "viewer": "scene=sc-E00.01.04&day=16", "viewer-axes": "scene=sc-E00.01.01&day=17",
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
-    "progress": "progress", "progress-board": "progress=board", "progress-inputs": "progress=inputs",
+    "progress": "progress", "progress-board": "progress=board", "progress-plan": "progress=plan", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
     "cards": "cards", "card": "card=E05.01.01", "card-noto": "card=E05.02.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
     # H2 Reviewer mode — opened with the demo issues (?fixture=review, never GitHub); keep these last (the page reloads once with the fixture)
@@ -187,11 +187,11 @@ async def run(a):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
-                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib", "progress", "step", "review", "rcard", "rtour"):
+                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib", "progress", "progress-plan", "step", "review", "rcard", "rtour"):
                             path = out / "shots" / f"{cls}_{w}x{h}_125_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " 125", []).append((f"{w}×{h} {sname} 125%", path))
-                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card", "progress", "progress-board", "step", "review-mine", "rcard"):
+                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card", "progress", "progress-board", "progress-plan", "step", "review-mine", "rcard"):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " dark", []).append((f"{w}×{h} {sname}", path))

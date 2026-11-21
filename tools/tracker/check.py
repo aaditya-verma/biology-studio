@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Biology Studio — progress map check (W1, D-040). Owner doc: studio-docs/build/steps.json (format: tools/tracker/README.md).
+"""Biology Studio — progress map check (W1, D-040) + scheduler (W2, D-063). Owner doc: studio-docs/build/steps.json (format: tools/tracker/README.md).
 
 Checks steps.json against the rules the app's #progress page also uses (src/js/17-tracker.js):
   unknown ids ......... step ids in needs, D-ids (claude/DECISIONS.md), owner checks T-ids (build/owner-test-checklist.md),
@@ -22,10 +22,13 @@ Run from the repo root:
   python tools/tracker/check.py --only C1       # one step (loops are still checked across all)
   python tools/tracker/check.py --preview       # quick text board: Now · Ready · Blocked · Done + your inputs
   python tools/tracker/check.py --debug         # print every rule as it runs
-  python tools/tracker/check.py --selftest      # each rule fires on a known-bad file
+  python tools/tracker/check.py --selftest      # each rule fires on a known-bad file; plan fixture; app ↔ checker plan parity (node)
+  python tools/tracker/check.py --next          # W2: the schedule a chat reads first (rows, critical path, your inputs ranked)
+  python tools/tracker/check.py --next --write  # … and refresh the auto block in STATUS § Next (--dry-run: show only)
+  python tools/tracker/check.py --next --today 2026-11-22 --json   # plan from a date, as JSON
 EDIT: vocabularies below (keep src/js/17-tracker.js TR_RULES in step — the in-app test compares them).
 """
-import argparse, copy, datetime as dt, json, re, sys
+import argparse, copy, datetime as dt, json, math, re, shutil, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -43,7 +46,7 @@ INPUT_STATES = ["open", "answered", "closed"]
 MET = {"done", "owner check"}            # a need counts as met when the needed step is done or only waits on the owner's check
 STARTED = {"ready", "in progress", "gates", "owner check", "done"}
 STEP_KEYS = ["id", "title", "type", "chat", "status", "needs", "unblocks", "lock", "gates", "check", "decisions", "prompt", "log", "todo", "inputs"]
-OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note"]
+OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note", "uses", "est", "produces", "consumes", "runs", "improves"]
 LOCK_MAX_H = 24
 ID_RE = re.compile(r"^(?:[A-Z][A-Z0-9]*|[A-Z][0-9]+[a-z]?|X1\.\d\d|IB\d\d|GATE)$")
 DBG = False
@@ -254,7 +257,376 @@ def check(doc, refs, only=None, lock=(None, None), now=None):
             W.append(f"build lock held {age:.0f} h (> {LOCK_MAX_H} h): {holder} — ask the holder (RULES I8)")
     elif holder:
         W.append(f"build lock line has no readable date: {holder}")
+    E2, W2 = check_w2(doc)
+    if only:
+        E2 = [x for x in E2 if x.startswith(only + ":")]
+        W2 = [x for x in W2 if x.startswith(only + ":")]
+    return E + E2, W + W2
+
+
+# ---- W2 scheduler (D-063) — mirror of trPlan() in src/js/17-plan.js; --selftest compares both (node) ----
+# EDIT: PLAN_DEF must equal PLAN_DEF in src/js/17-plan.js (parity checks it)
+PLAN_DEF = {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "horizon": 120,
+            "chats": {"Ideation": 0.5, "Build": 1, "Research": 1, "Content": 1, "Episode": 2, "Review": 0.5, "Fix": 0.5, "Idea": 1},
+            "rows": ["lock", "gpu", "research", "owner", "prof"], "exclusive": ["lock", "gpu"], "met": ["done", "owner check"],
+            "running": ["in progress", "gates"], "waiting": ["ready", "planned"], "unplanned": ["idea", "parked", "proposed"]}
+USES = ["gpu", "research", "prof"]
+RUN_OUTCOMES = ["done", "partial", "stopped", "fail"]
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
+
+
+def _js_round(x):
+    return int(math.floor(x + 0.5))
+
+
+def plan_day(iso, add):
+    return (dt.date.fromisoformat(iso) + dt.timedelta(days=add)).isoformat()
+
+
+def plan_cal(doc):
+    c = dict(PLAN_DEF)
+    c.update((doc or {}).get("calendar") or {})
+    c["off"] = ((doc or {}).get("calendar") or {}).get("off") or []
+    ch = dict(PLAN_DEF["chats"])
+    ch.update(((doc or {}).get("calendar") or {}).get("chats") or {})
+    c["chats"] = ch
+    return c
+
+
+def plan_res(s):
+    u, r = s.get("uses") or [], []
+    if len(u) == 1 and u[0] == "prof":
+        return ["prof"]
+    if s.get("lock"):
+        r.append("lock")
+    if "gpu" in u:
+        r.append("gpu")
+    if s.get("type") == "Research" or "research" in u:
+        r.append("research")
+    return r or ["owner"]
+
+
+def plan_chats(s, cal):
+    e = s.get("est") or {}
+    if isinstance(e.get("chats"), (int, float)) and not isinstance(e.get("chats"), bool):
+        return e["chats"]
+    return cal["chats"].get(s.get("type"), 1)
+
+
+def plan(doc, today):
+    """Same answer as trPlan(doc, today) in the app — see src/js/17-plan.js for the rules in words."""
+    cal = plan_cal(doc)
+    steps = doc.get("steps", [])
+    by = {s["id"]: s for s in steps}
+    pos = {s["id"]: i for i, s in enumerate(steps)}
+    q = doc.get("queue") or []
+    qi = {}
+    for i, x in enumerate(q):
+        qi.setdefault(x, i)
+    pri = lambda s: qi[s["id"]] if s["id"] in qi else len(q) + pos[s["id"]]
+    items, item = [], {}
+
+    def add(it):
+        items.append(it)
+        item[it["id"]] = it
+
+    for s in steps:
+        c = s.get("check")
+        if s.get("status") == "owner check" and c and c.get("state") == "open":
+            add(dict(id=f"{s['id']}·{c['id']}", step=s["id"], kind="check", row="owner", res=["owner"], mins=cal["check_min"], deps=[], pri=-1, done=False))
+        for x in s.get("inputs", []):
+            if x.get("status") == "open" and x.get("blocks") and x.get("for") != "prof":
+                add(dict(id=x["id"], step=s["id"], kind="input", row="owner", res=["owner"], mins=cal["input_min"], deps=[], pri=-1, done=False))
+    for s in steps:
+        res = plan_res(s)
+        row = res[0]
+        if s.get("status") in PLAN_DEF["met"] or row == "prof" or s.get("type") == "Idea":
+            continue
+        if s.get("status") in PLAN_DEF["unplanned"]:
+            add(dict(id=s["id"], step=s["id"], kind="step", row=row, res=res, mins=0, deps=[], pri=pri(s), never=True, done=False))
+            continue
+        est, ran = plan_chats(s, cal), len(s.get("runs") or [])
+        running = s.get("status") in PLAN_DEF["running"]
+        left = max(0.5, est - ran) if running else est
+        deps = list(s.get("needs", [])) + [x["id"] for x in s.get("inputs", []) if x.get("status") == "open" and x.get("blocks") and x.get("for") != "prof"]
+        live = any(isinstance(r, dict) and r.get("start") and not r.get("end") for r in s.get("runs") or [])
+        add(dict(id=s["id"], step=s["id"], kind="step", row=row, res=res, mins=_js_round(left * cal["chat_min"]), deps=deps, pri=pri(s),
+                 running=running, live=live, done=False, slipped=ran > est, wait=int((s.get("est") or {}).get("days") or 0)))
+    order = sorted(items, key=lambda a: (0 if a.get("running") else 1, a["pri"], pos[a["step"]], a["id"]))
+    finished = {s["id"] for s in steps if s.get("status") in PLAN_DEF["met"]}
+    met = lambda d: d in finished or (d in by and by[d].get("status") == "owner check")
+    end_of = lambda d: item[d]["end"] if d in item and item[d]["end"] else today
+    wait_ok = lambda x, day: not x.get("wait") or plan_day(max([today] + [end_of(d) for d in x["deps"]]), x["wait"]) <= day
+    busy = {}
+    for it in order:
+        it.update(left=it["mins"], start=None, end=None)
+    last = None
+    for n in range(cal["horizon"]):
+        day = plan_day(today, n)
+        budget = 0 if day in cal["off"] else cal["day_min"][dt.date.fromisoformat(day).weekday()]
+        while budget > 0:
+            it = next((x for x in order if not x["done"] and not x.get("never") and all(met(d) for d in x["deps"]) and wait_ok(x, day)
+                       and all(r not in busy or busy[r] == x["id"] for r in x["res"])), None)
+            if not it:
+                break
+            if it["start"] is None:
+                it["start"] = day
+                for r in it["res"]:
+                    if r in PLAN_DEF["exclusive"]:
+                        busy[r] = it["id"]
+            take = min(it["left"], budget)
+            it["left"] -= take
+            budget -= take
+            if it["left"] <= 0:
+                it.update(done=True, end=day)
+                last = day
+                finished.add(it["id"])
+                for r in it["res"]:
+                    if busy.get(r) == it["id"]:
+                        del busy[r]
+    sched = [x for x in items if x["end"]]
+    tgt = item["GATE"] if "GATE" in item and item["GATE"]["end"] else None
+    if tgt is None:
+        for b in sched:
+            if tgt is None or b["end"] > tgt["end"] or (b["end"] == tgt["end"] and b["pri"] > tgt["pri"]):
+                tgt = b
+    critical = []
+    while tgt:
+        critical.insert(0, {"id": tgt["id"], "step": tgt["step"]})
+        nxt = None
+        for b in (item[d] for d in tgt["deps"] if d in item and item[d]["end"]):
+            if nxt is None or b["end"] > nxt["end"]:
+                nxt = b
+        tgt = nxt
+    rows = {r: {"now": [], "next": [], "later": []} for r in PLAN_DEF["rows"]}
+    for x in sorted([x for x in items if x["row"] != "prof"], key=lambda a: (a["start"] or "9", a["pri"], pos[a["step"]])):
+        R = rows[x["row"]]
+        cell = dict(id=x["id"], step=x["step"], kind=x["kind"], start=x["start"], end=x["end"], mins=x["mins"], slipped=bool(x.get("slipped")))
+        if x.get("live") or (x["start"] == today and x["kind"] != "step"):
+            R["now"].append(cell)
+        elif not R["next"] and x["start"]:
+            R["next"].append(cell)
+        else:
+            R["later"].append(cell)
+    down = {}
+    for s in steps:
+        for n in s.get("needs", []):
+            down.setdefault(n, []).append(s["id"])
+
+    def reach(i):
+        seen, st = set(), [i]
+        while st:
+            c = st.pop()
+            for k in down.get(c, []):
+                if k not in seen:
+                    seen.add(k)
+                    st.append(k)
+        return len([k for k in seen if k in by and by[k].get("status") != "done"])
+
+    ranked = []
+    for s in steps:
+        r = 0 if s.get("status") == "done" else reach(s["id"])
+        for x in s.get("inputs", []):
+            if x.get("status") == "open" and x.get("for") != "prof":
+                ranked.append(dict(id=x["id"], step=s["id"], kind=x.get("kind") or None, unblocks=r, blocks=bool(x.get("blocks")), asked=x.get("asked") or ""))
+        c = s.get("check")
+        if s.get("status") == "owner check" and c and c.get("state") == "open":
+            ranked.append(dict(id=c["id"], step=s["id"], kind="check", unblocks=r, blocks=False, asked=c.get("since") or ""))
+    ranked.sort(key=lambda a: (0 if a["blocks"] else 1, -a["unblocks"], a["asked"], a["id"]))
+    prof = []
+    for s in steps:
+        if plan_res(s)[0] == "prof" and s.get("status") != "done":
+            prof.append(dict(id=s["id"], step=s["id"], kind="step", improves=s.get("improves") or ""))
+        for x in s.get("inputs", []):
+            if x.get("for") == "prof" and x.get("status") == "open":
+                prof.append(dict(id=x["id"], step=s["id"], kind=x.get("kind") or None, improves=x.get("improves") or ""))
+    dates = {x["id"]: dict(start=x["start"], end=x["end"], row=x["row"], mins=x["mins"], slipped=bool(x.get("slipped"))) for x in items if x["kind"] == "step"}
+    return {"today": today, "end": last, "critical": critical, "rows": rows, "ranked": ranked, "prof": prof, "dates": dates}
+
+
+def check_w2(doc):
+    """W2 rules: calendar/queue/est/uses/produces/consumes/runs shapes, resource overlap, professor never blocks, outputs have producers."""
+    E, W = [], []
+    steps = doc.get("steps", [])
+    by = {s.get("id"): s for s in steps}
+    cal = doc.get("calendar")
+    if cal is not None:
+        if not isinstance(cal, dict):
+            E.append("calendar: must be an object")
+        else:
+            dm = cal.get("day_min", PLAN_DEF["day_min"])
+            if not (isinstance(dm, list) and len(dm) == 7 and all(isinstance(v, int) and v >= 0 for v in dm)):
+                E.append("calendar: day_min must be 7 whole minutes, Mon…Sun")
+            if isinstance(dm, list) and dm and not any(dm):
+                W.append("calendar: day_min is all 0 — nothing gets a date")
+            for k in ("chat_min", "check_min", "input_min", "horizon"):
+                if k in cal and not (isinstance(cal[k], int) and cal[k] > 0):
+                    E.append(f"calendar: {k} must be a whole number > 0")
+            for d in cal.get("off", []):
+                if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(d)):
+                    E.append(f"calendar: off day `{d}` must be YYYY-MM-DD")
+            for k in cal:
+                if k not in ("day_min", "chat_min", "check_min", "input_min", "horizon", "off", "chats", "note"):
+                    E.append(f"calendar: unknown key `{k}`")
+    for x in doc.get("queue") or []:
+        if x not in by:
+            E.append(f"queue: unknown step `{x}`")
+    producer = {}
+    for s in steps:
+        for o in s.get("produces") or []:
+            if o in producer:
+                E.append(f"{s.get('id')}: output `{o}` also produced by {producer[o]}")
+            producer[o] = s.get("id")
+
+    def ancestors(i):
+        seen, st = set(), [i]
+        while st:
+            c = st.pop()
+            for n in (by.get(c) or {}).get("needs", []):
+                if n not in seen:
+                    seen.add(n)
+                    st.append(n)
+        return seen
+
+    profonly = {s.get("id") for s in steps if (s.get("uses") or []) == ["prof"]}
+    held = {}
+    for s in steps:
+        sid = s.get("id", "?")
+        e = lambda m: E.append(f"{sid}: {m}")
+        est = s.get("est")
+        if est is not None:
+            if not isinstance(est, dict) or any(k not in ("chats", "owner_min", "days") for k in est):
+                e("`est` must be {chats, owner_min, days}")
+            elif "days" in est and not (isinstance(est["days"], int) and not isinstance(est["days"], bool) and est["days"] >= 0):
+                e("`est` days must be whole days ≥ 0")
+            elif ("chats" in est and not (isinstance(est["chats"], (int, float)) and est["chats"] >= 0)) or ("owner_min" in est and not (isinstance(est["owner_min"], int) and est["owner_min"] >= 0)):
+                e("`est` chats ≥ 0, owner_min whole minutes ≥ 0")
+        for u in s.get("uses") or []:
+            if u not in USES:
+                e(f"uses `{u}` not one of {USES}")
+        for n in s.get("needs", []):
+            if n in profonly:
+                e(f"needs {n}, a professor-only step — the professor never blocks (D-063)")
+        for x in s.get("inputs", []):
+            if isinstance(x, dict) and x.get("for") not in (None, "prof"):
+                e(f"input {x.get('id')}: `for` must be \"prof\" or absent")
+            if isinstance(x, dict) and x.get("for") == "prof" and x.get("blocks"):
+                e(f"input {x.get('id')} is for the professor and blocks — the professor never blocks (D-063)")
+        anc = ancestors(sid)
+        for o in s.get("consumes") or []:
+            if o not in producer:
+                e(f"consumes `{o}` but no step produces it")
+            elif producer[o] != sid and producer[o] not in anc:
+                e(f"consumes `{o}` from {producer[o]} but does not need it (add {producer[o]} to needs)")
+        runs = s.get("runs")
+        if runs is not None:
+            if not isinstance(runs, list):
+                e("`runs` must be a list")
+                runs = []
+            for k, r in enumerate(runs):
+                if not isinstance(r, dict):
+                    e(f"run {k + 1}: must be an object")
+                    continue
+                for f in ("chat", "by", "start", "outcome"):
+                    if not r.get(f):
+                        e(f"run {k + 1}: `{f}` missing")
+                for f in r:
+                    if f not in ("chat", "by", "start", "end", "outcome", "commit", "note"):
+                        e(f"run {k + 1}: unknown field `{f}`")
+                if r.get("chat") and not str(r["chat"]).startswith(("Bio · ", "Embryo · ")):
+                    e(f"run {k + 1}: chat must be `Bio · <Type> · <Step>`")
+                for f in ("start", "end"):
+                    if r.get(f) and not DATE_RE.match(str(r[f])):
+                        e(f"run {k + 1}: `{f}` must be YYYY-MM-DD or YYYY-MM-DD HH:MM")
+                if r.get("start") and r.get("end") and str(r["end"]) < str(r["start"]):
+                    e(f"run {k + 1}: ends before it starts")
+                if r.get("outcome") and r["outcome"] not in RUN_OUTCOMES:
+                    e(f"run {k + 1}: outcome `{r['outcome']}` not one of {RUN_OUTCOMES}")
+        if s.get("status") in ("in progress", "gates", "owner check", "done") and s.get("type") not in ("Idea",) and not runs:
+            W.append(f"{sid}: started but no `runs` — add the chat's run line (INSTRUCTIONS §4)")
+        if any(isinstance(r, dict) and r.get("start") and not r.get("end") for r in runs or []):   # an open run = a chat working on it now
+            for r in plan_res(s):
+                if r in PLAN_DEF["exclusive"]:
+                    if r in held:
+                        E.append(f"{sid}: an open run on `{r}` at the same time as {held[r]} — one chat per {r} row (close the other run's `end`)")
+                    held[r] = sid
     return E, W
+
+
+def plan_parity(doc, today):
+    """Run trPlan() in node on the same data; differences are errors. No node → a warning (CI has node)."""
+    js = ROOT / "src" / "js" / "17-plan.js"
+    if not shutil.which("node"):
+        return [], ["plan parity skipped: node not found"]
+    m = re.search(r"const PLAN_DEF=(\{.*?\});", js.read_text(), re.S)
+    if not m or json.loads(m.group(1)) != PLAN_DEF:
+        return ["app: PLAN_DEF in src/js/17-plan.js ≠ check.py PLAN_DEF"], []
+    src = f"const {{trPlan}}=require({json.dumps(str(js))});const d=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write(JSON.stringify(trPlan(d.doc,d.today)));"
+    r = subprocess.run(["node", "-e", src], input=json.dumps({"doc": doc, "today": today}), capture_output=True, text=True, timeout=60)
+    if r.returncode:
+        return [f"app: trPlan failed in node: {r.stderr.strip()[:300]}"], []
+    a, b = json.loads(r.stdout), plan(doc, today)
+    if a != b:
+        diff = [k for k in b if a.get(k) != b.get(k)]
+        return [f"app: trPlan ≠ check.py plan() for {today} in {diff}"], []
+    return [], []
+
+
+def ist_today():
+    return (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=5, minutes=30)).date().isoformat()
+
+
+def fmt_day(iso):
+    if not iso:
+        return "no date"
+    d = dt.date.fromisoformat(iso)
+    return f"{d.day} {d.strftime('%b')}"
+
+
+def next_text(doc, P, lock):
+    """The short schedule a chat reads first (INSTRUCTIONS §2) and STATUS § Next shows between the auto markers."""
+    by = {s["id"]: s for s in doc["steps"]}
+    name = lambda i: by[i]["title"] if i in by else i
+    cell = lambda c: f"{c['step'] if c['kind'] == 'step' else c['id']} ~{fmt_day(c['end'])}" + (" (slipped)" if c["slipped"] else "")
+    lab = {"lock": "Lock", "gpu": "GPU", "research": "Research", "owner": "You (no lock)"}
+    out = [f"Schedule (auto · check.py --next · est. from {fmt_day(P['today'])}; order fixed, dates move):"]
+    for r in ("lock", "gpu", "research", "owner"):
+        R = P["rows"][r]
+        now = [cell(c) + " now" for c in R["now"]]
+        if len(now) > 3:
+            now = now[:3] + [f"+{len(now) - 3} more now"]
+        parts = now + [cell(c) + " next" for c in R["next"]] + [cell(c) for c in R["later"] if c["end"]][:3]
+        if parts:
+            out.append(f"- {lab[r]}: " + " → ".join(parts))
+    if P["critical"]:
+        last = P["critical"][-1]
+        end = (P["dates"].get(last["id"]) or {}).get("end") or P["end"]
+        out.append(f"- Critical path: {' → '.join(c['id'] for c in P['critical'])} (ends ~{fmt_day(end)})")
+    top = P["ranked"][:3]
+    if top:
+        out.append("- Your inputs first: " + " · ".join(f"{x['id']} ({'blocks a start · ' if x['blocks'] else ''}unblocks {x['unblocks']})" for x in top))
+    if P["prof"]:
+        out.append(f"- Professor (optional, {len(P['prof'])}): " + " · ".join(x["id"] for x in P["prof"][:3]))
+    out.append(f"- Lock: {lock[0] or 'free'}")
+    return "\n".join(out)
+
+
+AUTO_A, AUTO_B = "<!-- next:auto -->", "<!-- /next:auto -->"
+
+
+def write_next(text, dry):
+    p = DOCS / "claude" / "STATUS.md"
+    t = p.read_text()
+    if AUTO_A not in t or AUTO_B not in t:
+        print(f"FAIL: STATUS § Next has no {AUTO_A} … {AUTO_B} block")
+        return 1
+    new = re.sub(re.escape(AUTO_A) + r".*?" + re.escape(AUTO_B), lambda m: f"{AUTO_A}\n{text}\n{AUTO_B}", t, flags=re.S)
+    if dry:
+        print("STATUS § Next auto block:", "unchanged" if new == t else "would change")
+    elif new != t:
+        p.write_text(new)
+        print("wrote STATUS § Next auto block")
+    return 0
 
 
 def fmt(doc):
@@ -338,7 +710,8 @@ def selftest(refs):
     """Each rule must fire on a small known-bad file (and stay quiet on a good one)."""
     good = {"owner": "Aaditya", "collaborator": "Professor", "steps": [
         {"id": "A0", "title": "a", "type": "Build", "chat": "Bio · Build · A0", "status": "done", "needs": [], "unblocks": ["V1"], "lock": True,
-         "gates": {"G-Eng": "pass"}, "check": {"id": "T2", "state": "pass"}, "decisions": ["D-001"], "prompt": None, "log": "", "todo": [], "inputs": []},
+         "gates": {"G-Eng": "pass"}, "check": {"id": "T2", "state": "pass"}, "decisions": ["D-001"], "prompt": None, "log": "", "todo": [], "inputs": [],
+         "runs": [{"chat": "Bio · Build · A0", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done"}]},
         {"id": "V1", "title": "b", "type": "Build", "chat": "Bio · Build · V1", "status": "ready", "needs": ["A0"], "unblocks": [], "lock": True,
          "gates": {}, "check": None, "decisions": [], "prompt": None, "log": "", "todo": [],
          "inputs": [{"id": "V1.q1", "kind": "ask", "ask": "x", "asked_in": "Bio · X", "asked": "2026-11-19", "answer": None, "status": "open", "d": None}]}]}
@@ -363,6 +736,26 @@ def selftest(refs):
         ("collab proposal = warning", lambda d: d["steps"][1].update(proposed_by="Professor", proposed_status="in progress", proposed_on="2026-11-19"), "W:owner to confirm"),
         ("old lock = warning", "LOCK", "W:ask the holder"),
     ]
+    cases += [
+        ("uses unknown", lambda d: d["steps"][1].__setitem__("uses", ["laser"]), "uses `laser`"),
+        ("est bad", lambda d: d["steps"][1].__setitem__("est", {"chats": -1}), "`est` chats"),
+        ("prof blocks", lambda d: d["steps"][1]["inputs"][0].update({"for": "prof", "blocks": True}), "the professor never blocks"),
+        ("needs prof-only step", lambda d: (d["steps"][0].__setitem__("uses", ["prof"]),), "professor-only step"),
+        ("consumes no producer", lambda d: d["steps"][1].__setitem__("consumes", ["dossier-x"]), "no step produces it"),
+        ("consumes not needed", lambda d: (d["steps"].append(dict(copy.deepcopy(d["steps"][0]), id="B2", unblocks=[], produces=["out-b"], check=None, gates={}, decisions=[])), d["steps"][1].__setitem__("consumes", ["out-b"])), "does not need it"),
+        ("run bad date", lambda d: d["steps"][0].__setitem__("runs", [{"chat": "Bio · Build · A0", "by": "Aaditya", "start": "19/11", "outcome": "done"}]), "must be YYYY-MM-DD"),
+        ("run bad outcome", lambda d: d["steps"][0].__setitem__("runs", [{"chat": "Bio · Build · A0", "by": "Aaditya", "start": "2026-11-19", "outcome": "meh"}]), "outcome `meh`"),
+        ("two open runs on the lock", lambda d: (d["steps"][1].__setitem__("runs", [{"chat": "Bio · Build · V1", "by": "Aaditya", "start": "2026-11-19", "outcome": "partial"}]), d["steps"].append(dict(copy.deepcopy(d["steps"][1]), id="B3", inputs=[], unblocks=[]))), "open run on `lock`"),
+        ("queue unknown", lambda d: d.__setitem__("queue", ["ZZ9"]), "queue: unknown step"),
+        ("calendar bad", lambda d: d.__setitem__("calendar", {"day_min": [60, 60]}), "day_min must be 7"),
+        ("calendar all zero = warning", lambda d: d.__setitem__("calendar", {"day_min": [0] * 7}), "W:nothing gets a date"),
+        ("two producers", lambda d: (d["steps"][0].__setitem__("produces", ["x"]), d["steps"][1].__setitem__("produces", ["x"])), "also produced by"),
+        ("input for bad", lambda d: d["steps"][1]["inputs"][0].__setitem__("for", "boss"), "`for` must be"),
+        ("run unknown field", lambda d: d["steps"][0]["runs"][0].__setitem__("mood", "ok"), "unknown field `mood`"),
+        ("run bad chat", lambda d: d["steps"][0]["runs"][0].__setitem__("chat", "my chat"), "chat must be"),
+        ("run ends first", lambda d: d["steps"][0]["runs"][0].update(start="2026-11-19", end="2026-11-18"), "ends before it starts"),
+        ("started, no runs = warning", lambda d: d["steps"][0].pop("runs"), "W:no `runs`"),
+    ]
     ok = 0
     for name, mut, want in cases:
         d = copy.deepcopy(good)
@@ -380,8 +773,23 @@ def selftest(refs):
             hit = any(want in x for x in E)
         ok += hit
         print(("PASS " if hit else "FAIL ") + name + ("" if hit else f"  E={E} W={W}"))
-    print(f"selftest {ok}/{len(cases)}")
-    return ok == len(cases)
+    # W2: the scheduler on a known file gives the known plan, and the app's trPlan gives the same (node)
+    n = len(cases)
+    fx = json.loads((ROOT / "tools" / "tracker" / "plan-fixture.json").read_text())
+    got = plan(fx["doc"], fx["today"])
+    for k, v in fx["expect"].items():
+        n += 1
+        hit = got.get(k) == v
+        ok += hit
+        print(("PASS " if hit else "FAIL ") + f"plan fixture: {k}" + ("" if hit else f"  got {json.dumps(got.get(k), ensure_ascii=False)}"))
+    for name, d, t in (("plan parity (fixture)", fx["doc"], fx["today"]), ("plan parity (steps.json)", json.loads(STEPS.read_text()), fx["today"])):
+        n += 1
+        E2, W2 = plan_parity(d, t)
+        hit = not E2
+        ok += hit
+        print(("PASS " if hit else "FAIL ") + name + (f"  {W2[0]}" if W2 else "") + ("" if hit else f"  {E2}"))
+    print(f"selftest {ok}/{n}")
+    return ok == n
 
 
 def main():
@@ -394,7 +802,9 @@ def main():
     ap.add_argument("--debug", action="store_true")
     ap.add_argument("--strict", action="store_true", help="warnings fail too")
     ap.add_argument("--selftest", action="store_true")
-    ap.add_argument("--json", action="store_true", help="print {errors, warnings} as JSON")
+    ap.add_argument("--json", action="store_true", help="print {errors, warnings} as JSON (with --next: the plan as JSON)")
+    ap.add_argument("--next", action="store_true", help="W2: print the schedule (rows, critical path, ranked inputs); with --write also STATUS § Next auto block")
+    ap.add_argument("--today", help="W2: plan from this date (YYYY-MM-DD, default today IST)")
     a = ap.parse_args()
     DBG = a.debug
     refs = load_refs()
@@ -405,6 +815,20 @@ def main():
     except (OSError, ValueError) as ex:
         print(f"FAIL: cannot read {STEPS.relative_to(ROOT)}: {ex}")
         return 1
+    if a.next:
+        lock = read_lock()
+        E, W = check(doc, refs, None, lock)
+        E += parity()
+        if E:
+            print("FAIL: fix these first (check.py):\n" + "\n".join("ERROR " + e for e in E))
+            return 1
+        today = a.today or ist_today()
+        P = plan(doc, today)
+        if DBG:
+            print(json.dumps(P, ensure_ascii=False, indent=1))
+        txt = next_text(doc, P, lock)
+        print(json.dumps(P, ensure_ascii=False) if a.json else txt)
+        return write_next(txt, a.dry_run) if a.write else 0
     if a.write:
         pre = [e for e in check(doc, refs)[0] if "`unblocks` is derived" not in e and "not in build/" not in e and "not in claude/" not in e]
         if any(k in e for e in pre for k in ("field `", "must be", "id used twice", "bad step id")):

@@ -57,7 +57,8 @@ function render(prev){
   if(keep&&document.getElementById(keep)){const k=document.getElementById(keep);k.focus({preventScroll:true});if(sel&&k.setSelectionRange){try{k.setSelectionRange(sel[0],sel[1]);k.scrollTop=sel[2];}catch(_){}}}
   else if(fkEl)fkEl.focus({preventScroll:true});
   else if(prev&&prev.raw!==undefined&&prev.raw!==ROUTE.raw&&!$('dialog[open]')){   // route changed: move focus to the new page (screen readers hear it; Tab starts here)
-    const t=$('#cpT')||$('#view h1');if(t){if(!t.hasAttribute('tabindex'))t.setAttribute('tabindex','-1');t.focus({preventScroll:DEV.cls==='dev-d'});}}
+    const t=$('#view [data-focus-first]')||$('#cpT')||$('#view h1');if(t){   // data-focus-first: a page can ask for a different target (W2: Back to the map focuses the node you came from)
+      if(!t.hasAttribute('tabindex'))t.setAttribute('tabindex','-1');t.focus({preventScroll:DEV.cls==='dev-d'});}}
   dbgNote('render '+ROUTE.name+' '+(performance.now()-t0).toFixed(1)+' ms');
 }
 function testBanner(){if(!$('#view .banner.tb'))view().insertAdjacentHTML('afterbegin',`<p class="banner tb">${esc(STR.testFlag)}</p>`);}

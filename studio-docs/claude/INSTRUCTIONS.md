@@ -28,7 +28,7 @@ Stance: a lead biology researcher who is also designer, teacher and storyteller,
 - Quality bar (reference reels, what we adopt) → `research/quality-references.md` (D-032).
 - Look of video and app 3D (frame, chapter grammar, titles, tissue, grade, DOF, dust, light; formats, segment colours, labels, media, clinical slots, recaps, honesty tags, media licences) → build/visual-style.md (D-041, D-046). Science checks for video → playbook §2 G-Sci video checklist. Real-media ledger → research/source-registry.md § Media.
 - New-laptop setup, sharing between owner and collaborator, Studio home layout → `build/setup-guide.md` (D-025).
-- **Step status, dependencies, gates, owner checks, pendencies + owner inputs** → `build/steps.json` (progress map at `#progress`, D-040). Now · next · build lock → `claude/STATUS.md`. **Changelog** → `logs/build-log.md`. Why → `claude/DECISIONS.md`. Parked ideas → `build/ideas-backlog.md`.
+- **Step status, dependencies, gates, owner checks, pendencies + owner inputs** → `build/steps.json` (progress map at `#progress`, D-040). Now · next · build lock → `claude/STATUS.md` (the schedule — dates, rows, critical path, your inputs ranked — is computed from steps.json: `python tools/tracker/check.py --next`, app `#progress=plan`, D-063). **Changelog** → `logs/build-log.md`. Why → `claude/DECISIONS.md`. Parked ideas → `build/ideas-backlog.md`.
 - Terms → `claude/GLOSSARY.md`. New term → add it there.
 - Trusted outside sources, tools + licences → `research/source-registry.md`. How we teach (evidence) → `research/teaching-methods.md`. Per-chapter evidence → `research/dossiers/ch<NN>-*.md`.
 - Facts → the book section cited (`E05.02`), plus registry sources with a confidence mark (RULES B6–B7).
@@ -58,7 +58,7 @@ Name every chat `Bio · <Type> · <Step>`, e.g. `Bio · Build · M1 bake-off`, `
 ## 4. End-of-chat duties (keep the project tidy — RULES §I)
 Before finishing any chat that changed something:
 0. Make the doc changes as a **commit to the repo** (`studio-docs/`, setup guide §6a), then tell the person to press **Sync now**.
-1. **Update `build/steps.json`** for every step the chat touched (status, gates, check, `log`, `todo`, `inputs`; a collaborator only proposes a status — `proposed_by`), then `python tools/tracker/check.py --write` and check it passes. Update `claude/STATUS.md` (now · next · lock only — pendencies live in steps.json). Finished detail goes to the build log; STATUS stays ≤ 1 screen.
+1. **Update `build/steps.json`** for every step the chat touched (status, gates, check, `log`, `todo`, `inputs`, and **a `runs` line** for this chat — chat, by, start, end, outcome, commit (D-063); a collaborator only proposes a status — `proposed_by`), then `python tools/tracker/check.py --write` and check it passes; then `python tools/tracker/check.py --next --write` to refresh STATUS § Next's auto block. Update `claude/STATUS.md` (now · next · lock only — pendencies live in steps.json). Finished detail goes to the build log; STATUS stays ≤ 1 screen.
 2. Add a dated line to `logs/build-log.md` (changelog) or `logs/review-log.md`.
 3. Log any choice in `claude/DECISIONS.md` (ID, date, decision, why, rejected).
 4. Update every owner doc the change touched (plan, concept map, roadmap, book index, catalog, pipeline reference, checklist, glossary, registry, backlog, dossier, playbook), the README doc map if a doc was added or renamed, and the doc's `Updated:` line (I4).

@@ -1,4 +1,5 @@
-/* Biology Studio — progress map (W1, D-040): #progress (Map) · #progress=board · #progress=inputs · #step=<id>.
+/* Biology Studio — progress map (W1, D-040) + scheduler view (W2, D-063): #progress (Map) · #progress=board · #progress=plan · #progress=inputs · #step=<id>.
+   Plan maths: src/js/17-plan.js trPlan() (pure, same as tools/tracker/check.py plan()).
    Owner doc for the data: studio-docs/build/steps.json (format: tools/tracker/README.md); layouts: build/design-plan.md §2 (progress rows).
    Reads live from the deployed repo (GitHub Pages): steps.json, STATUS.md (§ Lock), master-plan.md (§13 ready prompts), ideas-backlog.md.
    Nothing here saves; the page only reads. Rules mirror tools/tracker/check.py (TR_RULES is compared by `check.py`; keep them in step).
@@ -13,7 +14,7 @@ const TR_RULES={"statuses":["idea","planned","ready","in progress","gates","owne
 const TR_SLUG={'idea':'idea','planned':'plan','ready':'ready','in progress':'now','gates':'gates','owner check':'check','done':'done','parked':'parked','proposed':'prop'};
 /* EDIT: map sizes (CSS px) — node height ≥ --tap; columns shrink to min, then the map scrolls inside its own frame (§2 rule 6) */
 const TR_SIZE={nodeH:48,rowH:60,colMin:64,colMax:150,laneLabelW:92,headH:36,gap:12};
-const TR={D:null,err:null,loading:null,lock:{text:null,at:null,h:null},plan:'',backlog:'',at:0,ms:0,issues:[],
+const TR={D:null,err:null,loading:null,lock:{text:null,at:null,h:null},plan:'',backlog:'',at:0,ms:0,issues:[],P:null,lastNode:null,tapHl:null,
   show:{done:false,ideas:true}};
 try{Object.assign(TR.show,JSON.parse(sessionStorage.getItem('biostudio.tracker'))||{});}catch(_){}
 
@@ -23,7 +24,7 @@ function trLoad(force){
   TR.err=null;
   TR.loading=Promise.all([get(C.steps,true),get(C.status).catch(()=>''),get(C.plan).catch(()=>''),get(C.backlog).catch(()=>'')])
     .then(([d,st,plan,bl])=>{if(!d||!Array.isArray(d.steps))throw new Error(STR.tr.badFile);TR.D=d;TR.plan=plan;TR.backlog=bl;TR.lock=trLockOf(st);TR.at=Date.now();TR.ms=Math.round(performance.now()-t0);
-      TR.issues=trIssues(d);dlog('tracker','loaded',d.steps.length,'steps',TR.ms+' ms','issues',TR.issues.length,'lock',TR.lock.text||'free');})
+      TR.P=trPlanNow(d);TR.issues=trIssues(d);dlog('tracker','loaded',d.steps.length,'steps',TR.ms+' ms','issues',TR.issues.length,'lock',TR.lock.text||'free');})
     .catch(e=>{TR.err=e.message;dlog('tracker','load failed',e.message);});
   return TR.loading;}
 
@@ -69,6 +70,11 @@ function trInputs(){   // every open owner item: inputs, open owner checks waiti
     if(s.proposed_by)out.push({id:s.id+'·p',kind:'confirm',date:s.proposed_on||'',text:STR.tr.propAsk(s.proposed_by,s.status,s.proposed_status),step:s,chat:s.chat});});
   return out.sort((a,b)=>(a.date||'9').localeCompare(b.date||'9')||a.id.localeCompare(b.id,undefined,{numeric:true}));}
 
+function trToday(){const t=new Date(Date.now()+330*60000);return t.toISOString().slice(0,10);}   // IST date, like check.py ist_today()
+function trPlanFresh(){if(TR.D&&(!TR.P||TR.P.today!==trToday()))TR.P=trPlanNow(TR.D);return TR.P;}   // the app may stay open past IST midnight
+function trPlanNow(d){try{return typeof trPlan==='function'?trPlan(d,trToday()):null;}catch(e){dlog('tracker','plan failed',e.message);return null;}}
+const trDay=iso=>{if(!iso)return '';const [y,m,d]=iso.split('-').map(Number);return d+' '+'JanFebMarAprMayJunJulAugSepOctNovDec'.substr((m-1)*3,3);};
+
 /* ---- shared bits ---- */
 const trSw=st=>`<span class="tr-sw st-${TR_SLUG[st]||'plan'}" aria-hidden="true"></span>`;
 const trTi=s=>s.title.startsWith(s.id+' ')?s.title.slice(s.id.length+1):s.title;   // titles often start with their id — show it once
@@ -77,14 +83,14 @@ const trEdit=(id,what)=>editBtn('step',id,'studio-docs/build/steps.json (row '+i
 const trGh=p=>CONFIG.tracker.repo+p;
 function trHead(view){const T=STR.tr,n=TR.D?trInputs().length:0,L=TR.lock;
   const lock=L.text?`<p class="banner tr-lock${L.h>24?' bad':''}">${esc(T.lockHeld(L.text))}${L.h!=null?' · '+esc(T.ago(L.h)):''}${L.h>24?' · <b>'+esc(T.lockOld)+'</b>':''}</p>`:`<p class="sm mut tr-lock">${esc(T.lockFree)}</p>`;
-  return `<div class="tr-head"><h1>${esc(T.title)}</h1><div class="seg" role="group" aria-label="${esc(T.views)}">${['map','board','inputs'].map(k=>`<button type="button" data-go="${k==='map'?'progress':'progress='+k}"${view===k?' aria-current="page"':''}>${esc(T.v[k])}${k==='inputs'&&n?` <span class="tr-n-badge">${n}</span>`:''}</button>`).join('')}</div>
+  return `<div class="tr-head"><h1>${esc(T.title)}</h1><div class="seg" role="group" aria-label="${esc(T.views)}">${['map','board','plan','inputs'].map(k=>`<button type="button" data-go="${k==='map'?'progress':'progress='+k}"${view===k?' aria-current="page"':''}>${esc(T.v[k])}${k==='inputs'&&n?` <span class="tr-n-badge">${n}</span>`:''}</button>`).join('')}</div>
     <button type="button" class="btn" data-tract="refresh">${esc(T.refresh)}</button>${editBtn('screen','progress','src/js/17-tracker.js + studio-docs/build/steps.json')}</div>
     ${lock}${TR.issues.length?`<p class="banner bad" role="status"><b>${esc(T.issuesT(TR.issues.length))}</b> ${esc(TR.issues.slice(0,4).join(' · '))}</p>`:''}`;}
 const trFoot=()=>`<p class="xs mut tr-data">${esc(STR.tr.dataLine(TR.D.updated,new Date(TR.at)))}</p>${dbgOn('tracker')?trDebug():''}`;
 function trDebug(){const vis=TR.D.steps.filter(s=>s.type!=='Idea'),dp=trDepths(vis),by=trBy();
   DBG.tracker=`tracker ${TR.D.steps.length} steps · ${TR.ms} ms · issues ${TR.issues.length} · lock ${TR.lock.text?(TR.lock.h!=null?TR.lock.h.toFixed(1)+' h':'? h'):'free'}`;dbgPaint();
   return `<details class="card tr-dbg"><summary>Debug · tracker</summary><pre class="mono">${esc(JSON.stringify({fetchMs:TR.ms,steps:TR.D.steps.length,issues:TR.issues,lock:TR.lock,
-    show:TR.show,canStart:vis.filter(s=>trCanStartNow(s,by,TR.lock)).map(s=>s.id),depth:dp},null,1))}</pre></details>`;}
+    show:TR.show,plan:TR.P?{today:TR.P.today,end:TR.P.end,critical:TR.P.critical,dates:TR.P.dates,ranked:TR.P.ranked.slice(0,8)}:null,canStart:vis.filter(s=>trCanStartNow(s,by,TR.lock)).map(s=>s.id),depth:dp},null,1))}</pre></details>`;}
 function trWait(v,crumbs){ROUTE.crumbs=crumbs;window.TR_READY=null;
   if(TR.err){v.innerHTML=`<div class="card"><b>${esc(STR.tr.loadFail)}</b><p class="mut">${esc(TR.err)}</p><button type="button" class="btn" data-tract="refresh">${esc(STR.tr.refresh)}</button></div>`;window.TR_READY=ROUTE.raw;return true;}
   if(!TR.D){v.innerHTML=`<p class="empty">${esc(STR.tr.loading)}</p>`;const r=ROUTE.raw;trLoad().then(()=>{if(ROUTE.raw===r)render();});return true;}
@@ -94,14 +100,14 @@ function trWait(v,crumbs){ROUTE.crumbs=crumbs;window.TR_READY=null;
 SCREENS.progress=function(v){
   const view=ROUTE.view||'map';if(trWait(v,[{label:STR.tr.title}]))return;
   ROUTE.crumbs=[{label:STR.tr.title,hash:'progress'}];if(view!=='map')ROUTE.crumbs.push({label:STR.tr.v[view]});
-  v.innerHTML=`<div class="tr" data-view="${view}">${trHead(view)}${view==='board'?trBoard():view==='inputs'?trInputsView():trMapShell()}${trFoot()}</div>`;
-  if(view==='map')trDrawMap();
+  v.innerHTML=`<div class="tr" data-view="${view}">${trHead(view)}${view==='board'?trBoard():view==='plan'?trPlanView():view==='inputs'?trInputsView():trMapShell()}${trFoot()}</div>`;
+  if(view==='map'){TR.tapHl=null;trDrawMap();const back=TR.lastNode&&$(`.tr-node[data-go="step=${CSS.escape(TR.lastNode)}"]`);if(back){back.setAttribute('data-focus-first','');requestAnimationFrame(()=>back.scrollIntoView({block:'nearest',inline:'nearest'}));}TR.lastNode=null;}   // Back from a step → the shell focuses the node you came from (W1 to-do)
   window.TR_READY=ROUTE.raw;};
 function trMapShell(){const T=STR.tr,D=TR.D,nd=D.steps.filter(s=>s.status==='done'&&s.type!=='Idea').length,ni=D.steps.filter(s=>s.type==='Idea').length;
   return `<div class="row tr-tools"><div class="seg" role="group" aria-label="${esc(T.showT)}">
     <button type="button" data-tract="done" aria-pressed="${TR.show.done}">${esc(T.showDone(nd))}</button>
     <button type="button" data-tract="ideas" aria-pressed="${TR.show.ideas}">${esc(T.showIdeas(ni))}</button></div>
-    <span class="xs mut">${esc(DEV.cls==='dev-p'||DEV.cls==='dev-tp'?T.flowDown:T.flowRight)} <b class="tr-scrollhint hidden">${esc(T.scrollHint)}</b></span></div>
+    <span class="xs mut">${esc(DEV.cls==='dev-p'||DEV.cls==='dev-tp'?T.flowDown:T.flowRight)}${matchMedia('(pointer:coarse)').matches?' '+esc(T.tapTwice):''} <b class="tr-scrollhint hidden">${esc(T.scrollHint)}</b></span></div>
    <div class="card tr-mapc"><div class="tr-mapw" tabindex="0" role="region" aria-label="${esc(T.mapLabel)}"><div class="tr-map"></div></div></div>
    <div class="tr-below">${TR.show.ideas?trIdeas():''}${trKey()}</div>`;}
 function trDrawMap(){
@@ -142,7 +148,13 @@ function trDrawMap(){
   box.innerHTML=`${lab}<svg class="tr-edges" width="${W}" height="${H}" aria-hidden="true"><defs><marker id="trArr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8z"/></marker></defs>${edges}</svg>${nodes}`;
   box.onpointerover=box.onfocusin=ev=>{const n=ev.target.closest('.tr-node'),sv=$('svg.tr-edges',box);if(!sv)return;const id=n&&n.dataset.go.slice(5);
     sv.classList.toggle('dim',!!id);$$('path[data-a]',sv).forEach(p=>p.classList.toggle('hl',!!id&&(p.dataset.a===id||p.dataset.b===id)));};
-  box.onpointerleave=box.onfocusout=()=>{const sv=$('svg.tr-edges',box);if(sv){sv.classList.remove('dim');$$('path.hl',sv).forEach(p=>p.classList.remove('hl'));}};
+  const hl=id=>{const sv=$('svg.tr-edges',box);if(!sv)return;sv.classList.toggle('dim',!!id);$$('path[data-a]',sv).forEach(p=>p.classList.toggle('hl',!!id&&(p.dataset.a===id||p.dataset.b===id)));};
+  box.onclick=ev=>{const n=ev.target.closest('.tr-node');if(!n)return;const id=n.dataset.go.slice(5),touch=ev.detail>0&&TR._ptr==='touch';TR._ptr=null;
+    if(touch&&TR.tapHl!==id){ev.preventDefault();ev.stopPropagation();TR.tapHl=id;hl(id);toast(STR.tr.tapAgain);return;}   // touch only: tap 1 shows its lines, tap 2 opens (W1 to-do); keyboard, mouse and screen readers open at once
+    TR.tapHl=null;TR.lastNode=id;};
+  box.onpointerdown=ev=>{TR._ptr=ev.pointerType;};
+  box.onpointerleave=ev=>{if(ev.pointerType==='touch')return;const sv=$('svg.tr-edges',box);if(sv){sv.classList.remove('dim');$$('path.hl',sv).forEach(p=>p.classList.remove('hl'));}};
+  box.onfocusout=()=>{const sv=$('svg.tr-edges',box);if(sv){sv.classList.remove('dim');$$('path.hl',sv).forEach(p=>p.classList.remove('hl'));}};
   dlog('tracker','map',vert?'vertical':'horizontal',vis.length,'nodes',lanes.length,'lanes',nD,'levels','col',col,'px',W+'×'+H);}
 function trIdeas(){const T=STR.tr,I=TR.D.steps.filter(s=>s.type==='Idea');
   return `<section class="card tr-ideas" aria-labelledby="trIdT"><h2 id="trIdT">${esc(T.ideasT(I.length))}</h2><p class="sm mut">${esc(T.ideasLead)}</p>
@@ -162,6 +174,32 @@ function trBoard(){const T=STR.tr,by=trBy(),S=TR.D.steps.filter(s=>s.type!=='Ide
   const n=TR.D.steps.filter(s=>s.type==='Idea').length;
   return `<div class="tr-board">${['now','ready','blocked','done'].map(k=>`<section class="card tr-col" aria-labelledby="trB-${k}"><h2 id="trB-${k}">${esc(T.col[k])} <span class="tr-n-badge">${col[k].length}</span></h2><p class="xs mut">${esc(T.colHelp[k])}</p>${col[k].map(s=>card(s,k)).join('')||`<p class="sm mut">${esc(STR.none)}</p>`}</section>`).join('')}</div>
     <p class="sm mut"><button type="button" class="lk" data-go="progress">${esc(T.ideasOnMap(n))}</button></p>`;}
+function trPlanView(){const T=STR.tr,P=trPlanFresh(),by=trBy();
+  if(!P)return `<p class="empty">${esc(T.loadFail)}</p>`;
+  const L=T.pl,nm=c=>c.kind==='check'?L.checkItem(c.id.split('·')[1]):c.kind==='input'?L.inputItem(c.id):(by[c.step]?trTi(by[c.step]):c.step);
+  const when=c=>c.start?L.when(trDay(c.start),trDay(c.end||c.start)):L.noDate;
+  const crit=new Set(P.critical.map(c=>c.id)),st=c=>by[c.step]?T.st[by[c.step].status]:'';
+  const cell=c=>`<button type="button" class="lrow tr-pi${crit.has(c.id)?' crit':''}" data-go="step=${esc(c.step)}">${by[c.step]?trSw(by[c.step].status):''}<span class="nm"><b class="mono">${esc(c.kind==='step'?c.step:c.id.split('·').pop())}</b> ${esc(nm(c))}<br><span class="xs mut">${c.kind==='step'&&st(c)?esc(st(c))+' · ':''}${esc(when(c))}${c.mins?' · '+esc(L.mins(c.mins)):''}</span>${c.slipped?` <span class="badge bad">${esc(L.slipped)}</span>`:''}${crit.has(c.id)?` <span class="tr-crit" aria-hidden="true">◆</span><span class="sr">${esc(L.critSr)}</span>`:''}</span></button>`;
+  const list=a=>a.length>3?a.slice(0,3).map(cell).join('')+`<details class="tr-pmore"><summary class="lk">${esc(L.moreN(a.length-3))}</summary>${a.slice(3).map(cell).join('')}</details>`:a.map(cell).join('');
+  const rows=['lock','gpu','research','owner'].map(r=>{const R=P.rows[r];if(!R.now.length&&!R.next.length&&!R.later.length)return '';
+    return `<section class="card tr-prow" aria-labelledby="trPR-${r}"><h2 id="trPR-${r}">${esc(L.rows[r])}</h2><p class="xs mut">${esc(L.rowHelp[r])}</p><div class="tr-pcols">${['now','next','later'].map(k=>`<div class="tr-pcol"><h3 class="tr-pch">${esc(L.cols[k])}</h3>${list(R[k])||`<p class="sm mut">${esc(L.empty)}</p>`}</div>`).join('')}</div></section>`;}).join('');
+  const cp=P.critical.length?`<div class="links tr-cp">${P.critical.map((c,i)=>{const it=P.dates[c.id];return `${i?'<span aria-hidden="true">→</span>':''}<button type="button" class="lk" data-go="step=${esc(c.step)}"><span aria-hidden="true">◆</span><span class="mono">${esc(c.id.split('·').pop())}</span>${it&&it.end?' ~'+esc(trDay(it.end)):''}</button>`;}).join('')}</div>`:`<p class="sm mut">${esc(L.noEnd)}</p>`;
+  const you=P.ranked.slice(0,5).map(x=>`<li><button type="button" class="lrow" data-go="step=${esc(x.step)}"><span class="nm"><b class="mono">${esc(x.id)}</b> ${esc(by[x.step]?trTi(by[x.step]):x.step)}<br><span class="xs mut">${esc(T.kind[x.kind]||x.kind||'')} · ${esc(L.unblocksN(x.unblocks))}${x.blocks?' · '+esc(L.blocking):''}</span></span></button></li>`).join('');
+  const prof=P.prof.map(x=>`<li><button type="button" class="lrow" data-go="step=${esc(x.step)}"><span class="nm"><b class="mono">${esc(x.id)}</b> ${esc(by[x.step]?trTi(by[x.step]):x.step)}${x.improves?`<br><span class="xs mut">${esc(L.improves(x.improves))}</span>`:''}</span></button></li>`).join('');
+  const runs=[];TR.D.steps.forEach(s=>(s.runs||[]).forEach(r=>runs.push({s,r})));runs.sort((a,b)=>String(b.r.start).localeCompare(String(a.r.start)));
+  const cal0=planCal(TR.D),est=s=>planChats(s,cal0);
+  const runList=runs.slice(0,15).map(({s,r})=>{const n=(s.runs||[]).length,e=est(s),slip=n>e;
+    return `<li class="row tr-run"><span class="mono xs">${esc(trDay(String(r.start).slice(0,10)))}${String(r.start).length>10?' '+esc(String(r.start).slice(11)):''}</span><button type="button" class="lk" data-go="step=${esc(s.id)}"><span class="mono">${esc(s.id)}</span></button><span class="sm nm">${esc(r.chat)} · ${esc(L.outcome[r.outcome]||r.outcome)}${r.by?' · '+esc(r.by):''}</span><span class="xs mut">${esc(L.estVsRun(e,n))}</span>${slip?`<span class="badge bad">${esc(L.slipped)}</span>`:''}</li>`;}).join('');
+  const cal=planCal(TR.D),hrs=cal.day_min.map((m,i)=>L.days[i]+' '+L.mins(m)).join(' · ');
+  return `<p class="sm mut">${esc(L.lead)}</p>
+    <section class="card tr-pend" aria-labelledby="trPE"><h2 id="trPE">${esc(L.endT)}</h2><p class="tr-pbig">${(()=>{const c=P.critical[P.critical.length-1],it=c&&P.dates[c.id];return it&&it.end?esc(L.endLine(c.id,trDay(it.end)))+(by[c.step]?` <span class="sm mut">${esc(trTi(by[c.step]))}</span>`:''):esc(L.noEnd);})()}</p>
+      <h3 class="tr-pch">${esc(L.critT)}</h3><p class="xs mut">${esc(L.critHelp)}</p>${cp}</section>
+    <div class="tr-prows">${rows}</div>
+    <div class="tr-pside"><section class="card" aria-labelledby="trPY"><h2 id="trPY">${esc(L.youT)}</h2><p class="xs mut">${esc(L.youHelp)}</p><ol class="tr-plist">${you||`<li class="sm mut">${esc(STR.none)}</li>`}</ol>
+      <p class="sm"><button type="button" class="lk" data-go="progress=inputs">${esc(L.allInputs(trInputs().length))}</button></p></section>
+    <section class="card" aria-labelledby="trPP"><h2 id="trPP">${esc(L.profT)}</h2><p class="xs mut">${esc(L.profHelp)}</p><ul class="tr-plist">${prof||`<li class="sm mut">${esc(L.noProf)}</li>`}</ul></section></div>
+    <section class="card tr-pruns" aria-labelledby="trPRu"><h2 id="trPRu">${esc(L.runsT)}</h2><p class="xs mut">${esc(L.runsHelp)}</p><ul class="tr-runs">${runList}</ul></section>
+    <p class="xs mut tr-pcal">${esc(L.calT)}: ${esc(L.calLine(hrs,cal.off.join(', ')))} ${editBtn('step','calendar','studio-docs/build/steps.json › calendar')}</p>`;}
 function trWhy(b){const T=STR.tr;return b.k==='need'?b.id+' ('+(T.st[b.st]||b.st)+')':b.k==='input'?T.yourAnswer(b.id):T.theLock;}
 function trInputsView(){const T=STR.tr,L=trInputs();
   return `<p class="sm mut">${esc(T.inputsLead(L.length))}</p><ol class="tr-inputs">${L.map((x,i)=>`<li class="card tr-in">
@@ -176,6 +214,7 @@ SCREENS.step=function(v){
   if(trWait(v,[{label:STR.tr.title,hash:'progress'},{label:ROUTE.id||'?'}]))return;
   const T=STR.tr,by=trBy(),s=by[ROUTE.id];ROUTE.crumbs=[{label:T.title,hash:'progress'},{label:s?s.id:(ROUTE.id||'?')}];
   if(!s){v.innerHTML=`<div class="tr">${trHead('')}<p class="empty">${esc(T.noStep(ROUTE.id))}</p></div>`;window.TR_READY=ROUTE.raw;return;}
+  TR.lastNode=s.id;   // Back to the map focuses the last step you looked at (rail clicks too — G-A11y N4)
   const bl=trBlockers(s,by,TR.lock),notYet=['ready','planned','idea','proposed','parked'].includes(s.status),pr=trPrompt(s.prompt);
   const chip=id=>{const o=by[id];return o?`<button type="button" class="lk" data-go="step=${esc(id)}">${trSw(o.status)}<span class="mono">${esc(id)}</span> ${esc(T.st[o.status])}${TR_RULES.met.includes(o.status)?' ✓':''}</button>`:`<span class="lk">${esc(id)} ?</span>`;};
   const ideaTxt=s.type==='Idea'?trIdeaText(s):null;
@@ -195,7 +234,10 @@ SCREENS.step=function(v){
     <dt>${esc(T.gatesT)}</dt><dd>${gates.length?`<ul class="tr-gl">${gates.map(([g,st])=>`<li><span class="tr-g g-${esc(st)}" aria-hidden="true">${{pass:'✓',open:'○',fail:'✗',na:'–'}[st]||'?'}</span>${esc(g)} · ${esc(T.gs[st]||st)}</li>`).join('')}</ul>`:esc(STR.none)}</dd>
     <dt>${esc(T.checkT)}</dt><dd>${s.check?`<a href="${esc(trGh('studio-docs/build/owner-test-checklist.md'))}" target="_blank" rel="noopener">${esc(s.check.id)} ↗</a> · ${esc(T.ck[s.check.state]||s.check.state)}${s.check.by?' · '+esc(s.check.by):''}`:esc(STR.none)}</dd>
     <dt>${esc(T.decT)}</dt><dd><div class="links">${(s.decisions||[]).map(d=>`<a class="lk" href="${esc(trGh('studio-docs/claude/DECISIONS.md'))}" target="_blank" rel="noopener">${esc(d)} ↗</a>`).join('')||esc(STR.none)}</div></dd>
-    <dt>${esc(T.logT)}</dt><dd class="sm">${esc(s.log||STR.none)}</dd></dl>`;
+    <dt>${esc(T.logT)}</dt><dd class="sm">${esc(s.log||STR.none)}</dd>
+    <dt>${esc(T.pl.planT)}</dt><dd class="sm">${(()=>{const P0=trPlanFresh(),it=P0&&P0.dates[s.id];if(!it)return esc(TR_RULES.met.includes(s.status)?T.st[s.status]:STR.none);
+      return esc(T.pl.planLine(it.start?T.pl.when(trDay(it.start),trDay(it.end||it.start)):T.pl.noDate,T.pl.rows[it.row]||it.row))+(it.slipped?` <span class="badge bad">${esc(T.pl.slipped)}</span>`:'')+(TR.P.critical.some(c=>c.id===s.id)?` <span class="tr-crit"><span aria-hidden="true">◆</span> ${esc(T.pl.critT)}</span>`:'');})()}
+      ${(s.runs||[]).length?`<br><span class="xs mut">${esc(T.pl.runsN(s.runs.length))}: ${esc(s.runs.map(r=>trDay(String(r.start).slice(0,10))+' '+(T.pl.outcome[r.outcome]||r.outcome)).join(' · '))}</span>`:''}</dd></dl>`;
   const ins=inputs.length?`<section class="card"><h2>${esc(T.inputsT)}</h2>${inputs.map(x=>`<div class="tr-si${x.status==='open'?'':' closed'}"><div class="row"><span class="badge tr-k-${esc(x.kind)}">${esc(T.kind[x.kind]||x.kind)}</span><span class="mono">${esc(x.id)}</span><span class="badge">${esc(T.is[x.status]||x.status)}</span>${trEdit(s.id,'inputs '+x.id)}</div>
       <p class="tr-ask">${esc(x.ask)}</p>${x.answer?`<p class="sm"><b>${esc(T.answerT)}</b> ${esc(x.answer)}</p>`:''}<p class="xs mut">${esc(T.askedIn(x.asked_in))} · ${esc(T.asked(x.asked))}${x.d?' · '+esc(x.d):''}</p></div>`).join('')}</section>`:'';
   const todo=(s.todo||[]).length?`<section class="card"><h2>${esc(T.todoT)}</h2><ul class="sm tr-todo">${s.todo.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>`:'';

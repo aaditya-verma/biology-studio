@@ -413,7 +413,7 @@ html.dev-d .st-lb .btn,html.dev-tl .st-lb .btn{flex:0 0 auto}
 .tr>*+*{margin-top:var(--gap)}
 .tr-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px var(--gap)}
 .tr-head h1{margin:0;flex:1 1 auto}
-html.dev-p .tr-head h1{flex-basis:100%}
+html.dev-p .tr-head h1,html.dev-tp .tr-head h1{flex-basis:100%}   /* tablet portrait too: the ✎ no longer wraps alone at 125 % (W1 to-do, W2) */
 html.dev-p .tr-head .seg{flex:1 1 auto;justify-content:space-between}
 .tr-head .seg{flex-wrap:nowrap;overflow-x:auto;max-width:100%}
 .tr-head .seg button{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
@@ -508,6 +508,28 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .tr-todo{margin:0;padding-left:1.2em} .tr-todo li{margin:4px 0;overflow-wrap:anywhere}
 .tr-idea-t{max-width:var(--measure)}
 .tr-data{margin-top:var(--gap)} .tr-dbg pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:50dvh;overflow:auto}
+
+/* plan (W2, D-063; design plan §4.7a): #progress=plan — finish + critical path, one card per resource row (Now · Next · Later), your inputs ranked,
+   professor suggestions, runs. Phone: everything stacks, each row's columns stack; phone landscape + tablet portrait + larger: the 3 columns sit side by side;
+   tablet landscape + desktop: the side panel (you + professor) splits in 2. Critical-path items: ◆ + a thick left rule (never colour alone, H5). */
+.tr-pbig{font-size:var(--fs-h2);font-weight:700;margin:4px 0 8px}
+.tr-pch{font-size:var(--fs-sm);margin:8px 0 4px;color:var(--muted)}
+.tr-cp{align-items:center;gap:4px 8px}
+.tr-prows{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+.tr-prow h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0}
+.tr-pcols{display:grid;gap:8px var(--gap);grid-template-columns:minmax(0,1fr)}
+html.dev-pl .tr-pcols,html.dev-tp .tr-pcols,html.dev-tl .tr-pcols,html.dev-d .tr-pcols{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tr-pcol{min-width:0}
+.tr-pi{width:100%;text-align:left;align-items:flex-start} .tr-pi .nm{overflow-wrap:anywhere}
+.tr-pi.crit{border-left:4px solid var(--ink);padding-left:8px;border-radius:0 var(--r-sm) var(--r-sm) 0}
+.tr-pmore>summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
+.tr-crit{font-weight:700;white-space:nowrap}
+.tr-pside{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+html.dev-tl .tr-pside,html.dev-d .tr-pside{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tr-plist{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tr-runs{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.tr-run{flex-wrap:wrap;gap:4px 10px;align-items:baseline} .tr-run .nm{flex:1 1 12em;min-width:0;overflow-wrap:anywhere}
+.tr-pcal{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 
 /* ---------- L1 learning core: #cards · #card=<id> · #deck (design plan §2 Card row, §4.8; RULES C13, H5) ---------- */
 /* EDIT: card layout per class — phone: 3D on top, text below · phone landscape: 3D │ text · tablet portrait: 3D on top, text at reading width ·

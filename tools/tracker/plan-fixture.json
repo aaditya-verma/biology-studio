@@ -1,0 +1,298 @@
+{
+ "purpose": "W2 scheduler fixture (D-063): check.py --selftest runs plan() on this file and compares with `expect`, then runs the app's trPlan() (node) and compares the whole plan. Edit `expect` only when the rules change on purpose (and log a D-entry).",
+ "today": "2026-11-21",
+ "doc": {
+  "owner": "Aaditya",
+  "collaborator": "Professor",
+  "calendar": {
+   "day_min": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    240,
+    240
+   ],
+   "chat_min": 60,
+   "off": [
+    "2026-11-23"
+   ]
+  },
+  "queue": [
+   "B",
+   "C"
+  ],
+  "steps": [
+   {
+    "id": "A",
+    "type": "Build",
+    "status": "done",
+    "lock": true,
+    "needs": [],
+    "check": null,
+    "inputs": []
+   },
+   {
+    "id": "B",
+    "type": "Build",
+    "status": "in progress",
+    "lock": true,
+    "needs": [
+     "A"
+    ],
+    "est": {
+     "chats": 2
+    },
+    "runs": [
+     {
+      "chat": "Bio · Build · B",
+      "by": "Aaditya",
+      "start": "2026-11-20",
+      "end": "2026-11-20",
+      "outcome": "partial"
+     },
+     {
+      "chat": "Bio · Build · B",
+      "by": "Aaditya",
+      "start": "2026-11-20",
+      "end": "2026-11-20",
+      "outcome": "partial"
+     },
+     {
+      "chat": "Bio · Build · B",
+      "by": "Aaditya",
+      "start": "2026-11-21",
+      "outcome": "partial"
+     }
+    ],
+    "check": null,
+    "inputs": []
+   },
+   {
+    "id": "C",
+    "type": "Content",
+    "status": "planned",
+    "lock": true,
+    "needs": [
+     "B"
+    ],
+    "check": null,
+    "inputs": [
+     {
+      "id": "C.q1",
+      "kind": "decide",
+      "ask": "x",
+      "asked": "2026-11-20",
+      "status": "open",
+      "blocks": true
+     }
+    ]
+   },
+   {
+    "id": "D",
+    "type": "Research",
+    "status": "ready",
+    "lock": false,
+    "needs": [
+     "A"
+    ],
+    "est": {
+     "chats": 5
+    },
+    "check": null,
+    "inputs": []
+   },
+   {
+    "id": "E",
+    "type": "Episode",
+    "status": "planned",
+    "lock": false,
+    "uses": [
+     "gpu"
+    ],
+    "needs": [
+     "D"
+    ],
+    "check": null,
+    "inputs": []
+   },
+   {
+    "id": "F",
+    "type": "Build",
+    "status": "owner check",
+    "lock": true,
+    "needs": [
+     "A"
+    ],
+    "check": {
+     "id": "T9",
+     "state": "open",
+     "since": "2026-11-19"
+    },
+    "inputs": [
+     {
+      "id": "F.q1",
+      "kind": "ask",
+      "ask": "y",
+      "asked": "2026-11-19",
+      "status": "open"
+     }
+    ]
+   },
+   {
+    "id": "G",
+    "type": "Review",
+    "status": "planned",
+    "lock": false,
+    "needs": [
+     "C",
+     "E"
+    ],
+    "check": null,
+    "inputs": [
+     {
+      "id": "G.q1",
+      "kind": "ask",
+      "ask": "z",
+      "asked": "2026-11-18",
+      "status": "open",
+      "for": "prof",
+      "improves": "a second science check"
+     }
+    ],
+    "est": {
+     "chats": 0.5,
+     "days": 2
+    }
+   },
+   {
+    "id": "H",
+    "type": "Review",
+    "status": "planned",
+    "lock": false,
+    "uses": [
+     "prof"
+    ],
+    "needs": [
+     "A"
+    ],
+    "improves": "teaching notes",
+    "check": null,
+    "inputs": []
+   },
+   {
+    "id": "I",
+    "type": "Build",
+    "status": "idea",
+    "lock": true,
+    "needs": [
+     "G"
+    ],
+    "check": null,
+    "inputs": []
+   }
+  ]
+ },
+ "expect": {
+  "end": "2026-11-26",
+  "critical": [
+   {
+    "id": "D",
+    "step": "D"
+   },
+   {
+    "id": "E",
+    "step": "E"
+   },
+   {
+    "id": "G",
+    "step": "G"
+   }
+  ],
+  "dates": {
+   "B": {
+    "start": "2026-11-21",
+    "end": "2026-11-21",
+    "row": "lock",
+    "mins": 30,
+    "slipped": true
+   },
+   "C": {
+    "start": "2026-11-21",
+    "end": "2026-11-21",
+    "row": "lock",
+    "mins": 60,
+    "slipped": false
+   },
+   "D": {
+    "start": "2026-11-21",
+    "end": "2026-11-22",
+    "row": "research",
+    "mins": 300,
+    "slipped": false
+   },
+   "E": {
+    "start": "2026-11-22",
+    "end": "2026-11-24",
+    "row": "gpu",
+    "mins": 120,
+    "slipped": false
+   },
+   "G": {
+    "start": "2026-11-26",
+    "end": "2026-11-26",
+    "row": "owner",
+    "mins": 30,
+    "slipped": false
+   },
+   "I": {
+    "start": null,
+    "end": null,
+    "row": "lock",
+    "mins": 0,
+    "slipped": false
+   }
+  },
+  "ranked": [
+   {
+    "id": "C.q1",
+    "step": "C",
+    "kind": "decide",
+    "unblocks": 2,
+    "blocks": true,
+    "asked": "2026-11-20"
+   },
+   {
+    "id": "F.q1",
+    "step": "F",
+    "kind": "ask",
+    "unblocks": 0,
+    "blocks": false,
+    "asked": "2026-11-19"
+   },
+   {
+    "id": "T9",
+    "step": "F",
+    "kind": "check",
+    "unblocks": 0,
+    "blocks": false,
+    "asked": "2026-11-19"
+   }
+  ],
+  "prof": [
+   {
+    "id": "G.q1",
+    "step": "G",
+    "kind": "ask",
+    "improves": "a second science check"
+   },
+   {
+    "id": "H",
+    "step": "H",
+    "kind": "step",
+    "improves": "teaching notes"
+   }
+  ]
+ }
+}
