@@ -95,3 +95,17 @@ E10.02.02|AN79.5,AN50.2|✔|14-23
 E10.02.03|AN50.4,AN53.4,AN79.5|✔|
 E10.03.01|AN21.1,AN21.2|✔|
 E10.03.02|AN35.9|✔|
+# --- E11 · X1 22 Nov 2026 (dossier ch11-muscular-system.md; stages from human specimens R05m/R05dn/R05do/R05dp/R05dq, R08 classic ages, D-030; AN codes read from NMC UG Curriculum Vol I (owner download); ⚑ → D-066) ---
+E11.00.01|AN3.1,AN79.4|✔|9-23
+E11.01.01|AN3.1,AN67.2,AN67.3|⚑|14-22
+E11.02.01|AN79.4|⚑|15-18
+E11.02.02|AN7.4,AN45.3|✔|15-20
+E11.02.03|AN4.1,AN7.5,AN79.4,AN24.4|≈|
+E11.03.01||⚑|
+E11.04.01||✔|
+E11.05.01|AN28.1,AN31.1|≈|16-21
+E11.06.01|AN3.2|✔|
+E11.07.01||✔|14-22
+E11.08.01|AN3.1,AN67.2|✔|
+E11.09.01|AN3.1,AN67.2|✔|
+E11.09.02|AN74.4|⚑|

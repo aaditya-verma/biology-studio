@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -335,7 +335,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -511,14 +511,43 @@
    "title": "X1 research · Ch 11 muscular system",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 11",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.10"],
+   "unblocks": ["X1.12"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-039", "D-064", "D-066"],
+   "prompt": "X1 Ch 11",
+   "log": "22 Nov 2026 · X1 Research · Ch 11 — staging CS9→fetal wk 12 from human specimens (Mekonen epaxial/body wall, Tanaka + Oguni EM), Tier A muscle origin + segmental nerves, 16 misconceptions, 21 sources R05de–dy, AN read from NMC Vol I → D-066 a–e",
+   "todo": [
+    "Human stage for the dermomyotome and its DML/VLL lips (CS11–13): check R02 VHE sections (look only)",
+    "R01 3D Atlas: check the CS14–17 models show myotomes and limb muscle masses before the 'Cross the frontier' scene (look only, NC-ND)",
+    "Population-based Tier 1 rate for Poland sequence (book 1 in 20,000) — none retrieved",
+    "Tier 1 for BMD/DMD onset ages (book <5 vs 8–25 years)",
+    "2024 wording (MGMUHS reprint) of the Ch 11 AN codes — only the 2018 Vol I text was read",
+    "Somitomeres in humans (the book's head-muscle table rests on seven) — no Tier 1 retrieved",
+    "Sources to add (lines now ≈): segment-matched sensory supply of dermatomes (E11.02.03); inferior oblique origin + nerve for AN31.1 (E11.05.01)",
+    "Full-text checks before cards: R05df rib-1/straddling muscles, R05de chick sternal ribs, R05dg, R05dm claims"
+   ],
+   "inputs": [
+    {"id": "X1.11.q1", "kind": "decide", "ask": "D-066 (a–e) from Ch 11: pick an option per item (striation timing, BMP4 role at the VLL lip, primaxial/abaxial muscle + rib lists — (3) also rewords Ch 10's rib line, DMD rate, prune belly triad + cause) — recommendations given; (f) is notes only", "asked_in": "Bio · Research · X1 Ch 11", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-066"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 11", "by": "Aaditya", "start": "2026-11-22 00:00", "end": "2026-11-22 01:00", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 16 SHOULD applied)"}]
+  },
+  {
+   "id": "X1.12",
+   "title": "X1 research · Ch 12 limbs",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 12",
+   "status": "ready",
+   "needs": ["X1.11"],
    "unblocks": [],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": ["D-011", "D-026", "D-030", "D-064"],
-   "prompt": "X1 Ch 11",
+   "decisions": ["D-011", "D-026", "D-030", "D-064", "D-066"],
+   "prompt": "X1 Ch 12",
    "log": "—",
    "todo": [],
    "inputs": []

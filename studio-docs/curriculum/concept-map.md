@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -241,21 +241,21 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E11.00.01 | Where muscles come from | A | G | core |  | meso | msk | E06.02.04 | 12 |  | ≈ |
-| E11.01.01 | Myoblasts fuse into fibres | B | S | s |  | meso | msk | E11.00.01 |  |  | ≈ |
-| E11.02.01 | Primaxial domain and abaxial domain | B | S | s |  | meso | msk | E06.02.04 | 3 |  | ≈ |
-| E11.02.02 | Epaxial and hypaxial muscles | B | SA | x |  | meso | msk | E11.02.01 | 2 |  | ≈ |
-| E11.02.03 | Dermatomes and myotomes keep their nerve | A | SA | core |  | meso | msk | E06.02.04 | 1 |  | ≈ |
-| E11.03.01 | Molecular regulation of muscle | D | M | d |  | meso | msk | E11.00.01 |  |  | ≈ |
-| E11.04.01 | Patterning of muscles | D | S | d |  | meso | msk | E11.00.01 |  |  | ≈ |
-| E11.05.01 | Head muscles | B | S | x |  | meso | head | E11.00.01 | 4 |  | ≈ |
-| E11.06.01 | Tendons | D | S | d |  | meso | msk | E11.00.01 |  |  | ≈ |
-| E11.07.01 | Limb muscles | B | S | x |  | meso | limb | E11.02.02, E12.01.01 | 1 |  | ≈ |
-| E11.08.01 | Cardiac muscle | B | S | s |  | meso | cv | E11.00.01, E13.02.01 |  |  | ≈ |
-| E11.09.01 | Smooth muscle | B | S | s |  | multi | msk | E11.00.01 |  |  | ≈ |
-| E11.09.02 | Muscle defects | C | C | s |  | meso | defects | E11.00.01 |  |  | ≈ |
+| E11.00.01 | Where muscles come from | A | G | core |  | meso | msk | E06.02.04 | 12 | AN3.1, AN79.4 | ✔ |
+| E11.01.01 | Myoblasts fuse into fibres | B | S | s |  | meso | msk | E11.00.01 |  | AN3.1, AN67.2, AN67.3 | ⚑ |
+| E11.02.01 | Primaxial domain and abaxial domain | B | S | s |  | meso | msk | E06.02.04 | 3 | AN79.4 | ⚑ |
+| E11.02.02 | Epaxial and hypaxial muscles | B | SA | x |  | meso | msk | E11.02.01 | 2 | AN7.4, AN45.3 | ✔ |
+| E11.02.03 | Dermatomes and myotomes keep their nerve | A | SA | core |  | meso | msk | E06.02.04 | 1 | AN4.1, AN7.5, AN79.4, AN24.4 | ≈ |
+| E11.03.01 | Molecular regulation of muscle | D | M | d |  | meso | msk | E11.00.01 |  |  | ⚑ |
+| E11.04.01 | Patterning of muscles | D | S | d |  | meso | msk | E11.00.01 |  |  | ✔ |
+| E11.05.01 | Head muscles | B | S | x |  | meso | head | E11.00.01 | 4 | AN28.1, AN31.1 | ≈ |
+| E11.06.01 | Tendons | D | S | d |  | meso | msk | E11.00.01 |  | AN3.2 | ✔ |
+| E11.07.01 | Limb muscles | B | S | x |  | meso | limb | E11.02.02, E12.01.01 | 1 |  | ✔ |
+| E11.08.01 | Cardiac muscle | B | S | s |  | meso | cv | E11.00.01, E13.02.01 |  | AN3.1, AN67.2 | ✔ |
+| E11.09.01 | Smooth muscle | B | S | s |  | multi | msk | E11.00.01 |  | AN3.1, AN67.2 | ✔ |
+| E11.09.02 | Muscle defects | C | C | s |  | meso | defects | E11.00.01 |  | AN74.4 | ⚑ |
 
-*Misconceptions to refute (≈ until X1):* E11.02.02 — “Limb muscles are epaxial and supplied by dorsal rami.”
+*Misconceptions to refute (cited in the chapter dossier):* E11.02.02 — “Limb muscles are epaxial and supplied by dorsal rami.”
 
 ## E12 — Limbs · pp 167–178 · 8 concepts
 
