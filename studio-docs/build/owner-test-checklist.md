@@ -118,9 +118,9 @@ Open the app **without** `?test=1` and pull to refresh until Settings shows **v8
 3. Run the Check on *The neuropores close* and *Diaphragm and its parts* on the **tablet**: nothing in one answer should give away a later question, and you shouldn't be able to put the order steps in order from their wording alone.
 4. On the **laptop**, open *Somites: blocks that keep time* › More: the ⚑ newer-evidence line (D-039 a) should read fairly next to the book's 42–44. Same for any ⚑ on *Counting to birth* (D-044 b).
 5. Open the two fixed Ch 5 cards: *Gastrulation in one picture* (q1 no longer has "Trophoblast"; q3's steps have no "first/later") and *The disc becomes a pear* (the day drill comes first; General now gives the days with the sizes). Run the day drill once.
-6. **D-065:** do you accept the reading in step 2 — names glossed on every card, even when an earlier card teaches them? Answer yes, or say which you'd relax.
+6. ~~**D-065:** do you accept the reading?~~ **Answered yes** in chat (21 Nov 2026, 23:52 IST) — D-065 decided. While reading, just note any gloss that feels clumsy.
 7. Give **G-Owner** on one card of your choice (Studio › its G-Owner gate › name, role **Owner**, agent `T3d`, tick, **Pass**).
-- **Result T3d part B:** ☐ pass ☐ fail · G-Owner: ☐ · D-065: ☐ yes ☐ relax ___ · notes:
+- **Result T3d part B:** ☐ pass ☐ fail · G-Owner: ☐ · D-065: ☑ yes (21 Nov, in chat) · notes:
 
 ## T1b. Host shot: Nani Koshika test *(~15–20 min laptop run + ~10 min phone, tablet/laptop)* — PASS 21 Nov 2026 on v6 (M1b, rewritten 21 Nov 2026 for v6, D-051; result D-052)
 Host: **Nani Koshika** (D-048), voice Kokoro `af_heart`, route H-a = our 3D model in Blender (D-049). The v5 preview (360p) is not enough: T1b runs on the v6 720p render.
