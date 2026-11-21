@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -309,16 +309,16 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E14.01.01 | Respiratory diverticulum | A | SG | core | 22–28 | endo | resp | E06.03.02 | 8 |  | ≈ |
-| E14.01.02 | Tracheoesophageal fistula and oesophageal atresia | C | C | x |  | endo | defects | E14.01.01 |  |  | ≈ |
-| E14.02.01 | Larynx | B | S | x | 28–70 | multi | resp | E14.01.01, E17.01.01 |  |  | ≈ |
-| E14.03.01 | Bronchi and lung branching | B | S | x | 28–112 | endo | resp | E14.01.01 | 4 |  | ≈ |
-| E14.03.02 | Lungs and pleura | B | S | s |  | meso | resp | E14.03.01, E07.04.02 |  |  | ≈ |
-| E14.04.01 | Lung maturation phases | A | T | core | 35–266 | endo | resp | E14.03.01 | 1 |  | ≈ |
-| E14.04.02 | Surfactant and preterm breathing | B | C | x | 168–266 | endo | resp | E14.04.01 |  |  | ≈ |
-| E14.04.03 | Lung anomalies | C | C | s |  | endo | defects | E14.03.01 |  |  | ≈ |
+| E14.01.01 | Respiratory diverticulum | A | SG | core | 22–28 | endo | resp | E06.03.02 | 8 | AN25.2, AN79.4 | ⚑ |
+| E14.01.02 | Tracheoesophageal fistula and oesophageal atresia | C | C | x |  | endo | defects | E14.01.01 |  | AN25.4, AN52.6 | ⚑ |
+| E14.02.01 | Larynx | B | S | x | 28–70 | multi | resp | E14.01.01, E17.01.01 |  | AN38.1, AN38.3, AN43.4 | ⚑ |
+| E14.03.01 | Bronchi and lung branching | B | S | x | 28–112 | endo | resp | E14.01.01 | 4 | AN25.2, AN24.3 | ⚑ |
+| E14.03.02 | Lungs and pleura | B | S | s |  | meso | resp | E14.03.01, E07.04.02 |  | AN25.2, AN24.1, AN79.4 | ✔✔ |
+| E14.04.01 | Lung maturation phases | A | T | core | 35–266 | endo | resp | E14.03.01 | 1 | AN25.2, AN25.1 | ⚑ |
+| E14.04.02 | Surfactant and preterm breathing | B | C | x | 168–266 | endo | resp | E14.04.01 |  | AN25.2 | ⚑ |
+| E14.04.03 | Lung anomalies | C | C | s |  | endo | defects | E14.03.01 |  | AN52.5, AN47.14, AN25.2 | ⚑ |
 
-*Misconceptions to refute (≈ until X1):* E14.04.01 — “All alveoli form before birth.”
+*Misconceptions to refute (cited in the chapter dossier):* E14.04.01 — “All alveoli form before birth.”
 
 ## E15 — Digestive System · pp 230–255 · 21 concepts
 

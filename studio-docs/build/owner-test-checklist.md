@@ -100,9 +100,6 @@ Open the app **without** `?test=1` and pull to refresh until Settings shows **v8
 ## T8b. Trace a cell *(phone, tablet, laptop)* — PLANNED (V3 writes the steps)
 - **Result:** ☐ pass ☐ problems · notes: ___
 
-## T12. Live desk *(~20 min: phone, then tablet, then laptop; after installing the heartbeat task)* — PLANNED (W3, 22 Nov 2026)
-Steps are written when W3 reaches owner check.
-
 ## T9. Lessons, Today, Mixed review *(~25 min: phone, then tablet, then laptop; + 2 min tomorrow)* — OPEN (L2, 22 Nov 2026; D-070)
 Open the app **without** `?test=1` and pull to refresh until Settings shows **v14**. Tap **Export backup** first (A3). Built *at risk* (T7 deck step, T7b, T3d still open): if one of those fails, say so here too.
 1. **Today (phone P):** two plans at the top — **On the go · up to 5 min** (Remember prompts due + one Check) and **Study · 15–30 min** (the next lesson sitting + prompts due + Mixed review once 2 cards are Understood). Do the words make sense without help? Is the minutes estimate believable?

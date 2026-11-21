@@ -145,3 +145,12 @@ E13.08.05|AN25.5|⚑|
 E13.08.06|AN25.3,AN5.2|✔|
 E13.08.07|AN25.3|⚑|
 E13.08.08|AN5.1,AN23.2,AN23.7|✔|
+# --- E14 · X1 22 Nov 2026 (dossier ch14-respiratory.md; cs from human specimens — bud CS12 + separation CS13–16 (R05fb, R05fd), larynx CS17–23 (R05fj), bronchial tree CS15–23 (R05fh/fi); fetal phases have no cs) ---
+E14.01.01|AN25.2,AN79.4|⚑|12-16
+E14.01.02|AN25.4,AN52.6|⚑|
+E14.02.01|AN38.1,AN38.3,AN43.4|⚑|17-23
+E14.03.01|AN25.2,AN24.3|⚑|15-23
+E14.03.02|AN25.2,AN24.1,AN79.4|✔✔|
+E14.04.01|AN25.2,AN25.1|⚑|
+E14.04.02|AN25.2|⚑|
+E14.04.03|AN52.5,AN47.14,AN25.2|⚑|
