@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Build · V2 3D drills — V2 gates pass, T8 open, V2.q1 (D-054) asked; V1 notes + C1 notochord-scene to-do closed; lock released. Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 pass except deck (deck 22 Nov, L1.q2), L1.q1 → D-053, new Fix step L1F",
+ "updated": "21 Nov 2026 · Bio · Build · V2 3D drills — T8 pass, V2 done, V2.q1 answered (D-055), 3 notes → L1F. Before: 21 Nov 2026 · Bio · Build · V2 3D drills — V2 gates pass, T8 open, V2.q1 (D-054) asked; V1 notes + C1 notochord-scene to-do closed; lock released. Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 pass except deck (deck 22 Nov, L1.q2), L1.q1 → D-053, new Fix step L1F",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -613,7 +613,11 @@
     "Card Remember line \"In your deck · next on tomorrow\" → \"Due tomorrow\"",
     "Today intro says prompts come back after passing the Check — D-050: prompts join the deck on Read",
     "Backup file name uses the UTC date (biostudio-backup-2026-11-20 at 05:02 IST) — use the local date",
-    "G-Eng: saved state keeps `app` 5/6 under v7 and `savedAt` older than the last tap (tablet backup 05:05 vs 05:11) — fix or explain; statuses already survive a restart"
+    "G-Eng: saved state keeps `app` 5/6 under v7 and `savedAt` older than the last tap (tablet backup 05:05 vs 05:11) — fix or explain; statuses already survive a restart",
+    "T8 note (V2): Phone P · Notochord Try it opens too far out: strand → plate → rod and the Prenotochordal label show only after zooming — tighter phone start view for sc-E05.02.01",
+    "T8 note (V2): Phone P · Notochord Q5 after answering: revealed labels crowd the pins and the top-layer label (Epiblast → ectoderm) is missing — pinned structures' labels first, beside their pin",
+    "T8 note (V2): Phone P · Pear Q4 (day drill): the 1 mm ruler was mostly off the stage in the owner's screenshot (owner may have zoomed) — check the drill start framing keeps the ruler in",
+    "T8 step 7 not done: phone Measure fps on sc-E05.02.01 → pipeline reference §2 (V2)"
    ],
    "inputs": []
   },
@@ -622,24 +626,23 @@
    "title": "V2 3D visualiser — Ch 5 scenes + 3D drills",
    "type": "Build",
    "chat": "Bio · Build · V2 3D drills",
-   "status": "owner check",
+   "status": "done",
    "needs": ["L1"],
    "unblocks": ["V3", "GATE", "IB04", "IB05", "IB06", "IB10", "IB11"],
    "lock": true,
    "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
-   "check": {"id": "T8", "state": "open", "since": "2026-11-21"},
-   "decisions": ["D-036", "D-047", "D-050", "D-054"],
+   "check": {"id": "T8", "state": "pass", "since": "2026-11-21"},
+   "decisions": ["D-036", "D-047", "D-050", "D-054", "D-055"],
    "prompt": "V2 3D drills",
-   "log": "21 Nov 2026 · V2 3D drills (app v8, D-054) — drill Check types rotate · day · frames · label · folded (spec, card-check Python + app, parity 88, selftest 75); scene sc-E05.02.01 notochord (strand → plate → rod, cranial first); drills on E05.02.01 (frames, label) + E05.05.01 (day), re-reviewed; V1 notes folded in; layout-check 2318 checks + drill flows green; gates G-Sci (3 rounds), G-Learn (3), G-Eng (2), G-Art (2), G-A11y pass; T8 open",
+   "log": "21 Nov 2026 · T8 pass (phone v8; owner \"all ok\") — D-054 confirmed (D-055); 3 phone notes → L1F. 21 Nov 2026 · V2 3D drills (app v8, D-054) — drill Check types rotate · day · frames · label · folded (spec, card-check Python + app, parity 88, selftest 75); scene sc-E05.02.01 notochord (strand → plate → rod, cranial first); drills on E05.02.01 (frames, label) + E05.05.01 (day), re-reviewed; V1 notes folded in; layout-check 2318 checks + drill flows green; gates G-Sci (3 rounds), G-Learn (3), G-Eng (2), G-Art (2), G-A11y pass; T8 open",
    "todo": [
-    "Owner phone fps on sc-E05.02.01 (T8 step 7) → pipeline reference §2",
     "rotate + folded have no card yet (D-054 (6)) — first real use in C2 (Ch 6 folding); then make rotate's words question about the start picture so the alt doesn't give it away (G-A11y SHOULD)",
     "G-Art shoulds: notochord ring only ~1 px at day 18; pin 3 touches the gizmo at phone 125 %; phone landscape 125 % notes plate over pin 2's dot; day stamp wraps at phone 125 %; frames/folded leave the phone-landscape left column empty; black bands in frame stills; embryo ~40 % of the stage on tablet portrait/desktop; full viewer Lengthwise/cut-slider state vs view",
     "G-Eng nits: still cache unbounded; possible one-frame flash after a still; scene-check range gaps for streak/zone; day-drill alt states the size (G-Learn ok'd)",
     "Other Ch 5 Tier A cards keep sc-E00.01.04 / sc-E00.01.02 (they already list them) — a fate-map scene (E05.04.01) when a later V-step needs it"
    ],
    "inputs": [
-    {"id": "V2.q1", "kind": "decide", "ask": "D-054: confirm drills as Check types, the masked day only during 'Which day is this?', the 3D moving into the Check on phone/tablet portrait (beside it otherwise), rotate + folded waiting for Ch 6 cards — or say what to change (T8 step 8)", "asked_in": "Bio · Build · V2 3D drills", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-054"}
+    {"id": "V2.q1", "kind": "decide", "ask": "D-054: confirm drills as Check types, the masked day only during 'Which day is this?', the 3D moving into the Check on phone/tablet portrait (beside it otherwise), rotate + folded waiting for Ch 6 cards — or say what to change (T8 step 8)", "asked_in": "Bio · Build · V2 3D drills", "asked": "2026-11-21", "answer": "Confirmed — \"all ok\" after T8 (D-055)", "status": "answered", "d": "D-054"}
    ]
   },
   {
@@ -862,7 +865,7 @@
    "title": "Which day is this?",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "owner check",
+   "status": "done",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -870,7 +873,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.05.01 (day); owner check with V2 (T8)",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.05.01 (day); T8 pass 21 Nov 2026",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -882,7 +885,7 @@
    "title": "Order the frames",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "owner check",
+   "status": "done",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -890,7 +893,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (frames); owner check with V2 (T8)",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (frames); T8 pass 21 Nov 2026",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -958,7 +961,7 @@
    "title": "Label it",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "owner check",
+   "status": "done",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -966,7 +969,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (label: pins + selects); owner check with V2 (T8)",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (label: pins + selects); T8 pass 21 Nov 2026",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],

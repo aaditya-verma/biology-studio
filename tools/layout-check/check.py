@@ -79,6 +79,7 @@ def serve():
 async def run(a):
     from playwright.async_api import async_playwright
     srv, base = serve()
+    FONT[0] = a.font
     vps = viewports(a.preview)
     themes = ["light"] if a.preview else ["light", "dark"]
     texts = [100] if a.preview else [100, 125]
@@ -102,6 +103,8 @@ async def run(a):
                     await ctx.add_init_script(f"try{{localStorage.setItem('biostudio.theme','{theme}')}}catch(e){{}}")
                     if text != 100:
                         await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='html{font-size:%d%%!important}';document.head.appendChild(s);});" % text)
+                    if a.font:
+                        await ctx.add_init_script(FONT_JS % a.font)
                     if a.debug:
                         await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>document.documentElement.classList.add('dbg-boxes'));")
                     page = await ctx.new_page()
@@ -406,6 +409,10 @@ async def learn_flows(browser, base, report):
     await ctx.close()
 
 
+FONT = [None]   # set from --font (drill flows use it too)
+FONT_JS = "document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent=':root{--font:\"%s\",sans-serif!important}';document.head.appendChild(s);});"
+
+
 async def drill_flows(browser, base, report, preview):
     """V2 (card-spec §2a): each drill type of the demo fixture (?test=1&fixture=drills, E05.02.01) at 5 sizes × 100/125 % — audit, pins, contact sheet;
     rotate mid-drill; Try it's view comes back; WebGL context loss redraws (V1 note)."""
@@ -417,6 +424,8 @@ async def drill_flows(browser, base, report, preview):
     for kind, w, h in PREVIEW:
         for text in ([100] if preview else [100, 125]):
             ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=kind != "desktop", is_mobile=kind != "desktop", device_scale_factor=1)
+            if FONT[0]:
+                await ctx.add_init_script(FONT_JS % FONT[0])
             if text != 100:
                 await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='html{font-size:%d%%!important}';document.head.appendChild(s);});" % text)
             page = await ctx.new_page(); errs = []
@@ -582,6 +591,7 @@ def main():
     ap.add_argument("--preview", action="store_true", help="5 key sizes, light, 100 %% text")
     ap.add_argument("--only", choices=list(SCREENS), help="one screen")
     ap.add_argument("--debug", action="store_true", help="outline every box in the screenshots")
+    ap.add_argument("--font", help="stress test: render with this font family (e.g. \"DejaVu Sans Mono\") — CI fonts can be wider than yours (V2)")
     ap.add_argument("--dry-run", action="store_true", help="print the plan, open nothing")
     ap.add_argument("--out", default=str(ROOT / "out" / "layout-check"))
     a = ap.parse_args()

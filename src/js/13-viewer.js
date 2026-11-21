@@ -161,6 +161,7 @@ function scLabelsDom(S){
 }
 function scOverlay(){
   const S=scCur(),E=SC.eng,stage=$('#vwStage');if(!S||!E||!stage||!SC.ready)return;
+  const sp=$('#vwStamp');if(sp)stage.style.setProperty('--stamp-h',sp.offsetHeight+'px');   // the notes plate sits under the stamp's real height (a wrapped stamp never covers it — CI fonts, V2)
   const W=stage.clientWidth,H=stage.clientHeight,A=E.anchors(!SC.drill||SC.drill.labels),st=E.state(),day=st.day;   // occlusion raycasts only when labels can show (G-Eng)
   const rel=el=>{if(!el||el.offsetParent===null)return null;const a=el.getBoundingClientRect(),b=stage.getBoundingClientRect();return {l:a.left-b.left-4,t:a.top-b.top-4,r:a.right-b.left+4,b:a.bottom-b.top+4};};
   const blocked=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>rel($(s))).filter(Boolean),placed=[],lines=[],seen=[];
