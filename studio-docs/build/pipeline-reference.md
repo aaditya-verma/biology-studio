@@ -1,6 +1,6 @@
 # Pipeline reference — Expected vs Measured
 
-*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 21 Nov 2026 · Bio · Fix · M1b merge — §1 idle row (P8 · 6 W · 43 °C, from M1b Step 1). Before: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
+*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 21 Nov 2026 · Bio · Build · M1b host results — §3 host rows from the v5 RESULTS.md, §5 log rows, §7 host kit (D-051). Before: 21 Nov 2026 · Bio · Fix · M1b merge — §1 idle row (P8 · 6 W · 43 °C, from M1b Step 1). Before: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
 
 Rule C4: build only on the **Measured** column. Expected values are rough starting guesses, to be replaced by measurements (M1 onwards). Fill "Checked on" with date + device. Local-first on the owner's NVIDIA laptop (D-014, RULES C12).
 
@@ -63,6 +63,13 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | Local TTS voice 1 Kokoro-82M `af_heart`: quality, 20 terms, wpm | — | GPU: load 43 s; 20 terms + sentence in 20.1 s (first term 15.7 s warm-up, then ~0.15 s each); **165 wpm**. Quality + wrong terms: T1 | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | Local TTS voice 2 Piper `en_US-ryan-high`: same | — | CPU: 49.7 s total (includes Python start per call); **197 wpm** (fast for teaching). Quality + wrong terms: T1 | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | Subtitle drift over 90 s after alignment | < 100 ms | | |
+| **Host shot M1b-hs01 (Nani, 5 s, 150 frames, Eevee Next, AgX Punchy, cloth-sim shawl, library plate)** — shot render at 360×640, 8 samples | — | **93.4 s** (0.62 s/frame) · v5 preview | owner's MSI, 21 Nov 2026 03:53 · `tools\m1b-host\out\RESULTS.md` |
+| Host shot — same at 720×1280 ship (`m1b.py t1b`) | ~4× preview ≈ 6–8 min | **not measured** — v6 ship run pending (T1b) | |
+| Host character sheet (8 tiles + cloth sim 70 frames) at preview | — | **55.8 s** (sim 32.4 s) · v5 | owner's MSI, 21 Nov 2026 · `out\build_log_sheet.json` |
+| Kokoro `af_heart` host line (4.6 s, speed 0.66) | — | load 3.2 s (warm) · synth 1.26 s · **143 wpm** · step 12.2 s | owner's MSI, 21 Nov 2026 · manifest v5 |
+| Host clip size, 5 s 360×640 x264 veryfast crf 20 | — | **0.29–0.30 MB** (clean / cap-en / cap-hi) | owner's MSI, 21 Nov 2026 · v5 |
+| Host loudness, v5 (single-pass loudnorm + −2 dB limiter) | −14 LUFS / ≤ −1 dBTP | **−15.17 LUFS / −1.10 dBTP** → missed −14 (D-051 fix) | owner's MSI, 21 Nov 2026 · `out\loudness.json` |
+| Host loudness, v6 method (two-pass, `loud.py`) on the same line | −14 ±0.5 / ≤ −1.5 dBTP | **−14.05 LUFS / −2.1 dBTP after AAC**, linear mode (gain +14.7 dB, limiter −2.5 dBTP) | cloud workspace, 21 Nov 2026, FFmpeg — **not the laptop**; laptop value comes with v6 |
 | ffmpeg NVENC assemble time for 90 s | < 30 s | | |
 
 ## 4. Checks to run (M1 bake-off)
@@ -80,6 +87,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | 17 Nov 2026 | Laptop render runs | Pending — chat bridge can move files but not run commands | Owner: `python bakeoff.py all` |
 | 20 Nov 2026 | M1 kit run, Laptop 1 (`bakeoff.py all`) | Done: Cycles 44.8 min, Eevee 14.5 min, three.js 9 s for the 20 s shot; NVENC + x264 both OK; Kokoro + Piper OK; 3 blind clips. Method C (AI) not run. 1080p not timed | T1 on the phone; owner picks D-024/D-045; 1080p + Method C pending |
 | 20 Nov 2026 | Encode | Pascal NVENC (p5 cq 23) files 2.4–9× larger than x264 veryfast crf 23 and not faster at 20 s | Re-measure on a 90 s assemble in R1; default encoder per D-045 |
+| 21 Nov 2026 | M1b host kit v1–v5 previews, Laptop 1 (`m1b.py all --preview`) | 5 preview rounds 23:37 → 03:53 IST; v5: no failed parts, QA pass, but −15.17 LUFS (target −14) and ΔE on rendered px info-only | D-051: two-pass loudness, body-vs-plate gate + outline, per-clip manifests; owner runs `m1b.py t1b` (v6, 720p) |
 
 ## 6. Known setup facts
 - Book PDF: Langman 14e, 429 pp, ~211 MB; in Drive › Projects › Embryo Studio › book/ (uploaded 17 Nov 2026; keep private).
@@ -93,4 +101,5 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 
 ## 7. Laptop layout + M1 kit (D-023)
 The **Studio home** can be any folder (D-025): kit paths are relative to the kit; Blender is found on PATH, in `C:\Program Files\Blender Foundation\` or in `<Studio home>\apps\blender*`. Owner's: `D:\Projects\biology_studio\` → `tools\m1-bakeoff\` (kit; later the repo's `tools/`) · `apps\` (Blender portable, ComfyUI — GPL/heavy, never in the repo) · `models\` (TTS voices, AI weights; laptop-only, F4) · `repo\biology-studio\` (from A0). Kit output stays in `tools\m1-bakeoff\out\` (never committed).
+**Host kit (M1b, D-048/D-049/D-051):** Studio home `tools\m1b-host\` (runs there; the repo `tools/m1b-host/` holds the same files as the record): `host.json` (one spec) · `lipsync.py` (Kokoro → visemes) · `tex.py` (our textures) · `blender_host.py` (model, cloth sim, plates, probes) · `captions.py` (ASS + VTT, EN/HI) · `de.py` (ΔE00, CVD) · `loud.py` (two-pass loudness) · `m1b.py` (runner; `t1b` = what owner check T1b needs). Output `out\` (never committed) → `out\for_drive\` = this version only, one manifest per clip.
 Kit: `shot.json` (one spec) + `common/scene_math.py` (shared geometry; `B_three/shot.js` mirrors it) + `common/overlay.py` (identical day stamp, colour key, scale bar, axis gizmo, labels on every method) → `A_blender/` (Cycles OptiX→CUDA fallback, Eevee; 64 spp; Standard view transform) · `B_three/` (three r170 vendored via npm, Playwright headless, logs the WebGL renderer) · `C_ai/` (Wan 2.2 TI2V-5B in ComfyUI, start image = three.js frame 0, seed 1517) · `D_tts/` (Kokoro + Piper) → `bakeoff.py` (hw, renders, NVENC + x264 encodes, manifests, blind clip-A…D for T1, `RESULTS.md`). Debug (RULES §I): run one step only (`bakeoff.py <step>`), `quick` (every 12th frame), `--every N`, `record.mjs --headed`, `common/preview2d.py` (flat preview, no GPU). Playwright is already in the kit, so `tools/layout-check` (A0) adds no new dependency.

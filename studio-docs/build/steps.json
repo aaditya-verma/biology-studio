@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Build · L1 learning core — L1 → owner check (T7), gates pass, D-050, V2 prompt; lock released",
+ "updated": "21 Nov 2026 · Bio · Build · M1b host results — kit v6 fixes (D-051), G-Art iterate / G-A11y open (R5), T1b moved to the v6 720p run; lock released",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -215,30 +215,36 @@
    "id": "M1b",
    "title": "M1b host shot — host design + 5-s 9:16 test",
    "type": "Build",
-   "chat": "Bio · Build · M1b host shot",
+   "chat": "Bio · Build · M1b v6 results",
    "status": "in progress",
    "needs": ["M1"],
    "unblocks": ["P1"],
    "lock": true,
-   "gates": {"G-Art": "open", "G-A11y": "open"},
+   "gates": {"G-Art": "fail", "G-A11y": "open"},
    "check": {"id": "T1b", "state": "open", "since": "2026-11-20"},
-   "decisions": ["D-024", "D-032", "D-041", "D-048", "D-049", "D-047"],
-   "prompt": "M1b Step 2b",
-   "log": "20 Nov 2026 · M1b Step 2 — host Nani Koshika (D-048); kit tools/m1b-host written (no laptop shell → owner runs the render); G-Art R1 pre-render: cannot judge yet; T1b open",
+   "decisions": ["D-024", "D-032", "D-041", "D-047", "D-048", "D-049", "D-051"],
+   "prompt": "M1b Step 2c",
+   "log": "21 Nov 2026 · M1b host results — kit v6: two-pass loudness, body-vs-plate gate (all probes), per-clip manifests, t1b step, --onion, R5 knob round (D-051); G-Art R5 iterate, G-A11y can't pass until v6; T1b reply not received",
    "todo": [
-    "Run tools/m1b-host on the laptop (README): selftest → all --preview → all; upload for_drive to Drive › renders/bakeoff/host",
-    "Blender scene untested in the sandbox — first run may need one fix round (--debug)",
-    "Devanagari caption line untested (needs Noto Sans Devanagari + raqm on the laptop) — G-Art MUST",
-    "G-Art R1 open items: upper-lid caps instead of scaled eyes; --onion overlay of sheet vs reference; embroidery #C9A27A vs endoderm in the manifest",
+    "G-Art R5 (iterate) not fixed blind: mouth reads as a moustache; glasses temples stick out past the head, chain not visible; shawl hangs like a cape behind her (should wrap the shoulders); embroidery reads as dots, not vines; crown blows out in shot B — check after v6",
+    "Caption band 55–65 % (visual-style §1) sits over the book + hands; reviewer asks lower third — decide with the owner before P1",
+    "If v6 'Host vs plate' still FAILs after the lamp-B move: turn on quality.outline (built, off) or darken the plate behind the crown",
+    "Onion side board: match the reference's turn before aligning; use silhouette masks for the edge layer",
+    "Embroidery vs endoderm: measure at 720p (v5 preview 7.8 vs endo-e is sub-pixel noise); gate in P1 when endoderm is on screen with her",
+    "Reduced-motion render (_rm) + a one-line note of what it changes (G-A11y); caption reading-speed check; landscape/tablet framing (C13) before P1",
+    "Listen for clipped plosives (limiter takes ~2–4 dB off the peaks)",
+    "Repo tools/m1b-host/: delete the old never-run kit files host.py + spec.py (replaced by m1b.py + host.json, D-051); run from Studio home tools\\m1b-host until M1b is done",
     "Add cam_lesson (16:9) to the host scene before P1 (visual-style §10, one scene two cameras)",
-    "Fill pipeline reference §3 host rows from RESULTS.md (Step 2b)",
-    "If T1b look/face ≤ 2 → one tune round, else paid H-c options (D-049, F2)"
+    "If T1b look/face ≤ 2 after one tune round → H-c paid options (costs re-checked in D-051, F2)"
    ],
    "inputs": [
     {"id": "M1b.q1", "kind": "decide", "ask": "Pick the host (concepts A–G or a Canva render)", "asked_in": "Bio · Build · M1b host shot", "asked": "2026-11-20", "answer": "Nani Koshika; reference Canva turnaround MAHbd5r-vTY", "status": "answered", "d": "D-048"},
     {"id": "M1b.q2", "kind": "decide", "ask": "Pick the host voice V-a / V-b", "asked_in": "Bio · Build · M1b host shot", "asked": "2026-11-20", "answer": "V-a Kokoro af_heart, speed 0.9", "status": "answered", "d": "D-048"},
-    {"id": "M1b.q3", "kind": "action", "ask": "Run tools\\m1b-host (README: fonts + pip, selftest, all --preview, all), upload for_drive to Drive › renders/bakeoff/host, then do T1b and reply in one message", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-049"},
-    {"id": "M1b.q4", "kind": "decide", "ask": "Confirm route H-a (3D Nani in Blender) after T1b, or pick H-c paid (Hedra / Kling / Runway, costs in D-049)", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-049"}
+    {"id": "M1b.q3", "kind": "action", "ask": "Run tools\\m1b-host (README: fonts + pip, selftest, all --preview, all), upload for_drive to Drive › renders/bakeoff/host, then do T1b and reply in one message", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": "v1–v5 previews run 20–21 Nov (owner); superseded by M1b.q5 (v6 t1b run)", "status": "closed", "d": "D-049"},
+    {"id": "M1b.q4", "kind": "decide", "ask": "Confirm route H-a (3D Nani in Blender) after T1b, or pick H-c paid (Hedra / Kling / Runway, costs in D-049)", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-049"},
+    {"id": "M1b.q5", "kind": "action", "ask": "Run `python m1b.py t1b` in Studio home tools\\m1b-host (~10–20 min, plugged in), upload the FILES inside out\\for_drive\\ (not the folder) to Drive › renders › bakeoff › host, do T1b, and reply in one message with the scores, notes, host OK y/n and RESULTS.md", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-051"},
+    {"id": "M1b.q6", "kind": "decide", "ask": "Voice speed: keep Kokoro speed 0.66 (143 wpm, what the kit uses) or D-048's 0.9 (213 wpm, too fast for H6)? Recommended: 0.66", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-048"},
+    {"id": "M1b.q7", "kind": "decide", "ask": "Caption band: keep 55–65 % from the top (visual-style §1) or move host-shot captions to the lower third, above the app buttons (G-Art R5)?", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-051"}
    ]
   },
   {

@@ -1,34 +1,55 @@
-# M1b host-shot kit — Nani Koshika, route H-a (3D in Blender)
+# M1b host-shot kit — Nani Koshika, shot M1b-hs01
 
-*(Purpose: make the M1b Step 2 test — character sheet (front, side, 6 expressions) + one 5-s 9:16 two-angle shot of the host saying "What if a flat disc had to build a whole body?", lip-synced to Kokoro `af_heart` ×0.9, with kinetic captions (Latin + one Devanagari line). Owner docs: `studio-docs/build/studio-playbook.md` §5b, `build/visual-style.md`, DECISIONS D-048/D-049, owner check T1b. Created 20 Nov 2026 · Bio · Build · M1b host shot (Step 2).)*
+*(Purpose: make the 5-s 9:16 host test shot on Laptop 1. Owner docs: `build/studio-playbook.md` §5b (host), `build/visual-style.md` (look), `build/pipeline-reference.md` §7 (kit layout). Updated: 21 Nov 2026 · Bio · Build · M1b host results — v6: `t1b` one-run step, two-pass loudness (`loud.py`), body-vs-plate gate + ink outline, per-clip manifests, `--onion` (D-051). Made: 20 Nov 2026 · Bio · Build · M1b host shot.)*
 
-| File | What it does |
+**Where it runs:** Studio home `tools\m1b-host\` (paths to `apps\` and `handoff\` are relative to it). The repo copy `tools/m1b-host/` is the versioned record of the same files.
+
+Our own 3D host in Blender (route H-a, D-047): same mesh, materials and seed from every angle, so the identity holds by construction. No AI model in the shot. The Canva AI images are a look reference only.
+
+## Files
+| File | Does |
 |---|---|
-| `spec.py` | **Every value you may change** (`# EDIT:`) — line, voice, colours, expressions, performance, cameras, captions |
-| `host.py` | Runner: `check → tts → sheet → shot → captions → encode → report` |
-| `blender_host.py` | Runs inside Blender: builds Nani from primitives, face rig, lights, cameras; renders sheet / shot / ΔE masks |
-| `captions.py` | Kinetic captions (Pillow + raqm for Devanagari), safe-zone overlay |
-| `de.py` | ΔE00 vs D-031 tokens + accent in normal/deutan/protan/tritan vision |
+| `host.json` | The one spec: palette, line, voice, 2 shots, expressions, captions, safe zones, grade. **Edit here.** |
+| `lipsync.py` | Kokoro `af_heart` says the line → `line.wav`, word timings, per-frame visemes (phoneme shape × audio envelope). |
+| `blender_host.py` | Builds the host (v2: cloth-sim shawl + fringe, sculpted face, eyes with lids, oval glasses + chain, arms, leather book, library plate); renders the sheet (studio plate) or the shot (library plate). Every part is guarded → `out\build_log_<mode>.json`. |
+| `tex.py` | Generated textures (ours): shawl wool + cream vine embroidery, leather cover → `out\tex\`. |
+| `de.py` | ΔE00 vs the germ-layer tokens, worst of normal/deut/prot/trit (used by `palette`). |
+| `loud.py` | Two-pass loudness (H6, D-051): measure → gain + 4×-oversampled limiter → loudnorm `linear=true` → AAC → re-measure every mp4 (−14 LUFS ±0.5, true peak ≤ −1.5 dBTP). `python loud.py out\audio\line.wav` tests it alone. |
+| `captions.py` | Kinetic captions: ASS (burned) + VTT (app), EN and HI tracks, key word = colour + weight + scale. |
+| `m1b.py` | Runner: `check · tts · tex · sheet · shot · palette · captions · encode · report · compare` (+ QA in report). `t1b` = only what owner check T1b needs, one run at 720×1280. |
+| `sheet2d.py` | 2D model sheet v1 (the drawing the model follows; no Blender needed). |
 
-## One-time setup (~10 min) — reuses the M1 toolchain
-1. Blender 4.5 LTS is already in Studio home `apps\` (M1). If `host.py check` can't find it: `set BLENDER=D:\Projects\biology_studio\apps\<blender folder>\blender.exe`.
-2. Python venv from M1 (Kokoro already works there). Add: `pip install --upgrade pillow soundfile` (Pillow wheels bundle raqm, needed for Devanagari).
-3. Fonts (OFL, free) → `D:\Projects\biology_studio\apps\fonts\`: **Inter-Bold.ttf** (fonts.google.com/specimen/Inter → Get font → Download, unzip, take `static\Inter_24pt-Bold.ttf` and rename to `Inter-Bold.ttf`) and **NotoSansDevanagari-Bold.ttf** (fonts.google.com/noto/specimen/Noto+Sans+Devanagari → Download, take `static\NotoSansDevanagari-Bold.ttf`). Without them the kit falls back to Segoe UI Bold + Nirmala UI and says so in the manifest.
+Flags on every step (RULES I5): `--dry-run` (print, write nothing) · `--debug` (verbose + saves `out\debug\host_*.blend` to open and nudge `# EDIT:` values) · `--only A|B|<tile>` · `--preview` (360×640, 8 samples). Also `--cycles`, `--nvenc`, `--safe` (paints safe zones; review only), `--reduced-motion` (H5 variant), `--palette-pass` (Standard transform, for ΔE), `--no-sim` (procedural shawl, fast look-dev), `--strict` (stop on the first failing part), `--onion` (compare: ours at 50 % over the ref, silhouettes aligned → `out\review\onion_*.png`).
 
-## Run (Anaconda Prompt, venv on, `cd D:\Projects\biology_studio\repo\biology-studio\tools\m1b-host`)
-1. `python host.py selftest` — 1 s, no GPU: captions + visemes + ΔE helper → PASS.
-2. `python host.py check` — finds Blender, FFmpeg, Kokoro, fonts, GPU, the reference.
-3. `python host.py all --preview` — **smoke test, ~5–10 min**: 540×960, 16 samples. Look at `out\M1b-host01-preview\for_drive\`.
-4. `python host.py all` — the real run (1080×1920 master, 64 Eevee samples; expect ~10–25 min on the GTX 1060). Leave it plugged in.
-- One part only: `python host.py sheet --only doubt` · `python host.py shot --only B` · `python host.py captions --safe` (draws safe zones).
-- Every step: `--dry-run` (print the plan) · `--debug` (verbose; saves `host_*.blend` so you can open the scene in Blender) · `--only` · `--preview`.
-- Cycles instead of Eevee: `ENGINE = "CYCLES"` in `spec.py` (~3× slower, better glass).
+**Quality pass (v2):** all new knobs live in `host.json` → `quality` (tex, shawl, face, arms, book, plate). The cloth sim result is cached in `out\cache\shawl_<hash>.json` and re-used until a shawl/arm/book/body value changes. `compare` writes `out\review\compare_sheet.png`, `compare_shot.png`, `compare_expressions.png` (ours vs the Canva refs, local only).
 
-## What you get (`out\M1b-host01\` — never committed)
-- `for_drive\M1b-host01_character-sheet.png` — front, side, 6 expressions (incl. open-eye surprise + doubt), palette, measured ΔE00.
-- `for_drive\M1b-host01_720x1280_captioned.mp4` (ship) · `_clean.mp4` (no captions; the app toggles a VTT) · `_1080x1920_captioned_master.mp4` · `.en.vtt`.
-- `for_drive\M1b-host01_manifest.json` (H7: scene hash, tools, GPU, settings, seed, voice, timings, ΔE, licences, AI disclosure) · `RESULTS.md` (paste into the next chat).
-- Upload `for_drive\` to **Drive › Biology Studio › renders › bakeoff › host**, then do owner check **T1b**.
+## Setup (once, ~10 min)
+1. Copy this folder to `D:\Projects\biology_studio\tools\m1b-host\` (the chat already put it there).
+2. **Fonts (OFL, free):** download **Inter** (static: Regular, Bold, Black) and **Noto Sans Devanagari** (Bold) from fonts.google.com. Unzip the `.ttf`/`.otf` files into `D:\Projects\biology_studio\apps\fonts\`.
+3. Same `bio` conda env as M1 (Kokoro, soundfile, numpy, pillow). Blender 4.5 LTS and FFmpeg 7.1.1 as in M1.
+4. `python m1b.py check`: the output should show Blender, ffmpeg, libass `yes`, your GPU, the fonts, and `kokoro`.
 
-## If something breaks
-First run of a new Blender scene may need a fix round: run with `--debug`, copy the last 30 lines of the window into the chat.
+## Run (Anaconda Prompt → `conda activate bio` → `cd D:\Projects\biology_studio\tools\m1b-host`)
+1. **For T1b: `python m1b.py t1b`** — one run, 720×1280: tex → sheet → shot → palette → captions → encode → report → compare (~10–20 min on the GTX 1060; keep it plugged in). Re-uses `out\audio\line.wav` (voice unchanged).
+2. Look-dev only: `python m1b.py all --preview` (360×640, ~3–5 min).
+3. Optional: `python m1b.py shot --reduced-motion`, then `captions --reduced-motion`, then `encode --reduced-motion`.
+4. Optional: `python m1b.py compare --onion` for the onion boards.
+
+## What the gates check (report → QA)
+- **Loudness:** every mp4 −14 LUFS ±0.5 and true peak ≤ −1.5 dBTP, measured after AAC.
+- **Host vs plate (G-A11y):** the body edge must reach ≥ 3:1 against the real background behind it (sheet front + the middle frame of each shot camera) on ≥ 90 % of edge samples. The ink outline (`host.json → quality.outline`) is what makes it pass in front of a light lamp shade.
+- **Colour vs germ-layer tokens:** swatches ≥ 15 always; rendered pixels gated only for tokens on screen in the shot (`tokens_on_screen`, [] = info). Embroidery thread vs endoderm is measured on rendered pixels and listed.
+- **Captions:** scrim contrast ≥ 4.5:1 for text and key word on the brightest frame behind them.
+
+## Send back
+- Paste `out\RESULTS.md` into the chat (it lists QA pass/fail, loudness per clip, ΔE, host-vs-plate, sizes).
+- **Upload the files inside `out\for_drive\`, not the folder itself**, to Drive › renders › bakeoff › host. It holds this version only: 3 clips (cap-en, cap-hi, clean), one `.manifest.json` per clip, the 2 sheets, the VTTs and RESULTS.md. Older versions stay in `out\video\` on the laptop (never overwritten).
+- Then do owner check **T1b** (`build/owner-test-checklist.md`).
+
+## If something looks wrong
+- **Face too high or low, or covered by captions:** change `face_at_pct` (add it to host.json, default 38) or the shot `dist`/`lens_mm`.
+- **Mouth out of sync:** raise or lower `line.voice.speed`; check `out\audio\words.json` says `timings: kokoro`.
+- **Grade missing:** `render_stats_*.json` shows `"grade": "skipped: …"` and QA fails. Paste the error into the chat.
+- **Devanagari shows boxes:** the font is missing from `apps\fonts\`.
+- **A part failed (RESULTS says `failed parts [...]`):** paste the `PART FAILED` lines from the console (or `out\build_log_*.json`). The render still ran without that part.
+- **Shawl looks wrong after a change:** delete `out\cache\` to force a fresh sim; `--no-sim` shows the pre-sim drape.

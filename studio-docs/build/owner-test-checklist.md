@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Build · L1 learning core — T7 written. Before: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Build · M1b host results — T1b rewritten for the kit that actually runs (`m1b.py t1b`, v6, D-051). Before: 21 Nov 2026 · Bio · Build · L1 learning core — T7 written. Before: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -48,20 +48,21 @@ Open the app **without** `?test=1`: https://aaditya-verma.github.io/biology-stud
 ## T3d. Ch 6–8 cards *(phone, tablet, laptop)* — PLANNED (C2 writes the steps, like T3c)
 - **Result:** ☐ pass ☐ problems · notes: ___
 
-## T1b. Host shot: Nani Koshika test *(~15 min laptop run + ~10 min phone, tablet/laptop)* — OPEN (M1b Step 2, 20 Nov 2026)
-Host picked: **Nani Koshika** (D-048), voice Kokoro `af_heart` ×0.9, route H-a = our 3D model in Blender (D-049).
-Before: run the kit — `repo\biology-studio\tools\m1b-host\README.md` (setup ~10 min: fonts + `pip install --upgrade pillow soundfile`). Then `python host.py selftest` → `python host.py all --preview` (~5–10 min) → if it looks sane, `python host.py all` (~10–25 min, plugged in). If a step fails, paste the last 30 lines into the chat.
-1. Upload `out\M1b-host01\for_drive\` to Drive › Biology Studio › renders › bakeoff › host.
-2. **Sheet** (`…_character-sheet.png`) on the phone: is it clearly Nani from the reference (egg body, wine shawl + fringe, round spectacles on a chain, book)? Front and side the same character? Are all 6 faces readable at phone size — neutral, warm smile, **open-eye surprise**, **doubt**, laugh, thinking?
-3. **Shot** (`…_720x1280_captioned.mp4`), full screen, sound on, then sound off:
-   - Same Nani in both angles (cut at 2.5 s)? Lips match the words? Blinks feel natural?
-   - Light: warm, cinematic, soft background; nothing flickers.
-   - Captions: one phrase at a time, key words on a pearl pill, the Hindi line "चपटी डिस्क से पूरा शरीर?" from 2.5 s, all clear of the app buttons (bottom + right).
-   - Voice: pace OK (130–150 wpm), warm, no odd sounds.
-4. Against **QR01/QR02** (quality-references §1): would a student stop scrolling for this? Score 1–5 for look, face, lip-sync, captions.
-5. Once on a tablet (both orientations) and once on the laptop: nothing blurry or oversized.
-6. Reply in one message: pass / problems + the 4 scores + notes. If look or face scores ≤ 2, the chat brings the paid options (H-c, costs in DECISIONS D-049) for you to pick.
-- **Result:** ☐ pass ☐ problems · scores look _ / face _ / lip-sync _ / captions _ · notes:
+## T1b. Host shot: Nani Koshika test *(~15–20 min laptop run + ~10 min phone, tablet/laptop)* — OPEN (M1b, rewritten 21 Nov 2026 for v6, D-051)
+Host: **Nani Koshika** (D-048), voice Kokoro `af_heart`, route H-a = our 3D model in Blender (D-049). The v5 preview (360p) is not enough: T1b runs on the v6 720p render.
+**Before:** Anaconda Prompt → `conda activate bio` → `cd D:\Projects\biology_studio\tools\m1b-host` → **`python m1b.py t1b`** (one run, ~10–20 min, plugged in). If a step fails, paste the last 30 lines into the chat.
+1. Upload **the files inside** `tools\m1b-host\out\for_drive\` — not the folder — to Drive › renders › bakeoff › host. It holds v6 only: `M1b-hs01_v6_720p_cap-en.mp4`, `_cap-hi.mp4`, `_clean.mp4`, one `.manifest.json` per clip, `sheet_portrait.png`, `sheet_landscape.png`, the VTTs, `RESULTS.md`. (Optional tidy: move the old v1–v5 files on Drive into a folder `old`.)
+2. **Sheet** (`sheet_portrait.png`) on the phone: clearly Nani from the reference (pearl egg body, wine shawl + fringe + pale vines, oval glasses on a chain, book)? Front and side the same character? All 6 faces readable at phone size — warm, curious, delighted, surprised (wide eyes from the lids), thinking, tsk?
+3. **Shot** (`…_cap-en.mp4`), full screen, sound on, then sound off:
+   - Same Nani in both angles (cut at 2.6 s)? Lips match the words? Blinks natural?
+   - Light warm and cinematic; nothing flickers. In the second angle her head stands clear of the lamp (thin dark edge on the body is new — does it look natural or like a cartoon line?).
+   - Captions: one phrase at a time, key word "whole body" highlighted, all clear of the app buttons (bottom + right).
+   - Voice: pace OK (about 143 wpm), warm, no odd sounds; level about the same as other videos on your phone.
+4. **Hindi** (`…_cap-hi.mp4`): "अगर एक चपटी डिस्क को / पूरा शरीर बनाना पड़े तो?" — letters joined right (no boxes, no broken matras), key "पूरा शरीर" highlighted. (Audio is still English — a Hindi voice is a later step.)
+5. Against **QR01/QR02** (quality-references §1): would a student stop scrolling? Score 1–5 for look, face, lip-sync, captions.
+6. Once on a tablet (both orientations) and once on the laptop: nothing blurry or oversized.
+7. Reply in one message: pass / problems + the 4 scores + host OK y/n + notes, and paste `RESULTS.md`. If look or face ≤ 2 after one tune round, the chat brings the paid options (H-c, D-049/D-051 costs).
+- **Result:** ☐ pass ☐ problems · scores look _ / face _ / lip-sync _ / captions _ · host OK ☐ y ☐ n · notes:
 
 ## T1. Bake-off: pick the renderer + voice *(~10 min on the phone + ~3 min tablet/laptop)* — OPEN (M1, 20 Nov 2026)
 Before: the laptop run is done (20 Nov). Upload `D:\Projects\biology_studio\tools\m1-bakeoff\out\for_drive\` (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff. Keep `out\blind_key.json` closed.
