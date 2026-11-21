@@ -3,7 +3,7 @@
  "id": "E06.02.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Three strips of mesoderm",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe how mesoderm beside the midline divides into three strips and what each strip builds."
  },
  "body": {
-  "general": "What happens to the middle layer beside the embryo's midline? By about day 17, this mesoderm (the middle germ layer) thickens into paraxial mesoderm [f1]. Further out it stays thin, as the lateral plate [f2]. A narrow strip, intermediate mesoderm, links the two [f3]. Paraxial mesoderm will break into paired blocks called somites [f4]. Intermediate mesoderm will build the kidneys and sex glands [f5]. The lateral plate splits into two layers [f6]. One builds the limb skeleton [f7]; the other wraps the gut [f8].",
+  "general": "What happens to the middle layer beside the embryo's midline? By about day 17, this mesoderm (the middle germ layer) thickens into paraxial mesoderm [f1]. Further out it stays thin, as the lateral plate [f2]. A narrow strip, intermediate mesoderm, links the two [f3]. Paraxial mesoderm will break into paired blocks called somites [f4]. Intermediate mesoderm will build the kidneys and sex glands, or gonads [f5]. The lateral plate splits into two layers [f6]. The outer one builds the limb skeleton [f7]; the inner one wraps the gut [f8].",
   "mbbs": "By about day 17, intraembryonic mesoderm next to the midline thickens into paraxial mesoderm [f1]. More laterally it stays thin as the lateral plate mesoderm [f2]. Intermediate mesoderm is the narrow strip joining the two [f3]. Paraxial mesoderm goes on to form somites, paired blocks flanking the neural tube [f4]. Intermediate mesoderm gives the urogenital system, including the excretory units of the kidney and the gonads [f5]. Cavities in the lateral plate merge and split it into two layers [f6]. The parietal (somatic) layer forms limb bones and connective tissue, the dermis of the limbs and body wall, and the sternum [f7]. The visceral (splanchnic) layer joins the endoderm to form the gut wall [f8]."
  },
  "facts": [
@@ -59,14 +59,14 @@
   },
   {
    "id": "f7",
-   "text": "The parietal layer of the lateral plate forms limb bones and connective tissue, limb and body-wall dermis, and the sternum.",
+   "text": "The parietal (outer) layer of the lateral plate forms limb bones and connective tissue, limb and body-wall dermis, and the sternum.",
    "cite": "E06.02",
    "mark": "✔",
    "where": "main"
   },
   {
    "id": "f8",
-   "text": "The visceral layer of the lateral plate, with the endoderm, forms the gut wall.",
+   "text": "The visceral (inner) layer of the lateral plate, with the endoderm, forms the gut wall.",
    "cite": "E06.02 · E07",
    "mark": "✔",
    "where": "main"
@@ -79,7 +79,8 @@
    "E.t.lateral-plate-mesoderm"
   ],
   "known": [
-   "E.t.mesoderm"
+   "E.t.mesoderm",
+   "E.t.somites"
   ]
  },
  "misconceptions": [
@@ -93,7 +94,7 @@
   {
    "id": "m2",
    "wrong": "Somites are segments of the neural tube.",
-   "right": "Somites are blocks of paraxial mesoderm lying beside the neural tube.",
+   "right": "Somites are blocks of paraxial mesoderm lying beside the neural tube (future spinal cord).",
    "cite": "E06.02",
    "mark": "✔"
   }
@@ -114,7 +115,7 @@
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "Which strip builds the kidneys' excretory units and the gonads?",
+   "prompt": "Which strip builds the kidneys and the sex glands?",
    "options": [
     "Paraxial mesoderm",
     "Intermediate mesoderm",
@@ -122,7 +123,7 @@
     "Somites"
    ],
    "answer": 1,
-   "why": "Intermediate mesoderm forms the urogenital system.",
+   "why": "Intermediate mesoderm forms the urinary and genital organs.",
    "tests": "objective"
   },
   {
@@ -132,11 +133,11 @@
    "options": [
     "Somites",
     "Intermediate mesoderm",
-    "The parietal layer of the lateral plate",
+    "The outer layer of the lateral plate",
     "The neural tube"
    ],
    "answer": 2,
-   "why": "The parietal layer of the lateral plate makes limb bones and connective tissue; somites add only the limb muscles.",
+   "why": "The outer layer of the lateral plate makes limb bones and connective tissue; somites add only the limb muscles.",
    "tests": "objective",
    "refutes": "m1"
   }
@@ -151,7 +152,7 @@
   {
    "id": "r2",
    "q": "What does intermediate mesoderm build?",
-   "a": "The urogenital system: the kidney's excretory units and the gonads [f5]."
+   "a": "The kidneys and the sex glands (gonads) [f5]."
   },
   {
    "id": "r3",
@@ -173,11 +174,40 @@
   "date": "21 Nov 2026"
  },
  "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-3 fix landed: m2 glosses neural tube. Fresh pass: General 81/90, three-strip order check has no cue words, all names taught or glossed. Pass."
+  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -219,36 +249,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: body.mbbs.7 now matches f7 (limb connective tissue; dermis of limbs and body wall). Facts, cites and marks match the dossier."
+   "notes": "Round-3 G-Sci fixes landed: f7 parietal (outer), f8 visceral (inner) now carry body.general.8, q3, adult. m2 gloss right. Nothing left."
   },
-  "G-Learn": {
-   "result": "fail",
+  "G-A11y": {
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
    "date": "21 Nov 2026",
    "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": false,
-    "budget": true,
-    "adult": true
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
    },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "fix: prompt names 'the kidneys' excretory units and the gonads', but General says 'kidneys and sex glands' (ruling b). Use General words: 'Which strip builds the kidneys and the sex glands?'; why: 'forms the urinary and genital organs'.",
-    "q3": "fix: right option 'The parietal layer of the lateral plate' uses a name General never teaches (General: 'One builds the limb skeleton'). Name the parietal (outer) layer at General (76/90, room) or say 'The lateral plate's outer layer' in option and why.",
-    "m1": "ok",
-    "m2": "ok",
-    "r1": "ok",
-    "r2": "fix: answer 'urogenital system… excretory units… gonads' uses names not taught at General. Use 'The kidneys and the sex glands (gonads) [f5]' and gloss gonads at General ('sex glands, or gonads').",
-    "r3": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Round-1 had no fixes here. Fresh pass under ruling (b): q2, q3 and r2 lean on names (excretory units, gonads, parietal layer) that General gives only in plain words. Minor: somites still sits in neither terms list (taught by E06.01.02); add to known."
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -286,6 +302,56 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: gonads glossed and outer/inner lateral-plate layers at General; q2 prompt/why, q3 option/why, r2 in General words; somites added to terms.known",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f7/f8 say which layer is outer/inner (G-Sci); m2 glosses neural tube",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

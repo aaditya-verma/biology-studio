@@ -3,7 +3,7 @@
  "id": "E07.02.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Body wall and gut wall layers",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Distinguish the somatopleure from the splanchnopleure."
  },
  "body": {
-  "general": "Once the body cavity opens, the mesoderm around it is in two sheets [f1,f3]. Which sheet builds what? The outer sheet lies against the outer skin layer, the ectoderm [f1]. Together they are the somatopleure, which builds the body wall [f2]. The inner sheet lies against the gut lining, the endoderm [f3]. Together they are the splanchnopleure, which builds the gut wall [f4]. As the embryo folds, the inner sheet rolls in with the gut tube [f5]. The outer sheet and ectoderm form the side walls of the body [f5].",
+  "general": "Once the cavity opens, the middle layer (mesoderm) around it is in two sheets [f1,f3]. The outer sheet, the parietal layer, lies against the outer layer (ectoderm) and runs over the amnion [f1]. With the ectoderm it is the somatopleure, which builds the body wall [f2]. The inner sheet, the visceral (splanchnic) layer, lies against the inner layer (endoderm) and runs over the yolk sac [f3]. With the endoderm it is the splanchnopleure, which builds the gut wall [f4]. In folding, the inner sheet rolls in with the gut; the somatopleure forms the side walls [f5].",
   "mbbs": "The parietal (somatic) layer of lateral plate mesoderm lies next to the surface ectoderm [f1]. It is continuous with the extraembryonic mesoderm covering the amnion [f1]. Parietal mesoderm plus ectoderm form the somatopleure, which builds the body wall [f2]. The visceral (splanchnic) layer lies next to the endoderm [f3]. It is continuous with the extraembryonic mesoderm covering the yolk sac [f3]. Visceral mesoderm plus endoderm form the splanchnopleure, which builds the gut wall [f4]. During folding the visceral layer rolls ventrally with the gut tube [f5]. The parietal layer and ectoderm form the lateral body-wall folds [f5]."
  },
  "facts": [
@@ -72,32 +72,46 @@
  "misconceptions": [
   {
    "id": "m1",
-   "wrong": "The somatopleure is the same as the somites.",
-   "right": "The somatopleure is parietal mesoderm plus ectoderm (the body wall); somites are paraxial mesoderm.",
+   "wrong": "The somatopleure is the same as the somites (blocks beside the future spinal cord).",
+   "right": "The somatopleure is the parietal layer plus ectoderm (the body wall); somites are separate blocks beside the future spinal cord.",
    "cite": "E07.02, E06.02",
    "mark": "✔"
   },
   {
    "id": "m2",
    "wrong": "The somatopleure lines the gut.",
-   "right": "The splanchnopleure (visceral mesoderm plus endoderm) builds the gut wall; the somatopleure builds the body wall.",
+   "right": "The splanchnopleure (the visceral layer plus endoderm) builds the gut wall; the somatopleure builds the body wall.",
    "cite": "E07.02",
    "mark": "✔"
   }
  ],
  "checks": [
   {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which forms the lateral body-wall folds during folding?",
+   "options": [
+    "The somatopleure",
+    "The splanchnopleure",
+    "The hypoblast",
+    "The notochord"
+   ],
+   "answer": 0,
+   "why": "As the embryo folds, the somatopleure forms the side walls of the body.",
+   "tests": "objective"
+  },
+  {
    "id": "q1",
    "type": "mcq",
    "prompt": "Which pair makes up the somatopleure?",
    "options": [
-    "Parietal mesoderm and ectoderm",
-    "Visceral mesoderm and endoderm",
+    "The parietal layer and ectoderm",
+    "The visceral layer and endoderm",
     "Somites and ectoderm",
     "Paraxial mesoderm and endoderm"
    ],
    "answer": 0,
-   "why": "Somato- = body: the parietal layer and the ectoderm it touches, which build the body wall. Somites are a different strip.",
+   "why": "Somato- = body: the parietal layer and the ectoderm it touches. Somites are separate blocks.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -115,20 +129,6 @@
    "why": "That is the visceral layer; with the endoderm it is the splanchnopleure, the gut wall.",
    "tests": "objective",
    "refutes": "m2"
-  },
-  {
-   "id": "q3",
-   "type": "mcq",
-   "prompt": "Which forms the lateral body-wall folds during folding?",
-   "options": [
-    "The somatopleure",
-    "The splanchnopleure",
-    "The hypoblast",
-    "The notochord"
-   ],
-   "answer": 0,
-   "why": "The parietal layer and ectoderm swing ventrally as the side walls; the splanchnopleure rolls in with the gut.",
-   "tests": "objective"
   }
  ],
  "adult": "The somatopleure becomes the body wall and the splanchnopleure becomes the wall of the gut [f2,f4].",
@@ -136,17 +136,17 @@
   {
    "id": "r1",
    "q": "What is the somatopleure, and what does it build?",
-   "a": "Parietal mesoderm plus ectoderm; it builds the body wall [f2]."
+   "a": "The parietal layer plus ectoderm; it builds the body wall [f2]."
   },
   {
    "id": "r2",
    "q": "What is the splanchnopleure, and what does it build?",
-   "a": "Visceral mesoderm plus endoderm; it builds the gut wall [f4]."
+   "a": "The visceral layer plus endoderm; it builds the gut wall [f4]."
   },
   {
    "id": "r3",
-   "q": "Over which extraembryonic structure does each layer continue?",
-   "a": "Parietal layer over the amnion; visceral layer over the yolk sac [f1,f3]."
+   "q": "Over which sac does each layer run on?",
+   "a": "Parietal layer over the amnion (the fluid sac round the embryo); visceral layer over the yolk sac [f1,f3]."
   }
  ],
  "shows_up": [
@@ -161,11 +161,40 @@
   "date": "21 Nov 2026"
  },
  "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 6, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q3": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-5 fix landed: m1 says 'future spinal cord', no neural tube. Fresh pass: General 90/90, mesoderm/ectoderm/endoderm glossed, somatopleure and splanchnopleure taught; run order q3,q1,q2 has no give-away; r3 glosses amnion. Pass."
+  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 6, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -182,8 +211,6 @@
     "body.general.4": "ok",
     "body.general.5": "ok",
     "body.general.6": "ok",
-    "body.general.7": "ok",
-    "body.general.8": "ok",
     "body.mbbs.1": "ok",
     "body.mbbs.2": "ok",
     "body.mbbs.3": "ok",
@@ -204,36 +231,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: the unsupported 'somites are paraxial mesoderm' body sentence is gone (m1 carries it). Fresh read: layers, continuities and ✔✔ marks (R06 CS9) match the dossier."
+   "notes": "Round-3 m1 edit ('future spinal cord') correct. f1–f4 ✔✔ R06 CS9, f5 ✔ match dossier E07.02.02; body, adult, r1–r3 carried. Nothing left."
   },
-  "G-Learn": {
-   "result": "fail",
+  "G-A11y": {
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
    "date": "21 Nov 2026",
    "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": false,
-    "budget": true,
-    "adult": true
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
    },
-   "lines": {
-    "obj": "ok",
-    "terms": "fix: new term E.t.visceral-splanchnic-layer is never named at General (only 'inner sheet'). root fix: General calls the layers only 'outer sheet' and 'inner sheet'; name them there, e.g. 'the outer sheet, the parietal layer' and 'the inner sheet, the visceral (splanchnic) layer'.",
-    "q1": "fix: (1) options are 'parietal/visceral mesoderm', names General never uses (root fix: General calls the layers only 'outer sheet' and 'inner sheet'; name them there, e.g. 'the outer sheet, the parietal layer' and 'the inner sheet, the visceral (splanchnic) layer'). (2) give-away: the why says the somatopleure layers 'build the body wall', which answers q3 (which forms the body-wall folds); q2's why also leaves only the somatopleure for q3. Cleanest: move q3 to first place, or drop 'which build the body wall' from this why.",
-    "q2": "fix: the prompt's clue 'runs on over the yolk sac' is not taught at General (no level-1 sentence says the layers continue over the yolk sac and amnion). Add that at General or drop the clause and keep 'lies against the endoderm'.",
-    "q3": "ok",
-    "m1": "fix: 'somites' and 'paraxial mesoderm' are not taught at General. Add a plain clause at General (e.g. 'not the somites, the blocks beside the neural tube') or reword the right side in plain words.",
-    "m2": "fix: 'visceral mesoderm' is not named at General (root fix: General calls the layers only 'outer sheet' and 'inner sheet'; name them there, e.g. 'the outer sheet, the parietal layer' and 'the inner sheet, the visceral (splanchnic) layer').",
-    "r1": "fix: answer uses 'parietal mesoderm', not named at General (same root fix).",
-    "r2": "fix: answer uses 'visceral mesoderm', not named at General (same root fix).",
-    "r3": "fix: tests the amnion / yolk-sac continuity (f1, f3), which General never teaches; add one General sentence on it (trim elsewhere; 83/90 now) or replace r3.",
-    "shows_up": "ok"
-   },
-   "notes": "Fail, mostly one root cause: General says 'outer/inner sheet' but Checks, Remember and misconceptions use parietal/visceral; name them at General. Plus the q1 why gives away q3 (reorder), and the amnion/yolk-sac continuity is tested but not taught at General."
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -271,6 +284,96 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General names the parietal and visceral (splanchnic) layers and their run over the amnion and yolk sac (clears terms, q1, q2, m2, r1, r2, r3); q3 moved first and its why no longer names the layers; q1 why drops \"build the body wall\"; m1 glosses somites in place",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: r3 prompt drops \"extraembryonic\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 8 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General glosses mesoderm, ectoderm, endoderm (q1, q2, m1, m2, r1, r2); r3 glosses amnion",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: m1 says \"future spinal cord\" not neural tube",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 6)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

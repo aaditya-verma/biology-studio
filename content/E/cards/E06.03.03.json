@@ -3,7 +3,7 @@
  "id": "E06.03.03",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "What endoderm builds",
  "tier": "A",
  "objective": {
@@ -100,7 +100,7 @@
   {
    "id": "m1",
    "wrong": "The bladder is mesoderm like the rest of the urogenital system.",
-   "right": "Its lining is endoderm, from the cloaca; kidneys, gonads and ducts are mesoderm.",
+   "right": "Its lining is endoderm, from the cloaca (the shared end chamber of the gut); kidneys, gonads and genital ducts are mesoderm (the middle germ layer).",
    "cite": "E06.03, E06.06",
    "mark": "✔"
   },
@@ -124,7 +124,7 @@
     "The heart muscle"
    ],
    "answer": 0,
-   "why": "The bladder lining is endoderm; kidney tubules are mesoderm and the epidermis is ectoderm.",
+   "why": "The bladder lining is endoderm; kidney tubules are mesoderm (middle layer) and the epidermis is ectoderm (outer layer).",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -139,7 +139,7 @@
     "The nerves"
    ],
    "answer": 1,
-   "why": "Endoderm gives the parenchyma, the working cells; vessels and connective tissue come from mesoderm.",
+   "why": "Endoderm gives the parenchyma, the working cells; vessels and connective tissue come from mesoderm (the middle layer).",
    "tests": "objective"
   },
   {
@@ -188,16 +188,16 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
     "checks": true,
     "refutes": true,
-    "terms": false,
+    "terms": true,
     "budget": true,
     "adult": true
    },
@@ -207,20 +207,20 @@
     "q1": "ok",
     "q2": "ok",
     "q3": "ok",
-    "m1": "fix: 'cloaca' unglossed and 'urogenital system' not in General words (ruling b). Write 'Its lining is endoderm, from the cloaca (the shared end chamber of the gut); kidneys, gonads and genital ducts are mesoderm.'",
+    "m1": "ok",
     "m2": "ok",
     "r1": "ok",
     "r2": "ok",
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Round-1 fixes landed: objective no longer gives away q2; tympanic cavity and auditory tube named at General; primordial germ cells dropped from new. Only the m1 gloss is left. Minor: the card now teaches urethra, tympanic cavity and auditory tube with terms.new empty."
+   "notes": "Round-3 fixes landed: mesoderm/ectoderm glossed in q1/q2 whys and m1. Fresh pass: General 71/90, parenchyma glossed in q2 why. Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -264,7 +264,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fixes landed: f7 and f9 cite E06.03 only; R05o kept only on f8, f10, m2. Derivatives match the dossier; ✔✔ on f10/m2 has its Tier 1 source."
+   "notes": "Round-3 mesoderm/ectoderm glosses right. Endoderm derivatives and yolk-sac roles right vs dossier E06.03.03; ✔✔ f10/m2 via R05o. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -297,6 +312,56 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: m1 glosses cloaca, plain urinary/genital words; terms.new stays empty: urethra, tympanic cavity and auditory tube have no id in index/terms.json (I1 to-do)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: mesoderm/ectoderm glossed in q1, q2 whys and m1",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

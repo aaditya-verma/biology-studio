@@ -3,7 +3,7 @@
  "id": "E06.03.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Body folding",
  "tier": "A",
  "objective": {
@@ -12,7 +12,7 @@
  },
  "body": {
   "general": "How does a flat sheet become a curled body? The brain and neural tube (future spinal cord) grow fast and lengthen [f1]. This makes the flat disc bulge into the fluid sac above it, the amniotic cavity [f1]. Head and tail then swing underneath, curling the embryo up [f2]. Meanwhile the two sides fold down and meet in front, closing the front body wall [f4]. It stays open only at the future navel [f5]. Folding tucks part of the yolk sac inside as gut; the rest stays outside on a stalk, the vitelline duct [f7].",
-  "mbbs": "Rapid growth of the brain and lengthening of the neural tube make the flat disc bulge into the amniotic cavity [f1]. Head and tail folds swing ventrally, and the embryo curls into the fetal position [f2]. Folding is under way by days 24–25, and the body is tightly C-shaped by days 31–35 [f3]. At the same time two lateral body-wall folds move ventrally and close the ventral body wall [f4]. The wall stays open only at the umbilical region, where the connecting stalk and yolk-sac duct attach [f5]. The folds draw the amnion around the embryo, which ends up inside the amniotic cavity [f6]. Folding takes part of the yolk sac in as gut; the rest stays outside, linked by the vitelline duct [f7]."
+  "mbbs": "Rapid growth of the brain and lengthening of the neural tube make the flat disc bulge into the amniotic cavity [f1]. Head and tail folds swing ventrally, and the embryo curls into the fetal position [f2]. Folding is under way by days 24–25, and the body is tightly C-shaped by days 31–35 [f3]. At the same time two lateral body-wall folds move ventrally and close the ventral body wall [f4]. The wall stays open only at the umbilical region, where the connecting stalk and vitelline duct attach [f5]. The folds draw the amnion around the embryo, which ends up inside the amniotic cavity [f6]. Folding takes part of the yolk sac in as gut; the rest stays outside, linked by the vitelline duct [f7]."
  },
  "facts": [
   {
@@ -45,7 +45,7 @@
   },
   {
    "id": "f5",
-   "text": "The ventral body wall stays open only at the umbilical region, where the connecting stalk and yolk-sac duct attach.",
+   "text": "The ventral body wall stays open only at the umbilical region, where the connecting stalk and vitelline duct attach.",
    "cite": "E06.03",
    "mark": "✔",
    "where": "main"
@@ -104,7 +104,7 @@
     "Contraction of the gut"
    ],
    "answer": 0,
-   "why": "The growing brain and lengthening neural tube make the disc bulge and its ends swing ventrally.",
+   "why": "The growing brain and lengthening neural tube make the disc bulge and its ends swing underneath.",
    "tests": "objective"
   },
   {
@@ -118,7 +118,7 @@
     "Nowhere at all"
    ],
    "answer": 1,
-   "why": "The connecting stalk still attaches at the umbilical region, so the wall stays open there.",
+   "why": "The connecting stalk (the stalk that becomes the umbilical cord) still attaches at the future navel, so the wall stays open there.",
    "tests": "objective"
   },
   {
@@ -148,7 +148,7 @@
   {
    "id": "r2",
    "q": "Where does the belly wall stay open after folding?",
-   "a": "At the umbilical region, where the connecting stalk and yolk-sac duct attach [f5]."
+   "a": "At the future navel (umbilical region), where the connecting stalk (future umbilical cord) and vitelline duct attach [f5]."
   },
   {
    "id": "r3",
@@ -171,14 +171,14 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
@@ -187,22 +187,22 @@
    "lines": {
     "obj": "ok",
     "terms": "ok",
-    "q1": "fix: why says 'swing ventrally'; General says 'swing underneath'. Use the General word.",
+    "q1": "ok",
     "q2": "ok",
     "q3": "ok",
     "m1": "ok",
     "r1": "ok",
-    "r2": "fix: answer uses 'umbilical region' unglossed and 'yolk-sac duct', a second name for the vitelline duct. Use 'At the future navel (umbilical region), where the connecting stalk and vitelline duct attach [f5]'.",
+    "r2": "ok",
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Both round-1 fixes landed (vitelline duct named at General; q3 options balanced). Two small wording fixes left (q1 why, r2)."
+   "notes": "Round-3 fixes landed: connecting stalk glossed in q2 why and r2. Fresh pass: General 89/90, no why leaks, every name taught or glossed. Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -242,7 +242,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fixes landed: f3 cites E06.06 Tbl 6.4 for its days; f4 says ventral body wall, so the adult line is supported. Clinical line factual and humane."
+   "notes": "Round-3 glosses (connecting stalk = future umbilical cord; one name vitelline duct) right. Folding, days, body wall, yolk sac all carried and right vs dossier E06.03.01. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -275,6 +290,56 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 why uses General \"swing underneath\"; r2 glosses umbilical region; one name, vitelline duct, in r2 and f5",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: connecting stalk glossed in q2 why, r2; MBBS \"yolk-sac duct\" → vitelline duct (one name)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

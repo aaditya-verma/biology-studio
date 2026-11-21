@@ -3,7 +3,7 @@
  "id": "E06.01.03",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "The neuropores close",
  "tier": "A",
  "objective": {
@@ -11,13 +11,13 @@
   "text": "Order the last events that seal the neural tube."
  },
  "body": {
-  "general": "What happens to the two open ends of the neural tube? These openings are the neuropores [f1]. The one at the head end closes first, at about day 25 [f1]. The one at the tail end closes at about day 28 [f2]. Then the tube is sealed and neurulation is done [f2]. The closed tube is narrow toward the tail, where it forms the spinal cord [f3]. It is broad toward the head, with swellings, the brain vesicles, that become the brain [f3].",
+  "general": "What happens to the two open ends of the neural tube? These openings are the neuropores [f1,f2]. The one at the head end, the cranial neuropore, closes first, at about day 25 [f1,f2]. The one at the tail end, the caudal neuropore, closes at about day 28 [f2]. Then the tube is sealed and neurulation, the making of the tube, is done [f2]. The closed tube is narrow toward the tail, where it forms the spinal cord [f3]. It is broad toward the head, with swellings, the brain vesicles, that become the brain [f3].",
   "mbbs": "The cranial (rostral) neuropore closes at about day 25, at the 18–20 somite stage [f1]. The caudal neuropore closes at about day 28, at about 25 somites [f2]. Neurulation is then complete [f2]. These match Carnegie stages 11 and 12 [f1,f2]. The closed tube is narrow caudally, forming the spinal cord [f3]. Cranially it is broad and bears dilatations, the brain vesicles [f3]. Because closure ends by day 28, neural tube defects arise very early [f2,f5]."
  },
  "facts": [
   {
    "id": "f1",
-   "text": "The cranial neuropore closes at about day 25, at the 18–20 somite stage (Carnegie stage 11).",
+   "text": "The cranial neuropore, the open head end of the tube, closes at about day 25, at the 18–20 somite stage (Carnegie stage 11).",
    "cite": "E06.01, E06.06 Tbl 6.4 · R08 CS11, R05l",
    "mark": "✔✔",
    "where": "main",
@@ -25,7 +25,7 @@
   },
   {
    "id": "f2",
-   "text": "The caudal neuropore closes at about day 28, at about 25 somites (Carnegie stage 12); neurulation is then complete.",
+   "text": "The caudal neuropore, the open tail end, closes at about day 28, at about 25 somites (Carnegie stage 12); neurulation is then complete.",
    "cite": "E06.01, E06.06 Tbl 6.4 · R08 CS12, R05l",
    "mark": "✔✔",
    "where": "main",
@@ -33,7 +33,7 @@
   },
   {
    "id": "f3",
-   "text": "The closed tube is narrow toward the tail (future spinal cord) and broad toward the head, with swellings, the brain vesicles.",
+   "text": "The closed tube is narrow toward the tail (future spinal cord) and broad toward the head, with swellings, the brain vesicles (future brain).",
    "cite": "E06.01",
    "mark": "✔",
    "where": "main"
@@ -61,7 +61,7 @@
   },
   {
    "id": "f7",
-   "text": "The tube is closed by about day 28 after fertilization, about 6 weeks after the last period, often before the pregnancy is recognised.",
+   "text": "Closure ends about day 28 after fertilization (6 weeks after the last period), often before pregnancy is known, so folic acid must start before conception.",
    "cite": "E06.01 CC, E06.06 · R05t, R05u",
    "mark": "✔✔",
    "where": "main"
@@ -99,12 +99,11 @@
    "type": "order",
    "prompt": "Put these events in order, earliest first.",
    "options": [
-    "The neural folds first fuse in the neck",
+    "The raised edges join in the future neck",
     "The cranial neuropore closes",
-    "The caudal neuropore closes",
-    "Neurulation is complete"
+    "The caudal neuropore closes"
    ],
-   "why": "Fusion starts at the neck; the head-end opening shuts first, then the tail end, and that ends neurulation.",
+   "why": "Fusion starts at the neck; then the head-end opening shuts, and the tail-end opening shuts last.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -128,7 +127,7 @@
    "prompt": "Why must folic acid start before conception to protect the neural tube?",
    "options": [
     "It takes months to reach the embryo",
-    "The tube is sealed by about day 28, often before pregnancy is known",
+    "The tube seals in the first month, often before pregnancy is known",
     "It only works on the egg",
     "It is harmful later in pregnancy"
    ],
@@ -139,17 +138,17 @@
   }
  ],
  "adult": "The narrow part becomes the spinal cord; the broad swellings become the brain [f3].",
- "clinical": "When the tube fails to close, the result is a neural tube defect [f5]. Failure at the head end gives anencephaly; lower down it gives spina bifida [f5]. Folic acid taken around conception prevents a large share of these defects [f6]. It must start before conception, because closure ends by about day 28 [f7].",
+ "clinical": "When the tube fails to close, the result is a neural tube defect [f5]. Failure at the head end gives anencephaly; lower down it gives spina bifida [f5]. Folic acid taken around conception prevents a large share of these defects [f6]. It must start before conception, because closure ends by about day 28 [f6,f7].",
  "remember": [
   {
    "id": "r1",
    "q": "When does the cranial neuropore close?",
-   "a": "About day 25, at 18–20 somites [f1]."
+   "a": "About day 25 [f1]."
   },
   {
    "id": "r2",
    "q": "When does the caudal neuropore close?",
-   "a": "About day 28, at about 25 somites; neurulation is then complete [f2]."
+   "a": "About day 28; then the whole tube is sealed [f2]."
   },
   {
    "id": "r3",
@@ -167,43 +166,14 @@
   "date": "21 Nov 2026"
  },
  "review": {
-  "G-Learn": {
-   "result": "fail",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
-   "date": "21 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "fix: options say 'cranial neuropore' / 'caudal neuropore', but General says only 'head end' / 'tail end'. Simplest: name them once in General ('The one at the head end, the cranial neuropore, closes first ... the tail-end, caudal, one ...'), which also clears q2, m1, r1, r2; or write 'head-end (cranial) neuropore' in each.",
-    "q2": "fix: 'caudal' untaught at General (see q1).",
-    "q3": "fix: right option repeats q2's answer ('sealed by about day 28'), so q2's answer and why (day 28) hand it over. Reword: 'The tube seals in the first month, often before pregnancy is known'.",
-    "m1": "fix: 'cranial'/'caudal' untaught at General (see q1).",
-    "m2": "ok",
-    "r1": "fix: 'cranial' untaught at General (see q1).",
-    "r2": "fix: 'caudal' untaught at General (see q1).",
-    "r3": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Both round-1 fixes landed (brain vesicles named at General; q1 why has no days). Remaining: cranial/caudal used across Checks/Remember but never taught at General (one body edit fixes five lines), and q3's option echoes q2's answer."
-  },
   "G-Sci": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Sci reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
-    "cited": false,
+    "cited": true,
     "sections": true,
     "accuracy": true,
     "flags": true,
@@ -227,7 +197,7 @@
     "body.mbbs.7": "ok",
     "f1": "ok",
     "f2": "ok",
-    "f3": "fix: body.general.6, adult and r3 say the broad head part / brain vesicles become the brain, but f3 names only the spinal cord's fate ('narrow toward the tail (future spinal cord)'). Add the brain fate to f3, e.g. '… broad toward the head, with swellings, the brain vesicles (future brain).' (E06.01, ✔) — same gap fixed in E06.01.01/.02 round 1.",
+    "f3": "ok",
     "f4": "ok",
     "f5": "ok",
     "f6": "ok",
@@ -240,7 +210,51 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Timing right vs dossier (cranial ~d25, 18–20 somites, CS11; caudal ~d28, ~25 somites, CS12, ✔✔ R08/R05l; folic acid ✔✔ R05t/R05u; S2 ✚ R05m in More, labelled). One support gap: brain fate claimed in three lines but not in f3."
+   "notes": "Round-6 fixes landed: f1/f2 now say the neuropores are the open ends; general.2 and .3 ref [f1,f2]. Fresh pass: days 25/28, CS11/12, ✔✔ on f1/f2/f6/f7 (R08, R05l, R05t/u Tier 1), ✚ f4 in More labelled, f7 '6 weeks after last period' right. Nothing left."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 7, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-6 G-Learn pass; only G-Sci edits since (f1/f2 say neuropores are the open ends, refs). No learning impact. Fresh read: General 88/90, cranial/caudal neuropore, neurulation, brain vesicles taught; q1 order has no cue words or days; no why leaks a later Check; m1/m2 refuted by q1/q3. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -278,6 +292,116 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci fail — 1 fix line(s)",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: cranial and caudal neuropore named at General (clears q1, q2, m1, r1, r2); q3 option no longer echoes q2 (day 28); f3 carries the brain fate (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 option 1 drops \"first\"; neurulation glossed at General; r1, r2 drop somite counts",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 option 1 in plain words; f7 carries \"start before conception\" and clinical sentence 4 refs f6,f7 (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 drops the self-placing step \"Neurulation is complete\"; why has no days",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f1/f2 say the neuropores are the open ends; body.general.2–3 refs f1,f2 (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Learn)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 7)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

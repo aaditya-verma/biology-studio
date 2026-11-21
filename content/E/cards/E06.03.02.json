@@ -245,6 +245,21 @@
     "r3": "ok"
    },
    "notes": "Gut parts, membranes and timings match the dossier (✔✔ only on f5 with R06 CS11). Pass."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -267,6 +282,11 @@
    "date": "21 Nov 2026",
    "ev": "status → reviewed",
    "by": "Studio rule (card-spec §5)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

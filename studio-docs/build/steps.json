@@ -493,9 +493,8 @@
    "check": null,
    "decisions": ["D-011", "D-026", "D-030", "D-039", "D-057", "D-064"],
    "prompt": "X1 Ch 10",
-   "log": "21 Nov 2026 · X1 Research · Ch 10 — Part 2 pattern; staging CS10→CS23 from human specimens (resegmentation seen at 7–13 mm), Tier A ossification + vertebrae, 16 misconceptions, 26 sources R05ce–dd, AN from the MGMUHS reprint (nmc.org.in blocked) → D-064 a–e",
+   "log": "21 Nov 2026 · X1 Research · Ch 10 — Part 2 pattern; staging CS10→CS23 from human specimens (resegmentation seen at 7–13 mm), Tier A ossification + vertebrae, 16 misconceptions, 26 sources R05ce–dd, AN checked against NMC Vol I → D-064 a–e",
    "todo": [
-    "Re-read the axial AN codes (AN2, AN21, AN26, AN35.9, AN50, AN53.4, AN74.4) on nmc.org.in — blocked this chat by Chrome site permissions; read from the MGMUHS reprint",
     "R01 3D Atlas: check the CS17–23 models show the cartilage column before any vertebra scene (look only, NC-ND)",
     "Tier 1 for the sternal-defect figures (20–50 % in congenital heart disease; multiple manubrial centres 6–20 %, commoner in Down syndrome)",
     "Tier 1 for the ossicles (ossification from month 4; first bones fully ossified)",
@@ -503,7 +502,7 @@
    ],
    "inputs": [
     {"id": "X1.10.q1", "kind": "decide", "ask": "D-064 (a, b, d) from Ch 10: pick an option per item (posterior fontanelle timing, craniosynostosis rate, acromegaly cause) — recommendations given; (c) resegmentation is a teaching note — confirm option 1 (book halves in the card, refinement in More); (e) is a curriculum note", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-064"},
-    {"id": "X1.10.q2", "kind": "action", "ask": "Allow nmc.org.in in Claude in Chrome's site permissions (it was blocked), or open NMC UG Curriculum Vol I yourself, so the next chat can re-read the axial AN codes there", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-064"}
+    {"id": "X1.10.q2", "kind": "action", "ask": "Allow nmc.org.in in Claude in Chrome's site permissions (it was blocked), or open NMC UG Curriculum Vol I yourself, so the next chat can re-read the axial AN codes there", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": "Done 21 Nov 2026: owner downloaded UG-Curriculum-Vol-I.pdf from nmc.org.in; every axial code matches (2018 wording differs in a few verbs)", "status": "closed", "d": "D-064"}
    ],
    "runs": [{"chat": "Bio · Research · X1 Ch 10", "by": "Aaditya", "start": "2026-11-21 22:40", "end": "2026-11-21 23:10", "outcome": "done", "note": "route B, written to the laptop clone; G-Sci pass with fixes (4 MUST, 12 SHOULD applied)"}]
   },
@@ -784,28 +783,27 @@
    "title": "C2 cards — Ch 6–8 Tier A",
    "type": "Content",
    "chat": "Bio · Content · C2 Ch 6–8 → Bio · Content · C2 round 3",
-   "status": "in progress",
+   "status": "owner check",
    "needs": ["C1", "X1.06", "X1.07", "X1.08"],
    "unblocks": ["L2"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Learn": "open", "G-A11y": "open"},
+   "gates": {"G-Sci": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T3d", "state": "open", "since": "2026-11-21"},
-   "decisions": ["D-039", "D-043", "D-044", "D-047", "D-053", "D-058"],
+   "decisions": ["D-039", "D-043", "D-044", "D-047", "D-053", "D-058", "D-065"],
    "prompt": "C2 round 3",
-   "log": "21 Nov 2026 · C2 Ch 6–8 — 23 Tier A cards drafted (Ch 6: 13 · Ch 7: 5 · Ch 8: 5), 2 review rounds: 4 Reviewed (E06.03.02, E07.01.01, E07.03.01, E08.01.03), 19 draft with round-2 fix lines; scene optional + two-letter registry ids (D-058, app v11); Ch 5 give-away fixes held in handoff\\c2-round3; card-check 36/0 errors, selftest 77/77, calibrate 5/5, parity 113",
+   "log": "21 Nov 2026 · C2 round 3 — the 21 drafts (19 Ch 6–8 + 2 Ch 5) fixed and re-reviewed over 7 rounds by fresh agents → all Reviewed; Ch 5 fixes replace the repo copies; G-A11y pass on 25 (layoutAudit 6 sizes × 100/125 %, 0 findings); D-065 (reading of D-058 (5), write-sources rule); card-check 36/0 errors, selftest 77/77, calibrate 5/5, parity 113",
    "todo": [
-    "Round 3 (prompt 'C2 round 3'): apply round-2 fix lines on 19 Ch 6–8 drafts + the 2 Ch 5 drafts in Studio home handoff\\c2-round3\\, re-review G-Sci + G-Learn, then G-A11y on all 27",
-    "G-A11y not run yet on any C2 card (gate after G-Sci + G-Learn)",
-    "T3d part A now (v11 no-scene layout + run tools/layout-check on the laptop — not run in the cloud); part B after round 3",
+    "T3d part A + part B (owner, phone + tablet + laptop; G-Owner on one card; confirm D-065 (1)–(3) reading) → then C2 done",
     "Map: E.t.cloacal-membrane-plate is listed on E06.01.01, E06.02.01, E06.02.06, E07.02.01 — looks like an I1/K1 term-placement error (W-terms); fix in the map at the next X1/K1 touch",
+    "Indexer gaps (I1): no terms.json ids for nephrotome(s), nephrogenic cord, urethra, tympanic cavity, auditory tube, dermomyotome, decidua basalis/capsularis/parietalis — terms.new stays empty on E06.02.05, E06.03.03; tree.json has no box entries for E06.06",
     "Dossier ch06 §5: add E06.00.01's two misconceptions (map field + §2 fact) — G-Learn note",
-    "Indexer gap: tree.json has no box entries for E06.06 (Birth Defects box cited E06.06 CC) — I1 to-do",
     "E07.05.01 f3: recheck the book wording on PDF p 103 (fuse with oesophageal mesentery + septum transversum) at the next chat with the PDF",
+    "E06.02.06 objective says 'lateral plate mesoderm' while General avoids 'mesoderm' (G-Learn note, not blocking) — reword at the next edit of that card",
     "rotate + folded drills: first real use moves to the V-step that builds Ch 6 scenes (no scene yet, D-058)"
    ],
    "inputs": [],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Content · C2 Ch 6–8", "by": "Aaditya", "start": "2026-11-21", "outcome": "partial", "note": "backfilled from the log line (W2)", "end": "2026-11-21"}, {"chat": "Bio · Content · C2 round 3", "by": "Aaditya", "start": "2026-11-21 22:56", "outcome": "partial"}]
+   "runs": [{"chat": "Bio · Content · C2 Ch 6–8", "by": "Aaditya", "start": "2026-11-21", "outcome": "partial", "note": "backfilled from the log line (W2)", "end": "2026-11-21"}, {"chat": "Bio · Content · C2 round 3", "by": "Aaditya", "start": "2026-11-21 22:56", "outcome": "done", "end": "2026-11-21 23:50", "note": "route B; 7 review rounds, 15 reviewer agents; ran in the cloud workspace on staged copies"}]
   },
   {
    "id": "L2",
@@ -819,7 +817,7 @@
    "gates": {"G-Eng": "open", "G-Learn": "open", "G-A11y": "open"},
    "check": {"id": "T9", "state": "open"},
    "decisions": ["D-010", "D-047"],
-   "prompt": null,
+   "prompt": "L2 lessons",
    "log": "—",
    "todo": [
     "Lesson = ordered cards + scenes + drills + Checks, 10–15 min, per chapter (roadmap order)",

@@ -11,7 +11,7 @@
   "text": "Describe how the embryonic disc changes shape during week 3."
  },
  "body": {
-  "general": "Why does the round disc turn into a pear? It grows from about 0.2 mm to over 1 mm in a few days [f4]. Most of the growth is at the head end, fed by cells streaming forward from the streak [f2]. So the disc becomes broad at the head end and narrow at the tail end [f1]. The head end starts forming its parts in mid-week 3, while the tail end is still gastrulating until the end of week 4 [f3].",
+  "general": "Why does the round disc turn into a pear? It grows from about 0.2 mm around day 15 to over 1 mm by day 18 [f4]. Most of the growth is at the head end, fed by cells streaming forward from the streak (the groove where cells move in) [f2]. So the disc becomes broad at the head end and narrow at the tail end [f1]. The head end starts forming its parts in mid-week 3, while the tail end keeps gastrulating (making new layers) until the end of week 4 [f3].",
   "mbbs": "Over week 3 the round disc stretches into a pear, wide at the head end and slim at the tail [f1]. Growth is mainly cranial, supplied by cells migrating forward from the streak; the streak region stays about the same size [f2]. The disc grows from about 0.2 mm at days 14–15 to about 1.25 mm by day 18 [f4]. Cranial structures begin to differentiate by mid-week 3, while gastrulation continues caudally until the end of week 4 [f3]. Development therefore runs in a cranial-to-caudal direction [f5]."
  },
  "facts": [
@@ -83,6 +83,23 @@
  ],
  "checks": [
   {
+   "id": "q4",
+   "type": "day",
+   "prompt": "Which day is this disc? Judge by its shape and its size against the ruler, which is 1 mm long.",
+   "show": {
+    "day": 15
+   },
+   "options": [
+    15,
+    17,
+    18
+   ],
+   "answer": 0,
+   "alt": "A small, nearly round disc, about a fifth of a millimetre long against the ruler, with a short streak at one end.",
+   "why": "Around day 15 the disc is only about 0.2 mm long, with a short streak; by day 18 it is over 1 mm.",
+   "tests": "objective"
+  },
+  {
    "id": "q1",
    "type": "mcq",
    "prompt": "By the end of week 3, what shape is the disc?",
@@ -93,7 +110,7 @@
     "A closed tube"
    ],
    "answer": 0,
-   "why": "Growth is mostly cranial, so the head end broadens into a pear shape.",
+   "why": "By the end of week 3 the disc is pear-shaped: wide at the head end, narrow at the tail end.",
    "tests": "objective",
    "refutes": "m2"
   },
@@ -124,23 +141,6 @@
    "why": "The head end starts forming its parts in mid-week 3, but the tail end keeps gastrulating until the end of week 4.",
    "tests": "objective",
    "refutes": "m1"
-  },
-  {
-   "id": "q4",
-   "type": "day",
-   "prompt": "Which day is this disc? Judge by its shape and its size against the ruler, which is 1 mm long.",
-   "show": {
-    "day": 15
-   },
-   "options": [
-    15,
-    17,
-    18
-   ],
-   "answer": 0,
-   "alt": "A small, nearly round disc, about a fifth of a millimetre long against the ruler, with a short streak at one end.",
-   "why": "Day 15 is about 0.2 mm and nearly round. Stage 7 (days 16–18) is about 0.4 mm and pear-shaped; the book's 18-day embryo is already at the next stage, about 1.25 mm.",
-   "tests": "objective"
   }
  ],
  "adult": "The broad head end carries the wide front of the future nervous system, which becomes the brain [f6].",
@@ -171,11 +171,40 @@
   "date": "20 Nov 2026"
  },
  "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q4": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-3 fixes landed: streak and gastrulating glossed at General (q2, q3, m1, r1, r2 clear); General 88/90, longest sentence 25. No why answers a later Check (q4 runs first). Pass."
+  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "V2 G-Sci reviewer agent (round 3)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -208,42 +237,13 @@
     "r1": "ok",
     "r2": "ok"
    },
-   "notes": "Round 2: all 21 G-Sci lines re-signed ok (unchanged). q4 is now unique. The sc-E00.01.02 streak disclaimer is added."
-  },
-  "G-Learn": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "V2 G-Learn reviewer agent (round 3)",
-   "date": "21 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": true,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "ok",
-    "q4": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "r1": "ok",
-    "r2": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Round 3. card-check: 0 errors. q4 (day 15; options 15/17/18; answer 15) is fair and tests the objective, and its prompt is plain. The why now separates stage 7 (days 16-18, about 0.4 mm) from the book's 18-day embryo (next stage, about 1.25 mm), so it no longer contradicts itself. Every line ok; pass. For G-Sci: the 0.4 mm figure is still only in the scene's facts, not a card fact."
+   "notes": "Round-3 glosses (streak = groove where cells move in; gastrulating) right and carried by f2/f3; sizes/days carried by f4 (✔✔ Tbl 6.4, Fig 6.1 · R06, R08). Nothing left."
   },
   "G-A11y": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "QA & accessibility",
-   "agent": "V2 G-A11y reviewer agent (round 1)",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
    "date": "21 Nov 2026",
    "checklist": {
     "alt": true,
@@ -252,7 +252,7 @@
     "text125": true
    },
    "lines": {},
-   "notes": "q4 day: alt ('small, nearly round disc, about a fifth of a millimetre long against the ruler, short streak at one end') carries the size cue the masked stamp hides, without stating the day; prompt points to the ruler (scale bar stays). Day options are plain buttons 'Day 15/17/18'. Completed keyboard-only with and without WebGL. No colour words. 125 % fits."
+   "notes": "Day drill q4 alt 22 words, describes shape and size, no day given; other checks mcq. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -360,6 +360,101 @@
    "date": "21 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · V2 G-A11y reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "L1F G-Learn give-away fixed: the day drill (q4) now runs first, so scrubbing Try it during q1–q3 can't show its day; check ids kept (A2)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci, G-Learn, G-A11y): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fix (G-Learn q1): why no longer answers q2 (why the head end broadens)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General gives the days with the sizes (q4 answerable at General); q4 why drops \"pear-shaped\" (q1 leak) and the stage words",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 5 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: streak and gastrulating glossed at General (q2, q3, m1, r1, r2)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 draft (handoff c2-round3) replaces the repo copy after G-Sci + G-Learn pass (D-058 (6))",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

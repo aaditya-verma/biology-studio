@@ -3,7 +3,7 @@
  "id": "E06.02.05",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Intermediate mesoderm",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe how intermediate mesoderm is laid out along the body and what it builds."
  },
  "body": {
-  "general": "Which strip of tissue builds the kidneys? It is intermediate mesoderm, a thin strip of middle-layer tissue between two wider strips [f5]. It builds the urinary and genital organs [f1]. In the neck and upper chest it breaks into small repeating clusters, the nephrotomes [f2]. Lower down it stays one continuous cord, the nephrogenic cord [f3]. From these come the kidney's urine-making units and the sex glands, or gonads [f4]. The bladder's inner lining is different: it comes from endoderm, the inner germ layer [f6].",
+  "general": "Which strip of tissue builds the kidneys? It is intermediate mesoderm, a narrow strip of middle-layer tissue between two wider strips [f5]. It builds the urinary and genital organs [f1]. In the neck and upper chest it breaks into small repeating clusters, the nephrotomes [f2]. Lower down it stays one continuous cord, the nephrogenic cord [f3]. From these come the kidney's urine-making units and the sex glands, or gonads [f4]. The bladder's inner lining is different: it comes from endoderm, the inner germ layer [f6].",
   "mbbs": "Intermediate mesoderm is the narrow strip between paraxial mesoderm and the lateral plate [f5]. It forms the urogenital system [f1]. In the cervical and upper thoracic regions it forms segmental cell clusters, the nephrotomes [f2]. More caudally it stays an unsegmented mass, the nephrogenic cord [f3]. These give rise to the excretory units of the urinary system and to the gonads [f4]. Not every urogenital lining is mesoderm: the urinary bladder's lining comes from endoderm [f6]."
  },
  "facts": [
@@ -45,7 +45,7 @@
   },
   {
    "id": "f5",
-   "text": "Intermediate mesoderm lies between paraxial mesoderm and the lateral plate.",
+   "text": "Intermediate mesoderm is the narrow strip between paraxial mesoderm and the lateral plate.",
    "cite": "E06.02",
    "mark": "✔",
    "where": "main"
@@ -72,7 +72,7 @@
   {
    "id": "m1",
    "wrong": "The bladder is mesoderm like the rest of the urogenital system.",
-   "right": "Its lining is endoderm, from the cloaca; kidneys, gonads and ducts are mesoderm.",
+   "right": "Its lining is endoderm, from the cloaca (the shared end chamber of the gut); kidneys, gonads and genital ducts are mesoderm.",
    "cite": "E06.03, E06.06",
    "mark": "✔"
   }
@@ -84,7 +84,7 @@
    "prompt": "What does intermediate mesoderm form in the neck and upper chest?",
    "options": [
     "One continuous cord",
-    "Small repeating clusters called nephrotomes",
+    "Small repeating clusters",
     "Somites",
     "The gut wall"
    ],
@@ -103,7 +103,7 @@
     "The sternum"
    ],
    "answer": 0,
-   "why": "Intermediate mesoderm builds the urogenital system, including the gonads and the kidney's excretory units.",
+   "why": "Intermediate mesoderm builds the urinary and genital organs, including the gonads and the kidney's urine-making units.",
    "tests": "objective"
   },
   {
@@ -122,12 +122,12 @@
    "refutes": "m1"
   }
  ],
- "adult": "This strip becomes the kidney's excretory units and the gonads [f4].",
+ "adult": "This strip becomes the kidney's urine-making units and the sex glands (gonads) [f4].",
  "remember": [
   {
    "id": "r1",
    "q": "What does intermediate mesoderm build?",
-   "a": "The urogenital system: the kidney's excretory units and the gonads [f1,f4]."
+   "a": "The urinary and genital organs: the kidney's urine-making units and the gonads [f1,f4]."
   },
   {
    "id": "r2",
@@ -147,38 +147,11 @@
   "date": "21 Nov 2026"
  },
  "review": {
-  "G-Learn": {
-   "result": "fail",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
-   "date": "21 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": false,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "fix: round-1 fix landed (nephrotomes, nephrogenic cord named at General), but terms.new is still empty though the card teaches both; add ids or log why (none in terms.json). adult says 'excretory units' unglossed; use General's 'urine-making units' (ruling b).",
-    "q1": "fix: right option 'Small repeating clusters called nephrotomes' is the only one carrying a name and is twice as long (cue). Use 'Small repeating clusters' (name stays in why), or make the cord option 'One continuous cord, the nephrogenic cord'.",
-    "q2": "fix: why uses 'urogenital system' and 'kidney's excretory units', not taught at General. Use 'urinary and genital organs, including the gonads and the kidney's urine-making units'.",
-    "q3": "ok",
-    "m1": "fix: 'cloaca' is unglossed (ruling b); write 'from the cloaca (the shared end chamber of the gut)' and 'kidneys, gonads and genital ducts'.",
-    "r1": "fix: answer 'urogenital system… excretory units' uses names General gives only in plain words. Use 'The urinary and genital organs: the kidney's urine-making units and the gonads [f1,f4]'.",
-    "r2": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Round-1 naming fix landed. Left: plain-word swaps for urogenital/excretory units (q2, r1, adult), a cloaca gloss in m1, the q1 length cue, and the empty terms.new."
-  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -213,7 +186,49 @@
     "r1": "ok",
     "r2": "ok"
    },
-   "notes": "Re-review after G-Learn wording fixes: layout (nephrotomes up high, nephrogenic cord below), derivatives and endoderm bladder lining all match the dossier; cites and marks right."
+   "notes": "Round-3 G-Sci fixes landed: f5 carries 'narrow strip'; General says narrow between two wider strips. m1 cloaca gloss right. Nothing left."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-3 G-Learn pass was cleared by the G-Sci 'narrow strip' edit; re-checked: General 79/90, f5 wording change opens nothing new; cloaca glossed in m1. Pass."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -251,6 +266,56 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 length cue removed; q2 why, r1, adult in General words; cloaca glossed in m1; terms.new stays empty because nephrotomes and nephrogenic cord have no id in index/terms.json (indexer gap, logged as an I1 to-do)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f5 carries \"narrow strip\"; General \"thin\" → \"narrow\" (G-Sci, matches E06.02.01)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Learn)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

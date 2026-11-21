@@ -3,7 +3,7 @@
  "id": "E06.02.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Somites: blocks that keep time",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Explain how somites form and how they are used to date an embryo."
  },
  "body": {
-  "general": "How can you tell an embryo's age in week 4? Count its somites, paired blocks of tissue along the back [f5]. They come from paraxial mesoderm, the middle-layer strip beside the midline [f1]. In the head it stays as loose, unsegmented whorls called somitomeres, which become loose head tissue [f1,f2]. The first pair appears near the future back of the skull at about day 20 [f3]. About three new pairs are added each day, moving toward the tail [f4]. Each block later helps build the backbone, ribs and back muscles [f10].",
+  "general": "How old is a week-4 embryo? Count its somites, paired blocks of tissue along the back [f5]. They come from paraxial mesoderm, the middle-layer strip beside the midline [f1,f2]. In the head it stays as loose, unsegmented whorls called somitomeres, which become loose head tissue [f1,f2]. The first pair appears near the future back of the skull at about day 20 [f3]. About three new pairs are added each day, toward the tail [f4]. Each block later helps build the backbone, ribs and back muscles [f10]. In month 2, head-to-bottom length is used instead [f6].",
   "mbbs": "Paraxial mesoderm first forms whorl-like somitomeres, starting at the head end [f1]. In the head they stay unsegmented and give head mesenchyme; from the occipital region down they become somites [f2]. The first pair appears in the occipital region at about day 20 [f3]. New pairs follow craniocaudally at about three pairs a day [f4]. This steady pace lets the somite count date the embryo in weeks 3–4 [f5]. In month 2, crown–rump length takes over [f6]. There are 4 occipital and 8 cervical pairs [f7]. Langman gives 42–44 pairs by the end of week 5, with 12 thoracic, 5 lumbar, 5 sacral and 8–10 coccygeal [f8]. The first occipital and the last 5–7 coccygeal pairs later disappear [f9]. Each somite then divides into parts for vertebrae, ribs, muscle and dermis [f10]."
  },
  "facts": [
@@ -117,21 +117,21 @@
   {
    "id": "m1",
    "wrong": "Somites are segments of the neural tube.",
-   "right": "Somites are blocks of paraxial mesoderm lying beside the neural tube.",
+   "right": "Somites are blocks of paraxial mesoderm lying beside the neural tube (future spinal cord).",
    "cite": "E06.02",
    "mark": "✔"
   },
   {
    "id": "m2",
    "wrong": "Loose head tissue (head mesenchyme) comes from somites.",
-   "right": "In the head, paraxial mesoderm stays as unsegmented somitomeres; somites start at the occipital region.",
+   "right": "In the head, paraxial mesoderm stays as unsegmented somitomeres; somites start at the back of the skull (occipital region).",
    "cite": "E06.02",
    "mark": "✔"
   },
   {
    "id": "m3",
    "wrong": "Somite count dates the embryo through the whole embryonic period.",
-   "right": "It works only in weeks 3–4; in month 2 we use crown–rump length.",
+   "right": "It works only in weeks 3–4; in month 2 we use crown–rump length (head-to-bottom length).",
    "cite": "E06.05",
    "mark": "✔"
   }
@@ -143,12 +143,12 @@
    "prompt": "What are somites?",
    "options": [
     "Segments of the neural tube",
-    "Blocks of paraxial mesoderm beside the neural tube",
+    "Blocks of paraxial mesoderm beside the neural tube (future spinal cord)",
     "Blocks of intermediate mesoderm",
     "Folds of ectoderm along the back"
    ],
    "answer": 1,
-   "why": "Somites bud from paraxial mesoderm and lie beside the neural tube; they are not part of it.",
+   "why": "Somites bud from paraxial mesoderm and lie beside the neural tube (future spinal cord); they are not part of it.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -177,17 +177,17 @@
     "Never; it works until birth"
    ],
    "answer": 1,
-   "why": "Somite counts date weeks 3–4; in month 2 crown–rump length is used.",
+   "why": "Somite counts date weeks 3–4; in month 2 crown–rump length (head-to-bottom length) is used.",
    "tests": "objective",
    "refutes": "m3"
   }
  ],
- "adult": "Each somite goes on to help build vertebrae, ribs, back and body-wall muscles, and dermis [f10].",
+ "adult": "Each somite goes on to help build vertebrae, ribs, back and body-wall muscles, and dermis (deep skin) [f10].",
  "remember": [
   {
    "id": "r1",
    "q": "Where and when does the first somite pair appear?",
-   "a": "In the occipital region, at about day 20 [f3]."
+   "a": "Near the future back of the skull (occipital region), at about day 20 [f3]."
   },
   {
    "id": "r2",
@@ -219,42 +219,11 @@
   "date": "21 Nov 2026"
  },
  "review": {
-  "G-Learn": {
-   "result": "fail",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
-   "date": "21 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": false,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "fix: round-1 somitomeres fix landed. Remaining: adult names 'dermis' without a gloss (ruling b); write 'dermis (deep skin)'. Minor: somites is also listed as new in E06.01.02; fine to keep here as owner card.",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "fix: round-1 option fix landed, but why names 'crown–rump length', never taught at General (ruling b). Gloss it: 'crown–rump length (head-to-bottom length)'.",
-    "m1": "ok",
-    "m2": "fix: right uses 'occipital region' unglossed; General says 'near the future back of the skull'. Write 'start at the back of the skull (occipital region)'.",
-    "m3": "fix: 'crown–rump length' unglossed; add '(head-to-bottom length)'.",
-    "r1": "fix: answer 'In the occipital region' uses a name General gives only in plain words. Use 'Near the future back of the skull (occipital region), at about day 20 [f3]'.",
-    "r2": "ok",
-    "r3": "ok",
-    "r4": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Both round-1 fixes landed (somitomeres named at General; q3 options trimmed). Left: glosses for occipital region, crown–rump length and dermis in q3 why, m2, m3, r1 and adult."
-  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 5, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -272,6 +241,7 @@
     "body.general.5": "ok",
     "body.general.6": "ok",
     "body.general.7": "ok",
+    "body.general.8": "ok",
     "body.mbbs.1": "ok",
     "body.mbbs.2": "ok",
     "body.mbbs.3": "ok",
@@ -303,7 +273,53 @@
     "r3": "ok",
     "r4": "ok"
    },
-   "notes": "Round-1 fix landed: f11 now says only 'at most 38–39 pairs, at stages 14–16'. D-039 (a) handled per default (book 42–44 in main, ⚑ newer evidence in More); ✚ f12 labelled and in More; ✔✔ only where Tier 1 is cited."
+   "notes": "Round-4 fix landed: general.3 refs f1,f2. ⚑ f8/f9 give the book 42–44 with D-039; 38–39 newer evidence in More (f11); ✚ f12 labelled. Nothing left."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 5, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "r4": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Fresh read after the f1,f2 ref edit: objective, Checks, refutations, glosses (paraxial mesoderm, occipital, crown–rump, neural tube) and shows_up all sound. No fixes."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -336,6 +352,76 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: glosses: dermis (adult), crown–rump length (q3 why, m3), occipital region (m2, r1)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: neural tube glossed in q1, m1; General teaches the month-2 switch to length dating (q3, f6); hook shortened",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: body.general.3 refs f1,f2 (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Learn)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 5)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

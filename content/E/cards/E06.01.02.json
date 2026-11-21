@@ -3,7 +3,7 @@
  "id": "E06.01.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Neurulation",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe how the flat neural plate becomes a closed tube."
  },
  "body": {
-  "general": "How does a flat sheet roll itself into a tube? This process, neurulation, makes the neural tube [f1]. First the plate grows longer as its cells crowd toward the midline [f2]. Its edges rise as ridges, the neural folds, with a groove between them [f3]. The folds first meet in the future neck, beside the fifth somite [f4]. Somites are paired blocks of tissue beside the tube [f9]. From there the seam zips toward head and tail [f4]. For a while each end stays open; these openings are the neuropores [f5].",
+  "general": "How does a flat sheet roll itself into a tube? This process, neurulation, rolls the flat neural plate into the neural tube [f1]. First the plate grows longer as its cells crowd toward the midline [f2]. Its edges rise as ridges, the neural folds, with a groove between them [f3]. The folds first meet in the future neck, beside the fifth somite [f4]. Somites are paired blocks of tissue beside the tube [f9]. From there the seam zips toward head and tail [f4]. For a while each end stays open; these openings are the neuropores [f5].",
   "mbbs": "Neurulation converts the neural plate into the neural tube [f1]. The plate lengthens by convergent extension, with cells moving toward the midline [f2]. Planar cell polarity signalling drives this lengthening [f2]. Its lateral edges rise as neural folds around a midline neural groove, around days 19–20 [f3]. The folds first fuse in the future neck, at about the fifth somite pair [f4]. Somites are paired blocks of paraxial mesoderm beside the tube [f9]. Fusion then proceeds both cranially and caudally, like a zip [f4]. Until closure is complete, the tube opens to the amniotic cavity through the cranial and caudal neuropores [f5]."
  },
  "facts": [
@@ -113,7 +113,7 @@
     "Along the whole length at once"
    ],
    "answer": 2,
-   "why": "Fusion starts near the fifth somite, in the neck region, then spreads both ways.",
+   "why": "Fusion starts near the fifth somite, in the neck region, not at one end or all along the tube at once.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -123,9 +123,9 @@
    "prompt": "Put the steps of neurulation in order.",
    "options": [
     "The neural plate lengthens toward head and tail",
-    "Its edges rise as neural folds around a groove",
-    "The folds meet in the future neck",
-    "The seam zips toward both ends"
+    "The plate's edges rise as neural folds around a groove",
+    "Neural folds meet in the future neck",
+    "Closure zips toward head and tail"
    ],
    "why": "The plate lengthens, folds rise, they fuse first at the neck, and closure spreads toward both ends.",
    "tests": "objective"
@@ -141,7 +141,7 @@
     "The groove between the folds"
    ],
    "answer": 0,
-   "why": "The cranial and caudal neuropores are the still-open ends, joined to the amniotic cavity.",
+   "why": "The neuropores are the two ends of the tube, at head and tail, still open while the rest closes.",
    "tests": "objective"
   }
  ],
@@ -177,14 +177,14 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Learn reviewer agent (round 6, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
@@ -195,20 +195,20 @@
     "terms": "ok",
     "q1": "ok",
     "q2": "ok",
-    "q3": "fix: why names 'cranial and caudal' and 'amniotic cavity', not taught at General (General says head and tail). Use: 'The neuropores are the two ends of the tube, at head and tail, still open while the rest closes.'",
+    "q3": "ok",
     "m1": "ok",
     "r1": "ok",
     "r2": "ok",
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Both round-1 fixes landed: somites explained at General; q2 option no longer answers q3. One jargon why left."
+   "notes": "Round-5 fix landed: q1 why no longer gives q2's order. Fresh pass: General 89/90, all Check/Remember names taught (neurulation, neural folds, somite, neuropores); no why answers a later Check; q2 steps free of cue words. Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Sci reviewer agent (round 6, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -250,7 +250,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "All three round-1 fixes landed: f7 VANGL is now 'E06.01 CC · R05w' ✔✔ in More with no 'beyond' label; f1 carries the brain + spinal cord fate (adult); new f9 (somites = paraxial mesoderm blocks, E06.02 ✔) supports body.general.5 and body.mbbs.6. ✚ f6/f8 R05l (Tier 1) in More, labelled."
+   "notes": "Round-3 edit touched only q1 why; body, f1–f9, ✔✔ f1/f3/f4/f5/f7 (R05l, R06 CS9, R08 CS10, R05w), ✚ f6/f8 labelled in More, m1, adult and r1–r3 right vs dossier E06.01.02. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -288,6 +303,96 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q3 why in General words",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q2 option 2 no longer chained to option 1",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General names the neural plate (q2, r1); q2 options 3–4 no back-references",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 why no longer gives q2 order",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 6)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

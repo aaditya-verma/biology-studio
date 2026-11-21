@@ -160,7 +160,7 @@ Until decided: cards, Checks and scenes give the **book answer**; More carries "
 16. **"Skull shape doesn't tell you which suture fused."** It usually does: sagittal → long and narrow; both coronals → short and tall; one coronal → asymmetric `[E10.01 CC]` ✔.
 
 ## 7. Curriculum map (R30 — NMC AN table; see the source note below)
-**Source note:** nmc.org.in **could not be read this chat**. Chrome refused it (site blocked by your Chrome site permissions), and the fetcher got a client error on the Vol I PDF. So the codes below were read from the **MGMUHS reprint of the NMC Anatomy CBME table** (w.e.f. 2024–25, "Amended as per AC-52/2025", 82 topics / 413 competencies, the same count as NMC Vol I 2024). That is the same kind of source X1 Ch 05 used. AN79.4/79.5 match the wording X1 Ch 09 read on nmc.org.in. The rest should be re-read on nmc.org.in when the site is allowed (§10).
+**Source note:** codes **checked against NMC *Competency Based Undergraduate Curriculum Vol I*** (`UG-Curriculum-Vol-I.pdf`, downloaded from nmc.org.in by the owner, 21 Nov 2026 — the Claude in Chrome extension could not open the site). First read from the MGMUHS reprint of the 2024 table (amended AC-52/2025); **every code below matches Vol I**. Vol I is the 2018 text, so a few verbs differ from the 2024 reprint (e.g. AN2.2 "Enumerate laws of ossification" vs "Describe the laws of ossification, epiphysis…"; AN26.1 "Demonstrate" vs "Describe & demonstrate"); AN21.2 names the 2nd, 11th and 12th ribs and the 1st, 11th and 12th thoracic vertebrae. AN8 = individual bones (upper limb), AN9 = pectoral region — confirmed.
 - **AN2 — General features of bones & joints:** AN2.2 laws of ossification, epiphysis types · AN2.4 types of cartilage.
 - **AN21 — Thoracic cage:** AN21.1 sternum, typical rib, typical thoracic vertebra · AN21.2 atypical ribs and thoracic vertebrae.
 - **AN26 — Skull osteology:** AN26.1 skull position and individual bones · AN26.2 the five normae (sutures and fontanelles sit here; no separate skull-at-birth competency) · AN26.3 cranial cavity, foramina · AN26.4 mandible · AN26.5 atlas and axis · AN26.6 bones that ossify in membrane · AN26.7 C7.
@@ -201,7 +201,7 @@ Codes sit on the Ch 10 rows of `tools/map/research.txt` → map.json `an`.
 
 ## 10. X1 to-do — done 21 Nov 2026, with open items
 - Done: real locators + I1 gaps; staging with human specimen data; Tier A for E10.01.01 and E10.02.01; Tier B–D table; clinical correlates; 16 misconceptions; AN map (reprint); ⚑ D-064 a, b, d + resegmentation note c + curriculum note e; Ch 10 rows in `research.txt`; map rebuilt.
-- **Re-read AN2, AN21, AN26, AN35.9, AN50, AN53.4 and AN74.4 on nmc.org.in.** Blocked this chat by your Chrome site permissions; allow nmc.org.in or read it yourself.
+- ~~Re-read the axial AN codes on nmc.org.in~~ — done 21 Nov 2026 against the Vol I PDF the owner downloaded; all match (X1.10.q2 closed).
 - **R01 3D Atlas:** confirm the CS17–23 models show the cartilage column before any vertebra scene (look only).
 - **Tier 1 for the sternal-defect figures** (20–50 % in congenital heart disease; multiple manubrial centres 6–20 %, commoner in Down syndrome). None retrieved.
 - **Tier 1 for the ossicles** (start of ossification in month 4; first to be fully ossified).

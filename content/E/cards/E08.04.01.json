@@ -3,7 +3,7 @@
  "id": "E08.04.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Fetal trees in a maternal lake",
  "tier": "A",
  "objective": {
@@ -232,7 +232,7 @@
   {
    "id": "r2",
    "q": "What are cotyledons?",
-   "a": "Placental compartments outlined by decidual septa that stop short of the chorionic plate [f6,f7]."
+   "a": "Lobes of the placenta, made by low walls from the mother's side that stop short, so the lobes connect [f6,f7]."
   },
   {
    "id": "r3",
@@ -254,11 +254,41 @@
   "date": "21 Nov 2026"
  },
  "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 3, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-2 r2 fix landed in General words (low walls from the mother's side, stop short, lobes connect). Checks are clean: no give-aways, and the blood path has one order. Nothing left."
+  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 3, batch B)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -314,37 +344,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: f17 and clinical sentence 4 now say delivery is the only cure and the disease 'usually' settles (no over-claim). Placenta structure and preeclampsia lines match the dossier and R05ay/R05az."
+   "notes": "Only r2 changed (General words); it is right and carried by f6,f7. Rest re-checked vs dossier §2: blood path, septa, branching, spiral-artery remodelling (✔✔ R05az), preeclampsia clinical (✔✔ R05ay/az). Pass."
   },
-  "G-Learn": {
-   "result": "fail",
+  "G-A11y": {
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
    "date": "21 Nov 2026",
    "checklist": {
-    "objective": true,
-    "checks": true,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
    },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "m3": "ok",
-    "r1": "ok",
-    "r2": "fix: answer uses 'decidual septa' and 'chorionic plate', neither named at General (it says 'low walls from her side'). Write e.g. 'Lobes of the placenta, made by low walls from the mother's side that stop short, so the lobes connect'.",
-    "r3": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "Fail on r2 only (names not taught at General). Checks are clean: no give-aways, and the blood path has one order."
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -382,6 +397,36 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: r2 in General words (no decidual septa / chorionic plate)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 3)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -3,7 +3,7 @@
  "id": "E06.02.06",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Lateral plate: two layers and a cavity",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe how lateral plate mesoderm splits and what its two layers build."
  },
  "body": {
-  "general": "How does the body get a wall and a gut wall? The outer strip of middle-layer tissue, the lateral plate, splits into two sheets [f1]. Between them opens a space that will become the body cavity [f4]. The outer sheet, the parietal layer, faces the amnion, the sac around the embryo [f2]. It builds limb bones, the breastbone and deep skin of the limbs and body wall [f6]. The inner sheet, the visceral layer, faces the yolk sac [f3]. With the inner germ layer it builds the gut wall [f7].",
+  "general": "How does the body get a wall and a gut wall? The outer strip of middle-layer tissue, the lateral plate, splits into two sheets [f1]. Between them opens a space that will become the body cavity [f4]. The outer sheet, the parietal layer, faces the amnion, the sac around the embryo [f2]. It builds limb bones, the breastbone and deep skin of the limbs and body wall [f6]. The inner sheet, the visceral layer, faces the yolk sac [f3]. With the inner germ layer, endoderm, it builds the gut wall [f7].",
   "mbbs": "Cavities in the lateral plate mesoderm merge and split it into two layers [f1]. The parietal (somatic) layer is continuous with the extraembryonic mesoderm covering the amnion [f2]. The visceral (splanchnic) layer is continuous with the mesoderm covering the yolk sac [f3]. Between them lies the intraembryonic cavity, the future body cavity, at first open to the extraembryonic cavity [f4]. The parietal layer with the overlying ectoderm forms the lateral body-wall folds [f5]. It forms limb and body-wall dermis, limb bones and connective tissue, and the sternum [f6]. The visceral layer with the endoderm forms the gut wall [f7]. Both layers give the serous membranes: peritoneum, pleura and pericardium [f8]."
  },
  "facts": [
@@ -24,14 +24,14 @@
   },
   {
    "id": "f2",
-   "text": "The parietal (somatic) layer is continuous with the mesoderm covering the amnion.",
+   "text": "The parietal (somatic) layer, the outer one, is continuous with the mesoderm covering the amnion.",
    "cite": "E06.02",
    "mark": "✔",
    "where": "main"
   },
   {
    "id": "f3",
-   "text": "The visceral (splanchnic) layer is continuous with the mesoderm covering the yolk sac.",
+   "text": "The visceral (splanchnic) layer, the inner one, is continuous with the mesoderm covering the yolk sac.",
    "cite": "E06.02",
    "mark": "✔",
    "where": "main"
@@ -90,15 +90,15 @@
  "misconceptions": [
   {
    "id": "m1",
-   "wrong": "The intraembryonic cavity is the gut.",
-   "right": "The cavity is the future body cavity; the gut wall is endoderm plus visceral mesoderm.",
+   "wrong": "The space between the two layers (the intraembryonic cavity) is the gut.",
+   "right": "That space is the future body cavity; the gut wall is endoderm plus the visceral layer.",
    "cite": "E06.02, E06.03",
    "mark": "✔"
   },
   {
    "id": "m2",
    "wrong": "Limbs come from somites.",
-   "right": "Limb bones and connective tissue come from lateral plate mesoderm; only limb muscles come from somites.",
+   "right": "Limb bones and connective tissue come from the lateral plate; only limb muscles come from somites (paired blocks of tissue along the back).",
    "cite": "E06.02",
    "mark": "✔"
   }
@@ -109,8 +109,8 @@
    "type": "mcq",
    "prompt": "Which layer joins the endoderm to make the gut wall?",
    "options": [
-    "The parietal (somatic) layer",
-    "The visceral (splanchnic) layer",
+    "The parietal layer",
+    "The visceral layer",
     "Paraxial mesoderm",
     "Intermediate mesoderm"
    ],
@@ -129,14 +129,14 @@
     "The neural canal"
    ],
    "answer": 1,
-   "why": "The intraembryonic cavity becomes the body cavity; the gut is built from endoderm and visceral mesoderm.",
+   "why": "The space between the two layers becomes the body cavity; the gut wall is built from endoderm and the visceral layer.",
    "tests": "objective",
    "refutes": "m1"
   },
   {
    "id": "q3",
    "type": "mcq",
-   "prompt": "Which tissue builds the limb bones and sternum?",
+   "prompt": "Which tissue builds the limb bones and breastbone (sternum)?",
    "options": [
     "Somites",
     "The visceral layer",
@@ -144,17 +144,17 @@
     "Intermediate mesoderm"
    ],
    "answer": 2,
-   "why": "The parietal layer forms limb bones, connective tissue and the sternum; somites add only limb muscle.",
+   "why": "The parietal layer forms limb bones, connective tissue and the breastbone; somites (paired blocks of tissue along the back) add only limb muscle.",
    "tests": "objective",
    "refutes": "m2"
   }
  ],
- "adult": "The parietal layer becomes limb bones and the sternum [f6]; both layers become the linings of the chest and belly cavities [f8].",
+ "adult": "The parietal layer becomes limb bones and the breastbone (sternum) [f6]; both layers become the linings of the chest and belly cavities [f8].",
  "remember": [
   {
    "id": "r1",
    "q": "Which lateral plate layer helps form the gut wall?",
-   "a": "The visceral (splanchnic) layer, with the endoderm [f7]."
+   "a": "The visceral (inner) layer, with the endoderm [f3,f7]."
   },
   {
    "id": "r2",
@@ -164,7 +164,7 @@
   {
    "id": "r3",
    "q": "Which lateral plate layer builds the limb bones and breastbone?",
-   "a": "The parietal (somatic) layer [f6]."
+   "a": "The parietal (outer) layer [f2,f6]."
   }
  ],
  "shows_up": [
@@ -181,39 +181,39 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Learn reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
-    "terms": false,
+    "terms": true,
     "budget": true,
     "adult": true
    },
    "lines": {
     "obj": "ok",
-    "terms": "fix: the synonyms 'somatic' and 'splanchnic' appear in q1's right option and in r1/r3 answers but are never taught at General (ruling b). Drop them there, or add them at General (84/90, tight).",
-    "q1": "fix: right option 'The visceral (splanchnic) layer' carries an untaught name. Use 'The visceral layer' and 'The parietal layer'.",
+    "terms": "ok",
+    "q1": "ok",
     "q2": "ok",
     "q3": "ok",
     "m1": "ok",
     "m2": "ok",
-    "r1": "fix: answer '(splanchnic)' is untaught at General; use 'The visceral (inner) layer, with the endoderm [f7]'.",
+    "r1": "ok",
     "r2": "ok",
-    "r3": "fix: round-1 fix landed (now tests f6), but answer '(somatic)' is untaught at General; use 'The parietal (outer) layer [f6]'.",
+    "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Round-1 r3 swap landed and is a good recall prompt. Only the somatic/splanchnic synonyms block it. q2's why self-glosses 'intraembryonic cavity' (becomes the body cavity), acceptable."
+   "notes": "Round-6 fixes landed: q3 why and m2 gloss somites as 'paired blocks of tissue along the back', no 'mesoderm'. Fresh read: parietal/visceral layers, body cavity, endoderm, amnion taught (85/90); m1/m2 refuted by q2/q3. Non-blocking: objective still says 'lateral plate mesoderm' (objective is outside D-058 (1))."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -254,7 +254,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Re-review after G-Learn fixes: two layers, continuities, cavity, derivatives and serous membranes match the dossier; every sentence supported by its refs."
+   "notes": "Round-3 edit (q3 why, m2 drop 'mesoderm') changes no science; m2 still matches dossier #13. All body sentences carried by f1–f8; parietal/visceral fates, sternum, serous membranes right vs E06.02; ✔ marks fit (book only). Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -292,6 +307,116 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: somatic/splanchnic synonyms dropped from q1 options, r1, r3 (outer/inner glosses instead)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 5 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: endoderm named at General (q1, m1, r1); sternum → breastbone (sternum) in q3 and adult; m2 glosses somites",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 4 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f2/f3 say which layer is outer/inner; r1, r3 refs (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Learn)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q2, q3 whys and m1 in General words (intraembryonic cavity glossed, somites glossed)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q3 why and m2 drop the unexplained word mesoderm",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 7)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

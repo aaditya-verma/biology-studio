@@ -3,7 +3,7 @@
  "id": "E07.02.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "A cavity opens in the mesoderm",
  "tier": "A",
  "objective": {
@@ -11,20 +11,20 @@
   "text": "Explain how the embryo's first body cavity forms in weeks 3–4."
  },
  "body": {
-  "general": "Where do the spaces that hold the heart, lungs and gut come from? At the end of week 3 the middle layer, the mesoderm, forms three strips on each side [f1]. The outer strip, the lateral plate, is the one that makes the body cavity [f1]. Small clefts appear in this solid strip and merge, splitting it into two sheets [f2]. The gap between the sheets is the first body cavity [f2]. At first it is one single space, not yet divided [f3]. Early on it also opens into the fluid space outside the embryo [f4].",
+  "general": "Where do the body's inner spaces come from? At the end of week 3 the middle layer, the mesoderm, forms three strips on each side [f1]. The outer strip, the lateral plate, makes the body cavity [f1]. Small clefts appear in this solid strip and merge, splitting it into two sheets [f2]. The gap between the sheets is the first body cavity, or coelom [f2]. So it opens inside the middle layer, not between the outer layer (ectoderm) and the inner layer (endoderm) [f2]. At first it is one single space, not yet divided [f3].",
   "mbbs": "By the end of week 3 intraembryonic mesoderm has formed paraxial, intermediate and lateral plate strips [f1]. The lateral plate builds the body cavity [f1]. Clefts appear in the solid lateral plate and merge, splitting it into parietal and visceral layers [f2]. The space between them is the primitive (intraembryonic) body cavity [f2]. At first it is one continuous cavity, not yet divided into pericardial, pleural and abdominopelvic parts [f3]. Early on it opens widely into the extraembryonic cavity; the book shows this at about 21 days [f4]. So the coelom forms inside the mesoderm, not between ectoderm and endoderm [f2]."
  },
  "facts": [
   {
    "id": "f1",
-   "text": "At the end of week 3 the intraembryonic mesoderm forms three strips on each side. The lateral plate is the strip that builds the body cavity.",
+   "text": "At the end of week 3 the intraembryonic mesoderm forms three strips on each side: paraxial, intermediate and, outermost, the lateral plate. The lateral plate is the strip that builds the body cavity.",
    "cite": "E07.02, E06.02",
    "mark": "✔",
    "where": "main"
   },
   {
    "id": "f2",
-   "text": "Clefts appear in the solid lateral plate and merge, splitting it into two layers; the gap between them is the primitive body cavity.",
+   "text": "Clefts in the solid lateral plate merge, splitting it into parietal and visceral layers; the gap between them is the primitive body cavity.",
    "cite": "E07.02 · R06 CS9",
    "mark": "✔✔",
    "where": "main",
@@ -66,8 +66,8 @@
  "misconceptions": [
   {
    "id": "m1",
-   "wrong": "The body cavity (coelom) forms between the ectoderm and the endoderm.",
-   "right": "It forms inside the lateral plate mesoderm, splitting it into two layers.",
+   "wrong": "The body cavity (coelom) forms between the outer layer (ectoderm) and the inner layer (endoderm).",
+   "right": "It forms inside the middle layer, the lateral plate mesoderm, splitting it into two layers.",
    "cite": "E07.02 · R06 CS9",
    "mark": "✔✔"
   }
@@ -84,7 +84,7 @@
     "Inside the yolk sac"
    ],
    "answer": 1,
-   "why": "Clefts open inside the lateral plate and merge, so the cavity lies within the mesoderm, between its two new layers.",
+   "why": "The cavity opens within the lateral plate mesoderm, the middle layer, not between the ectoderm and the endoderm.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -94,10 +94,10 @@
    "prompt": "Put the steps in order.",
    "options": [
     "The mesoderm forms three strips on each side",
-    "Small clefts appear in the lateral plate",
-    "The clefts merge, splitting the plate into two layers around one cavity"
+    "Clefts appear in the lateral plate",
+    "The lateral plate splits into two layers with a gap between"
    ],
-   "why": "The lateral plate must exist before it can cleave; merging clefts then make one cavity between two layers.",
+   "why": "The lateral plate must exist before it can cleave; merging clefts then split it into two layers.",
    "tests": "objective"
   },
   {
@@ -115,7 +115,7 @@
    "tests": "objective"
   }
  ],
- "adult": "This one cavity is later divided into the pericardial, pleural and abdominopelvic cavities [f3].",
+ "adult": "This one cavity is later divided into the heart, lung and belly cavities [f3].",
  "remember": [
   {
    "id": "r1",
@@ -130,7 +130,7 @@
   {
    "id": "r3",
    "q": "Is the early body cavity one space or several?",
-   "a": "One continuous space, not yet divided into heart, chest and belly parts [f3]."
+   "a": "One continuous space, not yet divided into heart, lung and belly parts [f3]."
   }
  ],
  "shows_up": [
@@ -149,7 +149,7 @@
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 5, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -185,35 +185,50 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: f4 now cites R06 CS10 (passage at advanced CS10), ✔✔ and timing note kept. Fresh read: all lines match the dossier; ✚ horseshoe line in More, labelled."
+   "notes": "Round-4 fix landed: f1 names paraxial, intermediate and outermost lateral plate (carries mbbs.1, general.3). ✔✔ f2/f4 (R06) and ✚ f5 right vs dossier. Nothing left."
   },
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Learn reviewer agent (round 5, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
-    "adult": false
+    "adult": true
    },
    "lines": {
     "obj": "ok",
     "terms": "ok",
-    "q1": "fix: the right answer is set against 'between the ectoderm and the endoderm' (the refuted idea), but General never names the ectoderm or the endoderm, so a General reader can't weigh it. Add a plain contrast at General, e.g. 'It opens inside the middle layer, not between the outer layer (ectoderm) and inner layer (endoderm)'. General is at 90/90, so trim another sentence (e.g. the extraembryonic-cavity line).",
-    "q2": "fix: give-away of q3. Option 3 says 'around one cavity' and the why says 'make one cavity'; q3 then asks whether the new cavity is one space or several. Drop 'one' from both (e.g. 'The clefts merge, splitting the plate into two layers'), or put q3 before q2.",
+    "q1": "ok",
+    "q2": "ok",
     "q3": "ok",
-    "m1": "fix: uses 'coelom', 'ectoderm' and 'endoderm', none taught at General. Teach them there (see q1 fix) or write the wrong idea in plain words with the term in brackets.",
+    "m1": "ok",
     "r1": "ok",
     "r2": "ok",
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Fail. q2 now gives away q3 ('one cavity'); General does not name ectoderm/endoderm/coelom used in q1 and m1. adult uses 'pericardial, pleural and abdominopelvic', also untaught at General: write 'the heart, lung and belly cavities' (adult has no line id; checklist adult = false until fixed)."
+   "notes": "Round-4 fixes landed: q1 why no longer gives q2's order; q2 steps have no back-references. Fresh read: no new problems."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -251,6 +266,76 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General names coelom and contrasts ectoderm/endoderm (q1, m1); extraembryonic-cavity line (f4) dropped from General to fit; q2 option + why drop \"one cavity\" (no q3 cue); adult in plain words",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f2 names the parietal and visceral layers (G-Sci body.mbbs.3); r3 \"heart, lung and belly\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Learn)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f1 names all three strips (G-Sci body.mbbs.1); q1 why no longer gives q2 order; q2 steps without back-references",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 5)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

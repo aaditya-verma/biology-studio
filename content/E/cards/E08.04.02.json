@@ -3,7 +3,7 @@
  "id": "E08.04.02",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "The placental membrane: thin, not a wall",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Explain what the placental membrane separates and what passes across it."
  },
  "body": {
-  "general": "Is the placenta a wall that keeps everything out? No; it is a thin membrane, not a true barrier [f6]. It keeps the mother's blood and the baby's blood apart, so they normally do not mix [f1]. Early on it has four cell layers; from month 4 many places thin to two, the syncytium and the baby's capillary lining, speeding exchange [f3,f4]. Oxygen, food and salts pass easily [f6,f7]. So do the mother's antibodies of the IgG type, which protect the baby [f8]. Most drugs and many viruses cross too [f10].",
+  "general": "Is the placenta a wall that keeps everything out? No; it is a thin membrane, not a true barrier [f6]. It keeps the mother's and the baby's blood apart [f1]. Early on it has four cell layers [f3]. From month 4 many places thin to two: the syncytium (the merged outer layer of the villus) and the baby's capillary lining [f4]. Oxygen, food and salts pass easily [f6,f7]. So do the mother's antibodies of the IgG type, which protect the baby [f8]. Most drugs and many viruses cross too [f10].",
   "mbbs": "The placental membrane separates maternal and fetal blood, which normally do not mix [f1]. A few fetal cells still escape through small breaks in it [f2]. Initially it has four layers: fetal endothelium, villous connective tissue, cytotrophoblast and syncytium [f3]. From month 4 many villi lose cytotrophoblast and core tissue, leaving syncytium and endothelium [f4]. Because maternal blood directly bathes chorion-derived syncytium, the placenta is haemochorial [f5]. It is not a true barrier [f6]. Gases cross by simple diffusion, so fetal oxygen supply depends on placental blood flow [f6]. Nutrients and electrolytes pass readily [f7]. Maternal IgG crosses from about week 14 after fertilization, giving passive immunity [f8]. Steroid hormones cross easily; thyroxine crosses slowly [f11]. Most drugs and many viruses, such as rubella, cytomegalovirus, varicella and measles, cross too [f10]."
  },
  "facts": [
@@ -148,7 +148,7 @@
   {
    "id": "m2",
    "wrong": "Maternal and fetal blood mix in the placenta.",
-   "right": "A membrane keeps them apart, though a few fetal red cells leak across, which is why Rh disease can happen.",
+   "right": "A membrane keeps them apart, though a few fetal red cells leak across.",
    "cite": "E08.04, E08.04 CC",
    "mark": "✔"
   },
@@ -187,14 +187,14 @@
     "Every class"
    ],
    "answer": 0,
-   "why": "Only IgG crosses, from about week 14, giving passive immunity.",
+   "why": "Only IgG crosses, from about week 14, lending the baby the mother's protection.",
    "tests": "objective",
    "refutes": "m3"
   },
   {
    "id": "q3",
    "type": "mcq",
-   "prompt": "From month 4, which layers separate the two bloods in many villi?",
+   "prompt": "From month 4, which layers separate the two bloods in many places?",
    "options": [
     "Syncytium and the fetal capillary lining",
     "Syncytium and villus connective tissue",
@@ -202,7 +202,7 @@
     "Amnion and chorion"
    ],
    "answer": 0,
-   "why": "Many villi lose their inner cell layer and core tissue, leaving only syncytium over the fetal capillary lining.",
+   "why": "In many places the inner cell layer and core tissue are lost, leaving only syncytium over the fetal capillary lining.",
    "tests": "objective"
   }
  ],
@@ -217,11 +217,11 @@
   {
    "id": "r2",
    "q": "Which maternal antibody crosses the placenta?",
-   "a": "IgG, from about week 14 after fertilization, giving passive immunity [f8]."
+   "a": "IgG, from about week 14 after fertilization: protection borrowed from the mother [f8]."
   },
   {
    "id": "r3",
-   "q": "Which layers remain in many villi after month 4?",
+   "q": "Which layers remain in many places after month 4?",
    "a": "Syncytium and the fetal capillary lining [f4]."
   }
  ],
@@ -236,11 +236,41 @@
   "date": "21 Nov 2026"
  },
  "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 5, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-4 fixes landed: q3 and r3 say 'many places', matching General. Fresh read: no new problems."
+  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 5, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -258,6 +288,7 @@
     "body.general.5": "ok",
     "body.general.6": "ok",
     "body.general.7": "ok",
+    "body.general.8": "ok",
     "body.mbbs.1": "ok",
     "body.mbbs.2": "ok",
     "body.mbbs.3": "ok",
@@ -294,37 +325,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fixes landed: mbbs.9 and r2 say 'week 14 after fertilization'. New General (two layers left) is right. Marks and ✚ FcRn line correct; clinical humane."
+   "notes": "r3/q3 'many places' edit matches f4. Layers, haemochorial, IgG wk 14 (✔✔ R05bb/bc, book clock), ✔✔ f13 R05bd, ✚ f16 labelled in More — right vs dossier. Nothing left."
   },
-  "G-Learn": {
-   "result": "fail",
+  "G-A11y": {
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
    "date": "21 Nov 2026",
    "checklist": {
-    "objective": true,
-    "checks": false,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
    },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "fix: the right answer uses 'syncytium', which General names but never explains. Add a plain gloss at General, e.g. 'the syncytium (the merged outer layer of the villus)'.",
-    "m1": "ok",
-    "m2": "fix: 'Rh disease' is taught in no body level (f13 is in no body). Add a sentence at General ('those leaked cells can make the mother form antibodies, as in Rh disease'), or drop Rh disease from m2.",
-    "m3": "ok",
-    "r1": "ok",
-    "r2": "fix: 'passive immunity' is not taught at General (it says 'protect the baby'). Write 'protection borrowed from the mother' or gloss the term at General.",
-    "r3": "fix: 'syncytium' unexplained at General (see q3).",
-    "shows_up": "ok"
-   },
-   "notes": "Fail, small fixes: gloss syncytium and passive immunity at General, and teach Rh disease somewhere in the body. No give-aways; IgM/IgA distractors are fine as named wrong options."
+   "lines": {},
+   "notes": "No scene, Try it Coming soon. mcq only. 'Red cells' is an anatomical term, not a colour cue. Audit: no findings."
   }
  },
  "log": [
@@ -362,6 +378,76 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: syncytium glossed at General (q3, r3); r2 says \"protection borrowed from the mother\"; Rh disease dropped from m2 (clinical keeps it); f1 sentence shortened to fit",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q2 why drops \"passive immunity\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q3, r3 say \"many places\" (General words) not villi",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 5)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

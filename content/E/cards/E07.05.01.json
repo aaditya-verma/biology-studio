@@ -3,7 +3,7 @@
  "id": "E07.05.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Diaphragm and its parts",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Trace how each part of the diaphragm arises and how it reaches its adult level."
  },
  "body": {
-  "general": "Why is the nerve to your breathing muscle a neck nerve? Early on, two channels beside the gut still link the chest and belly cavities [f1]. From week 5, a fold grows from the wall of each channel [f2]. By week 7 the folds are sheets that grow across and seal the channels [f3]. These sheets make the tough centre of the diaphragm, the central tendon [f4]. Its muscle comes from tissue blocks in the neck [f5]. The diaphragm starts in the neck, so its nerve does too [f7]. Then it sinks to its adult place [f8].",
+  "general": "Why is your breathing muscle's nerve a neck nerve? Early on, two channels beside the gut, the pericardioperitoneal canals, link the chest and belly [f1]. They lie beside a plate, the septum transversum [f1]. From week 5 a pleuroperitoneal fold grows from each channel wall [f2]. By week 7 the folds are thin sheets, the pleuroperitoneal membranes, that seal the channels [f3]. These make the tough centre, the central tendon [f4]. Muscle comes from somites, tissue blocks at neck levels C3–C5 [f5]. So the diaphragm's phrenic nerve is a neck nerve, lengthened as the diaphragm sinks [f7,f8].",
   "mbbs": "The septum transversum leaves two pericardioperitoneal canals beside the foregut, so chest and belly still connect [f1]. From the start of week 5, crescent pleuroperitoneal folds grow from the canal walls [f2]. By week 7 they are pleuroperitoneal membranes that fuse with the oesophageal mesentery and the septum transversum, closing the canals [f3]. In Langman 14e the fused membranes make the central tendon [f4]. Their rim is connective tissue that guides incoming muscle cells [f4]. Muscle comes from C3–C5 somites [f5]. The oesophageal mesentery forms the crura [f6]. The phrenic nerve is C3–C5 because the diaphragm starts opposite these segments in week 4 [f7]. From week 6 the back outgrows the front, moving the diaphragm caudally and lengthening the phrenic nerves [f8]."
  },
  "facts": [
@@ -137,7 +137,7 @@
   {
    "id": "m2",
    "wrong": "The diaphragm forms where it ends up.",
-   "right": "It starts opposite C3–C5 and moves down, which is why the phrenic nerve is cervical and long.",
+   "right": "It starts opposite C3–C5 and moves down, which is why the phrenic nerve is a long neck nerve.",
    "cite": "E07.05",
    "mark": "✔"
   },
@@ -158,10 +158,10 @@
     "The septum transversum",
     "The fused pleuroperitoneal membranes",
     "Somites at C3–C5",
-    "The oesophageal mesentery"
+    "The lungs"
    ],
    "answer": 1,
-   "why": "The membranes fuse into the central tendon over the septum transversum, which is their base; the somites give muscle, the mesentery the crura.",
+   "why": "The pleuroperitoneal membranes fuse into the central tendon over the septum transversum, their base; somites give the muscle.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -185,17 +185,17 @@
    "type": "order",
    "prompt": "Put the steps in order.",
    "options": [
-    "Canals beside the foregut link the chest and belly cavities",
-    "Pleuroperitoneal folds grow from the canal walls",
-    "The membranes fuse with the oesophageal mesentery and septum transversum, closing the canals",
-    "The diaphragm reaches its adult level, muscle from C3–C5 filling the rim"
+    "Two canals beside the gut link the chest and belly",
+    "Pleuroperitoneal folds grow out on each side",
+    "Pleuroperitoneal membranes seal off the canals",
+    "The diaphragm sinks to its adult level"
    ],
    "why": "Week 5 folds become week 7 membranes that seal the canals; only then is the diaphragm finished at its adult level, its rim filled with C3–C5 muscle.",
    "tests": "objective"
   }
  ],
- "adult": "The adult diaphragm: central tendon from the membranes, muscle from C3–C5 somites, crura from the oesophageal mesentery, phrenic nerve C3–C5 [f4,f5,f6,f7].",
- "clinical": "If muscle fails to fill part of a pleuroperitoneal membrane, belly organs can slip into the chest: congenital diaphragmatic hernia [f9]. Most severe ones are on the left [f10]. The danger is small lungs, squeezed by the organs in the chest [f11].",
+ "adult": "The adult diaphragm: central tendon from the membranes, muscle from C3–C5 somites, phrenic nerve from C3–C5 [f4,f5,f7].",
+ "clinical": "If muscle fails to fill part of a pleuroperitoneal membrane, belly organs can slip into the chest: congenital diaphragmatic hernia [f9,f11]. Most severe ones are on the left [f10]. The danger is small lungs, squeezed by the organs in the chest [f11].",
  "remember": [
   {
    "id": "r1",
@@ -204,18 +204,18 @@
   },
   {
    "id": "r2",
-   "q": "Where do the diaphragm's muscle and crura come from?",
-   "a": "Muscle from C3–C5 somites; crura from the oesophageal mesentery [f5,f6]."
+   "q": "Where does the diaphragm's muscle come from?",
+   "a": "From somites, tissue blocks at the C3–C5 neck levels [f5]."
   },
   {
    "id": "r3",
-   "q": "Why is the phrenic nerve cervical and long?",
+   "q": "Why is the phrenic nerve a long neck nerve?",
    "a": "The diaphragm starts opposite C3–C5 in week 4, then moves down as the back outgrows the front [f7,f8]."
   },
   {
    "id": "r4",
    "q": "What links the chest and belly cavities before the diaphragm closes?",
-   "a": "Two pericardioperitoneal canals beside the foregut [f1]."
+   "a": "Two pericardioperitoneal canals beside the gut [f1]."
   }
  ],
  "shows_up": [
@@ -232,44 +232,44 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch B)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
-    "terms": false,
+    "terms": true,
     "budget": true,
-    "adult": false
+    "adult": true
    },
    "lines": {
     "obj": "ok",
-    "terms": "fix: both new terms are described but never named at General ('two channels', 'a fold'). Name them: 'two channels, the pericardioperitoneal canals' and 'a fold, the pleuroperitoneal fold'.",
-    "q1": "fix: options and why use 'septum transversum', 'pleuroperitoneal membranes', 'somites' and 'oesophageal mesentery'; General names none of them (it says 'sheets', 'tissue blocks in the neck'). Name at General: the septum transversum (e.g. 'a plate under the heart, the septum transversum'), the membranes, somites; and the oesophageal mesentery, or replace that distractor.",
-    "q2": "fix: prompt uses 'phrenic nerve', but General says only 'the nerve to your breathing muscle'. Name it at General ('its nerve, the phrenic nerve'). Distractor 'septum transversum' also needs the General naming in q1's fix.",
-    "q3": "fix: round-1 order fix landed (step 4 is now a clear end point, one right order). Still fails on names: steps use 'pleuroperitoneal folds', 'oesophageal mesentery' and 'septum transversum', not named at General (see terms and q1 fixes).",
-    "m1": "fix: 'septum transversum' is not named at General (see q1 fix).",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
     "m2": "ok",
-    "m3": "fix: 'septum transversum' and 'somites' are not named at General (see q1 fix).",
+    "m3": "ok",
     "r1": "ok",
-    "r2": "fix: 'crura' and 'oesophageal mesentery' are taught only at MBBS. Teach them at General ('the back legs of the diaphragm, the crura, come from the gut's back sheet') or drop crura from r2 and adult.",
-    "r3": "fix: 'phrenic nerve' is not named at General (see q2 fix).",
-    "r4": "fix: 'pericardioperitoneal canals' is not named at General (see terms fix).",
+    "r2": "ok",
+    "r3": "ok",
+    "r4": "ok",
     "shows_up": "ok"
    },
-   "notes": "Fail. Round-1 q3 fix landed. But General (90/90) names only the central tendon, while Checks, Remember, misconceptions and adult use septum transversum, the two new terms, somites, phrenic nerve, oesophageal mesentery and crura. Rewrite General with names in brackets; if 90 words can't hold them, cut crura/oesophageal mesentery from adult, r2, q1 and q3 (MBBS keeps them). adult has no line id; checklist adult = false until fixed."
+   "notes": "All four round-3 fixes landed: q3 steps no longer chained and say 'gut'; m2 and r3 say 'neck nerve'; r4 drops foregut. General 90/90 teaches the canals, septum, folds, membranes, central tendon, somites, C3–C5 and the phrenic nerve. No Check why answers a later Check. Nothing left."
   },
   "G-Sci": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch B)",
    "date": "21 Nov 2026",
    "checklist": {
-    "cited": false,
+    "cited": true,
     "sections": true,
     "accuracy": true,
     "flags": true,
@@ -311,13 +311,28 @@
     "m2": "ok",
     "m3": "ok",
     "adult": "ok",
-    "clinical": "fix: sentence 1 'belly organs can slip into the chest' is not in f9 (f9 is only the muscle/scaffold failure); add f11 to its refs ([f9,f11]) - f11 says organs are pushed into the chest.",
+    "clinical": "ok",
     "r1": "ok",
     "r2": "ok",
     "r3": "ok",
     "r4": "ok"
    },
-   "notes": "Round-1 fixes landed: f3 gives only the book answer (fuse with oesophageal mesentery + septum transversum, closing the canals), body general/mbbs follow it, f12 is R05aj depth in More (✚, beyond Langman, no rebuttal, no ⚑) per lead ruling. One new minor ref gap in the clinical line (add f11)."
+   "notes": "Round-3 fix landed: General s8 now 'lengthened as the diaphragm sinks [f7,f8]'; lines.json has all 8 General ids. Book endpoint per D-058 (4) kept; central tendon = membranes (D-043 c); 85–90 % left ✔✔ (R05ad 84 %); ✚ only in More, labelled. Pass."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -360,6 +375,56 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci fail — 1 fix line(s)",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General names the canals, septum transversum, pleuroperitoneal folds and membranes, somites, C3–C5 and the phrenic nerve; crura and oesophageal mesentery cut from q1 (distractor → \"The lungs\"), q3, r2 and adult (MBBS keeps them); clinical sentence 1 refs f9,f11 (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 4 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General sentence 8: the diaphragm sinks, the nerve lengthens (G-Sci); q3 steps not chained, no foregut; m2, r3 \"neck nerve\" not cervical; r4 drops foregut",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

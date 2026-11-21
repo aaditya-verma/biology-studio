@@ -3,7 +3,7 @@
  "id": "E06.02.04",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "How a somite splits",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Trace how a somite divides and what each of its parts goes on to build."
  },
  "body": {
-  "general": "How does one block build bone, muscle and skin? Each somite starts as a ball of cells that becomes a hollow ring [f1]. Early in week 4, cells of its lower inner wall loosen and wrap around the neural tube (future spinal cord) and notochord [f2]. This part, the sclerotome, makes vertebrae and ribs [f3]. The rest, the dermomyotome, holds muscle-forming cells and the dermatome, a layer that forms the deep skin (dermis) [f4,f5]. It builds back and body-wall muscles and back dermis [f6]. Some cells travel out to form most limb muscles [f7].",
+  "general": "How does one block build bone, muscle and skin? Each somite starts as a ball of cells that becomes a hollow ring [f1]. Early in week 4, cells of its lower inner wall loosen and wrap around the neural tube (future spinal cord) [f2]. This part, the sclerotome, makes vertebrae and ribs [f3]. The rest, the dermomyotome, holds muscle-forming cells and the dermatome [f4,f5]. The dermatome forms the deep skin (dermis) of the back [f4]. The dermomyotome builds the back and body-wall muscles [f6]. Some cells travel out to form most limb muscles [f7].",
   "mbbs": "A new somite is a ball of paraxial mesoderm that becomes an epithelial ring around a small cavity [f1]. Early in week 4 its ventral and medial wall loosens and migrates around the neural tube and notochord [f2]. This sclerotome forms the vertebrae and ribs [f3]. Cells at the dorsomedial and ventrolateral edges are muscle precursors; the cells between them are the dermatome [f4]. Together these make up the dermomyotome [f5]. It forms the dermis of the back and the muscles of the back and body wall [f6]. Ventrolateral cells also migrate into the body wall and limbs, giving the obliques, transversus abdominis and most limb muscles [f7]. Each somite keeps its own segmental nerve wherever its cells go [f8]."
  },
  "facts": [
@@ -38,7 +38,7 @@
   },
   {
    "id": "f4",
-   "text": "Cells at the dorsomedial and ventrolateral edges of the somite are muscle precursors; the cells between them are the dermatome.",
+   "text": "Cells at the dorsomedial and ventrolateral edges of the somite are muscle precursors; the cells between, the dermatome, form the dermis of the back.",
    "cite": "E06.02",
    "mark": "✔",
    "where": "main"
@@ -102,14 +102,14 @@
   {
    "id": "m1",
    "wrong": "The dermatome forms the epidermis.",
-   "right": "The dermatome forms the dermis; the epidermis comes from ectoderm.",
+   "right": "The dermatome forms the dermis (deep skin); the epidermis (outer skin) comes from ectoderm (the top germ layer).",
    "cite": "E06.02",
    "mark": "✔"
   },
   {
    "id": "m2",
    "wrong": "Limbs come from somites.",
-   "right": "Limb bones and connective tissue come from lateral plate mesoderm; only limb muscles come from somites.",
+   "right": "Limb bones and connective tissue come from the lateral plate (the outer strip of middle-layer tissue); only limb muscles come from somites.",
    "cite": "E06.02",
    "mark": "✔"
   },
@@ -133,7 +133,7 @@
     "The limb bones"
    ],
    "answer": 1,
-   "why": "The dermatome gives the dermis, the deeper skin layer; the epidermis on top comes from ectoderm.",
+   "why": "The dermatome gives the dermis, the deeper skin layer; the epidermis on top comes from ectoderm (the top germ layer).",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -148,7 +148,7 @@
     "The limb epidermis"
    ],
    "answer": 1,
-   "why": "Ventrolateral somite cells migrate in as limb muscle; bones and connective tissue come from the lateral plate.",
+   "why": "Somite cells migrate in as limb muscle; bones and connective tissue come from the lateral plate (the outer strip of middle-layer tissue).",
    "tests": "objective",
    "refutes": "m2"
   },
@@ -157,12 +157,12 @@
    "type": "order",
    "prompt": "Put these steps of somite change in order.",
    "options": [
-    "A somite forms as a ball of cells",
-    "The ball becomes a hollow ring",
-    "The ring's lower inner wall loosens as sclerotome",
-    "Sclerotome cells wrap around the neural tube and notochord"
+    "A solid ball of cells forms",
+    "The cells form a hollow ring",
+    "The lower inner wall loosens (sclerotome)",
+    "Cells wrap around the neural tube"
    ],
-   "why": "The ball first becomes a hollow ring; in week 4 its lower inner wall loosens, and those cells wrap the neural tube and notochord.",
+   "why": "The ball first becomes a hollow ring; in week 4 its lower inner wall loosens, and those cells wrap the neural tube.",
    "tests": "objective"
   }
  ],
@@ -176,12 +176,12 @@
   {
    "id": "r2",
    "q": "What does the dermatome give?",
-   "a": "The dermis (deep skin layer) of the back [f4,f6]."
+   "a": "The dermis (deep skin layer) of the back [f4]."
   },
   {
    "id": "r3",
-   "q": "What happens to a somite's segmental nerve when its cells migrate?",
-   "a": "It goes with them: each somite keeps its own segmental nerve wherever its cells go [f8]."
+   "q": "When a somite's cells move away, what happens to their nerve supply?",
+   "a": "They keep their own nerve, from their body segment, wherever they go [f8]."
   }
  ],
  "shows_up": [
@@ -199,45 +199,45 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Learn reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
-    "budget": false,
+    "budget": true,
     "adult": true
    },
    "lines": {
     "obj": "ok",
     "terms": "ok",
     "q1": "ok",
-    "q2": "fix: why starts 'Ventrolateral somite cells', a name not taught at General (ruling b). Use 'Somite cells migrate in as limb muscle; …'.",
+    "q2": "ok",
     "q3": "ok",
     "m1": "ok",
     "m2": "ok",
     "m3": "ok",
     "r1": "ok",
     "r2": "ok",
-    "r3": "fix: round-1 circularity fixed, but 'segmental nerve' is in prompt and answer and General never mentions nerves. Either add a General sentence (88/90, trim the hook) or plain words: 'its own nerve from its body segment'.",
+    "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Round-1 fixes landed (dermomyotome named, dermis wording, q3 options, r2, r3 question). Budget: General 'It builds back and body-wall muscles and back dermis.' follows a sentence ending 'the dermatome', so 'It' reads as the dermatome and implies it makes muscle; start with 'The dermomyotome builds…', and split the prior sentence (two ideas). Minor: dermomyotome is taught but not in terms.new (no glossary id exists)."
+   "notes": "Round-6 fixes landed: q2 why and m2 now gloss the lateral plate as 'the outer strip of middle-layer tissue' (no 'mesoderm'). Fresh read: sclerotome, dermatome, dermomyotome, dermis taught at General (87/90); q3 order has no self-placing cue; m1/m2 refuted; shows_up all from unlocks. Nothing left."
   },
   "G-Sci": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "agent": "C2 G-Sci reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
-    "accuracy": false,
+    "accuracy": true,
     "flags": true,
     "plus": true,
     "noapprox": true
@@ -247,9 +247,10 @@
     "body.general.2": "ok",
     "body.general.3": "ok",
     "body.general.4": "ok",
-    "body.general.5": "fix: the claim 'the dermatome, a layer that forms the deep skin (dermis)' is not carried by its refs [f4,f5] (dermis comes from f6, and only for the back); as written it also implies all dermis, which E06.02.06 f6 contradicts (limb/body-wall dermis = lateral plate). Add f6 to the refs and narrow it, e.g. 'the dermatome, a layer that forms the deep skin (dermis) of the back [f4,f5,f6]'.",
+    "body.general.5": "ok",
     "body.general.6": "ok",
     "body.general.7": "ok",
+    "body.general.8": "ok",
     "body.mbbs.1": "ok",
     "body.mbbs.2": "ok",
     "body.mbbs.3": "ok",
@@ -276,7 +277,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fixes landed (General no longer 'skin-forming'; '(myotome)' gone from MBBS). One new support gap: body.general.5 says the dermatome forms the deep skin but its refs (f4,f5) don't carry that, and it reads as all dermis."
+   "notes": "Round-6 fixes landed: f4 now says the dermatome forms the back dermis; general.6 and r2 ref [f4]. Fresh pass: sclerotome/dermomyotome fates, ✔✔ f2/f3 (R05m), MR facts in More, m2 lateral-plate wording (no 'mesoderm') still right vs dossier #13. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -309,6 +325,116 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci fail — 1 fix line(s)",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: body.general.5 split and narrowed to the back dermis with f6 in refs (G-Sci); the \"It\" sentence now names the dermomyotome; q2 why and r3 in General words",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 5 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1, q2 whys and m1, m2 gloss ectoderm/lateral plate; q3 options no longer chained by wording, notochord dropped",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: notochord dropped from General (unexplained; f2 keeps it)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q3 option 4 no longer echoes option 3",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f4 says the dermatome forms the back dermis; body.general.6 and r2 ref f4 (G-Sci); q2 why and m2 gloss without \"mesoderm\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 7)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

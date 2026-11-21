@@ -3,7 +3,7 @@
  "id": "E08.03.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Bushy chorion, smooth chorion and the deciduae",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Describe how the chorion and the uterine lining change by month 3 to set up the placenta and membranes."
  },
  "body": {
-  "general": "Why does the placenta sit on one side of the sac? At first, finger-like villi cover the whole outer sac, the chorion [f1]. Near the embryo they keep growing: the bushy chorion frondosum [f2]. Elsewhere they fade: the smooth chorion laeve, by month 3 [f3]. The uterine lining, the decidua, has three parts [f4,f6]. The decidua basalis lies under the bushy chorion; together they make the placenta [f5,f8]. The decidua capsularis covers the far side; the decidua parietalis lines the rest [f6]. The amnion and chorion fuse as the amniochorionic membrane, which breaks in labour [f9,f10].",
+  "general": "Finger-like villi first cover the whole outer sac, the chorion [f1]. Near the embryo they keep growing: the bushy chorion frondosum [f2]. Elsewhere they fade, leaving the smooth chorion laeve by month 3 [f3]. The uterine lining, the decidua, has three parts [f4,f5,f6]. The decidua basalis, under the frondosum, forms the placenta with it [f5,f8]. The decidua capsularis covers the far side; the decidua parietalis lines the rest [f6]. Later the chorion laeve fuses with the parietalis, closing the uterine cavity [f7]. The amnion (inner sac) and chorion fuse as the amniochorionic membrane, which breaks in labour [f9,f10].",
   "mbbs": "Early on, villi cover the entire chorion [f1]. Villi at the embryonic pole keep growing and branching as the chorion frondosum [f2]. Those at the abembryonic pole degenerate, so by month 3 that side is the smooth chorion laeve [f3]. The decidua is the functional layer of the endometrium, shed at parturition [f4]. Over the frondosum lies the decidua basalis [f5]. Its compact layer of large, lipid- and glycogen-rich decidual cells, the decidual plate, is firmly bound to the chorion [f5,f11]. Over the abembryonic pole lies the decidua capsularis; the rest is the decidua parietalis [f6]. As the sac grows, the capsularis stretches and degenerates [f7]. The chorion laeve then fuses with the decidua parietalis, obliterating the uterine cavity [f7]. Only the frondosum takes part in exchange; with the decidua basalis it forms the placenta [f8]. Amnion and chorion fuse as the amniochorionic membrane, obliterating the chorionic cavity [f9]."
  },
  "facts": [
@@ -135,9 +135,9 @@
    "type": "order",
    "prompt": "Put these changes in the chorion in order.",
    "options": [
-    "Villi cover the whole chorion",
-    "Villi on the far (abembryonic) side degenerate, leaving the chorion laeve",
-    "The chorion laeve fuses with the decidua parietalis and the uterine cavity closes"
+    "Villi (finger-like tufts) cover the whole chorion",
+    "The far (abembryonic) side turns smooth, the chorion laeve",
+    "The uterine cavity is closed off"
    ],
    "why": "The far-side villi are lost first; only later, as the sac grows, does the smooth chorion meet and fuse with the opposite uterine wall.",
    "tests": "objective"
@@ -153,7 +153,7 @@
     "Amnion"
    ],
    "answer": 0,
-   "why": "The capsularis covers the abembryonic pole; the basalis lies under the frondosum and the parietalis lines the rest of the uterus.",
+   "why": "The capsularis covers the far side; the basalis lies under the bushy chorion and the parietalis lines the rest of the uterus.",
    "tests": "objective"
   }
  ],
@@ -162,17 +162,17 @@
   {
    "id": "r1",
    "q": "What is the chorion frondosum?",
-   "a": "The bushy chorion at the embryonic pole, where the villi keep growing [f2]."
+   "a": "The bushy chorion next to the embryo, where its finger-like villi keep growing [f2]."
   },
   {
    "id": "r2",
-   "q": "Which decidua lies under the placenta?",
-   "a": "The decidua basalis [f5,f8]."
+   "q": "Which decidua lies under the bushy chorion?",
+   "a": "The decidua basalis; with the bushy chorion it forms the placenta [f5,f8]."
   },
   {
    "id": "r3",
    "q": "Which membrane breaks when the waters break?",
-   "a": "The amniochorionic membrane, amnion fused to chorion [f9,f10]."
+   "a": "The amniochorionic membrane: the amnion (the inner fluid sac) fused to the chorion [f9,f10]."
   }
  ],
  "shows_up": [
@@ -189,14 +189,14 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Learn reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
@@ -206,24 +206,24 @@
     "obj": "ok",
     "terms": "ok",
     "q1": "ok",
-    "q2": "fix: round-1 fix landed (3 steps, one order). But step 3 (chorion laeve fuses with the decidua parietalis, uterine cavity closes, f7) is not taught at General, so a General reader can't place it. Add one General sentence for f7 (trim elsewhere; 89/90 now), or swap step 3 for something General teaches.",
+    "q2": "ok",
     "q3": "ok",
     "m1": "ok",
-    "r1": "fix: 'embryonic pole' is not used at General (it says 'near the embryo'). Write 'next to the embryo' or teach the term.",
+    "r1": "ok",
     "r2": "ok",
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Fail, small fixes. Round-1 q2 fix landed and General now names the three decidua parts. Still, q2's last step is not taught at General, and r1 uses 'embryonic pole'."
+   "notes": "Round-6 fix landed: General now explains villi ('finger-like') and amnion ('inner sac'), 90/90. Fresh read: frondosum, laeve, deciduae, amniochorionic membrane taught; q2 order cues are content, not wording; q1/q2 whys don't answer q3; m1 refuted by q1. Nothing left."
   },
   "G-Sci": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "agent": "C2 G-Sci reviewer agent (round 7, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
-    "cited": false,
+    "cited": true,
     "sections": true,
     "accuracy": true,
     "flags": true,
@@ -235,7 +235,7 @@
     "body.general.2": "ok",
     "body.general.3": "ok",
     "body.general.4": "ok",
-    "body.general.5": "fix: 'has three parts' refs [f4,f6], but f6 names only capsularis and parietalis; the basalis is f5. Ref [f4,f5,f6].",
+    "body.general.5": "ok",
     "body.general.6": "ok",
     "body.general.7": "ok",
     "body.general.8": "ok",
@@ -267,7 +267,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Passed G-Sci in round 1; cleared by the G-Learn edits (General now names the three deciduae + amniochorionic membrane). New General sentence 5 needs f5 in its refs; all else right vs dossier."
+   "notes": "Round-3 edit (villi and amnion glossed, two General sentences shortened) keeps every claim carried: general.1–8 map to f1–f10. Frondosum/laeve by month 3, three deciduae, laeve–parietalis fusion, amniochorionic membrane rupture all right vs E08.03/E08.05 dossier; ✔ marks fit. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -305,6 +320,116 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci fail — 1 fix line(s)",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General teaches f7 (chorion laeve fuses with the decidua parietalis; q2 step 3) and body.general.5 refs f4,f5,f6 (G-Sci); hook shortened; r1 \"next to the embryo\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q2 steps no longer chained by wording",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: villi and amnion glossed (q2, r1, r3); r2 no longer says the basalis lies under the placenta (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (none standing)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 5, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q3 why uses \"far side\"",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 6, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: General explains villi and amnion; two sentences shortened to fit",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 7, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 7)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

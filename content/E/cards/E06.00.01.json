@@ -3,7 +3,7 @@
  "id": "E06.00.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "The embryonic period",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Explain why the embryonic period matters so much for birth defects."
  },
  "body": {
-  "general": "Why do the first two months of pregnancy matter so much? From week 3 to week 8, each of the three cell layers, the germ layers, builds its own tissues and organs [f1]. This stretch is the embryonic period, or embryogenesis, when organs form (organogenesis) [f1]. By its end, every main organ system exists and the body looks human [f7]. So this is when most major birth defects begin [f3]. Harmful agents, teratogens, do most damage now [f4]. Weeks 3 and 4 carry special risk, often before a woman knows she is pregnant [f5].",
+  "general": "Why do the first two months of pregnancy matter so much? From week 3 to week 8, each of the three cell layers, the germ layers, builds its own tissues and organs [f1]. This stretch is the embryonic period, or embryogenesis, when organs form (organogenesis) [f1]. So this is when most major birth defects begin [f3]. Harmful agents, teratogens, do most damage now [f4]. Serious harm before week 3 usually ends the pregnancy instead [f6]. Weeks 3 and 4 carry special risk, often before a woman knows she is pregnant [f5].",
   "mbbs": "The embryonic period, embryogenesis proper, runs from week 3 to week 8 after fertilization [f1]. In it each germ layer gives rise to its own tissues and organs (organogenesis) [f1]. By the end of month 2 the main organ systems are laid down and the external form is recognisable [f7]. At the end of week 8 the crown–rump length is about 28–30 mm [f2]. Most major structural birth defects arise in this window, so it is the period most sensitive to teratogens [f3,f4]. An insult in weeks 1–2 more often ends the pregnancy than causes a malformation [f6]. Weeks 3–4 are especially vulnerable and often pass before the pregnancy is recognised [f5]."
  },
  "facts": [
@@ -61,7 +61,7 @@
   },
   {
    "id": "f6",
-   "text": "Before the embryonic period, a serious insult usually ends the pregnancy rather than causing a malformation.",
+   "text": "Before the embryonic period, serious harm usually ends the pregnancy rather than causing a malformation.",
    "cite": "E06.00, E06.06 CC",
    "mark": "✔",
    "where": "main"
@@ -91,7 +91,7 @@
   {
    "id": "m2",
    "wrong": "Harm in the first two weeks causes most malformations.",
-   "right": "A serious insult before week 3 usually ends the pregnancy; malformations mostly start in weeks 3 to 8.",
+   "right": "Serious harm before week 3 usually ends the pregnancy; malformations mostly start in weeks 3 to 8.",
    "cite": "E06.00, E06.06 CC",
    "mark": "✔"
   }
@@ -115,7 +115,7 @@
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "A serious insult hits in week 2. What is the most usual result?",
+   "prompt": "Serious harm, such as a toxic drug, strikes in week 2. What is the most usual result?",
    "options": [
     "A heart defect",
     "A limb defect",
@@ -123,7 +123,7 @@
     "A defect that shows only after birth"
    ],
    "answer": 2,
-   "why": "Before the embryonic period a serious insult usually ends the pregnancy rather than causing a malformation.",
+   "why": "Before the embryonic period, serious harm usually ends the pregnancy rather than causing a malformation.",
    "tests": "objective",
    "refutes": "m2"
   },
@@ -157,7 +157,7 @@
   },
   {
    "id": "r3",
-   "q": "What usually follows a serious insult before week 3?",
+   "q": "What usually follows serious harm before week 3?",
    "a": "Loss of the pregnancy rather than a malformation [f6]."
   }
  ],
@@ -173,14 +173,14 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Learn reviewer agent (round 3, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
@@ -190,22 +190,22 @@
     "obj": "ok",
     "terms": "ok",
     "q1": "ok",
-    "q2": "fix: tests f6 (harm before week 3 usually ends the pregnancy), which the General body never teaches (MBBS only); and 'insult' is medical jargon, not plain words. Add f6 to General, e.g. 'Serious harm before week 3 usually ends the pregnancy instead [f6].' (to fit 90 words, the f7 sentence can go: the adult line carries f7); prompt: 'Serious harm, such as a toxic drug, strikes in week 2. What is the most usual result?'",
+    "q2": "ok",
     "q3": "ok",
     "m1": "ok",
-    "m2": "fix: 'insult' is not taught at General; say 'serious harm' (same change as q2).",
+    "m2": "ok",
     "r1": "ok",
     "r2": "ok",
-    "r3": "fix: 'serious insult' → 'serious harm' (plain words); depends on f6 reaching General (q2).",
+    "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Round-1 fix landed: embryogenesis is named and explained at General. Remaining: the weeks-1–2 fact is checked and remembered but only taught at MBBS, in jargon ('insult')."
+   "notes": "Round-2 fixes landed: f6 taught at General, 'serious harm' in q2, m2, r3. No why answers a later Check; all names in Checks and Remember are taught at General (embryogenesis, organogenesis, teratogens, germ layers). Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Sci reviewer agent (round 3, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -245,7 +245,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: f4 and m1 now cite 'E06.00, E06.06 CC · E09.01', ✔. General trim and embryogenesis naming add no unsupported claim. Weeks 3–8, CRL 28–30 mm (✔✔ R08 CS23 27–31 mm) and the weeks 3–4 risk lines match the dossier; clinical humane."
+   "notes": "f6 now taught at General in plain words and carried; 'serious harm' wording keeps the book claim. f7 still in MBBS + adult. Marks and cites right. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -283,6 +298,36 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: f6 taught at General (f7 sentence dropped; adult keeps f7); insult → serious harm in f6, q2, m2, r3",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 3)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

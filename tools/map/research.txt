@@ -83,7 +83,7 @@ E09.01.04|AN79.5,AN79.6|✔✔|
 E09.02.01|AN81.1,AN79.6|✔|
 E09.02.02|AN81.2,AN81.3|✔|
 E09.03.01|AN81.1|✔|
-# --- E10 · X1 21 Nov 2026 (dossier ch10-axial-skeleton.md; stages from human specimens R05m/R05cj/R05ce/R05cg, R08 classic ages, D-030; AN codes from the MGMUHS reprint of the NMC table — nmc.org.in blocked, re-read to do; AN8/AN9 are upper limb, D-064 e) ---
+# --- E10 · X1 21 Nov 2026 (dossier ch10-axial-skeleton.md; stages from human specimens R05m/R05cj/R05ce/R05cg, R08 classic ages, D-030; AN codes checked against NMC UG Curriculum Vol I (owner download from nmc.org.in; first read from the MGMUHS reprint); AN8/AN9 are upper limb, D-064 e) ---
 E10.01.01|AN2.2,AN2.4,AN26.6|✔|
 E10.01.02|AN26.1,AN26.3,AN26.6|✔|
 E10.01.03|AN26.4|✔|

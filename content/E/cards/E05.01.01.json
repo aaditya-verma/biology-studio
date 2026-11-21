@@ -8,10 +8,10 @@
  "tier": "A",
  "objective": {
   "verb": "explain",
-  "text": "Explain how the two-layered disc becomes three germ layers in week 3, all made from the epiblast."
+  "text": "Explain how the two-layered disc becomes three germ layers in week 3."
  },
  "body": {
-  "general": "How does a flat disc of two cell layers become three? In week 3 the disc turns into three layers, called germ layers; this process is gastrulation [f1]. It starts when a groove, the primitive streak, appears on the top layer, the epiblast [f2]. Epiblast cells crowd into the groove and slip underneath [f3]. The first ones push out the bottom layer and become endoderm [f4]. Later ones fill the middle as mesoderm [f5]. Cells left on top become ectoderm [f6]. So all three layers come from the epiblast [f7].",
+  "general": "How does a flat disc of two cell layers become three? In week 3 the disc turns into three layers, called germ layers; this process is gastrulation [f1]. It starts when a groove, the primitive streak, appears on the top layer, the epiblast [f2]. Epiblast cells crowd into the groove and slip underneath [f3]. The first ones push out the bottom layer, the hypoblast, and become endoderm [f4]. Later ones fill the middle as mesoderm [f5]. Cells left on top become ectoderm [f6]. So all three layers come from the epiblast [f7].",
   "mbbs": "Gastrulation is the week-3 process that turns the bilaminar disc into three germ layers: ectoderm, mesoderm and endoderm [f1]. It begins when the primitive streak appears on the epiblast, around days 14–15 (CS6) [f2]. Epiblast cells migrate to the streak, lose their links to neighbours and slip beneath it (invagination) [f3]. The first cells through displace the hypoblast and form definitive endoderm [f4]. Later cells spread between epiblast and endoderm as intraembryonic mesoderm [f5]. Cells that stay in the epiblast become ectoderm [f6]. So all three germ layers, and every tissue they build, come from the epiblast [f7]."
  },
  "facts": [
@@ -133,11 +133,11 @@
    "options": [
     "Hypoblast",
     "Epiblast",
-    "Trophoblast",
+    "A different layer for each",
     "Yolk-sac wall"
    ],
    "answer": 1,
-   "why": "Epiblast cells move in through the streak to make endoderm and mesoderm; the cells left behind become ectoderm.",
+   "why": "All three layers come from the epiblast: some cells move in, and those left on top become ectoderm.",
    "tests": "objective",
    "refutes": "m2"
   },
@@ -149,10 +149,10 @@
     "It turns into the endoderm",
     "Epiblast cells replace it as endoderm",
     "It becomes the mesoderm",
-    "It rolls up into the notochord"
+    "It splits into two layers"
    ],
    "answer": 1,
-   "why": "The first epiblast cells through the streak displace the hypoblast and form the endoderm themselves.",
+   "why": "Epiblast cells push the hypoblast aside and take its place as endoderm; the hypoblast does not turn into it.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -163,8 +163,8 @@
    "options": [
     "The primitive streak appears on the epiblast",
     "Epiblast cells move in through the streak",
-    "The first cells replace the hypoblast as endoderm",
-    "Later cells spread between the layers as mesoderm"
+    "Cells replace the hypoblast as endoderm",
+    "Cells spread between the layers as mesoderm"
    ],
    "why": "Cells go in through the streak; the first ones make endoderm, and the ones after them make mesoderm.",
    "tests": "objective"
@@ -208,8 +208,8 @@
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C1 G-Learn reviewer agent (round 2)",
-   "date": "20 Nov 2026",
+   "agent": "C2 G-Learn reviewer agent (round 4, batch A)",
+   "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
     "checks": true,
@@ -232,14 +232,14 @@
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Germ layers is glossed at General, giving 3 new terms with no exception, and teratogen has moved to More. The checks refute dossier ch05 #1-2."
+   "notes": "Round-3 fix landed: hypoblast named at General (q2, m1, r3 clear). Fresh pass: General 85/90, no why leaks into a later Check, q3 options carry no cue words, all Check/Remember names taught at General. Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C1 G-Sci reviewer agent (round 2)",
-   "date": "20 Nov 2026",
+   "agent": "C2 G-Sci reviewer agent (round 4, batch A)",
+   "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
@@ -282,14 +282,14 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Germ layers glossed at General; teratogen fact f8 moved to More (✔, cited), no main sentence depends on it."
+   "notes": "Round-3 fix landed: hypoblast named in general.5, carried by f4. Body, facts, marks (✔✔ R05b/R06; ✚ f9–f10 labelled, More, Tier 1) right vs dossier E05.01. Nothing left."
   },
   "G-A11y": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
-   "role": "QA & accessibility",
-   "agent": "C1 G-A11y reviewer agent (round 1)",
-   "date": "20 Nov 2026",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
    "checklist": {
     "alt": true,
     "input": true,
@@ -297,7 +297,7 @@
     "text125": true
    },
    "lines": {},
-   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 49 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Title 'Gastrulation in one picture' is a figure of speech; body explains the whole process in text. Order check: 4 steps, longest 49 chars. Advisory: f9 (More) says 'CS7 embryos' and mbbs body '(CS6)' without expansion; mbbs is fine, but the More fact is level-neutral, so suggest 'Carnegie stage 7 (CS7)' in f9. Scene label 'Epiblast → ectoderm' (sc-E00.01.04): arrow carries meaning; suggest scene owner set its spoken/aria text to 'epiblast becoming ectoderm' (scene issue, not this card)."
+   "notes": "Scene present but no drills; mcq + order (arrow buttons) only, no unlabelled visual. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -405,6 +405,101 @@
    "date": "20 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "L1F G-Learn give-away fixed: the objective no longer names q1's answer (epiblast) — it stays on screen during a Check run (D-053); the epiblast point stays in body f7, q1 and r2",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn, G-Sci, G-A11y): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fix (G-Learn q1): why no longer answers q2 (hypoblast replaced)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: q1 distractor Trophoblast → \"A different layer for each\" (targets m2); q2 why no longer gives q3 order, distractor \"It splits into two layers\"; q3 options lose their first/later cues",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: hypoblast named at General (q2, m1, r3)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 4, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 4)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 draft (handoff c2-round3) replaces the repo copy after G-Sci + G-Learn pass (D-058 (6))",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

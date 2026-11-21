@@ -3,7 +3,7 @@
  "id": "E06.01.01",
  "version": 1,
  "book": "E",
- "status": "draft",
+ "status": "reviewed",
  "title": "Making the neural plate",
  "tier": "A",
  "objective": {
@@ -11,7 +11,7 @@
   "text": "Explain how signals from the midline decide what ectoderm becomes."
  },
  "body": {
-  "general": "How does a plain sheet of cells decide to become the nervous system? The notochord, a rod of cells along the midline, signals the ectoderm, the top cell layer, above it [f1]. That ectoderm thickens into the neural plate, the start of brain and spinal cord [f1]. Ectoderm left alone tends to become neural tissue [f2]. A signal called BMP4 pushes it toward skin instead [f2]. The midline tissues release blockers of BMP4, so the ectoderm over them goes neural [f3]. Making one tissue change another like this is called induction [f1].",
+  "general": "How does a plain sheet of cells decide to become the nervous system? The notochord, a rod of cells along the midline, signals the ectoderm, the top cell layer, above it [f1]. That ectoderm thickens into the neural plate, the start of brain and spinal cord [f1]. Ectoderm left alone tends to become neural tissue [f2]. A signal called BMP4 pushes it toward skin, the epidermis, instead [f2]. The midline tissues release blockers of BMP4, so the ectoderm over them goes neural [f3]. Making one tissue change another like this is called induction [f1].",
   "mbbs": "The notochord and prechordal mesoderm induce the overlying ectoderm to thicken into the neural plate [f1]. Its cells are neuroectoderm [f7]. Ectoderm's default fate is neural; BMP4 diverts it to epidermis [f2]. The primitive node, notochord and prechordal mesoderm secrete noggin, chordin and follistatin [f3]. These bind and block BMP4, so midline ectoderm becomes neural plate [f3]. The blockers alone induce only forebrain and midbrain tissue [f4]. Hindbrain and spinal cord need WNT3a and FGF as well [f4]. Retinoic acid helps set head-to-tail identity along the plate [f5]."
  },
  "facts": [
@@ -79,7 +79,7 @@
   {
    "id": "m1",
    "wrong": "Ectoderm only makes skin.",
-   "right": "Ectoderm also makes the whole nervous system, sense epithelia, pituitary and tooth enamel; the neural plate is ectoderm.",
+   "right": "Ectoderm also makes the whole nervous system; the neural plate is ectoderm.",
    "cite": "E06.01",
    "mark": "✔"
   }
@@ -96,22 +96,22 @@
     "More notochord"
    ],
    "answer": 1,
-   "why": "Ectoderm over the notochord thickens into the neural plate; ectoderm elsewhere becomes skin.",
+   "why": "Ectoderm over the notochord thickens into the neural plate, the start of brain and spinal cord.",
    "tests": "objective",
    "refutes": "m1"
   },
   {
    "id": "q2",
    "type": "mcq",
-   "prompt": "What does BMP4 do to ectoderm when nothing blocks it?",
+   "prompt": "What does BMP4 do to ectoderm?",
    "options": [
     "Makes it neural",
-    "Makes it epidermis",
+    "Makes it skin (epidermis)",
     "Makes it notochord",
     "Makes it migrate inward"
    ],
    "answer": 1,
-   "why": "Ectoderm's own default is neural; BMP4 pushes it toward skin.",
+   "why": "BMP4 pushes ectoderm to become skin (epidermis).",
    "tests": "objective"
   },
   {
@@ -134,17 +134,17 @@
   {
    "id": "r1",
    "q": "Which tissues induce the neural plate?",
-   "a": "The notochord and prechordal mesoderm, signalling the ectoderm above them [f1]."
+   "a": "The notochord and other midline tissue, signalling the ectoderm above them [f1]."
   },
   {
    "id": "r2",
    "q": "What does BMP4 do to ectoderm?",
-   "a": "Turns it into epidermis; without BMP4, ectoderm becomes neural [f2]."
+   "a": "Turns it into skin (epidermis); without BMP4, ectoderm becomes neural [f2]."
   },
   {
    "id": "r3",
-   "q": "What extra signals do hindbrain and spinal cord need?",
-   "a": "WNT3a and FGF, beyond the BMP blockers [f4]."
+   "q": "What is induction?",
+   "a": "One tissue making another change, as the notochord does to the ectoderm above it [f1]."
   }
  ],
  "shows_up": [
@@ -160,14 +160,14 @@
  },
  "review": {
   "G-Learn": {
-   "result": "fail",
+   "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Learn reviewer agent (round 3, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "objective": true,
-    "checks": false,
+    "checks": true,
     "refutes": true,
     "terms": true,
     "budget": true,
@@ -176,22 +176,22 @@
    "lines": {
     "obj": "ok",
     "terms": "ok",
-    "q1": "fix: why-leak: 'ectoderm elsewhere becomes skin' cues q2's answer (BMP4 → epidermis). Trim: 'Ectoderm over the notochord thickens into the neural plate, the start of brain and spinal cord.' Option 'Epidermis' is untaught at General (body says 'skin'): gloss it in General ('toward skin, the epidermis, instead [f2]') or write 'Skin (epidermis)'.",
-    "q2": "fix: give-away of q3: the prompt 'when nothing blocks it' and the why 'Ectoderm's own default is neural' together give q3's answer (they block BMP4). Prompt: 'What does BMP4 do to ectoderm?'; why: 'BMP4 pushes ectoderm to become skin (epidermis).' Right option 'Makes it epidermis' → 'Makes it skin (epidermis)' unless General glosses epidermis.",
+    "q1": "ok",
+    "q2": "ok",
     "q3": "ok",
-    "m1": "fix: right side names 'sense epithelia' and 'pituitary', never taught at General. Plain words, e.g. 'Ectoderm also makes the whole nervous system; the neural plate is ectoderm.'",
-    "r1": "fix: answer names 'prechordal mesoderm', not taught at General (General says only 'midline tissues'). Use: 'The notochord and other midline tissue, signalling the ectoderm above them [f1].'",
-    "r2": "fix: 'epidermis' untaught at General; 'Turns it into skin (epidermis) ...' or gloss in body (see q1).",
-    "r3": "fix: WNT3a, FGF and hindbrain are MBBS-only names; a General learner gets this prompt too. Replace with a General-level prompt on a main fact, e.g. 'What is induction?' → 'One tissue making another change, as the notochord does to the ectoderm above it [f1].'",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Round-1 fixes landed (objective, q1 BMP4 leak, q3 names framed). Fresh review: q1→q2 and q2→q3 cue chains remain, and several untaught names (epidermis, prechordal mesoderm, WNT3a/FGF, pituitary) in Checks/Remember/misconception. One body gloss ('skin, the epidermis') clears three of them."
+   "notes": "All round-2 fixes landed: epidermis glossed at General, q1 and q2 cue chains broken, m1/r1/r2 in plain words, r3 now on induction. q3 frames noggin/chordin as 'midline signals', acceptable. Pass."
   },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "agent": "C2 G-Sci reviewer agent (round 3, batch A)",
    "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
@@ -230,7 +230,22 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Round-1 fix landed: f1 now carries the brain + spinal cord fate (supports body.general.3 and adult); neuroectoderm split out as f7, ✔. BMP4 default model, blockers, WNT3a/FGF and RA all ✔ book-only as the dossier."
+   "notes": "Epidermis gloss, m1, r1–r3 rewordings all carried by f1–f2; induction defined consistently with f1. Marks ✔ (book MR) right. Nothing left."
+  },
+  "G-A11y": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "QA",
+   "agent": "C2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "alt": true,
+    "input": true,
+    "colour": true,
+    "text125": true
+   },
+   "lines": {},
+   "notes": "No scene, Try it Coming soon; no unlabelled visual. Checks mcq/order only. No colour-only cues. Audit: no findings."
   }
  },
  "log": [
@@ -268,6 +283,36 @@
    "date": "21 Nov 2026",
    "ev": "G-Sci pass",
    "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-3 fixes: epidermis glossed at General; q1 why trimmed (no q2 cue); q2 prompt/why/option reworded (no q3 cue); m1, r1, r2 plain words; r3 replaced with induction prompt",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "card reopened by round-3 edits — passes cleared (G-Sci)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 3, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status draft → reviewed (G-Sci + G-Learn pass, round 3)",
+   "by": "Lead scientist · Bio · Content · C2 round 3"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass (layoutAudit 6 sizes × 100/125 %, reading + mid-Check: 0 findings)",
+   "by": "QA · C2 G-A11y reviewer agent (round 1)"
   }
  ]
 }
