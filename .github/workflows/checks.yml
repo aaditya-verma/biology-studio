@@ -15,6 +15,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Install Playwright + Pillow
@@ -36,6 +37,10 @@ jobs:
         run: |
           python tools/tracker/check.py
           python tools/tracker/check.py --selftest
+      - name: Lesson check (L2) — lessons, steps, time budget + selftest
+        run: |
+          python tools/lesson-check/check.py
+          python tools/lesson-check/check.py --selftest
       - name: Still regression (C11)
         run: python tools/stills/stills.py
       - name: Layout check (13 sizes × orientations × 100/125 % × light/dark)
