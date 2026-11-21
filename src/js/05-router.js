@@ -2,6 +2,7 @@
    Every place has an address: #today · #map · #map=E05 · #concept=E05.02.01 · #x=layer&y=day · #settings · #colours
    · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode)
    · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
+   · #lessons · #lesson=E05 · #card=E05.01.01&lesson=E05&step=check · #mix · #mix=go · #deck=go (L2 lessons, Today plans, Mixed review — docs/lesson-spec.md)
    · #review · #review=news · #review=mine · #rcard=E06.02.01 · #rtour · #rtour=2 · #updates · #updates=2 (H2 Reviewer mode). Back/Forward = the browser's history; Up = the parent address.
    Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves. */
 'use strict';
@@ -17,7 +18,11 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   if(name==='studio'){r.id=p.get('studio')||null;const g=p.get('gate');if(r.id&&g&&Object.hasOwn(CARD_RULES.gates,g))r.gate=g;}
   if(name==='progress'){const v=p.get('progress');r.view=['board','plan','inputs'].includes(v)?v:'map';}
   if(name==='step')r.id=p.get('step')||null;
-  if(name==='card'){r.id=p.get('card')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'cards',raw:h};}   // L1 reader; a bad id → the card list
+  if(name==='card'){r.id=p.get('card')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'cards',raw:h};
+    const ls=p.get('lesson'),sk=p.get('step');if(ls&&CONFIG.learn.lessons.includes(ls)){r.lesson=ls;if(['read','check','scene','drill','remember'].includes(sk))r.step=sk;}}   // L1 reader; a bad id → the card list · L2: opened from a lesson
+  if(name==='lesson'){r.ch=p.get('lesson');if(!r.ch||!/^E\d\d$/.test(r.ch))return {name:'lessons',raw:h};}
+  if(name==='mix')r.view=p.get('mix')==='go'?'go':'run';
+  if(name==='deck')r.view=p.get('deck')==='go'?'go':'all';
   if(name==='review'){const v=p.get('review');r.view=['news','mine'].includes(v)?v:'todo';}   // H2 Reviewer mode
   if(name==='rcard'){r.id=p.get('rcard')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'review',raw:h,view:'todo'};}
   if(name==='rtour'){const s=+p.get('rtour');r.step=s>=1&&s<=3?Math.floor(s):1;}
@@ -28,14 +33,16 @@ function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch:'map';case 
   case 'scene':return r.id?'scene='+r.id+(r.day!=null?'&day='+(Math.abs(r.day-Math.round(r.day))<0.05?Math.round(r.day):(+r.day).toFixed(1)):''):'scene';
   case 'day':return 'day='+r.day;
   case 'studio':return r.id?'studio='+r.id+(r.gate&&r.gate!=='G-Sci'?'&gate='+r.gate:''):'studio';
-  case 'card':return 'card='+r.id;
+  case 'card':return 'card='+r.id+(r.lesson?'&lesson='+r.lesson+(r.step?'&step='+r.step:''):'');
+  case 'lesson':return 'lesson='+r.ch;case 'mix':return r.view==='go'?'mix=go':'mix';case 'deck':return r.view==='go'?'deck=go':'deck';
   case 'review':return r.view&&r.view!=='todo'?'review='+r.view:'review';case 'rcard':return 'rcard='+r.id;
   case 'rtour':return r.step&&r.step>1?'rtour='+r.step:'rtour';case 'updates':return r.page&&r.page>1?'updates='+r.page:'updates';
   case 'progress':return r.view&&r.view!=='map'?'progress='+r.view:'progress';case 'step':return r.id?'step='+r.id:'progress';
   case 'x':return 'x='+r.x+'&y='+r.y+(r.cell?'&cell='+encodeURIComponent(r.cell):'');default:return r.name;}}
 function upOf(r){switch(r.name){case 'concept':return {name:'map',ch:r.ch};case 'map':return r.ch?{name:'map'}:{name:'today'};
   case 'x':return {name:'map'};case 'scene':return r.id?{name:'scene'}:{name:'today'};case 'day':return {name:'scene'};case 'colours':return {name:'settings'};
-  case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};case 'step':return {name:'progress'};case 'card':return {name:'cards'};case 'deck':return {name:'today'};
+  case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};case 'step':return {name:'progress'};case 'card':return r.lesson?{name:'lesson',ch:r.lesson}:{name:'cards'};case 'deck':return {name:'today'};
+  case 'lesson':return {name:'lessons'};case 'lessons':case 'mix':return {name:'today'};
   case 'rcard':case 'rtour':case 'updates':return {name:'review'};default:return r.name===CONFIG.home?null:{name:CONFIG.home};}}
 function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));
   if(opts.replace){history.replaceState(history.state,'',h);routeChanged();}

@@ -1,0 +1,119 @@
+{
+ "spec": 1,
+ "id": "L-E08",
+ "book": "E",
+ "ch": "E08",
+ "version": 1,
+ "budget": {
+  "min": 10,
+  "max": 15
+ },
+ "prereq": [
+  "E04.04.03",
+  "E00.01.02",
+  "E08.02.01"
+ ],
+ "sittings": [
+  {
+   "id": "s1",
+   "steps": [
+    {
+     "id": "E08.01.03:read",
+     "card": "E08.01.03",
+     "kind": "read",
+     "est_s": 112
+    },
+    {
+     "id": "E08.01.03:check",
+     "card": "E08.01.03",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E08.01.03:remember",
+     "card": "E08.01.03",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E08.03.01:read",
+     "card": "E08.03.01",
+     "kind": "read",
+     "est_s": 115
+    },
+    {
+     "id": "E08.03.01:check",
+     "card": "E08.03.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E08.03.01:remember",
+     "card": "E08.03.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E08.04.01:read",
+     "card": "E08.04.01",
+     "kind": "read",
+     "est_s": 126
+    },
+    {
+     "id": "E08.04.01:check",
+     "card": "E08.04.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E08.04.01:remember",
+     "card": "E08.04.01",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "steps": [
+    {
+     "id": "E08.04.02:read",
+     "card": "E08.04.02",
+     "kind": "read",
+     "est_s": 124
+    },
+    {
+     "id": "E08.04.02:check",
+     "card": "E08.04.02",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E08.04.02:remember",
+     "card": "E08.04.02",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E08.05.01:read",
+     "card": "E08.05.01",
+     "kind": "read",
+     "est_s": 123
+    },
+    {
+     "id": "E08.05.01:check",
+     "card": "E08.05.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E08.05.01:remember",
+     "card": "E08.05.01",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  }
+ ],
+ "retired": []
+}

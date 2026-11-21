@@ -1,4 +1,4 @@
-/* Biology Studio — saved state (RULES §A). Owner doc: build/design-plan.md §6. L1 adds cards (statuses) + deck (Remember) + settings.level. IndexedDB `biostudio` (D-019): stores state / answers / files.
+/* Biology Studio — saved state (RULES §A). Owner doc: build/design-plan.md §6. L1 adds cards (statuses) + deck (Remember) + settings.level. L2 adds lessons (step progress) + mix (Mixed review runs). IndexedDB `biostudio` (D-019): stores state / answers / files.
    · A1: fields are only ever added; stFill() back-fills them on load, so old saves keep working (A4).
    · Writes are guarded (DrumPath v35 lesson): the stored rev is read and the new record written in ONE transaction;
      if another tab wrote since, this tab merges the stored copy in first (unions, furthest, newer) and tries again.
@@ -13,6 +13,8 @@ const STORE={mode:'mem',db:null,rev:0,timer:0,busy:false,again:false,err:null,me
 function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',motion:'system',level:CONFIG.learn.level,t:0},last:{route:'today',card:null},visited:{},answers:{},
   cards:{},   // L1: {<card id>:{read,und,exp: first time (ms) each status was reached · checks: runs · best: best score · t: last change}} (B4)
   deck:{},    // L1: Remember deck {<card id>#<r id>:{step, due (ms, local midnight), n: reviews, lapses, t: last change}}
+  lessons:{}, // L2: {<ch>:{done:{<step id>: first time}, skip:{<step id>: time}, last: step id the bar showed, t: last change}} (docs/lesson-spec.md §6)
+  mix:{runs:[],t:0},   // L2: Mixed review runs [{t, n, ok, go}] (newest CONFIG.learn.mix.keep) — recall stats only (B4)
   review:{on:false,tour:0,seen:{},seenAt:0,updKey:'',drafts:{},cache:null,t:0}};}   // H2 Reviewer mode: on (Review tab) · tour (time seen) · seen {card id: version at last visit} · seenAt (last 'Mark all as seen') · updKey (newest update seen) · drafts {card id: form answers not sent yet} · cache {at, items, etag, status} of her GitHub issues · t: last change
 function stFill(s){const d=stNew();s=s&&typeof s==='object'?s:{};
   for(const k of Object.keys(d))if(s[k]===undefined)s[k]=d[k];
@@ -21,6 +23,9 @@ function stFill(s){const d=stNew();s=s&&typeof s==='object'?s:{};
   if(typeof s.cards!=='object'||!s.cards||Array.isArray(s.cards))s.cards={};if(typeof s.deck!=='object'||!s.deck||Array.isArray(s.deck))s.deck={};   // L1 back-fill (A1, A4)
   if(typeof s.review!=='object'||!s.review||Array.isArray(s.review))s.review={};s.review=Object.assign({},d.review,s.review);   // H2 back-fill
   for(const k of ['seen','drafts'])if(typeof s.review[k]!=='object'||!s.review[k]||Array.isArray(s.review[k]))s.review[k]={};
+  if(typeof s.lessons!=='object'||!s.lessons||Array.isArray(s.lessons))s.lessons={};   // L2 back-fill (A1, A4)
+  for(const ch of Object.keys(s.lessons)){const r=s.lessons[ch];if(!r||typeof r!=='object'){delete s.lessons[ch];continue;}for(const k of ['done','skip'])if(typeof r[k]!=='object'||!r[k]||Array.isArray(r[k]))r[k]={};}
+  if(typeof s.mix!=='object'||!s.mix||Array.isArray(s.mix))s.mix={};if(!Array.isArray(s.mix.runs))s.mix.runs=[];if(typeof s.mix.t!=='number')s.mix.t=0;
   return s;}
 /* merge two saves: visited = newest time per id; answers = union by key, newer wins; settings = newer save wins; rev = max */
 function stMerge(a,b){a=stFill(a);b=stFill(b);const newer=(b.savedAt||0)>(a.savedAt||0)?b:a,m=stFill(JSON.parse(JSON.stringify(newer)));
@@ -32,6 +37,10 @@ function stMerge(a,b){a=stFill(a);b=stFill(b);const newer=(b.savedAt||0)>(a.save
     for(const k of ['read','und','exp']){const v=[x[k],y[k]].filter(n=>typeof n==='number'&&n>0);if(v.length)o[k]=Math.min(...v);else delete o[k];}
     o.checks=Math.max(x.checks||0,y.checks||0);o.best=Math.max(x.best||0,y.best||0);o.t=Math.max(x.t||0,y.t||0);m.cards[id]=o;}
   m.deck={...a.deck};for(const[k,v]of Object.entries(b.deck)){const o=m.deck[k];if(!o||(v&&v.t||0)>(o.t||0))m.deck[k]=v;}
+  /* L2: lessons — done/skip keep the earliest time per step (union); last from the copy changed last · mix runs = union by time */
+  m.lessons={};for(const ch of new Set([...Object.keys(a.lessons),...Object.keys(b.lessons)])){const x=a.lessons[ch]||{done:{},skip:{},t:0},y=b.lessons[ch]||{done:{},skip:{},t:0},o={done:{},skip:{},last:((y.t||0)>(x.t||0)?y:x).last||null,t:Math.max(x.t||0,y.t||0)};
+    for(const k of ['done','skip'])for(const src of [x[k]||{},y[k]||{}])for(const[id,t]of Object.entries(src))o[k][id]=o[k][id]?Math.min(o[k][id],t):t;m.lessons[ch]=o;}
+  {const seen=new Set();m.mix={runs:[...a.mix.runs,...b.mix.runs].filter(r=>r&&typeof r.t==='number'&&!seen.has(r.t)&&seen.add(r.t)).sort((p,q)=>p.t-q.t).slice(-CONFIG.learn.mix.keep),t:Math.max(a.mix.t||0,b.mix.t||0)};}
   /* H2: reviewer — on/tour from the copy changed last; seen = the higher version per card; drafts = newer per card; cache = the newer check */
   {const x=a.review,y=b.review,n=(y.t||0)>(x.t||0)?y:x;m.review={...n,seen:{...x.seen},drafts:{...x.drafts}};
     for(const[k,v]of Object.entries(y.seen))m.review.seen[k]=Math.max(m.review.seen[k]||0,v);
@@ -104,5 +113,9 @@ async function stImport(file){const j=JSON.parse(await file.text());if(!j||j.kin
   const num=(o,ks)=>{for(const k of ks)if(k in o){const n=+o[k];if(isFinite(n))o[k]=n;else delete o[k];}};   // a backup is outside data: numbers stay numbers (G-Eng)
   if(c&&typeof c==='object')for(const k of Object.keys(c))num(c[k],['read','und','exp','checks','best','t']);
   const dk=j.state.deck;if(dk&&typeof dk==='object')for(const k of Object.keys(dk)){if(!/^E\d\d\.\d\d\.\d\d#r\d+$/.test(k)||!dk[k]||typeof dk[k]!=='object'){delete dk[k];continue;}num(dk[k],['due','step','n','lapses','t']);if(typeof dk[k].due!=='number')delete dk[k];}
+  const ls=j.state.lessons;if(ls&&typeof ls==='object')for(const k of Object.keys(ls)){const r=ls[k];if(!/^E\d\d$/.test(k)||!r||typeof r!=='object'){delete ls[k];continue;}   // L2 (G-Eng: outside data)
+    for(const f of ['done','skip']){if(!r[f]||typeof r[f]!=='object'){r[f]={};continue;}for(const id of Object.keys(r[f]))if(!/^E\d\d\.\d\d\.\d\d:(read|check|scene|drill|remember)$/.test(id)||!isFinite(+r[f][id]))delete r[f][id];else r[f][id]=+r[f][id];}
+    if(typeof r.last!=='string')r.last=null;num(r,['t']);}
+  const mx=j.state.mix;if(mx&&typeof mx==='object'){mx.runs=Array.isArray(mx.runs)?mx.runs.filter(r=>r&&typeof r==='object').map(r=>({t:+r.t,n:+r.n,ok:+r.ok,go:!!r.go})).filter(r=>isFinite(r.t)&&isFinite(r.n)&&isFinite(r.ok)):[];num(mx,['t']);}
   state=stMerge(state,j.state);slog('import',{from:j.app});stSave();return true;}
 const stTouch=(id)=>{state.visited[id]=Date.now();stSave();};

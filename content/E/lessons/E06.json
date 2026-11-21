@@ -1,0 +1,280 @@
+{
+ "spec": 1,
+ "id": "L-E06",
+ "book": "E",
+ "ch": "E06",
+ "version": 1,
+ "budget": {
+  "min": 10,
+  "max": 15
+ },
+ "prereq": [
+  "E05.01.04",
+  "E05.02.01",
+  "E05.04.02",
+  "E05.05.01",
+  "E05.03.03"
+ ],
+ "sittings": [
+  {
+   "id": "s1",
+   "steps": [
+    {
+     "id": "E06.00.01:read",
+     "card": "E06.00.01",
+     "kind": "read",
+     "est_s": 110
+    },
+    {
+     "id": "E06.00.01:check",
+     "card": "E06.00.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.00.01:remember",
+     "card": "E06.00.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.01.01:read",
+     "card": "E06.01.01",
+     "kind": "read",
+     "est_s": 87
+    },
+    {
+     "id": "E06.01.01:check",
+     "card": "E06.01.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.01.01:remember",
+     "card": "E06.01.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.01.02:read",
+     "card": "E06.01.02",
+     "kind": "read",
+     "est_s": 95
+    },
+    {
+     "id": "E06.01.02:check",
+     "card": "E06.01.02",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E06.01.02:remember",
+     "card": "E06.01.02",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "steps": [
+    {
+     "id": "E06.01.04:read",
+     "card": "E06.01.04",
+     "kind": "read",
+     "est_s": 118
+    },
+    {
+     "id": "E06.01.04:check",
+     "card": "E06.01.04",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.01.04:remember",
+     "card": "E06.01.04",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.01.03:read",
+     "card": "E06.01.03",
+     "kind": "read",
+     "est_s": 101
+    },
+    {
+     "id": "E06.01.03:check",
+     "card": "E06.01.03",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E06.01.03:remember",
+     "card": "E06.01.03",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "steps": [
+    {
+     "id": "E06.02.01:read",
+     "card": "E06.02.01",
+     "kind": "read",
+     "est_s": 110
+    },
+    {
+     "id": "E06.02.01:check",
+     "card": "E06.02.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E06.02.01:remember",
+     "card": "E06.02.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.02.06:read",
+     "card": "E06.02.06",
+     "kind": "read",
+     "est_s": 115
+    },
+    {
+     "id": "E06.02.06:check",
+     "card": "E06.02.06",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.02.06:remember",
+     "card": "E06.02.06",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "steps": [
+    {
+     "id": "E06.02.02:read",
+     "card": "E06.02.02",
+     "kind": "read",
+     "est_s": 129
+    },
+    {
+     "id": "E06.02.02:check",
+     "card": "E06.02.02",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.02.02:remember",
+     "card": "E06.02.02",
+     "kind": "remember",
+     "est_s": 60
+    },
+    {
+     "id": "E06.02.04:read",
+     "card": "E06.02.04",
+     "kind": "read",
+     "est_s": 124
+    },
+    {
+     "id": "E06.02.04:check",
+     "card": "E06.02.04",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E06.02.04:remember",
+     "card": "E06.02.04",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.02.05:read",
+     "card": "E06.02.05",
+     "kind": "read",
+     "est_s": 88
+    },
+    {
+     "id": "E06.02.05:check",
+     "card": "E06.02.05",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.02.05:remember",
+     "card": "E06.02.05",
+     "kind": "remember",
+     "est_s": 30
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "steps": [
+    {
+     "id": "E06.03.01:read",
+     "card": "E06.03.01",
+     "kind": "read",
+     "est_s": 108
+    },
+    {
+     "id": "E06.03.01:check",
+     "card": "E06.03.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.03.01:remember",
+     "card": "E06.03.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.03.02:read",
+     "card": "E06.03.02",
+     "kind": "read",
+     "est_s": 103
+    },
+    {
+     "id": "E06.03.02:check",
+     "card": "E06.03.02",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E06.03.02:remember",
+     "card": "E06.03.02",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E06.03.03:read",
+     "card": "E06.03.03",
+     "kind": "read",
+     "est_s": 105
+    },
+    {
+     "id": "E06.03.03:check",
+     "card": "E06.03.03",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E06.03.03:remember",
+     "card": "E06.03.03",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  }
+ ],
+ "retired": []
+}

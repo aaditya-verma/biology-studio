@@ -34,7 +34,7 @@ function buildShell(){
   document.documentElement.classList.toggle('rvnav',rvNavOn());
   if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
-const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today',rcard:'review',rtour:'review',updates:'review'}[r.name]||r.name);
+const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today',lessons:'cards',lesson:'cards',mix:'today',rcard:'review',rtour:'review',updates:'review'}[r.name]||r.name);
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];

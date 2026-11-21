@@ -9,7 +9,7 @@ const CARD_RULES={
   types:['mcq','order','rotate','day','frames','label','folded'], spatialTypes:['order','frames','label','rotate'],   // card-spec §2a (V2 drills, D-054)
   drill:{altWords:40,frameWords:25,tol:[10,45],tolDefault:25,zoom:[0.5,6],pins:[2,4],items:[2,5],labelWords:3},
   budget:{general:90,school:110,neet:140,mbbs:160,pg:200}, required:['general','mbbs'],
-  marks:['✔✔','✔','⚑','✚','≈','ⓘ'], kinds:['concept','guide'], appLocs:['Today','Cards','Card','Check','Explain','Deck','Try it','Watch it','Status','Settings'], statuses:['draft','reviewed','shipped','retired'],
+  marks:['✔✔','✔','⚑','✚','≈','ⓘ'], kinds:['concept','guide'], appLocs:['Today','Cards','Card','Check','Explain','Deck','Try it','Watch it','Status','Settings','Lessons','Mixed review'], statuses:['draft','reviewed','shipped','retired'],
   limits:{sentence:25,newTerms:3,newTermsEx:5,minChecks:2,opt:[3,5],remember:[2,5],showsUp:6},
   gates:{'G-Sci':{checklist:['cited','sections','accuracy','flags','plus','noapprox'],lines:['body','fact','mis','adult','clinical','remember']},
     'G-Learn':{checklist:['objective','checks','refutes','terms','budget','adult'],lines:['obj','terms','check','mis','remember','shows']},

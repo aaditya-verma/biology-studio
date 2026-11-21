@@ -2,7 +2,7 @@
 """Biology Studio — layout check (RULES C8 + C13, master plan §8a → build/design-plan.md §2). V1: + 3D list, viewer (2 scenes), viewer rotate.
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
 W1: + progress map (Map, Board, Your inputs, 3 step pages); W2: + Plan (progress=plan, D-063), step page rotate, map with done shown, progress outside testing mode.
-L1: + cards list, card reader (concept, guide, clinical), Remember deck; card mid-Check survives rotate (question, 3D day, scroll).
+L1: + cards list, card reader (concept, guide, clinical), Remember deck; L2: + lessons path, a lesson, a card in a lesson (scene + no-scene), Mixed review, On the go deck; card mid-Check survives rotate (question, 3D day, scroll).
 L1F: + D-053 fold (Check hides the card text; Read again ends the run unscored), saved app/savedAt, pins clear of overlays + pinned labels after a
     label drill, the day drill keeps the ruler clear of overlays (2 phone sizes), mid-word titles (in-app audit). V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
     rotate mid-drill moves the stage (in the Check ↔ beside it) and keeps the view; Try it gets its view back; WebGL context loss redraws.
@@ -38,6 +38,9 @@ SCREENS = {
     "progress": "progress", "progress-board": "progress=board", "progress-plan": "progress=plan", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
     "cards": "cards", "card": "card=E05.01.01", "card-noto": "card=E05.02.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
+    # L2 lessons, Today plans, Mixed review (D-070)
+    "lessons": "lessons", "lesson": "lesson=E05", "lesson-noscene": "lesson=E06", "card-lesson": "card=E05.02.01&lesson=E05&step=check",
+    "card-lesson-noscene": "card=E06.00.01&lesson=E06", "mix": "mix", "mix-go": "mix=go", "deck-go": "deck=go",
     # H2 Reviewer mode — opened with the demo issues (?fixture=review, never GitHub); keep these last (the page reloads once with the fixture)
     "review": "review", "review-news": "review=news", "review-mine": "review=mine", "rcard": "rcard=E05.01.02", "rcard-draft": "rcard=E06.02.01",
     "rtour": "rtour", "rtour-3": "rtour=3", "updates": "updates",
@@ -137,15 +140,20 @@ async def run(a):
                         if route.startswith(("studio", "calib")):   # Studio: wait for cards + sources (S1)
                             await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
                         if route.startswith(("cards", "card=", "deck")):   # L1: cards loaded + drawn; a card also waits for its inline 3D
-                            await page.wait_for_function(f"window.LN_READY==={json.dumps(route)}", timeout=20000)
-                            if route.startswith("card="):
+                            await page.wait_for_function(f"window.LN_READY==={json.dumps(route.split('&')[0] if route.startswith('card=') else route.split('=')[0] if route.startswith('deck') else route)}", timeout=20000)
+                            if route.startswith("card=") and "E06" not in route.split("&")[0]:   # no-scene cards (D-058) have no 3D to wait for
                                 await page.wait_for_function("window.VW_READY===true", timeout=30000)
+                                await page.wait_for_timeout(80)
+                            if "lesson=" in route:   # L2: the lesson bar is drawn
+                                await page.wait_for_function("!!document.querySelector('#lsBar .ls-acts')", timeout=20000)
                                 await page.wait_for_timeout(80)
                         if sname in REVIEW_SCREENS:   # H2: cards, demo issues and the build log loaded + drawn
                             await page.wait_for_function(f"window.RV_READY==={json.dumps(route)} && (!['review','review=news','review=mine'].includes(window.RV_READY) || (RV.idx && RV.upd && !RV.busy))", timeout=20000)
                             if route.startswith("review"):
                                 await page.evaluate("render()")
                             await page.wait_for_timeout(80)
+                        if route.startswith(("lessons", "lesson=", "mix")):   # L2: lessons + their cards loaded + drawn
+                            await page.wait_for_function(f"window.LS_READY==={json.dumps(route.split('=')[0] if route.startswith('mix') else route)}", timeout=20000)
                         if route.startswith(("progress", "step")):   # progress map: wait for steps.json + draw (W1)
                             await page.wait_for_function(f"window.TR_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")

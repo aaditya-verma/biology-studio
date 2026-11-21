@@ -10,6 +10,8 @@
    same engine. Try it gets its own view back when the drill ends. Every drill has a text alternative (alt, frame/item texts, rotate in words).
    L1F (D-053, D-056): while a Check run is open the card text folds away (class ck-on on #lnCard; *Read again* ends the run unscored);
    Sources = the sections + registry sources a card cites (sources.json names); More only when it has facts; Remember says *Due tomorrow*.
+   L2 (D-070): a card opened from a lesson (#card=<id>&lesson=<ch>) shows the lesson bar in its head + a short one at the end (20-lessons.js lsBarPaint);
+   #deck=go (Today · On the go) caps the session at CONFIG.today.goPrompts. lnTodayHtml = the Cards box only (the plans are lsTodayHtml).
    EDIT: words in STR.ln (STR.ln.dr for drills); settings in CONFIG.learn; card data in content/<book>/cards/ (never in code). */
 'use strict';
 const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null,keep:null,drillKey:null,snap:{}};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng)
@@ -84,7 +86,7 @@ SCREENS.cards=function(v){
 /* ---------- #card=<id> ---------- */
 SCREENS.card=function(v){
   const id=ROUTE.id;
-  ROUTE.crumbs=[{label:STR.ln.cardsT,hash:'cards'},{label:(LN.open[id]&&LN.open[id].title)||id}];
+  ROUTE.crumbs=ROUTE.lesson?[{label:STR.ls.pathT,hash:'lessons'},{label:STR.ls.chShort(ROUTE.lesson),hash:'lesson='+ROUTE.lesson},{label:(LN.open[id]&&LN.open[id].title)||id}]:[{label:STR.ln.cardsT,hash:'cards'},{label:(LN.open[id]&&LN.open[id].title)||id}];
   const meta=LN.idx&&LN.idx.cards.find(c=>c.id===id),card=LN.open[id];LN.gone.delete(id);
   if(!LN.idx||!card){v.innerHTML=`<p class="mut" role="status">${esc(STR.ln.loading)}</p>`;
     Promise.all([LN.idx?null:lnLoad(),lnCard(id),scIndexLoad(),cdSources().catch(()=>null)]).then(()=>{if(ROUTE.name==='card'&&ROUTE.id===id)render();})
@@ -100,7 +102,7 @@ SCREENS.card=function(v){
   <header class="ln-head"><div class="row"><span class="mono mut">${esc(id)} · ${esc(STR.tierShort(card.tier))}${card.kind==='guide'?' · ⓘ':''}</span><span class="sp"></span><span id="lnStatus">${lnChip(id)}</span>${editBtn('card',id,CONFIG.cards.dir+id+'.json')}</div>
       <h1 id="cpT" tabindex="-1">${esc(card.title)}</h1>
       ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-pressed="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
-    <section class="ln-obj"><h2 class="ln-h">${esc(STR.ln.objT)}</h2><p><b>${esc(card.objective.text)}</b></p></section></header>
+    <section class="ln-obj"><h2 class="ln-h">${esc(STR.ln.objT)}</h2><p><b>${esc(card.objective.text)}</b></p></section>${lsBarHost()}</header>
   <div class="ln-media">
     ${sc?`<section class="ln-try" id="lnTry" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>`
       :`<section class="ln-try ln-try-none" id="lnTry" aria-labelledby="lnTryT"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="badge">${esc(STR.ln.soon)}</span><span class="xs mut">${esc(STR.ln.trySoon)}</span></section>`}
@@ -119,6 +121,7 @@ SCREENS.card=function(v){
       return `<button type="button" class="btn sm" data-go="${c?'card='+esc(x):'concept='+esc(x)}">${esc(c?c.title:m?m.name:x)} <span class="xs mut">${esc(x)}</span></button>`;}).join('')}</div></section>`:''}
     ${lnMoreHtml(card)}
     <section class="ln-src" id="lnSrc" aria-labelledby="lnSrcT">${lnSrcHtml(card)}</section>
+    ${lsBarFoot()}
     <nav class="ln-pn row" aria-label="${esc(STR.ln.cardRail)}">${prev?`<button type="button" class="btn" data-go="card=${esc(prev.id)}">${icon('back',18)} ${esc(prev.title)}</button>`:''}<span class="sp"></span>${next?`<button type="button" class="btn" data-go="card=${esc(next.id)}">${esc(next.title)} ${icon('fwd',18)}</button>`:''}</nav>
   </article>
   <nav class="ln-rail card" aria-label="${esc(STR.ln.cardRail)}"><h2 class="ln-h">${esc(STR.ln.groups[id.slice(0,3)]||STR.ln.groupOf(id.slice(0,3)))}</h2>
@@ -132,6 +135,7 @@ SCREENS.card=function(v){
       const st=SC.st[S.id]||(SC.st[S.id]={});if(card.scene.day!=null&&(LN.lastCard!==id||st.day==null))st.day=card.scene.day;LN.lastCard=id;   // a new card opens at its own day; rotate / back from full 3D keep yours
       if(lnLiveQ(card))lnDrillMount(card);else scViewer($('#lnVw'),S,{inline:true});lnSnapsFill(card);})
     .catch(e=>{const h=$('#lnVw');if(h)h.innerHTML=`<p class="mut sm">${esc(e.message)}</p>`;});}
+  lsBarPaint();
   window.LN_READY='card='+id;
   if(dbgOn('learn'))DBG.learn=`learn ${id} · ${lnStatus(id)} · level ${lv} · deck ${lnDeckAll().length} (${lnDeckDue().length} due)${run?' · run open (text folded)':''}`;
 };
@@ -290,7 +294,8 @@ function lnPaint(what){const card=LN.open[ROUTE.id];if(ROUTE.name!=='card'||!car
   const el={check:'#lnCheck',expl:'#lnExpl',remember:'#lnRem',status:'#lnStatus'}[what],h=$(el);if(!h)return;
   h.innerHTML=what==='check'?lnCheckHtml(card):what==='expl'?lnExplHtml(card):what==='remember'?lnRemHtml(card):lnChip(card.id);
   if(what==='check'){$('#lnCard')?.classList.toggle('ck-on',lnRun(card.id));if(SC.runOff!==lnRun(card.id)){SC.runOff=lnRun(card.id);if(typeof scOverlay==='function')scOverlay();}if(lnLiveQ(card))lnDrillMount(card);else lnDrillEnd(card);lnSnapsFill(card);}
-  if(what==='status')$$('.ln-rail [aria-current] .ln-st').forEach(x=>{x.outerHTML=lnChip(card.id);});}
+  if(what==='status')$$('.ln-rail [aria-current] .ln-st').forEach(x=>{x.outerHTML=lnChip(card.id);});
+  if(what==='status'||what==='check')lsOnCard();}   // L2: the lesson bar follows Read and a finished run
 
 /* ---------- #deck: one session ---------- */
 SCREENS.deck=function(v){
@@ -303,7 +308,7 @@ SCREENS.deck=function(v){
   if(!LN.deck){const due=all.filter(x=>x.due<=Date.now()),nd=lnNextDue();
     v.innerHTML=`<div class="ln-deck"><h1>${esc(STR.ln.deckT)}</h1><p class="mut ln-lead">${esc(STR.ln.deckLead)}</p>
       <section class="card ln-dk">${!all.length?`<p>${esc(STR.ln.deckEmpty)}</p><button type="button" class="btn pri" data-go="cards">${esc(STR.ln.cardsT)}</button>`
-      :due.length?`<p><b>${esc(STR.ln.due(due.length))}</b></p><button type="button" class="btn pri" data-ln="dstart" data-fk="ln-dstart">${esc(STR.ln.deckStart(Math.min(due.length,CONFIG.learn.deckSession)))}</button>`
+      :due.length?`<p><b>${esc(STR.ln.due(due.length))}</b></p><button type="button" class="btn pri" data-ln="dstart" data-fk="ln-dstart">${esc(STR.ln.deckStart(Math.min(due.length,ROUTE.view==='go'?CONFIG.today.goPrompts:CONFIG.learn.deckSession)))}</button>`
       :`<p>${esc(STR.ln.dueNone)} ${nd?esc(STR.ln.nextOn(lnDayLabel(nd))):''}</p><button type="button" class="btn" data-ln="dstart" data-early="1" data-fk="ln-dstart">${esc(STR.ln.practise)}</button>`}</section></div>`;return;}
   const s=LN.deck;
   if(s.i>=s.q.length){const g=s.got;s.done=true;v.innerHTML=`<div class="ln-deck"><h1>${esc(STR.ln.deckT)}</h1><section class="card ln-dk"><p id="lnDkEnd" tabindex="-1">${esc(STR.ln.deckDone(g,s.n))}${s.early?' '+esc(STR.ln.earlyNote):''}</p>
@@ -319,7 +324,7 @@ SCREENS.deck=function(v){
 };
 function lnDeckAct(a,b){
   if(a==='dstart'){const all=lnDeckAll().filter(x=>LN.open[x.id]);
-    const q=(b.dataset.early?all.sort((p,q)=>p.due-q.due):all.filter(x=>x.due<=Date.now()).sort((p,q)=>p.due-q.due)).slice(0,CONFIG.learn.deckSession);
+    const q=(b.dataset.early?all.sort((p,q)=>p.due-q.due):all.filter(x=>x.due<=Date.now()).sort((p,q)=>p.due-q.due)).slice(0,ROUTE.view==='go'?CONFIG.today.goPrompts:CONFIG.learn.deckSession);   // #deck=go: On the go (≤ 5 min)
     LN.deck={q,i:0,n:q.length,got:0,shown:false,again:new Set(),early:!!b.dataset.early};render();$('#lnDkQ')?.focus();return;}
   const s=LN.deck;if(!s||!s.q)return;const x=s.q[s.i];
   if(a==='dshow'){s.shown=true;render();$('#lnDkA')?.focus();return;}
@@ -328,16 +333,14 @@ function lnDeckAct(a,b){
     if(!ok&&!s.again.has(x.k)){s.again.add(x.k);s.q.push(x);}  // a miss comes back once at the end of the session
     s.i++;s.shown=false;render();($('#lnDkQ')||$('#lnDkEnd'))?.focus();}}
 
-/* ---------- Today: review queue + cards (design plan §4.1; full Today plan = L2) ---------- */
+/* ---------- Today: the Cards box (design plan §4.1; the On the go / Study plans = 20-lessons.js lsTodayHtml, L2) ---------- */
 function lnTodayHtml(){
   const L=lnList(),due=lnDeckDue().length,all=lnDeckAll().length,last=state.last.card&&L.find(c=>c.id===state.last.card);
   const done=L.filter(c=>lnStatus(c.id)!=='none').length,firstNew=L.find(c=>lnStatus(c.id)==='none');
-  return `<section class="card ln-today"><h2>${esc(STR.ln.today.deckT)}</h2><p class="sm">${esc(all?(due?STR.ln.due(due):STR.ln.dueNone+' '+(lnNextDue()?STR.ln.nextOn(lnDayLabel(lnNextDue())):'')):STR.ln.deckEmpty)}</p>
-      ${all?`<button type="button" class="btn${due?' pri':''}" data-go="deck">${esc(due?STR.ln.today.review:STR.ln.deckT)}</button>`:''}</section>
-    <section class="card ln-today"><h2>${esc(STR.ln.today.cardsT)}</h2><p class="sm">${esc(LN.idx?STR.ln.started(done,L.length):STR.ln.loading)}</p>
+  return `<section class="card ln-today"><h2>${esc(STR.ln.today.cardsT)}</h2><p class="sm">${esc(LN.idx?STR.ln.started(done,L.length):STR.ln.loading)}</p>
       ${last?`<button type="button" class="lrow" data-go="card=${esc(last.id)}"><span class="nm">${esc(STR.ln.today.cont)}: ${esc(last.title)}</span>${lnChip(last.id)}</button>`:''}
       ${firstNew&&(!last||firstNew.id!==last.id)?`<button type="button" class="lrow" data-go="card=${esc(firstNew.id)}"><span class="nm">${esc(done?firstNew.title:STR.ln.today.start+' · '+firstNew.title)}</span>${lnChip(firstNew.id)}</button>`:''}
-      <p style="margin-top:8px"><button type="button" class="btn" data-go="cards">${esc(STR.ln.today.all)}</button></p></section>`;}
+      <p class="row" style="margin-top:8px"><button type="button" class="btn" data-go="lessons">${esc(STR.ls.pathT)}</button><button type="button" class="btn" data-go="cards">${esc(STR.ln.today.all)}</button></p></section>`;}
 
 /* ---------- events (one delegated listener) ---------- */
 document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!b)return;const a=b.dataset.ln;

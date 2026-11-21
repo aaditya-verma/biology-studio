@@ -32,7 +32,7 @@ BUDGET = {"general": 90, "school": 110, "neet": 140, "mbbs": 160, "pg": 200}
 REQUIRED_LEVELS = ["general", "mbbs"]
 MARKS = ["✔✔", "✔", "⚑", "✚", "≈", "ⓘ"]
 KINDS = ["concept", "guide"]   # guide = a Part 0 card about the app itself (D-050): facts cite APP <screen>, mark ⓘ
-APP_LOCS = ["Today", "Cards", "Card", "Check", "Explain", "Deck", "Try it", "Watch it", "Status", "Settings"]
+APP_LOCS = ["Today", "Cards", "Card", "Check", "Explain", "Deck", "Try it", "Watch it", "Status", "Settings", "Lessons", "Mixed review"]
 APP_RE = re.compile(r"^APP(?: (.+))?$")
 STATUSES = ["draft", "reviewed", "shipped", "retired"]
 LIMITS = {"sentence_words": 25, "new_terms": 3, "new_terms_exception": 5, "min_checks": 2, "options": (3, 5), "remember": (2, 5), "shows_up": 6}

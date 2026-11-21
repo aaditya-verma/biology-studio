@@ -16,7 +16,7 @@ function dlog(area,...a){if(dbgOn(area))console.log('['+area+']',...a);}
 function setFlags(o){Object.assign(FLAGS,o);try{sessionStorage.setItem('biostudio.flags',JSON.stringify({test:FLAGS.test,debug:[...FLAGS.debug].join(',')}));}catch(_){}}
 
 /* overlay: version, route + ids, fps, state size, device class, viewport, dpr, pointer */
-const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:'',studio:'',tracker:'',learn:'',review:''};
+const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:'',studio:'',tracker:'',learn:'',review:'',lessons:''};
 function dbgStart(){
   if(!FLAGS.debug.size)return;
   if(!DBG.el){DBG.el=document.createElement('div');DBG.el.id='dbg';DBG.el.setAttribute('aria-hidden','true');document.body.appendChild(DBG.el);
@@ -43,6 +43,7 @@ function dbgPaint(){
     dbgOn('studio')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='studio'||ROUTE.name==='calib')?DBG.studio:'',
     dbgOn('tracker')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='progress'||ROUTE.name==='step')?DBG.tracker:'',
     dbgOn('learn')&&typeof ROUTE!=='undefined'&&['card','cards','deck'].includes(ROUTE.name)?DBG.learn:'',
+    dbgOn('lessons')&&typeof ROUTE!=='undefined'&&['lessons','lesson','mix','card'].includes(ROUTE.name)?DBG.lessons:'',
     dbgOn('review')&&typeof ROUTE!=='undefined'&&['review','rcard','rtour','updates'].includes(ROUTE.name)?DBG.review:'',
     DBG.extra].filter(Boolean).join('\n');
 }

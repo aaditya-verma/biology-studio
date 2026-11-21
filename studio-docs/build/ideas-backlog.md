@@ -1,13 +1,13 @@
 # Ideas backlog — PARKED (17 Nov 2026)
 
-*(Purpose: parked ideas only (RULES I3). Updated: 21 Nov 2026 · Bio · Build · V2 3D drills — items 4–6, 10, 11 built (D-054). Before: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
+*(Purpose: parked ideas only (RULES I3). Updated: 22 Nov 2026 · Bio · Build · L2 lessons — items 1, 3 built (D-070). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — items 4–6, 10, 11 built (D-054). Before: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
 
 No pick until the use gate after L2 (D-010, D-047), except the owner's app-first picks (D-047). Free only. Each idea: what · why · size (S/M/L). Owner picks; picks move into a plan.
 
 ## A. Study flow
-1. **Today** (M) — On the go (≤ 5 min: deck, one new card, one clip, 3 questions) and Study mode (episode → cards → mixed review). *Likely first pick: recall is the point.* **→ Picked into L2 (D-047).**
+1. **Today** (M) — On the go (≤ 5 min: deck, one new card, one clip, 3 questions) and Study mode (episode → cards → mixed review). *Likely first pick: recall is the point.* **→ Built in L2 (D-070): On the go = due prompts + one Check; Study = next lesson sitting + prompts + Checks to pass + Mixed review. Clips join with L3.**
 2. **Exam goal** (M) — "NEET-PG on <date>": plans cards per week backwards; on-track / behind.
-3. **Mixed review** (S) — interleave Understood cards across chapters (only after blocked learning). **→ Picked into L2 (D-047).**
+3. **Mixed review** (S) — interleave Understood cards across chapters (only after blocked learning). **→ Built in L2 (`#mix`, D-070).**
 
 ## B. 3D sense (the core skill)
 4. **Rotate to match** (S) — match a view to a target orientation. **→ Built in V2 (`rotate`, D-054); first card use in C2.**

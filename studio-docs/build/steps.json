@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -900,23 +900,29 @@
    "title": "L2 lessons — chapter path, Today, Mixed review",
    "type": "Build",
    "chat": "Bio · Build · L2 lessons",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["L1", "C2"],
    "unblocks": ["GATE", "IB01", "IB03"],
    "lock": true,
-   "gates": {"G-Eng": "open", "G-Learn": "open", "G-A11y": "open"},
+   "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T9", "state": "open"},
-   "decisions": ["D-010", "D-047"],
+   "decisions": ["D-010", "D-047", "D-070"],
    "prompt": "L2 lessons",
-   "log": "—",
+   "log": "22 Nov 2026 · L2 built (app v14, D-070): lessons Part 0 + Ch 5–8 in sittings ≤ 15 min, Today On the go / Study, Mixed review; lesson-check; G-Eng, G-Learn, G-A11y pass (2 rounds) + G-Sci on E00.01.06; T9 open",
    "todo": [
-    "Lesson = ordered cards + scenes + drills + Checks, 10–15 min, per chapter (roadmap order)",
-    "Folds IB01 Today + IB03 Mixed review",
-    "Write owner check T9",
-    "Ready prompt written by the chat before it (master plan §13)"
+    "AT RISK (owner OK, 22 Nov 00:50 IST): built before L1 + C2 owner checks passed — T7 deck step (L1.q2), T7b, T3d A + B still open; a fail there may need L2 fixes",
+    "CI: .github/workflows/checks.yml could not be written from this chat (protected file) — add the Lesson check step + checkout fetch-depth: 2 by hand (edit in the L2 hand-off message) or in the next route-A chat",
+    "Time model is an estimate: calibrate TIME in tools/lesson-check from the sitting you time in T9 step 7, then --write",
+    "G-Learn NIT: Mixed review can't yet catch a why on one card that answers another card's question in the same run — a cross-card give-away check in card-check later",
+    "G-Learn NIT: a retried Check repeats the same questions — a second question set per card (carried from L1) or Retry only from the next day",
+    "E00.01.06 MBBS is at 158/160 words — the next guide edit needs a cut"
    ],
-   "inputs": [],
-   "est": {"chats": 2}
+   "inputs": [
+    {"id": "L2.q1", "kind": "decide", "ask": "D-070: confirm lessons in sittings ≤ 15 min, step rules (any finished Check run ticks the step; Skip for now; no separate drill step), Today plans, Mixed review rules (4 Understood cards in 2 chapters, ≤ 2 per card in card order, recall only), nav unchanged — or say what to change (T9 step 13)", "asked_in": "Bio · Build · L2 lessons", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-070"},
+    {"id": "L2.q2", "kind": "decide", "ask": "Lesson order: move E00.01.06 How to use the app first in Part 0 (it explains Check + Understood before the first Check) and E07.01.01 A tube on a tube first in Ch 7 (the chapter's overview, book E07.01)? Roadmap order puts them last; yes needs a small order override in lesson-check (G-Learn recommendation)", "asked_in": "Bio · Build · L2 lessons", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-070"}
+   ],
+   "est": {"chats": 2},
+   "runs": [{"chat": "Bio · Build · L2 lessons", "by": "Aaditya", "start": "2026-11-22 01:06", "note": "route B (no push access, no laptop shell): built + checked in the cloud workspace, files written to the laptop clone; built at risk; gates 2 rounds (G-Eng, G-Learn, G-A11y) + G-Sci rounds on E00.01.06", "outcome": "done", "end": "2026-11-22 02:15"}, {"chat": "Bio · Fix · L2 merge", "by": "Aaditya", "start": "2026-11-22 02:27", "note": "route B: sync.bat autostash conflict (5 files) resolved in the cloud workspace, both sides kept; L2 decision D-067 → D-070", "outcome": "done", "end": "2026-11-22 02:40"}]
   },
   {
    "id": "V3",
@@ -927,14 +933,14 @@
    "needs": ["V2"],
    "unblocks": ["IB07"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open"},
+   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
    "check": {"id": "T8b", "state": "open"},
    "decisions": ["D-047"],
-   "prompt": null,
+   "prompt": "V3 trace a cell",
    "log": "—",
    "todo": [
-    "Folds IB07 Trace a cell (size M)",
-    "Ready prompt written when V2 ends"
+    "Folds IB07 Trace a cell (size M) — new drill type `trace` (card-spec §2a), first on E05.01.03 in sc-E00.01.04",
+    "Ready prompt in master plan §13 (written by L2)"
    ],
    "inputs": [],
    "est": {"chats": 2}
@@ -1021,7 +1027,7 @@
    "title": "Today",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "done",
    "needs": ["L2"],
    "unblocks": [],
    "lock": false,
@@ -1029,9 +1035,9 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "22 Nov 2026 · built in L2 (D-070)",
    "todo": [
-    "Pulled forward into L2 (D-047)"
+    "Built in L2 (D-070): Today On the go / Study"
    ],
    "inputs": [],
    "size": "M"
@@ -1059,7 +1065,7 @@
    "title": "Mixed review",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "done",
    "needs": ["L2"],
    "unblocks": [],
    "lock": false,
@@ -1067,9 +1073,9 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "22 Nov 2026 · built in L2 (D-070)",
    "todo": [
-    "Pulled forward into L2 (D-047)"
+    "Built in L2 (D-070): Mixed review #mix"
    ],
    "inputs": [],
    "size": "S"

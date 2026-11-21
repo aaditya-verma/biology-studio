@@ -1,7 +1,7 @@
 {
  "spec": 1,
  "id": "E00.01.06",
- "version": 1,
+ "version": 2,
  "book": "E",
  "status": "reviewed",
  "kind": "guide",
@@ -9,11 +9,11 @@
  "tier": "A",
  "objective": {
   "verb": "name",
-  "text": "Name a card's three steps, in order."
+  "text": "Name a card's three statuses in order and what earns each."
  },
  "body": {
-  "general": "How do you really learn a card? Each card teaches one idea [f1]. Keep it open for a moment, and it counts as Read [f2]. Pass its Check, every question right in one go, and it is Understood [f3]. Then explain it out loud and compare with the model answer: that is Can explain [f4]. Try it lets you turn the 3D embryo and scrub through the days [f5]. Your Remember deck brings the card's prompts back 1 day later, then 3, then 7 days apart [f6].",
-  "mbbs": "Each card teaches one idea and opens with what you will be able to do [f1]. Keeping a card open for a moment marks it Read [f2]. Its Check tests that objective; every question right in one run marks it Understood [f3]. Explaining it aloud, then comparing with the model answer, marks it Can explain [f4]. Try it opens the card's 3D scene: turn it and scrub the days; Open full 3D adds slicing [f5]. The card's Remember prompts join your deck once you read it [f6]. They come back 1 day later, then 3, then 7 days apart while you get them right [f6]. Today shows how many prompts are due [f7]. The small numbers after a sentence open its facts, each with a source and a confidence mark [f8]."
+  "general": "How do you really learn a card? Each card teaches one idea [f1]. Keep it open for a moment, and it counts as Read [f2]. Pass its Check, every question right in one go, and it is Understood [f3]. Then explain it out loud and compare with the model answer: that is Can explain [f4]. Try it lets you turn the 3D embryo and scrub through the days [f5]. Lessons take each chapter card by card [f11]. Your Remember deck brings the card's prompts back 1 day later, then 3, then 7 days apart [f6].",
+  "mbbs": "Each card teaches one idea and opens with what you will be able to do [f1]. Keeping a card open for a moment marks it Read [f2]. Its Check tests that objective; every question right in one run marks it Understood [f3]. Explaining it aloud, then comparing with the model answer, marks it Can explain [f4]. Try it opens the card's 3D scene: turn it and scrub the days; Open full 3D adds slicing [f5]. The card's Remember prompts join your deck once you read it [f6]. They come back 1 day later, then 3, then 7 days apart while you get them right [f6]. Today shows how many prompts are due and offers two plans, On the go and Study [f7]. Lessons take each chapter card by card, in sittings of up to 15 minutes [f11]. Mixed review asks Check questions from cards you marked Understood, with the card text hidden [f12]. The small numbers after a sentence open its facts, each with a source and a confidence mark [f8]."
  },
  "facts": [
   {
@@ -60,7 +60,7 @@
   },
   {
    "id": "f7",
-   "text": "Today shows how many Remember prompts are due.",
+   "text": "Today shows how many Remember prompts are due and offers two plans: On the go, up to 5 minutes, and Study, 15–30 minutes.",
    "cite": "APP Today",
    "mark": "ⓘ",
    "where": "main"
@@ -69,6 +69,20 @@
    "id": "f8",
    "text": "The small number after a sentence opens the facts behind it, each with its source and confidence mark.",
    "cite": "APP Card",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "Lessons take a chapter card by card in sittings of up to 15 minutes: read, Check, the 3D where the card has one, then Remember.",
+   "cite": "APP Lessons",
+   "mark": "ⓘ",
+   "where": "main"
+  },
+  {
+   "id": "f12",
+   "text": "Mixed review asks Check questions from cards you have understood, mixed across chapters, with the card text hidden. It never changes a card's status.",
+   "cite": "APP Mixed review",
    "mark": "ⓘ",
    "where": "main"
   },
@@ -95,7 +109,7 @@
   {
    "id": "m1",
    "wrong": "Once you have read a card, you have learned it.",
-   "right": "Read is only the first step: pass the Check, then explain it in your own words.",
+   "right": "Read is only the first status: pass the Check, then explain it in your own words.",
    "cite": "APP Status",
    "mark": "ⓘ"
   }
@@ -104,13 +118,13 @@
   {
    "id": "q1",
    "type": "order",
-   "prompt": "Put a card's three steps in order, first to last.",
+   "prompt": "Put a card's three statuses in order, first to last.",
    "options": [
     "Read",
     "Understood",
     "Can explain"
    ],
-   "why": "You read the card first, pass its Check to reach Understood, then explain it to reach Can explain.",
+   "why": "Each status needs the one before it.",
    "tests": "objective",
    "refutes": "m1"
   },
@@ -131,21 +145,21 @@
   {
    "id": "q3",
    "type": "mcq",
-   "prompt": "Which step comes right after Understood?",
+   "prompt": "What earns Can explain?",
    "options": [
-    "Can explain",
-    "Read",
-    "New"
+    "Explaining it aloud, then comparing with the model answer",
+    "Passing the Check a second time",
+    "Opening the card a second time"
    ],
    "answer": 0,
-   "why": "After Understood you explain the idea in your own words and compare with the model answer: that is Can explain.",
+   "why": "Can explain comes from explaining the idea in your own words and checking it against the model answer.",
    "tests": "objective"
   }
  ],
  "remember": [
   {
    "id": "r1",
-   "q": "What are a card's three steps, in order?",
+   "q": "What are a card's three statuses, in order?",
    "a": "Read, Understood, Can explain [f2,f3,f4]."
   },
   {
@@ -174,8 +188,8 @@
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "L1 G-Sci reviewer agent (round 3)",
-   "date": "21 Nov 2026",
+   "agent": "L2 G-Sci reviewer agent (round 3)",
+   "date": "22 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
@@ -192,6 +206,7 @@
     "body.general.5": "ok",
     "body.general.6": "ok",
     "body.general.7": "ok",
+    "body.general.8": "ok",
     "body.mbbs.1": "ok",
     "body.mbbs.2": "ok",
     "body.mbbs.3": "ok",
@@ -201,6 +216,8 @@
     "body.mbbs.7": "ok",
     "body.mbbs.8": "ok",
     "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
     "f1": "ok",
     "f2": "ok",
     "f3": "ok",
@@ -211,19 +228,21 @@
     "f8": "ok",
     "f9": "ok",
     "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
     "m1": "ok",
     "r1": "ok",
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Every ⓘ line checked against the app as built (18-learn.js, 02-config.js learn, 13-viewer.js inline panel): Read after 1.5 s, clean-run Check, model answer, 1·3·7 spacing on Got it, early practice keeps the schedule, inline Try it = turn + scrub, slicing in Open full 3D. All 11 APP cites name the right screen."
+   "notes": "L2 rounds 1–3 (v2): every ⓘ line re-checked against the app as built (20-lessons.js lsTodayHtml, lesson bar, lsMixBuild; 10-today.js; 18-learn.js; 02-config.js learn.lessons, learn.mix, today; content/E/lessons). Today shows the due count in both plans (On the go up to 5 min, Study 15–30 min). Lessons go read → Check → the 3D where the card has one → Remember, in sittings of up to 15 min (round 1–2 fixes to f11 and mbbs.9). Mixed review asks mcq/order Checks of Understood cards across 2+ chapters, card text hidden, never sets a status (B4). Line keys re-signed by position: general.7–8, mbbs.8–11. All 13 APP cites name the right screen."
   },
   "G-Learn": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "L1 G-Learn reviewer agent (round 3)",
-   "date": "21 Nov 2026",
+   "agent": "L2 G-Learn reviewer agent (round 2)",
+   "date": "22 Nov 2026",
    "checklist": {
     "objective": true,
     "checks": true,
@@ -243,21 +262,21 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Objective names the three steps plainly; q2 and q3 no longer guessable from wording; spacing stated the same way in body, facts, r3 and the deck lead. General 81/90, MBBS 122/160, longest sentence 18 words."
+   "notes": "L2 round 1 fail (objective said 'steps' — now the lessons' word; q1 why answered q3; q3 guessable) → objective, q1, q3, m1, r1 use 'statuses'; q3 = What earns Can explain?. Round 2 pass: objective matches q1–q3, no give-aways, General 88/90, MBBS 158/160 (tight)."
   },
   "G-A11y": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "QA & accessibility",
-   "agent": "L1 G-A11y reviewer agent (round 3)",
-   "date": "21 Nov 2026",
+   "agent": "L2 G-A11y reviewer agent (round 2)",
+   "date": "22 Nov 2026",
    "checklist": {
     "alt": true,
     "input": true,
     "colour": true,
     "text125": true
    },
-   "notes": "alt: the only visual is sc-E00.01.01 (named region, text description, label list); input: q1 order + q2/q3 mcq by keyboard and touch; colour: no colour-only cue; text125: fits at 390 and 1366."
+   "notes": "alt: the only visual is sc-E00.01.01 (named region, text description, label list); input: q1 order + q2/q3 mcq by keyboard and touch; colour: no colour-only cue; text125: fits at 390 and 1366. · L2 v2: new lines plain, ≤ 19 words, read well at 125 % on 360 px; mbbs.10 wording fixed (round 1 NIT)."
   }
  },
  "log": [
@@ -315,6 +334,31 @@
    "date": "21 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · L1 G-A11y reviewer agent (round 3)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "edited (C10, L2): f7 (Today plans), new f11 (Lessons), f12 (Mixed review); General + MBBS lines for them; version 2",
+   "by": "Lead scientist · Bio · Build · L2 lessons"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "edited (G-Learn L2 round 1): objective, q1 prompt + why, q3 new (What earns Can explain?), m1, r1 — 'steps' → 'statuses'; f11 per G-Sci",
+   "by": "Lead scientist · Bio · Build · L2 lessons"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Sci pass (v2)",
+   "by": "Research librarian · L2 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Learn pass (v2)",
+   "by": "Learning designer · L2 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-A11y pass (v2)",
+   "by": "QA & accessibility · L2 G-A11y reviewer agent (round 2)"
   }
  ]
 }

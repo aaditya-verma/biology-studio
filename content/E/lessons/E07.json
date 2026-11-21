@@ -1,0 +1,121 @@
+{
+ "spec": 1,
+ "id": "L-E07",
+ "book": "E",
+ "ch": "E07",
+ "version": 1,
+ "budget": {
+  "min": 10,
+  "max": 15
+ },
+ "prereq": [
+  "E06.01.02",
+  "E06.02.06",
+  "E06.03.01",
+  "E07.04.01",
+  "E07.04.02"
+ ],
+ "sittings": [
+  {
+   "id": "s1",
+   "steps": [
+    {
+     "id": "E07.02.01:read",
+     "card": "E07.02.01",
+     "kind": "read",
+     "est_s": 98
+    },
+    {
+     "id": "E07.02.01:check",
+     "card": "E07.02.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E07.02.01:remember",
+     "card": "E07.02.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E07.02.02:read",
+     "card": "E07.02.02",
+     "kind": "read",
+     "est_s": 108
+    },
+    {
+     "id": "E07.02.02:check",
+     "card": "E07.02.02",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E07.02.02:remember",
+     "card": "E07.02.02",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E07.03.01:read",
+     "card": "E07.03.01",
+     "kind": "read",
+     "est_s": 117
+    },
+    {
+     "id": "E07.03.01:check",
+     "card": "E07.03.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E07.03.01:remember",
+     "card": "E07.03.01",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "steps": [
+    {
+     "id": "E07.05.01:read",
+     "card": "E07.05.01",
+     "kind": "read",
+     "est_s": 124
+    },
+    {
+     "id": "E07.05.01:check",
+     "card": "E07.05.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E07.05.01:remember",
+     "card": "E07.05.01",
+     "kind": "remember",
+     "est_s": 60
+    },
+    {
+     "id": "E07.01.01:read",
+     "card": "E07.01.01",
+     "kind": "read",
+     "est_s": 112
+    },
+    {
+     "id": "E07.01.01:check",
+     "card": "E07.01.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E07.01.01:remember",
+     "card": "E07.01.01",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  }
+ ],
+ "retired": []
+}

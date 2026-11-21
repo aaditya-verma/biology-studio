@@ -1,0 +1,207 @@
+{
+ "spec": 1,
+ "id": "L-E05",
+ "book": "E",
+ "ch": "E05",
+ "version": 1,
+ "budget": {
+  "min": 10,
+  "max": 15
+ },
+ "prereq": [
+  "E00.01.01",
+  "E00.01.04",
+  "E04.01.01"
+ ],
+ "sittings": [
+  {
+   "id": "s1",
+   "steps": [
+    {
+     "id": "E05.01.01:read",
+     "card": "E05.01.01",
+     "kind": "read",
+     "est_s": 109
+    },
+    {
+     "id": "E05.01.01:check",
+     "card": "E05.01.01",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E05.01.01:scene",
+     "card": "E05.01.01",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.01.01:remember",
+     "card": "E05.01.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E05.01.02:read",
+     "card": "E05.01.02",
+     "kind": "read",
+     "est_s": 97
+    },
+    {
+     "id": "E05.01.02:check",
+     "card": "E05.01.02",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E05.01.02:scene",
+     "card": "E05.01.02",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.01.02:remember",
+     "card": "E05.01.02",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "steps": [
+    {
+     "id": "E05.01.03:read",
+     "card": "E05.01.03",
+     "kind": "read",
+     "est_s": 98
+    },
+    {
+     "id": "E05.01.03:check",
+     "card": "E05.01.03",
+     "kind": "check",
+     "est_s": 105
+    },
+    {
+     "id": "E05.01.03:scene",
+     "card": "E05.01.03",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.01.03:remember",
+     "card": "E05.01.03",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E05.01.04:read",
+     "card": "E05.01.04",
+     "kind": "read",
+     "est_s": 89
+    },
+    {
+     "id": "E05.01.04:check",
+     "card": "E05.01.04",
+     "kind": "check",
+     "est_s": 60
+    },
+    {
+     "id": "E05.01.04:scene",
+     "card": "E05.01.04",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.01.04:remember",
+     "card": "E05.01.04",
+     "kind": "remember",
+     "est_s": 30
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "steps": [
+    {
+     "id": "E05.02.01:read",
+     "card": "E05.02.01",
+     "kind": "read",
+     "est_s": 96
+    },
+    {
+     "id": "E05.02.01:check",
+     "card": "E05.02.01",
+     "kind": "check",
+     "est_s": 225
+    },
+    {
+     "id": "E05.02.01:scene",
+     "card": "E05.02.01",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.02.01:remember",
+     "card": "E05.02.01",
+     "kind": "remember",
+     "est_s": 45
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "steps": [
+    {
+     "id": "E05.04.01:read",
+     "card": "E05.04.01",
+     "kind": "read",
+     "est_s": 98
+    },
+    {
+     "id": "E05.04.01:check",
+     "card": "E05.04.01",
+     "kind": "check",
+     "est_s": 90
+    },
+    {
+     "id": "E05.04.01:scene",
+     "card": "E05.04.01",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.04.01:remember",
+     "card": "E05.04.01",
+     "kind": "remember",
+     "est_s": 45
+    },
+    {
+     "id": "E05.05.01:read",
+     "card": "E05.05.01",
+     "kind": "read",
+     "est_s": 99
+    },
+    {
+     "id": "E05.05.01:check",
+     "card": "E05.05.01",
+     "kind": "check",
+     "est_s": 150
+    },
+    {
+     "id": "E05.05.01:scene",
+     "card": "E05.05.01",
+     "kind": "scene",
+     "est_s": 60
+    },
+    {
+     "id": "E05.05.01:remember",
+     "card": "E05.05.01",
+     "kind": "remember",
+     "est_s": 30
+    }
+   ]
+  }
+ ],
+ "retired": []
+}

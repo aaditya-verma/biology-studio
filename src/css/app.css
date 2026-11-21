@@ -826,3 +826,51 @@ html.dev-tl .rv-form #rvSendBox,html.dev-d .rv-form #rvSendBox{position:sticky;b
 html.dev-p #view:has(.rv-tour){display:flex;flex-direction:column;min-height:calc(100dvh - var(--top-h) - env(safe-area-inset-top))} html.dev-p .rv-tour{flex:1 1 auto;width:100%;display:flex;flex-direction:column} html.dev-p .rv-tnav{margin-top:auto}   /* the card fills the room above the tab bar (#view's padding keeps it clear) — G-Art r2 */
 .toast.off{clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;border:0;white-space:nowrap}   /* H2: the toast's live region stays in the tree between messages */
 html.dev-d .rv-card{max-width:calc(34em + 400px + 4 * var(--gap));margin:0 auto} html.dev-d .rv-cols{justify-content:stretch;grid-template-columns:minmax(0,1fr) minmax(340px,400px)}   /* one left edge for head + columns (G-Art r3) */
+
+/* ---------- L2 lessons, Today plans, Mixed review (D-070; design plan §2 Lessons rows, §4.1, §4.11; src/js/20-lessons.js) ---------- */
+.ls-lead{max-width:var(--measure)}
+.ls-path{max-width:1400px}
+.ls-chs{list-style:none;margin:var(--gap) 0 0;padding:0;display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+.ls-ch h2{margin:0;font-size:var(--fs-h2)} .ls-ch .row{flex-wrap:nowrap;align-items:baseline}
+.ls-n{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:2em;height:2em;border-radius:999px;border:2px solid var(--line-strong);font-weight:700;font-size:var(--fs-sm)}
+.ls-ch .btn{margin-top:8px}
+.ls-cont{margin-top:var(--gap);max-width:var(--measure)}
+.ls-prog{height:8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-strong);overflow:hidden;margin:6px 0 2px;max-width:var(--measure)}
+.ls-prog span{display:block;height:100%;background:var(--ink)}   /* ink, never the accent or a layer colour (B3); the words beside it carry the number */
+html.dev-pl .ls-chs,html.dev-tp .ls-chs{grid-template-columns:repeat(2,minmax(0,1fr))}
+html.dev-tl .ls-chs,html.dev-d .ls-chs{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* one lesson: phone = head → needs first → sittings · tablet portrait = the same at reading width · two panes from tablet landscape */
+.ls-les{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "pre" "sits";align-items:start;max-width:1400px}
+.ls-head{grid-area:head;max-width:var(--measure)} .ls-head h1{margin:4px 0 6px} .ls-pre{grid-area:pre;min-width:0} .ls-sits{grid-area:sits;display:grid;gap:var(--gap);min-width:0}
+.ls-go{margin:10px 0 6px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface)} .ls-go p{margin:0 0 8px}
+.ls-na{cursor:default} .ls-na .badge{flex:none}
+.ls-sit h2{margin:0 0 2px;font-size:var(--fs-h2)}
+.ls-cards{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.ls-cards>li{border-top:1px solid var(--line);padding-top:6px}
+.ls-steps{list-style:none;margin:2px 0 0;padding:0 0 0 8px;display:flex;flex-wrap:wrap;gap:6px}
+.ls-step{min-height:var(--tap);min-width:var(--tap);padding:0 12px;border:1px solid var(--line-strong);border-radius:999px;background:var(--surface);cursor:pointer;color:var(--ink);font:inherit;font-size:var(--fs-sm);display:inline-flex;align-items:center;gap:6px}
+.ls-step.ls-done{border-style:solid;border-width:2px;font-weight:600} .ls-step.ls-skip{border-style:dashed} .ls-step.ls-open{color:var(--ink)}
+.ls-step:hover{background:var(--surface-2)}
+html.dev-pl .ls-les,html.dev-tl .ls-les{grid-template-columns:minmax(0,40%) minmax(0,1fr);grid-template-areas:"head sits" "pre sits";grid-template-rows:auto 1fr}
+html.dev-d .ls-les{grid-template-columns:minmax(280px,30%) minmax(0,1fr);grid-template-areas:"head sits" "pre sits";grid-template-rows:auto 1fr}
+html.dev-d .ls-sits{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+html.dev-tp .ls-les{max-width:var(--measure);margin:0 auto}
+/* lesson bar on a card (inside the card head; the short one at the end of the text) */
+.ls-bar{margin-top:10px;padding:10px 12px;border:2px solid var(--line-strong);border-radius:var(--r);background:var(--surface)}
+.ls-bar .row{gap:8px}
+.ls-mine{list-style:none;margin:6px 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:var(--fs-sm)}
+.ls-mine li{white-space:nowrap} .ls-mine li.cur{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.ls-now{margin:6px 0 8px} .ls-now:focus{outline:2px solid var(--accent-text);outline-offset:3px}
+.ls-acts .btn{flex:0 1 auto}
+.ls-foot{margin:var(--gap) 0;padding:10px 12px;border:1px dashed var(--line-strong);border-radius:var(--r)} .ls-foot p{margin:0 0 6px}
+.ln-card.ck-on .ls-foot{display:none}   /* mid-run: the head bar stays, the end one hides with the card text (D-053) */
+/* Today plans */
+.ls-tl{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.ls-ti{display:flex;gap:10px;align-items:flex-start} .ls-ti p{margin:0 0 6px}
+.ls-tn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.9em;height:1.9em;border-radius:999px;border:2px solid var(--line-strong);font-weight:700;font-size:var(--fs-sm)}
+.ls-ti.ls-done .ls-tn{border-color:var(--ink)}
+.ls-plan h2 .mut{font-weight:400}
+/* Mixed review: one reading column on every class */
+.ls-mix{max-width:var(--measure);margin:0 auto}
+.ls-mq .ln-q{font-size:1.05em}

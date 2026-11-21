@@ -9,13 +9,13 @@ const CONFIG={
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
   nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
-  routes:['today','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
+  routes:['today','lessons','lesson','mix','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
   device:{phone:600,tablet:1024},
   xt:{x:'layer',y:'day'},                     // default crosstab
-  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn','review'],
+  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn','review','lessons'],
   navReview:'review',                         // EDIT (H2): nav item added after Cards once Reviewer mode is on (not in testing mode — its nav is full)
   // EDIT: 3D viewer (V1; design plan §2 3D row, RULES H8). Budgets stay "Expected" until pipeline reference §2 is Measured (C4).
   viewer:{
@@ -53,8 +53,14 @@ const CONFIG={
     deckDays:[1,3,7],                         // Remember deck spacing in days: step 0 → +1 d, 1 → +3 d, 2+ → +7 d (master plan §9 lists 21/60 later)
     deckSession:20,                           // most prompts in one deck session
     readMs:1500,                              // a card counts as Read after it has been open this long
-    groups:['E00','E05']                      // EDIT: card list order (chapters with cards)
+    groups:['E00','E05','E06','E07','E08'],   // EDIT: card list order (chapters with cards)
+    // EDIT (L2, D-070; docs/lesson-spec.md): the chapter path — one lesson per chapter in content/<book>/lessons/<ch>.json, in this order
+    lessons:['E00','E05','E06','E07','E08'],
+    lessonDir:'content/E/lessons/',
+    mix:{n:8,minCards:4,minChapters:2,perCard:2,restDays:1,keep:60,recallDays:30,types:['mcq','order']}   // Mixed review (IB03): questions per run · Understood cards + chapters needed · most questions per card · prefer cards Understood ≥ restDays ago · runs kept · recall window · Check types asked (drills stay on their card)
   },
+  // EDIT (L2): Today plans (IB01; design plan §4.1) — On the go ≤ 5 min · Study 15–30 min
+  today:{goPrompts:8,promptS:15,checkS:120,goMax:5,studyMin:15,studyMax:30},   // checkS = the estimate for one Check
   // EDIT: Reviewer mode (H2, D-060/D-061; design plan §4.10). The human science reviewer reads cards, ticks a plain checklist and sends
   // ✓ / ✎ / ? as a pre-filled GitHub Issue Form; My feedback reads her issues back from the public API (no token; 60 calls an hour per network).
   review:{

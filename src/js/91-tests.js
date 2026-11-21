@@ -115,5 +115,6 @@ function appTests(){
   {const s=stFill({});t('saved shape has review',s.review&&s.review.on===false&&typeof s.review.seen==='object'&&typeof s.review.drafts==='object');
     const m=stMerge({review:{seen:{a:1},drafts:{x:{t:1,note:'old'}},t:1}},{review:{seen:{a:2,b:1},drafts:{x:{t:2,note:'new'}},on:true,t:2}});
     t('merge review: higher seen, newer draft, newer on',m.review.seen.a===2&&m.review.seen.b===1&&m.review.drafts.x.note==='new'&&m.review.on===true,JSON.stringify(m.review));}
+  if(typeof lsTests==='function')lsTests(t);   // L2 lessons, Today plans, Mixed review (20-lessons.js)
   dlog('test',out.filter(x=>!x.ok).length+' failed of '+out.length);return out;
 }
