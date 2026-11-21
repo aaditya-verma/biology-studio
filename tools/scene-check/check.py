@@ -18,9 +18,12 @@ ROOT = Path(__file__).resolve().parents[2]
 # EDIT: allowed values (keep in step with docs/scene-spec.md)
 TOKENS = {"epi", "hypo", "ecto", "meso", "endo", "crest", "ctx", "guide"}   # no "accent": never a fill (B3) — use "ring": true (D-036)
 MARKS = {"✔✔", "✔", "⚑", "✚", "≈"}
-KINDS = {"disc", "axes", "planes", "ruler"}
+KINDS = {"disc", "notochord", "axes", "planes", "ruler"}
 DISC_PIECES = {"epiblast", "hypoblast", "mesoderm", "endoderm", "streak", "node"}
-PARAMS = {"length_units": (1e-6, 1e4), "width_ratio": (0.05, 1), "pear": (0, 0.6), "tip_frac": (0, 1), "meso": (0, 1), "endo": (0, 1)}   # EDIT: allowed ranges
+PARAMS = {"length_units": (1e-6, 1e4), "width_ratio": (0.05, 1), "pear": (0, 0.6), "tip_frac": (0, 1), "meso": (0, 1), "endo": (0, 1),
+          "streak_scale": (0.5, 4), "noto": (0, 1), "noto_plate": (0, 1), "noto_rod": (0, 1)}   # EDIT: allowed ranges (spec §6)
+NOTO_PIECES = {"notochord", "prechordal"}
+NOTO_ANCHORS = {"noto-cord", "noto-plate", "notochord", "prechordal"}
 ID_RE = re.compile(r"^sc-(?:[A-Z]\d\d\.\d\d\.\d\d|S\d+E\d\d-\d\d)$")
 HEX_RE = re.compile(r"#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?(?:[0-9a-fA-F]{2})?\b")
 SIZE_TOL = 0.15
@@ -76,6 +79,8 @@ def check_scene(path, S, concepts, dbg):
             err(f"day {d}: cite missing (B1)")
         if k.get("mark") not in MARKS:
             err(f"day {d}: mark must be one of {' '.join(sorted(MARKS))} (B7)")
+        if "fit_mm" in k and not (isinstance(k["fit_mm"], (int, float)) and k["fit_mm"] > 0):
+            err(f"day {d}: fit_mm must be > 0 (spec §4)")
         for p, v in (k.get("params") or {}).items():
             if p not in PARAMS:
                 err(f"day {d}: unknown param `{p}` (spec §6)")
@@ -131,6 +136,31 @@ def check_scene(path, S, concepts, dbg):
                 if kk.get("size_mm") and abs(geo - kk["size_mm"]) / kk["size_mm"] > SIZE_TOL:
                     err(f"day {kk['day']}: disc length {geo:.3f} mm vs stamp {kk['size_mm']} mm (> ±{int(SIZE_TOL*100)} %)")
                 say(f"day {kk.get('day')}: geometry {geo:.3f} mm · stamp {kk.get('size_mm')} mm")
+        elif k == "notochord":
+            if not any(q.get("kind") == "disc" for q in S["parts"][:S["parts"].index(p)]):
+                err("notochord: needs a disc part before it (it reads the node and outline)")
+            for piece, lid in (p.get("layers") or {}).items():
+                if piece not in NOTO_PIECES:
+                    err(f"notochord: unknown piece `{piece}`")
+                if lid not in layer_ids:
+                    err(f"notochord: piece {piece} → layer `{lid}` not in layers")
+            if "notochord" in (p.get("layers") or {}):
+                anchors |= {"noto-cord", "noto-plate", "notochord"}
+            if "prechordal" in (p.get("layers") or {}):
+                anchors.add("prechordal")
+            if not (isinstance(p.get("radius"), (int, float)) and p["radius"] > 0):
+                err("notochord: radius must be > 0")
+            z = p.get("zone", 0.12)
+            if not (isinstance(z, (int, float)) and 0.02 <= z <= 0.4):
+                err("notochord: zone outside 0.02–0.4")
+            pc = p.get("prechordal") or {}
+            if not (0 < pc.get("at_frac", 0) < 1 and 0 < pc.get("radius_frac", 0) < 0.2):
+                err("notochord: prechordal{at_frac 0–1, radius_frac 0–0.2} needed")
+            cur = {}
+            for kk in K:
+                cur.update(kk.get("params") or {})
+                if cur.get("noto_rod", 0) > cur.get("noto_plate", 0) + 1e-9:
+                    err(f"day {kk.get('day')}: noto_rod > noto_plate (a rod only forms from the plate, spec §6)")
         elif k == "axes":
             if p.get("layer") not in layer_ids:
                 err("axes: layer missing")
@@ -183,6 +213,17 @@ def check_scene(path, S, concepts, dbg):
             err(f"camera.{f} missing")
     if isinstance(c.get("fit_mm"), (int, float)) and c["fit_mm"] <= 0:
         err("camera.fit_mm must be > 0")
+    vids = []
+    for v in S.get("views", []):
+        vids.append(v.get("id"))
+        if not re.match(r"^[a-z][a-z0-9-]*$", str(v.get("id", ""))):
+            err(f"view {v.get('id')}: id must be lower-case letters, digits, dashes")
+        if not (isinstance(v.get("azimuth_deg"), (int, float)) and isinstance(v.get("elevation_deg"), (int, float)) and -89 <= v["elevation_deg"] <= 89):
+            err(f"view {v.get('id')}: azimuth_deg + elevation_deg −89…89 needed")
+        if not str(v.get("label", "")).strip() or len(str(v.get("label", "")).split()) > 3:
+            err(f"view {v.get('id')}: label of 1–3 words needed")
+    if len(vids) != len(set(vids)):
+        err("view ids repeat")
     cu = S["cut"]
     if cu.get("axis") not in ("x", "y") or not (isinstance(cu.get("at"), (int, float)) and -0.9 <= cu["at"] <= 0.9):
         err("cut: axis x|y and at −0.9…0.9")

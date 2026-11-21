@@ -76,7 +76,8 @@
   "known": [
    "E.t.primitive-node",
    "E.t.primitive-streak",
-   "E.t.endoderm"
+   "E.t.endoderm",
+   "E.t.ectoderm"
   ]
  },
  "misconceptions": [
@@ -136,6 +137,105 @@
    "answer": 0,
    "why": "Langman: head end first, by about day 17. Newer human data say middle first (More, D-029); exams follow the book.",
    "tests": "objective"
+  },
+  {
+   "id": "q4",
+   "type": "frames",
+   "prompt": "These cuts across the midline show the stages the notochord goes through. Put them in the order they happen.",
+   "options": [
+    {
+     "text": "A flat band of cells lies within the bottom layer, level with it.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.2,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    },
+    {
+     "text": "The band is thicker and rising up out of the bottom layer.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.42,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    },
+    {
+     "text": "A round, solid rod sits above the bottom layer, under the top layer.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.6,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    }
+   ],
+   "why": "At any one level the cells first lie in the endoderm as the notochordal plate, then lift off and roll into the solid rod. The rod forms head end first, so on one day, cuts from tail towards head show these stages in turn.",
+   "tests": "objective"
+  },
+  {
+   "id": "q5",
+   "type": "label",
+   "prompt": "Label this cut across the embryo on day 17.",
+   "show": {
+    "day": 17,
+    "view": "end",
+    "zoom": 4.5,
+    "cut": {
+     "axis": "x",
+     "at": 0.6,
+     "on": true
+    }
+   },
+   "pins": [
+    {
+     "at": "notochord",
+     "answer": 0
+    },
+    {
+     "at": "endoderm",
+     "answer": 1
+    },
+    {
+     "at": "epiblast",
+     "answer": 2
+    }
+   ],
+   "options": [
+    "Notochord",
+    "Endoderm",
+    "Ectoderm",
+    "Spinal cord"
+   ],
+   "alt": "A cut across the embryo on day 17: top and bottom layers, a cell sheet each side between them, and a round midline rod. Pin 1 is the rod, pin 2 the bottom layer, pin 3 the top layer.",
+   "why": "The rod is the notochord; below it lies the endoderm and above it the ectoderm, which will form the neural plate. The spinal cord is not there yet.",
+   "tests": "objective",
+   "refutes": "m2"
   }
  ],
  "adult": "In adults its only remnant is the nucleus pulposus, the core of each intervertebral disc [f7].",
@@ -162,7 +262,7 @@
   "E10.02.02"
  ],
  "scene": {
-  "id": "sc-E00.01.04",
+  "id": "sc-E05.02.01",
   "day": 17
  },
  "made": {
@@ -172,41 +272,12 @@
   "date": "20 Nov 2026"
  },
  "review": {
-  "G-Learn": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C1 G-Learn reviewer agent (round 2)",
-   "date": "20 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": true,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "r1": "ok",
-    "r2": "ok",
-    "r3": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "The widened objective covers q1, and the load is 3 (notochord, nucleus pulposus, intervertebral disc)."
-  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C1 G-Sci reviewer agent (round 2)",
-   "date": "20 Nov 2026",
+   "agent": "V2 G-Sci reviewer agent (round 3)",
+   "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
@@ -241,14 +312,45 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "Objective change fine; ⚑ D-029 handled as required (book answer main, newer evidence in More)."
+   "notes": "Round 2: all 24 G-Sci lines re-signed ok (card text unchanged). q4 fixed; q5 ok. ⚑ D-029 handled; no ✚; no ≈ mark."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "V2 G-Learn reviewer agent (round 3)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "q4": "ok",
+    "q5": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round 2. card-check: 0 errors (sources.json regenerated). q4 frames fixed: with the thin slab each still shows only the section face, and the three stages are now clearly different on desktop and phone. Plate = a flat oval level inside the endoderm. Lifting = the same with a ridge rising above it. Rod = a round rod above the endoderm. Each matches its text, so there is one right order, and it is no trick. The new why explains the head-end-first gradient in plain words. q5 label is still ok (refutes m2). 5 Checks is acceptable for Understood in one run, but it is the most this card should carry"
   },
   "G-A11y": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "QA & accessibility",
-   "agent": "C1 G-A11y reviewer agent (round 1)",
-   "date": "20 Nov 2026",
+   "agent": "V2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
    "checklist": {
     "alt": true,
     "input": true,
@@ -256,7 +358,7 @@
     "text125": true
    },
    "lines": {},
-   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 36 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04 (scene has no notochord label; disclaimer 'notochordal process not shown'), so text must and does carry everything. Order check: 4 short steps. Advisory: q3.why '(More, D-029)' exposes an internal decision id to learners; optional reword 'see Newer evidence in More'. f6 '⚑' backed by words 'Newer evidence'."
+   "notes": "q4 frames: each frame text (<=25 words) says what the cut shows without naming the stage; used as img alt, 3D-off text and in 'Describe the pictures'. q5 label: alt describes the cut and maps pins to plain structures (rod / bottom layer / top layer) without the term answers; answerable with 3D off. mcq/order checks are text. Completed keyboard-only with and without WebGL; touch targets pass layout-check. No colour words in any text. 125 % fits (contact sheets, report.md). The dev-pl stage-off-screen issue (app should) affects this card's label drill on phone landscape but does not block it."
   }
  },
  "log": [
@@ -304,6 +406,51 @@
    "date": "20 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "V2: Try it → own scene sc-E05.02.01 (day 17); drills q4 frames (plate → lifting → rod) and q5 label (refutes m2); E.t.ectoderm added to known terms",
+   "by": "Engineers · Bio · Build · V2 3D drills"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "passes cleared (G-Learn, G-Sci, G-A11y): content changed — to review again (card-spec §5; hand edit); status → draft",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail (round 1: drill fix)",
+   "by": "Research librarian · V2 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail (round 1: frames look alike)",
+   "by": "Learning designer · V2 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1/2 fixes: frames drawn as thin section slabs (cut.slab_mm), why explains the three cuts; q5 alt mentions the mesoderm sheets",
+   "by": "Engineers · Bio · Build · V2 3D drills"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · V2 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · V2 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · V2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

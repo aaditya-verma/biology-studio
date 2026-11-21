@@ -45,6 +45,9 @@ const STR={
     hintTouch:'Drag to turn · pinch to zoom · double-tap to reset.',
     gizmo:'Axis key: Cr cranial (head), Cd caudal (tail), D dorsal (back), V ventral (belly), L left, R right of the embryo.',
     axes:{cranial:'Cranial',caudal:'Caudal',dorsal:'Dorsal',ventral:'Ventral',left:'Left',right:'Right'},
+    drillT:'Turn it to look closer', turnGroup:'Turn the view', turn:{l:'Turn left',r:'Turn right',u:'Tilt up',d:'Tilt down'}, dReset:'Start view',
+    masked:'Day ? · stage ? · size ?', lost:'The 3D stopped: the browser took back the graphics.', relaunch:'Restart 3D',
+    lose:'Lose + restore context (test)', loseOk:'Context dropped — it should redraw in about a second.', loseNo:'This browser cannot simulate it.',
     mm:m=>(m<0.1?(m*1000)+' µm':m+' mm'), cardsT:'Cards:', marksKey:'Marks: ✔✔ book + Tier 1 source agree · ✔ book only · ⚑ disagree (logged) · ✚ beyond the book · ≈ not yet cited.',
     tech:(r,g)=>'three.js r'+r+' · '+g, labelsShown:a=>a.length?'Labels on screen: '+a.join(', ')+'.':'',
     measure:'Measure fps (~30 s)', boxes:'Bounding boxes', measOut:'Measurement results', measHint:'Plays every scene, then adds 50k, 150k and 300k test triangles. Keep the screen on; then Copy and paste the result into the chat.',
@@ -52,7 +55,8 @@ const STR={
     discLine:d=>d.slice(0,2).join(' · ')+(d.length>2?' · +'+(d.length-2)+' more':''), discT:'Simplified on purpose', termsT:'Terms (conventions, not book facts)',
     cutText:(axis,at)=>'Cut at '+Math.round((at+1)*50)+' % from the '+(axis==='x'?'caudal end':'right side'),
     viewText:(az,el,cut)=>{const a=((az%360)+540)%360-180,side=Math.abs(a+90)<45?'the right side':Math.abs(a-90)<45?'the left side':Math.abs(a)<45?'the head end':'the tail end';
-      return 'Viewed from '+(el>70?'the back (dorsal)':el<-70?'the belly (ventral)':side+(el>20?', from above':el<-20?', from below':''))+(cut&&cut.on?'; cut '+(cut.axis==='x'?'across':'lengthwise'):'')+'.';}},
+      const r=az*Math.PI/180,u=-Math.cos(r),rt=-Math.sin(r),head=Math.abs(u)>=Math.abs(rt)?(u>0?'top':'bottom'):(rt>0?'right':'left');   // where the head end points on screen in a view from above or below (G-A11y)
+      return 'Viewed from '+(el>70?'the back (dorsal), head end at the '+head+' of the picture':el<-70?'the belly (ventral)':side+(el>20?', from above':el<-20?', from below':''))+(cut&&cut.on?'; cut '+(cut.axis==='x'?'across':'lengthwise'):'')+'.';}},
   // Studio (S1; testing mode only; docs/card-spec.md)
   retry:'Try again',
   st:{title:'Studio', makerT:'Made by (maker)', lead:'Draft and review concept cards. Every fact cited and marked; a different role reviews than the one that made it. Nothing here is saved — export the card and commit it.',
@@ -154,6 +158,12 @@ const STR={
     tryT:'Try it', tryLead:'Turn it and scrub the days. Open full 3D to slice it.', openFull:'Open full 3D', watchT:'Watch it', soon:'Coming soon', watchSoon:'Episodes come in a later build (L3).',
     checkT:'Check', checkLead:n=>n+' questions on this card’s objective. Get them all right to mark it Understood.', checkStart:'Start the Check', checkAgain:'Try the Check again',
     qOf:(i,n)=>'Question '+i+' of '+n, right:'Right.', wrong:'Not quite.', rightWas:t=>'The right answer: '+t, next:'Next question', finish:'See result',
+    dr:{names:{rotate:'Rotate to match',day:'Which day is this?',frames:'Order the frames',label:'Label it',folded:'Folded or not?'},
+      alt:'Describe the picture', altMany:'Describe the pictures', pic:l=>'Picture '+l, inCheck:'The 3D is in the Check below while you answer.', toCheck:'Go to the question',
+      beside:'Use the 3D for this question — turn it to look closer.', target:'Target view', targetAlt:t=>'Target view: '+t, checkView:'Check my view',
+      words:'Answer in words instead', useView:'Use the 3D instead', wordsQ:'In words: which view is the target?', offBy:(d,t)=>'Your view was '+d+'° from the target (within '+t+'° counts).',
+      showTarget:'Show the target view', dayOpt:d=>'Day '+d, pinIs:n=>'Pin '+n+' is', choose:'Choose…', checkLabels:'Check the labels', pinRight:(n,t)=>'Pin '+n+': '+t,
+      checkAll:'Check the answers', framesHint:'Put the pictures in the order it happens: move each up or down.', noPic:'(3D off — use the description)', loadingPic:'Drawing the picture…'},
     orderHint:'Move each item up or down, then check the order.', up:t=>'Move up: '+t, down:t=>'Move down: '+t, checkOrder:'Check the order', rightOrder:'The right order:',
     passed:(r,n)=>'Passed — '+r+' of '+n+'. This card is now Understood.', failed:(r,n)=>r+' of '+n+' right. Read the card again, then retry.', passedBefore:'You passed this Check before.',
     explT:'Can you explain it?', explLead:'Without looking at the card, explain the objective out loud in two or three sentences. Then compare.', explNeed:'Pass the Check first.',

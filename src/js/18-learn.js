@@ -5,9 +5,12 @@
    Try it = the card's scene in the V1 viewer, inline (13-viewer.js scViewer(…,{inline:true})). Watch it = "Coming soon" until L3.
    Layout per class (C13): phone = 3D on top, text below · phone landscape = 3D │ text · tablet portrait = 3D on top, text at reading width ·
    tablet landscape = 3D │ text · desktop = 3D │ text │ card rail. Partial repaints (check, level, explain) keep the 3D, scroll and focus.
-   EDIT: words in STR.ln; settings in CONFIG.learn; card data in content/<book>/cards/ (never in code). */
+   V2 drills (card-spec §2a, D-054): a Check question may be a 3D drill driven by the card's scene — rotate · day · label use the live inline
+   viewer (in the Check on phone/tablet portrait; in the sticky 3D column beside it on the two-pane classes), frames · folded use stills of the
+   same engine. Try it gets its own view back when the drill ends. Every drill has a text alternative (alt, frame/item texts, rotate in words).
+   EDIT: words in STR.ln (STR.ln.dr for drills); settings in CONFIG.learn; card data in content/<book>/cards/ (never in code). */
 'use strict';
-const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng)
+const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null,keep:null,drillKey:null,snap:{}};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng)
 const DAY=864e5;
 const lnDay0=t=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime();};
 const lnAddDays=(t,n)=>{const d=new Date(lnDay0(t));d.setDate(d.getDate()+n);return d.getTime();};
@@ -96,7 +99,7 @@ SCREENS.card=function(v){
       ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-pressed="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
     <section class="ln-obj"><h2 class="ln-h">${esc(STR.ln.objT)}</h2><p><b>${esc(card.objective.text)}</b></p></section></header>
   <div class="ln-media">
-    <section class="ln-try" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>
+    <section class="ln-try" id="lnTry" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>
     <section class="ln-watch" aria-labelledby="lnWatchT"><h2 id="lnWatchT" class="ln-h">${esc(STR.ln.watchT)}</h2><span class="badge">${esc(STR.ln.soon)}</span><span class="xs mut">${esc(STR.ln.watchSoon)}</span></section>
   </div>
   <article class="ln-text" aria-labelledby="cpT">
@@ -123,7 +126,7 @@ SCREENS.card=function(v){
   if(sc&&host){
     scFile(sc).then(S=>{if(ROUTE.name!=='card'||ROUTE.id!==id||!$('#lnVw'))return;
       const st=SC.st[S.id]||(SC.st[S.id]={});if(card.scene.day!=null&&(LN.lastCard!==id||st.day==null))st.day=card.scene.day;LN.lastCard=id;   // a new card opens at its own day; rotate / back from full 3D keep yours
-      scViewer($('#lnVw'),S,{inline:true});})
+      if(lnLiveQ(card))lnDrillMount(card);else scViewer($('#lnVw'),S,{inline:true});lnSnapsFill(card);})
     .catch(e=>{const h=$('#lnVw');if(h)h.innerHTML=`<p class="mut sm">${esc(e.message)}</p>`;});}
   window.LN_READY='card='+id;
   if(dbgOn('learn'))DBG.learn=`learn ${id} · ${lnStatus(id)} · level ${lv} · deck ${lnDeckAll().length} (${lnDeckDue().length} due)`;
@@ -131,25 +134,94 @@ SCREENS.card=function(v){
 function lnBodyHtml(card,lv){return `<h2 class="sr">${esc(STR.ln.levels[lv]||lv)}</h2><p>${lnRich(card,card.body[lv],'b')}</p>`;}
 
 /* ---------- Check (H1: Checks test the objective; one right answer; explain on a miss) ---------- */
-function lnCkNew(card){const perm=q=>{const ix=q.options.map((_,k)=>k);let p=lnShuffle(ix);for(let n=0;q.type==='order'&&n<20&&p.every((k,j)=>k===j);n++)p=lnShuffle(ix);return p;};   // an order item never starts solved (G-Eng, G-Learn)
-  return {i:0,res:[],perm:Object.fromEntries(card.checks.map(q=>[q.id,perm(q)])),pick:null,done:false};}
+const LN_LIVE=['rotate','day','label'],LN_STILL=['frames','folded'],LN_ABC='ABCDE';
+const lnIsDrill=q=>LN_LIVE.includes(q.type)||LN_STILL.includes(q.type);
+function lnCkNew(card){const perm=(q,n,keep)=>{const ix=[...Array(n).keys()];if(keep)return ix;let p=lnShuffle(ix);for(let k=0;['order','frames'].includes(q.type)&&k<20&&p.every((v,j)=>v===j);k++)p=lnShuffle(ix);return p;};   // an order/frames item never starts solved (G-Eng, G-Learn)
+  return {i:0,res:[],run:Date.now(),perm:Object.fromEntries(card.checks.map(q=>[q.id,perm(q,(q.options||[]).length,q.type==='day'||q.type==='folded')])),
+    iperm:Object.fromEntries(card.checks.filter(q=>q.type==='folded').map(q=>[q.id,perm(q,q.items.length)])),pick:null,done:false,sel:[],fold:{},words:false};}
+/* the question that needs the live 3D now (rotate in words needs none) */
+function lnLiveQ(card){const ck=LN.ck[card.id];if(!ck||ck.done)return null;const q=card.checks[ck.i];return q&&LN_LIVE.includes(q.type)&&!(q.type==='rotate'&&ck.words)?q:null;}
+const lnTwoPane=()=>['dev-pl','dev-tl','dev-d'].includes(DEV.cls);   // the 3D column sits beside the Check: the drill stays there (phone landscape: that column turns sticky + screen-tall while a drill is open — G-Art)
+function lnShowState(S,sh){const v=sh.view,w=typeof v==='string'?(S.views||[]).find(x=>x.id===v):v&&typeof v==='object'?v:null;
+  const lay=Object.fromEntries(S.layers.map(l=>[l.id,l.on!==false]));Object.assign(lay,sh.layers||{});
+  return {day:sh.day,az:w?w.azimuth_deg:S.camera.azimuth_deg,el:w?w.elevation_deg:S.camera.elevation_deg,zoom:sh.zoom||1,cut:{...S.cut,...(sh.cut||{})},layersOn:lay};}
+const lnView=(S,id)=>(S.views||[]).find(x=>x.id===id)||null;
+/* move the one canvas into the drill (same engine, D-036 (1)); Try it's own view is kept in LN.keep and given back by lnDrillEnd */
+function lnDrillMount(card){const q=lnLiveQ(card);if(!q){lnDrillEnd(card);return;}
+  scFile(card.scene.id).then(S=>{if(ROUTE.name!=='card'||ROUTE.id!==card.id)return;const ck=LN.ck[card.id];if(!ck||lnLiveQ(card)!==q)return;
+    const two=lnTwoPane(),host=two?$('#lnVw'):$('#lnDVw');if(!host)return;const key=card.id+':'+q.id+':'+ck.run;
+    if(!LN.keep)LN.keep={id:S.id,card:card.id,st:JSON.parse(JSON.stringify(SC.st[S.id]||{}))};
+    const home=lnShowState(S,q.show);if(LN.drillKey!==key){LN.drillKey=key;SC.st[S.id]=JSON.parse(JSON.stringify(home));SC.cur=null;}
+    SC.drill={type:q.type,mask:q.type==='day'&&ck.pick===null,labels:q.type==='label'&&ck.pick!==null,pins:q.type==='label'?q.pins.map((p,i)=>({at:p.at,n:i+1})):null,home};
+    const other=two?$('#lnDVw'):$('#lnVw');
+    if(other)other.innerHTML=two?`<p class="sm mut ln-inchk">${esc(STR.ln.dr.beside)}</p>`:`<p class="sm mut ln-inchk">${esc(STR.ln.dr.inCheck)} <button type="button" class="lk" data-ln="tochk">${esc(STR.ln.dr.toCheck)}</button></p>`;
+    $('#lnTry')?.classList.toggle('drill',two);
+    scViewer(host,S,{inline:true,drill:SC.drill});dlog('learn','drill',q.type,card.id,q.id,two?'beside':'in check');});}
+function lnDrillEnd(card){if(!SC.drill&&!LN.keep)return;SC.drill=null;SC.pinFocus=-1;LN.drillKey=null;const k=LN.keep;LN.keep=null;if(k){SC.st[k.id]=k.st;SC.cur=null;}
+  $('#lnTry')?.classList.remove('drill');const d=$('#lnDVw');if(d)d.innerHTML='';
+  if(card&&ROUTE.name==='card'&&ROUTE.id===card.id){const t=$('#lnVw'),S=SC.loaded[card.scene.id];if(t&&S)scViewer(t,S,{inline:true});}}
+/* stills for frames, folded and the rotate target: the same engine renders each show (no labels) with its scale bar drawn in (B2) */
+function lnSnapsFill(card,tries=0){const imgs=$$('#lnCheck img[data-snap]:not([src])');if(!imgs.length)return;const S=SC.loaded[card.scene.id],ck=LN.ck[card.id];
+  if(SC.engErr||!S||!ck){imgs.forEach(i=>{const f=i.closest('figure');if(f)f.classList.add('nopic');});return;}
+  if(!SC.eng||SC.cur!==S.id||!SC.ready||SC.eng.lost()){if(tries<60)setTimeout(()=>{if(ROUTE.name==='card'&&ROUTE.id===card.id)lnSnapsFill(card,tries+1);},250);else imgs.forEach(i=>i.closest('figure')?.classList.add('nopic'));return;}   // gave up: the text alternative shows (G-Eng)
+  const q=card.checks[ck.i],W=CONFIG.viewer.still.w,H=CONFIG.viewer.still.h;
+  const deco=(g,i)=>{const C=CONFIG.viewer.scaleSteps,nice=C.filter(m=>m*i.pxPerMm<=i.w*0.3).pop()||C[0],L=Math.round(nice*i.pxPerMm),t=STR.vw.mm(nice);
+    g.fillStyle='rgba(20,22,26,.85)';g.fillRect(i.w-L-26,i.h-36,L+18,28);g.strokeStyle='#fff';g.lineWidth=2;g.beginPath();g.moveTo(i.w-L-17,i.h-14);g.lineTo(i.w-17,i.h-14);g.stroke();
+    g.fillStyle='#fff';g.font='600 12px system-ui,sans-serif';g.textAlign='right';g.fillText(t,i.w-17,i.h-19);};
+  for(const img of imgs){const k=img.dataset.snap,sh=k==='t'?{...q.show,view:q.target}:k[0]==='f'?q.options[+k.slice(1)].show:q.items[+k.slice(1)].show;
+    const st=lnShowState(S,sh),key=S.id+'|'+JSON.stringify(st);
+    if(!LN.snap[key]){const r=SC.eng.snapshot(st,W,H,deco);if(!r){img.closest('figure')?.classList.add('nopic');continue;}LN.snap[key]=r.url;}
+    img.src=LN.snap[key];}}
+/* one option list (mcq, day, rotate in words) */
+function lnOptsHtml(q,ck,answered,fmt){return `<div class="ln-opts" role="group" aria-labelledby="lnQ">${ck.perm[q.id].map(k=>{const right=k===q.answer,mine=ck.pick===k;
+      const mark=answered?(right?' ok':mine?' no':''):'';
+      return `<button type="button" class="ln-opt${mark}" data-ln="pick" data-o="${k}" ${answered?'aria-disabled="true"':''} data-fk="ln-o${k}">${answered&&(right||mine)?`<span aria-hidden="true">${right?'✓':'✗'}</span> `:''}${esc(fmt(q.options[k]))}${answered&&right?` <span class="sr">— ${esc(STR.ln.right)}</span>`:answered&&mine?` <span class="sr">— ${esc(STR.ln.wrong)}</span>`:''}</button>`;}).join('')}</div>`;}
+function lnOrderHtml(q,ck,answered,item,label){const perm=ck.perm[q.id],ord=ck.ord||(ck.ord=perm.slice());
+  return `<ol class="ln-order${q.type==='frames'?' ln-frames':''}">${ord.map((k,j)=>`<li>${item(k)}${answered?(ck.pickOk[j]?` <span class="ln-ok" aria-hidden="true">✓</span><span class="sr"> — ${esc(STR.ln.rightPlace)}</span>`:` <span class="ln-x" aria-hidden="true">✗</span><span class="sr"> — ${esc(STR.ln.wrongPlace)}</span>`):`<span class="ln-mv"><button type="button" class="btn icon" data-ln="mv" data-j="${j}" data-d="-1" aria-label="${esc(STR.ln.up(label(k)))}" ${j===0?'disabled':''} data-fk="ln-u${k}">${icon('up',18)}</button><button type="button" class="btn icon ln-dn" data-ln="mv" data-j="${j}" data-d="1" aria-label="${esc(STR.ln.down(label(k)))}" ${j===ord.length-1?'disabled':''} data-fk="ln-d${k}">${icon('up',18)}</button></span>`}</li>`).join('')}</ol>
+    ${answered?'':`<button type="button" class="btn pri" data-ln="order" data-fk="ln-order">${esc(STR.ln.checkOrder)}</button>`}`;}
+const lnFig=(snap,alt,cap)=>`<figure class="ln-fig"><img data-snap="${snap}" alt="${esc(alt)}" width="360" height="240"><figcaption class="xs">${esc(cap)}</figcaption><p class="xs ln-nopic">${esc(STR.ln.dr.noPic)} ${esc(alt)}</p></figure>`;
+function lnDrillHtml(card,q,ck,answered){const D=STR.ln.dr,S=SC.loaded[card.scene.id],stage=`<div class="ln-dvw" id="lnDVw"></div>`,altD=t=>`<details class="ln-alt"><summary>${esc(D.alt)}</summary><p class="sm">${esc(t)}</p></details>`;
+  let h=`<p class="xs mut ln-dname">${icon('scene',16)} ${esc(D.names[q.type])}</p>`;
+  if(q.type==='rotate'&&SC.engErr)ck.words=true;   // no WebGL: the words question carries the drill (card-spec §2a, G-A11y)
+  if(q.type==='rotate'){const t=S&&lnView(S,q.target),lab=t?t.label:q.target;
+    if(ck.words)return h+`<p class="sm"><b>${esc(D.wordsQ)}</b></p>`+lnOptsHtml(q,ck,answered,o=>o)+(answered?'':`<p><button type="button" class="lk sm" data-ln="rwords">${esc(D.useView)}</button></p>`)+altD(q.alt);
+    return h+`<div class="ln-dr">${stage}${lnFig('t',D.targetAlt(lab),D.target)}</div>`
+      +(answered?'':`<div class="row ln-dact"><button type="button" class="btn pri" data-ln="rcheck" data-fk="ln-rcheck">${esc(D.checkView)}</button><button type="button" class="lk sm" data-ln="rwords" data-fk="ln-rwords">${esc(D.words)}</button></div>`)+altD(q.alt);}
+  if(q.type==='day')return h+stage+lnOptsHtml(q,ck,answered,D.dayOpt)+altD(q.alt);
+  if(q.type==='label'){const perm=ck.perm[q.id],all=q.pins.every((_,i)=>ck.sel[i]!=null);
+    return h+stage+`<div class="ln-pins">${q.pins.map((p,i)=>{const mine=ck.sel[i],okp=answered&&mine===p.answer;
+      return `<label class="ln-pin"><span class="ln-pnum" aria-hidden="true">${i+1}</span><span class="sm">${esc(D.pinIs(i+1))}</span><select data-lnpin="${i}" ${answered?'disabled':''} data-fk="ln-pin${i}"><option value="">${esc(D.choose)}</option>${perm.map(k=>`<option value="${k}"${mine===k?' selected':''}>${esc(q.options[k])}</option>`).join('')}</select>${answered?(okp?' <span class="ln-ok" aria-hidden="true">✓</span>':' <span class="ln-x" aria-hidden="true">✗</span>')+`<span class="sr"> — ${esc(okp?STR.ln.right:STR.ln.wrong)}</span>`:''}</label>`;}).join('')}</div>`
+      +(answered?'':`<button type="button" class="btn pri" data-ln="lcheck" data-fk="ln-lcheck" ${all?'':'disabled'}>${esc(D.checkLabels)}</button>`)+altD(q.alt);}
+  if(q.type==='frames'){const perm=ck.perm[q.id],L=k=>LN_ABC[perm.indexOf(k)];
+    return h+`<p class="xs mut">${esc(D.framesHint)}</p>`+lnOrderHtml(q,ck,answered,k=>lnFig('f'+k,q.options[k].text,D.pic(L(k))),k=>D.pic(L(k)))
+      +`<details class="ln-alt"><summary>${esc(D.altMany)}</summary><ul class="sm">${perm.map(k=>`<li>${esc(D.pic(L(k)))}: ${esc(q.options[k].text)}</li>`).join('')}</ul></details>`;}
+  if(q.type==='folded'){const ip=ck.iperm[q.id],all=q.items.every((_,i)=>ck.fold[i]!=null);
+    return h+`<ul class="ln-fold">${ip.map((i,j)=>{const it=q.items[i],mine=ck.fold[i],okp=answered&&mine===it.answer;
+      return `<li>${lnFig('i'+i,it.text,D.pic(LN_ABC[j]))}<div class="seg" role="group" aria-label="${esc(D.pic(LN_ABC[j]))}">${q.options.map((o,k)=>`<button type="button" data-ln="fold" data-i="${i}" data-o="${k}" aria-pressed="${mine===k}" ${answered?'aria-disabled="true"':''} data-fk="ln-f${i}-${k}">${esc(o)}</button>`).join('')}</div>${answered?`<p class="xs">${okp?'<span class="ln-ok" aria-hidden="true">✓</span>':'<span class="ln-x" aria-hidden="true">✗</span> '+esc(STR.ln.rightWas(q.options[it.answer]))}<span class="sr"> — ${esc(okp?STR.ln.right:STR.ln.wrong)}</span></p>`:''}</li>`;}).join('')}</ul>`
+      +(answered?'':`<button type="button" class="btn pri" data-ln="fcheck" data-fk="ln-fcheck" ${all?'':'disabled'}>${esc(D.checkAll)}</button>`)
+      +`<details class="ln-alt"><summary>${esc(D.altMany)}</summary><ul class="sm">${ip.map((i,j)=>`<li>${esc(D.pic(LN_ABC[j]))}: ${esc(q.items[i].text)}</li>`).join('')}</ul></details>`;}
+  return h;}
+/* the right answer, said in the feedback */
+function lnRightHtml(card,q,ck){const D=STR.ln.dr;
+  if(q.type==='mcq')return ' '+esc(STR.ln.rightWas(q.options[q.answer]));
+  if(q.type==='day')return ' '+esc(STR.ln.rightWas(D.dayOpt(q.options[q.answer])));
+  if(q.type==='rotate')return ck.words?' '+esc(STR.ln.rightWas(q.options[q.answer])):`</p><p class="sm">${esc(D.offBy(Math.round(ck.pick),q.tol_deg||CONFIG.viewer.tolDefault))} <button type="button" class="lk" data-ln="rshow">${esc(D.showTarget)}</button>`;
+  if(q.type==='label')return `</p><ul class="sm">${q.pins.map((p,i)=>`<li>${esc(D.pinRight(i+1,q.options[p.answer]))}</li>`).join('')}</ul><p>`;
+  if(q.type==='order')return `</p><p class="sm">${esc(STR.ln.rightOrder)}</p><ol class="sm">${q.options.map(o=>`<li>${esc(o)}</li>`).join('')}</ol><p>`;
+  if(q.type==='frames')return `</p><p class="sm">${esc(STR.ln.rightOrder)}</p><ol class="sm">${q.options.map(o=>`<li>${esc(o.text)}</li>`).join('')}</ol><p>`;
+  return '';}
 function lnCheckHtml(card){const id=card.id,ck=LN.ck[id],n=card.checks.length,rec=state.cards[id]||{};
   const head=`<h2 id="lnCkT" class="ln-h">${esc(STR.ln.checkT)}</h2>`;
   if(!ck)return head+`<p class="sm">${esc(STR.ln.checkLead(n))}</p>${rec.und?`<p class="sm"><span class="ln-ok" aria-hidden="true">✓</span> ${esc(STR.ln.passedBefore)}</p>`:''}<button type="button" class="btn pri" data-ln="start" data-fk="ln-start">${esc(rec.und?STR.ln.checkAgain:STR.ln.checkStart)}</button>`;
   if(ck.done){const r=ck.res.filter(Boolean).length,pass=r===n;
     return head+`<p class="ln-res" tabindex="-1" id="lnRes"><span class="${pass?'ln-ok':'ln-x'}" aria-hidden="true">${pass?'✓':'✗'}</span> ${esc(pass?STR.ln.passed(r,n):STR.ln.failed(r,n))}</p><button type="button" class="btn" data-ln="start" data-fk="ln-start">${esc(STR.ln.checkAgain)}</button>`;}
-  const q=card.checks[ck.i],perm=ck.perm[q.id],answered=ck.pick!==null,last=ck.i===n-1;
+  const q=card.checks[ck.i],answered=ck.pick!==null,last=ck.i===n-1;
   let body='';
-  if(q.type==='mcq'){body=`<div class="ln-opts" role="group" aria-labelledby="lnQ">${perm.map(k=>{const right=k===q.answer,mine=ck.pick===k;
-      const mark=answered?(right?' ok':mine?' no':''):'';
-      return `<button type="button" class="ln-opt${mark}" data-ln="pick" data-o="${k}" ${answered?'aria-disabled="true"':''} data-fk="ln-o${k}">${answered&&(right||mine)?`<span aria-hidden="true">${right?'✓':'✗'}</span> `:''}${esc(q.options[k])}${answered&&right?` <span class="sr">— ${esc(STR.ln.right)}</span>`:answered&&mine?` <span class="sr">— ${esc(STR.ln.wrong)}</span>`:''}</button>`;}).join('')}</div>`;}
-  else{const ord=ck.ord||(ck.ord=perm.slice());
-    body=`<p class="xs mut">${esc(STR.ln.orderHint)}</p><ol class="ln-order">${ord.map((k,j)=>`<li><span class="ln-ot">${esc(q.options[k])}</span>${answered?(ck.pickOk[j]?` <span class="ln-ok" aria-hidden="true">✓</span><span class="sr"> — ${esc(STR.ln.rightPlace)}</span>`:` <span class="ln-x" aria-hidden="true">✗</span><span class="sr"> — ${esc(STR.ln.wrongPlace)}</span>`):`<span class="ln-mv"><button type="button" class="btn icon" data-ln="mv" data-j="${j}" data-d="-1" aria-label="${esc(STR.ln.up(q.options[k]))}" ${j===0?'disabled':''} data-fk="ln-u${k}">${icon('up',18)}</button><button type="button" class="btn icon ln-dn" data-ln="mv" data-j="${j}" data-d="1" aria-label="${esc(STR.ln.down(q.options[k]))}" ${j===ord.length-1?'disabled':''} data-fk="ln-d${k}">${icon('up',18)}</button></span>`}</li>`).join('')}</ol>
-      ${answered?'':`<button type="button" class="btn pri" data-ln="order" data-fk="ln-order">${esc(STR.ln.checkOrder)}</button>`}`;}
+  if(q.type==='mcq')body=lnOptsHtml(q,ck,answered,o=>o);
+  else if(q.type==='order')body=`<p class="xs mut">${esc(STR.ln.orderHint)}</p>`+lnOrderHtml(q,ck,answered,k=>`<span class="ln-ot">${esc(q.options[k])}</span>`,k=>q.options[k]);
+  else if(lnIsDrill(q))body=lnDrillHtml(card,q,ck,answered);
   const ok=answered&&ck.res[ck.i];
-  const fb=answered?`<div class="ln-fb" id="lnFb" tabindex="-1"><p><b><span class="${ok?'ln-ok':'ln-x'}" aria-hidden="true">${ok?'✓':'✗'}</span> ${esc(ok?STR.ln.right:STR.ln.wrong)}</b>
-      ${!ok&&q.type==='mcq'?' '+esc(STR.ln.rightWas(q.options[q.answer])):''}</p>
-      ${!ok&&q.type==='order'?`<p class="sm">${esc(STR.ln.rightOrder)}</p><ol class="sm">${q.options.map(o=>`<li>${esc(o)}</li>`).join('')}</ol>`:''}
+  const fb=answered?`<div class="ln-fb" id="lnFb" tabindex="-1"><p><b><span class="${ok?'ln-ok':'ln-x'}" aria-hidden="true">${ok?'✓':'✗'}</span> ${esc(ok?STR.ln.right:STR.ln.wrong)}</b>${ok&&!['rotate'].includes(q.type)?'':lnRightHtml(card,q,ck)}</p>
       <p class="sm">${esc(q.why)}</p>
       <button type="button" class="btn pri" data-ln="next" data-fk="ln-next">${esc(last?STR.ln.finish:STR.ln.next)}</button></div>`:'';
   return head+`<p class="xs mut">${esc(STR.ln.qOf(ck.i+1,n))}</p><p class="ln-q" id="lnQ"><b>${esc(q.prompt)}</b></p>${body}${fb}`;}
@@ -160,7 +232,14 @@ function lnCheckAct(card,a,b){const id=card.id;let ck=LN.ck[id],focus=null;
   else if(a==='mv'){const j=+b.dataset.j,d=+b.dataset.d,o=ck.ord,k=o[j];if(j+d<0||j+d>=o.length)return;[o[j],o[j+d]]=[o[j+d],o[j]];
     const edge=(d<0&&j+d===0)||(d>0&&j+d===o.length-1);focus=`[data-fk="${(d<0)!==edge?'ln-u':'ln-d'}${k}"]`;}   // same button again, or the other one at an end
   else if(a==='order'){const q=card.checks[ck.i];ck.pick=ck.ord.slice();ck.pickOk=ck.ord.map((k,j)=>k===j);ck.res[ck.i]=ck.pickOk.every(Boolean);lnLog(card,q,ck.res[ck.i]);focus='#lnFb';}
-  else if(a==='next'){if(ck.i<card.checks.length-1){ck.i++;ck.pick=null;ck.ord=null;ck.pickOk=null;focus='#lnQ';}
+  else if(a==='rwords'){ck.words=!ck.words;focus=ck.words?'#lnQ':'[data-fk="ln-rcheck"]';}
+  else if(a==='rcheck'){const q=card.checks[ck.i],S=SC.loaded[card.scene.id],t=S&&lnView(S,q.target);if(!SC.eng||!SC.mod||!t)return;const st=SC.eng.state();
+    ck.pick=SC.mod.viewAngle(st.az,st.el,t.azimuth_deg,t.elevation_deg);ck.res[ck.i]=ck.pick<=(q.tol_deg||CONFIG.viewer.tolDefault);lnLog(card,q,ck.res[ck.i]);focus='#lnFb';}
+  else if(a==='rshow'){const q=card.checks[ck.i],S=SC.loaded[card.scene.id],t=S&&lnView(S,q.target);if(SC.eng&&t){SC.eng.view(t.azimuth_deg,t.elevation_deg,null);scSave();}return;}
+  else if(a==='lcheck'){const q=card.checks[ck.i];if(!q.pins.every((_,i)=>ck.sel[i]!=null))return;ck.pick=ck.sel.slice();ck.res[ck.i]=q.pins.every((p,i)=>ck.sel[i]===p.answer);lnLog(card,q,ck.res[ck.i]);focus='#lnFb';}
+  else if(a==='fold'){if(ck.pick!==null)return;ck.fold[+b.dataset.i]=+b.dataset.o;focus=`[data-fk="ln-f${b.dataset.i}-${b.dataset.o}"]`;}
+  else if(a==='fcheck'){const q=card.checks[ck.i];if(!q.items.every((_,i)=>ck.fold[i]!=null))return;ck.pick={...ck.fold};ck.res[ck.i]=q.items.every((it,i)=>ck.fold[i]===it.answer);lnLog(card,q,ck.res[ck.i]);focus='#lnFb';}
+  else if(a==='next'){if(ck.i<card.checks.length-1){ck.i++;ck.pick=null;ck.ord=null;ck.pickOk=null;ck.sel=[];ck.fold={};ck.words=false;focus='#lnQ';}
     else{ck.done=true;const r=ck.res.filter(Boolean).length,rec=lnRec(id);rec.checks=(rec.checks||0)+1;rec.best=Math.max(rec.best||0,r/card.checks.length);rec.t=Date.now();
       if(r===card.checks.length){lnSet(id,'read');lnDeckAdd(card);lnSet(id,'und');}stSave();focus='#lnRes';lnPaint('status');lnPaint('expl');lnPaint('remember');}}
   lnPaint('check');const f=focus&&$(focus);if(f){if(f.id==='lnQ'&&!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');f.focus({preventScroll:false});}}
@@ -185,6 +264,7 @@ function lnRemHtml(card){const ks=(card.remember||[]).map(r=>state.deck[card.id+
 function lnPaint(what){const card=LN.open[ROUTE.id];if(ROUTE.name!=='card'||!card)return;
   const el={check:'#lnCheck',expl:'#lnExpl',remember:'#lnRem',status:'#lnStatus'}[what],h=$(el);if(!h)return;
   h.innerHTML=what==='check'?lnCheckHtml(card):what==='expl'?lnExplHtml(card):what==='remember'?lnRemHtml(card):lnChip(card.id);
+  if(what==='check'){if(lnLiveQ(card))lnDrillMount(card);else lnDrillEnd(card);lnSnapsFill(card);}
   if(what==='status')$$('.ln-rail [aria-current] .ln-st').forEach(x=>{x.outerHTML=lnChip(card.id);});}
 
 /* ---------- #deck: one session ---------- */
@@ -242,10 +322,16 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!
   if(a==='ref'){e.preventDefault();const o=b.getAttribute('aria-expanded')!=='true',box=document.getElementById('lnR-'+b.dataset.k);b.setAttribute('aria-expanded',o);if(box)box.classList.toggle('hidden',!o);return;}
   if(a==='level'){const l=b.dataset.l;state.settings.level=l;state.settings.t=Date.now();stSave();$('#lnBody').innerHTML=lnBodyHtml(card,l);
     $$('.ln-lv [data-l]').forEach(x=>x.setAttribute('aria-pressed',x===b));if(LN.ex[card.id]&&LN.ex[card.id].shown)lnPaint('expl');return;}
-  if(['start','pick','mv','order','next'].includes(a)){lnCheckAct(card,a,b);return;}
+  if(['start','pick','mv','order','next','rwords','rcheck','rshow','lcheck','fold','fcheck'].includes(a)){lnCheckAct(card,a,b);return;}
+  if(a==='tochk'){const q=$('#lnQ');if(q){q.setAttribute('tabindex','-1');q.focus();}return;}
   if(a==='exshow'){LN.ex[card.id]={shown:true};lnPaint('expl');$('#lnModel')?.focus();return;}
   if(a==='exyes'){lnSet(card.id,'exp');LN.ex[card.id]=null;lnPaint('expl');lnPaint('status');$('#lnExT')?.setAttribute('tabindex','-1');$('#lnExT')?.focus();return;}
   if(a==='exno'){LN.ex[card.id]=null;lnPaint('expl');$('#lnExT')?.setAttribute('tabindex','-1');$('#lnExT')?.focus();}
 });
 document.addEventListener('keydown',e=>{if(e.key===' '&&e.target.matches&&e.target.matches('a.ln-ref')){e.preventDefault();e.target.click();}});   // role=button: Space too
-addEventListener('hashchange',()=>{clearTimeout(LN.readT);if(parseHash(location.hash).name!=='deck'&&LN.deck&&(!LN.deck.q||LN.deck.done))LN.deck=null;});
+/* label drill: one select per pin; the pin glows while its select has focus */
+document.addEventListener('change',e=>{const t=e.target;if(!t.matches||!t.matches('[data-lnpin]'))return;const card=LN.open[ROUTE.id],ck=card&&LN.ck[card.id];if(!ck)return;
+  ck.sel[+t.dataset.lnpin]=t.value===''?null:+t.value;const q=card.checks[ck.i],btn=$('[data-ln="lcheck"]');if(btn)btn.disabled=!q.pins.every((_,i)=>ck.sel[i]!=null);});
+document.addEventListener('focusin',e=>{const t=e.target,i=t.matches&&t.matches('[data-lnpin]')?+t.dataset.lnpin:-1;if(SC.drill&&SC.pinFocus!==i){SC.pinFocus=i;scOverlay();}});
+onDevice(()=>{if(ROUTE.name!=='card')return;const card=LN.open[ROUTE.id];if(card&&lnLiveQ(card)&&SC.drill)lnDrillMount(card);});   // phone/tablet portrait ↔ two panes: the drill moves with the layout
+addEventListener('hashchange',()=>{clearTimeout(LN.readT);{const r=parseHash(location.hash);if(LN.keep&&!(r.name==='card'&&r.id===LN.keep.card)){SC.st[LN.keep.id]=LN.keep.st;LN.keep=null;SC.drill=null;LN.drillKey=null;SC.cur=null;}}if(parseHash(location.hash).name!=='deck'&&LN.deck&&(!LN.deck.q||LN.deck.done))LN.deck=null;});

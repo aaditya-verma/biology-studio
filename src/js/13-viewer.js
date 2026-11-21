@@ -3,11 +3,13 @@
    Layouts by class (C13): phone = canvas on top + controls in a bottom sheet (tabs) · phone landscape = full-height canvas │ side strip ·
    tablet portrait = canvas + bottom panel · tablet landscape + desktop = canvas │ side panel (all sections, hover labels, keys).
    Always on the stage (B2, H4): day/stage/size stamp, scale bar, axis gizmo, disclaimers. Rotating keeps day, camera, cut and tab (one engine, one canvas).
+   V2 drills (card-spec §2a, D-054): scViewer(…,{inline:true, drill}) = the same stage in drill mode — labels off, no day row, stamp masked for
+   `day`, numbered pins for `label`, turn buttons; SC.drill holds it (set by 18-learn.js). Context loss: a message + Restart 3D (V1 note).
    EDIT: words in STR.vw; settings in CONFIG.viewer; scene data in content/<book>/scenes/. */
 'use strict';
 if(new URLSearchParams(location.search).has('still'))document.documentElement.classList.add('still');   // tools/stills: the stage alone
 const SC={idx:null,idxP:null,err:null,files:{},loaded:{},viewing:null,eng:null,engP:null,engErr:null,canvas:null,ro:null,st:{},tab:'layers',labels:true,
-  playing:0,lbl:[],blocked:[],ptr:new Map(),hover:null,meas:null,ready:false};
+  playing:0,lbl:[],blocked:[],ptr:new Map(),hover:null,meas:null,ready:false,drill:null,pinFocus:-1};
 
 /* ---------- data ---------- */
 function scIndexLoad(){if(!SC.idxP)SC.idxP=fetch(CONFIG.viewer.scenesUrl+'index.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();})
@@ -53,7 +55,7 @@ function scViewer(v,S,o={}){
   const on=id=>st.layersOn?st.layersOn[id]!==false:(lay.find(l=>l.id===id)||{}).on!==false;
   const cut=st.cut||S.cut,dbg=dbgOn('viewer');
   const facts=S.facts.map(f=>`<li><span>${esc(f.text)}</span> <span class="xs mut">[${esc(f.cite)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b></li>`).join('');
-  v.innerHTML=`<div class="vw${o.inline?' inl':''}" id="vw" data-id="${esc(S.id)}" data-tab="${esc(SC.tab)}">
+  v.innerHTML=`<div class="vw${o.inline?' inl':''}${o.drill?' drill dt-'+esc(o.drill.type):''}" id="vw" data-id="${esc(S.id)}" data-tab="${esc(SC.tab)}">
   <section class="vw-stage stage-dark" id="vwStage" tabindex="0" aria-label="${esc(STR.vw.stageLabel(S.title))}" aria-describedby="vwLblList">
     <div class="vw-cv" id="vwCv"></div>
     <svg class="vw-lead" id="vwLead" aria-hidden="true"></svg><div class="vw-lbls" id="vwLbls" aria-hidden="true"></div>
@@ -63,19 +65,23 @@ function scViewer(v,S,o={}){
     <canvas class="vw-giz" id="vwGiz" width="88" height="88" role="img" aria-label="${esc(STR.vw.gizmo)}"></canvas>
     <div class="vw-scale" id="vwScale" aria-hidden="true"><i></i><span></span></div>
     <p class="vw-msg" id="vwMsg" role="status">${esc(STR.vw.loading3d)}</p>
+    <div class="vw-lost hidden" id="vwLost" role="alert"><p>${esc(STR.vw.lost)}</p><button type="button" class="btn" data-vw="relaunch">${esc(STR.vw.relaunch)}</button></div>
   </section>
   <section class="vw-panel" aria-label="${esc(STR.vw.controls)}">
-    ${o.inline?`<div class="vw-head row"><h3 class="vw-it" title="${esc(S.id)} · v${S.version}">${esc(S.title)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>`
+    ${o.drill?`<div class="vw-head row"><h3 class="vw-it">${esc(STR.vw.drillT)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
+      <div class="vw-turn row" role="group" aria-label="${esc(STR.vw.turnGroup)}">${[['l','back'],['r','fwd'],['u','up'],['d','up']].map(([d,ic])=>`<button type="button" class="btn icon${d==='d'?' ln-dn':''}" data-vw="turn" data-d="${d}" aria-label="${esc(STR.vw.turn[d])}" title="${esc(STR.vw.turn[d])}">${icon(ic,20)}</button>`).join('')}
+      <button type="button" class="btn sm" data-vw="dreset">${esc(STR.vw.dReset)}</button></div>`
+    :o.inline?`<div class="vw-head row"><h3 class="vw-it" title="${esc(S.id)} · v${S.version}">${esc(S.title)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>`
     :`<div class="vw-head"><div class="row"><span class="mono mut">${esc(S.id)} · v${S.version}</span><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
       <h1 id="cpT" tabindex="-1">${esc(S.title)}</h1></div>`}
-    <div class="vw-day" role="group" aria-label="${esc(STR.vw.dayGroup)}">
+    ${o.drill?'':`<div class="vw-day" role="group" aria-label="${esc(STR.vw.dayGroup)}">
       <button type="button" class="btn icon" data-vw="dprev" aria-label="${esc(STR.vw.dayPrev)}" title="${esc(STR.vw.dayPrev)} ( [ )">${icon('back',20)}</button>
       <label class="vw-range"><span class="sr">${esc(STR.vw.day)}</span><input type="range" id="vwDay" min="${d0}" max="${d1}" step="0.1" value="${st.day}"></label>
       <button type="button" class="btn icon" data-vw="dnext" aria-label="${esc(STR.vw.dayNext)}" title="${esc(STR.vw.dayNext)} ( ] )">${icon('fwd',20)}</button>
       <button type="button" class="btn icon" data-vw="play" id="vwPlay" aria-label="${esc(STR.vw.play)}" title="${esc(STR.vw.play)} (Space)">${icon('play',20)}</button>
     </div>
-    <div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>
-    ${o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull">${icon('scene',18)} ${esc(STR.ln.openFull)}</button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
+    <div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>`}
+    ${o.drill?'':o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull">${icon('scene',18)} ${esc(STR.ln.openFull)}</button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
     <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-pressed="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
     <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" aria-pressed="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
     <div class="vw-sec" data-sec="cut"><h2 class="vw-h">${esc(STR.vw.heads.cut)}</h2>
@@ -92,7 +98,7 @@ function scViewer(v,S,o={}){
       <p class="xs mut">${esc(STR.vw.cardsT)} ${S.cards.map(c=>`<button type="button" class="lk" data-go="concept=${esc(c)}">${esc(c)}</button>`).join(' ')}</p>
       <p class="xs mut">${esc(STR.vw.marksKey)}</p><p class="xs mut" id="vwTech"></p></div>
     ${dbg?`<div class="vw-sec" data-sec="debug"><h2 class="vw-h">${esc(STR.vw.heads.debug)}</h2><p class="xs mut">${esc(STR.vw.measHint)}</p>
-      <div class="row"><button type="button" class="btn" data-vw="measure" id="vwMeas">${esc(STR.vw.measure)}</button><button type="button" class="btn" data-vw="dbgbox">${esc(STR.vw.boxes)}</button></div>
+      <div class="row"><button type="button" class="btn" data-vw="measure" id="vwMeas">${esc(STR.vw.measure)}</button><button type="button" class="btn" data-vw="dbgbox">${esc(STR.vw.boxes)}</button><button type="button" class="btn" data-vw="lose">${esc(STR.vw.lose)}</button></div>
       <textarea id="vwMeasOut" readonly aria-label="${esc(STR.vw.measOut)}" rows="8"></textarea><div class="row"><button type="button" class="btn" data-vw="mcopy">${esc(STR.copy)}</button><span class="sm mut" id="vwMeasMsg" role="status"></span></div></div>`:''}`}
     <p class="sr" id="vwLblList"></p>
   </section></div>`;
@@ -107,9 +113,11 @@ function scMount(S,st){
   scEngine().then(mod=>{
     if(!$('#vwStage'))return;
     SC.mod=mod;   // stamp works even without WebGL (G-Eng)
-    if(!SC.eng){const e=mod.createViewer(SC.canvas,()=>$('#vwStage'),{dprCap:CONFIG.viewer.dprCap,still:document.documentElement.classList.contains('still')});
+    if(!SC.eng){const e=mod.createViewer(SC.canvas,()=>$('#vwStage'),{dprCap:CONFIG.viewer.dprCap,still:document.documentElement.classList.contains('still'),
+        onLost:()=>{dlog('viewer','context lost');clearTimeout(SC.lostT);SC.lostT=setTimeout(()=>{if(SC.eng&&SC.eng.lost())$('#vwLost')?.classList.remove('hidden');},CONFIG.viewer.lostMs);},   // Android may restore on its own: wait a moment
+        onRestored:()=>{dlog('viewer','context restored');clearTimeout(SC.lostT);$('#vwLost')?.classList.add('hidden');scOverlay();}});
       if(!e.ok){SC.engErr=e.err||'WebGL';throw new Error(SC.engErr);}SC.eng=e;}
-    const E=SC.eng;E.onFrame(scOverlay);
+    const E=SC.eng;E.onFrame(scOverlay);E.setShift(SC.drill&&SC.drill.type==='label'?CONFIG.viewer.drillShift:0);   // drills: the subject sits below the stamp + notes plate (G-Art)
     if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom});SC.cur=S.id;}else{E.setTokens();if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
     if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
@@ -125,7 +133,8 @@ function scCur(){const id=ROUTE.name==='scene'?ROUTE.id:ROUTE.name==='card'?SC.i
 function scDay(d,quiet){const S=scCur();if(!S)return;const K=S.days;d=Math.max(K[0].day,Math.min(K[K.length-1].day,Math.round(d*10)/10));
   SC.st[S.id].day=d;const sl=$('#vwDay');if(sl&&+sl.value!==d)sl.value=d;
   const p=(SC.mod||{}).stampOf?SC.mod.stampOf(S,d):null,stp=$('#vwStamp');
-  if(p&&stp){const html=`<b>${esc(STR.vw.dayLong(p.day))}</b> · ${esc(p.stage)} · ${esc(p.size)}${p.mark==='≈'?' <span class="xs">'+esc(STR.approx)+'</span>':''}`;
+  if(SC.drill&&SC.drill.mask&&stp){const html=`<b>${esc(STR.vw.masked)}</b>`;if(stp.innerHTML!==html)stp.innerHTML=html;}   // day drill: the day is the question (D-054); scale bar stays
+  else if(p&&stp){const html=`<b>${esc(STR.vw.dayLong(p.day))}</b> · ${esc(p.stage)} · ${esc(p.size)}${p.mark==='≈'?' <span class="xs">'+esc(STR.approx)+'</span>':''}`;
     if(stp.innerHTML!==html)stp.innerHTML=html;   // write only on change: the live region speaks once per real change (G-A11y)
     if(sl)sl.setAttribute('aria-valuetext',STR.vw.dayLong(p.day)+', '+p.stage+', '+p.size);}
   else if(stp&&!p){stp.textContent=STR.vw.dayLong(Math.round(d));}
@@ -145,25 +154,41 @@ function scLabelsDom(S){
   S.labels.forEach((l,i)=>items.push({k:'l'+i,at:l.at||l.layer,layer:l.layer,text:l.text,days:l.days,pri:l.priority||5,sw:tok(l.layer)==='guide'?'':cls(tok(l.layer))}));
   S.parts.filter(p=>p.kind==='axes').forEach(p=>Object.keys(STR.vw.axes).forEach(a=>items.push({k:'axis-'+a,at:'axis-'+a,layer:p.layer,text:STR.vw.axes[a],axis:true,pri:3})));
   S.parts.filter(p=>p.kind==='planes').forEach(p=>p.planes.forEach(pl=>items.push({k:'plane-'+pl.id,at:'plane-'+pl.id,layer:pl.layer,text:(S.layers.find(x=>x.id===pl.layer)||{}).label||pl.id,pri:4})));
-  box.innerHTML=items.map(it=>`<span class="vw-lb${it.axis?' ax':''}" data-k="${it.k}">${it.sw?`<i class="sw ${it.sw}"></i>`:''}${esc(it.text)}</span>`).join('')+'<span class="vw-lb hov hidden" data-k="hover"></span>';
+  const pins=SC.drill&&SC.drill.pins||[];
+  box.innerHTML=items.map(it=>`<span class="vw-lb${it.axis?' ax':''}" data-k="${it.k}">${it.sw?`<i class="sw ${it.sw}"></i>`:''}${esc(it.text)}</span>`).join('')+'<span class="vw-lb hov hidden" data-k="hover"></span>'
+    +pins.map((p,i)=>`<span class="vw-pin hidden" data-pin="${i}">${p.n}</span>`).join('');
   SC.lbl=items;$$('.vw-lb',box).forEach(el=>{const it=items.find(x=>x.k===el.dataset.k);if(it){it.el=el;}});SC.hoverEl=$('.vw-lb.hov',box);
 }
 function scOverlay(){
   const S=scCur(),E=SC.eng,stage=$('#vwStage');if(!S||!E||!stage||!SC.ready)return;
-  const W=stage.clientWidth,H=stage.clientHeight,A=E.anchors(),st=E.state(),day=st.day;
+  const W=stage.clientWidth,H=stage.clientHeight,A=E.anchors(!SC.drill||SC.drill.labels),st=E.state(),day=st.day;   // occlusion raycasts only when labels can show (G-Eng)
   const rel=el=>{if(!el||el.offsetParent===null)return null;const a=el.getBoundingClientRect(),b=stage.getBoundingClientRect();return {l:a.left-b.left-4,t:a.top-b.top-4,r:a.right-b.left+4,b:a.bottom-b.top+4};};
   const blocked=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>rel($(s))).filter(Boolean),placed=[],lines=[],seen=[];
   const hit=(r)=>blocked.concat(placed).some(o=>r.l<o.r&&r.r>o.l&&r.t<o.b&&r.b>o.t);
+  const lblOn=SC.drill?SC.drill.labels:SC.labels,segs=[];
+  /* leader lines never cross each other or another label (V1 note: phone landscape at 125 %) */
+  const cross=(a,b,c,d)=>{const o=(p,q,r)=>Math.sign((q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x));return o(a,b,c)!==o(a,b,d)&&o(c,d,a)!==o(c,d,b);};
+  const segHitsRect=(a,b,r)=>{const P=[{x:r.l,y:r.t},{x:r.r,y:r.t},{x:r.r,y:r.b},{x:r.l,y:r.b}];return [0,1,2,3].some(i=>cross(a,b,P[i],P[(i+1)%4]));};
   const items=SC.lbl.slice().sort((a,b)=>(a.pri||5)-(b.pri||5)||((A[a.at]&&A[b.at])?A[a.at].s.y-A[b.at].s.y:0));   // subject first: small screens drop context labels (G-Art)
   for(const it of items){const el=it.el;if(!el)continue;const a=A[it.at];
-    const show=SC.labels&&a&&st.layersOn[it.layer]!==false&&(!it.days||(day>=it.days[0]-1e-6&&day<=it.days[1]+1e-6));
+    const guideLbl=SC.drill&&it.at==='ruler';   // the ruler keeps its length label in a drill (G-Art: "1 mm" must read)
+    const off=a&&(a.s.x<2||a.s.y<2||a.s.x>W-2||a.s.y>H-2);   // a structure off the stage gets no label (G-Art: no leader running off the edge)
+    const show=(lblOn||guideLbl)&&a&&!a.hid&&!off&&st.layersOn[it.layer]!==false&&(!it.days||(day>=it.days[0]-1e-6&&day<=it.days[1]+1e-6));
     if(!show){el.classList.add('hidden');continue;}el.classList.remove('hidden');
     const w=el.offsetWidth,h=el.offsetHeight,x=a.s.x,y=a.s.y,g=it.axis?6:16;
     const cand=it.axis?[[x-w/2,y-h/2],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-g],[x-w/2,y+g]]:[[x+g,y-h-g],[x-w-g,y-h-g],[x+g,y+g],[x-w-g,y+g],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-2*g],[x-w/2,y+2*g]];
-    let ok=null;for(const[cx,cy]of cand){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(!hit(r)){ok=r;break;}}
+    const lead=r=>{const ex=Math.max(r.l,Math.min(x,r.r)),ey=y<r.t?r.t:y>r.b?r.b:(r.t+r.b)/2;return [{x,y},{x:ex,y:ey}];};
+    let ok=null;for(const[cx,cy]of cand){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(hit(r))continue;
+      if(!it.axis){const [a1,b1]=lead(r);if(segs.some(([p,q])=>cross(a1,b1,p,q))||placed.some(o=>segHitsRect(a1,b1,o)))continue;
+        if(segs.some(([p,q])=>segHitsRect(p,q,r)))continue;}
+      ok=r;break;}
     if(!ok){el.classList.add('hidden');continue;}
     placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);
-    if(!it.axis){const ex=Math.max(ok.l,Math.min(x,ok.r)),ey=y<ok.t?ok.t:y>ok.b?ok.b:(ok.t+ok.b)/2;lines.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`);}}
+    if(!it.axis){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);lines.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`);}}
+  (SC.drill&&SC.drill.pins||[]).forEach((p,i)=>{const el=$(`.vw-pin[data-pin="${i}"]`),a=A[p.at];if(!el)return;
+    if(!a){el.classList.add('hidden');return;}el.classList.remove('hidden');el.classList.toggle('on',SC.pinFocus===i);
+    const px=Math.min(W-26,a.s.x+CONFIG.viewer.pinOffset),py=Math.max(4,a.s.y-CONFIG.viewer.pinOffset-22);   // the pin sits beside its structure, a leader + dot on it (G-Art: never cover the target)
+    el.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px)`;lines.push(`<line x1="${a.s.x.toFixed(1)}" y1="${a.s.y.toFixed(1)}" x2="${(px+11).toFixed(1)}" y2="${(py+11).toFixed(1)}"/><circle cx="${a.s.x.toFixed(1)}" cy="${a.s.y.toFixed(1)}" r="3"/>`);});
   const svg=$('#vwLead');if(svg){svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=lines.join('');}
   const ll=$('#vwLblList');if(ll){const t=STR.vw.viewText(st.az,st.el,st.cut)+' '+STR.vw.labelsShown(seen);if(ll.textContent!==t)ll.textContent=t;}
   /* scale bar: a round length ~ 60–130 px (B2) */
@@ -204,9 +229,10 @@ function scPointer(cv){
   const up=e=>{SC.ptr.delete(e.pointerId);scSave();};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
   cv.addEventListener('pointerleave',()=>{if(SC.hoverEl)SC.hoverEl.classList.add('hidden');});
   cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
-  cv.addEventListener('dblclick',()=>scView('reset'));
+  cv.addEventListener('dblclick',()=>{if(SC.drill&&SC.drill.home&&SC.eng){const h=SC.drill.home;SC.eng.view(h.az,h.el,h.zoom);scSave();return;}scView('reset');});   // in a drill: back to its start view (G-Eng)
 }
-function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S)return;const r=SC.canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,id=E.pick(x,y);
+function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.drill)return;   // hover names a structure: never in a drill (it would answer it)
+  const r=SC.canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,id=E.pick(x,y);
   if(!id){el.classList.add('hidden');return;}const l=S.layers.find(q=>q.id===id);el.textContent=l?l.label:id;el.classList.remove('hidden');
   el.style.transform=`translate(${Math.round(Math.min(x+14,r.width-el.offsetWidth-6))}px,${Math.round(Math.max(6,y-el.offsetHeight-10))}px)`;}
 function scView(k){const S=scCur(),E=SC.eng;if(!S||!E)return;const c=S.camera,V={three:[c.azimuth_deg,c.elevation_deg],top:[-90,89],side:[-90,0],cut:null,reset:[c.azimuth_deg,c.elevation_deg]}[k];
@@ -223,6 +249,7 @@ function scStop(){if(!SC.playing)return;cancelAnimationFrame(SC.playing);clearIn
 
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-vw]');if(!b||!b.closest('#vw'))return;const S=scCur(),E=SC.eng,a=b.dataset.vw;if(!S)return;const st=SC.st[S.id];
+  if(a==='relaunch'){try{SC.eng&&SC.eng.dispose();}catch(_){}SC.eng=null;if(SC.canvas)SC.canvas.remove();SC.canvas=null;SC.cur=null;render();return;}
   if(a==='disc'){const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);SC.discOpen=o;scOverlay();return;}
   if(a==='tab'){SC.tab=b.dataset.t;$('#vw').dataset.tab=SC.tab;$$('.vw-tabs [data-t]').forEach(x=>x.setAttribute('aria-pressed',x===b));return;}
   if(a==='dprev'){scStop();scDay(Math.ceil(st.day-1-1e-6));return;} if(a==='dnext'){scStop();scDay(Math.floor(st.day+1+1e-6));return;}
@@ -233,6 +260,9 @@ document.addEventListener('click',e=>{
   if(a==='cut'){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);E.setCut({on});$('#vwCut').disabled=!on;scSave();return;}
   if(a==='axis'){E.setCut({axis:b.dataset.a});const cs=$('#vwCut');if(cs)cs.setAttribute('aria-valuetext',STR.vw.cutText(b.dataset.a,+cs.value));$$('[data-vw=axis]').forEach(x=>x.setAttribute('aria-pressed',x===b));scSave();return;}
   if(a==='view'){scView(b.dataset.v);return;} if(a==='zin'){E.zoomBy(1.25);scSave();return;} if(a==='zout'){E.zoomBy(0.8);scSave();return;}
+  if(a==='turn'){const d=b.dataset.d,T=CONFIG.viewer.turn;E.orbitBy(d==='l'?-T.az:d==='r'?T.az:0,d==='u'?T.el:d==='d'?-T.el:0);scSave();return;}
+  if(a==='dreset'){if(SC.drill&&SC.drill.home){const h=SC.drill.home;E.view(h.az,h.el,h.zoom);scSave();}return;}
+  if(a==='lose'){const okL=E.loseContext(800);$('#vwMeasMsg').textContent=okL?STR.vw.loseOk:STR.vw.loseNo;return;}
   if(a==='measure'){scMeasure();return;} if(a==='dbgbox'){SC.dbgBoxes=!SC.dbgBoxes;E.setDebug(SC.dbgBoxes);return;}
   if(a==='mcopy'){const t=$('#vwMeasOut');navigator.clipboard.writeText(t.value).then(()=>{$('#vwMeasMsg').textContent=STR.copied;},()=>{t.select();$('#vwMeasMsg').textContent=STR.copyFail;});}
 });
@@ -242,6 +272,7 @@ document.addEventListener('keydown',e=>{
   if(!scCur()||!SC.eng||$('dialog[open]'))return;if(e.ctrlKey||e.metaKey||e.altKey)return;   // browser shortcuts stay the browser's (G-Eng)
   if(!e.target.closest||!e.target.closest('#vw')||e.target.matches('input:not([type=range]),textarea,select'))return;   // keys only while focus is in the viewer (WCAG 2.1.4)
   const k=e.key,S=scCur(),st=S&&SC.st[S.id],onStage=e.target.id==='vwStage';if(!st)return;
+  if(SC.drill&&['[',']',' ','l','L','c','C','0'].includes(k))return;   // a drill keeps its day, cut and labels (the answer must not be one key away)
   if(k==='['){e.preventDefault();scStop();scDay(Math.ceil(st.day-1-1e-6));}else if(k===']'){e.preventDefault();scStop();scDay(Math.floor(st.day+1+1e-6));}
   else if(k===' '&&!e.target.matches('button')){e.preventDefault();scPlay();}
   else if(onStage&&k.startsWith('Arrow')){e.preventDefault();SC.eng.orbitBy(k==='ArrowLeft'?-10:k==='ArrowRight'?10:0,k==='ArrowUp'?8:k==='ArrowDown'?-8:0);scSave();}

@@ -25,6 +25,9 @@ from citations import ROOT, build_sources, validate_citation, suggest_mark  # no
 # EDIT: limits (card-spec §3) — mirror CARD_RULES in src/js/15-cards.js
 VERBS = ["explain", "describe", "identify", "label", "locate", "order", "compare", "distinguish", "predict", "name", "trace", "relate"]
 SPATIAL = {"identify", "label", "locate", "order"}
+TYPES = ["mcq", "order", "rotate", "day", "frames", "label", "folded"]   # card-spec §2a (V2 drills, D-054)
+SPATIAL_TYPES = {"order", "frames", "label", "rotate"}
+DRILL = {"alt_words": 40, "frame_words": 25, "tol": (10, 45), "tol_default": 25, "zoom": (0.5, 6), "pins": (2, 4), "items": (2, 5), "label_words": 3}
 BUDGET = {"general": 90, "school": 110, "neet": 140, "mbbs": 160, "pg": 200}
 REQUIRED_LEVELS = ["general", "mbbs"]
 MARKS = ["✔✔", "✔", "⚑", "✚", "≈", "ⓘ"]
@@ -282,26 +285,31 @@ def card_check(card, stem, ctx):
             E("E-mark", mid, f"unknown mark {m['mark']}")
         if m.get("mark") == "≈":
             (E if final else W)("E-approx" if final else "W-approx", mid, "≈ blocks reviewed/shipped")
-    # 9. checks (H1: test the objective; one right answer; refute a misconception)
+    # 9. checks (H1: test the objective; one right answer; refute a misconception) + 3D drills (card-spec §2a)
     qs = card["checks"]
+    SF = ctx.get("scene_files", {}).get(card["scene"].get("id"))
     if len(qs) < LIMITS["min_checks"]:
         E("E-checks", "checks", f"{len(qs)} checks < {LIMITS['min_checks']}")
     for q in qs:
         qid = q.get("id") or "q?"
-        if q.get("type") not in ("mcq", "order"):
-            E("E-check", qid, "type must be mcq or order")
+        ty = q.get("type")
+        if ty not in TYPES:
+            E("E-check", qid, f"type must be one of {', '.join(TYPES)}")
         if not (q.get("prompt") or "").strip():
             E("E-check", qid, "prompt missing")
         opts = q.get("options") or []
         lo, hi = LIMITS["options"]
-        if not (lo <= len(opts) <= hi) or any(not (isinstance(o, str) and o.strip()) for o in opts):
-            E("E-check", qid, f"{lo}–{hi} non-empty options")
-        if len(set(o.strip().lower() for o in opts if isinstance(o, str))) != len(opts):
-            E("E-check", qid, "options repeat — exactly one right answer")
-        if q.get("type") == "mcq" and not (is_int(q.get("answer")) and 0 <= q["answer"] < len(opts)):
+        if ty in ("mcq", "order", "rotate", "label") or ty not in TYPES:
+            if not (lo <= len(opts) <= hi) or any(not (isinstance(o, str) and o.strip()) for o in opts):
+                E("E-check", qid, f"{lo}–{hi} non-empty options")
+            if len(set(o.strip().lower() for o in opts if isinstance(o, str))) != len(opts):
+                E("E-check", qid, "options repeat — exactly one right answer")
+        if ty in ("mcq", "rotate", "day") and not (is_int(q.get("answer")) and 0 <= q["answer"] < len(opts)):
             E("E-check", qid, "answer must be the index of the one right option")
-        if q.get("type") == "order" and q.get("answer") is not None:
-            E("E-check", qid, "an order check lists options in the right order; no answer field")
+        if ty in ("order", "frames", "label", "folded") and q.get("answer") is not None:
+            E("E-check", qid, f"a{'n' if ty == 'order' else ''} {ty} check has no answer field (card-spec §2a)")
+        if ty in DRILL_TYPES:
+            drill_rules(q, qid, ty, opts, SF, E)
         if not (q.get("why") or "").strip():
             E("E-check", qid, "why missing (the explanation shown after answering)")
         if q.get("tests") != "objective":
@@ -310,8 +318,8 @@ def card_check(card, stem, ctx):
             E("E-check", qid, f"refutes {q['refutes']}, which is not a misconception here")
     if qs and not any(q.get("refutes") for q in qs):
         E("E-checks", "checks", "no check refutes a misconception (playbook §3.4)")
-    if verb in SPATIAL and not any(q.get("type") == "order" for q in qs):
-        E("E-checks", "checks", f"spatial verb '{verb}' needs a spatial check (order)")
+    if verb in SPATIAL and not any(q.get("type") in SPATIAL_TYPES for q in qs):
+        E("E-checks", "checks", f"spatial verb '{verb}' needs a spatial check (order, frames, label or rotate)")
     # 10. scene
     sc = card["scene"].get("id")
     S = next((s for s in ctx["scenes"] if s["id"] == sc), None)   # scenes/index.json (scene-check keeps it in step with the files), as the app does
@@ -345,6 +353,190 @@ def card_check(card, stem, ctx):
                 if v != "ok":
                     E("E-status", g, f"{g} line {ln} is {v or 'not reviewed'}")
     return out
+
+
+DRILL_TYPES = ("rotate", "day", "frames", "label", "folded")
+
+
+def scene_anchors(S):
+    """Anchors a scene draws (scene-spec §7) — mirror of sceneAnchors() in src/js/15-cards.js."""
+    out = set()
+    for p in S.get("parts", []):
+        k = p.get("kind")
+        if k == "disc":
+            out |= set((p.get("layers") or {}).keys())
+        elif k == "notochord":
+            L = p.get("layers") or {}
+            if "notochord" in L:
+                out |= {"noto-cord", "noto-plate", "notochord"}
+            if "prechordal" in L:
+                out.add("prechordal")
+        elif k == "axes":
+            out |= {"axis-" + a for a in ("cranial", "caudal", "left", "right", "dorsal", "ventral")}
+        elif k == "planes":
+            out |= {"plane-" + str(pl.get("id")) for pl in p.get("planes", [])}
+        elif k == "ruler":
+            out.add("ruler")
+    return out
+
+
+def view_angle(a1, e1, a2, e2):
+    """Angle between two orbit-camera orientations (degrees) — mirror of viewAngle() in src/js/14-scene3d.mjs."""
+    import math
+
+    def basis(az, el):
+        a, e = math.radians(az), math.radians(el)
+        b = [math.cos(e) * math.cos(a), math.cos(e) * math.sin(a), math.sin(e)]
+        n = math.hypot(b[1], b[0]) or 1
+        r = [-b[1] / n, b[0] / n, 0]
+        u = [b[1] * r[2] - b[2] * r[1], b[2] * r[0] - b[0] * r[2], b[0] * r[1] - b[1] * r[0]]
+        return [r, u, b]
+    A, B = basis(a1, e1), basis(a2, e2)
+    tr = sum(A[i][j] * B[i][j] for i in range(3) for j in range(3))
+    return math.degrees(math.acos(max(-1, min(1, (tr - 1) / 2))))
+
+
+def num(x):
+    return isinstance(x, (int, float)) and not isinstance(x, bool)
+
+
+def view_of(v, S):
+    """a show.view or a target → (az, el) or None"""
+    if isinstance(v, str):
+        m = next((w for w in S.get("views", []) if w.get("id") == v), None)
+        return (m["azimuth_deg"], m["elevation_deg"]) if m else None
+    if isinstance(v, dict) and num(v.get("azimuth_deg")) and num(v.get("elevation_deg")):
+        return (v["azimuth_deg"], v["elevation_deg"])
+    return None
+
+
+def show_rules(sh, S, qid, E, where="show"):
+    """a drill's `show` state (card-spec §2a) against its scene"""
+    if not isinstance(sh, dict):
+        E("E-check", qid, f"{where} missing (the scene state the drill opens at)")
+        return
+    d = sh.get("day")
+    if not num(d):
+        E("E-check", qid, f"{where}.day must be a number")
+    elif S and not (S["days"][0]["day"] <= d <= S["days"][-1]["day"]):
+        E("E-drill", qid, f"{where}.day {d} outside the scene's days {S['days'][0]['day']}–{S['days'][-1]['day']}")
+    if "view" in sh and S and view_of(sh["view"], S) is None:
+        E("E-drill", qid, f"{where}.view {sh['view']} is not a view of {S['id']}")
+    z = sh.get("zoom", 1)
+    if not (num(z) and DRILL["zoom"][0] <= z <= DRILL["zoom"][1]):
+        E("E-check", qid, f"{where}.zoom outside {DRILL['zoom'][0]}–{DRILL['zoom'][1]}")
+    c = sh.get("cut")
+    if c is not None and not (isinstance(c, dict) and c.get("axis") in ("x", "y") and num(c.get("at")) and -0.9 <= c["at"] <= 0.9 and isinstance(c.get("on"), bool)):
+        E("E-check", qid, f"{where}.cut must be {{axis x|y, at −0.9…0.9, on}}")
+    elif c is not None and "slab_mm" in c and not (num(c["slab_mm"]) and 0.002 <= c["slab_mm"] <= 0.5 and c.get("axis") == "x"):
+        E("E-check", qid, f"{where}.cut.slab_mm must be 0.002–0.5 on a cross-section (axis x)")
+    ly = sh.get("layers")
+    if ly is not None:
+        if not isinstance(ly, dict) or any(not isinstance(v, bool) for v in ly.values()):
+            E("E-check", qid, f"{where}.layers must map layer ids to true/false")
+        elif S:
+            ids = {l.get("id") for l in S.get("layers", [])}
+            for k in ly:
+                if k not in ids:
+                    E("E-drill", qid, f"{where}.layers: {k} is not a layer of {S['id']}")
+
+
+def drill_rules(q, qid, ty, opts, S, E):
+    """3D drills (card-spec §2a); S = the card's scene file (None if missing — E-scene reports that)"""
+    def alt():
+        a = q.get("alt")
+        if not (isinstance(a, str) and a.strip()):
+            E("E-check", qid, "alt missing (the drill's text alternative)")
+        elif len(a.split()) > DRILL["alt_words"]:
+            E("E-check", qid, f"alt over {DRILL['alt_words']} words")
+    if ty == "rotate":
+        show_rules(q.get("show"), S, qid, E)
+        alt()
+        tol = q.get("tol_deg", DRILL["tol_default"])
+        if not (num(tol) and DRILL["tol"][0] <= tol <= DRILL["tol"][1]):
+            E("E-check", qid, f"tol_deg outside {DRILL['tol'][0]}–{DRILL['tol'][1]}")
+            tol = DRILL["tol_default"]
+        t = view_of(q.get("target"), S) if S and isinstance(q.get("target"), str) else None
+        if not isinstance(q.get("target"), str):
+            E("E-check", qid, "target must be a scene view id")
+        elif S and t is None:
+            E("E-drill", qid, f"target {q['target']} is not a view of {S['id']}")
+        sv = view_of((q.get("show") or {}).get("view"), S) if S and isinstance(q.get("show"), dict) else None
+        if S and isinstance(q.get("show"), dict) and "view" not in q["show"]:
+            E("E-check", qid, "show.view needed (the start view)")
+        if t and sv and view_angle(sv[0], sv[1], t[0], t[1]) <= tol:
+            E("E-drill", qid, f"starts within {tol}° of the target — already solved")
+    elif ty == "day":
+        show_rules(q.get("show"), S, qid, E)
+        alt()
+        lo, hi = LIMITS["options"]
+        if not (lo <= len(opts) <= hi) or any(not num(o) for o in opts):
+            E("E-check", qid, f"{lo}–{hi} day numbers as options")
+        elif len(set(opts)) != len(opts):
+            E("E-check", qid, "options repeat — exactly one right answer")
+        elif S:
+            for o in opts:
+                if not (S["days"][0]["day"] <= o <= S["days"][-1]["day"]):
+                    E("E-drill", qid, f"day option {o} outside the scene's days")
+            a, sd = q.get("answer"), (q.get("show") or {}).get("day") if isinstance(q.get("show"), dict) else None
+            if is_int(a) and 0 <= a < len(opts) and num(sd) and opts[a] != sd:
+                E("E-drill", qid, f"the right option (day {opts[a]}) is not the day shown ({sd})")
+    elif ty == "frames":
+        lo, hi = LIMITS["options"]
+        if not (lo <= len(opts) <= hi) or any(not isinstance(o, dict) for o in opts):
+            E("E-check", qid, f"{lo}–{hi} frames {{text, show}} as options")
+        else:
+            texts = []
+            for i, o in enumerate(opts):
+                tx = o.get("text")
+                if not (isinstance(tx, str) and tx.strip()):
+                    E("E-check", qid, f"frame {i + 1}: text missing (its text alternative)")
+                elif len(tx.split()) > DRILL["frame_words"]:
+                    E("E-check", qid, f"frame {i + 1}: text over {DRILL['frame_words']} words")
+                else:
+                    texts.append(tx.strip().lower())
+                show_rules(o.get("show"), S, qid, E, f"frame {i + 1} show")
+            if len(set(texts)) != len(texts):
+                E("E-check", qid, "frame texts repeat")
+    elif ty == "label":
+        show_rules(q.get("show"), S, qid, E)
+        alt()
+        if any(isinstance(o, str) and len(o.split()) > DRILL["label_words"] for o in opts):
+            E("E-check", qid, f"label options ≤ {DRILL['label_words']} words (D8)")
+        pins = q.get("pins")
+        lo, hi = DRILL["pins"]
+        if not (isinstance(pins, list) and lo <= len(pins) <= hi and all(isinstance(p, dict) for p in pins)):
+            E("E-check", qid, f"{lo}–{hi} pins {{at, answer}}")
+        else:
+            an = scene_anchors(S) if S else None
+            ans = []
+            for i, p in enumerate(pins):
+                if an is not None and p.get("at") not in an:
+                    E("E-drill", qid, f"pin {i + 1}: anchor {p.get('at')} is not drawn by {S['id']}")
+                a = p.get("answer")
+                if not (is_int(a) and 0 <= a < len(opts)):
+                    E("E-check", qid, f"pin {i + 1}: answer must be an option index")
+                else:
+                    ans.append(a)
+            if len(set(ans)) != len(ans):
+                E("E-drill", qid, "two pins share a label — each pin needs its own")
+    elif ty == "folded":
+        if not (len(opts) == 2 and all(isinstance(o, str) and o.strip() for o in opts)) or len(set(o.strip().lower() for o in opts if isinstance(o, str))) != len(opts):
+            E("E-check", qid, "exactly 2 different options (e.g. Folded · Not yet folded)")
+        its = q.get("items")
+        lo, hi = DRILL["items"]
+        if not (isinstance(its, list) and lo <= len(its) <= hi and all(isinstance(i, dict) for i in its)):
+            E("E-check", qid, f"{lo}–{hi} items {{show, answer 0|1, text}}")
+        else:
+            for i, it in enumerate(its):
+                if it.get("answer") not in (0, 1) or isinstance(it.get("answer"), bool):
+                    E("E-check", qid, f"item {i + 1}: answer must be 0 or 1")
+                tx = it.get("text")
+                if not (isinstance(tx, str) and tx.strip()) or len(str(tx).split()) > DRILL["frame_words"]:
+                    E("E-check", qid, f"item {i + 1}: text of 1–{DRILL['frame_words']} words needed (its text alternative)")
+                show_rules(it.get("show"), S, qid, E, f"item {i + 1} show")
+            if {it.get("answer") for it in its} != {0, 1}:
+                E("E-check", qid, "items must use both answers (else it is guessable)")
 
 
 def app_cite(cite):
@@ -403,7 +595,8 @@ def load_ctx(book):
     sp = ROOT / "content" / book / "sources.json"
     return {"src": json.loads(sp.read_text()) if sp.exists() else build_sources(book),
             "map_ids": {c["id"] for c in M["concepts"]}, "map_terms": {c["id"]: c.get("terms", []) for c in M["concepts"]},
-            "scenes": json.loads((ROOT / "content" / book / "scenes" / "index.json").read_text())["scenes"]}
+            "scenes": json.loads((ROOT / "content" / book / "scenes" / "index.json").read_text())["scenes"],
+            "scene_files": {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (ROOT / "content" / book / "scenes").glob("sc-*.json")}}
 
 
 def check_all(a):

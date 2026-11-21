@@ -9,7 +9,7 @@ const FLAGS=(()=>{
   const dq=q.get('debug')??saved.debug??'';
   const debug=new Set(dq===''||dq==='0'?[]:dq==='1'?['all']:dq.split(',').map(s=>s.trim()).filter(Boolean));
   if(test&&!debug.size&&dq!=='0')debug.add('test');   // ?test=1&debug=0 = testing mode without the overlay (clean screenshots)
-  return {test,debug,boxes:q.has('boxes')};
+  return {test,debug,boxes:q.has('boxes'),fixture:test&&q.get('fixture')||''};   // ?test=1&fixture=drills: a card's demo copy from tools/layout-check/fixtures/ (V2 — every drill type)
 })();
 const dbgOn=area=>FLAGS.debug.has('all')||FLAGS.debug.has(area);
 function dlog(area,...a){if(dbgOn(area))console.log('['+area+']',...a);}

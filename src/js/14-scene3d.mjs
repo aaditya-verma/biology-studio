@@ -2,6 +2,8 @@
    build/design-plan.md §2 (3D viewer row) + §7. Loaded on demand by src/js/13-viewer.js (first load stays light, H8).
    Geometry mirrors tools/m1-bakeoff/common/scene_math.py (same names + formulas): outline → half-plane clip → prisms.
    Colours, edges and patterns come ONLY from the CSS tokens read off the stage element (RULES B3) — never from scene files.
+   V2 (D-054): `notochord` part (lofted midline tube: prenotochordal strand → notochordal plate → rod, cranial end first per the book, D-029),
+   per-key fit_mm, disc streak_scale + meso_midline_gap, stills of any state (snapshot — drills), viewAngle (rotate drills), context-loss hooks.
    EDIT: lights + materials in makeRenderer(); pattern drawings in PATTERNS; budgets in CONFIG.viewer (02-config.js). */
 import * as THREE from '../../lib/three-r170/three.module.min.js';
 
@@ -87,7 +89,17 @@ export function keyState(scene, day) {
   Object.assign(pb, pa, b.params || {});
   const p = {}; for (const k of Object.keys(pb)) p[k] = typeof pb[k] === 'number' ? lerp(pa[k] ?? pb[k], pb[k], u) : pb[k];
   const lin = span > 0 ? (d - a.day) / span : 0;
-  return { day: d, u, lin, a, b, params: p, size_mm: lerp(a.size_mm, b.size_mm, u) };
+  const fa = a.fit_mm ?? scene.camera.fit_mm, fb = b.fit_mm ?? scene.camera.fit_mm;
+  return { day: d, u, lin, a, b, params: p, size_mm: lerp(a.size_mm, b.size_mm, u), fit_mm: lerp(fa, fb, u) };
+}
+/* angle (degrees) between two camera orientations (orbit camera, world up = dorsal): view direction AND screen roll count (rotate drills, card-spec §2a) */
+export function viewAngle(az1, el1, az2, el2) {
+  const basis = (az, el) => { const a = az * Math.PI / 180, e = el * Math.PI / 180, b = [Math.cos(e) * Math.cos(a), Math.cos(e) * Math.sin(a), Math.sin(e)];   // back = camera → out of the screen
+    const r0 = [-b[1], b[0], 0], n = Math.hypot(r0[0], r0[1]) || 1, r = [r0[0] / n, r0[1] / n, 0];                    // right = up(z) × back
+    const u = [b[1] * r[2] - b[2] * r[1], b[2] * r[0] - b[0] * r[2], b[0] * r[1] - b[1] * r[0]];                         // up = back × right
+    return [r, u, b]; };
+  const A = basis(az1, el1), B = basis(az2, el2); let tr = 0; for (let i = 0; i < 3; i++) tr += A[i][0] * B[i][0] + A[i][1] * B[i][1] + A[i][2] * B[i][2];
+  return Math.acos(Math.max(-1, Math.min(1, (tr - 1) / 2))) * 180 / Math.PI;
 }
 /* stamp text pieces (spec §8). On a key day: that key's stage + cited size. Between keys: the day span, the stage pair and the
    eased size — never a key's mark (G-Sci: a cited value is shown only where it was cited). */
@@ -106,26 +118,100 @@ function discPieces(part, p, cut) {
   const n = part.segments || 96, te = part.epiblast_thick, g = part.gap, th = part.hypoblast_thick;
   const L = p.length_units, wr = p.width_ratio, pear = p.pear || 0, disc = outline(L, wr, pear, n);
   const ax = cut && cut.on ? (cut.axis === 'x' ? 0 : 1) : -1, c0 = ax === 0 ? cut.at * (L / 2) : ax === 1 ? cut.at * (wr * L / 2) : 0;
-  const clip = (poly, eps = 0) => ax < 0 ? poly : clipGe(poly, ax, c0 - eps);
+  const sl = ax === 0 && cut.slab > 0 ? c0 + cut.slab : null, flipX = q => q.map(([x, y]) => [-x, y]);   // slab: keep only a thin section beyond the cut (section stills, V2)
+  const clip = (poly, eps = 0) => { if (ax < 0) return poly; const k = clipGe(poly, ax, c0 - eps); return sl == null ? k : flipX(clipGe(flipX(k), 0, -sl)); };
   const out = [], M = part.layers || {};
   const add = (name, poly, z0, z1, layerKey = name) => { if (M[layerKey] && poly.length >= 3) out.push({ name, layer: M[layerKey], poly: ccw(poly), z0, z1 }); };
   add('hypoblast', clip(disc), -g - th, -g);
   add('epiblast', clip(disc), 0, te);
   const anc = -L / 2 + 0.03 * L;
   const meso = p.meso || 0, endo = p.endo || 0;
-  if (meso > 0.02) add('mesoderm', clip(scaleFrom(disc, anc, meso * 0.97), 0.002), -g + 0.035, -0.02);
+  const mg = part.meso_midline_gap || 0, flip = poly => poly.map(([x, y]) => [x, -y]);
+  if (meso > 0.02) { const mp = clip(scaleFrom(disc, anc, meso * 0.97), 0.002);
+    if (mg > 0) { add('mesoderm', clipGe(mp, 1, mg), -g + 0.035, -0.02); add('meso-r', flip(clipGe(flip(mp), 1, mg)), -g + 0.035, -0.02, 'mesoderm'); }   // no sheet in the midline: the notochord runs there
+    else add('mesoderm', mp, -g + 0.035, -0.02); }
   if (endo > 0.02) add('endoderm', clip(scaleFrom(disc, anc, endo * 0.97), 0.004), -g - th - 0.005, -g + 0.005);
   if ((p.tip_frac || 0) > 0.02) {
-    const st = part.streak, x0 = -L / 2 + st.start_frac * L, x1 = -L / 2 + p.tip_frac * L, w = st.width / 2;
+    const st = part.streak, k = p.streak_scale || 1, x0 = -L / 2 + st.start_frac * L, x1 = -L / 2 + p.tip_frac * L, w = k * st.width / 2;   // streak_scale: still reads on a big disc (V1 note, day 18)
     add('streak', clip([[x0, -w], [x1, -w], [x1, w], [x0, w]], 0.001), te - st.height, te - 0.008);   // a groove sunk into the epiblast…
     const lw = w * 0.55;                                                                                 // …with raised edges [E05.01]
     add('lip-l', clip([[x0, w], [x1, w], [x1, w + lw], [x0, w + lw]], 0.001), te, te + 0.03, 'streak');
     add('lip-r', clip([[x0, -w - lw], [x1, -w - lw], [x1, -w], [x0, -w]], 0.001), te, te + 0.03, 'streak');
     const nd = part.node, circle = [];
-    for (let i = 0; i < 32; i++) circle.push([x1 + nd.radius * Math.cos(2 * Math.PI * i / 32), nd.radius * Math.sin(2 * Math.PI * i / 32)]);
+    for (let i = 0; i < 32; i++) circle.push([x1 + k * nd.radius * Math.cos(2 * Math.PI * i / 32), k * nd.radius * Math.sin(2 * Math.PI * i / 32)]);
     add('node', clip(circle, 0.001), te, te + nd.height);
   }
-  return { pieces: out, L, wr, te, g, th, cutAxis: ax, cutAt: c0 };
+  return { pieces: out, L, wr, te, g, th, cutAxis: ax, cutAt: c0, nodeX: (p.tip_frac || 0) > 0.02 ? -L / 2 + p.tip_frac * L : -L / 2 + 0.3 * L };
+}
+
+/* ---------- notochord (spec §6): a lofted midline tube along x whose cross-section changes with its phase s(x):
+   0 = prenotochordal strand (thin, between epiblast and endoderm) · 1 = notochordal plate (flat, within the endoderm) · 2 = solid rod
+   (lifted off the endoderm, under the epiblast) [E05.02]. Cranial end first (book, D-029): plate and rod spread from the prechordal end. ---------- */
+const NSEC = 20;
+function notoSection(s, D, part) {   // → { pts:[[y,z]…], zc, rz }
+  const g = D.g, th = D.th, r = part.radius || 0.06, ph = part.plate_half_width || 0.13;
+  const cord = { ry: 0.05, rz: 0.026, zc: -g / 2, n: 2 }, plate = { ry: ph, rz: th / 2 + 0.008, zc: -g - th / 2, n: 5 }, rod = { ry: r, rz: r, zc: -g / 2, n: 2 };   // n: superellipse — the plate is a flat band
+  const m = (A, B, t) => ({ ry: lerp(A.ry, B.ry, t), rz: lerp(A.rz, B.rz, t), zc: lerp(A.zc, B.zc, t), n: lerp(A.n, B.n, t) });
+  const q = s <= 1 ? m(cord, plate, smooth(s)) : m(plate, rod, smooth(s - 1)), pts = [], f = (v, e) => Math.sign(v) * Math.abs(v) ** e;
+  for (let i = 0; i < NSEC; i++) { const a = 2 * Math.PI * i / NSEC; pts.push([q.ry * f(Math.cos(a), 2 / q.n), q.zc + q.rz * f(Math.sin(a), 2 / q.n)]); }
+  return { pts, zc: q.zc, rz: q.rz };
+}
+/* loft rings (one section per x) into a tube with end caps; the cut: x-cut = the first ring sits on the cut (opaque cap), y-cut = ring points
+   pressed onto the plane y = c (faces lying on it are cap). Groups: 0 = surface, 1 = cut cap (as prismGeometry). */
+function loftGeometry(xs, secs, cut) {
+  const pos = [], uv = [], cap = [], capUv = [], n = NSEC;
+  const yc = cut && cut.ax === 1 ? cut.c : -Infinity;
+  const R = xs.map((x, i) => secs[i].pts.map(([y, z]) => [x, Math.max(y, yc), z]));
+  const T = (A, B, a, b, c, ua, ub, uc) => { A.push(...a, ...b, ...c); B.push(...ua, ...ub, ...uc); };
+  const onY = (...ps) => ps.every(p => Math.abs(p[1] - yc) < 1e-6);
+  for (let i = 0; i < R.length - 1; i++) for (let j = 0; j < n; j++) {
+    const a = R[i][j], b = R[i][(j + 1) % n], c = R[i + 1][(j + 1) % n], d = R[i + 1][j], u = k => [a[0] / PW, k / n * 0.5 / PW * 4];
+    const A = onY(a, b, c, d) ? cap : pos, B = A === cap ? capUv : uv;
+    T(A, B, a, c, b, u(j), [c[0] / PW, (j + 1) / n * 2 / PW], [b[0] / PW, (j + 1) / n * 2 / PW]);
+    T(A, B, a, d, c, u(j), [d[0] / PW, j / n * 2 / PW], [c[0] / PW, (j + 1) / n * 2 / PW]);
+  }
+  const endCap = (ring, flipN, toCap) => { let cy = 0, cz = 0; ring.forEach(p => { cy += p[1]; cz += p[2]; }); cy /= n; cz /= n; const x = ring[0][0], A = toCap ? cap : pos, B = toCap ? capUv : uv;
+    for (let j = 0; j < n; j++) { const p = ring[j], q = ring[(j + 1) % n], o = [x, cy, cz];
+      if (flipN) T(A, B, o, p, q, [cy / PW, cz / PW], [p[1] / PW, p[2] / PW], [q[1] / PW, q[2] / PW]); else T(A, B, o, q, p, [cy / PW, cz / PW], [q[1] / PW, q[2] / PW], [p[1] / PW, p[2] / PW]); } };
+  endCap(R[0], true, !!(cut && cut.ax === 0 && cut.atStart)); endCap(R[R.length - 1], false, false);
+  const g = new THREE.BufferGeometry(), nMain = pos.length / 3;
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos.concat(cap), 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv.concat(capUv), 2));
+  g.addGroup(0, nMain, 0); if (cap.length) g.addGroup(nMain, cap.length / 3, 1);
+  g.computeVertexNormals();
+  return g;
+}
+function notoPieces(part, p, D, cut) {
+  const out = [], M = part.layers || {}, L = D.L, noto = clamp01(p.noto || 0), pl = clamp01(p.noto_plate || 0), rd = Math.min(pl, clamp01(p.noto_rod || 0));
+  const pc = part.prechordal || { at_frac: 0.86, radius_frac: 0.035 }, a = pc.radius_frac * L, xp = -L / 2 + pc.at_frac * L, xn = D.nodeX, len = xp - a - xn;
+  const EPS = 0.006;   // the layer slabs' cut faces sit 0.002–0.004 in front of the cut: the midline pieces' face must sit in front of theirs
+  const cx = cut && cut.on && cut.axis === 'x' ? cut.at * (L / 2) - EPS : -Infinity, cyc = cut && cut.on && cut.axis === 'y' ? { ax: 1, c: cut.at * (D.wr * L / 2) - EPS } : null;
+  const z = Math.max(0.02, part.zone || 0.12);
+  const phase = x => { const c = (xp - a - x) / len; return (pl > 0 ? smooth((pl - c) / z + 0.5) : 0) + (rd > 0 ? smooth((rd - c) / z + 0.5) : 0); };
+  if (M.notochord && noto > 0.01 && len > 0) {
+    const xt = Math.min(xn + noto * len, cut && cut.on && cut.axis === 'x' && cut.slab > 0 ? cx + EPS + cut.slab : Infinity), x0 = Math.max(xn, cx);
+    if (xt - x0 > 0.01) {
+      const N = part.rings || 28, xs = []; for (let i = 0; i <= N; i++) xs.push(x0 + (xt - x0) * i / N);
+      const ss = xs.map(phase), secs = ss.map(s => notoSection(s, D, part));
+      const grow = secs.map(sc => { const n = sc.pts.length; let cy = 0, cz = 0; sc.pts.forEach(([y, z]) => { cy += y; cz += z; }); cy /= n; cz /= n;
+        return { pts: sc.pts.map(([y, z]) => { const dy = y - cy, dz = z - cz, d = Math.hypot(dy, dz) || 1; return [y + dy / d * 0.012, z + dz / d * 0.012]; }) }; });
+      out.push({ name: 'noto', layer: M.notochord, geo: loftGeometry(xs, secs, cyc ? cyc : cx > xn ? { ax: 0, atStart: true } : null), hull: loftGeometry(xs, grow, cyc ? cyc : null) });   // hull: the accent outline of a ring layer
+      // anchors: one per phase region present (spec §7) — on the cut face when the cut falls inside it, else on top of its middle
+      for (const [nm, lo, hi] of [['noto-cord', -1, 0.5], ['noto-plate', 0.5, 1.5], ['notochord', 1.5, 3]]) {
+        const ix = ss.map((s, i) => s >= lo && s < hi ? i : -1).filter(i => i >= 0); if (ix.length < 2) continue;
+        if (cx > xn && ix[0] !== 0) continue;   // with a cross-section, only the stage on the cut face is labelled (G-Sci: no label on a hidden rod)
+        const i = cx > xn && ix[0] === 0 ? 0 : ix[Math.floor(ix.length / 2)], sc = secs[i];
+        out.push({ name: nm, layer: M.notochord, anchor: [xs[i], 0, sc.zc] });   // the centre of its section: on the cut face, or inside the tube (never on the layer above — G-Art)
+      }
+    }
+  }
+  if (M.prechordal && noto > 0.01 && xp + a > cx && !(cut && cut.slab > 0 && xp - a > cx + cut.slab)) {
+    const N = 12, xs = [], secs = [], x0 = Math.max(xp - a, cx);
+    for (let i = 0; i <= N; i++) { const x = x0 + (xp + a - x0) * i / N, k = Math.sqrt(Math.max(0.04, 1 - ((x - xp) / a) ** 2)), pts = [];
+      for (let j = 0; j < NSEC; j++) { const t = 2 * Math.PI * j / NSEC; pts.push([1.3 * a * k * Math.cos(t), -D.g - D.th / 2 + (D.th / 2 + 0.012) * k * Math.sin(t)]); }
+      xs.push(x); secs.push({ pts }); }
+    out.push({ name: 'prechordal', layer: M.prechordal, geo: loftGeometry(xs, secs, cyc ? cyc : cx > xp - a ? { ax: 0, atStart: true } : null), anchor: [Math.max(xp, x0), 0, -D.g - D.th / 2] });
+  }
+  return out;
 }
 /* the delays act inside each key-to-key step: a layer starts spreading after `delay` of the step (scene_math.state) */
 function delayed(scene, day, part) {
@@ -149,8 +235,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, dprCap));
   renderer.toneMapping = THREE.NoToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
   const scene3 = new THREE.Scene(), root = new THREE.Group(); scene3.add(root);
-  canvas.addEventListener('webglcontextlost', e => e.preventDefault());   // Android may drop the context in the background…
-  canvas.addEventListener('webglcontextrestored', () => { V.dirty = true; if (V.scene) api.setTokens(); });   // …redraw when it returns
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); V.lost = true; if (opt.onLost) opt.onLost(); });   // Android may drop the context in the background…
+  canvas.addEventListener('webglcontextrestored', () => { V.lost = false; V.dirty = true; if (V.scene) api.setTokens(); if (opt.onRestored) opt.onRestored(); });   // …redraw when it returns (V1 note; ?debug=viewer › Lose context tests it)
   // EDIT: lights (soft key from front-left above, cool fill, hemisphere ambient) — clarity first, playbook §6.1
   scene3.add(new THREE.HemisphereLight(0xffffff, 0x3a404c, 1.6));
   const key = new THREE.DirectionalLight(0xffffff, 1.8); key.position.set(-3, -4, 8); scene3.add(key);
@@ -158,7 +244,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 400); cam.up.set(0, 0, 1);
   const V = { scene: null, day: 0, layersOn: {}, cut: { on: false, axis: 'y', at: -0.3 }, az: -90, el: 55, zoom: 1, fitU: 6,
     T: null, mats: {}, edgeMats: {}, objs: [], anchors: {}, dirty: true, w: 1, h: 1, cont: false, raf: 0, onFrame: null,
-    ft: [], stress: null, orbit: 0, dbg: null, hoverables: [] };
+    ft: [], stress: null, orbit: 0, dbg: null, hoverables: [], front: new Set() };
 
   function tokenOf(layerId) { const L = V.scene.layers.find(l => l.id === layerId); return L ? L.token : 'guide'; }
   function opacityOf(layerId) { const L = V.scene.layers.find(l => l.id === layerId); return L && L.opacity != null ? L.opacity : 1; }
@@ -167,11 +253,14 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     const tok = tokenOf(layerId), op = opacityOf(layerId);
     const m = new THREE.MeshStandardMaterial({ color: 0xffffff, map: patternTexture(V.T, tok), roughness: 0.62, metalness: 0,
       transparent: op < 1, opacity: op, depthWrite: op >= 1, side: THREE.DoubleSide });
+    if (V.front.has(layerId)) { m.polygonOffset = true; m.polygonOffsetFactor = -1; m.polygonOffsetUnits = -4; }   // midline pieces sit IN the endoderm: they win the shared cut face
     return (V.mats[layerId] = m);
   }
   function capMat(layerId) {   // the cut face: opaque, same pattern, a touch lighter
     const k = 'cap:' + layerId; if (V.mats[k]) return V.mats[k];
-    return (V.mats[k] = new THREE.MeshStandardMaterial({ color: 0xffffff, map: mat(layerId).map, roughness: 0.7, metalness: 0, emissive: 0xffffff, emissiveIntensity: 0.07, side: THREE.DoubleSide }));
+    const c = new THREE.MeshStandardMaterial({ color: 0xffffff, map: mat(layerId).map, roughness: 0.7, metalness: 0, emissive: 0xffffff, emissiveIntensity: 0.07, side: THREE.DoubleSide });
+    if (V.front.has(layerId)) { c.polygonOffset = true; c.polygonOffsetFactor = -1; c.polygonOffsetUnits = -4; }
+    return (V.mats[k] = c);
   }
   /* edges in the layer's edge token; a layer with ring:true is outlined in the accent ("look here" ring, never a fill — B3, D-036) */
   function edgeMat(layerId) { const L = V.scene.layers.find(l => l.id === layerId) || {}, tok = tokenOf(layerId), k = L.ring ? 'ring' : tok;
@@ -179,7 +268,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   function guideMat(alpha) { return new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.guide.fill), transparent: alpha < 1, opacity: alpha, depthWrite: alpha >= 1, side: THREE.DoubleSide }); }
   function disposeMats() { for (const [k, m] of Object.entries(V.mats)) { if (!k.startsWith('cap:') && m.map) m.map.dispose(); m.dispose(); } V.mats = {};
     for (const m of Object.values(V.edgeMats)) m.dispose(); V.edgeMats = {}; }
-  const ORDER = { hypoblast: 0, endoderm: 1, mesoderm: 2, streak: 3, epiblast: 4, 'lip-l': 5, 'lip-r': 5, node: 5 };
+  const ORDER = { hypoblast: 0, endoderm: 1, mesoderm: 2, 'meso-r': 2, noto: 2, prechordal: 2, streak: 3, epiblast: 4, 'lip-l': 5, 'lip-r': 5, node: 5 };
 
   function clear() {
     for (const o of V.objs) { root.remove(o); o.traverse(c => { if (c.geometry && !c.userData.keepGeo) c.geometry.dispose(); if (c.material && c.userData.ownMat) [].concat(c.material).forEach(m => m.dispose()); }); }
@@ -190,17 +279,28 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   /* rebuild every part for the current day + cut (cheap: a few thousand triangles) */
   function build() {
     clear(); if (!V.scene) return;
-    const S = V.scene, u = S.units.mm_per_unit;
+    const S = V.scene, u = S.units.mm_per_unit; V.disc = null; const cutU = V.cut.slab_mm > 0 ? { ...V.cut, slab: V.cut.slab_mm / u } : V.cut; V.fitU = keyState(S, V.day).fit_mm / u;   // per-key fit (spec §4)
     for (const part of S.parts) {
       if (part.kind === 'disc') {
-        const p = delayed(S, V.day, part), D = discPieces(part, p, V.cut);
+        const p = delayed(S, V.day, part), D = discPieces(part, p, cutU);
         for (const pc of D.pieces) {
           const geo = prismGeometry(pc.poly, pc.z0, pc.z1, D.cutAxis >= 0 ? { ax: D.cutAxis, c: D.cutAt } : null), m = new THREE.Mesh(geo, [mat(pc.layer), capMat(pc.layer)]);
           m.renderOrder = ORDER[pc.name] ?? 3; m.visible = V.layersOn[pc.layer] !== false; addObj(m, pc.layer); V.hoverables.push(m);
           const e = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 35), edgeMat(pc.layer)); e.visible = m.visible; e.renderOrder = m.renderOrder; addObj(e, pc.layer);
-          if (!pc.name.startsWith('lip')) V.anchors[pc.name] = { layer: pc.layer, p: anchorFor(pc, D) };
+          if (!pc.name.startsWith('lip') && pc.name !== 'meso-r') V.anchors[pc.name] = { layer: pc.layer, p: anchorFor(pc, D) };
         }
-        V.discL = D.L; V.discW = D.wr * D.L;
+        V.discL = D.L; V.discW = D.wr * D.L; V.disc = { D, p, part };
+      } else if (part.kind === 'notochord') {
+        if (!V.disc) continue;   // spec: needs a disc part before it
+        for (const pc of notoPieces(part, delayed(S, V.day, part), V.disc.D, cutU)) {
+          if (!pc.geo) { V.anchors[pc.name] = { layer: pc.layer, p: pc.anchor }; continue; }
+          const m = new THREE.Mesh(pc.geo, [mat(pc.layer), capMat(pc.layer)]); m.renderOrder = ORDER[pc.name] ?? 3; m.visible = V.layersOn[pc.layer] !== false; addObj(m, pc.layer); V.hoverables.push(m);
+          const e = new THREE.LineSegments(new THREE.EdgesGeometry(pc.geo, 35), edgeMat(pc.layer)); e.visible = m.visible; e.renderOrder = m.renderOrder; addObj(e, pc.layer);
+          if (pc.hull) { const L = S.layers.find(l => l.id === pc.layer) || {};
+            if (L.ring) { const h = new THREE.Mesh(pc.hull, new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.accent.edge), side: THREE.BackSide })); h.userData.ownMat = true; h.renderOrder = m.renderOrder; h.visible = m.visible; addObj(h, pc.layer); }   // inverted hull = a silhouette ring in the accent (B3: outline, never a fill)
+            else pc.hull.dispose(); }
+          if (pc.anchor) V.anchors[pc.name] = { layer: pc.layer, p: pc.anchor };
+        }
       } else if (part.kind === 'axes') {
         const len = part.length_mm / u, c = new THREE.Color(V.T.guide.edge), z = 0.11;
         const dirs = { cranial: [1, 0, 0], caudal: [-1, 0, 0], left: [0, 1, 0], right: [0, -1, 0], dorsal: [0, 0, 1], ventral: [0, 0, -1] };
@@ -269,7 +369,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     cam.position.set(R * Math.cos(e) * Math.cos(a), R * Math.cos(e) * Math.sin(a), R * Math.sin(e)); cam.lookAt(0, 0, 0);
     const view = V.fitU / V.zoom, asp = V.w / V.h;
     let hh, hw; if (asp >= 1) { hh = view / 2; hw = hh * asp; } else { hw = view / 2; hh = hw / asp; }
-    cam.left = -hw; cam.right = hw; cam.top = hh; cam.bottom = -hh; cam.updateProjectionMatrix();
+    const sh = (V.shift || 0) * 2 * hh;   // drills: move the subject down, below the stamp + notes plate
+    cam.left = -hw; cam.right = hw; cam.top = hh + sh; cam.bottom = -hh + sh; cam.updateProjectionMatrix();
   }
   const pxPerUnit = () => V.h / (cam.top - cam.bottom);
   function project(p) { const v = new THREE.Vector3(...p).project(cam); return { x: (v.x + 1) / 2 * V.w, y: (1 - v.y) / 2 * V.h, z: v.z }; }
@@ -282,7 +383,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   function frame(t) {
     V.raf = 0;
     if (V.cont) { if (V.orbit) { V.az += V.orbit * 16 / 1000 * 12; } V.dirty = true; }
-    if (V.dirty) {
+    if (V.dirty && !V.lost) {
       placeCamera(); renderer.render(scene3, cam); V.dirty = false;
       if (V.onFrame) V.onFrame();
       const now = performance.now(); if (V.cont) { if (V.lastT) V.ft.push(now - V.lastT); V.lastT = now; }
@@ -294,10 +395,10 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   const api = {
     ok: true, three: THREE.REVISION,
     gpu() { try { const gl = renderer.getContext(), d = gl.getExtension('WEBGL_debug_renderer_info'); return d ? gl.getParameter(d.UNMASKED_RENDERER_WEBGL) : 'WebGL'; } catch (_) { return '?'; } },
-    setTokens() { const el = stageOf(); if (!el || !el.isConnected) return; V.T = readTokens(el); disposeMats();
+    setTokens() { const el = stageOf(); if (!el || !el.isConnected || V.lost) return; V.T = readTokens(el); disposeMats();
       renderer.setClearColor(new THREE.Color(V.T.bg)); if (V.scene) build(); kick(); },
     setScene(S, st = {}) {
-      V.scene = S; V.fitU = S.camera.fit_mm / S.units.mm_per_unit; V.day = st.day ?? S.start_day ?? S.days[0].day;
+      V.scene = S; V.front = new Set(S.parts.filter(p => p.kind === 'notochord').flatMap(p => Object.values(p.layers || {}))); V.day = st.day ?? S.start_day ?? S.days[0].day; V.fitU = keyState(S, V.day).fit_mm / S.units.mm_per_unit;
       V.layersOn = { ...(st.layersOn || Object.fromEntries(S.layers.map(l => [l.id, l.on !== false]))) };
       V.cut = { ...(st.cut || S.cut) }; V.az = st.az ?? S.camera.azimuth_deg; V.el = st.el ?? S.camera.elevation_deg; V.zoom = st.zoom ?? 1;
       disposeMats();
@@ -312,7 +413,14 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     rebuildSoon() { clearTimeout(V.rb); V.rb = setTimeout(() => { build(); kick(); }, 120); },   // rim-facing anchors follow the camera
     zoomBy(f) { V.zoom = Math.max(0.35, Math.min(10, V.zoom * f)); kick(); },
     resize(w, h) { V.w = Math.max(1, w); V.h = Math.max(1, h); renderer.setSize(V.w, V.h, false); kick(); },
-    anchors() { const out = {}; for (const [k, a] of Object.entries(V.anchors)) out[k] = { ...a, s: project(a.p) }; return out; },
+    /* anchors on screen; `hid` = an opaque piece of another layer is in front (a label never points at a hidden structure — G-Art, V2).
+       Translucent layers (opacity < 0.6, e.g. the epiblast) never hide what is under them. */
+    anchors(occlude = true) { const out = {}, back = new THREE.Vector3(); cam.getWorldDirection(back).negate();
+      const occ = !occlude ? [] : V.hoverables.filter(m => m.visible && [].concat(m.material)[0].opacity >= 0.6), rc = new THREE.Raycaster();
+      for (const [k, a] of Object.entries(V.anchors)) { const p = new THREE.Vector3(...a.p), o = p.clone().addScaledVector(back, 50);
+        rc.set(o, back.clone().negate()); const h = occ.length ? rc.intersectObjects(occ, false)[0] : null;
+        out[k] = { ...a, s: project(a.p), hid: !!(h && h.object.userData.layer !== a.layer && h.distance < 50 - 0.03) }; }
+      return out; },
     pxPerMm() { return pxPerUnit() / V.scene.units.mm_per_unit; },
     axisDirs, onFrame(f) { V.onFrame = f; }, render: kick,
     pick(x, y) { const r = new THREE.Raycaster(), v = new THREE.Vector2(x / V.w * 2 - 1, -(y / V.h) * 2 + 1); r.setFromCamera(v, cam);
@@ -325,7 +433,24 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     setStress(tris) { if (V.stress) { V.stress.geo.dispose(); V.stress.mat.dispose(); V.stress = null; }
       if (tris > 0) { const radial = 16, tub = Math.max(8, Math.round(tris / (2 * radial))); V.stress = { geo: new THREE.TorusKnotGeometry(0.9, 0.22, tub, radial), mat: new THREE.MeshStandardMaterial({ color: 0x8a909c, roughness: 0.6 }), tris: tub * radial * 2 }; }
       build(); kick(); return V.stress ? V.stress.tris : 0; },
-    dispose() { cancelAnimationFrame(V.raf); clear(); disposeMats(); renderer.dispose(); },
+    /* a still of any state (drills: frames, folded, rotate target — card-spec §2a): render once at w×h, dpr 1, no labels; the live view is put back */
+    snapshot(st, w, h, decorate) {
+      if (!V.scene || V.lost || !V.T) return null;
+      const keep = api.state(), kw = V.w, kh = V.h, dpr = renderer.getPixelRatio();
+      V.day = st.day ?? keep.day; V.layersOn = { ...keep.layersOn, ...(st.layersOn || {}) }; V.cut = { ...keep.cut, ...(st.cut || {}) };
+      V.az = st.az ?? keep.az; V.el = st.el ?? keep.el; V.zoom = st.zoom ?? 1;
+      build(); renderer.setPixelRatio(1); renderer.setSize(w, h, false); V.w = w; V.h = h; placeCamera(); renderer.render(scene3, cam);
+      const ppm = pxPerUnit() / V.scene.units.mm_per_unit;
+      let url; if (decorate) { const c2 = document.createElement('canvas'); c2.width = w; c2.height = h; const g = c2.getContext('2d'); g.drawImage(canvas, 0, 0, w, h); decorate(g, { w, h, pxPerMm: ppm }); url = c2.toDataURL('image/png'); }
+      else url = canvas.toDataURL('image/png');
+      Object.assign(V, { day: keep.day, layersOn: keep.layersOn, cut: keep.cut, az: keep.az, el: keep.el, zoom: keep.zoom, w: kw, h: kh });
+      renderer.setPixelRatio(dpr); renderer.setSize(kw, kh, false); build(); kick();
+      return { url, pxPerMm: ppm, w, h };
+    },
+    lost: () => !!V.lost,
+    loseContext(ms = 600) { const x = renderer.getContext().getExtension('WEBGL_lose_context'); if (!x) return false; x.loseContext(); setTimeout(() => x.restoreContext(), ms); return true; },   // ?debug=viewer test
+    setShift(f) { if ((V.shift || 0) === f) return; V.shift = f; kick(); },
+    dispose() { cancelAnimationFrame(V.raf); clearTimeout(V.rb); if (V.stress) { V.stress.geo.dispose(); V.stress.mat.dispose(); V.stress = null; } clear(); disposeMats(); renderer.dispose(); try { renderer.forceContextLoss(); } catch (_) {} V.scene = null; },   // Restart 3D: nothing left on the dead context (G-Eng)
   };
   return api;
 }

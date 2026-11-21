@@ -21,6 +21,8 @@ const CONFIG={
     scenesUrl:'content/E/scenes/',            // EDIT: scene files (docs/scene-spec.md)
     engine:'src/js/14-scene3d.mjs',           // loaded on first open (three.js r170 in lib/three-r170/)
     dprCap:2,                                 // §2 rule 7
+    turn:{az:15,el:12}, lostMs:1500, drillShift:0.1, pinOffset:12,   // EDIT (V2): drill turn buttons (°), wait before 'The 3D stopped', drill framing (share of the stage height), pin offset (px)
+    still:{w:360,h:240}, tolDefault:25,       // EDIT (V2): drill stills (px), rotate tolerance when a card sets none (card-spec §2a)
     budget:{phoneTris:150000,phoneFps:30},    // H8 until Measured
     scaleSteps:[0.01,0.02,0.05,0.1,0.2,0.5,1,2,5],   // mm — scale bar picks the largest that fits 130 px
     secPerDay:2.5,                            // Play speed (full motion)
@@ -36,7 +38,8 @@ const CONFIG={
   // EDIT: cards + Studio (S1; docs/card-spec.md). Studio is testing mode only (?test=1) — nothing it does is saved; export the JSON and commit it.
   cards:{
     dir:'content/E/cards/',                   // card files + index.json + calibration.json
-    sources:'content/E/sources.json',         // derived by tools/card-check --write-sources (registry, decisions, sections, terms)
+    sources:'content/E/sources.json',
+    fixtures:{'E05.02.01':'tools/layout-check/fixtures/E05.02.01-drills.json'},   // EDIT: testing-only demo cards (?test=1&fixture=drills) — all five drill types; never shown to learners         // derived by tools/card-check --write-sources (registry, decisions, sections, terms)
     checkDelayMs:250,                         // live card-check after typing
     roles:['Lead scientist','Research librarian','Learning designer','Story director / writer','Art director','QA & accessibility','Owner']   // playbook §1
   },

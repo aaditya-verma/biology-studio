@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — D8 media tags/credits, Part chip, legend, honesty tags; G4 real media CC0/PD/CC BY; A2 segment + media ids; D6 real imaging per visual-style §16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
+*(Purpose: the non-negotiables. Updated: 21 Nov 2026 · Bio · Build · V2 3D drills — B2 masked-day exception for the day drill (D-054). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — D8 media tags/credits, Part chip, legend, honesty tags; G4 real media CC0/PD/CC BY; A2 segment + media ids; D6 real imaging per visual-style §16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -12,7 +12,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 
 ## B. Accuracy & curriculum
 - **B1.** Every fact in a card or script cites a book section (`E05.02`). Uncited or low-confidence lines are marked **≈**; nothing with a ≈ line is marked final.
-- **B2.** Scale and time are on screen whenever a 3D view or shot shows an embryo ("day 17 · ~1.5 mm"). Deliberate distortions are labelled ("not to scale", "colours illustrative").
+- **B2.** Scale and time are on screen whenever a 3D view or shot shows an embryo ("day 17 · ~1.5 mm"). Deliberate distortions are labelled ("not to scale", "colours illustrative"). One exception: while a *Which day is this?* drill is open, the day/stage/size stamp is masked until it is answered (the scale bar stays) — D-054.
 - **B3.** Germ layers use fixed tokens only — `--g-epi`, `--g-hypo`, `--g-ecto`, `--g-meso`, `--g-endo`, `--g-crest`, plus `--g-ctx` for non-layer tissue — each with a pattern and a label (colour-blind safe; values D-031). Never hard-code their colours. The one accent `--accent` means "look here": a ring/outline + label, never a fill alone and never a layer colour.
 - **B4.** Card statuses: Read → Understood (Check passed) → Can explain. Card Checks set status; episode quizzes count for streak and recall stats only.
 - **B5.** Episodes tag cards **core** (×2) or **support** (×1). Tags to unwritten cards show "Coming in Tier X". Ready to watch = weighted share Understood; it never blocks.

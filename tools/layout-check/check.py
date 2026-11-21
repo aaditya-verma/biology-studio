@@ -3,6 +3,8 @@
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
 W1: + progress map (Map, Board, Your inputs, 3 step pages), step page rotate, map with done shown, progress outside testing mode.
 L1: + cards list, card reader (concept, guide, clinical), Remember deck; card mid-Check survives rotate (question, 3D day, scroll).
+V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
+    rotate mid-drill moves the stage (in the Check ↔ beside it) and keeps the view; Try it gets its view back; WebGL context loss redraws.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -34,7 +36,7 @@ SCREENS = {
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
     "progress": "progress", "progress-board": "progress=board", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
-    "cards": "cards", "card": "card=E05.01.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
+    "cards": "cards", "card": "card=E05.01.01", "card-noto": "card=E05.02.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
 }
 
 
@@ -216,6 +218,8 @@ async def run(a):
         # L1 learning core: mid-Check rotate keeps the question, 3D day and scroll; real mode: statuses + deck survive a reload
         if not a.only or a.only.startswith(("card", "deck")):
             await learn_flows(browser, base, report)
+        if not a.only or a.only.startswith(("card", "drill")):
+            await drill_flows(browser, base, report, a.preview)
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
         report.setdefault("flows", [])
         ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
@@ -399,6 +403,99 @@ async def learn_flows(browser, base, report):
     await page.goto(f"{base}#card=E05.01.01"); await page.reload(); await page.wait_for_function("window.LN_READY==='card=E05.01.01'", timeout=30000)
     st = await page.evaluate("({c:typeof state.cards,d:typeof state.deck,l:state.settings.level,v:state.visited['E05.01.01']})")
     ok("Old save (v6) opens with cards + deck back-filled", st == {"c": "object", "d": "object", "l": "general", "v": 5}, st)
+    await ctx.close()
+
+
+async def drill_flows(browser, base, report, preview):
+    """V2 (card-spec §2a): each drill type of the demo fixture (?test=1&fixture=drills, E05.02.01) at 5 sizes × 100/125 % — audit, pins, contact sheet;
+    rotate mid-drill; Try it's view comes back; WebGL context loss redraws (V1 note)."""
+    report.setdefault("flows", []); report.setdefault("_extra", [])
+    out = Path(report["_out"]) / "shots"
+    def ok(name, cond, info=""):
+        report["flows"].append({"flow": "V2 " + name, "ok": bool(cond), "seen": str(info)[:300]})
+    fx = json.loads((ROOT / "tools" / "layout-check" / "fixtures" / "E05.02.01-drills.json").read_text())
+    for kind, w, h in PREVIEW:
+        for text in ([100] if preview else [100, 125]):
+            ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=kind != "desktop", is_mobile=kind != "desktop", device_scale_factor=1)
+            if text != 100:
+                await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='html{font-size:%d%%!important}';document.head.appendChild(s);});" % text)
+            page = await ctx.new_page(); errs = []
+            page.on("pageerror", lambda e: errs.append(str(e)))
+            await page.goto(f"{base}?test=1&debug=0&fixture=drills#card=E05.02.01")
+            await page.wait_for_function("window.LN_READY==='card=E05.02.01' && window.VW_READY===true", timeout=30000)
+            await page.click("[data-ln=start]")
+            for i, q in enumerate(fx["checks"]):
+                if i:
+                    await page.evaluate(f"(()=>{{const c=LN.ck['E05.02.01'];c.i={i};c.pick=null;c.ord=null;c.sel=[];c.fold={{}};c.words=false;lnPaint('check');}})()")
+                await page.wait_for_timeout(300)
+                if q["type"] in ("rotate", "day", "label"):
+                    await page.wait_for_function("window.VW_READY===true && !!SC.drill", timeout=30000)
+                else:
+                    await page.wait_for_function("[...document.querySelectorAll('#lnCheck img[data-snap]')].every(i=>i.complete&&i.naturalWidth>0)", timeout=30000)
+                await page.wait_for_timeout(250)
+                cls = await page.evaluate("DEV.cls")
+                label = f"{w}x{h} {text}% drill {q['type']}"
+                if q["type"] == "label":
+                    pins = await page.evaluate("[...document.querySelectorAll('.vw-pin')].map(p=>!p.classList.contains('hidden'))")
+                    ok(f"label pins drawn at {w}x{h} {text}%", len(pins) == len(q["pins"]) and all(pins), pins)
+                if q["type"] == "day":
+                    stamp = await page.inner_text("#vwStamp")
+                    ok(f"day stamp masked at {w}x{h} {text}%", "?" in stamp and str(q["show"]["day"]) not in stamp, stamp)
+                await page.evaluate("document.querySelector('#lnQ').scrollIntoView({block:'start'})"); await page.wait_for_timeout(100)
+                iss = await page.evaluate("layoutAudit()")
+                report["runs"].append({"at": label, "class": cls, "issues": len(iss)})
+                report["issues"] += [dict(x, at=label) for x in iss] + [{"kind": "js-error", "what": e, "at": label} for e in errs]
+                errs.clear()
+                if text == 100 or q["type"] in ("label", "frames"):
+                    path = out / f"{cls}_{w}x{h}_{text}_drill_{q['type']}.png"
+                    await page.screenshot(path=str(path))
+                    report["_extra"].append((cls + (" 125" if text != 100 else "") + " drills", f"{w}×{h} {q['type']}{' 125%' if text != 100 else ''}", str(path)))
+            # leaving the drills gives Try it its own view back
+            await page.evaluate("(()=>{const c=LN.ck['E05.02.01'];c.i=0;c.pick=null;c.done=true;lnPaint('check');})()"); await page.wait_for_timeout(500)
+            back = await page.evaluate("({drill:!!SC.drill,inVw:!!document.querySelector('#lnVw canvas'),day:SC.eng.state().day})")
+            ok(f"Try it gets its view back at {w}x{h} {text}%", not back["drill"] and back["inVw"] and back["day"] == 17, back)
+            await ctx.close()
+    # rotate mid-drill: phone portrait (stage in the Check) → landscape (beside it) → portrait; the turned view is kept
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+    page = await ctx.new_page()
+    await page.goto(f"{base}?test=1&debug=0&fixture=drills#card=E05.02.01")
+    await page.wait_for_function("window.LN_READY==='card=E05.02.01' && window.VW_READY===true", timeout=30000)
+    await page.click("[data-ln=start]"); await page.wait_for_function("window.VW_READY===true && !!SC.drill", timeout=30000)
+    await page.evaluate("document.querySelector('[data-vw=turn][data-d=r]').click()"); await page.wait_for_timeout(200)
+    az0 = await page.evaluate("SC.eng.state().az")
+    for vw, vh, where in [(844, 390, "#lnVw"), (390, 844, "#lnDVw")]:   # phone landscape: the drill sits in the (then sticky) 3D column
+        await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(600)
+        await page.evaluate("document.querySelector('#lnQ').scrollIntoView({block:'start'})"); await page.wait_for_timeout(150)
+        st = await page.evaluate(f"(()=>{{const c=document.querySelector('{where} canvas'),r=c&&c.getBoundingClientRect();return {{in:!!c,vis:!!r&&r.bottom>0&&r.top<innerHeight&&r.height>100,az:SC.eng.state().az,q:LN.ck['E05.02.01'].i,cls:DEV.cls}};}})()")
+        good = st["in"] and st["vis"] and abs(st["az"] - az0) < 1e-6 and st["q"] == 0   # the stage is on screen beside/with the question
+        report["rotate"].append({"size": f"{vw}x{vh} drill", "ok": good, "cls": st["cls"]})
+        if not good:
+            report["issues"].append({"kind": "rotate", "what": "drill " + json.dumps(st), "at": f"{vw}x{vh}"})
+    # the rotate drill scores the live view: matching the target passes
+    await page.evaluate("(()=>{const t=SC.loaded['sc-E05.02.01'].views.find(v=>v.id==='top');SC.eng.view(t.azimuth_deg+10,t.elevation_deg-5,null);scSave();})()")
+    await page.click("[data-ln=rcheck]"); await page.wait_for_timeout(200)
+    ok("rotate drill: a view 10° off the target counts", await page.evaluate("LN.ck['E05.02.01'].res[0]===true"))
+    await ctx.close()
+    # WebGL context loss (V1 note): lose + restore → the scene draws again, no error message left up
+    ctx = await browser.new_context(viewport={"width": 1366, "height": 768})
+    page = await ctx.new_page(); errs = []
+    page.on("pageerror", lambda e: errs.append(str(e)))
+    await page.goto(f"{base}?test=1&debug=0#scene=sc-E05.02.01&day=17")
+    await page.wait_for_function("window.VW_READY===true", timeout=30000)
+    lit = "(()=>{const r=SC.eng.snapshot(SC.eng.state(),160,100);return r?r.url.length:0;})()"
+    n0 = await page.evaluate(lit)
+    lost = await page.evaluate("SC.eng.loseContext(400)")
+    await page.wait_for_timeout(300); mid = await page.evaluate("SC.eng.lost()")
+    await page.wait_for_timeout(2500)
+    st = await page.evaluate("({lost:SC.eng.lost(),msg:!document.querySelector('#vwLost').classList.contains('hidden')})")
+    n1 = await page.evaluate(lit)
+    # mouse hover names a structure outside drills, with no page error (G-Eng R1: a broken hover went unseen)
+    await page.mouse.move(683, 330); await page.mouse.move(700, 345); await page.wait_for_timeout(200)
+    hov = await page.evaluate("(()=>{const r=SC.canvas.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};})()")
+    await page.mouse.move(hov["x"], hov["y"]); await page.mouse.move(hov["x"] + 3, hov["y"] + 2); await page.wait_for_timeout(250)
+    hshown = await page.evaluate("!!SC.hoverEl && !SC.hoverEl.classList.contains('hidden')")
+    ok("mouse hover names a structure (desktop), no page error", hshown and not errs, {"shown": hshown, "errs": errs})
+    ok("WebGL context loss: redraws after restore", lost and mid and not st["lost"] and not st["msg"] and n1 > 0.8 * n0 and not errs, {"n0": n0, "n1": n1, **st, "errs": errs})
     await ctx.close()
 
 

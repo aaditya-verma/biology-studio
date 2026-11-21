@@ -1,6 +1,6 @@
 # Ideas backlog — PARKED (17 Nov 2026)
 
-*(Purpose: parked ideas only (RULES I3). Updated: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
+*(Purpose: parked ideas only (RULES I3). Updated: 21 Nov 2026 · Bio · Build · V2 3D drills — items 4–6, 10, 11 built (D-054). Before: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
 
 No pick until the use gate after L2 (D-010, D-047), except the owner's app-first picks (D-047). Free only. Each idea: what · why · size (S/M/L). Owner picks; picks move into a plan.
 
@@ -10,16 +10,16 @@ No pick until the use gate after L2 (D-010, D-047), except the owner's app-first
 3. **Mixed review** (S) — interleave Understood cards across chapters (only after blocked learning). **→ Picked into L2 (D-047).**
 
 ## B. 3D sense (the core skill)
-4. **Rotate to match** (S) — match a view to a target orientation. **→ Picked into V2 (D-047).**
-5. **Which day is this?** (S) — place a frame on the day ruler. **→ Picked into V2 (D-047).**
-6. **Order the frames** (S) — put 5 stills of a process in order. **→ Picked into V2 (D-047).**
+4. **Rotate to match** (S) — match a view to a target orientation. **→ Built in V2 (`rotate`, D-054); first card use in C2.**
+5. **Which day is this?** (S) — place a frame on the day ruler. **→ Built in V2 (`day`, D-054) — E05.05.01.**
+6. **Order the frames** (S) — put 5 stills of a process in order. **→ Built in V2 (`frames`, 3–5 stills, D-054) — E05.02.01.**
 7. **Trace a cell** (M) — follow where a marked cell ends up. **→ Picked into V3 (D-047).**
 8. **Embryo sandbox** (L, later) — fold the disc yourself, step by step.
 
 ## C. Eye games (Checks with play)
 9. **Spot the error** (M) — one structure wrong in a frame.
-10. **Label it** (S) — drag labels onto a 3D view. **→ Picked into V2 (D-047).**
-11. **Folded or not?** (S) — quick-fire stage recognition. **→ Picked into V2 (D-047).**
+10. **Label it** (S) — drag labels onto a 3D view. **→ Built in V2 (`label`: numbered pins + a select per pin instead of drag, D-054) — E05.02.01.**
+11. **Folded or not?** (S) — quick-fire stage recognition. **→ Built in V2 (`folded`, D-054); first card use in C2 (Ch 6 folding).**
 
 ## D. Watch better
 12. **Loop and slow-mo** (S) — loop a hard stretch at 0.5× with labels on.

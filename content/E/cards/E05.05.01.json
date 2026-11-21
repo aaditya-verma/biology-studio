@@ -124,6 +124,23 @@
    "why": "The head end starts forming its parts in mid-week 3, but the tail end keeps gastrulating until the end of week 4.",
    "tests": "objective",
    "refutes": "m1"
+  },
+  {
+   "id": "q4",
+   "type": "day",
+   "prompt": "Which day is this disc? Judge by its shape and its size against the ruler, which is 1 mm long.",
+   "show": {
+    "day": 15
+   },
+   "options": [
+    15,
+    17,
+    18
+   ],
+   "answer": 0,
+   "alt": "A small, nearly round disc, about a fifth of a millimetre long against the ruler, with a short streak at one end.",
+   "why": "Day 15 is about 0.2 mm and nearly round. Stage 7 (days 16–18) is about 0.4 mm and pear-shaped; the book's 18-day embryo is already at the next stage, about 1.25 mm.",
+   "tests": "objective"
   }
  ],
  "adult": "The broad head end carries the wide front of the future nervous system, which becomes the brain [f6].",
@@ -154,40 +171,12 @@
   "date": "20 Nov 2026"
  },
  "review": {
-  "G-Learn": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "Learning designer",
-   "agent": "C1 G-Learn reviewer agent (round 3)",
-   "date": "20 Nov 2026",
-   "checklist": {
-    "objective": true,
-    "checks": true,
-    "refutes": true,
-    "terms": true,
-    "budget": true,
-    "adult": true
-   },
-   "lines": {
-    "obj": "ok",
-    "terms": "ok",
-    "q1": "ok",
-    "q2": "ok",
-    "q3": "ok",
-    "m1": "ok",
-    "m2": "ok",
-    "r1": "ok",
-    "r2": "ok",
-    "shows_up": "ok"
-   },
-   "notes": "The adult line now reads plainly at General ('future nervous system ... brain')."
-  },
   "G-Sci": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C1 G-Sci reviewer agent (round 3)",
-   "date": "20 Nov 2026",
+   "agent": "V2 G-Sci reviewer agent (round 3)",
+   "date": "21 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
@@ -219,14 +208,43 @@
     "r1": "ok",
     "r2": "ok"
    },
-   "notes": "Adult line ('future nervous system' broad at the head end → brain) is supported by f6 (E06.01 ✔)."
+   "notes": "Round 2: all 21 G-Sci lines re-signed ok (unchanged). q4 is now unique. The sc-E00.01.02 streak disclaimer is added."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "V2 G-Learn reviewer agent (round 3)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "q4": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round 3. card-check: 0 errors. q4 (day 15; options 15/17/18; answer 15) is fair and tests the objective, and its prompt is plain. The why now separates stage 7 (days 16-18, about 0.4 mm) from the book's 18-day embryo (next stage, about 1.25 mm), so it no longer contradicts itself. Every line ok; pass. For G-Sci: the 0.4 mm figure is still only in the scene's facts, not a card fact."
   },
   "G-A11y": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "QA & accessibility",
-   "agent": "C1 G-A11y reviewer agent (round 1)",
-   "date": "20 Nov 2026",
+   "agent": "V2 G-A11y reviewer agent (round 1)",
+   "date": "21 Nov 2026",
    "checklist": {
     "alt": true,
     "input": true,
@@ -234,7 +252,7 @@
     "text125": true
    },
    "lines": {},
-   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 62 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.02. Pear shape described in words (broad head end, narrow tail end). Longest options 61-62 chars (q2 opt 0, q3 opt 0), under ~70; fit 2 lines at 125 % on phone. Scene disclaimers 'sizes ≈: sources differ' and 'days 17→18' use ≈ and → that carry meaning when read aloud; scene owner should give spoken text ('about', 'to'); not a card issue."
+   "notes": "q4 day: alt ('small, nearly round disc, about a fifth of a millimetre long against the ruler, short streak at one end') carries the size cue the masked stamp hides, without stating the day; prompt points to the ruler (scale bar stays). Day options are plain buttons 'Day 15/17/18'. Completed keyboard-only with and without WebGL. No colour words. 125 % fits."
   }
  },
  "log": [
@@ -297,6 +315,51 @@
    "date": "20 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "V2: drill q4 day (Which day is this?) on sc-E00.01.02",
+   "by": "Engineers · Bio · Build · V2 3D drills"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "passes cleared (G-Learn, G-Sci, G-A11y): content changed — to review again (card-spec §5; hand edit); status → draft",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail (round 1: drill fix)",
+   "by": "Research librarian · V2 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail",
+   "by": "Learning designer · V2 G-Learn reviewer agent (round 1 + 2)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1/2 fixes: q4 shows day 15 (day 17 was ambiguous: 0.4 mm spans days 16–18); prompt, alt, why rewritten",
+   "by": "Engineers · Bio · Build · V2 3D drills"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · V2 G-Sci reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · V2 G-Learn reviewer agent (round 3)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-A11y pass",
+   "by": "QA & accessibility · V2 G-A11y reviewer agent (round 1)"
   }
  ]
 }

@@ -584,6 +584,50 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .vw.inl .vw-it{font-size:var(--fs);margin:0}
 .vw-inl-act{gap:10px;align-items:center;flex-wrap:wrap;margin-top:2px}
 .vw-inl-act .btn{flex:0 0 auto}
+/* V2 drills in the Check (card-spec §2a): the live stage sits in the Check on phone + tablet portrait, beside it (sticky 3D column) on two panes */
+.ln-dname{display:flex;align-items:center;gap:6px;margin:0 0 6px}
+.ln-dvw:empty{display:none}
+.ln-dvw{margin:4px 0 10px}
+.ln-dvw .vw.inl .vw-stage{height:clamp(220px,46dvh,420px)}
+.ln-inchk{margin:6px 0;padding:8px 12px;border:1px dashed var(--line-strong);border-radius:var(--r)}
+.ln-try.drill .row .xs{display:none}
+.vw.drill .vw-panel{padding-top:6px}
+.vw.drill .vw-giz{top:8px;right:8px;left:auto;bottom:auto}
+.vw.drill .vw-disc,.vw.drill .vw-stamp{max-width:calc(100% - 112px)}   /* the notes plate stops short of the gizmo */
+html .vw.drill:not(.dt-day) .vw-disc{top:auto;bottom:10px;max-width:calc(100% - 130px)}   /* drills: the notes plate sits bottom-left (free once the gizmo moves), so pins on the top layer stay clear */
+/* phone landscape: while a drill is open the 3D column is sticky and exactly one screen tall, so the stage stays beside the selects (G-Art, G-A11y) */
+html.dev-pl .ln-media:has(.ln-try.drill){position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 4px);align-self:start}
+html.dev-pl .ln-try.drill .vw.inl .vw-stage{height:max(150px,calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 130px))}
+html.dev-pl .ln-media:has(.ln-try.drill) .ln-watch,html.dev-pl .ln-try.drill>.row{display:none}   /* drills: the gizmo moves top-right, clear of the ruler + pins (G-Art) */
+.vw-turn{gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.vw-turn .btn{flex:0 0 auto}
+.vw-pin{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 13px/1 var(--font);
+  color:var(--ink);background:rgb(20 22 26 / .9);border:2px solid var(--accent-on-dark);pointer-events:none}
+.vw-pin.on{box-shadow:0 0 0 4px var(--accent-on-dark)}
+.vw-lost{position:absolute;left:12px;right:12px;top:40%;text-align:center;padding:10px;border-radius:var(--r);background:rgb(20 22 26 / .92)}
+.vw-lost p{margin:0 0 8px}
+.ln-dr{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.ln-dr:has(.ln-dvw:empty){grid-template-columns:minmax(0,1fr)}
+.ln-dact{gap:12px;align-items:center;flex-wrap:wrap;margin:4px 0 8px}
+.ln-fig{margin:0;max-width:300px}
+.ln-fig img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:var(--r-sm);background:#14161a;border:1px solid var(--line-strong)}
+.ln-fig figcaption{margin-top:2px;font-weight:700}
+.ln-nopic{display:none;margin:4px 0 0}
+.ln-fig.nopic img{display:none}
+.ln-fig.nopic .ln-nopic{display:block}
+.ln-frames li{align-items:center}
+.ln-frames .ln-fig{flex:1 1 auto;max-width:240px}
+.ln-pins{display:flex;flex-direction:column;gap:8px;margin:4px 0 10px}
+.ln-pin{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ln-pin select{min-height:var(--tap);min-width:10em;max-width:100%;font:inherit;padding:4px 8px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface);color:var(--ink)}
+.ln-pnum{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;border:2px solid var(--accent-text);flex:none}
+.ln-fold{list-style:none;padding:0;margin:4px 0 10px;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.ln-fold li{display:flex;flex-direction:column;gap:6px}
+.ln-fold .seg button{flex:1 1 auto}
+.ln-alt{margin-top:8px}
+.ln-alt summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer;font-size:var(--fs-sm)}
+.ln-alt ul{margin:0 0 6px;padding-left:1.1em}
+html.dev-tp .ln-dr{grid-template-columns:minmax(0,1fr) minmax(0,220px);align-items:start}
 /* lists */
 .ln-list{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
 .ln-counts{list-style:none;padding:0;margin:0 0 8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}

@@ -56,7 +56,8 @@
     "pear": 0.45,
     "tip_frac": 0.22,
     "meso": 0.95,
-    "endo": 0.9
+    "endo": 0.9,
+    "streak_scale": 2.5
    }
   }
  ],
@@ -206,6 +207,7 @@
  "disclaimers": [
   "colours illustrative",
   "layer thickness not to scale",
+  "streak drawn wider on day 18 so it shows",
   "sizes ≈: sources differ",
   "days 17→18: sizes from two book sources; real growth is gradual",
   "shape simplified: neural groove and notochordal process not shown",

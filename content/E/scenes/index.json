@@ -45,6 +45,18 @@
     15,
     17
    ]
+  },
+  {
+   "id": "sc-E05.02.01",
+   "title": "Notochord",
+   "summary": "Cells from the node run forward in the midline, sit in the endoderm as a plate, then roll up into the notochord — head end first (days 16–18).",
+   "cards": [
+    "E05.02.01"
+   ],
+   "days": [
+    16,
+    18
+   ]
   }
  ]
 }

@@ -1,0 +1,346 @@
+{
+ "spec": 1,
+ "id": "E05.02.01",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "Notochord (drill demo)",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the notochord forms in the midline and what is left of it in the adult."
+ },
+ "body": {
+  "general": "What is the first stiff rod in the embryo's midline? Cells go in at the node, at the head end of the streak, and travel straight forward along the midline [f1]. For a short time they lie inside the endoderm as a flat plate [f2]. The plate then peels off and rolls up into a solid rod, the notochord [f3]. The book says the rod forms head end first [f4]. It signals the spine to form, but does not become it [f5,f7].",
+  "mbbs": "Prenotochordal cells invaginate at the primitive node and migrate cranially along the midline [f1]. For a time they are intercalated in the endoderm as the notochordal plate [f2]. The plate then detaches from the endoderm and forms a solid rod, the definitive notochord [f3]. In Langman the cranial end forms first, by about day 17, and caudal parts are added as the streak regresses [f4]. The notochord lies beneath the neural tube and signals the axial skeleton; in adults it survives only in the nucleus pulposus [f5,f7]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Prenotochordal cells enter at the primitive node and move straight forward in the midline up to the prechordal plate.",
+   "cite": "E05.02 · R05a, R06 CS7",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "For a short time they sit within the endoderm layer as the notochordal plate.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The plate then lifts off the endoderm and rolls into a solid rod, the definitive notochord.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The book has the head end of the definitive notochord forming first, by about day 17, with tail parts added as the streak moves back.",
+   "cite": "E05.02 · R05a",
+   "mark": "⚑",
+   "where": "main",
+   "decision": "D-029"
+  },
+  {
+   "id": "f5",
+   "text": "The notochord lies under the neural tube and signals to build the axial skeleton.",
+   "cite": "E05.02, E05.07",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "In adults only bits of it remain, in the nucleus pulposus at the core of each intervertebral disc.",
+   "cite": "E05.02 · E10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "⚑ Newer evidence (D-029): in human embryos the finished rod first appears mid-body and grows both ways, at stages 11–12 (about days 23–30).",
+   "cite": "E05.02 · R05a",
+   "mark": "⚑",
+   "where": "more",
+   "decision": "D-029"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.notochord",
+   "E.t.nucleus-pulposus",
+   "E.t.intervertebral-disc"
+  ],
+  "known": [
+   "E.t.primitive-node",
+   "E.t.primitive-streak",
+   "E.t.endoderm",
+   "E.t.ectoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The notochord becomes the vertebral column.",
+   "right": "It signals the vertebrae to form; only the nucleus pulposus keeps notochord cells.",
+   "cite": "E05.02 · E10",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The notochord is the spinal cord.",
+   "right": "It lies beneath the neural plate and tube and signals to it.",
+   "cite": "E05.02 · E06",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "d1",
+   "type": "rotate",
+   "prompt": "Demo (testing only): turn the embryo to match the target view.",
+   "show": {
+    "day": 17,
+    "view": "side"
+   },
+   "target": "top",
+   "tol_deg": 25,
+   "options": [
+    "From the back, head end at the top",
+    "From the right side",
+    "From the tail end"
+   ],
+   "answer": 0,
+   "alt": "The target looks straight down on the back of the embryo, head end at the top of the picture.",
+   "why": "The target looks down on the back; the head end is at the top.",
+   "tests": "objective"
+  },
+  {
+   "id": "d2",
+   "type": "day",
+   "prompt": "Demo (testing only): which day is this?",
+   "show": {
+    "day": 16
+   },
+   "options": [
+    16,
+    17,
+    18
+   ],
+   "answer": 0,
+   "alt": "A disc with a short strand of cells running forward from the node; no rod yet.",
+   "why": "On day 16 the cells have only just started forward.",
+   "tests": "objective"
+  },
+  {
+   "id": "d3",
+   "type": "frames",
+   "prompt": "These cuts across the midline show the stages the notochord goes through. Put them in the order they happen.",
+   "options": [
+    {
+     "text": "A flat band of cells lies within the bottom layer, level with it.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.2,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    },
+    {
+     "text": "The band is thicker and rising up out of the bottom layer.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.42,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    },
+    {
+     "text": "A round, solid rod sits above the bottom layer, under the top layer.",
+     "show": {
+      "day": 17,
+      "cut": {
+       "axis": "x",
+       "at": 0.6,
+       "on": true,
+       "slab_mm": 0.01
+      },
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6
+     }
+    }
+   ],
+   "why": "At any one level the cells first lie in the endoderm as the notochordal plate, then lift off and roll into the solid rod. The rod forms head end first, so on one day, cuts from tail towards head show these stages in turn.",
+   "tests": "objective"
+  },
+  {
+   "id": "d4",
+   "type": "label",
+   "prompt": "Label this cut across the embryo on day 17.",
+   "show": {
+    "day": 17,
+    "view": "end",
+    "zoom": 4.5,
+    "cut": {
+     "axis": "x",
+     "at": 0.6,
+     "on": true
+    }
+   },
+   "pins": [
+    {
+     "at": "notochord",
+     "answer": 0
+    },
+    {
+     "at": "endoderm",
+     "answer": 1
+    },
+    {
+     "at": "epiblast",
+     "answer": 2
+    }
+   ],
+   "options": [
+    "Notochord",
+    "Endoderm",
+    "Ectoderm",
+    "Spinal cord"
+   ],
+   "alt": "A cut across the embryo on day 17: a top layer, a bottom layer and a round rod between them in the midline. Pin 1 is the rod, pin 2 the bottom layer, pin 3 the top layer.",
+   "why": "The rod is the notochord; below it lies the endoderm and above it the ectoderm, which will form the neural plate. The spinal cord is not there yet.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "d5",
+   "type": "folded",
+   "prompt": "Demo (testing only): rolled into a rod yet?",
+   "options": [
+    "Rolled into a rod",
+    "Not yet"
+   ],
+   "items": [
+    {
+     "show": {
+      "day": 17,
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6,
+      "cut": {
+       "axis": "x",
+       "at": 0.6,
+       "on": true,
+       "slab_mm": 0.01
+      }
+     },
+     "answer": 0,
+     "text": "A round rod above the bottom layer."
+    },
+    {
+     "show": {
+      "day": 17,
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6,
+      "cut": {
+       "axis": "x",
+       "at": 0.2,
+       "on": true,
+       "slab_mm": 0.01
+      }
+     },
+     "answer": 1,
+     "text": "A flat band within the bottom layer."
+    },
+    {
+     "show": {
+      "day": 18,
+      "view": {
+       "azimuth_deg": 180,
+       "elevation_deg": 4
+      },
+      "zoom": 6,
+      "cut": {
+       "axis": "x",
+       "at": 0.5,
+       "on": true,
+       "slab_mm": 0.01
+      }
+     },
+     "answer": 0,
+     "text": "A round rod under the top layer, a day later."
+    }
+   ],
+   "why": "The rod forms when the plate lifts off and rolls up.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "adult": "In adults its only remnant is the nucleus pulposus, the core of each intervertebral disc [f7].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Where do notochord cells go in?",
+   "a": "At the primitive node [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "What happens to the notochordal plate?",
+   "a": "It lifts off the endoderm and rolls into a solid rod [f3]."
+  },
+  {
+   "id": "r3",
+   "q": "What remains of the notochord in adults?",
+   "a": "Bits in the nucleus pulposus of each disc [f7]."
+  }
+ ],
+ "shows_up": [
+  "E06.01.01",
+  "E10.02.01",
+  "E10.02.02"
+ ],
+ "scene": {
+  "id": "sc-E05.02.01",
+  "day": 17
+ },
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C1 Part 0 + Ch 5",
+  "date": "20 Nov 2026"
+ },
+ "review": {},
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "demo fixture for layout-check + T8 (testing mode only, never shown to learners)",
+   "by": "Engineers · Bio · Build · V2 3D drills"
+  }
+ ]
+}

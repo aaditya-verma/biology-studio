@@ -212,6 +212,26 @@
   "elevation_deg": 40,
   "fit_mm": 0.5
  },
+ "views": [
+  {
+   "id": "top",
+   "label": "From the back",
+   "azimuth_deg": 180,
+   "elevation_deg": 85
+  },
+  {
+   "id": "side",
+   "label": "From the right",
+   "azimuth_deg": -90,
+   "elevation_deg": 5
+  },
+  {
+   "id": "front",
+   "label": "From the head",
+   "azimuth_deg": 0,
+   "elevation_deg": 10
+  }
+ ],
  "cut": {
   "axis": "y",
   "at": -0.3,

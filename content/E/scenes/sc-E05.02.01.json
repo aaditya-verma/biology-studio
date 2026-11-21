@@ -1,0 +1,326 @@
+{
+ "spec": 1,
+ "id": "sc-E05.02.01",
+ "version": 1,
+ "book": "E",
+ "cards": [
+  "E05.02.01"
+ ],
+ "title": "Notochord",
+ "summary": "Cells from the node run forward in the midline, sit in the endoderm as a plate, then roll up into the notochord — head end first (days 16–18).",
+ "units": {
+  "mm_per_unit": 0.1
+ },
+ "days": [
+  {
+   "day": 16,
+   "stage": "CS07",
+   "size_mm": 0.4,
+   "cite": "E06.06 Tbl 6.4 · R06 CS7, R08",
+   "mark": "✔✔",
+   "fit_mm": 0.5,
+   "params": {
+    "length_units": 4.0,
+    "width_ratio": 0.72,
+    "pear": 0.3,
+    "tip_frac": 0.5,
+    "meso": 0.85,
+    "endo": 0.92,
+    "noto": 0.55,
+    "noto_plate": 0.0,
+    "noto_rod": 0.0
+   }
+  },
+  {
+   "day": 17,
+   "stage": "CS07",
+   "size_mm": 0.4,
+   "cite": "E06.06 Tbl 6.4 · R06 CS7, R08",
+   "mark": "✔✔",
+   "fit_mm": 0.5,
+   "params": {
+    "length_units": 4.0,
+    "width_ratio": 0.72,
+    "pear": 0.35,
+    "tip_frac": 0.5,
+    "meso": 0.97,
+    "endo": 0.99,
+    "noto": 1.0,
+    "noto_plate": 0.85,
+    "noto_rod": 0.35
+   }
+  },
+  {
+   "day": 18,
+   "stage": "CS08",
+   "size_mm": 1.25,
+   "cite": "E06.01 Fig 6.1 · R06 CS8, R08 (1–1.5 mm)",
+   "mark": "✔✔",
+   "fit_mm": 1.4,
+   "params": {
+    "length_units": 12.5,
+    "width_ratio": 0.62,
+    "pear": 0.45,
+    "tip_frac": 0.22,
+    "meso": 0.99,
+    "endo": 0.99,
+    "streak_scale": 2.5,
+    "noto": 1.0,
+    "noto_plate": 0.92,
+    "noto_rod": 0.7
+   }
+  }
+ ],
+ "start_day": 17,
+ "layers": [
+  {
+   "id": "epiblast",
+   "token": "epi",
+   "label": "Epiblast",
+   "opacity": 0.3
+  },
+  {
+   "id": "hypoblast",
+   "token": "hypo",
+   "label": "Hypoblast"
+  },
+  {
+   "id": "mesoderm",
+   "token": "meso",
+   "label": "Mesoderm",
+   "opacity": 0.55
+  },
+  {
+   "id": "endoderm",
+   "token": "endo",
+   "label": "Endoderm"
+  },
+  {
+   "id": "streak",
+   "token": "ctx",
+   "ring": true,
+   "label": "Primitive streak + node"
+  },
+  {
+   "id": "notochord",
+   "token": "meso",
+   "ring": true,
+   "label": "Notochord cells"
+  },
+  {
+   "id": "prechordal",
+   "token": "ctx",
+   "label": "Prechordal plate"
+  }
+ ],
+ "parts": [
+  {
+   "kind": "disc",
+   "layers": {
+    "epiblast": "epiblast",
+    "hypoblast": "hypoblast",
+    "mesoderm": "mesoderm",
+    "endoderm": "endoderm",
+    "streak": "streak",
+    "node": "streak"
+   },
+   "epiblast_thick": 0.22,
+   "gap": 0.14,
+   "hypoblast_thick": 0.1,
+   "segments": 96,
+   "streak": {
+    "start_frac": 0.04,
+    "width": 0.1,
+    "height": 0.03
+   },
+   "node": {
+    "radius": 0.09,
+    "height": 0.06
+   },
+   "meso_delay": 0.0,
+   "endo_delay": 0.0,
+   "meso_midline_gap": 0.17
+  },
+  {
+   "kind": "notochord",
+   "layers": {
+    "notochord": "notochord",
+    "prechordal": "prechordal"
+   },
+   "radius": 0.06,
+   "plate_half_width": 0.13,
+   "prechordal": {
+    "at_frac": 0.86,
+    "radius_frac": 0.035
+   },
+   "zone": 0.12,
+   "rings": 28
+  }
+ ],
+ "labels": [
+  {
+   "layer": "notochord",
+   "at": "notochord",
+   "text": "Notochord",
+   "days": [
+    16.6,
+    18
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "notochord",
+   "at": "noto-plate",
+   "text": "Notochordal plate",
+   "days": [
+    16.2,
+    18
+   ],
+   "priority": 1
+  },
+  {
+   "layer": "notochord",
+   "at": "noto-cord",
+   "text": "Prenotochordal cells",
+   "days": [
+    16,
+    18
+   ],
+   "priority": 2
+  },
+  {
+   "layer": "prechordal",
+   "at": "prechordal",
+   "text": "Prechordal plate",
+   "days": [
+    16,
+    18
+   ],
+   "priority": 3
+  },
+  {
+   "layer": "streak",
+   "at": "node",
+   "text": "Primitive node",
+   "days": [
+    16,
+    18
+   ],
+   "priority": 3
+  },
+  {
+   "layer": "endoderm",
+   "text": "Endoderm",
+   "days": [
+    16,
+    18
+   ],
+   "priority": 4
+  },
+  {
+   "layer": "mesoderm",
+   "text": "Mesoderm",
+   "days": [
+    16,
+    18
+   ],
+   "priority": 5
+  },
+  {
+   "layer": "epiblast",
+   "text": "Epiblast",
+   "days": [
+    16,
+    16.7
+   ],
+   "priority": 5
+  },
+  {
+   "layer": "epiblast",
+   "text": "Epiblast → ectoderm",
+   "days": [
+    16.8,
+    18
+   ],
+   "priority": 5
+  }
+ ],
+ "facts": [
+  {
+   "text": "Prenotochordal cells enter at the primitive node and move straight forward in the midline up to the prechordal plate.",
+   "cite": "E05.02 · R05a, R06 CS7",
+   "mark": "✔✔"
+  },
+  {
+   "text": "For a short time they sit within the endoderm layer as the notochordal plate.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔"
+  },
+  {
+   "text": "The plate then lifts off the endoderm and rolls into a solid rod, the definitive notochord.",
+   "cite": "E05.02 · R05a",
+   "mark": "✔✔"
+  },
+  {
+   "text": "The book has the head end of the notochord forming first, by about day 17, with tail parts added as the streak moves back; this scene follows the book.",
+   "cite": "E05.02 · R05a (D-029)",
+   "mark": "⚑"
+  },
+  {
+   "text": "Newer evidence: in human embryos the finished rod first appears mid-body and grows both ways, at stages 11–12 (about days 23–30); not animated here.",
+   "cite": "E05.02 · R05a (D-029)",
+   "mark": "⚑"
+  },
+  {
+   "text": "CS07 (days 16–18): ≈0.4 mm. The book's 18-day embryo, already CS08: ≈1.25 mm.",
+   "cite": "E06.06 Tbl 6.4, E06.01 Fig 6.1 · R06, R08",
+   "mark": "✔✔"
+  }
+ ],
+ "camera": {
+  "azimuth_deg": -105,
+  "elevation_deg": 24,
+  "fit_mm": 0.5
+ },
+ "views": [
+  {
+   "id": "end",
+   "label": "Cut face, end-on",
+   "azimuth_deg": 180,
+   "elevation_deg": 8
+  },
+  {
+   "id": "top",
+   "label": "From the back",
+   "azimuth_deg": 180,
+   "elevation_deg": 88
+  },
+  {
+   "id": "side",
+   "label": "From the right",
+   "azimuth_deg": -90,
+   "elevation_deg": 5
+  }
+ ],
+ "cut": {
+  "axis": "y",
+  "at": 0.0,
+  "on": true
+ },
+ "disclaimers": [
+  "colours illustrative",
+  "layer and notochord thickness not to scale",
+  "streak drawn wider on day 18 so it shows",
+  "days 17→18: sizes from two book sources; real growth is gradual",
+  "midline simplified: notochordal canal and neural plate not shown",
+  "mesoderm sheet drawn stopping at the midline",
+  "oropharyngeal and cloacal membranes not shown",
+  "amnion and yolk sac not shown"
+ ],
+ "stills": [
+  16,
+  17,
+  18
+ ],
+ "debug": false
+}

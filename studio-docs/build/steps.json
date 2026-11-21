@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Build · M1b v6 results — T1b pass, M1b.q5–q7 answered, kit v7 rim glow (D-052), M1b.q8 open; lock released",
+ "updated": "21 Nov 2026 · Bio · Build · V2 3D drills — V2 gates pass, T8 open, V2.q1 (D-054) asked; V1 notes + C1 notochord-scene to-do closed; lock released. Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 pass except deck (deck 22 Nov, L1.q2), L1.q1 → D-053, new Fix step L1F",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -456,7 +456,7 @@
    "log": "19 Nov 2026 · T3b passed — D-036 confirmed",
    "todo": [
     "fps Measured on phone + tablet portrait; open: tablet landscape + laptop rows; phone/tablet model names (Chrome hides them). H8 can rise only once a heavier scene is Measured (C4)",
-    "Reviewer notes: streak faint at day 18 · leader lines can cross in phone landscape at 125 % · cross-section through the node hides the groove edges (cut ≈ −0.3) · WebGL context-loss redraw untested on a real phone · scene version stays 1 until first ship"
+    "Reviewer notes done in V2 (21 Nov 2026): streak at day 18, leader lines, cut −0.3, context loss (flow + Restart 3D); scene version stays 1 until first ship"
    ],
    "inputs": []
   },
@@ -516,7 +516,6 @@
    "log": "21 Nov 2026 · C1 done — T3c pass + G-Owner pass E05.01.01 · by Aaditya (logged by Bio · Fix · M1b merge)",
    "todo": [
     "Studio: Fail needs a 'fix' line — a checklist-only fail (E05.05.01 G-Learn round 2) had to be logged by hand; allow Fail when a checklist item is unticked",
-    "E05.02.01 notochord has no scene that shows it (W-scene-cards kept on purpose) — a notochord scene in a later V-step",
     "G-Sci note for the owner: E00.01.02 f1 is ✔✔, but 'stages are set by form' rests on R05f/R06 only (the book gives no stages, D-030) — confirm ✔✔ or split the fact at the next card edit",
     "G-A11y optional: read ranges '14–15' as '14 to 15' app-wide; scene sc-E00.01.04 label 'Epiblast → ectoderm' and sc-E00.01.02 disclaimers ('≈', '→') need spoken text (scene owner)",
     "Republish the K1 explorer artifact with the new map.json (2 prerequisite edges added, D-042) — C9"
@@ -572,13 +571,13 @@
    "chat": "Bio · Build · L1 learning core",
    "status": "owner check",
    "needs": ["C1"],
-   "unblocks": ["V2", "L2", "L3"],
+   "unblocks": ["L1F", "V2", "L2", "L3"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T7", "state": "open", "since": "2026-11-21"},
-   "decisions": ["D-010", "D-042", "D-047", "D-050"],
+   "decisions": ["D-010", "D-042", "D-047", "D-050", "D-053"],
    "prompt": "L1 learning core",
-   "log": "21 Nov 2026 · L1 learning core (app v7) — Cards tab, card reader (Try it inline 3D, Watch it Coming soon), Check, Can explain, Remember deck 1·3·7, Today queue; guide card E00.01.06 Reviewed (D-050); G-Eng, G-Learn, G-A11y pass (2 rounds); layout-check green; T7 open",
+   "log": "21 Nov 2026 · T7 pass except deck (tablet P/L, phone P/L, laptop; statuses survive restart) — deck step 22 Nov (L1.q2); L1.q1 → D-050 confirmed + D-053 (Check hides the card text); 8 problems → L1F",
    "todo": [
     "Understood can be passed by an instant retry from short-term memory — consider a short wait or a fresh question on retry (G-Learn SHOULD → L2)",
     "Offline: Today/Cards can count due prompts of a card that failed to load, #deck skips them (G-Eng nit)",
@@ -587,30 +586,61 @@
     "Republish the claude.ai Studio copy if it shows cards (C9) — no copy affected by L1 (Studio is in-app)"
    ],
    "inputs": [
-    {"id": "L1.q1", "kind": "decide", "ask": "D-050: confirm guide cards (kind guide, APP cites, mark ⓘ), statuses (Read 1.5 s, Understood = clean Check run, Can explain self-check), 1·3·7 deck, learners see Reviewed cards — or say what to change (T7 step 9)", "asked_in": "Bio · Build · L1 learning core", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-050"}
+    {"id": "L1.q1", "kind": "decide", "ask": "D-050: confirm guide cards (kind guide, APP cites, mark ⓘ), statuses (Read 1.5 s, Understood = clean Check run, Can explain self-check), 1·3·7 deck, learners see Reviewed cards — or say what to change (T7 step 9)", "asked_in": "Bio · Build · L1 learning core", "asked": "2026-11-21", "answer": "A — D-050 confirmed, with one change: the card text folds away while the Check runs (Read again ends the run unscored) → D-053 (21 Nov 2026, 13:55 IST)", "status": "answered", "d": "D-053"},
+    {"id": "L1.q2", "kind": "action", "ask": "Tomorrow (22 Nov), installed app on the tablet or phone: T7 step 8 — Today shows the due count → Review now → answer from memory, Show answer, Got it / Not yet. Send one screenshot + anything confusing; then T7 → pass and L1 → done", "asked_in": "Bio · Review · T7 learning core", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-050"}
    ]
+  },
+  {
+   "id": "L1F",
+   "title": "L1 polish — T7 fixes + D-053 Check hides the card text",
+   "type": "Fix",
+   "chat": "Bio · Fix · L1 polish",
+   "status": "ready",
+   "needs": ["L1"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "open", "G-Learn": "open", "G-A11y": "open"},
+   "check": null,
+   "decisions": ["D-050", "D-053"],
+   "prompt": "L1 polish",
+   "log": "—",
+   "todo": [
+    "D-053: card body, Don't confuse and This becomes… fold away during a Check run; \"Read again\" ends the run unscored (spec first, C2)",
+    "Tablet P · Cards list + Today Continue: titles break mid-word (\"Gast/rulati/on in/one/pictu/re\", \"syncytiotrophobl/ast\") — wrap on words; chip + id under the title in narrow columns",
+    "Phone L (and short heights) · card reader: the 3D column scrolls away with the text, leaving the left half empty — pin it and fit the height (C13)",
+    "Phone P 360 px · Try it (E00.01.01, E00.01.06): labels crowd — Primitive streak label on the cranial arrow, node/streak leader lines cross (or V2 if it fixed leaders)",
+    "All devices · every card: MORE and SOURCES headings are empty — list sources; guide cards say \"App facts (ⓘ) — no book source\"; hide empty More",
+    "Card Remember line \"In your deck · next on tomorrow\" → \"Due tomorrow\"",
+    "Today intro says prompts come back after passing the Check — D-050: prompts join the deck on Read",
+    "Backup file name uses the UTC date (biostudio-backup-2026-11-20 at 05:02 IST) — use the local date",
+    "G-Eng: saved state keeps `app` 5/6 under v7 and `savedAt` older than the last tap (tablet backup 05:05 vs 05:11) — fix or explain; statuses already survive a restart"
+   ],
+   "inputs": []
   },
   {
    "id": "V2",
    "title": "V2 3D visualiser — Ch 5 scenes + 3D drills",
    "type": "Build",
    "chat": "Bio · Build · V2 3D drills",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["L1"],
    "unblocks": ["V3", "GATE", "IB04", "IB05", "IB06", "IB10", "IB11"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
-   "check": {"id": "T8", "state": "open"},
-   "decisions": ["D-036", "D-047", "D-050"],
+   "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
+   "check": {"id": "T8", "state": "open", "since": "2026-11-21"},
+   "decisions": ["D-036", "D-047", "D-050", "D-054"],
    "prompt": "V2 3D drills",
-   "log": "—",
+   "log": "21 Nov 2026 · V2 3D drills (app v8, D-054) — drill Check types rotate · day · frames · label · folded (spec, card-check Python + app, parity 88, selftest 75); scene sc-E05.02.01 notochord (strand → plate → rod, cranial first); drills on E05.02.01 (frames, label) + E05.05.01 (day), re-reviewed; V1 notes folded in; layout-check 2318 checks + drill flows green; gates G-Sci (3 rounds), G-Learn (3), G-Eng (2), G-Art (2), G-A11y pass; T8 open",
    "todo": [
-    "Drills as Check types (backlog 4–6, 10–11 → IB04 Rotate to match, IB05 Which day is this?, IB06 Order the frames, IB10 Label it, IB11 Folded or not?)",
-    "New scenes: notochord (E05.02.01, C1 to-do) + the rest of Ch 5 Tier A; then Ch 6–8 scenes as C2 cards need them",
-    "Carry V1 reviewer notes (streak at day 18, leader lines in phone landscape at 125 %, cut ≈ −0.3, WebGL context loss)",
-    "Write owner check T8"
+    "Owner phone fps on sc-E05.02.01 (T8 step 7) → pipeline reference §2",
+    "rotate + folded have no card yet (D-054 (6)) — first real use in C2 (Ch 6 folding); then make rotate's words question about the start picture so the alt doesn't give it away (G-A11y SHOULD)",
+    "G-Art shoulds: notochord ring only ~1 px at day 18; pin 3 touches the gizmo at phone 125 %; phone landscape 125 % notes plate over pin 2's dot; day stamp wraps at phone 125 %; frames/folded leave the phone-landscape left column empty; black bands in frame stills; embryo ~40 % of the stage on tablet portrait/desktop; full viewer Lengthwise/cut-slider state vs view",
+    "G-Eng nits: still cache unbounded; possible one-frame flash after a still; scene-check range gaps for streak/zone; day-drill alt states the size (G-Learn ok'd)",
+    "Other Ch 5 Tier A cards keep sc-E00.01.04 / sc-E00.01.02 (they already list them) — a fate-map scene (E05.04.01) when a later V-step needs it"
    ],
-   "inputs": []
+   "inputs": [
+    {"id": "V2.q1", "kind": "decide", "ask": "D-054: confirm drills as Check types, the masked day only during 'Which day is this?', the 3D moving into the Check on phone/tablet portrait (beside it otherwise), rotate + folded waiting for Ch 6 cards — or say what to change (T8 step 8)", "asked_in": "Bio · Build · V2 3D drills", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-054"}
+   ]
   },
   {
    "id": "C2",
@@ -812,7 +842,7 @@
    "title": "Rotate to match",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -820,7 +850,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "21 Nov 2026 · built + tested in V2 (D-054), demo card only (?test=1&fixture=drills) — first card use in C2",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -832,7 +862,7 @@
    "title": "Which day is this?",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -840,7 +870,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.05.01 (day); owner check with V2 (T8)",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -852,7 +882,7 @@
    "title": "Order the frames",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -860,7 +890,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (frames); owner check with V2 (T8)",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -928,7 +958,7 @@
    "title": "Label it",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -936,7 +966,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "21 Nov 2026 · built in V2 (D-054) — on E05.02.01 (label: pins + selects); owner check with V2 (T8)",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],
@@ -948,7 +978,7 @@
    "title": "Folded or not?",
    "type": "Idea",
    "chat": "Bio · Ideation · use-gate picks",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["V2"],
    "unblocks": [],
    "lock": false,
@@ -956,7 +986,7 @@
    "check": null,
    "decisions": ["D-047"],
    "prompt": null,
-   "log": "—",
+   "log": "21 Nov 2026 · built + tested in V2 (D-054), demo card only (?test=1&fixture=drills) — first card use in C2",
    "todo": [
     "Pulled forward into V2 (D-047)"
    ],

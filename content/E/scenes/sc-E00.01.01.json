@@ -198,7 +198,7 @@
  },
  "cut": {
   "axis": "x",
-  "at": 0.0,
+  "at": -0.3,
   "on": false
  },
  "disclaimers": [

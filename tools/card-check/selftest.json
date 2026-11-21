@@ -443,6 +443,590 @@
     "facts.0.mark": "ⓘ"
    },
    "expect": "E-mark"
+  },
+  {
+   "name": "drill type unknown",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "spin",
+     "options": [
+      "a",
+      "b",
+      "c"
+     ]
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "rotate target not a view",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "rotate",
+     "show": {
+      "day": 16,
+      "view": "side"
+     },
+     "target": "nowhere",
+     "options": [
+      "From the back",
+      "From the side",
+      "From below"
+     ],
+     "answer": 0,
+     "alt": "The disc seen from its right side."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "rotate starts solved",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "rotate",
+     "show": {
+      "day": 16,
+      "view": "top"
+     },
+     "target": "top",
+     "options": [
+      "From the back",
+      "From the side",
+      "From below"
+     ],
+     "answer": 0,
+     "alt": "The disc seen from its right side."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "rotate without words answer",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "rotate",
+     "show": {
+      "day": 16,
+      "view": "side"
+     },
+     "target": "top",
+     "options": [
+      "From the back",
+      "From the side",
+      "From below"
+     ],
+     "alt": "The disc seen from its right side."
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "rotate tolerance too wide",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "rotate",
+     "show": {
+      "day": 16,
+      "view": "side"
+     },
+     "target": "top",
+     "options": [
+      "From the back",
+      "From the side",
+      "From below"
+     ],
+     "answer": 0,
+     "alt": "The disc seen from its right side.",
+     "tol_deg": 80
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "day answer not the day shown",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "day",
+     "show": {
+      "day": 16
+     },
+     "options": [
+      15,
+      16,
+      17
+     ],
+     "answer": 0,
+     "alt": "A disc with a short streak."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "day option outside scene",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "day",
+     "show": {
+      "day": 16
+     },
+     "options": [
+      15,
+      16,
+      19
+     ],
+     "answer": 1,
+     "alt": "A disc with a short streak."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "drill without alt",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "day",
+     "show": {
+      "day": 16
+     },
+     "options": [
+      15,
+      16,
+      17
+     ],
+     "answer": 1
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "frames day outside scene",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "frames",
+     "options": [
+      {
+       "text": "Two layers",
+       "show": {
+        "day": 15
+       }
+      },
+      {
+       "text": "Mesoderm spreading",
+       "show": {
+        "day": 16
+       }
+      },
+      {
+       "text": "Later",
+       "show": {
+        "day": 20
+       }
+      }
+     ]
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "frames with an answer field",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "frames",
+     "options": [
+      {
+       "text": "Two layers",
+       "show": {
+        "day": 15
+       }
+      },
+      {
+       "text": "Mesoderm spreading",
+       "show": {
+        "day": 16
+       }
+      },
+      {
+       "text": "Three layers",
+       "show": {
+        "day": 17
+       }
+      }
+     ],
+     "answer": 0
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "frame without text",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "frames",
+     "options": [
+      {
+       "text": "Two layers",
+       "show": {
+        "day": 15
+       }
+      },
+      {
+       "text": "Mesoderm spreading",
+       "show": {
+        "day": 16
+       }
+      },
+      {
+       "show": {
+        "day": 17
+       }
+      }
+     ]
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "label pin at unknown anchor",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "y",
+       "at": -0.3,
+       "on": true
+      }
+     },
+     "pins": [
+      {
+       "at": "notochord",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 1
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "Ectoderm"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "label pins share a label",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "y",
+       "at": -0.3,
+       "on": true
+      }
+     },
+     "pins": [
+      {
+       "at": "mesoderm",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 0
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "Ectoderm"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "label option over 3 words",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "y",
+       "at": -0.3,
+       "on": true
+      }
+     },
+     "pins": [
+      {
+       "at": "mesoderm",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 1
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "the layer on the bottom"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "show layer not in scene",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "y",
+       "at": -0.3,
+       "on": true
+      },
+      "layers": {
+       "notochord": true
+      }
+     },
+     "pins": [
+      {
+       "at": "mesoderm",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 1
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "Ectoderm"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "show cut malformed",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "z",
+       "at": 0,
+       "on": true
+      }
+     },
+     "pins": [
+      {
+       "at": "mesoderm",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 1
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "Ectoderm"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "folded with 3 options",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "folded",
+     "options": [
+      "A",
+      "B",
+      "C"
+     ],
+     "items": [
+      {
+       "show": {
+        "day": 17
+       },
+       "answer": 0,
+       "text": "Disc on day 17."
+      },
+      {
+       "show": {
+        "day": 15
+       },
+       "answer": 1,
+       "text": "Disc on day 15."
+      }
+     ]
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "folded items one answer",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "folded",
+     "options": [
+      "Three layers",
+      "Two layers"
+     ],
+     "items": [
+      {
+       "show": {
+        "day": 17
+       },
+       "answer": 0,
+       "text": "Disc on day 17."
+      },
+      {
+       "show": {
+        "day": 15
+       },
+       "answer": 0,
+       "text": "Disc on day 15."
+      }
+     ]
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "slab on a lengthwise cut",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Drill.",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "label",
+     "show": {
+      "day": 17,
+      "view": "side",
+      "cut": {
+       "axis": "y",
+       "at": -0.3,
+       "on": true,
+       "slab_mm": 0.01
+      }
+     },
+     "pins": [
+      {
+       "at": "mesoderm",
+       "answer": 0
+      },
+      {
+       "at": "endoderm",
+       "answer": 1
+      }
+     ],
+     "options": [
+      "Mesoderm",
+      "Endoderm",
+      "Ectoderm"
+     ],
+     "alt": "A lengthwise cut with two pins in the lower layers."
+    }
+   },
+   "expect": "E-check"
   }
  ]
 }
