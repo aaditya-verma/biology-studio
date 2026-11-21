@@ -64,7 +64,7 @@ function bmTree(cur){const M=MAPD.M,V=M.vocab,L=MAPD.C.filter(bmPass);
   if(bmFiltered())return h+(L.length?L.slice(0,200).map(x=>crow(x,ROUTE.id===x.id)).join(''):`<p class="empty">—</p>`);
   let part=-1;h+='<div class="tree">';
   for(const c of M.chapters){const n=L.filter(x=>x.ch===c.id).length;if(c.part!==part){part=c.part;h+=`<div class="partlbl">${esc(STR.parts[part]||'')}</div>`;}
-    h+=`<div class="row" style="flex-wrap:nowrap"><button type="button" class="lrow" data-go="map=${esc(c.id)}"${cur&&cur.id===c.id?' aria-current="true"':''}><span class="nm">${esc(c.title)}<br><span class="xs mut">${esc(c.id)} · ${n} ${esc(STR.concepts)}</span></span></button>${editBtn('chapter',c.id,'tools/map/concepts.txt (sections of '+c.id+')')}</div>`;}
+    h+=`<div class="row bm-ch"><button type="button" class="lrow" data-go="map=${esc(c.id)}"${cur&&cur.id===c.id?' aria-current="true"':''}><span class="nm">${esc(c.title)}<br><span class="xs mut">${esc(c.id)} · ${n} ${esc(STR.concepts)}</span></span></button>${editBtn('chapter',c.id,'tools/map/concepts.txt (sections of '+c.id+')')}</div>`;}
   return h+'</div>';}
 function bmOverview(){const top=[...MAPD.C].sort((a,b)=>b.unlock_n-a.unlock_n).slice(0,12),pairs=[['layer','day'],['system','chapter'],['tier','chapter'],['mark','chapter'],['cs','layer']];
   return `<h1>${esc(STR.mapTitle)}</h1><p class="mut sm">${esc(STR.pickChapter)}</p>

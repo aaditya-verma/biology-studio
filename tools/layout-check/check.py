@@ -3,7 +3,8 @@
 S1: + Studio (list, card on G-Sci and G-Learn, calibration), Studio rotate, Studio review round trip + reviewer = maker blocked + edit reopens.
 W1: + progress map (Map, Board, Your inputs, 3 step pages), step page rotate, map with done shown, progress outside testing mode.
 L1: + cards list, card reader (concept, guide, clinical), Remember deck; card mid-Check survives rotate (question, 3D day, scroll).
-V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
+L1F: + D-053 fold (Check hides the card text; Read again ends the run unscored), saved app/savedAt, pins clear of overlays + pinned labels after a
+    label drill, the day drill keeps the ruler clear of overlays (2 phone sizes), mid-word titles (in-app audit). V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
     rotate mid-drill moves the stage (in the Check ↔ beside it) and keeps the view; Try it gets its view back; WebGL context loss redraws.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
@@ -360,6 +361,12 @@ async def learn_flows(browser, base, report):
     await page.goto(f"{base}?test=1&debug=0#card=E00.01.04")
     await page.wait_for_function("window.LN_READY==='card=E00.01.04' && window.VW_READY===true", timeout=30000)
     await page.click("[data-ln=start]")
+    fold = await page.evaluate("({on:document.querySelector('#lnCard').classList.contains('ck-on'),body:getComputedStyle(document.querySelector('#lnBody')).display,hid:getComputedStyle(document.querySelector('#lnHid')).display,src:getComputedStyle(document.querySelector('#lnSrc')).display})")
+    ok("D-053: a Check run folds the card text away", fold["on"] and fold["body"] == "none" and fold["src"] == "none" and fold["hid"] != "none", fold)
+    await page.click("[data-ln=reread]"); await page.wait_for_timeout(200)
+    back = await page.evaluate("({run:!!LN.ck['E00.01.04'],on:document.querySelector('#lnCard').classList.contains('ck-on'),body:getComputedStyle(document.querySelector('#lnBody')).display,start:!!document.querySelector('[data-ln=start]'),checks:(state.cards['E00.01.04']||{}).checks||0})")
+    ok("D-053: Read again ends the run unscored", (not back["run"]) and (not back["on"]) and back["body"] != "none" and back["start"] and back["checks"] == 0, back)
+    await page.click("[data-ln=start]")
     q = card["checks"][0]
     if q["type"] == "mcq":
         await page.click(f'[data-ln=pick][data-o="{q["answer"]}"]')
@@ -396,6 +403,9 @@ async def learn_flows(browser, base, report):
     await page.reload(); await page.wait_for_function("window.LN_READY==='card=E00.01.04'", timeout=30000)
     st = await page.evaluate("({s:lnStatus('E00.01.04'),d:Object.keys(state.deck).length,rev:STORE.rev})")
     ok("Card: Can explain + deck survive a reload (IndexedDB)", st["s"] == "exp" and st["d"] == len(card["remember"]), st)
+    await page.evaluate("stTouch('E05.01.01')"); await page.wait_for_timeout(900)
+    sv = await page.evaluate("(async()=>{const s=await idbGet(STORE.db);return {mem:state.savedAt,db:s.savedAt,app:state.app,dbApp:s.app,v:APP.v,name:stLocalDate()};})()")
+    ok("L1F: memory carries savedAt + app of the last write (backup tells the truth)", sv["mem"] == sv["db"] and sv["app"] == sv["v"] == sv["dbApp"], sv)
     await page.evaluate("for(const k in state.deck)state.deck[k].due=Date.now()-1000;stSave()"); await page.wait_for_timeout(700)
     await page.evaluate("location.hash='#deck'"); await page.wait_for_function("window.LN_READY==='deck'", timeout=20000)
     await page.click("[data-ln=dstart]"); await page.click("[data-ln=dshow]"); await page.click("[data-ln=dgot]")
@@ -406,6 +416,8 @@ async def learn_flows(browser, base, report):
     await page.goto(f"{base}#card=E05.01.01"); await page.reload(); await page.wait_for_function("window.LN_READY==='card=E05.01.01'", timeout=30000)
     st = await page.evaluate("({c:typeof state.cards,d:typeof state.deck,l:state.settings.level,v:state.visited['E05.01.01']})")
     ok("Old save (v6) opens with cards + deck back-filled", st == {"c": "object", "d": "object", "l": "general", "v": 5}, st)
+    av = await page.evaluate("({app:state.app,v:APP.v})")
+    ok("L1F: an old save's app is bumped to the running version on load", av["app"] == av["v"], av)
     await ctx.close()
 
 
@@ -447,6 +459,16 @@ async def drill_flows(browser, base, report, preview):
                 if q["type"] == "label":
                     pins = await page.evaluate("[...document.querySelectorAll('.vw-pin')].map(p=>!p.classList.contains('hidden'))")
                     ok(f"label pins drawn at {w}x{h} {text}%", len(pins) == len(q["pins"]) and all(pins), pins)
+                    PINJS = """(()=>{const R=e=>e&&e.offsetParent!==null?e.getBoundingClientRect():null,ov=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>R(document.querySelector(s))).filter(Boolean),
+                      hit=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1,pins=[...document.querySelectorAll('.vw-pin:not(.hidden)')].map(R);
+                      const labs=SC.lbl.filter(it=>SC.drill&&it.done===SC.drill.key).map(it=>R(it.el));
+                      return {pins:pins.length,under:pins.filter(p=>ov.some(o=>hit(p,o))).length,labs:labs.length,labUnder:labs.filter(p=>ov.some(o=>hit(p,o))||pins.some(o=>hit(p,o))).length};})()"""
+                    pv = await page.evaluate(PINJS)
+                    ok(f"L1F: label pins clear of the stamp, notes, gizmo + scale at {w}x{h} {text}%", pv["under"] == 0, pv)
+                    await page.evaluate(f"(()=>{{const c=LN.ck['E05.02.01'],k=LN.open['E05.02.01'];c.sel=k.checks[{i}].pins.map(p=>p.answer);lnCheckAct(k,'lcheck',{{}});}})()"); await page.wait_for_timeout(700)
+                    pv = await page.evaluate(PINJS)
+                    need = len(q["pins"]) if text == 100 else len(q["pins"]) - 1   # scene-spec §8a: on the tightest stages (125 % text) one pinned label may fall back to the Check feedback (Pin n: …)
+                    ok(f"L1F: answered label drill — each pin carries its label, clear of overlays at {w}x{h} {text}%", pv["pins"] == len(q["pins"]) and pv["labs"] >= need and pv["under"] == 0 and pv["labUnder"] == 0, pv)
                 if q["type"] == "day":
                     stamp = await page.inner_text("#vwStamp")
                     ok(f"day stamp masked at {w}x{h} {text}%", "?" in stamp and str(q["show"]["day"]) not in stamp, stamp)
@@ -485,6 +507,21 @@ async def drill_flows(browser, base, report, preview):
     await page.click("[data-ln=rcheck]"); await page.wait_for_timeout(200)
     ok("rotate drill: a view 10° off the target counts", await page.evaluate("LN.ck['E05.02.01'].res[0]===true"))
     await ctx.close()
+    # L1F (T8): the day drill on E05.05.01 (sc-E00.01.02, with a 1 mm ruler) opens with the embryo + whole ruler clear of the overlays
+    day_i = next(i for i, q in enumerate(json.loads((ROOT / "content" / "E" / "cards" / "E05.05.01.json").read_text())["checks"]) if q["type"] == "day")
+    for vw, vh in [(360, 804), (640, 360), (390, 844)]:
+        ctx = await browser.new_context(viewport={"width": vw, "height": vh}, has_touch=True, is_mobile=True)
+        page = await ctx.new_page()
+        await page.goto(f"{base}?test=1&debug=0#card=E05.05.01")
+        await page.wait_for_function("window.LN_READY==='card=E05.05.01' && window.VW_READY===true", timeout=30000)
+        await page.evaluate(f"(()=>{{const c=LN.open['E05.05.01'];const k=LN.ck[c.id]=lnCkNew(c);k.i={day_i};lnPaint('check');}})()")
+        await page.wait_for_function("window.VW_READY===true && !!SC.drill && SC.drill.type==='day'", timeout=30000); await page.wait_for_timeout(500)
+        fr = await page.evaluate("""(()=>{const st=document.querySelector('#vwStage').getBoundingClientRect(),b=SC.eng.screenBox(),R=e=>e&&e.offsetParent!==null?e.getBoundingClientRect():null;
+          const box={left:st.left+b.l,right:st.left+b.r,top:st.top+b.t,bottom:st.top+b.b},ov=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>R(document.querySelector(s))).filter(Boolean);
+          const hit=o=>box.left<o.right-1&&box.right>o.left+1&&box.top<o.bottom-1&&box.bottom>o.top+1;
+          return {inside:box.left>=st.left-1&&box.right<=st.right+1&&box.top>=st.top-1&&box.bottom<=st.bottom+1,under:ov.filter(hit).length,zoom:+SC.eng.state().zoom.toFixed(2),h:Math.round(st.height)};})()""")
+        ok(f"L1F: day drill keeps the embryo + ruler in view, clear of overlays at {vw}x{vh}", fr["inside"] and fr["under"] == 0, fr)
+        await ctx.close()
     # WebGL context loss (V1 note): lose + restore → the scene draws again, no error message left up
     ctx = await browser.new_context(viewport={"width": 1366, "height": 768})
     page = await ctx.new_page(); errs = []

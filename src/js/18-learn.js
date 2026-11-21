@@ -8,6 +8,8 @@
    V2 drills (card-spec §2a, D-054): a Check question may be a 3D drill driven by the card's scene — rotate · day · label use the live inline
    viewer (in the Check on phone/tablet portrait; in the sticky 3D column beside it on the two-pane classes), frames · folded use stills of the
    same engine. Try it gets its own view back when the drill ends. Every drill has a text alternative (alt, frame/item texts, rotate in words).
+   L1F (D-053, D-056): while a Check run is open the card text folds away (class ck-on on #lnCard; *Read again* ends the run unscored);
+   Sources = the sections + registry sources a card cites (sources.json names); More only when it has facts; Remember says *Due tomorrow*.
    EDIT: words in STR.ln (STR.ln.dr for drills); settings in CONFIG.learn; card data in content/<book>/cards/ (never in code). */
 'use strict';
 const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null,keep:null,drillKey:null,snap:{}};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng)
@@ -85,7 +87,7 @@ SCREENS.card=function(v){
   ROUTE.crumbs=[{label:STR.ln.cardsT,hash:'cards'},{label:(LN.open[id]&&LN.open[id].title)||id}];
   const meta=LN.idx&&LN.idx.cards.find(c=>c.id===id),card=LN.open[id];LN.gone.delete(id);
   if(!LN.idx||!card){v.innerHTML=`<p class="mut" role="status">${esc(STR.ln.loading)}</p>`;
-    Promise.all([LN.idx?null:lnLoad(),lnCard(id),scIndexLoad()]).then(()=>{if(ROUTE.name==='card'&&ROUTE.id===id)render();})
+    Promise.all([LN.idx?null:lnLoad(),lnCard(id),scIndexLoad(),cdSources().catch(()=>null)]).then(()=>{if(ROUTE.name==='card'&&ROUTE.id===id)render();})
       .catch(e=>{if(ROUTE.name==='card'&&ROUTE.id===id)v.innerHTML=`<div class="card"><h1>${esc(STR.ln.cardsT)}</h1><p>${esc(STR.ln.noCard(id))} <span class="xs mut">${esc(e.message)}</span></p><button type="button" class="btn" data-go="cards">${esc(STR.ln.cardsT)}</button></div>`;});return;}
   if(!lnVisible(meta)){v.innerHTML=`<div class="card"><h1>${esc(card.title)}</h1><p>${esc(STR.ln.notYet)}</p><button type="button" class="btn" data-go="cards">${esc(STR.ln.cardsT)}</button></div>`;return;}
   state.last.card=id;
@@ -93,7 +95,8 @@ SCREENS.card=function(v){
   clearTimeout(LN.readT);if(!state.cards[id]||!state.cards[id].read)LN.readT=setTimeout(()=>{if(ROUTE.name==='card'&&ROUTE.id===id){lnSet(id,'read');lnDeckAdd(card);lnPaint('status');lnPaint('remember');}},CONFIG.learn.readMs);
   const lv=lnLevel(card),L=lnLevels(card),sc=card.scene&&card.scene.id,list=lnList(),i=list.findIndex(c=>c.id===id),prev=list[i-1],next=list[i+1];
   const grp=list.filter(c=>c.id.slice(0,3)===id.slice(0,3));
-  v.innerHTML=`<div class="ln-card" id="lnCard" data-id="${esc(id)}">
+  const run=lnRun(id);SC.runOff=run;   // L1F: Try it labels off while a run is open
+  v.innerHTML=`<div class="ln-card${run?' ck-on':''}" id="lnCard" data-id="${esc(id)}">
   <header class="ln-head"><div class="row"><span class="mono mut">${esc(id)} · ${esc(STR.tierShort(card.tier))}${card.kind==='guide'?' · ⓘ':''}</span><span class="sp"></span><span id="lnStatus">${lnChip(id)}</span>${editBtn('card',id,CONFIG.cards.dir+id+'.json')}</div>
       <h1 id="cpT" tabindex="-1">${esc(card.title)}</h1>
       ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-pressed="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
@@ -103,8 +106,8 @@ SCREENS.card=function(v){
     <section class="ln-watch" aria-labelledby="lnWatchT"><h2 id="lnWatchT" class="ln-h">${esc(STR.ln.watchT)}</h2><span class="badge">${esc(STR.ln.soon)}</span><span class="xs mut">${esc(STR.ln.watchSoon)}</span></section>
   </div>
   <article class="ln-text" aria-labelledby="cpT">
-
-    <section class="ln-body" id="lnBody">${lnBodyHtml(card,lv)}</section>
+    <div class="ln-hid" id="lnHid"><p class="sm"><b id="lnHidT">${esc(STR.ln.hidT)}</b> <span class="xs mut">${esc(STR.ln.lblOffRun)}</span></p><div class="row"><button type="button" class="btn sm" data-ln="reread" data-fk="ln-reread" aria-describedby="lnHidH">${esc(STR.ln.readAgain)}</button><span class="xs mut" id="lnHidH">${esc(STR.ln.readAgainHelp)}</span></div></div>
+    <section class="ln-body" id="lnBody" tabindex="-1">${lnBodyHtml(card,lv)}</section>
     ${card.adult?`<section class="ln-adult"><h2 class="ln-h">${esc(STR.ln.adultT)}</h2><p>${lnRich(card,card.adult,'adult')}</p></section>`:''}
     ${card.clinical?`<section class="ln-clin"><h2 class="ln-h">${esc(STR.ln.clinicalT)}</h2><p>${lnRich(card,card.clinical,'clin')}</p></section>`:''}
     ${card.misconceptions.length?`<section class="ln-mis"><h2 class="ln-h">${esc(STR.ln.misT)}</h2>${card.misconceptions.map(m=>`<div class="ln-mi"><p><span class="ln-x" aria-hidden="true">✗</span> <span class="sr">${esc(STR.ln.wrongL)}</span><s>${esc(m.wrong)}</s></p><p><span class="ln-ok" aria-hidden="true">✓</span> <span class="sr">${esc(STR.ln.rightL)}</span>${esc(m.right)} <span class="xs mut">[${esc(m.cite)}]</span> <b class="mark" title="${esc(STR.marks[m.mark]||'')}">${esc(m.mark)}</b></p></div>`).join('')}</section>`:''}
@@ -113,8 +116,8 @@ SCREENS.card=function(v){
     <section class="ln-rem" id="lnRem" aria-labelledby="lnRmT">${lnRemHtml(card)}</section>
     ${card.shows_up&&card.shows_up.length?`<section class="ln-shows"><h2 class="ln-h">${esc(STR.ln.showsT)}</h2><div class="ln-chips">${card.shows_up.map(x=>{const c=LN.idx.cards.find(q=>q.id===x&&lnVisible(q)),m=MAPD.byId[x];
       return `<button type="button" class="btn sm" data-go="${c?'card='+esc(x):'concept='+esc(x)}">${esc(c?c.title:m?m.name:x)} <span class="xs mut">${esc(x)}</span></button>`;}).join('')}</div></section>`:''}
-    ${card.facts.some(f=>f.where==='more')?`<details class="ln-more"><summary><span class="ln-h">${esc(STR.ln.moreT)}</span></summary><p class="xs mut">${esc(STR.ln.moreLead)}</p><ul class="ln-facts sm">${card.facts.filter(f=>f.where==='more').map(lnFactLi).join('')}</ul></details>`:''}
-    <details class="ln-src"><summary><span class="ln-h">${esc(STR.ln.sourcesT)}</span></summary><ul class="ln-facts sm">${card.facts.filter(f=>f.where==='main').map(lnFactLi).join('')}</ul><p class="xs mut">${esc(STR.ln.marksKey)}</p></details>
+    ${lnMoreHtml(card)}
+    <section class="ln-src" id="lnSrc" aria-labelledby="lnSrcT">${lnSrcHtml(card)}</section>
     <nav class="ln-pn row" aria-label="${esc(STR.ln.cardRail)}">${prev?`<button type="button" class="btn" data-go="card=${esc(prev.id)}">${icon('back',18)} ${esc(prev.title)}</button>`:''}<span class="sp"></span>${next?`<button type="button" class="btn" data-go="card=${esc(next.id)}">${esc(next.title)} ${icon('fwd',18)}</button>`:''}</nav>
   </article>
   <nav class="ln-rail card" aria-label="${esc(STR.ln.cardRail)}"><h2 class="ln-h">${esc(STR.ln.groups[id.slice(0,3)]||STR.ln.groupOf(id.slice(0,3)))}</h2>
@@ -129,9 +132,28 @@ SCREENS.card=function(v){
       if(lnLiveQ(card))lnDrillMount(card);else scViewer($('#lnVw'),S,{inline:true});lnSnapsFill(card);})
     .catch(e=>{const h=$('#lnVw');if(h)h.innerHTML=`<p class="mut sm">${esc(e.message)}</p>`;});}
   window.LN_READY='card='+id;
-  if(dbgOn('learn'))DBG.learn=`learn ${id} · ${lnStatus(id)} · level ${lv} · deck ${lnDeckAll().length} (${lnDeckDue().length} due)`;
+  if(dbgOn('learn'))DBG.learn=`learn ${id} · ${lnStatus(id)} · level ${lv} · deck ${lnDeckAll().length} (${lnDeckDue().length} due)${run?' · run open (text folded)':''}`;
 };
 function lnBodyHtml(card,lv){return `<h2 class="sr">${esc(STR.ln.levels[lv]||lv)}</h2><p>${lnRich(card,card.body[lv],'b')}</p>`;}
+const lnRun=id=>!!(LN.ck[id]&&!LN.ck[id].done);   // a Check run is open: the card text folds away (D-053)
+/* More: only when the card has `more` facts; folded, with a count (a heading is never empty — T7) */
+function lnMoreHtml(card){const m=card.facts.filter(f=>f.where==='more');if(!m.length)return '';
+  return `<details class="ln-more"><summary><span class="ln-h">${esc(STR.ln.moreT)}</span> <span class="xs mut">${esc(STR.ln.moreN(m.length))}</span></summary><p class="xs mut">${esc(STR.ln.moreLead)}</p><ul class="ln-facts sm">${m.map(lnFactLi).join('')}</ul></details>`;}
+/* Sources: the book sections and registry sources the card cites, by name (sources.json; ids alone if it did not load); guide cards: app facts.
+   Below, folded, every main fact with its cite + mark (card-spec §7). */
+function lnSrcHtml(card){const src=CD.src||{},secN=src.sections||{},chN=src.chapters||{},reg=Object.fromEntries((src.registry||[]).map(r=>[r.id,r]));
+  const secs=new Map(),regs=new Map();let app=0;
+  for(const c of card.facts.map(f=>f.cite).concat(card.misconceptions.map(m=>m.cite))){if(appCite(c)!=null){app++;continue;}let p;try{p=parseCite(c);}catch(_){continue;}
+    for(const x of p.sections){const k=x.sec||x.ch;if(!secs.has(k))secs.set(k,secN[k]||chN[x.ch]||'');}
+    for(const x of p.sources)if(!regs.has(x.id))regs.set(x.id,reg[x.id]||null);}
+  const book=(reg.R00&&reg.R00.name)||STR.ln.bookDefault;
+  const sk=[...secs.keys()].sort(),rk=[...regs.keys()].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})),main=card.facts.filter(f=>f.where==='main');
+  return `<h2 id="lnSrcT" class="ln-h">${esc(STR.ln.sourcesT)}</h2>`
+    +(sk.length?`<p class="sm"><b>${esc(STR.ln.srcBook(book))}</b></p><ul class="ln-facts sm ln-srcs">${sk.map(k=>`<li><span class="mono">${esc(k)}</span> ${esc(secs.get(k))}</li>`).join('')}</ul>`:'')
+    +(rk.length?`<p class="sm"><b>${esc(STR.ln.srcOther)}</b></p><ul class="ln-facts sm ln-srcs">${rk.map(k=>{const r=regs.get(k);return `<li><span class="mono">${esc(k)}</span> ${esc(r?r.name:'')}${r&&r.tier?` <span class="xs mut">· ${esc(STR.ln.srcTier(r.tier))}</span>`:''}</li>`;}).join('')}</ul>`:'')
+    +(app&&!sk.length&&!rk.length?`<p class="sm">${esc(STR.ln.srcApp)}</p>`:'')
+    +(main.length?`<details class="ln-srcf"><summary><span class="sm">${esc(STR.ln.srcFacts(main.length))}</span></summary><ul class="ln-facts sm">${main.map(lnFactLi).join('')}</ul></details>`:'')
+    +`<p class="xs mut">${esc(STR.ln.marksKey)}</p>`;}
 
 /* ---------- Check (H1: Checks test the objective; one right answer; explain on a miss) ---------- */
 const LN_LIVE=['rotate','day','label'],LN_STILL=['frames','folded'],LN_ABC='ABCDE';
@@ -152,7 +174,9 @@ function lnDrillMount(card){const q=lnLiveQ(card);if(!q){lnDrillEnd(card);return
     const two=lnTwoPane(),host=two?$('#lnVw'):$('#lnDVw');if(!host)return;const key=card.id+':'+q.id+':'+ck.run;
     if(!LN.keep)LN.keep={id:S.id,card:card.id,st:JSON.parse(JSON.stringify(SC.st[S.id]||{}))};
     const home=lnShowState(S,q.show);if(LN.drillKey!==key){LN.drillKey=key;SC.st[S.id]=JSON.parse(JSON.stringify(home));SC.cur=null;}
-    SC.drill={type:q.type,mask:q.type==='day'&&ck.pick===null,labels:q.type==='label'&&ck.pick!==null,pins:q.type==='label'?q.pins.map((p,i)=>({at:p.at,n:i+1})):null,home};
+    const fr=(SC.frames||{})[key];   // L1F: a ruler scene frames itself (scene-spec §8a); the framed view is this drill's Start view
+    SC.drill={type:q.type,mask:q.type==='day'&&ck.pick===null,labels:q.type==='label'&&ck.pick!==null,pins:q.type==='label'?q.pins.map((p,i)=>({at:p.at,n:i+1})):null,
+      home:fr?{...home,zoom:fr.zoom}:home,zoom0:home.zoom,key,frame:q.type==='label'||S.parts.some(p=>p.kind==='ruler'),shift:fr?fr.shift:undefined};
     const other=two?$('#lnDVw'):$('#lnVw');
     if(other)other.innerHTML=two?`<p class="sm mut ln-inchk">${esc(STR.ln.dr.beside)}</p>`:`<p class="sm mut ln-inchk">${esc(STR.ln.dr.inCheck)} <button type="button" class="lk" data-ln="tochk">${esc(STR.ln.dr.toCheck)}</button></p>`;
     $('#lnTry')?.classList.toggle('drill',two);
@@ -224,7 +248,7 @@ function lnCheckHtml(card){const id=card.id,ck=LN.ck[id],n=card.checks.length,re
   const fb=answered?`<div class="ln-fb" id="lnFb" tabindex="-1"><p><b><span class="${ok?'ln-ok':'ln-x'}" aria-hidden="true">${ok?'✓':'✗'}</span> ${esc(ok?STR.ln.right:STR.ln.wrong)}</b>${ok&&!['rotate'].includes(q.type)?'':lnRightHtml(card,q,ck)}</p>
       <p class="sm">${esc(q.why)}</p>
       <button type="button" class="btn pri" data-ln="next" data-fk="ln-next">${esc(last?STR.ln.finish:STR.ln.next)}</button></div>`:'';
-  return head+`<p class="xs mut">${esc(STR.ln.qOf(ck.i+1,n))}</p><p class="ln-q" id="lnQ"><b>${esc(q.prompt)}</b></p>${body}${fb}`;}
+  return head+`<p class="xs mut">${esc(STR.ln.qOf(ck.i+1,n))}</p><p class="ln-q" id="lnQ" aria-describedby="lnHidT"><b>${esc(q.prompt)}</b></p>${body}${fb}`;}
 function lnCheckAct(card,a,b){const id=card.id;let ck=LN.ck[id],focus=null;
   if(a==='start'){ck=LN.ck[id]=lnCkNew(card);focus='#lnQ';}
   else if(!ck)return;
@@ -257,14 +281,14 @@ function lnExplHtml(card){const id=card.id,s=lnStatus(id),ex=LN.ex[id]||{},head=
 
 /* ---------- Remember prompts on the card ---------- */
 function lnRemHtml(card){const ks=(card.remember||[]).map(r=>state.deck[card.id+'#'+r.id]).filter(Boolean),nd=ks.length?Math.min(...ks.map(d=>d.due)):null;
-  return `<h2 id="lnRmT" class="ln-h">${esc(STR.ln.rememberT)}</h2><p class="xs mut">${esc(ks.length?STR.ln.inDeck+' · '+STR.ln.nextDue(lnDayLabel(nd)):STR.ln.rememberLead((card.remember||[]).length))}</p>
+  return `<h2 id="lnRmT" class="ln-h">${esc(STR.ln.rememberT)}</h2><p class="xs mut">${esc(ks.length?STR.ln.dueOn(lnDayLabel(nd)):STR.ln.rememberLead((card.remember||[]).length))}${ks.length?`<span class="sr">${esc(STR.ln.dueSr(ks.length))}</span>`:''}</p>
   <ul class="ln-rq">${(card.remember||[]).map(r=>`<li><details><summary>${esc(r.q)}</summary><p class="sm">${esc(lnPlain(r.a))}</p></details></li>`).join('')}</ul>`;}
 
 /* partial repaints: the 3D, scroll and focus stay (no full render) */
 function lnPaint(what){const card=LN.open[ROUTE.id];if(ROUTE.name!=='card'||!card)return;
   const el={check:'#lnCheck',expl:'#lnExpl',remember:'#lnRem',status:'#lnStatus'}[what],h=$(el);if(!h)return;
   h.innerHTML=what==='check'?lnCheckHtml(card):what==='expl'?lnExplHtml(card):what==='remember'?lnRemHtml(card):lnChip(card.id);
-  if(what==='check'){if(lnLiveQ(card))lnDrillMount(card);else lnDrillEnd(card);lnSnapsFill(card);}
+  if(what==='check'){$('#lnCard')?.classList.toggle('ck-on',lnRun(card.id));if(SC.runOff!==lnRun(card.id)){SC.runOff=lnRun(card.id);if(typeof scOverlay==='function')scOverlay();}if(lnLiveQ(card))lnDrillMount(card);else lnDrillEnd(card);lnSnapsFill(card);}
   if(what==='status')$$('.ln-rail [aria-current] .ln-st').forEach(x=>{x.outerHTML=lnChip(card.id);});}
 
 /* ---------- #deck: one session ---------- */
@@ -323,6 +347,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!
   if(a==='level'){const l=b.dataset.l;state.settings.level=l;state.settings.t=Date.now();stSave();$('#lnBody').innerHTML=lnBodyHtml(card,l);
     $$('.ln-lv [data-l]').forEach(x=>x.setAttribute('aria-pressed',x===b));if(LN.ex[card.id]&&LN.ex[card.id].shown)lnPaint('expl');return;}
   if(['start','pick','mv','order','next','rwords','rcheck','rshow','lcheck','fold','fcheck'].includes(a)){lnCheckAct(card,a,b);return;}
+  if(a==='reread'){if(!lnRun(card.id))return;dlog('learn','read again — run ended unscored',card.id);delete LN.ck[card.id];lnPaint('check');toast(STR.ln.runEnded);   // D-053: no run counted, answers already given stay logged
+    const bd=$('#lnBody');if(bd){bd.scrollIntoView({block:'start',behavior:motionReduced()?'auto':'smooth'});bd.focus({preventScroll:true});}return;}
   if(a==='tochk'){const q=$('#lnQ');if(q){q.setAttribute('tabindex','-1');q.focus();}return;}
   if(a==='exshow'){LN.ex[card.id]={shown:true};lnPaint('expl');$('#lnModel')?.focus();return;}
   if(a==='exyes'){lnSet(card.id,'exp');LN.ex[card.id]=null;lnPaint('expl');lnPaint('status');$('#lnExT')?.setAttribute('tabindex','-1');$('#lnExT')?.focus();return;}
@@ -334,4 +360,5 @@ document.addEventListener('change',e=>{const t=e.target;if(!t.matches||!t.matche
   ck.sel[+t.dataset.lnpin]=t.value===''?null:+t.value;const q=card.checks[ck.i],btn=$('[data-ln="lcheck"]');if(btn)btn.disabled=!q.pins.every((_,i)=>ck.sel[i]!=null);});
 document.addEventListener('focusin',e=>{const t=e.target,i=t.matches&&t.matches('[data-lnpin]')?+t.dataset.lnpin:-1;if(SC.drill&&SC.pinFocus!==i){SC.pinFocus=i;scOverlay();}});
 onDevice(()=>{if(ROUTE.name!=='card')return;const card=LN.open[ROUTE.id];if(card&&lnLiveQ(card)&&SC.drill)lnDrillMount(card);});   // phone/tablet portrait ↔ two panes: the drill moves with the layout
-addEventListener('hashchange',()=>{clearTimeout(LN.readT);{const r=parseHash(location.hash);if(LN.keep&&!(r.name==='card'&&r.id===LN.keep.card)){SC.st[LN.keep.id]=LN.keep.st;LN.keep=null;SC.drill=null;LN.drillKey=null;SC.cur=null;}}if(parseHash(location.hash).name!=='deck'&&LN.deck&&(!LN.deck.q||LN.deck.done))LN.deck=null;});
+/* L1F (G-Learn): a run never survives leaving its card (other screens show labels) */
+addEventListener('hashchange',()=>{clearTimeout(LN.readT);{const r=parseHash(location.hash);for(const id of Object.keys(LN.ck))if(lnRun(id)&&!(r.name==='card'&&r.id===id)){delete LN.ck[id];dlog('learn','left the card — run ended unscored',id);}if(r.name!=='card')SC.runOff=false;}{const r=parseHash(location.hash);if(LN.keep&&!(r.name==='card'&&r.id===LN.keep.card)){SC.st[LN.keep.id]=LN.keep.st;LN.keep=null;SC.drill=null;LN.drillKey=null;SC.cur=null;}}if(parseHash(location.hash).name!=='deck'&&LN.deck&&(!LN.deck.q||LN.deck.done))LN.deck=null;});

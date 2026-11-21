@@ -10,7 +10,7 @@ const STR={
   testFlag:'Testing mode — nothing is saved', testShort:'✎ test',
   // Today
   todayTitle:'Today',
-  todayLead:'Read a card, pass its Check, then the Remember deck brings its prompts back after 1 day, then 3, then 7 days apart. Episodes arrive later.',
+  todayLead:'Read a card and its prompts join your Remember deck: they come back after 1 day, then 3, then every 7. Miss one and it comes back tomorrow. Pass a card’s Check to mark it Understood. Episodes arrive later.',
   continueT:'Continue', continueNone:'Nothing opened yet. Start with Part 0, then gastrulation.',
   startT:'Start here', startPart0:'Part 0 · Reading an embryo', startGastr:'Ch 5 · Gastrulation (researched ✔)', start3d:'3D · Two layers become three',
   mapStatsT:'The book, mapped', concepts:'concepts', chapters:'chapters', researched:'researched (X1)',
@@ -52,7 +52,7 @@ const STR={
     tech:(r,g)=>'three.js r'+r+' · '+g, labelsShown:a=>a.length?'Labels on screen: '+a.join(', ')+'.':'',
     measure:'Measure fps (~30 s)', boxes:'Bounding boxes', measOut:'Measurement results', measHint:'Plays every scene, then adds 50k, 150k and 300k test triangles. Keep the screen on; then Copy and paste the result into the chat.',
     measuring:n=>'Measuring '+n+'…', measStep:(n,t)=>'Step '+n+' of '+t+' — wait for Done', measReady:'Done — Copy now', measStopped:m=>'Stopped early: '+(m==='left'?'you left the scene':m)+' — paste this too.', measDone:'Done — tap Copy and paste this into the chat.',
-    discLine:d=>d.slice(0,2).join(' · ')+(d.length>2?' · +'+(d.length-2)+' more':''), discT:'Simplified on purpose', termsT:'Terms (conventions, not book facts)',
+    discLine:d=>d.slice(0,2).join(' · ')+(d.length>2?' · +'+(d.length-2)+' more':''), discShort:d=>d[0]+(d.length>1?' · +'+(d.length-1)+' more':''), discT:'Simplified on purpose', termsT:'Terms (conventions, not book facts)',   // discShort: stages under 300 px tall (L1F)
     cutText:(axis,at)=>'Cut at '+Math.round((at+1)*50)+' % from the '+(axis==='x'?'caudal end':'right side'),
     viewText:(az,el,cut)=>{const a=((az%360)+540)%360-180,side=Math.abs(a+90)<45?'the right side':Math.abs(a-90)<45?'the left side':Math.abs(a)<45?'the head end':'the tail end';
       const r=az*Math.PI/180,u=-Math.cos(r),rt=-Math.sin(r),head=Math.abs(u)>=Math.abs(rt)?(u>0?'top':'bottom'):(rt>0?'right':'left');   // where the head end points on screen in a view from above or below (G-A11y)
@@ -168,8 +168,10 @@ const STR={
     passed:(r,n)=>'Passed — '+r+' of '+n+'. This card is now Understood.', failed:(r,n)=>r+' of '+n+' right. Read the card again, then retry.', passedBefore:'You passed this Check before.',
     explT:'Can you explain it?', explLead:'Without looking at the card, explain the objective out loud in two or three sentences. Then compare.', explNeed:'Pass the Check first.',
     explShow:'Show a model answer', explYes:'Mine matched', explNo:'Not yet', explDone:'Marked Can explain.', explModel:'Model answer',
-    rememberT:'Remember', rememberLead:n=>n+' prompts go into your Remember deck once you read this card.', inDeck:'In your deck', nextDue:d=>'next on '+d,
-    moreT:'More', moreLead:'Beyond the exam answer: newer evidence and extra depth.', sourcesT:'Sources', showsT:'Where it shows up', termsT:'New terms',
+    rememberT:'Remember', rememberLead:n=>n+' prompts go into your Remember deck once you read this card.', inDeck:'In your deck', dueOn:d=>'Due '+d, dueSr:n=>' — '+n+' prompts in your Remember deck', bookDefault:'Langman’s Medical Embryology',
+    moreT:'More', moreN:n=>n+(n===1?' fact':' facts'), moreLead:'Beyond the exam answer: newer evidence and extra depth.', sourcesT:'Sources',
+    srcBook:b=>'Book: '+b, srcOther:'Checked against', srcApp:'App facts (ⓘ) — no book source. These lines describe how the app works.', srcFacts:n=>'Each fact with its source ('+n+')', srcTier:t=>'Tier '+t,
+    hidT:'Card text hidden during the Check', readAgain:'Read again', readAgainHelp:'Reading again ends this run — nothing is scored. Start the Check again after.', runEnded:'Run ended, not scored. The card text is back.', lblOffRun:'3D labels are off during the Check.', showsT:'Where it shows up', termsT:'New terms',
     marksKey:'Marks: ✔✔ book + Tier 1 source agree · ✔ book only · ⚑ book vs newer evidence (logged) · ✚ beyond the book · ⓘ how the app works.',
     refL:f=>'Source '+f, factsFor:n=>'Facts behind this line: fact '+n.join(', fact '), rightPlace:'right place', wrongPlace:'wrong place', started:(n,t)=>n+' of '+t+' started', cardRail:'Cards in this part', prev:'Previous card', nextCard:'Next card',
     deckT:'Remember deck', deckLead:'Short recall prompts from the cards you have read. Each comes back after 1 day, then 3, then 7 days apart.', due:n=>n+' due', dueNone:'Nothing due today.',

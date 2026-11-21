@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Build · V2 3D drills — T8 pass, V2 done, V2.q1 answered (D-055), 3 notes → L1F. Before: 21 Nov 2026 · Bio · Build · V2 3D drills — V2 gates pass, T8 open, V2.q1 (D-054) asked; V1 notes + C1 notochord-scene to-do closed; lock released. Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 pass except deck (deck 22 Nov, L1.q2), L1.q1 → D-053, new Fix step L1F",
+ "updated": "21 Nov 2026 · Bio · Fix · L1 polish",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -595,31 +595,24 @@
    "title": "L1 polish — T7 fixes + D-053 Check hides the card text",
    "type": "Fix",
    "chat": "Bio · Fix · L1 polish",
-   "status": "ready",
+   "status": "owner check",
    "needs": ["L1"],
    "unblocks": [],
    "lock": true,
-   "gates": {"G-Eng": "open", "G-Learn": "open", "G-A11y": "open"},
-   "check": null,
-   "decisions": ["D-050", "D-053"],
+   "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass", "G-Art": "pass"},
+   "check": {"id": "T7b", "state": "open", "since": "2026-11-21"},
+   "decisions": ["D-050", "D-053", "D-054", "D-056"],
    "prompt": "L1 polish",
-   "log": "—",
+   "log": "21 Nov 2026 · L1 polish (app v10, D-056 proposed) — D-053 fold + Read again (unscored), Try it labels off during a run, Sources by name, More only when non-empty, Due line, Today intro, backup local date, app/savedAt in memory; titles wrap on words + midword audit; phone landscape 3D sticky; labels off axis arrows; T8 notes: phone start framing (scene camera.phone), pins clear + pinned labels beside pins, ruler/label drill framing; checks: card ×4, scene, stills (0 diff), tracker, 87 app tests, layout-check (+DejaVu Sans Mono); gates G-Eng (2 rounds), G-Learn (2), G-A11y (2), G-Art (3) pass; T7b open",
    "todo": [
-    "D-053: card body, Don't confuse and This becomes… fold away during a Check run; \"Read again\" ends the run unscored (spec first, C2)",
-    "Tablet P · Cards list + Today Continue: titles break mid-word (\"Gast/rulati/on in/one/pictu/re\", \"syncytiotrophobl/ast\") — wrap on words; chip + id under the title in narrow columns",
-    "Phone L (and short heights) · card reader: the 3D column scrolls away with the text, leaving the left half empty — pin it and fit the height (C13)",
-    "Phone P 360 px · Try it (E00.01.01, E00.01.06): labels crowd — Primitive streak label on the cranial arrow, node/streak leader lines cross (or V2 if it fixed leaders)",
-    "All devices · every card: MORE and SOURCES headings are empty — list sources; guide cards say \"App facts (ⓘ) — no book source\"; hide empty More",
-    "Card Remember line \"In your deck · next on tomorrow\" → \"Due tomorrow\"",
-    "Today intro says prompts come back after passing the Check — D-050: prompts join the deck on Read",
-    "Backup file name uses the UTC date (biostudio-backup-2026-11-20 at 05:02 IST) — use the local date",
-    "G-Eng: saved state keeps `app` 5/6 under v7 and `savedAt` older than the last tap (tablet backup 05:05 vs 05:11) — fix or explain; statuses already survive a restart",
-    "T8 note (V2): Phone P · Notochord Try it opens too far out: strand → plate → rod and the Prenotochordal label show only after zooming — tighter phone start view for sc-E05.02.01",
-    "T8 note (V2): Phone P · Notochord Q5 after answering: revealed labels crowd the pins and the top-layer label (Epiblast → ectoderm) is missing — pinned structures' labels first, beside their pin",
-    "T8 note (V2): Phone P · Pear Q4 (day drill): the 1 mm ruler was mostly off the stage in the owner's screenshot (owner may have zoomed) — check the drill start framing keeps the ruler in",
-    "T8 step 7 not done: phone Measure fps on sc-E05.02.01 → pipeline reference §2 (V2)"
+    "T7b on phone, tablet, laptop (incl. the phone fps Measure on sc-E05.02.01 → pipeline reference §2)",
+    "G-Art should: at 640×360 and at 125 % on 360 px phones one pinned label may have no room after a label drill (the Check feedback names it); day drill embryo small at 640×360; stamp wraps at 125 % in drills",
+    "G-A11y should: the toast live region is created on first use (06-shell.js) — the first message of a session can be missed; add it to index.html",
+    "Content (C2, needs G-Sci + G-Learn): E05.01.01 objective names q1's answer; E05.05.01 — put the day drill (q4) first so scrubbing Try it in q1–q3 can't show it"
    ],
-   "inputs": []
+   "inputs": [
+    {"id": "L1F.q1", "kind": "decide", "ask": "D-056: confirm Try it labels off during a Check run, leaving the card ends a run, scene phone framing, pinned labels beside pins (T7b step 11) — or say what to change", "asked_in": "Bio · Fix · L1 polish", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-056"}
+   ]
   },
   {
    "id": "V2",
@@ -661,7 +654,8 @@
    "log": "—",
    "todo": [
     "Reuse the C1 prompt with chapters 6–8 (master plan §13)",
-    "⚑ defaults stand until you pick D-039 / D-043 / D-044 (book answer + Newer evidence line)"
+    "⚑ defaults stand until you pick D-039 / D-043 / D-044 (book answer + Newer evidence line)",
+    "Fix two Ch 5 Check give-aways found in L1F (G-Learn): E05.01.01 objective names q1's answer; E05.05.01 put q4 (day drill) first"
    ],
    "inputs": []
   },

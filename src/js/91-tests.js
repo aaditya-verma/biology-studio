@@ -64,6 +64,11 @@ function appTests(){
   t('deck day maths',(()=>{const t0=new Date(2026,10,21,22,30).getTime();return new Date(lnAddDays(t0,1)).getDate()===22&&new Date(lnAddDays(t0,7)).getDate()===28&&new Date(lnAddDays(t0,3)).getHours()===0;})());
   t('status pie shapes',['none','read','und','exp'].every(s=>lnPie(s).includes('<svg'))&&STR.ln.st.exp&&STR.ln.st.und);
   t('guide card rules (D-050)',appCite('APP Deck')==='Deck'&&appCite('APP')===''&&appCite('E05.01')===null&&CARD_RULES.marks.includes('ⓘ'));
+  t('L1F viewer strings intact',typeof STR.vw.discT==='string'&&typeof STR.vw.termsT==='string'&&typeof STR.vw.discShort==='function');
+  t('L1F backup name = local date',stLocalDate(new Date(2026,10,21,0,30))==='2026-11-21'&&stLocalDate(new Date(2026,0,5,23,59))==='2026-01-05');
+  t('L1F due line + fold strings (D-053)',STR.ln.dueOn(STR.ln.tomorrow)==='Due tomorrow'&&!!STR.ln.hidT&&!!STR.ln.readAgain&&typeof STR.ln.srcBook==='function'&&lnRun('none-such')===false);
+  t('L1F Sources lists sections + registry, guide says app facts',(()=>{const c={facts:[{cite:'E05.01, E06.06 Tbl 6.4 · R06 CS6',where:'main',text:'x',mark:'✔✔'}],misconceptions:[]},g={facts:[{cite:'APP Card',where:'main',text:'y',mark:'ⓘ'}],misconceptions:[]};
+    const a=lnSrcHtml(c),b=lnSrcHtml(g);return a.includes('E05.01')&&a.includes('E06.06')&&a.includes('R06')&&!b.includes('R0')&&b.includes(STR.ln.srcApp.slice(0,10));})());
   t('strings for learn',STR.ln&&STR.nav.cards&&STR.navHint.cards&&typeof STR.ln.passed==='function'&&STR.marks['ⓘ']);
   // tokens present (B3)
   const cs=getComputedStyle(document.documentElement);t('germ tokens set',['epi','hypo','ecto','meso','endo','crest','ctx'].every(k=>cs.getPropertyValue('--g-'+k).trim()));

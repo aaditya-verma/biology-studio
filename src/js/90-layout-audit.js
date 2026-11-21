@@ -1,6 +1,6 @@
 /* Biology Studio — layout audit (RULES C8 + C13), run by tools/layout-check on every size and by ?debug=layout (button in the overlay).
    Ported from DrumPath v36 14-layout-check.js, plus tap size, text size and fixed-over-controls. Owner doc: build/design-plan.md §7.
-   Checks the current screen: overlap · spill · page-wider · tap < --tap · text < --fs-min · fixed/sticky bars covering a control.
+   Checks the current screen: overlap · spill · page-wider · tap < --tap · text < --fs-min · fixed/sticky bars covering a control · a word split mid-word in a list title or h1 (L1F).
    EDIT: thresholds come from the CSS tokens; skip an element on purpose with data-layout-skip. */
 'use strict';
 function layoutAudit(root){
@@ -49,5 +49,9 @@ function layoutAudit(root){
     const br=bar.getBoundingClientRect(),sc=document.scrollingElement,atEnd=sc.scrollTop+H>=sc.scrollHeight-1,atTop=sc.scrollTop<=0;
     if(br.top>H/2&&!atEnd)return;if(br.bottom<H/2&&!atTop&&getComputedStyle(bar).position!=='sticky')return;if(br.bottom<H/2&&getComputedStyle(bar).position==='sticky'&&!atTop)return;
     issues.push({kind:'fixed-over',what:name(el)+' covered by '+name(bar)});});
+  // 7. L1F (T7): a word split across two lines in a list-row title or an h1 ("Gast/rulati/on" on tablet portrait) — titles wrap on words; a break at a hyphen or dash is a word break, not mid-word
+  root.querySelectorAll('.lrow .nm,h1').forEach(el=>{if(!vis(el)||skip(el))return;const w2=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let t;
+    while((t=w2.nextNode())){for(const m of t.textContent.matchAll(/[\p{L}\p{N}]{4,}/gu)){const r=document.createRange();r.setStart(t,m.index);r.setEnd(t,m.index+m[0].length);
+      if(new Set([...r.getClientRects()].filter(q=>q.width>1).map(q=>Math.round(q.top))).size>1){issues.push({kind:'midword',what:name(el)+' splits “'+m[0]+'”'});return;}}}});
   return issues;
 }

@@ -213,6 +213,17 @@ def check_scene(path, S, concepts, dbg):
             err(f"camera.{f} missing")
     if isinstance(c.get("fit_mm"), (int, float)) and c["fit_mm"] <= 0:
         err("camera.fit_mm must be > 0")
+    if "phone" in c:   # L1F: phone-portrait start framing (scene-spec §3)
+        ph = c["phone"]
+        if not isinstance(ph, dict) or set(ph) - {"zoom", "shift", "pan"}:
+            err("camera.phone must be {zoom, shift, pan}")
+        else:
+            if not (isinstance(ph.get("zoom", 1), (int, float)) and 1 <= ph.get("zoom", 1) <= 4):
+                err("camera.phone.zoom must be 1–4")
+            if not (isinstance(ph.get("shift", 0), (int, float)) and 0 <= ph.get("shift", 0) <= 0.3):
+                err("camera.phone.shift must be 0–0.3")
+            if not (isinstance(ph.get("pan", 0), (int, float)) and -0.3 <= ph.get("pan", 0) <= 0.3):
+                err("camera.phone.pan must be −0.3…0.3")
     vids = []
     for v in S.get("views", []):
         vids.append(v.get("id"))

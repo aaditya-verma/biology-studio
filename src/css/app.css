@@ -177,7 +177,10 @@ html.dev-d .today{grid-template-columns:repeat(3,minmax(0,1fr))}
 .stat{display:flex;flex-direction:column} .stat b{font-size:1.75rem;line-height:1.1}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:var(--gap)}
 .lrow{display:flex;align-items:center;gap:10px;width:100%;min-width:0;flex:1 1 auto;min-height:var(--tap);padding:6px 8px;border:0;border-radius:var(--r-sm);background:none;text-align:left;cursor:pointer;color:var(--ink)}
-.lrow:hover{background:var(--surface-2)} html.dev-p .lrow.c .id{display:none} .lrow .nm{flex:1;min-width:0;overflow-wrap:break-word;hyphens:manual} .lrow .id{font:var(--fs-xs) var(--mono);color:var(--muted);white-space:nowrap}
+.lrow:hover{background:var(--surface-2)} html.dev-p .lrow.c .id{display:none} .lrow .nm{flex:1;min-width:0;overflow-wrap:break-word;hyphens:manual}
+/* L1F (T7): list titles wrap on words — when the column is narrow the chip + id drop under the title instead of squeezing it (a word longer than the whole row still breaks, never spills) */
+.lrow{flex-wrap:wrap;row-gap:2px} .lrow .nm{flex:1 1 min(100%,10em)}
+.bm-ch{flex-wrap:wrap;justify-content:flex-end;gap:0 4px} .bm-ch>.lrow{flex:1 1 11.5em}   /* Book-map chapter rows: the testing-mode ✎ drops under a long title in a narrow rail */ .lrow .id{font:var(--fs-xs) var(--mono);color:var(--muted);white-space:nowrap}
 
 /* ---------- 6. Book map (§8a: phone drill-down · tablet portrait rail + detail · tablet landscape 2 panes · desktop 3 panes) ---------- */
 .bm{display:grid;gap:var(--gap);align-items:start;grid-template-columns:minmax(0,1fr)}
@@ -258,6 +261,10 @@ html.dev-tl .settings,html.dev-d .settings{grid-template-columns:repeat(2,minmax
 .stage-dark .L-acc{border-color:var(--accent-on-dark)}
 .vw-stamp{position:absolute;left:10px;top:10px;padding:3px 10px;border-radius:8px;background:rgb(20 22 26 / .88);font-size:var(--fs-sm);font-variant-numeric:tabular-nums;max-width:calc(100% - 20px)}
 .vw-disc{position:absolute;left:10px;top:calc(10px + var(--stamp-h,1.75em) + 6px);max-width:min(64%,420px);font-size:var(--fs-xs);color:var(--muted);line-height:1.35;background:rgb(20 22 26 / .78);border-radius:6px}
+/* L1F: the notes line stays ONE line (D-036 (9)) — on a short stage (< 300 px: small phones, phone landscape) it shows the first note + '+n more' */
+.vw-stage{container:vwstage / size}
+.vw-dbtn .d-short{display:none}
+@container vwstage (max-height:300px){.vw-dbtn .d-long{display:none}.vw-dbtn .d-short{display:inline}}
 .vw-dbtn{display:block;min-height:var(--tap);padding:0 10px;background:none;border:0;color:var(--ink);font:inherit;font-size:var(--fs-xs);font-weight:600;cursor:pointer;text-align:left}
 .vw-disc ul{margin:0;padding:0 10px 8px 24px} .vw-dbtn[aria-expanded="false"]+ul{display:none}
 .vw-terms dt{font-weight:700;margin-top:6px} .vw-terms dd{margin:0 0 4px}
@@ -543,6 +550,8 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .ln-st.st-und,.ln-st.st-exp{border-color:var(--accent-text);color:var(--ink)}
 .ln-st.st-exp{border-width:2px}
 .ln-row .ln-st{flex:none}
+.ln-row,.ln-today .lrow{flex-wrap:wrap;row-gap:2px}
+.ln-row .nm,.ln-today .lrow .nm{flex:1 1 min(100%,13em)}
 .ln-row[aria-current="page"]{background:var(--surface-2);box-shadow:inset 3px 0 0 var(--accent-text)}
 /* Check */
 .ln-check .ln-q{margin:4px 0 10px}
@@ -561,13 +570,28 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .ln-fb{margin-top:10px;padding:10px 12px;border-radius:var(--r-sm);background:var(--surface-2);border-left:4px solid var(--accent-text)}
 .ln-fb p{margin:0 0 6px}
 .ln-res{font-weight:700}
-.ln-fb:focus,.ln-res:focus,.ln-model:focus,.ln-dk [tabindex="-1"]:focus,#lnQ:focus{outline:2px solid var(--accent-text);outline-offset:3px}   /* focused panels show where you are (G-A11y) */
+.ln-fb:focus,.ln-res:focus,#lnBody:focus,.ln-model:focus,.ln-dk [tabindex="-1"]:focus,#lnQ:focus{outline:2px solid var(--accent-text);outline-offset:3px}   /* focused panels show where you are (G-A11y) */
 .ln-model{margin:8px 0;padding:8px 12px;background:var(--surface-2);border-radius:var(--r-sm)}
 .ln-model h3{margin:0 0 4px}
 .ln-rq{padding-left:0;list-style:none;margin:0}
 .ln-rq li{border-top:1px solid var(--line)}
-.ln-rq summary,.ln-more summary,.ln-src summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
-.ln-more summary .ln-h,.ln-src summary .ln-h{margin:0}
+.ln-rq summary,.ln-more summary,.ln-srcf summary{min-height:var(--tap);display:flex;align-items:center;gap:6px;cursor:pointer}
+.ln-more summary .ln-h{margin:0}
+/* folded sections show they open (a flex summary drops the browser's marker — T7: "empty headings") */
+.ln-rq summary::before,.ln-more summary::before,.ln-srcf summary::before,.ln-alt summary::before{content:'▸' / '';flex:none;width:1em;color:var(--muted);font-weight:700}
+.ln-rq details[open]>summary::before,.ln-more[open]>summary::before,.ln-srcf[open]>summary::before,.ln-alt[open]>summary::before{content:'▾' / ''}
+.ln-srcs{list-style:none;padding-left:0}
+.ln-srcs li{padding-left:1em;text-indent:-1em}
+.ln-srcs .mono{font-size:var(--fs-xs);color:var(--muted)}
+/* D-053: while a Check run is open the card text folds away; one line says so and offers Read again (ends the run unscored) */
+.ln-hid{display:none}
+.ln-card.ck-on .ln-hid{display:block;padding:8px 12px;border:1px dashed var(--line-strong);border-radius:var(--r)}
+.ln-hid p{margin:0 0 6px}
+.ln-hid .row{gap:10px;align-items:center;flex-wrap:wrap}
+.ln-hid .row .xs{flex:1 1 14em}
+.ln-hid .btn{flex:none}
+.ln-card.ck-on #vwFull{display:none}   /* no full 3D (labels on) mid-run */
+.ln-card.ck-on :is(.ln-body,.ln-adult,.ln-clin,.ln-mis,.ln-expl,.ln-rem,.ln-shows,.ln-more,.ln-src){display:none}
 .ln-rq details p{margin:0 0 8px}
 .ln-facts{padding-left:1.1em}
 .ln-facts li{margin-bottom:4px}
@@ -593,16 +617,16 @@ html.dev-p .tr-dl,html.dev-pl .tr-dl,html.dev-d .tr-dl{grid-template-columns:min
 .ln-try.drill .row .xs{display:none}
 .vw.drill .vw-panel{padding-top:6px}
 .vw.drill .vw-giz{top:8px;right:8px;left:auto;bottom:auto}
-.vw.drill .vw-disc,.vw.drill .vw-stamp{max-width:calc(100% - 112px)}   /* the notes plate stops short of the gizmo */
+.vw.drill .vw-disc,.vw.drill .vw-stamp{max-width:calc(100% - 112px)}
+.vw.drill .vw-stamp{font-size:var(--fs-xs)}   /* L1F: one line beside the gizmo on a 360 px phone, so the top band stays free for pins + labels */   /* the notes plate stops short of the gizmo */
 html .vw.drill:not(.dt-day) .vw-disc{top:auto;bottom:10px;max-width:calc(100% - 130px)}   /* drills: the notes plate sits bottom-left (free once the gizmo moves), so pins on the top layer stay clear */
 /* phone landscape: while a drill is open the 3D column is sticky and exactly one screen tall, so the stage stays beside the selects (G-Art, G-A11y) */
-html.dev-pl .ln-media:has(.ln-try.drill){position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 4px);align-self:start}
-html.dev-pl .ln-try.drill .vw.inl .vw-stage{height:max(150px,calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 130px))}
 html.dev-pl .ln-media:has(.ln-try.drill) .ln-watch,html.dev-pl .ln-try.drill>.row{display:none}   /* drills: the gizmo moves top-right, clear of the ruler + pins (G-Art) */
 .vw-turn{gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px}
 .vw-turn .btn{flex:0 0 auto}
 .vw-pin{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 13px/1 var(--font);
   color:var(--ink);background:rgb(20 22 26 / .9);border:2px solid var(--accent-on-dark);pointer-events:none}
+.vw-lb[data-pinno]::before{content:attr(data-pinno) / '';display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:6px;border-radius:50%;border:2px solid var(--accent-on-dark);font-weight:800;font-size:11px;line-height:1}   /* L1F: a pinned label placed away from its pin carries the pin's number */
 .vw-pin.on{box-shadow:0 0 0 4px var(--accent-on-dark)}
 .vw-lost{position:absolute;left:12px;right:12px;top:40%;text-align:center;padding:10px;border-radius:var(--r);background:rgb(20 22 26 / .92)}
 .vw-lost p{margin:0 0 8px}
@@ -643,7 +667,23 @@ html.dev-p .vw.inl .vw-stage{height:clamp(200px,40dvh,380px)}
 html.dev-p .vw.inl .vw-panel{padding-top:8px}
 /* phone landscape: 3D │ text; the 3D column stays in view */
 html.dev-pl .ln-card{grid-template-columns:minmax(0,55fr) minmax(0,45fr);grid-template-areas:"media head" "media text";grid-template-rows:auto 1fr}
-html.dev-pl .vw.inl .vw-stage{height:max(200px,calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 2 * var(--pad) - 40px))}   /* the 3D near full height; it scrolls with the page (a sticky column taller than the screen would hide its controls) */
+/* L1F (T7): the 3D column is sticky and exactly one screen tall; the stage takes what the panel leaves, so it never scrolls away with the text */
+html.dev-pl .ln-media{position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 4px);align-self:start;height:calc(100dvh - var(--top-h) - env(safe-area-inset-top) - 4px - var(--pad));gap:6px}
+html.dev-pl .ln-try{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+html.dev-pl #lnVw{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+html.dev-pl .vw.inl{flex:1 1 auto;min-height:0;grid-template-rows:minmax(0,1fr) auto;align-items:stretch}
+html.dev-pl .vw.inl .vw-stage{height:auto;min-height:120px}
+html.dev-pl .ln-watch{display:none}
+/* phone landscape Try it: day row + an icon-only Open full 3D on one line, no key-day ticks — the stage gets the height (G-Art) */
+html.dev-pl .vw.inl:not(.drill) .vw-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;align-items:center;padding-top:6px;padding-bottom:6px}
+html.dev-pl .vw.inl:not(.drill) .vw-keys{display:none}
+html.dev-pl .vw.inl:not(.drill) .vw-inl-act{margin:0}
+html.dev-pl #vwFull{width:var(--tap);padding:0;justify-content:center}
+html.dev-pl .vw.drill .vw-turn{flex-wrap:nowrap;gap:4px;margin-top:0}
+html.dev-pl .vw.drill .vw-turn .btn.sm{padding-left:10px;padding-right:10px;white-space:nowrap}
+html.dev-pl .vw.drill .vw-panel{padding-top:6px;padding-bottom:6px}
+html.dev-pl #vwFull .vf-t,html.dev-pl .vw.drill .vw-head{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* phone landscape: Watch it ('Coming soon' until L3) is left out so the stage gets the height (design plan §2) */
+html.dev-pl .ln-try>.row{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* the Try it heading stays for screen readers */
 html.dev-pl .vw.inl .vw-head,html.dev-pl .vw-inl-act .xs,html.dev-pl .ln-try .row .xs,html.dev-pl .ln-watch .xs{display:none}
 html.dev-pl .ln-watch{padding:4px 10px}
 /* tablet portrait: 3D on top (~45 %), text below at reading width */

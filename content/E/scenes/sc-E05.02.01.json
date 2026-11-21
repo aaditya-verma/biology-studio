@@ -1,7 +1,7 @@
 {
  "spec": 1,
  "id": "sc-E05.02.01",
- "version": 1,
+ "version": 2,
  "book": "E",
  "cards": [
   "E05.02.01"
@@ -280,7 +280,8 @@
  "camera": {
   "azimuth_deg": -105,
   "elevation_deg": 24,
-  "fit_mm": 0.5
+  "fit_mm": 0.5,
+  "phone": {"zoom": 1.8, "shift": 0.12}
  },
  "views": [
   {

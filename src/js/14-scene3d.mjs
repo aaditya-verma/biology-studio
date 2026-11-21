@@ -4,6 +4,7 @@
    Colours, edges and patterns come ONLY from the CSS tokens read off the stage element (RULES B3) — never from scene files.
    V2 (D-054): `notochord` part (lofted midline tube: prenotochordal strand → notochordal plate → rod, cranial end first per the book, D-029),
    per-key fit_mm, disc streak_scale + meso_midline_gap, stills of any state (snapshot — drills), viewAngle (rotate drills), context-loss hooks.
+   L1F: `axis-o` anchor (the arrows' origin — the viewer keeps labels off the axis arrows) and screenBox() (drill framing keeps the embryo + ruler clear of the overlays).
    EDIT: lights + materials in makeRenderer(); pattern drawings in PATTERNS; budgets in CONFIG.viewer (02-config.js). */
 import * as THREE from '../../lib/three-r170/three.module.min.js';
 
@@ -310,7 +311,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
           const a = new THREE.ArrowHelper(v, new THREE.Vector3(0, 0, z), l, c, l * 0.1, l * 0.05); a.traverse(o => { o.userData.keepGeo = true; o.userData.ownMat = true; }); g.add(a);
           V.anchors['axis-' + k] = { layer: part.layer, p: [d[0] * l * 1.2, d[1] * l * 1.2, z + d[2] * l * 1.2], axis: k };
         }
-        g.visible = V.layersOn[part.layer] !== false; addObj(g, part.layer);
+        V.anchors['axis-o'] = { layer: part.layer, p: [0, 0, z], axis: 'o', len: 1.2 };   // origin: arrows run from here to 1/1.2 of the way to each tip anchor (L1F)
+        g.userData.noFrame = true; g.visible = V.layersOn[part.layer] !== false; addObj(g, part.layer);
       } else if (part.kind === 'planes') {
         const s = part.size_mm / u;
         for (const pl of part.planes) {
@@ -320,7 +322,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
           const dash = { x: [0.12, 0.08], y: null, z: [0.03, 0.05] }[pl.normal];   // each plane its own edge: dashed · solid · dotted (G-Art)
           const lm = dash ? new THREE.LineDashedMaterial({ color: new THREE.Color(V.T.guide.edge), dashSize: dash[0], gapSize: dash[1] }) : new THREE.LineBasicMaterial({ color: new THREE.Color(V.T.guide.edge) });
           const e = new THREE.LineSegments(new THREE.EdgesGeometry(geo), lm); if (dash) e.computeLineDistances(); e.userData.ownMat = true; m.add(e);
-          m.renderOrder = 8; m.visible = V.layersOn[pl.layer] !== false; addObj(m, pl.layer);
+          m.renderOrder = 8; m.userData.noFrame = true; m.visible = V.layersOn[pl.layer] !== false; addObj(m, pl.layer);
           const h = s / 2, hv = (pl.normal === 'z' ? s * 0.8 : s * 0.6) / 2;
           V.anchors['plane-' + pl.id] = { layer: pl.layer, p: pl.normal === 'x' ? [0, h * 0.95, -hv * 0.9] : pl.normal === 'y' ? [-h * 0.95, 0, hv * 0.9] : [h * 0.95, -hv * 0.95, 0] };   // own outer corner, away from the crossing
         }
@@ -370,7 +372,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     const view = V.fitU / V.zoom, asp = V.w / V.h;
     let hh, hw; if (asp >= 1) { hh = view / 2; hw = hh * asp; } else { hw = view / 2; hh = hw / asp; }
     const sh = (V.shift || 0) * 2 * hh;   // drills: move the subject down, below the stamp + notes plate
-    cam.left = -hw; cam.right = hw; cam.top = hh + sh; cam.bottom = -hh + sh; cam.updateProjectionMatrix();
+    const px = (V.pan || 0) * 2 * hw;   // L1F phone framing: + moves the subject left (scene-spec §3 camera.phone.pan)
+    cam.left = -hw + px; cam.right = hw + px; cam.top = hh + sh; cam.bottom = -hh + sh; cam.updateProjectionMatrix();
   }
   const pxPerUnit = () => V.h / (cam.top - cam.bottom);
   function project(p) { const v = new THREE.Vector3(...p).project(cam); return { x: (v.x + 1) / 2 * V.w, y: (1 - v.y) / 2 * V.h, z: v.z }; }
@@ -422,6 +425,12 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
         out[k] = { ...a, s: project(a.p), hid: !!(h && h.object.userData.layer !== a.layer && h.distance < 50 - 0.03) }; }
       return out; },
     pxPerMm() { return pxPerUnit() / V.scene.units.mm_per_unit; },
+    /* screen box (px) of everything drawn except guides (axes, planes, debug) — drill framing (scene-spec §8a, L1F) */
+    screenBox() { placeCamera(); const b = new THREE.Box3(), t = new THREE.Box3(); let any = false;
+      for (const o of V.objs) { if (!o.visible || o.userData.noFrame || o.userData.layer === '_debug') continue; t.setFromObject(o); if (t.isEmpty()) continue; b.union(t); any = true; }
+      if (!any) return null; let l = Infinity, tp = Infinity, r = -Infinity, bt = -Infinity;
+      for (const x of [b.min.x, b.max.x]) for (const y of [b.min.y, b.max.y]) for (const z of [b.min.z, b.max.z]) { const q = project([x, y, z]); l = Math.min(l, q.x); r = Math.max(r, q.x); tp = Math.min(tp, q.y); bt = Math.max(bt, q.y); }
+      return { l, t: tp, r, b: bt, W: V.w, H: V.h, shift: V.shift || 0, pan: V.pan || 0, zoom: V.zoom }; },
     axisDirs, onFrame(f) { V.onFrame = f; }, render: kick,
     pick(x, y) { const r = new THREE.Raycaster(), v = new THREE.Vector2(x / V.w * 2 - 1, -(y / V.h) * 2 + 1); r.setFromCamera(v, cam);
       const hit = r.intersectObjects(V.hoverables.filter(m => m.visible), false)[0]; return hit ? hit.object.userData.layer : null; },
@@ -450,6 +459,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     lost: () => !!V.lost,
     loseContext(ms = 600) { const x = renderer.getContext().getExtension('WEBGL_lose_context'); if (!x) return false; x.loseContext(); setTimeout(() => x.restoreContext(), ms); return true; },   // ?debug=viewer test
     setShift(f) { if ((V.shift || 0) === f) return; V.shift = f; kick(); },
+    setPan(f) { if ((V.pan || 0) === f) return; V.pan = f; kick(); },
     dispose() { cancelAnimationFrame(V.raf); clearTimeout(V.rb); if (V.stress) { V.stress.geo.dispose(); V.stress.mat.dispose(); V.stress = null; } clear(); disposeMats(); renderer.dispose(); try { renderer.forceContextLoss(); } catch (_) {} V.scene = null; },   // Restart 3D: nothing left on the dead context (G-Eng)
   };
   return api;

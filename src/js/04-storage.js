@@ -3,7 +3,9 @@
    · Writes are guarded (DrumPath v35 lesson): the stored rev is read and the new record written in ONE transaction;
      if another tab wrote since, this tab merges the stored copy in first (unions, furthest, newer) and tries again.
    · If the write can't be checked, nothing is written: the change is stashed in localStorage and merged back next start.
-   · Save log: last 20 events, this device only (Settings › Storage). Testing mode keeps everything in memory. */
+   · Save log: last 20 events, this device only (Settings › Storage). Testing mode keeps everything in memory.
+   · L1F (T7, G-Eng): the in-memory state now carries what was written — `app` = the running version from load on, `savedAt` = the last
+     successful write — so a backup shows the truth and merges pick the newer copy correctly. The backup file name uses the local date. */
 'use strict';
 let state=null;
 const STORE={mode:'mem',db:null,rev:0,timer:0,busy:false,again:false,err:null,merged:0};
@@ -51,11 +53,12 @@ function idbPut(db){return new Promise((res,rej)=>{let tx,out=null;try{tx=db.tra
     if(cur&&cr!==STORE.rev){out={ok:false,why:'changed',cur:cr};try{tx.abort();}catch(_){}return;}
     if(cur&&(cur.app||0)>APP.v){out={ok:false,why:'newer-app',cur:cr};try{tx.abort();}catch(_){}return;}
     const rec=JSON.parse(JSON.stringify(state));rec.rev=cr+1;rec.app=APP.v;rec.savedAt=Date.now();
-    st.put(rec,'main');out={ok:true,from:cr,to:rec.rev};};});}
+    st.put(rec,'main');out={ok:true,from:cr,to:rec.rev,at:rec.savedAt};};});}
 
 async function stLoad(){
   if(FLAGS.test){STORE.mode='mem';state=stFill(stNew());slog('load',{mode:'test'});return;}
   try{const db=await idbOpen();STORE.db=db;STORE.mode='idb';const s=await idbGet(db);state=stFill(s);STORE.rev=s?s.rev||0:0;
+    if((state.app||0)<APP.v){slog('app',{from:state.app||0,to:APP.v});state.app=APP.v;}   // the running version owns the record from now on (a newer one stays: writes are refused, idbPut)
     let stash=null;try{stash=JSON.parse(localStorage.getItem(CONFIG.keys.stash));}catch(_){}
     if(stash){state=stMerge(state,stash);localStorage.removeItem(CONFIG.keys.stash);slog('stash-merged');stSave();}
     if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
@@ -69,7 +72,7 @@ async function stWrite(){
   try{for(let i=0;i<3;i++){
       if(!STORE.db)STORE.db=await idbOpen();
       const r=await idbPut(STORE.db);
-      if(r&&r.ok){STORE.rev=r.to;state.rev=r.to;slog('save',{from:r.from,to:r.to});break;}
+      if(r&&r.ok){STORE.rev=r.to;state.rev=r.to;state.savedAt=r.at;state.app=Math.max(state.app||0,APP.v);slog('save',{from:r.from,to:r.to});break;}   // memory = what was written (T7 G-Eng)
       if(r&&r.why==='newer-app'){slog('refused',{why:'a newer app version saved here — reload'});toast('A newer version saved data here. Reload the app.');break;}
       const theirs=await idbGet(STORE.db);state=stMerge(state,theirs);STORE.rev=theirs?theirs.rev||0:0;STORE.merged++;slog('merge',{to:STORE.rev});
     }
@@ -80,9 +83,10 @@ async function stWrite(){
 async function stResume(){if(STORE.mode!=='idb'||!STORE.db)return;try{const s=await idbGet(STORE.db);if(s&&(s.rev||0)!==STORE.rev){state=stMerge(state,s);STORE.rev=s.rev||0;slog('resume-merge',{to:STORE.rev});}}catch(_){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)stResume();});
 
-/* backup (RULES A3): JSON file of the state record */
+/* backup (RULES A3): JSON file of the state record; named by the LOCAL date (05:02 IST on 21 Nov is the 21st, not UTC's 20th — T7) */
+const stLocalDate=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function stExport(){const blob=new Blob([JSON.stringify({kind:'biostudio-backup',app:APP.v,exported:new Date().toISOString(),state},null,1)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='biostudio-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='biostudio-backup-'+stLocalDate()+'.json';document.body.appendChild(a);a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);slog('export');}
 async function stImport(file){const j=JSON.parse(await file.text());if(!j||j.kind!=='biostudio-backup'||!j.state||typeof j.state!=='object')throw new Error(STR.importBad);
   if((j.app||0)>APP.v)throw new Error(STR.importNewer);

@@ -60,7 +60,7 @@ function scViewer(v,S,o={}){
     <div class="vw-cv" id="vwCv"></div>
     <svg class="vw-lead" id="vwLead" aria-hidden="true"></svg><div class="vw-lbls" id="vwLbls" aria-hidden="true"></div>
     <div class="vw-stamp" id="vwStamp" role="status" aria-live="polite"></div>
-    <div class="vw-disc" id="vwDisc"><button type="button" class="vw-dbtn" data-vw="disc" aria-expanded="${!!SC.discOpen}" aria-controls="vwDiscL">ⓘ ${esc(STR.vw.discLine(S.disclaimers))}</button>
+    <div class="vw-disc" id="vwDisc"><button type="button" class="vw-dbtn" data-vw="disc" aria-expanded="${!!SC.discOpen}" aria-controls="vwDiscL">ⓘ <span class="d-long">${esc(STR.vw.discLine(S.disclaimers))}</span><span class="d-short">${esc(STR.vw.discShort(S.disclaimers))}</span></button>
       <ul id="vwDiscL">${S.disclaimers.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>
     <canvas class="vw-giz" id="vwGiz" width="88" height="88" role="img" aria-label="${esc(STR.vw.gizmo)}"></canvas>
     <div class="vw-scale" id="vwScale" aria-hidden="true"><i></i><span></span></div>
@@ -81,7 +81,7 @@ function scViewer(v,S,o={}){
       <button type="button" class="btn icon" data-vw="play" id="vwPlay" aria-label="${esc(STR.vw.play)}" title="${esc(STR.vw.play)} (Space)">${icon('play',20)}</button>
     </div>
     <div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>`}
-    ${o.drill?'':o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull">${icon('scene',18)} ${esc(STR.ln.openFull)}</button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
+    ${o.drill?'':o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull" title="${esc(STR.ln.openFull)}">${icon('scene',18)} <span class="vf-t">${esc(STR.ln.openFull)}</span></button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
     <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-pressed="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
     <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" aria-pressed="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
     <div class="vw-sec" data-sec="cut"><h2 class="vw-h">${esc(STR.vw.heads.cut)}</h2>
@@ -117,15 +117,36 @@ function scMount(S,st){
         onLost:()=>{dlog('viewer','context lost');clearTimeout(SC.lostT);SC.lostT=setTimeout(()=>{if(SC.eng&&SC.eng.lost())$('#vwLost')?.classList.remove('hidden');},CONFIG.viewer.lostMs);},   // Android may restore on its own: wait a moment
         onRestored:()=>{dlog('viewer','context restored');clearTimeout(SC.lostT);$('#vwLost')?.classList.add('hidden');scOverlay();}});
       if(!e.ok){SC.engErr=e.err||'WebGL';throw new Error(SC.engErr);}SC.eng=e;}
-    const E=SC.eng;E.onFrame(scOverlay);E.setShift(SC.drill&&SC.drill.type==='label'?CONFIG.viewer.drillShift:0);   // drills: the subject sits below the stamp + notes plate (G-Art)
-    if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom});SC.cur=S.id;}else{E.setTokens();if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
+    const E=SC.eng;E.onFrame(scOverlay);E.setPan(SC.drill?0:scStart(S).pan);E.setShift(SC.drill?(SC.drill.shift??(SC.drill.type==='label'?CONFIG.viewer.drillShift:0)):scStart(S).shift);   // drills: the subject sits below the stamp + notes plate (G-Art); phone: the scene's start framing (L1F)
+    if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom??scStart(S).zoom});SC.cur=S.id;}else{E.setTokens();if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
     if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
-    scLabelsDom(S);SC.ready=true;scDay(SC.st[S.id].day,true);requestAnimationFrame(()=>requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;}));
+    scLabelsDom(S);SC.ready=true;if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{if(SC.ready)scOverlay();});   // L1F (G-Art): labels measured before the web font loads would grow afterwards — place them again
+    scDay(SC.st[S.id].day,true);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
   }).catch(e=>{console.error(e);scDay(SC.st[S.id].day,true);const m=$('#vwMsg');if(m){m.textContent=STR.vw.noGL+' ('+e.message+')';m.classList.remove('hidden');}});
 }
+/* L1F: start framing. Phone portrait uses the scene's camera.phone {zoom, shift} (scene-spec §3) while the learner has not zoomed; other classes 1 / 0 */
+function scStart(S){const p=DEV.cls==='dev-p'&&S.camera&&S.camera.phone,c=(v,a,b)=>Math.max(a,Math.min(b,+v||0));return p?{zoom:c(p.zoom||1,1,4),shift:c(p.shift,0,0.3),pan:c(p.pan,-0.3,0.3)}:{zoom:1,shift:0,pan:0};}
+/* L1F (T8): a drill on a scene with a ruler opens with the embryo + the whole ruler clear of the stamp, notes plate, gizmo and scale bar
+   (scene-spec §8a): zoom out if needed, then move the subject into the free band. Only while the view is still the drill's start view;
+   the result becomes the drill's Start view (SC.frames keeps it per drill, so a re-render or rotate reuses it once the learner has turned). */
+function scFrameDrill(){const E=SC.eng,d=SC.drill,stage=$('#vwStage');if(!E||!d||!stage)return;const memo=(SC.frames||(SC.frames={}))[d.key],st=E.state(),h=d.home;
+  const atHome=Math.abs(st.az-h.az)<0.5&&Math.abs(st.el-h.el)<0.5&&Math.abs(st.zoom-(memo?memo.zoom:d.zoom0))<1e-3;
+  if(!atHome){if(memo){d.shift=memo.shift;d.home={...h,zoom:memo.zoom};E.setShift(memo.shift);}return;}
+  E.setShift(0);E.view(null,null,d.zoom0);let b=E.screenBox();if(!b||!b.W||!b.H)return;
+  if(d.pins){const A=E.anchors(false),P=d.pins.map(p=>A[p.at]).filter(Boolean).map(a=>a.s),m=CONFIG.viewer.frame.pin;   // label drills: frame the pinned structures (+ room for their pins), not the whole cut face
+    if(P.length)b={...b,l:Math.min(...P.map(q=>q.x))-m,r:Math.max(...P.map(q=>q.x))+m,t:Math.min(...P.map(q=>q.y))-m+CONFIG.viewer.frame.padTop,b:Math.max(...P.map(q=>q.y))+m-CONFIG.viewer.frame.pad};}
+  const sr=stage.getBoundingClientRect(),rel=el=>{if(!el||el.offsetParent===null)return null;const a=el.getBoundingClientRect();return {t:a.top-sr.top-6,b:a.bottom-sr.top+6};};
+  const ov=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(x=>rel($(x))).filter(Boolean),H=b.H,W=b.W;
+  const up=r=>(r.t+r.b)/2<H/2,top=Math.max(8,...ov.filter(up).map(r=>r.b)),bot=Math.min(H-8,...ov.filter(r=>!up(r)).map(r=>r.t));   // an overlay belongs to the band its middle is in
+  const padT=CONFIG.viewer.frame.padTop,padO=CONFIG.viewer.frame.pad,bw=b.r-b.l+2*padO,bh=b.b-b.t+padT+padO;
+  const k=Math.min(CONFIG.viewer.frame.maxIn,(W-16)/bw,Math.max(40,bot-top)/bh),z=Math.max(0.35,b.zoom*k),y0=(0.5+b.shift)*H,cy=(b.t-padT+b.b+padO)/2,cy2=y0+(cy-y0)*(z/b.zoom);
+  const sh=Math.max(-0.45,Math.min(0.45,b.shift+((top+bot)/2-cy2)/H));
+  d.shift=sh;d.home={...h,zoom:z};SC.frames[d.key]={zoom:z,shift:sh};{const ks=Object.keys(SC.frames);if(ks.length>20)delete SC.frames[ks[0]];}   // keep the last 20 (G-Eng nit)
+  E.setShift(sh);E.view(null,null,z);scSave();
+  dlog('viewer','drill framed',d.key,'zoom',z.toFixed(2),'shift',sh.toFixed(2),'free',Math.round(top)+'–'+Math.round(bot));}
 function scSave(){const S=scCur();if(!S||!SC.eng)return;Object.assign(SC.st[S.id],SC.eng.state());}
 function scCur(){const id=ROUTE.name==='scene'?ROUTE.id:ROUTE.name==='card'?SC.inline:null;return id?SC.loaded[id]||null:null;}
 
@@ -159,41 +180,77 @@ function scLabelsDom(S){
     +pins.map((p,i)=>`<span class="vw-pin hidden" data-pin="${i}">${p.n}</span>`).join('');
   SC.lbl=items;$$('.vw-lb',box).forEach(el=>{const it=items.find(x=>x.k===el.dataset.k);if(it){it.el=el;}});SC.hoverEl=$('.vw-lb.hov',box);
 }
+/* pin spots: offsets on a 10 px grid covering the whole stage, nearest first (a slight preference for above: the pin reads before the layer under it) */
+function scPinGrid(W,H,min){const k=Math.round(W)+'x'+Math.round(H)+':'+min,c=SC.pinGrids||(SC.pinGrids={});if(c[k])return c[k];if(Object.keys(c).length>6)SC.pinGrids={};const g=[];
+  for(let dx=-W;dx<=W;dx+=10)for(let dy=-H;dy<=H;dy+=10){const d=Math.hypot(dx,dy);if(d>=min)g.push([dx,dy,d+(dy>0?4:0)]);}g.sort((p,q)=>p[2]-q[2]);SC.pinGrids[k]=g;return g;}
 function scOverlay(){
   const S=scCur(),E=SC.eng,stage=$('#vwStage');if(!S||!E||!stage||!SC.ready)return;
   const sp=$('#vwStamp');if(sp)stage.style.setProperty('--stamp-h',sp.offsetHeight+'px');   // the notes plate sits under the stamp's real height (a wrapped stamp never covers it — CI fonts, V2)
   const W=stage.clientWidth,H=stage.clientHeight,A=E.anchors(!SC.drill||SC.drill.labels),st=E.state(),day=st.day;   // occlusion raycasts only when labels can show (G-Eng)
   const rel=el=>{if(!el||el.offsetParent===null)return null;const a=el.getBoundingClientRect(),b=stage.getBoundingClientRect();return {l:a.left-b.left-4,t:a.top-b.top-4,r:a.right-b.left+4,b:a.bottom-b.top+4};};
   const blocked=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>rel($(s))).filter(Boolean),placed=[],lines=[],seen=[];
-  const hit=(r)=>blocked.concat(placed).some(o=>r.l<o.r&&r.r>o.l&&r.t<o.b&&r.b>o.t);
-  const lblOn=SC.drill?SC.drill.labels:SC.labels,segs=[];
+  const ov=(r,o)=>r.l<o.r&&r.r>o.l&&r.t<o.b&&r.b>o.t,hit=r=>blocked.some(o=>ov(r,o))||placed.some(o=>ov(r,o));
+  const lblOn=SC.drill?SC.drill.labels:SC.labels&&!(SC.runOff&&ROUTE.name==='card'),segs=[];   // L1F (G-Learn): no Try it labels while a Check run is open — they would answer it
   /* leader lines never cross each other or another label (V1 note: phone landscape at 125 %) */
   const cross=(a,b,c,d)=>{const o=(p,q,r)=>Math.sign((q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x));return o(a,b,c)!==o(a,b,d)&&o(c,d,a)!==o(c,d,b);};
   const segHitsRect=(a,b,r)=>{const P=[{x:r.l,y:r.t},{x:r.r,y:r.t},{x:r.r,y:r.b},{x:r.l,y:r.b}];return [0,1,2,3].some(i=>cross(a,b,P[i],P[(i+1)%4]));};
-  const items=SC.lbl.slice().sort((a,b)=>(a.pri||5)-(b.pri||5)||((A[a.at]&&A[b.at])?A[a.at].s.y-A[b.at].s.y:0));   // subject first: small screens drop context labels (G-Art)
-  for(const it of items){const el=it.el;if(!el)continue;const a=A[it.at];
-    const guideLbl=SC.drill&&it.at==='ruler';   // the ruler keeps its length label in a drill (G-Art: "1 mm" must read)
-    const off=a&&(a.s.x<2||a.s.y<2||a.s.x>W-2||a.s.y>H-2);   // a structure off the stage gets no label (G-Art: no leader running off the edge)
-    const show=(lblOn||guideLbl)&&a&&!a.hid&&!off&&st.layersOn[it.layer]!==false&&(!it.days||(day>=it.days[0]-1e-6&&day<=it.days[1]+1e-6));
-    if(!show){el.classList.add('hidden');continue;}el.classList.remove('hidden');
-    const w=el.offsetWidth,h=el.offsetHeight,x=a.s.x,y=a.s.y,g=it.axis?6:16;
-    const cand=it.axis?[[x-w/2,y-h/2],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-g],[x-w/2,y+g]]:[[x+g,y-h-g],[x-w-g,y-h-g],[x+g,y+g],[x-w-g,y+g],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-2*g],[x-w/2,y+2*g]];
-    const lead=r=>{const ex=Math.max(r.l,Math.min(x,r.r)),ey=y<r.t?r.t:y>r.b?r.b:(r.t+r.b)/2;return [{x,y},{x:ex,y:ey}];};
-    let ok=null;for(const[cx,cy]of cand){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(hit(r))continue;
-      if(!it.axis){const [a1,b1]=lead(r);if(segs.some(([p,q])=>cross(a1,b1,p,q))||placed.some(o=>segHitsRect(a1,b1,o)))continue;
-        if(segs.some(([p,q])=>segHitsRect(p,q,r)))continue;}
-      ok=r;break;}
-    if(!ok){el.classList.add('hidden');continue;}
-    placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);
-    if(!it.axis){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);lines.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`);}}
+  /* L1F: the axis arrows are obstacles — a label never sits on one (T7 phone note: "Primitive streak" on the cranial arrow) */
+  const o0=A['axis-o'],arrows=[],inR=(p,r)=>p.x>r.l&&p.x<r.r&&p.y>r.t&&p.y<r.b;
+  if(o0&&st.layersOn[o0.layer]!==false)for(const k of Object.keys(STR.vw.axes)){const t=A['axis-'+k];if(t)arrows.push([o0.s,{x:o0.s.x+(t.s.x-o0.s.x)/o0.len,y:o0.s.y+(t.s.y-o0.s.y)/o0.len}]);}
+  const onArrow=r=>arrows.some(([p,q])=>segHitsRect(p,q,r)||inR(p,r)||inR(q,r));
+  /* drill pins first: each in the first free spot around its structure — never under the stamp, notes plate, gizmo, scale bar or another pin (T8).
+     Once a label drill is answered, each pin carries its structure's label right beside it: pin + label are placed as one box, before any other label. */
+  const pinAt={},PZ=22,late=[];SC.lbl.forEach(it=>{it.done=null;if(it.el)delete it.el.dataset.pinno;});
   (SC.drill&&SC.drill.pins||[]).forEach((p,i)=>{const el=$(`.vw-pin[data-pin="${i}"]`),a=A[p.at];if(!el)return;
     if(!a){el.classList.add('hidden');return;}el.classList.remove('hidden');el.classList.toggle('on',SC.pinFocus===i);
-    const px=Math.min(W-26,a.s.x+CONFIG.viewer.pinOffset),py=Math.max(4,a.s.y-CONFIG.viewer.pinOffset-22);   // the pin sits beside its structure, a leader + dot on it (G-Art: never cover the target)
-    el.style.transform=`translate(${Math.round(px)}px,${Math.round(py)}px)`;lines.push(`<line x1="${a.s.x.toFixed(1)}" y1="${a.s.y.toFixed(1)}" x2="${(px+11).toFixed(1)}" y2="${(py+11).toFixed(1)}"/><circle cx="${a.s.x.toFixed(1)}" cy="${a.s.y.toFixed(1)}" r="3"/>`);});
+    const lab=lblOn&&SC.lbl.find(it=>it.at===p.at&&it.el&&(!it.days||(day>=it.days[0]-1e-6&&day<=it.days[1]+1e-6)));
+    if(lab)lab.el.classList.remove('hidden');const lw=lab?lab.el.offsetWidth+4:0,lh=lab?lab.el.offsetHeight:0,BW=PZ+lw,BH=Math.max(PZ,lh);
+    const x=a.s.x,y=a.s.y,o=CONFIG.viewer.pinOffset;
+    /* nearest free spot: pin centres on a 10 px grid around the structure (never on it), nearest first; the label goes right of the pin, or left of it */
+    const grid=scPinGrid(W,H,o+PZ/2);   // nearest first, over the whole stage (cached per stage size — G-Eng)
+    const free=(bw,bh)=>{let first=null;for(const[dx,dy]of grid){const cx=x+dx,cy=y+dy;for(const side of bw>PZ?['r','l']:['r']){const l=side==='r'?cx-PZ/2:cx-bw+PZ/2,t=cy-bh/2,r={l,t,r:l+bw,b:t+bh,side};
+        if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(!first)first=r;if(hit(r)||onArrow(r))continue;const c={x:cx,y:cy};
+        if(segs.some(([q0,q1])=>cross({x,y},c,q0,q1))||placed.some(q=>segHitsRect({x,y},c,q)))continue;return {r,first};}}return {r:null,first};};
+    let f=free(BW,BH),both=!!(lab&&f.r);if(lab&&!f.r)f=free(PZ,PZ);   // no room for pin + label: the pin alone (its label then goes with the others)
+    const bw=both?BW:PZ,bh=both?BH:PZ,ok=f.r||f.first||{l:Math.max(4,Math.min(W-bw-4,x+o)),t:Math.max(4,Math.min(H-bh-4,y-o-bh)),side:'r'};ok.r=ok.l+bw;ok.b=ok.t+bh;   // a pin always shows (it is the question)
+    if(dbgOn('viewer')&&!f.r)dlog('viewer','pin',i+1,'had no free spot');
+    const pl=ok.side==='l'?ok.r-PZ:ok.l,pt=ok.t+(bh-PZ)/2;placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});pinAt[p.at]={l:pl,t:pt,r:pl+PZ,b:pt+PZ};const c={x:pl+PZ/2,y:pt+PZ/2};segs.push([{x,y},c]);
+    el.style.transform=`translate(${Math.round(pl)}px,${Math.round(pt)}px)`;lines.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${c.x.toFixed(1)}" y2="${c.y.toFixed(1)}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`);
+    if(both){lab.el.style.transform=`translate(${Math.round(ok.side==='l'?ok.l:ok.l+PZ+4)}px,${Math.round(ok.t+(bh-lh)/2)}px)`;lab.done=SC.drill.key;seen.push(lab.text);}
+    else if(lab)late.push({lab,n:i+1,c});});
+  /* last resort (tight stages, 125 % text): a pinned label with no room beside its pin goes to the nearest free spot, carrying the pin's number */
+  for(const {lab,n,c} of late){lab.el.dataset.pinno=n;const w=lab.el.offsetWidth,h=lab.el.offsetHeight;let r=null;
+    for(const[dx,dy]of scPinGrid(W,H,0)){const q={l:c.x+dx-w/2,t:c.y+dy-h/2};q.r=q.l+w;q.b=q.t+h;if(q.l<4||q.t<4||q.r>W-4||q.b>H-4||hit(q)||onArrow(q)||segs.some(([p0,p1])=>segHitsRect(p0,p1,q)))continue;r=q;break;}
+    if(!r){delete lab.el.dataset.pinno;continue;}   // still no room: the Check feedback names it (Pin n: …)
+    placed.push({l:r.l-3,t:r.t-3,r:r.r+3,b:r.b+3});lab.el.style.transform=`translate(${Math.round(r.l)}px,${Math.round(r.t)}px)`;lab.done=SC.drill.key;seen.push(lab.text);}
+  const pinned=it=>lblOn&&SC.drill&&pinAt[it.at];
+  const items=SC.lbl.slice().sort((a,b)=>(pinned(b)?1:0)-(pinned(a)?1:0)||(a.pri||5)-(b.pri||5)||((A[a.at]&&A[b.at])?A[a.at].s.y-A[b.at].s.y:0));   // pinned structures first (answered label drill), then subject first: small screens drop context labels (G-Art)
+  for(const it of items){const el=it.el;if(!el)continue;if(SC.drill&&it.done===SC.drill.key)continue;const a=A[it.at],pr=pinned(it);
+    const guideLbl=(SC.drill||SC.runOff)&&it.at==='ruler';   // the ruler keeps its length label in a drill (G-Art: "1 mm" must read)
+    const off=a&&(a.s.x<2||a.s.y<2||a.s.x>W-2||a.s.y>H-2);   // a structure off the stage gets no label (G-Art: no leader running off the edge)
+    const inDays=!it.days||(day>=it.days[0]-1e-6&&day<=it.days[1]+1e-6);
+    const show=pr?inDays:(lblOn||guideLbl)&&a&&!a.hid&&!off&&st.layersOn[it.layer]!==false&&inDays;   // a pinned structure's label shows beside its pin (its pin already points at it)
+    if(!show){el.classList.add('hidden');continue;}el.classList.remove('hidden');
+    const w=el.offsetWidth,h=el.offsetHeight,x=a?a.s.x:0,y=a?a.s.y:0,g=it.axis?6:16;
+    const cand=pr?[[pr.r+4,pr.t+(PZ-h)/2],[pr.l-4-w,pr.t+(PZ-h)/2],[pr.l+PZ/2-w/2,pr.b+4],[pr.l+PZ/2-w/2,pr.t-h-4],[pr.r+4,pr.b+2],[pr.l-4-w,pr.b+2],[pr.r+4,pr.t-h-2],[pr.l-4-w,pr.t-h-2]]
+      :it.axis?[[x-w/2,y-h/2],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-g],[x-w/2,y+g]]:[1,2.2,3.6].flatMap(k=>{const G=g*k;return [[x+G,y-h-G],[x-w-G,y-h-G],[x+G,y+G],[x-w-G,y+G],[x+G,y-h/2],[x-w-G,y-h/2],[x-w/2,y-h-2*G],[x-w/2,y+2*G]];});   // a second, farther ring (L1F: arrows and pins take near spots)
+    if(!it.axis&&!pr){const cl=v=>Math.max(4,Math.min(W-4-w,v));cand.push(...cand.map(([cx,cy])=>[cl(cx),cy]).filter(([cx],j)=>cx!==cand[j][0]));}   // L1F: a long label slides in from the stage edge instead of being dropped (phone 360 px)
+    const lead=r=>{const ex=Math.max(r.l,Math.min(x,r.r)),ey=y<r.t?r.t:y>r.b?r.b:(r.t+r.b)/2;return [{x,y},{x:ex,y:ey}];};
+    const tryAt=(list,withLead)=>{for(const[cx,cy]of list){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(hit(r))continue;
+        if(!it.axis&&onArrow(r))continue;
+        if(withLead){const [a1,b1]=lead(r);if(segs.some(([p,q])=>cross(a1,b1,p,q))||placed.some(o=>segHitsRect(a1,b1,o)))continue;}
+        if(!it.axis&&segs.some(([p,q])=>segHitsRect(p,q,r)))continue;
+        return r;}return null;};
+    let ok=pr?tryAt(cand,false):tryAt(cand,!it.axis),led=!pr&&!it.axis;
+    if(!ok&&pr&&a&&!off){const c2=[[x+g,y-h-g],[x-w-g,y-h-g],[x+g,y+g],[x-w-g,y+g],[x+g,y-h/2],[x-w-g,y-h/2]];ok=tryAt(c2,true);led=!!ok;}   // no room beside the pin: by its structure, with a leader
+    if(!ok){el.classList.add('hidden');continue;}
+    placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);
+    if(led){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);lines.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`);}}
   const svg=$('#vwLead');if(svg){svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=lines.join('');}
   const ll=$('#vwLblList');if(ll){const t=STR.vw.viewText(st.az,st.el,st.cut)+' '+STR.vw.labelsShown(seen);if(ll.textContent!==t)ll.textContent=t;}
   /* scale bar: a round length ~ 60–130 px (B2) */
-  const ppm=E.pxPerMm(),nice=CONFIG.viewer.scaleSteps.filter(m=>m*ppm<=130).pop()||CONFIG.viewer.scaleSteps[0],sb=$('#vwScale');
+  const dp=$('#vwDisc'),dr=dp&&dp.offsetParent!==null?dp.getBoundingClientRect():null,sr0=stage.getBoundingClientRect(),room=dr&&dr.bottom>sr0.bottom-60?Math.max(30,sr0.right-dr.right-40):130;   // L1F: a notes plate at the bottom leaves the bar this much room
+  const ppm=E.pxPerMm(),nice=CONFIG.viewer.scaleSteps.filter(m=>m*ppm<=Math.min(130,room)).pop()||CONFIG.viewer.scaleSteps[0],sb=$('#vwScale');
   if(sb){sb.querySelector('i').style.width=Math.round(nice*ppm)+'px';sb.querySelector('span').textContent=STR.vw.mm(nice);}
   scGizmo(E.axisDirs());
   if(dbgOn('viewer')){const i=E.info();DBG.viewer=`viewer ${S.id} · tris ${i.triangles} · calls ${i.calls} · ${i.px} @${i.dpr} · three r${SC.mod.REVISION}`;}
@@ -232,13 +289,13 @@ function scPointer(cv){
   cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
   cv.addEventListener('dblclick',()=>{if(SC.drill&&SC.drill.home&&SC.eng){const h=SC.drill.home;SC.eng.view(h.az,h.el,h.zoom);scSave();return;}scView('reset');});   // in a drill: back to its start view (G-Eng)
 }
-function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.drill)return;   // hover names a structure: never in a drill (it would answer it)
+function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.drill||(SC.runOff&&ROUTE.name==='card'))return;   // hover names a structure: never in a drill (it would answer it)
   const r=SC.canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,id=E.pick(x,y);
   if(!id){el.classList.add('hidden');return;}const l=S.layers.find(q=>q.id===id);el.textContent=l?l.label:id;el.classList.remove('hidden');
   el.style.transform=`translate(${Math.round(Math.min(x+14,r.width-el.offsetWidth-6))}px,${Math.round(Math.max(6,y-el.offsetHeight-10))}px)`;}
 function scView(k){const S=scCur(),E=SC.eng;if(!S||!E)return;const c=S.camera,V={three:[c.azimuth_deg,c.elevation_deg],top:[-90,89],side:[-90,0],cut:null,reset:[c.azimuth_deg,c.elevation_deg]}[k];
   let t=V;if(k==='cut'){const cu=E.state().cut;t=cu.axis==='x'?[180,20]:[-90,20];}
-  const z=k==='reset'?1:null,s0=E.state();if(motionReduced()){E.view(t[0],t[1],z);scSave();return;}
+  const z=k==='reset'?scStart(S).zoom:null,s0=E.state();if(motionReduced()){E.view(t[0],t[1],z);scSave();return;}
   const a0=s0.az,e0=s0.el,da=((t[0]-a0+540)%360)-180,de=t[1]-e0,z0=s0.zoom,T0=performance.now(),dur=CONFIG.viewer.tweenMs;
   const step=n=>{const u=Math.min(1,(n-T0)/dur),k2=u*u*(3-2*u);E.view(a0+da*k2,e0+de*k2,z!=null?z0+(z-z0)*k2:null);if(u<1)requestAnimationFrame(step);else scSave();};requestAnimationFrame(step);}
 function scPlay(){const S=scCur();if(!S)return;if(SC.playing){scStop();return;}const K=S.days,d1=K[K.length-1].day;let d=SC.st[S.id].day;if(d>=d1-0.05)d=K[0].day;
