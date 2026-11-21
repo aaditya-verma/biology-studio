@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 21 Nov 2026 · Bio · Build · W2 scheduler (route B). Before: 21 Nov 2026 · Bio · Build · M1b v7c results (route B). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode (scheduled run, route B). Before: 21 Nov 2026 · Bio · Build · M1b v7 results (scheduled check-in 19:19 IST, route B). Before: 21 Nov 2026 · Bio · Content · C2 Ch 6–8. Before: 21 Nov 2026 · Bio · Research · X1 Ch 09. Before: Bio · Fix · L1 polish.)*
 
 ## Lock
-- Build lock: free (W2 scheduler released 21 Nov 2026, 23:45 IST; held from 22:30 IST · by Aaditya)
+- Build lock: **taken** — Aaditya · Bio · Content · C2 round 3 · 21 Nov 2026, 22:56 IST
 
 ## Now
 - **W2 scheduler built** (21 Nov, app **v13**, D-063): new **Plan** tab at `#progress=plan` — estimated finish + critical path (◆), one card per row (**Build lock · Laptop GPU · Research · You**) with Now · Next · Later and ~dates, your inputs ranked by what they unblock, *Suggested for the professor (optional)*, runs (plan vs actual, *slipped*). Order stays fixed; dates move with today, status, runs and your calendar. `python tools/tracker/check.py --next` prints the same schedule (the block below). steps.json schema 2 (calendar, queue, est, uses, runs); every started step got a run from its log line. Map: on touch, tap once = lines, twice = open; Back focuses the box you came from. Gates G-Eng, G-Art pass; G-A11y pass on round 2. Owner check **T11** open (W1 + W2; T6 folded in); input **W2.q1** (your chat minutes per day).
