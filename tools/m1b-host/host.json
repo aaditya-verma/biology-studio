@@ -1,7 +1,7 @@
 {
   "_purpose": "M1b host shot spec — one home for every value (RULES I6). Owner doc: studio-docs/build/studio-playbook.md §5b; look: build/visual-style.md. Edit here, not in code.",
   "shot_id": "M1b-hs01",
-  "version": 6,
+  "version": 7,
   "host": {
     "id": "nani-koshika",
     "name": "Nani Koshika",
@@ -136,7 +136,7 @@
     "engine": "BLENDER_EEVEE_NEXT",
     "samples": 32,
     "cycles_samples": 64,
-    "version_note": "v6 = M1b host results fixes (D-051): two-pass loudness (−14 LUFS, TP ≤ −1.5), ink outline on the body (figure/ground vs the real plate), lamp B moved off the crown, wide eyes from the lid caps (no eye scaling), per-clip manifests. Look otherwise = v5 (quality R4).",
+    "version_note": "v7 = M1b v6 results (D-052): view-dependent rim glow on the pearl (quality.rim) so the body edge stands off the dark plate on every camera (v6 host-vs-plate p10 1.6–2.8:1, 76–85 % of edge ≥ 3:1). Gate overlay out\\review\\sep_<tag>.png. Look otherwise = v6 (owner T1b pass, 21 Nov).",
     "book_open_s": [
       0.05,
       0.25
@@ -401,7 +401,14 @@
       "mm": 4,
       "color": "#2A1C40",
       "strength": 1.0,
-      "_EDIT": "D-051 + G-Art R5: OFF by default (a violet ring reads as a cartoon line or a cell membrane). Fallback only: turn on if RESULTS says 'Host vs plate … FAIL' after the lamp move + rim."
+      "_EDIT": "D-051 + G-Art R5: OFF by default (a violet ring reads as a cartoon line or a cell membrane). Fallback only: turn on if RESULTS says 'Host vs plate … FAIL' after the lamp move + rim. v7: still OFF; the rim glow (quality.rim) is the fix (D-052)."
+    },
+    "rim": {
+      "on": true,
+      "strength": 1.6,
+      "power": 2.0,
+      "blend": 0.35,
+      "_EDIT": "D-052: rim glow added to the body emission (Layer Weight Facing^power × strength), same warm glow colour, every camera. v6 needs ≈ +0.05 edge luminance for shot A, +0.15–0.2 for shot B and the front sheet (measured on v6 frames, 21 Nov). Too strong = halo/cartoon ring → lower strength; red dots still on the crown → raise strength or blend. 0 = v6 look."
     }
   },
   "lights_studio": {

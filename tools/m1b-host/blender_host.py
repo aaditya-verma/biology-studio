@@ -239,7 +239,13 @@ def body_mat(body):
     lw = g.new("ShaderNodeLayerWeight"); lw.inputs["Blend"].default_value = 0.5
     facing = g.math("SUBTRACT", 1.0, lw.outputs["Facing"])
     gs = H["body"]["glow_strength"] * 1.2
-    g.link(g.math("MULTIPLY", g.math("MULTIPLY", low, facing), gs), bs.inputs["Emission Strength"])
+    glow = g.math("MULTIPLY", g.math("MULTIPLY", low, facing), gs)
+    QR = Q.get("rim", {})  # v7 (D-052): view-dependent rim glow. The inner glow above fades to 0 at the silhouette, so the
+    if QR.get("on", True):  # body edge went dark against the dark plate (host-vs-plate gate, v6 p10 1.6–2.8:1). Works for every camera.
+        rw = g.new("ShaderNodeLayerWeight"); rw.inputs["Blend"].default_value = QR.get("blend", 0.35)  # EDIT: rim width (higher = wider)
+        rim = g.math("POWER", rw.outputs["Facing"], QR.get("power", 2.0))  # EDIT: falloff (higher = thinner line at the very edge)
+        glow = g.math("ADD", glow, g.math("MULTIPLY", rim, QR.get("strength", 1.6)))  # EDIT: rim brightness (0 = v6 look)
+    g.link(glow, bs.inputs["Emission Strength"])
     cx, cz, csig, _ = QF.get("cheeks", [0.15, -0.005, 0.07, 0.025])
     comb = g.new("ShaderNodeCombineXYZ")
     g.link(g.math("ABSOLUTE", s.outputs["X"]), comb.inputs["X"]); g.link(s.outputs["Z"], comb.inputs["Z"])

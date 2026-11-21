@@ -196,7 +196,7 @@ def separation(im, pr, de, regions=HOST_REGIONS):
     the edge pixel and the plate pixel one step out; score = best of (inner vs plate, edge vs plate) — so a dark outline
     counts on a light plate and a light body counts on a dark one. ΔE00 = worst of normal/deut/prot/trit."""
     st = pr["step"]; reg = {(x, y): r for r, pts in pr["pts"].items() for x, y in pts}
-    W, Hh = im.size; rat, des = [], []
+    W, Hh = im.size; rat, des, pts = [], [], []
     for r in regions:
         for x, y in pr["pts"].get(r, []):
             for dx, dy in ((st, 0), (-st, 0), (0, st), (0, -st)):
@@ -204,7 +204,7 @@ def separation(im, pr, de, regions=HOST_REGIONS):
                 if reg.get((x + dx, y + dy)) == "plate" and reg.get((ox, oy)) == "plate" and reg.get((x - dx, y - dy)) == r \
                         and 0 <= ox < W and 0 <= oy < Hh:
                     e, i, p = im.getpixel((x, y)), im.getpixel((x - dx, y - dy)), im.getpixel((ox, oy))
-                    rat.append(max(contrast(i, p), contrast(e, p)))
+                    rat.append(max(contrast(i, p), contrast(e, p))); pts.append((x, y, rat[-1]))
                     des.append(max(min(de.de00(de.sim(hexc(i), v), de.sim(hexc(p), v)) for v in ("norm", "deut", "prot", "trit")),
                                    min(de.de00(de.sim(hexc(e), v), de.sim(hexc(p), v)) for v in ("norm", "deut", "prot", "trit"))))
     if not rat:
@@ -212,7 +212,16 @@ def separation(im, pr, de, regions=HOST_REGIONS):
     rat.sort(); des.sort(); k = len(rat) // 10
     share = sum(1 for x in rat if x >= SEP_RATIO) / len(rat)
     return {"n": len(rat), "p10_ratio": round(rat[k], 2), "min_ratio": round(rat[0], 2), "share_ok": round(share, 3),
-            "p10_de": round(des[k], 1), "ok": share >= SEP_SHARE}
+            "p10_de": round(des[k], 1), "ok": share >= SEP_SHARE, "_pts": pts}
+
+
+def sep_overlay(im, sep, path):
+    """v7 (D-052) debug board: every edge sample the gate scored — green ≥ 3:1, red < 3:1 — so G-A11y/G-Art see WHERE it fails."""
+    from PIL import ImageDraw
+    ov = im.copy(); d = ImageDraw.Draw(ov)
+    for x, y, r in sep.get("_pts", []):
+        d.rectangle([x - 2, y - 2, x + 2, y + 2], fill=(0, 230, 0) if r >= SEP_RATIO else (255, 0, 0))
+    ov.save(path)
 
 
 def embroidery(im, pr, de, onscreen):
@@ -266,9 +275,12 @@ def s_palette(a):
         res_[tag + f" ({pr['view']})"] = out
         sep = separation(im, pr, de)
         if sep:
-            res_["separation"][tag] = sep
+            if not a.dry_run:  # EDIT: out\review\sep_<tag>.png — red = failing edge samples (local only)
+                rv = os.path.join(OUT, "review"); os.makedirs(rv, exist_ok=True); sep_overlay(im, sep, os.path.join(rv, f"sep_{tag}.png"))
+            sep.pop("_pts", None); res_["separation"][tag] = sep
         sh_ = separation(im, pr, de, ("shawl",))  # G-A11y R5: shawl edge reported, not gated (costume, not the identity cue)
         if sh_:
+            sh_.pop("_pts", None)
             res_.setdefault("separation_shawl_info", {})[tag] = dict(sh_, ok=None)
     sw = {k: de.check(v) for k, v in SPEC["host"]["palette"].items() if k in ("body", "shawl", "shawl_dark", "embroidery", "book_cover")}
     res_["swatches"] = {k: [round(v[0], 1), v[1], v[2]] for k, v in sw.items()}
