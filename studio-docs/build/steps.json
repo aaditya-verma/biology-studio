@@ -581,7 +581,8 @@
    "prompt": "X1 Ch 13",
    "log": "—",
    "todo": [],
-   "inputs": []
+   "inputs": [],
+   "runs": [{"chat": "Bio · Research · X1 Ch 13", "by": "Aaditya", "start": "2026-11-22 01:14", "end": null, "outcome": "partial", "note": "open run — research chat, no lock"}]
   },
   {
    "id": "A0",
