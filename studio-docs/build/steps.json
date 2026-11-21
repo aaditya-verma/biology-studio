@@ -1,11 +1,11 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "V3", "R1", "L3", "GATE"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "R1", "L3", "GATE", "K3", "K4"],
  "steps": [
   {
    "id": "M0",
@@ -350,7 +350,7 @@
    "chat": "Bio · Build · K1 concept map",
    "status": "owner check",
    "needs": ["I1"],
-   "unblocks": ["X1.05", "A0"],
+   "unblocks": ["K2", "X1.05", "A0"],
    "lock": true,
    "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T2", "state": "open", "since": "2026-11-17"},
@@ -362,6 +362,71 @@
    ],
    "inputs": [],
    "runs": [{"chat": "Bio · Build · K1 concept map", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+  },
+  {
+   "id": "K2",
+   "title": "K2 map data — links + precomputed layout",
+   "type": "Build",
+   "chat": "Bio · Build · K2 map data",
+   "status": "planned",
+   "needs": ["K1", "L2"],
+   "unblocks": ["K3"],
+   "lock": true,
+   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open"},
+   "check": null,
+   "decisions": ["D-071"],
+   "prompt": "K2 map data",
+   "log": "—",
+   "todo": [
+    "Ready prompt in master plan §13 (written by the merge fix that restored D-071)",
+    "becomes / defect links only where a dossier cites them, never guessed (D-071 f)",
+    "Writes the K3 prompt in master plan §13"
+   ],
+   "inputs": [],
+   "est": {"chats": 1}
+  },
+  {
+   "id": "K3",
+   "title": "K3 Embryo map 2D — Rings view in the app",
+   "type": "Build",
+   "chat": "Bio · Build · K3 embryo map",
+   "status": "planned",
+   "needs": ["K2"],
+   "unblocks": ["K4"],
+   "lock": true,
+   "gates": {"G-Eng": "open", "G-Learn": "open", "G-Art": "open", "G-A11y": "open"},
+   "check": null,
+   "decisions": ["D-071"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Prompt written by the K2 chat",
+    "Write owner check T12 in build/owner-test-checklist.md (then set `check`)",
+    "Replaces the A0 Book map at #map; K1 crosstabs stay as a Tables mode (D-071 c)"
+   ],
+   "inputs": [],
+   "est": {"chats": 2}
+  },
+  {
+   "id": "K4",
+   "title": "K4 Map side view + day slider",
+   "type": "Build",
+   "chat": "Bio · Build · K4 map side + day",
+   "status": "planned",
+   "needs": ["K3", "V2"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
+   "check": null,
+   "decisions": ["D-071"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Prompt written by the K3 chat",
+    "Side = three.js cone, height = day; day slider sets the viewer's day (D-071 a, e)"
+   ],
+   "inputs": [],
+   "est": {"chats": 1}
   },
   {
    "id": "X1.05",
@@ -850,7 +915,7 @@
    "chat": "Bio · Build · V2 3D drills",
    "status": "done",
    "needs": ["L1"],
-   "unblocks": ["V3", "GATE", "IB04", "IB05", "IB06", "IB10", "IB11"],
+   "unblocks": ["K4", "V3", "GATE", "IB04", "IB05", "IB06", "IB10", "IB11"],
    "lock": true,
    "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T8", "state": "pass", "since": "2026-11-21"},
@@ -902,7 +967,7 @@
    "chat": "Bio · Build · L2 lessons",
    "status": "owner check",
    "needs": ["L1", "C2"],
-   "unblocks": ["GATE", "IB01", "IB03"],
+   "unblocks": ["K2", "GATE", "IB01", "IB03"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T9", "state": "open"},
