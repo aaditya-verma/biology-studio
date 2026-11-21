@@ -335,7 +335,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -482,17 +482,44 @@
   },
   {
    "id": "X1.10",
-   "title": "X1 research · Ch 10 (Part 2 starts)",
+   "title": "X1 research · Ch 10 axial skeleton (Part 2 starts)",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 10",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.09"],
+   "unblocks": ["X1.11"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-039", "D-057", "D-064"],
+   "prompt": "X1 Ch 10",
+   "log": "21 Nov 2026 · X1 Research · Ch 10 — Part 2 pattern; staging CS10→CS23 from human specimens (resegmentation seen at 7–13 mm), Tier A ossification + vertebrae, 16 misconceptions, 26 sources R05ce–dd, AN from the MGMUHS reprint (nmc.org.in blocked) → D-064 a–e",
+   "todo": [
+    "Re-read the axial AN codes (AN2, AN21, AN26, AN35.9, AN50, AN53.4, AN74.4) on nmc.org.in — blocked this chat by Chrome site permissions; read from the MGMUHS reprint",
+    "R01 3D Atlas: check the CS17–23 models show the cartilage column before any vertebra scene (look only, NC-ND)",
+    "Tier 1 for the sternal-defect figures (20–50 % in congenital heart disease; multiple manubrial centres 6–20 %, commoner in Down syndrome)",
+    "Tier 1 for the ossicles (ossification from month 4; first bones fully ossified)",
+    "Human (not chick/mouse) evidence on the exact resegmentation split — only R05cj found"
+   ],
+   "inputs": [
+    {"id": "X1.10.q1", "kind": "decide", "ask": "D-064 (a, b, d) from Ch 10: pick an option per item (posterior fontanelle timing, craniosynostosis rate, acromegaly cause) — recommendations given; (c) resegmentation is a teaching note — confirm option 1 (book halves in the card, refinement in More); (e) is a curriculum note", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-064"},
+    {"id": "X1.10.q2", "kind": "action", "ask": "Allow nmc.org.in in Claude in Chrome's site permissions (it was blocked), or open NMC UG Curriculum Vol I yourself, so the next chat can re-read the axial AN codes there", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-064"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 10", "by": "Aaditya", "start": "2026-11-21 22:40", "end": "2026-11-21 23:10", "outcome": "done", "note": "route B, written to the laptop clone; G-Sci pass with fixes (4 MUST, 12 SHOULD applied)"}]
+  },
+  {
+   "id": "X1.11",
+   "title": "X1 research · Ch 11 muscular system",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 11",
+   "status": "ready",
+   "needs": ["X1.10"],
    "unblocks": [],
    "lock": false,
-   "gates": {},
+   "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": [],
-   "prompt": "X1 Ch 10",
+   "decisions": ["D-011", "D-026", "D-030", "D-064"],
+   "prompt": "X1 Ch 11",
    "log": "—",
    "todo": [],
    "inputs": []

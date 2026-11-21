@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -223,19 +223,19 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E10.01.01 | Two ways to make bone | A | S | core |  | meso | msk | E06.02.04 | 6 |  | ≈ |
-| E10.01.02 | Neurocranium | B | SA | x |  | multi | msk | E10.01.01 | 2 |  | ≈ |
-| E10.01.03 | Viscerocranium | B | S | x |  | crest | msk | E10.01.01, E17.01.01 |  |  | ≈ |
-| E10.01.04 | Sutures and fontanelles | B | A | x | 266–266 | multi | msk | E10.01.02 | 1 |  | ≈ |
-| E10.01.05 | Craniosynostosis and skull defects | C | C | x |  | multi | defects | E10.01.04 |  |  | ≈ |
-| E10.01.06 | Skeletal dysplasias | C | C | x |  | meso | defects | E10.01.01 |  |  | ≈ |
-| E10.02.01 | Vertebrae from sclerotomes | A | SF | core | 28–42 | meso | msk | E06.02.04, E05.02.01 | 5 |  | ≈ |
-| E10.02.02 | Intervertebral disc | B | SA | x |  | meso | msk | E10.02.01 |  |  | ≈ |
-| E10.02.03 | Vertebral defects | C | C | x |  | meso | defects | E10.02.01 |  |  | ≈ |
-| E10.03.01 | Ribs and sternum | B | S | s |  | meso | msk | E10.02.01 | 1 |  | ≈ |
-| E10.03.02 | Rib and sternum defects | C | C | d |  | meso | defects | E10.03.01 |  |  | ≈ |
+| E10.01.01 | Two ways to make bone | A | S | core |  | meso | msk | E06.02.04 | 6 | AN2.2, AN2.4, AN26.6 | ✔ |
+| E10.01.02 | Neurocranium | B | SA | x |  | multi | msk | E10.01.01 | 2 | AN26.1, AN26.3, AN26.6 | ✔ |
+| E10.01.03 | Viscerocranium | B | S | x |  | crest | msk | E10.01.01, E17.01.01 |  | AN26.4 | ✔ |
+| E10.01.04 | Sutures and fontanelles | B | A | x | 266–266 | multi | msk | E10.01.02 | 1 | AN26.2 | ⚑ |
+| E10.01.05 | Craniosynostosis and skull defects | C | C | x |  | multi | defects | E10.01.04 |  | AN79.5 | ⚑ |
+| E10.01.06 | Skeletal dysplasias | C | C | x |  | meso | defects | E10.01.01 |  | AN74.4 | ⚑ |
+| E10.02.01 | Vertebrae from sclerotomes | A | SF | core | 28–42 | meso | msk | E06.02.04, E05.02.01 | 5 | AN79.4, AN50.1 | ✔ |
+| E10.02.02 | Intervertebral disc | B | SA | x |  | meso | msk | E10.02.01 |  | AN79.5, AN50.2 | ✔ |
+| E10.02.03 | Vertebral defects | C | C | x |  | meso | defects | E10.02.01 |  | AN50.4, AN53.4, AN79.5 | ✔ |
+| E10.03.01 | Ribs and sternum | B | S | s |  | meso | msk | E10.02.01 | 1 | AN21.1, AN21.2 | ✔ |
+| E10.03.02 | Rib and sternum defects | C | C | d |  | meso | defects | E10.03.01 |  | AN35.9 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E10.02.01 — “One somite makes one vertebra.”
+*Misconceptions to refute (cited in the chapter dossier):* E10.02.01 — “One somite makes one vertebra.”
 
 ## E11 — Muscular System · pp 160–166 · 13 concepts
 
