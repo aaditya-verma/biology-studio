@@ -9,13 +9,14 @@ const CONFIG={
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
   nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
-  routes:['today','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step'],   // first key of the hash; see src/js/05-router.js
+  routes:['today','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
   device:{phone:600,tablet:1024},
   xt:{x:'layer',y:'day'},                     // default crosstab
-  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn'],
+  debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn','review'],
+  navReview:'review',                         // EDIT (H2): nav item added after Cards once Reviewer mode is on (not in testing mode — its nav is full)
   // EDIT: 3D viewer (V1; design plan §2 3D row, RULES H8). Budgets stay "Expected" until pipeline reference §2 is Measured (C4).
   viewer:{
     scenesUrl:'content/E/scenes/',            // EDIT: scene files (docs/scene-spec.md)
@@ -53,5 +54,23 @@ const CONFIG={
     deckSession:20,                           // most prompts in one deck session
     readMs:1500,                              // a card counts as Read after it has been open this long
     groups:['E00','E05']                      // EDIT: card list order (chapters with cards)
+  },
+  // EDIT: Reviewer mode (H2, D-060/D-061; design plan §4.10). The human science reviewer reads cards, ticks a plain checklist and sends
+  // ✓ / ✎ / ? as a pre-filled GitHub Issue Form; My feedback reads her issues back from the public API (no token; 60 calls an hour per network).
+  review:{
+    name:'Komal',                             // EDIT: how the home greets the reviewer
+    login:'komalverma00500-byte',             // EDIT: the reviewer's GitHub username (public) — My feedback lists issues she opened
+    owner:'Aaditya',                          // who decides on a fix (D-060)
+    repo:'aaditya-verma/biology-studio',
+    api:'https://api.github.com/repos/aaditya-verma/biology-studio/issues',
+    newIssue:'https://github.com/aaditya-verma/biology-studio/issues/new',
+    form:'card-review.yml', formOther:'other-feedback.yml',   // .github/ISSUE_TEMPLATE/ — field ids must match REVIEW_FIELDS in 19-review.js
+    label:'review', fixingLabel:'fixing',     // the forms add `review`; the owner adds `fixing` when he agrees to a fix; a closed issue with milestone vN = fixed in vN
+    refreshMs:300000, maxUrl:7000,           // maxUrl: the form link stays under ~7 KB (the note is shortened past it)
+                            // check GitHub at most every 5 min on its own (Check for news always asks)
+    show:['reviewed','shipped'],              // cards under To review; drafts are listed below, folded
+    updatesUrl:'studio-docs/logs/build-log.md',   // #updates reads the plain line <!--plain: …--> of each log entry (else its title)
+    updatesShow:6, updatesPage:20,            // updates on What's new; per page on #updates
+    fixture:'tools/layout-check/fixtures/review-issues.json'   // ?test=1&fixture=review: demo issues (every state + a rate-limit case) instead of GitHub
   }
 };

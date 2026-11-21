@@ -57,7 +57,7 @@ def build(spec, words, lead, res, track="en", rm=False):
     C = spec["captions"]; W, Hh = {"design": spec["video"]["design"], "ship": spec["video"]["ship"], "preview": spec["video"]["preview"]}[res]
     k = W / 1080.0
     size = round(C["size_px_1080"] * k); size_hi = round(size * C["deva_scale"])
-    y = round(Hh * (C["band_top_pct"] + C["band_bottom_pct"]) / 200)
+    y = round(Hh * C["band_bottom_pct"] / 100)  # v7c (D-058): bottom-anchored at the band's lower edge; extra lines grow UP, never past the Shorts UI
     margin = round(W * (1 - C["max_width_pct"] / 100) / 2)
     white, key = ass_col(C["text"]), ass_col(C["key"])
     tag = lambda hx: "&H%s%s%s&" % (hx[5:7], hx[3:5], hx[1:3])  # inline \c takes BGR, no alpha
@@ -74,14 +74,14 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: EN,{C['font_latin']},{size},{white},{white},{box},{box},1,0,0,0,100,100,0,0,3,{pad},0,5,{margin},{margin},0,1
-Style: HI,{C['font_deva']},{size_hi},{white},{white},{box},{box},1,0,0,0,100,100,0,0,3,{pad},0,5,{margin},{margin},0,1
+Style: EN,{C['font_latin']},{size},{white},{white},{box},{box},1,0,0,0,100,100,0,0,3,{pad},0,2,{margin},{margin},0,1
+Style: HI,{C['font_deva']},{size_hi},{white},{white},{box},{box},1,0,0,0,100,100,0,0,3,{pad},0,2,{margin},{margin},0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-    pop = "{\\an5\\pos(%d,%d)}" % (W // 2, y) if rm else \
-        "{\\an5\\pos(%d,%d)\\fscx86\\fscy86\\t(0,120,\\fscx100\\fscy100)}" % (W // 2, y)  # EDIT: pop-in (120 ms, no flashing); none in reduced motion
+    pop = "{\\an2\\pos(%d,%d)}" % (W // 2, y) if rm else \
+        "{\\an2\\pos(%d,%d)\\fscx86\\fscy86\\t(0,120,\\fscx100\\fscy100)}" % (W // 2, y)  # EDIT: pop-in (120 ms, no flashing); none in reduced motion
     ev, vtt = [], ["WEBVTT", ""]
     sty, key_ = ("HI", spec["line"]["key_hi"]) if track == "hi" else ("EN", spec["line"]["key_en"])
     for t0, t1, ph in phrases(spec, words, lead, track):

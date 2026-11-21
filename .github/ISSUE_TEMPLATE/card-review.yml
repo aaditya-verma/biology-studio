@@ -1,0 +1,49 @@
+# Biology Studio — card review form (H2 Reviewer mode, D-060/D-061). The app opens this pre-filled:
+# field ids = REVIEW_FIELDS in src/js/19-review.js (card · verdict · where · sure · checklist · note). Keep them in step.
+# The `review` label must exist in the repo (owner creates it once — T10); `fixing` is added by the owner when he agrees to a fix;
+# closing with milestone vN shows "Fixed in version N" in the app. Owner doc: build/setup-guide.md §0, build/design-plan.md §4.10.
+name: Card review
+description: Check the science on one card — normally opened from the app's Review page, already filled in.
+title: "[review] "
+labels: ["review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Filled in by the app.** Check it, add anything you like, then press **Create** below. Thank you!
+  - type: input
+    id: card
+    attributes:
+      label: Card
+      description: Card id and version (filled in by the app).
+      placeholder: "E06.02.01 v1 · Three strips of mesoderm"
+    validations:
+      required: true
+  - type: input
+    id: verdict
+    attributes:
+      label: Overall
+      description: "✓ Looks right · ✎ Needs a fix · ? Question"
+      placeholder: "✓ Looks right"
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Which part
+      placeholder: "The whole card"
+  - type: input
+    id: sure
+    attributes:
+      label: How sure
+      placeholder: "Sure · Fairly sure · Not sure"
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      description: A ticked box means it looks right.
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+      description: What is wrong, and what should it say? A page or a source helps. You can attach a photo here.

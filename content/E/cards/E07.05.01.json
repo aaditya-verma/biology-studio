@@ -1,0 +1,365 @@
+{
+ "spec": 1,
+ "id": "E07.05.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Diaphragm and its parts",
+ "tier": "A",
+ "objective": {
+  "verb": "trace",
+  "text": "Trace how each part of the diaphragm arises and how it reaches its adult level."
+ },
+ "body": {
+  "general": "Why is the nerve to your breathing muscle a neck nerve? Early on, two channels beside the gut still link the chest and belly cavities [f1]. From week 5, a fold grows from the wall of each channel [f2]. By week 7 the folds are sheets that grow across and seal the channels [f3]. These sheets make the tough centre of the diaphragm, the central tendon [f4]. Its muscle comes from tissue blocks in the neck [f5]. The diaphragm starts in the neck, so its nerve does too [f7]. Then it sinks to its adult place [f8].",
+  "mbbs": "The septum transversum leaves two pericardioperitoneal canals beside the foregut, so chest and belly still connect [f1]. From the start of week 5, crescent pleuroperitoneal folds grow from the canal walls [f2]. By week 7 they are pleuroperitoneal membranes that fuse with the oesophageal mesentery and the septum transversum, closing the canals [f3]. In Langman 14e the fused membranes make the central tendon [f4]. Their rim is connective tissue that guides incoming muscle cells [f4]. Muscle comes from C3–C5 somites [f5]. The oesophageal mesentery forms the crura [f6]. The phrenic nerve is C3–C5 because the diaphragm starts opposite these segments in week 4 [f7]. From week 6 the back outgrows the front, moving the diaphragm caudally and lengthening the phrenic nerves [f8]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The septum transversum leaves two pericardioperitoneal canals beside the foregut, so the chest and belly cavities still connect.",
+   "cite": "E07.04, E07.05 · R06 CS13",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06 CS13: canals"
+  },
+  {
+   "id": "f2",
+   "text": "From the start of week 5, crescent-shaped pleuroperitoneal folds grow from the walls of the canals.",
+   "cite": "E07.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "By week 7 the folds are thin pleuroperitoneal membranes that fuse with the oesophageal mesentery and the septum transversum, closing the canals.",
+   "cite": "E07.05",
+   "mark": "✔",
+   "where": "main",
+   "note": "timing consistent with R05ai: the diaphragm cuts off the infracardiac bursa by CS17–18 (42–48 d)"
+  },
+  {
+   "id": "f4",
+   "text": "The fused pleuroperitoneal membranes make the central tendon; their rim is connective tissue that guides incoming muscle cells.",
+   "cite": "E07.05 · R05aa",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05aa: mouse lineage tracing, full text; D-043 (c)"
+  },
+  {
+   "id": "f5",
+   "text": "Diaphragm muscle comes from somites at the C3–C5 neck levels.",
+   "cite": "E07.05, E07.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The oesophageal mesentery forms the crura of the diaphragm.",
+   "cite": "E07.05, E07.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "The phrenic nerve (motor and sensory) comes from C3–C5 because the diaphragm starts opposite these neck segments in week 4.",
+   "cite": "E07.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "From week 6 the back outgrows the front, so the diaphragm moves ventrally and caudally to its adult level and the phrenic nerves lengthen.",
+   "cite": "E07.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "In congenital diaphragmatic hernia, muscle usually fails to fill part of a pleuroperitoneal membrane because its connective-tissue scaffold fails.",
+   "cite": "E07.05 CC · R05aa",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "mouse: Gata4 loss in fold-derived fibroblasts gives muscle-free weak patches and hernias"
+  },
+  {
+   "id": "f10",
+   "text": "Most severe diaphragmatic hernias, about 85–90 %, are on the left.",
+   "cite": "E07.05 CC · R05ad",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05ad: 84 % of 3,754 infants"
+  },
+  {
+   "id": "f11",
+   "text": "Organs pushed into the chest keep the lungs small (lung hypoplasia), which is often fatal.",
+   "cite": "E07.05 CC · R05ac",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05ac: mortality about 38 % across 19 countries"
+  },
+  {
+   "id": "f12",
+   "text": "Beyond Langman (human study): the last part of each canal to close lies behind the adrenal gland; fold tissue seals it by spreading sideways.",
+   "cite": "· R05aj",
+   "mark": "✚",
+   "where": "more",
+   "note": "human, CRL 11–40 mm; depth on how the last dorsolateral part closes (G-Sci round 1)"
+  },
+  {
+   "id": "f13",
+   "text": "Beyond Langman (mouse study): fold cells spread over the liver surface ahead of the muscle, and muscle cells follow them.",
+   "cite": "· R05aa",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.pericardioperitoneal-canal",
+   "E.t.pleuroperitoneal-folds"
+  ],
+  "known": [
+   "E.t.septum-transversum",
+   "E.t.somites",
+   "E.t.mesentery",
+   "E.t.pleuropericardial-folds"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The septum transversum forms the central tendon (the 'four parts' list in many books).",
+   "right": "In Langman 14e the fused pleuroperitoneal membranes make the central tendon; the septum transversum is the base they grow over.",
+   "cite": "E07.05 · R05aa",
+   "mark": "✔✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The diaphragm forms where it ends up.",
+   "right": "It starts opposite C3–C5 and moves down, which is why the phrenic nerve is cervical and long.",
+   "cite": "E07.05",
+   "mark": "✔"
+  },
+  {
+   "id": "m3",
+   "wrong": "Diaphragm muscle comes from the septum transversum.",
+   "right": "It comes from somites at C3–C5.",
+   "cite": "E07.05",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "In Langman 14e, what makes the central tendon of the diaphragm?",
+   "options": [
+    "The septum transversum",
+    "The fused pleuroperitoneal membranes",
+    "Somites at C3–C5",
+    "The oesophageal mesentery"
+   ],
+   "answer": 1,
+   "why": "The membranes fuse into the central tendon over the septum transversum, which is their base; the somites give muscle, the mesentery the crura.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Why is the phrenic nerve from C3–C5?",
+   "options": [
+    "The diaphragm starts opposite those neck segments, then moves down",
+    "Its muscle comes from the septum transversum",
+    "Neck nerves grow down to find the finished diaphragm",
+    "The lungs drag the nerve down from the neck"
+   ],
+   "answer": 0,
+   "why": "The diaphragm begins at neck level in week 4 and descends as the back outgrows the front, taking its C3–C5 nerve with it.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "order",
+   "prompt": "Put the steps in order.",
+   "options": [
+    "Canals beside the foregut link the chest and belly cavities",
+    "Pleuroperitoneal folds grow from the canal walls",
+    "The membranes fuse with the oesophageal mesentery and septum transversum, closing the canals",
+    "The diaphragm reaches its adult level, muscle from C3–C5 filling the rim"
+   ],
+   "why": "Week 5 folds become week 7 membranes that seal the canals; only then is the diaphragm finished at its adult level, its rim filled with C3–C5 muscle.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "The adult diaphragm: central tendon from the membranes, muscle from C3–C5 somites, crura from the oesophageal mesentery, phrenic nerve C3–C5 [f4,f5,f6,f7].",
+ "clinical": "If muscle fails to fill part of a pleuroperitoneal membrane, belly organs can slip into the chest: congenital diaphragmatic hernia [f9]. Most severe ones are on the left [f10]. The danger is small lungs, squeezed by the organs in the chest [f11].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What makes the central tendon in Langman 14e?",
+   "a": "The fused pleuroperitoneal membranes [f4]."
+  },
+  {
+   "id": "r2",
+   "q": "Where do the diaphragm's muscle and crura come from?",
+   "a": "Muscle from C3–C5 somites; crura from the oesophageal mesentery [f5,f6]."
+  },
+  {
+   "id": "r3",
+   "q": "Why is the phrenic nerve cervical and long?",
+   "a": "The diaphragm starts opposite C3–C5 in week 4, then moves down as the back outgrows the front [f7,f8]."
+  },
+  {
+   "id": "r4",
+   "q": "What links the chest and belly cavities before the diaphragm closes?",
+   "a": "Two pericardioperitoneal canals beside the foregut [f1]."
+  }
+ ],
+ "shows_up": [
+  "E07.05.02",
+  "E07.04.01",
+  "E15.04.05",
+  "E06.02.02"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 7)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": false,
+    "budget": true,
+    "adult": false
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "fix: both new terms are described but never named at General ('two channels', 'a fold'). Name them: 'two channels, the pericardioperitoneal canals' and 'a fold, the pleuroperitoneal fold'.",
+    "q1": "fix: options and why use 'septum transversum', 'pleuroperitoneal membranes', 'somites' and 'oesophageal mesentery'; General names none of them (it says 'sheets', 'tissue blocks in the neck'). Name at General: the septum transversum (e.g. 'a plate under the heart, the septum transversum'), the membranes, somites; and the oesophageal mesentery, or replace that distractor.",
+    "q2": "fix: prompt uses 'phrenic nerve', but General says only 'the nerve to your breathing muscle'. Name it at General ('its nerve, the phrenic nerve'). Distractor 'septum transversum' also needs the General naming in q1's fix.",
+    "q3": "fix: round-1 order fix landed (step 4 is now a clear end point, one right order). Still fails on names: steps use 'pleuroperitoneal folds', 'oesophageal mesentery' and 'septum transversum', not named at General (see terms and q1 fixes).",
+    "m1": "fix: 'septum transversum' is not named at General (see q1 fix).",
+    "m2": "ok",
+    "m3": "fix: 'septum transversum' and 'somites' are not named at General (see q1 fix).",
+    "r1": "ok",
+    "r2": "fix: 'crura' and 'oesophageal mesentery' are taught only at MBBS. Teach them at General ('the back legs of the diaphragm, the crura, come from the gut's back sheet') or drop crura from r2 and adult.",
+    "r3": "fix: 'phrenic nerve' is not named at General (see q2 fix).",
+    "r4": "fix: 'pericardioperitoneal canals' is not named at General (see terms fix).",
+    "shows_up": "ok"
+   },
+   "notes": "Fail. Round-1 q3 fix landed. But General (90/90) names only the central tendon, while Checks, Remember, misconceptions and adult use septum transversum, the two new terms, somites, phrenic nerve, oesophageal mesentery and crura. Rewrite General with names in brackets; if 90 words can't hold them, cut crura/oesophageal mesentery from adult, r2, q1 and q3 (MBBS keeps them). adult has no line id; checklist adult = false until fixed."
+  },
+  "G-Sci": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": false,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
+    "f13": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "adult": "ok",
+    "clinical": "fix: sentence 1 'belly organs can slip into the chest' is not in f9 (f9 is only the muscle/scaffold failure); add f11 to its refs ([f9,f11]) - f11 says organs are pushed into the chest.",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "r4": "ok"
+   },
+   "notes": "Round-1 fixes landed: f3 gives only the book answer (fuse with oesophageal mesentery + septum transversum, closing the canals), body general/mbbs follow it, f12 is R05aj depth in More (✚, beyond Langman, no rebuttal, no ⚑) per lead ruling. One new minor ref gap in the clinical line (add f11)."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch07-gut-tube-body-cavities.md §2 + §5 (D-043 (c) default: title follows the book, id kept)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "f4, f9–f11, m1 restored to dossier cites + ✔✔ (R05aa, R05ad, R05ac); ✚ f12 (R05aj) and f13 (R05aa) re-added, after card-check fix for two-letter registry ids",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 4 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f3 book answer only (no \"then with each other\"), body.general.4, body.mbbs.3, f12 as depth, q3 last step = adult end point",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: body.general.4 trimmed to budget",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 9 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

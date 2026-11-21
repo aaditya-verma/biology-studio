@@ -1,0 +1,272 @@
+{
+ "spec": 1,
+ "id": "E06.03.02",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "Foregut, midgut, hindgut",
+ "tier": "A",
+ "objective": {
+  "verb": "identify",
+  "text": "Identify the three parts of the gut tube and the structure that closes or links each one."
+ },
+ "body": {
+  "general": "Where does the gut come from? As the embryo folds, it takes in more and more of the inner germ layer, endoderm, as a tube [f1]. The tube has three parts: foregut at the head end, midgut in the middle and hindgut at the tail end [f2]. The midgut stays tied to the yolk sac by a stalk, the vitelline duct [f3]. A thin membrane seals the head end until week 4 [f5]. Another seals the tail end until week 7, when the anus opens [f6].",
+  "mbbs": "Folding incorporates more and more endoderm, forming the gut tube [f1]. It has three parts: foregut, midgut and hindgut [f2]. The midgut stays joined to the yolk sac by the vitelline (yolk-sac) duct [f3]. This duct is wide at first, then becomes long and narrow [f4]. Cranially the foregut is closed by the oropharyngeal membrane, which ruptures in week 4 [f5]. Caudally the hindgut is closed by the cloacal membrane, which breaks down in week 7 to open the anus [f6]. Part of the allantois is taken into the body as the cloaca [f7]. By week 5, the yolk-sac duct, allantois and umbilical vessels are gathered at the umbilical region [f8]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Folding takes in more and more endoderm, forming the gut tube.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "The gut tube has three parts: foregut, midgut and hindgut.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The midgut stays joined to the yolk sac by the vitelline duct.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The vitelline duct is wide at first and later becomes long and thin.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "The oropharyngeal membrane closes the head end of the foregut and ruptures in week 4.",
+   "cite": "E06.03 · R06 CS11",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The cloacal membrane closes the hindgut and breaks down in week 7, opening the anus.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Part of the allantois is taken into the body as the cloaca.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "By week 5, the yolk-sac duct, allantois and umbilical vessels are gathered at the umbilical region.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.foregut",
+   "E.t.midgut",
+   "E.t.hindgut"
+  ],
+  "known": [
+   "E.t.endoderm",
+   "E.t.yolk-sac",
+   "E.t.vitelline-duct",
+   "E.t.oropharyngeal-membrane",
+   "E.t.cloacal-membrane-plate",
+   "E.t.allantois"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The whole yolk sac becomes the gut.",
+   "right": "Only the part taken in by folding becomes gut; the rest stays outside, linked by the vitelline duct.",
+   "cite": "E06.03",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "order",
+   "prompt": "Put these in order from the head end to the tail end of the gut tube.",
+   "options": [
+    "Oropharyngeal membrane",
+    "Foregut",
+    "Midgut",
+    "Hindgut",
+    "Cloacal membrane"
+   ],
+   "why": "The oropharyngeal membrane seals the foregut at the head end; the cloacal membrane seals the hindgut at the tail end.",
+   "tests": "objective"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which membrane breaks down first?",
+   "options": [
+    "The oropharyngeal membrane, in week 4",
+    "The cloacal membrane, in week 4",
+    "The cloacal membrane, in week 2",
+    "The oropharyngeal membrane, in week 7"
+   ],
+   "answer": 0,
+   "why": "The oropharyngeal membrane ruptures in week 4; the cloacal membrane breaks in week 7.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "How is the midgut linked to the rest of the yolk sac?",
+   "options": [
+    "It is not; the whole yolk sac became gut",
+    "By the vitelline duct",
+    "By the allantois",
+    "By the cloacal membrane"
+   ],
+   "answer": 1,
+   "why": "Only part of the yolk sac is taken in; the midgut stays tied to the rest by the vitelline duct.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "adult": "The tube becomes the digestive tract, opening at the mouth end in week 4 and at the anus in week 7 [f5,f6].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What are the three parts of the gut tube?",
+   "a": "Foregut, midgut and hindgut [f2]."
+  },
+  {
+   "id": "r2",
+   "q": "Which gut part stays linked to the yolk sac, and by what?",
+   "a": "The midgut, by the vitelline duct [f3]."
+  },
+  {
+   "id": "r3",
+   "q": "When do the two end membranes break down?",
+   "a": "Oropharyngeal in week 4; cloacal in week 7 [f5,f6]."
+  }
+ ],
+ "shows_up": [
+  "E06.03.03",
+  "E14.01.01",
+  "E15.01.01",
+  "E15.02.01",
+  "E15.04.04"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6b)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 1, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "The spatial verb 'identify' is met by the q1 head-to-tail order Check. The membranes are taught by E05.00.02. Minor metadata: allantois is listed as known, but no prerequisite teaches it (map owner E16.01.06). It is used only at MBBS."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 1, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Gut parts, membranes and timings match the dossier (✔✔ only on f5 with R06 CS11). Pass."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6b)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  }
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "spec": 1,
+ "id": "E08.01.03",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "Counting to birth: 38 or 40 weeks?",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how doctors and embryologists each count the length of a pregnancy."
+ },
+ "body": {
+  "general": "Is a pregnancy 40 weeks long, or 38? Doctors count 280 days, or 40 weeks, from the first day of the last period [f2]. Counted from fertilization, when egg and sperm join, birth comes about 266 days, or 38 weeks, later [f1]. The period date is used because the day of fertilization is rarely known [f4]. Sperm can wait several days for the egg [f4]. The period rule works best when cycles are regular [f5]. Most babies arrive within two weeks of the due date [f7].",
+  "mbbs": "Birth occurs about 266 days (38 weeks) after fertilization [f1]. Obstetricians date pregnancy as 280 days (40 weeks) from the first day of the last normal menstrual period (LNMP) [f2]. The two clocks differ by about 2 weeks [f1,f2]. Fertilization usually follows ovulation within about 12 hours [f3]. Sperm survive up to about 6 days, so the exact date of fertilization is rarely known [f4]. LNMP dating assumes a regular 28-day cycle [f5]. Irregular cycles, or implantation bleeding about 14 days after fertilization, can mislead it [f6]. Most babies arrive within 10–14 days of the due date [f7]. Much earlier is premature; much later is postmature [f8]. Fetal age is also judged from length, weight and external form [f9]. Ultrasound crown–rump length (CRL) is the measure of choice in weeks 7–14 [f9]. The book gives its accuracy as 1–2 days [f12]. From weeks 16–30, biparietal diameter, head and abdominal circumference and femur length are used [f10]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Birth comes about 266 days (38 weeks) after fertilization.",
+   "cite": "E08.01, E08.10 · R05ap",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05ap: median 268 d ovulation → birth"
+  },
+  {
+   "id": "f2",
+   "text": "Obstetricians count pregnancy as 280 days (40 weeks) from the first day of the last normal menstrual period.",
+   "cite": "E08.01, E08.10 · R05ap",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Fertilization usually happens within about half a day of ovulation.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Sperm can survive up to about 6 days, so the day of fertilization is rarely known exactly.",
+   "cite": "E08.01 · R05aq",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05aq: conception only from a 6-day window ending on ovulation day"
+  },
+  {
+   "id": "f5",
+   "text": "Dating from the last period works best when cycles are regular, about 28 days long.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Irregular cycles, or bleeding at implantation about 14 days after fertilization mistaken for a period, can make the date wrong.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Most babies are born within 10 to 14 days of the due date.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "Babies born much earlier than this are premature; much later, postmature.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Fetal age can also be judged from length, weight and form; ultrasound crown–rump length (CRL) is the tool in weeks 7 to 14.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "From about weeks 16 to 30, ultrasound uses head width (biparietal diameter), head and abdominal circumference and femur length.",
+   "cite": "E08.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "Before 37 completed weeks of pregnancy, counted from the last period, a birth is preterm; the book puts this at about 12 % of US births.",
+   "cite": "E08.09 CC · R05aw",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05aw: same definition, US 12–13 %"
+  },
+  {
+   "id": "f12",
+   "text": "The book gives ultrasound CRL in weeks 7 to 14 as accurate to within 1–2 days.",
+   "cite": "E08.01",
+   "mark": "⚑",
+   "where": "main",
+   "decision": "D-044",
+   "note": "D-044 (b), default until the owner decides: book answer in main"
+  },
+  {
+   "id": "f13",
+   "text": "⚑ Newer evidence (D-044): one CRL scan dates a pregnancy to within about ±5 days (95 %); three scans, to about ±3 days.",
+   "cite": "E08.01 · R05ar, R05as",
+   "mark": "⚑",
+   "where": "more",
+   "decision": "D-044",
+   "note": "D-044 (b). R05ar: ±4.7 d one scan, ±2.7 d three (95 %); R05as: −7 to +4 d vs known insemination; the book's 1–2 d may mean measuring precision, not dating error"
+  },
+  {
+   "id": "f14",
+   "text": "Beyond Langman: even when timed exactly from ovulation, natural pregnancies vary in length by about 5 weeks.",
+   "cite": "· R05ap",
+   "mark": "✚",
+   "where": "more",
+   "note": "R05ap: range ~37 d even without preterm births"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": []
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Pregnancy lasts 40 weeks from conception.",
+   "right": "The 40 weeks count from the last period; from fertilization it is about 38 weeks (266 days).",
+   "cite": "E08.01 · R05ap",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "About how long after fertilization is a baby usually born?",
+   "options": [
+    "About 266 days (38 weeks)",
+    "About 280 days (40 weeks)",
+    "About 252 days (36 weeks)",
+    "About 294 days (42 weeks)"
+   ],
+   "answer": 0,
+   "why": "280 days (40 weeks) is counted from the last period; fertilization comes about 2 weeks later, so birth is about 266 days after it.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Why do obstetricians date pregnancy from the last menstrual period?",
+   "options": [
+    "The day of fertilization is rarely known, but the period start usually is",
+    "Fertilization happens on the first day of the period",
+    "The embryo starts growing at the period",
+    "Fertilization always happens on the day of sex"
+   ],
+   "answer": 0,
+   "why": "Sperm can survive for days and fertilization follows ovulation, not sex, so its date is rarely known.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "A due date is set 280 days after the last period began. When is birth most likely?",
+   "options": [
+    "Within about 10–14 days of the due date",
+    "Exactly on the due date",
+    "About a month before the due date",
+    "About three weeks after the due date"
+   ],
+   "answer": 0,
+   "why": "The due date is an estimate; most babies arrive within 10–14 days of it.",
+   "tests": "objective"
+  }
+ ],
+ "clinical": "A birth before 37 completed weeks of pregnancy, counted from the last period, is called preterm [f11]. The book puts this at about 12 % of births in the US [f11]. Knowing the due date well is what lets a birth be judged early or late [f7,f8].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "How long after fertilization is birth?",
+   "a": "About 266 days, or 38 weeks [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "How do obstetricians count pregnancy length?",
+   "a": "280 days, or 40 weeks, from the first day of the last period [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "Why is pregnancy dated from the last period?",
+   "a": "Because the day of fertilization is rarely known exactly [f4]."
+  }
+ ],
+ "shows_up": [
+  "E08.09.01",
+  "E08.01.02"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 8)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
+    "body.mbbs.12": "ok",
+    "body.mbbs.13": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
+    "f13": "ok",
+    "f14": "ok",
+    "m1": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fix landed: f3 now ✔ on E08.01 only. D-044 (b) per default: f12 ⚑ with decision in main gives the book 1-2 d; f13 '⚑ Newer evidence (D-044)' in More. Clocks stated (fertilization vs LMP)."
+  },
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Pass. No Check's why or option answers a later Check. 'Obstetricians' (q2, r2) and 'ovulation' (q2 why) aren't used at General but are plain adult words; optional: write 'doctors (obstetricians)' at General."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch08-fetus-placenta.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 8)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f3 → ✔ E08.01 (R05aq supports f4 only); r3 swapped for a General-level prompt (CRL not taught at General, lead ruling b)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  }
+ ]
+}

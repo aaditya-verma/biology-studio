@@ -1,0 +1,288 @@
+{
+ "spec": 1,
+ "id": "E06.00.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "The embryonic period",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain why the embryonic period matters so much for birth defects."
+ },
+ "body": {
+  "general": "Why do the first two months of pregnancy matter so much? From week 3 to week 8, each of the three cell layers, the germ layers, builds its own tissues and organs [f1]. This stretch is the embryonic period, or embryogenesis, when organs form (organogenesis) [f1]. By its end, every main organ system exists and the body looks human [f7]. So this is when most major birth defects begin [f3]. Harmful agents, teratogens, do most damage now [f4]. Weeks 3 and 4 carry special risk, often before a woman knows she is pregnant [f5].",
+  "mbbs": "The embryonic period, embryogenesis proper, runs from week 3 to week 8 after fertilization [f1]. In it each germ layer gives rise to its own tissues and organs (organogenesis) [f1]. By the end of month 2 the main organ systems are laid down and the external form is recognisable [f7]. At the end of week 8 the crown–rump length is about 28–30 mm [f2]. Most major structural birth defects arise in this window, so it is the period most sensitive to teratogens [f3,f4]. An insult in weeks 1–2 more often ends the pregnancy than causes a malformation [f6]. Weeks 3–4 are especially vulnerable and often pass before the pregnancy is recognised [f5]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "From week 3 to week 8 each germ layer builds its own tissues and organs.",
+   "cite": "E06.00, E06.06 · R02 CS23, R08",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "By the end of month 2 the main organ systems exist and the outer body form is recognisable.",
+   "cite": "E06.00, E06.06 · R02 CS23, R08",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R02: over 90 % of named adult structures present at CS23"
+  },
+  {
+   "id": "f2",
+   "text": "At the end of week 8 the embryo's crown–rump length is about 28–30 mm.",
+   "cite": "E06.05 Tbl 6.3 · R08 CS23",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R08 CS23 27–31 mm (dossier §1)"
+  },
+  {
+   "id": "f3",
+   "text": "Most major structural birth defects arise during the embryonic period.",
+   "cite": "E06.00, E06.06 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Because organs are forming, weeks 3 to 8 are the time most sensitive to teratogens.",
+   "cite": "E06.00, E06.06 CC · E09.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Weeks 3 and 4 are especially vulnerable, and often pass before a woman knows she is pregnant.",
+   "cite": "E06.06 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Before the embryonic period, a serious insult usually ends the pregnancy rather than causing a malformation.",
+   "cite": "E06.00, E06.06 CC",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.embryogenesis",
+   "E.t.organogenesis",
+   "E.t.teratogen"
+  ],
+  "known": [
+   "E.t.germ-layers",
+   "E.t.ectoderm",
+   "E.t.mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The most dangerous time for teratogens is late pregnancy.",
+   "right": "The most sensitive time is weeks 3 to 8, while the organs are forming.",
+   "cite": "E06.00, E06.06 CC · E09.01",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Harm in the first two weeks causes most malformations.",
+   "right": "A serious insult before week 3 usually ends the pregnancy; malformations mostly start in weeks 3 to 8.",
+   "cite": "E06.00, E06.06 CC",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "When do most major structural birth defects begin?",
+   "options": [
+    "Weeks 1–2",
+    "Weeks 3–8",
+    "Months 4–6",
+    "The last month"
+   ],
+   "answer": 1,
+   "why": "Weeks 3 to 8 are when the organs form, so that is when most major defects arise.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "A serious insult hits in week 2. What is the most usual result?",
+   "options": [
+    "A heart defect",
+    "A limb defect",
+    "Loss of the pregnancy",
+    "A defect that shows only after birth"
+   ],
+   "answer": 2,
+   "why": "Before the embryonic period a serious insult usually ends the pregnancy rather than causing a malformation.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Why are weeks 3 and 4 a special worry?",
+   "options": [
+    "The placenta is not yet attached",
+    "Organs form before many women know they are pregnant",
+    "The embryo grows fastest in length then",
+    "The germ layers have not formed yet"
+   ],
+   "answer": 1,
+   "why": "Organ building starts in weeks 3–4, often before the pregnancy is recognised, so exposures can go unnoticed.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "By week 8 the plan of every adult organ system is already in place [f7].",
+ "clinical": "Weeks 3 and 4 often pass before a pregnancy is recognised [f5]. So harmful exposures in this window can happen unnoticed [f4,f5].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Which weeks make up the embryonic period?",
+   "a": "Weeks 3 to 8, when each germ layer builds its tissues and organs [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Why is the embryonic period the riskiest time for teratogens?",
+   "a": "Organs are forming, so most major structural birth defects arise then [f3,f4]."
+  },
+  {
+   "id": "r3",
+   "q": "What usually follows a serious insult before week 3?",
+   "a": "Loss of the pregnancy rather than a malformation [f6]."
+  }
+ ],
+ "shows_up": [
+  "E09.01.01",
+  "E09.01.02"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6a)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "fix: tests f6 (harm before week 3 usually ends the pregnancy), which the General body never teaches (MBBS only); and 'insult' is medical jargon, not plain words. Add f6 to General, e.g. 'Serious harm before week 3 usually ends the pregnancy instead [f6].' (to fit 90 words, the f7 sentence can go: the adult line carries f7); prompt: 'Serious harm, such as a toxic drug, strikes in week 2. What is the most usual result?'",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "fix: 'insult' is not taught at General; say 'serious harm' (same change as q2).",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "fix: 'serious insult' → 'serious harm' (plain words); depends on f6 reaching General (q2).",
+    "shows_up": "ok"
+   },
+   "notes": "Round-1 fix landed: embryogenesis is named and explained at General. Remaining: the weeks-1–2 fact is checked and remembered but only taught at MBBS, in jargon ('insult')."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "f1": "ok",
+    "f7": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fix landed: f4 and m1 now cite 'E06.00, E06.06 CC · E09.01', ✔. General trim and embryogenesis naming add no unsupported claim. Weeks 3–8, CRL 28–30 mm (✔✔ R08 CS23 27–31 mm) and the weeks 3–4 risk lines match the dossier; clinical humane."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §1, §2 (E06.00.01)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6a)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f4 + m1 cite adds E09.01; terms (embryogenesis named at General)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: body.general trimmed to budget",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  }
+ ]
+}

@@ -33,7 +33,9 @@ function layoutAudit(root){
     issues.push({kind:'page-wider',what:'page '+document.documentElement.scrollWidth+'px on '+W+'px: '+wide.filter(el=>!wide.some(o=>o!==el&&o.contains(el))).slice(0,4).map(name).join(', ')});}
   // 4. tap targets smaller than --tap (touch 44, mouse 36), visible part only
   const ctrls=[...root.querySelectorAll('button,a[href],input:not([type=file]):not(.sr),select,summary,[role=button],label.btn')].filter(el=>vis(el)&&!el.closest('#dbg,[data-layout-skip],.sr'));
-  ctrls.forEach(el=>{const r=el.getBoundingClientRect();if(el.closest('.sr'))return;if(r.width+0.5<Math.min(TAP,W)||r.height+0.5<TAP){const inline=getComputedStyle(el).display==='inline'&&el.tagName==='A';if(!inline)issues.push({kind:'tap-small',what:name(el)+' '+Math.round(r.width)+'×'+Math.round(r.height)+' < '+TAP});}});
+  ctrls.forEach(el=>{const r=el.getBoundingClientRect();if(el.closest('.sr'))return;
+    if(el.matches('input[type=checkbox],input[type=radio]')){const l=el.closest('label');if(l){const q=l.getBoundingClientRect();if(q.height+0.5>=TAP&&q.width+0.5>=Math.min(TAP,W))return;}}   // H2: a box inside a tap-sized label — the label is the target (WCAG 2.5.8)
+    if(r.width+0.5<Math.min(TAP,W)||r.height+0.5<TAP){const inline=getComputedStyle(el).display==='inline'&&el.tagName==='A';if(!inline)issues.push({kind:'tap-small',what:name(el)+' '+Math.round(r.width)+'×'+Math.round(r.height)+' < '+TAP});}});
   // 4b. a control pushed past the side of its own pane or card (hidden or needing a sideways scroll there); tables meant to scroll are fine
   ctrls.forEach(el=>{if(el.closest('.xt-wrap,.seg,.tr-mapw'))return;   // areas meant to scroll sideways (crosstab, progress map — W1)
     const r=el.getBoundingClientRect();for(let p=el.parentElement;p&&p!==document.body;p=p.parentElement){const s=getComputedStyle(p);

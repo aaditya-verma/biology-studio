@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "21 Nov 2026 · Bio · Fix · L1 polish",
+ "updated": "21 Nov 2026 · Bio · Build · H2 reviewer mode",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "steps": [
@@ -215,38 +215,45 @@
    "id": "M1b",
    "title": "M1b host shot — host design + 5-s 9:16 test",
    "type": "Build",
-   "chat": "Bio · Build · M1b v7 results",
+   "chat": "Bio · Build · M1b v7c results",
    "status": "in progress",
    "needs": ["M1"],
    "unblocks": ["P1"],
    "lock": true,
-   "gates": {"G-Art": "fail", "G-A11y": "fail", "G-Eng": "open"},
-   "check": {"id": "T1b", "state": "pass", "since": "2026-11-21"},
-   "decisions": ["D-024", "D-032", "D-041", "D-047", "D-048", "D-049", "D-051", "D-052"],
-   "prompt": "M1b Step 2c",
-   "log": "21 Nov 2026 · M1b v6 results — v6 t1b run: all gates pass but host-vs-plate (p10 1.6–2.8:1, 76–85 % ≥ 3:1); cause = inner glow fades to 0 at the silhouette; kit v7 rim glow + gate overlays (D-052); owner T1b pass; G-A11y fail on v6",
+   "gates": {"G-Art": "pass", "G-A11y": "pass", "G-Eng": "pass"},
+   "check": {"id": "T1b", "state": "open", "since": "2026-11-21", "note": "redo on the v7c clips (owner look picks M1b.q9); v6 T1b pass stands for v6"},
+   "decisions": ["D-024", "D-032", "D-041", "D-047", "D-048", "D-049", "D-051", "D-052", "D-059"],
+   "prompt": null,
+   "log": "21 Nov 2026 · M1b v7 results — gate skips contact/frame pixels (owner); v7 still FAIL (bokeh behind crown, floor vs lower curve) → kit v7b (bokeh off host, contact shadow): preview PASS, 720p t1b QA PASS; D-049 confirmed; owner look picks → kit v7c installed (D-059)",
    "todo": [
-    "v7 (D-052): run `python m1b.py all --preview`, check RESULTS Host vs plate + out\\review\\sep_*.png; tune quality.rim.strength (1.6) if red dots remain; then t1b. If the rim reads as a halo/cartoon ring: lower strength or raise power; outline stays the last fallback",
-    "Fresh-eyes G-Eng review of the v7 code (rim term in body_mat, sep overlay in m1b.py) at v7 results — this chat self-checked only (gate re-run on v6 frames reproduces v6 numbers exactly)",
-    "G-Art R5 (iterate) not fixed blind: mouth reads as a moustache; glasses temples stick out past the head, chain not visible; shawl hangs like a cape behind her (should wrap the shoulders); embroidery reads as dots, not vines; crown blows out in shot B — check after v6",
+    "v7c: `python m1b.py all --preview` → every Host vs plate line OK + sep_*.png → `python m1b.py t1b` → T1b on v7c; G-Art (separate reviewer) on the v7c frames at v7c results",
+    "v7c check: shawl lift (shot B) must not sit behind the body edge — if B fails, lower `quality.plate.shawl_lift` size/emit; shawl vs plate p10 target ≥ 1.5 (info); 2-line caption must end above 75 %",
+    "v8 look pass after T1b passes on v7c (Project draft host-look-pass-v8-draft.md, shawl first: drape, thickness, weave, own paisley + border, tasselled fringe; body lantern; face sculpt; hands + book)",
+    "Embroidery/pages LOW (info) → fix per P1 shot when tokens are on screen with her (neutral key or token panel); 22 thread colours tested, none passes under the warm key (D-059 (5))",
+    "Glare: bloom threshold 2.0 is global (docstring says practicals only) — mask to practicals if the rim/sheen start to bloom (G-Eng v7 note 3)",
     "Onion side board: match the reference's turn before aligning; use silhouette masks for the edge layer",
-    "Embroidery vs endoderm: measure at 720p (v5 preview 7.8 vs endo-e is sub-pixel noise); gate in P1 when endoderm is on screen with her",
     "Reduced-motion render (_rm) + a one-line note of what it changes (G-A11y); caption reading-speed check; landscape/tablet framing (C13) before P1",
     "Listen for clipped plosives (limiter takes ~2–4 dB off the peaks)",
-    "Repo tools/m1b-host/: delete the old never-run kit files host.py + spec.py (replaced by m1b.py + host.json, D-051); run from Studio home tools\\m1b-host until M1b is done",
+    "Repo tools/m1b-host/: delete the old never-run kit files host.py + spec.py if still present; repo mirrors Studio home kit v7c (21 Nov)",
     "Add cam_lesson (16:9) to the host scene before P1 (visual-style §10, one scene two cameras)",
-    "If T1b look/face ≤ 2 after one tune round → H-c paid options (costs re-checked in D-051, F2)"
+    "pipeline-reference §3 ship rows: fill from the v7b t1b (720p, 0.57–0.59 MB/5 s, −14.04 LUFS) or the v7c t1b, whichever ships",
+    "Run `tools/tracker/check.py --write` (not run by the scheduled check-in — no laptop shell)",
+    "Ready prompt for `Bio · Build · M1b v7c results` lives in Studio home `handoff\\handoff-M1b-v7b.md` (end), not in master plan §13 — the next M1b chat copies it into §13 and sets `prompt` (H2 set it to null so the tracker passes)"
    ],
    "inputs": [
     {"id": "M1b.q1", "kind": "decide", "ask": "Pick the host (concepts A–G or a Canva render)", "asked_in": "Bio · Build · M1b host shot", "asked": "2026-11-20", "answer": "Nani Koshika; reference Canva turnaround MAHbd5r-vTY", "status": "answered", "d": "D-048"},
     {"id": "M1b.q2", "kind": "decide", "ask": "Pick the host voice V-a / V-b", "asked_in": "Bio · Build · M1b host shot", "asked": "2026-11-20", "answer": "V-a Kokoro af_heart, speed 0.9", "status": "answered", "d": "D-048"},
     {"id": "M1b.q3", "kind": "action", "ask": "Run tools\\m1b-host (README: fonts + pip, selftest, all --preview, all), upload for_drive to Drive › renders/bakeoff/host, then do T1b and reply in one message", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": "v1–v5 previews run 20–21 Nov (owner); superseded by M1b.q5 (v6 t1b run)", "status": "closed", "d": "D-049"},
-    {"id": "M1b.q4", "kind": "decide", "ask": "Confirm route H-a (3D Nani in Blender) after T1b, or pick H-c paid (Hedra / Kling / Runway, costs in D-049)", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-049"},
+    {"id": "M1b.q4", "kind": "decide", "ask": "Confirm route H-a (3D Nani in Blender) after T1b, or pick H-c paid (Hedra / Kling / Runway, costs in D-049)", "asked_in": "Bio · Build · M1b host shot (Step 2)", "asked": "2026-11-20", "answer": "Confirm H-a (3D Nani in Blender); v8 look pass after the gate — owner, 21 Nov 16:05 IST", "status": "answered", "d": "D-059"},
     {"id": "M1b.q5", "kind": "action", "ask": "Run `python m1b.py t1b` in Studio home tools\\m1b-host (~10–20 min, plugged in), upload the FILES inside out\\for_drive\\ (not the folder) to Drive › renders › bakeoff › host, do T1b, and reply in one message with the scores, notes, host OK y/n and RESULTS.md", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": "Done — v6 t1b run 21 Nov 10:37 (GTX 1060, 581.57); files inside for_drive uploaded 12:40; T1b pass on the phone: shawl does not vanish into the background, caption band clear of book + hands, v6 passes overall (owner, 12:44 IST). Scores not given; QA FAIL on host-vs-plate only (D-052)", "status": "answered", "d": "D-052"},
     {"id": "M1b.q6", "kind": "decide", "ask": "Voice speed: keep Kokoro speed 0.66 (143 wpm, what the kit uses) or D-048's 0.9 (213 wpm, too fast for H6)? Recommended: 0.66", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": "Keep Kokoro speed 0.66 (143 wpm) — owner, 21 Nov 12:44 IST", "status": "answered", "d": "D-052"},
-    {"id": "M1b.q7", "kind": "decide", "ask": "Caption band: keep 55–65 % from the top (visual-style §1) or move host-shot captions to the lower third, above the app buttons (G-Art R5)?", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": "Keep the 55–65 % band (visual-style §1) — owner T1b: clear of the book + hands, 21 Nov 12:44 IST", "status": "answered", "d": "D-052"},
-    {"id": "M1b.q8", "kind": "action", "ask": "Run `python m1b.py all --preview` (~5 min) in Studio home tools\\m1b-host; if RESULTS says Host vs plate OK on every line, run `python m1b.py t1b`; upload the files inside out\\for_drive\\ to Drive › renders › bakeoff › host and paste RESULTS.md + one line on how the rim looks (natural / halo)", "asked_in": "Bio · Build · M1b v6 results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-052"}
-   ]
+    {"id": "M1b.q7", "kind": "decide", "ask": "Caption band: keep 55–65 % from the top (visual-style §1) or move host-shot captions to the lower third, above the app buttons (G-Art R5)?", "asked_in": "Bio · Build · M1b host results", "asked": "2026-11-21", "answer": "Keep the 55–65 % band (visual-style §1) — owner T1b: clear of the book + hands, 21 Nov 12:44 IST — superseded for host shots by M1b.q9 (68–72 %, D-059)", "status": "answered", "d": "D-052"},
+    {"id": "M1b.q8", "kind": "action", "ask": "Run `python m1b.py all --preview` (~5 min) in Studio home tools\\m1b-host; if RESULTS says Host vs plate OK on every line, run `python m1b.py t1b`; upload the files inside out\\for_drive\\ to Drive › renders › bakeoff › host and paste RESULTS.md + one line on how the rim looks (natural / halo)", "asked_in": "Bio · Build · M1b v6 results", "asked": "2026-11-21", "answer": "v7 preview run 14:41 + 17:47; rim looks natural (owner); red on contact/frame pixels → gate change; v7b preview 18:10 PASS + t1b 720p 18:23 QA PASS (D-059)", "status": "answered", "d": "D-059"},
+    {"id": "M1b.q9", "kind": "decide", "ask": "Shawl fix (sheen / plate lift / both), caption band, shot B framing, glasses temples, mouth size", "asked_in": "Bio · Build · M1b v7 results", "asked": "2026-11-21", "answer": "Both sheen + lift; captions 68–72 % (lower is better); framing, temples, mouth as recommended — owner 18:10 IST → kit v7c", "status": "answered", "d": "D-059"},
+    {"id": "M1b.q10", "kind": "decide", "ask": "Anatomy shots: keep captions at 55–65 % (axes + scale bar sit at 66–71 % bottom-left, visual-style §1 'never overlapping'), or move them to 68–72 % too and move the axes/scale band?", "asked_in": "Bio · Build · M1b v7 results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-059"},
+    {"id": "M1b.q11", "kind": "action", "ask": "On kit v7c: `python m1b.py all --preview`; if every Host vs plate line is OK, `python m1b.py t1b`; upload the files inside out\\for_drive\\ to Drive › renders › bakeoff › host; do T1b on the phone; paste RESULTS.md + T1b notes in `Bio · Build · M1b v7c results`", "asked_in": "Bio · Build · M1b v7 results", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-059"}
+   ],
+   "note": "Gate details (moved from the gate fields by H2 — the tracker takes open/pass/fail/na only): G-Art: pass with notes (v7 look + v7b plan); v7c after preview; G-A11y: pass (v7b t1b 720p: host vs plate front 91 %, A 100 %, B 97–99 %; captions 7.8/5.0); v7c re-check; G-Eng: pass with notes (v7, v7b; v7c fixed after FAIL)"
   },
   {
    "id": "H1",
@@ -255,23 +262,49 @@
    "chat": "Bio · Build · H1 shared repo",
    "status": "owner check",
    "needs": ["M0"],
-   "unblocks": ["A0"],
+   "unblocks": ["H2", "A0"],
    "lock": true,
    "gates": {"G-Eng": "pass"},
-   "check": {"id": "T5", "state": "open", "since": "2026-11-17", "by": "Professor"},
-   "decisions": ["D-025", "D-027"],
+   "check": {"id": "T5", "state": "open", "since": "2026-11-17", "by": "Professor", "note": "Level 3 only — until then the Professor uses setup guide §0 (Reviewer: start here, H2)"},
+   "decisions": ["D-025", "D-027", "D-060"],
    "prompt": "H1",
    "log": "17 Nov 2026 · H1 Shared repo — private repo, studio-docs/, sync.bat (invite pending username)",
    "todo": [
     "After cloning on the laptop, the old tools\\ + content\\ in Studio home are retired (keep out\\)"
    ],
    "inputs": [
-    {"id": "H1.q1", "kind": "ask", "ask": "The Professor’s name, Google address and GitHub username (needed for invites)", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
-    {"id": "H1.q2", "kind": "decide", "ask": "D-025 (c): the Professor as human G-Sci reviewer for cards and scripts?", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-025"},
-    {"id": "H1.q3", "kind": "action", "ask": "Invite the Professor: repo › Settings › Collaborators › Add people (Write); then send him the T5 message", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
+    {"id": "H1.q1", "kind": "ask", "ask": "The Professor’s name, Google address and GitHub username (needed for invites)", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": "Komal Verma (the Professor) · GitHub komalverma00500-byte · her email stays with the owner, not in the repo (21 Nov 2026)", "status": "answered", "d": "D-060"},
+    {"id": "H1.q2", "kind": "decide", "ask": "D-025 (c): the Professor as human G-Sci reviewer for cards and scripts?", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": "Yes — human science reviewer for cards and scripts, on top of the chat G-Sci; her ✓ = the human science pass; her ✎ fixes need the owner's OK (21 Nov 2026)", "status": "answered", "d": "D-060"},
+    {"id": "H1.q3", "kind": "action", "ask": "Invite the Professor: repo › Settings › Collaborators › Add people (Write); then send him the T5 message", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": "Not now — no collaborator invite until Level 3; she reviews through public Issues (Reviewer mode, H2) (21 Nov 2026)", "status": "closed", "d": "D-060"},
     {"id": "H1.q4", "kind": "action", "ask": "Send the Professor the setup Doc and share Drive subfolders renders/ audio/ research/ assets/ index/ backup/ as Editor — not book/", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-025"},
     {"id": "H1.q5", "kind": "action", "ask": "Clone the repo on your laptop: cd /d D:\\Projects\\biology_studio\\repo → git clone https://github.com/aaditya-verma/biology-studio.git; run M1 from there", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
     {"id": "H1.q6", "kind": "action", "ask": "Delete the 24 uploaded Project docs (Project → knowledge; keep the GitHub studio-docs/ source), then a chat checks it still sees STATUS", "asked_in": "Bio · Fix · doc reconcile", "asked": "2026-11-18", "answer": null, "status": "open", "d": null}
+   ]
+  },
+  {
+   "id": "H2",
+   "title": "H2 Reviewer mode — the Professor's review home",
+   "type": "Build",
+   "chat": "Bio · Build · H2 reviewer mode",
+   "status": "owner check",
+   "needs": ["H1", "L1"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass", "G-Art": "pass"},
+   "check": {"id": "T10", "state": "open", "since": "2026-11-21"},
+   "decisions": ["D-060", "D-061"],
+   "prompt": "H2 reviewer mode",
+   "log": "21 Nov 2026 · H2 Reviewer mode (app v12, D-060 + D-061 proposed) — #review home, card review → pre-filled GitHub Issue Form, My feedback from the public API, 3-screen tour, #updates; gates pass; T10 open",
+   "todo": [
+    "Card format: a field for the human science pass (now a log line `G-Sci human ✓ · the Professor · issue #n`) — card-spec + card-check, next content/fix chat that touches card-spec",
+    "Every chat: end each build-log line with `<!--plain: one plain sentence-->` (Reviewer mode › Updates reads it)",
+    "Scripts review (episodes) joins Reviewer mode when P1 has a script — same form, a `script` kind",
+    "Disabled Send is shown by opacity + the help line only (G-A11y should, accepted)"
+   ],
+   "inputs": [
+    {"id": "H2.q1", "kind": "action", "ask": "Copy the 3 GitHub forms in before syncing: xcopy /I /Y \"D:\\Projects\\biology_studio\\handoff\\h2-issue-forms\\*.yml\" \"D:\\Projects\\biology_studio\\repo\\biology-studio\\.github\\ISSUE_TEMPLATE\\\" (the chat can't write inside .github); then repo settings (chats can't): Issues ticked; Labels › New label `review` and `fixing`; a milestone `v12` when a fix ships (T10 Before)", "asked_in": "Bio · Build · H2 reviewer mode", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-061"},
+    {"id": "H2.q2", "kind": "decide", "ask": "D-061: confirm Reviewer mode as built (addresses, 8-line checklist, ✓/✎/? + note rule, the issue → words mapping, 5-min GitHub check, updates from the build log) — or say what to change (T10 step 8)", "asked_in": "Bio · Build · H2 reviewer mode", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-061"},
+    {"id": "H2.q3", "kind": "action", "ask": "After T10 part A: send the Professor the welcome message (links + 3 lines; text in the build log H2 line / chat) — then T10 part B is hers", "asked_in": "Bio · Build · H2 reviewer mode", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-060"}
    ]
   },
   {
@@ -289,7 +322,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -394,7 +427,7 @@
     "Tier 1 fetal-size standard (e.g. INTERGROWTH-21st) to raise the §1 sizes to ✔✔",
     "D-044 a: read the Csapo 1972–73 lutectomy papers (no PubMed abstract) before any card uses the progesterone hand-over",
     "Tier 1 sources for the preeclampsia More lines (postpartum onset; organ dysfunction instead of proteinuria) and an LMP-clock source for gut return on scans",
-    "AN80 wording read from a teaching-site copy — check against NMC Vol I with AN81 in Ch 9 ≈"
+    "AN80 wording confirmed against NMC Vol I in X1 Ch 09 — ≈ resolved to ✔ (D-057 e)"
    ],
    "inputs": [
     {"id": "X1.08.q1", "kind": "decide", "ask": "D-044 (a–e) from Ch 8: pick an option per item (progesterone hand-over, CRL accuracy, share of DZ twins, accreta/previa concept name, amniotic fluid curve) — recommendations given", "asked_in": "Bio · Research · X1 Ch 08", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-044"}
@@ -405,17 +438,27 @@
    "title": "X1 research · Ch 9 birth defects + prenatal diagnosis",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 09",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.08"],
    "unblocks": [],
    "lock": false,
-   "gates": {"G-Sci": "open"},
+   "gates": {"G-Sci": "pass"},
    "check": null,
-   "decisions": ["D-011", "D-026", "D-044"],
+   "decisions": ["D-011", "D-026", "D-030", "D-044", "D-057"],
    "prompt": "X1 Ch 9",
-   "log": "—",
-   "todo": [],
-   "inputs": []
+   "log": "21 Nov 2026 · X1 Research · Ch 9 — 13 Tier A lines, sensitive-period staging CS7–CS23, 24 misconceptions, AN read from NMC Vol I, 4 ⚑ + 1 curriculum note → D-057",
+   "todo": [
+    "Tier 1 sources for the headline rates (3 % major defects in live-borns · 25 % of infant deaths · 15 % minor anomalies)",
+    "Tier 1 source for the CVS limb-reduction signal, and whether it is confined to CVS before 9–10 weeks",
+    "Source for amniocentesis now being offered from 15 weeks rather than the book’s 14 (early-amniocentesis loss and talipes)",
+    "Tier 1 re-check of the Hiroshima/Nagasaki and Chernobyl figures, and of the alcohol–sonic-hedgehog mechanism",
+    "R05bw full text: how the Zika registry defines “adversely affected” against the book’s 30 % (D-057 b)",
+    "CC0/CC BY/PD screening images (nuchal translucency, CRL) for the § Media ledger (D-046) — none sourced yet"
+   ],
+   "inputs": [
+    {"id": "X1.09.q1", "kind": "decide", "ask": "D-057 (a–d) from Ch 9: pick an option per item (FASD rate, Zika risk, pregestational diabetes risk, ondansetron and heart defects) — recommendations given; (e) is a note, no action needed", "asked_in": "Bio · Research · X1 Ch 09", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-057"},
+    {"id": "X1.09.q2", "kind": "decide", "ask": "card-check bug found this chat: tools/card-check/citations.py matches R\\d\\d[a-z]? so 56 of 98 registry sources (every R05aa onwards, i.e. all of Ch 7, 8 and 9) are dropped from sources.json and would fail validate_citation. One-char fix to [a-z]{0,2} in SRC_RE + parse_registry + the app parity copy. Fix it as the first item of C2 (it takes the lock), or as a separate Bio · Fix · citations R05 chat first?", "asked_in": "Bio · Research · X1 Ch 09", "asked": "2026-11-21", "answer": "Fixed in C2 (21 Nov 2026): R\\d\\d[a-z]{0,2} in citations.py, 15-cards.js, 16-studio.js; sources.json has all 97 sources; parity green (D-058 (2))", "status": "answered", "d": "D-058"}
+   ]
   },
   {
    "id": "A0",
@@ -571,7 +614,7 @@
    "chat": "Bio · Build · L1 learning core",
    "status": "owner check",
    "needs": ["C1"],
-   "unblocks": ["L1F", "V2", "L2", "L3"],
+   "unblocks": ["H2", "L1F", "V2", "L2", "L3"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T7", "state": "open", "since": "2026-11-21"},
@@ -608,7 +651,7 @@
     "T7b on phone, tablet, laptop (incl. the phone fps Measure on sc-E05.02.01 → pipeline reference §2)",
     "G-Art should: at 640×360 and at 125 % on 360 px phones one pinned label may have no room after a label drill (the Check feedback names it); day drill embryo small at 640×360; stamp wraps at 125 % in drills",
     "G-A11y should: the toast live region is created on first use (06-shell.js) — the first message of a session can be missed; add it to index.html",
-    "Content (C2, needs G-Sci + G-Learn): E05.01.01 objective names q1's answer; E05.05.01 — put the day drill (q4) first so scrubbing Try it in q1–q3 can't show it"
+    "Content (C2): E05.01.01 objective + E05.05.01 day drill first — fixed and reviewed twice, held in handoff\\c2-round3 until round 3 passes (D-058 (6))"
    ],
    "inputs": [
     {"id": "L1F.q1", "kind": "decide", "ask": "D-056: confirm Try it labels off during a Check run, leaving the card ends a run, scene phone framing, pinned labels beside pins (T7b step 11) — or say what to change", "asked_in": "Bio · Fix · L1 polish", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-056"}
@@ -642,20 +685,25 @@
    "id": "C2",
    "title": "C2 cards — Ch 6–8 Tier A",
    "type": "Content",
-   "chat": "Bio · Content · C2 Ch 6–8",
-   "status": "planned",
+   "chat": "Bio · Content · C2 Ch 6–8 → Bio · Content · C2 round 3",
+   "status": "in progress",
    "needs": ["C1", "X1.06", "X1.07", "X1.08"],
    "unblocks": ["L2"],
    "lock": true,
    "gates": {"G-Sci": "open", "G-Learn": "open", "G-A11y": "open"},
-   "check": {"id": "T3d", "state": "open"},
-   "decisions": ["D-039", "D-043", "D-044", "D-047"],
-   "prompt": "C1 cards",
-   "log": "—",
+   "check": {"id": "T3d", "state": "open", "since": "2026-11-21"},
+   "decisions": ["D-039", "D-043", "D-044", "D-047", "D-053", "D-058"],
+   "prompt": "C2 round 3",
+   "log": "21 Nov 2026 · C2 Ch 6–8 — 23 Tier A cards drafted (Ch 6: 13 · Ch 7: 5 · Ch 8: 5), 2 review rounds: 4 Reviewed (E06.03.02, E07.01.01, E07.03.01, E08.01.03), 19 draft with round-2 fix lines; scene optional + two-letter registry ids (D-058, app v11); Ch 5 give-away fixes held in handoff\\c2-round3; card-check 36/0 errors, selftest 77/77, calibrate 5/5, parity 113",
    "todo": [
-    "Reuse the C1 prompt with chapters 6–8 (master plan §13)",
-    "⚑ defaults stand until you pick D-039 / D-043 / D-044 (book answer + Newer evidence line)",
-    "Fix two Ch 5 Check give-aways found in L1F (G-Learn): E05.01.01 objective names q1's answer; E05.05.01 put q4 (day drill) first"
+    "Round 3 (prompt 'C2 round 3'): apply round-2 fix lines on 19 Ch 6–8 drafts + the 2 Ch 5 drafts in Studio home handoff\\c2-round3\\, re-review G-Sci + G-Learn, then G-A11y on all 27",
+    "G-A11y not run yet on any C2 card (gate after G-Sci + G-Learn)",
+    "T3d part A now (v11 no-scene layout + run tools/layout-check on the laptop — not run in the cloud); part B after round 3",
+    "Map: E.t.cloacal-membrane-plate is listed on E06.01.01, E06.02.01, E06.02.06, E07.02.01 — looks like an I1/K1 term-placement error (W-terms); fix in the map at the next X1/K1 touch",
+    "Dossier ch06 §5: add E06.00.01's two misconceptions (map field + §2 fact) — G-Learn note",
+    "Indexer gap: tree.json has no box entries for E06.06 (Birth Defects box cited E06.06 CC) — I1 to-do",
+    "E07.05.01 f3: recheck the book wording on PDF p 103 (fuse with oesophageal mesentery + septum transversum) at the next chat with the PDF",
+    "rotate + folded drills: first real use moves to the V-step that builds Ch 6 scenes (no scene yet, D-058)"
    ],
    "inputs": []
   },

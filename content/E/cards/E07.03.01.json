@@ -1,0 +1,288 @@
+{
+ "spec": 1,
+ "id": "E07.03.01",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "Linings and mesenteries",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how the body-cavity linings and the mesenteries form."
+ },
+ "body": {
+  "general": "Why do your gut and lungs slide smoothly inside you? Each cavity has a thin, slippery lining, a serous membrane [f1]. The outer mesoderm sheet lines the cavity walls [f1]. The inner sheet covers the organs [f2]. The two are one continuous layer, folded back where each organ attaches, like a fist pushed into a balloon [f3]. The gut hangs from the back wall in a double sheet, the dorsal mesentery [f4]. Mesenteries carry the gut's blood vessels and nerves [f6]. A front sheet, the ventral mesentery, holds only a short stretch near the stomach [f7].",
+  "mbbs": "Some parietal-layer cells become mesothelium, the parietal peritoneum, pleura and pericardium lining the cavity walls [f1]. Some visceral-layer cells form the visceral layer covering the abdominal organs, lungs and heart [f2]. The two layers are continuous at each organ's root, like a fist in a balloon [f3]. The dorsal mesentery is a double layer of peritoneum suspending the gut from the dorsal body wall [f4]. It runs from the caudal foregut to the end of the hindgut [f5]. Mesenteries carry blood vessels, nerves and lymphatics to the organs [f6]. The ventral mesentery exists only from the lower oesophagus and stomach to the upper duodenum [f7]. It comes from thinning of septum transversum mesoderm, the plate below the heart [f8]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Some cells of the parietal layer become mesothelium: the parietal layer of the peritoneum, pleura and pericardium that lines the cavity walls.",
+   "cite": "E07.03 · R06 CS16",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06: coelomic surface cells become the permanent serous membranes"
+  },
+  {
+   "id": "f2",
+   "text": "Some cells of the visceral layer become the visceral layer of serous membrane covering the abdominal organs, lungs and heart.",
+   "cite": "E07.03 · R06 CS14",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06: lung mesenchyme and its outer mesothelium come from the coelomic wall"
+  },
+  {
+   "id": "f3",
+   "text": "The parietal and visceral layers are continuous with each other at each organ's root, like a fist pushed into a balloon.",
+   "cite": "E07.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The dorsal mesentery is a double layer of peritoneum that hangs the gut from the dorsal body wall.",
+   "cite": "E07.03 · R05ao",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05ao: continuous double layer, widest at stomach and duodenum"
+  },
+  {
+   "id": "f5",
+   "text": "In the book the dorsal mesentery runs from the caudal foregut to the end of the hindgut.",
+   "cite": "E07.03",
+   "mark": "✔",
+   "where": "main",
+   "note": "R05ao counts it from pharynx to anus, a wider definition, not used"
+  },
+  {
+   "id": "f6",
+   "text": "Mesenteries carry blood vessels, nerves and lymphatics to the organs.",
+   "cite": "E07.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "The ventral mesentery exists only from the caudal foregut (lower oesophagus and stomach) to the upper duodenum.",
+   "cite": "E07.03, E07.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "The ventral mesentery comes from thinning of the mesoderm of the septum transversum.",
+   "cite": "E07.03, E07.06",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.mesentery",
+   "E.t.dorsal-mesentery",
+   "E.t.ventral-mesentery"
+  ],
+  "known": [
+   "E.t.parietal",
+   "E.t.visceral",
+   "E.t.somatopleure",
+   "E.t.splanchnopleure",
+   "E.t.primitive-body-cavity"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The parietal and visceral peritoneum are two separate sacs.",
+   "right": "They are one continuous layer, folded back at each organ's root, like a fist in a balloon.",
+   "cite": "E07.06",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The ventral mesentery runs the whole length of the gut.",
+   "right": "It exists only from the lower oesophagus and stomach to the upper duodenum; the dorsal mesentery runs much further.",
+   "cite": "E07.03",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "How are the parietal and visceral peritoneum related?",
+   "options": [
+    "Two separate sacs that never meet",
+    "One continuous layer, folded back at each organ's root",
+    "The visceral layer grows out of the gut's endoderm",
+    "The parietal layer comes from the ectoderm"
+   ],
+   "answer": 1,
+   "why": "Both come from lateral plate mesoderm and meet at the organ's root, like a fist in a balloon.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which stretch of gut has a ventral mesentery?",
+   "options": [
+    "The whole gut, from mouth to anus",
+    "Lower oesophagus, stomach and upper duodenum",
+    "Only the hindgut",
+    "Only the midgut"
+   ],
+   "answer": 1,
+   "why": "The ventral mesentery comes from the septum transversum, so it exists only at the caudal foregut and upper duodenum.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which lining comes from the parietal layer of mesoderm?",
+   "options": [
+    "The peritoneum lining the belly wall",
+    "The peritoneum covering the stomach",
+    "The inner lining of the gut",
+    "The outer skin"
+   ],
+   "answer": 0,
+   "why": "Parietal-layer cells line the cavity walls; visceral-layer cells cover the organs; the gut's inner lining is endoderm.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "These become the adult peritoneum, pleura and pericardium, and the mesenteries that carry the gut's vessels and nerves [f1,f2,f6].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What lines the cavity walls, and what covers the organs?",
+   "a": "Parietal-layer mesothelium lines the walls; visceral-layer cells cover the organs [f1,f2]."
+  },
+  {
+   "id": "r2",
+   "q": "What is the dorsal mesentery?",
+   "a": "A double layer of peritoneum hanging the gut from the dorsal body wall [f4]."
+  },
+  {
+   "id": "r3",
+   "q": "Where does the ventral mesentery exist, and where does it come from?",
+   "a": "Only lower oesophagus, stomach and upper duodenum; from thinning septum transversum mesoderm [f7,f8]."
+  }
+ ],
+ "shows_up": [
+  "E15.03.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 7)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 1, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Pass. q1/q2 refute dossier misconceptions 4 and 13; 3 new terms explained at General."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 1, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Pass. 'the plate below the heart' (mbbs.8) is a correct gloss of septum transversum; dossier's wider R05ao mesentery extent correctly kept out."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch07-gut-tube-body-cavities.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "f4 restored to dossier cite + mark (R05ao, ✔✔) after card-check fix for two-letter registry ids",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  }
+ ]
+}

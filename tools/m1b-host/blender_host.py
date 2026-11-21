@@ -244,7 +244,8 @@ def body_mat(body):
     if QR.get("on", True):  # body edge went dark against the dark plate (host-vs-plate gate, v6 p10 1.6–2.8:1). Works for every camera.
         rw = g.new("ShaderNodeLayerWeight"); rw.inputs["Blend"].default_value = QR.get("blend", 0.35)  # EDIT: rim width (higher = wider)
         rim = g.math("POWER", rw.outputs["Facing"], QR.get("power", 2.0))  # EDIT: falloff (higher = thinner line at the very edge)
-        glow = g.math("ADD", glow, g.math("MULTIPLY", rim, QR.get("strength", 1.6)))  # EDIT: rim brightness (0 = v6 look)
+        rim_s = g.math("MULTIPLY", g.math("ADD", 1.0, g.math("MULTIPLY", low, QR.get("low_boost", 0.0))), QR.get("strength", 1.6))
+        glow = g.math("ADD", glow, g.math("MULTIPLY", rim, rim_s))  # EDIT: rim brightness (0 = v6 look); v7b low_boost lifts the lower curve only
     g.link(glow, bs.inputs["Emission Strength"])
     cx, cz, csig, _ = QF.get("cheeks", [0.15, -0.005, 0.07, 0.025])
     comb = g.new("ShaderNodeCombineXYZ")
@@ -290,7 +291,10 @@ def eye_mat():
 
 def shawl_mat():
     m = mat("shawl", PAL["shawl"], 0.92, sheen=QS.get("sheen", 0.3))
-    g = NT(m); setin(g.bs, "Sheen Roughness", 0.6); setin(g.bs, ["Specular IOR Level", "Specular"], QS.get("spec", 0.1))  # EDIT: wool, not satin (R1 read salmon)
+    g = NT(m); setin(g.bs, "Sheen Roughness", QS.get("sheen_rough", 0.6))
+    if QS.get("sheen_tint"):  # v7c (D-058): warm wool sheen
+        setin(g.bs, "Sheen Tint", lin(QS["sheen_tint"]))
+    setin(g.bs, ["Specular IOR Level", "Specular"], QS.get("spec", 0.1))  # EDIT: wool, not satin (R1 read salmon)
     tc = g.coords(); uv = tc.outputs["UV"]
     alb = g.image(os.path.join(OUT, "tex", "shawl_albedo.png"), uv)
     hgt = g.image(os.path.join(OUT, "tex", "shawl_height.png"), uv, noncolor=True)
@@ -513,7 +517,7 @@ def build_materials(body):
     M["crease"] = mat("crease", PAL["crease"], 0.5, sss=0.3)
     M["lip"] = mat("lip", PAL["lip"], 0.45)
     M["hi"] = mat("eye_hi", "#FFFFFF", 0.1, emit="#FFFFFF", emit_s=6.0)
-    M["mouth"] = mat("mouth_in", "#2A0F14", 0.6)
+    M["mouth"] = mat("mouth_in", QF.get("mouth_col", "#2A0F14"), 0.6)  # EDIT: v7c darker #1A070B
     M["wire"] = mat("glasses", PAL["glasses"], 0.22, metal=1.0)
     M["gold"] = mat("gold", PAL["corner_gold"], 0.30, metal=1.0)
     M["lens"] = lens_mat()
@@ -604,15 +608,17 @@ def build_face(rig):
         curve_obj("undereye" + side, ue, 0.0013, M["crease"], rig, radii=[0.3, 1.0, 0.3])
     # mouth: closed smile line with corners + dark interior for visemes
     mz = -0.03; c, n, q = surf(0, mz, 0.0015)
-    xs = (-0.050, -0.025, 0.0, 0.025, 0.050)
+    xs = tuple(x * QF.get("mouth_scale", 1.0) for x in (-0.050, -0.025, 0.0, 0.025, 0.050))  # v7c (G-Eng #3): lip line widens with the mouth
     pts = [surf(x, mz, 0.0015)[0] - c for x in xs]
     lip = curve_obj("lip", pts, 0.0042, M["lip"], rig, radii=[0.45, 0.9, 1.0, 0.9, 0.45])
     lip.location = c; P["lip"] = lip; P["lip_base"] = [Vector(p) for p in pts]
     for sx in (-1, 1):
-        a = [surf(sx * 0.056, mz + 0.004, 0.0012)[0], surf(sx * 0.064, mz + 0.010, 0.0012)[0], surf(sx * 0.062, mz + 0.016, 0.0012)[0]]
+        k_ = QF.get("mouth_scale", 1.0)  # dimples move out with the wider mouth
+        a = [surf(sx * 0.056 * k_, mz + 0.004, 0.0012)[0], surf(sx * 0.064 * k_, mz + 0.010, 0.0012)[0], surf(sx * 0.062 * k_, mz + 0.016, 0.0012)[0]]
         curve_obj("dimple" + str(sx), a, 0.0014, M["crease"], rig, radii=[0.8, 0.6, 0.2])
     mp, mn, mq = surf(0, mz - 0.012, 0.002)
-    P["mouth"] = sphere("mouth", mp, (0.042, 0.004, 0.002), M["mouth"], rig, 24, quat=mq)
+    ms = QF.get("mouth_scale", 1.0)  # EDIT: v7c (D-058, G-Art) 1.3 = readable on a phone
+    P["mouth"] = sphere("mouth", mp, (0.042 * ms, 0.004, 0.002), M["mouth"], rig, 24, quat=mq)
 
 
 def build_glasses(rig):
@@ -627,12 +633,15 @@ def build_glasses(rig):
             verts = [Vector((0, 0.001, 0))] + [Vector((rx * math.cos(t), 0.001, rz * math.sin(t))) for t in (2 * math.pi * k / 40 for k in range(40))]
             mesh_obj("lens" + side, verts, [(0, 1 + k, 1 + (k + 1) % 40) for k in range(40)], M["lens"], g)
         # temple: from the outer rim, back along the head (just off the surface) to behind the "ear"
-        zt = gz + 0.018; r = egg_r(zt / HH) + QF.get("temple_gap", 0.007)  # EDIT: R4 hug the head (arms read as lines off the silhouette)
+        zt = gz + 0.018; r = egg_r(zt / HH) + QF.get("temple_gap", 0.007); te = QF.get("temple_end_deg", 100)  # v7c: end before the silhouette  # EDIT: R4 hug the head (arms read as lines off the silhouette)
         start = Vector((sx * (ex + rx * math.cos(math.radians(10))), ry + rx * math.sin(math.radians(10)), gz + 0.008))  # outer rim point
         pa = math.degrees(math.asin(min(0.98, (ex + rx + 0.02) / r)))
         pts = [start, start + Vector((sx * 0.012, 0.012, 0.004))]
         for k in range(10):
-            ph = math.radians(pa + (100 - pa) * k / 9)
+            ph = math.radians(pa + (te - pa) * k / 9)
+            if k >= 7:  # v7c (D-058, G-Art): last points sink into the body so the arm ends ON the surface, never past the head line
+                r_k = r - QF.get("temple_sink", 0.006) * (k - 6) / 3
+                pts.append(Vector((sx * r_k * math.sin(ph), -r_k * math.cos(ph), zt))); continue
             pts.append(Vector((sx * r * math.sin(ph), -r * math.cos(ph), zt)))
         curve_obj("temple" + side, pts, wr * 0.9, M["wire"], rig)
         if QF.get("chain", True):  # hanging chain: rim bottom-outer → behind the ear, sagging (catenary-ish), kept off the body
@@ -882,12 +891,37 @@ def cam_pose(shot, d=None):
     fwd = (tgt - loc).normalized(); right = fwd.cross(Vector((0, 0, 1))).normalized(); up = right.cross(fwd)
     sc = bpy.context.scene; asp = sc.render.resolution_x / sc.render.resolution_y
     th = 18.0 / lens if asp <= 1 else 18.0 / lens / asp
+    pan = shot.get("shift_x", 0.0) * d * th * asp  # EDIT: v7c (D-058, M1b.q9) pan the camera right → subject moves left by shift_x screen units
+    tgt, loc = tgt + right * pan, loc + right * pan
     return tgt, loc, fwd, right, up, th * asp, th
 
 
 def at_screen(shot, fx, fy, depth):
     _, loc, fwd, right, up, tw, th = cam_pose(shot)
     return loc + fwd * depth + right * (fx * depth * tw) + up * (fy * depth * th), loc
+
+
+def host_screen_box(shot, margin=0.10):
+    """v7b (D-058): host (body + shawl + fringe + book) bounding box in at_screen units (fx, fy ∈ −1…1 = frame edges), plus margin."""
+    bpy.context.view_layer.update()  # G-Eng v7b #5: shawl/fringe matrix_world fresh after build_shawl
+    _, loc, fwd, right, up, tw, th = cam_pose(shot)  # start pose; shot A pushes in 6 % → the 0.10 margin covers the ~3 % growth (G-Eng #6)
+    xs, ys = [], []
+    for o in bpy.data.objects:
+        if o.type in ("MESH", "CURVE") and o.name.startswith(("body", "shawl", "fringe", "book", "arm", "hand")):  # fringe is a CURVE (G-Eng #4)
+            for c in o.bound_box:
+                v = o.matrix_world @ Vector(c) - loc; z = v.dot(fwd)
+                if z > 0.05:
+                    xs.append(v.dot(right) / (z * tw)); ys.append(v.dot(up) / (z * th))
+    if not xs:
+        return None
+    return (min(xs) - margin, max(xs) + margin, min(ys) - margin, max(ys) + margin)
+
+
+def disc_hits_box(shot, fx, fy, depth, size, box):
+    _, _, _, _, _, tw, th = cam_pose(shot)
+    rx, ry = size / (depth * tw), size / (depth * th)  # disc radius in screen units (bokeh blur adds more → margin)
+    x0, x1, y0, y1 = box
+    return fx + rx > x0 and fx - rx < x1 and fy + ry > y0 and fy - ry < y1
 
 
 def world_gradient(top, bottom, strength=1.0):
@@ -902,6 +936,36 @@ def world_gradient(top, bottom, strength=1.0):
 def floor(m, size=14.0):
     s = size / 2
     mesh_obj("floor", [(-s, -s, -0.505), (s, -s, -0.505), (s, s, -0.505), (-s, s, -0.505)], [(0, 1, 2, 3)], m, None, smooth_=False)
+    contact_shadow(m)
+
+
+def contact_shadow(m):
+    """v7b (D-058, G-Art): soft contact darkening of the floor under the host — base colour × (1 − dark) at r ≤ r0, fading to
+    nothing at r1 (world XY distance from the body). The lower egg curve was 2.0–2.8:1 vs the lit floor on the front sheet."""
+    QC = Q.get("contact", {})
+    if not QC.get("on", True) or not m.use_nodes:
+        return
+    nt = m.node_tree; bs = next((n for n in nt.nodes if n.type == "BSDF_PRINCIPLED"), None)
+    if bs is None:
+        return
+    b = bpy.data.objects.get("body"); c = b.matrix_world.translation if b else Vector((0, 0, 0))
+    geo = nt.nodes.new("ShaderNodeNewGeometry")
+    vs = nt.nodes.new("ShaderNodeVectorMath"); vs.operation = "SUBTRACT"; vs.inputs[1].default_value = (c.x, c.y, -0.505)
+    nt.links.new(geo.outputs["Position"], vs.inputs[0])
+    ln = nt.nodes.new("ShaderNodeVectorMath"); ln.operation = "LENGTH"; nt.links.new(vs.outputs[0], ln.inputs[0])
+    mr = nt.nodes.new("ShaderNodeMapRange"); mr.interpolation_type = "SMOOTHSTEP"
+    mr.inputs["From Min"].default_value = QC.get("r0", 0.45); mr.inputs["From Max"].default_value = QC.get("r1", 1.3)  # EDIT: shadow size
+    mr.inputs["To Min"].default_value = QC.get("dark", 0.45); mr.inputs["To Max"].default_value = 0.0  # EDIT: darkness at the foot
+    nt.links.new(ln.outputs["Value"], mr.inputs["Value"])
+    mix = nt.nodes.new("ShaderNodeMixRGB"); mix.blend_type = "MIX"; mix.inputs["Color2"].default_value = (0, 0, 0, 1)
+    nt.links.new(mr.outputs["Result"], mix.inputs["Fac"])
+    bc = bs.inputs["Base Color"]
+    if bc.is_linked:
+        nt.links.new(bc.links[0].from_socket, mix.inputs["Color1"])
+    else:
+        mix.inputs["Color1"].default_value = bc.default_value
+    nt.links.new(mix.outputs["Color"], bc)
+    dbg("contact shadow", m.name, QC)
 
 
 def build_library():
@@ -978,9 +1042,23 @@ def build_plate(kind):
                     pos, _ = at_screen(s, *lp["at"])
                     guard("lamp_" + s["id"], build_lamp, "lamp_" + s["id"], pos)
             sides = QP.get("bokeh_sides", 8)  # 8-sided: near-round but clearly a lens shape, never round "cells" (owner, 21 Nov)
+            for lf in QP.get("shawl_lift", []):  # v7c (D-058, M1b.q9): dim warm glow behind the shawl shoulder only, so the shawl reads
+                if lf["shot"] == s["id"]:
+                    pos, cam = at_screen(s, lf["at"][0], lf["at"][1], lf.get("depth", 6.0))
+                    bpy.ops.mesh.primitive_circle_add(vertices=32, radius=lf.get("size", 0.6), fill_type="NGON", location=pos)
+                    lo = bpy.context.object; lo.name = f"lift_{s['id']}"
+                    lo.data.materials.append(mat("lift", PAL["lamp"], 0.5, emit=PAL["lamp"], emit_s=lf.get("emit", 0.6)))  # EDIT: brightness
+                    lo.rotation_mode = "QUATERNION"; lo.rotation_quaternion = (cam - pos).to_track_quat("Z", "Y")
+            box = host_screen_box(s, QP.get("bokeh_host_margin", 0.10))  # v7b (D-058): no disc behind the host (shot B crown, light-on-light)
             for i in range(QP.get("bokeh_per_shot", 6)):  # top corners only, away from the host
-                fx = rng.choice((-1, 1)) * rng.uniform(0.55, 0.95); fy = rng.uniform(0.45, 0.95)
-                pos, cam = at_screen(s, fx, fy, rng.uniform(5.2, 6.4)); sz = rng.uniform(*QP.get("bokeh_size", [0.05, 0.10]))  # EDIT: R4 smaller
+                for _try in range(25):
+                    fx = rng.choice((-1, 1)) * rng.uniform(0.55, 0.95); fy = rng.uniform(0.45, 0.95)
+                    dep = rng.uniform(5.2, 6.4); sz = rng.uniform(*QP.get("bokeh_size", [0.05, 0.10]))  # EDIT: R4 smaller
+                    if not box or not disc_hits_box(s, fx, fy, dep, sz, box):
+                        break
+                else:
+                    dbg("bokeh skipped (no free spot)", s["id"], i); continue
+                pos, cam = at_screen(s, fx, fy, dep)
                 bpy.ops.mesh.primitive_cylinder_add(vertices=sides, radius=sz, depth=0.004, location=pos)
                 bo = bpy.context.object; bo.name = f"bokeh_{s['id']}{i:02d}"; bo.data.materials.append(M["bokeh"])
                 bo.rotation_mode = "QUATERNION"; bo.rotation_quaternion = (cam - pos).to_track_quat("Z", "Y")
@@ -1058,7 +1136,8 @@ def set_mouth(P, shape, op, f=None):
     if not P.get("mouth"):
         return
     w = {"A": 1.0, "E": 1.2, "O": 0.62, "F": 0.95, "M": 1.0, "rest": 1.0}.get(shape, 1.0)
-    P["mouth"].scale = (0.042 * w, 0.004, 0.002 + 0.038 * op)
+    ms = QF.get("mouth_scale", 1.0)
+    P["mouth"].scale = (0.042 * w * ms, 0.004, 0.002 + 0.038 * op * ms)
     key(P["mouth"], "scale", f)
 
 
@@ -1175,7 +1254,8 @@ def anim_shot(rig):
     dbg("blinks", [round(b, 2) for b in blinks], "frames", NF)
 
 
-REGION = (("body", "body"), ("arm", "body"), ("hand", "body"), ("lid", "body"), ("shawl", "shawl"), ("fringe", "shawl"),
+REGION = (("body", "body"), ("arm", "hand"), ("hand", "hand"), ("lid", "body"),  # v7b (D-058): hands/arms own region → gate skips body–hand contact
+          ("shawl", "shawl"), ("fringe", "shawl"),
           ("book_cover", "book_cover"), ("book_pages", "pages"))
 HOST_PARTS = ("eye", "hi", "brow", "crease", "undereye", "lip", "dimple", "mouth", "rim", "temple", "chain", "bridge", "lens",
               "glass", "book", "ribbon", "corner", "nose", "cheek")  # small host features: neither host region nor plate

@@ -1,0 +1,368 @@
+{
+ "spec": 1,
+ "id": "E08.05.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "How the umbilical cord forms",
+ "tier": "A",
+ "objective": {
+  "verb": "trace",
+  "text": "Trace how the umbilical cord forms, from the umbilical ring to birth."
+ },
+ "body": {
+  "general": "How does a baby end up joined to the placenta by one cord? In week 5, stalks leave the embryo through the umbilical ring [f1]. One, the connecting stalk, carries a pouch, the allantois, plus two arteries and a vein [f2]. Another, the yolk stalk or vitelline duct, leads to the yolk sac [f3]. The amnion, the fluid-filled sac, wraps them into one cord [f5]. From week 6 gut loops sit in the cord, returning by about week 12 after fertilization [f7]. By birth only two arteries and a vein remain, in protective Wharton jelly [f8,f9].",
+  "mbbs": "In week 5 the primitive umbilical ring, the amnion–ectoderm junction, transmits three structures [f1]. The connecting stalk carries the allantois, two umbilical arteries and one vein [f2]. The yolk stalk (vitelline duct) carries the vitelline vessels [f3]. A canal links the intraembryonic and extraembryonic cavities [f4]. The expanding amnion wraps these into the primitive umbilical cord [f5]. From week 6 gut loops lie in the cord as a physiological hernia, returning by about week 12 after fertilization [f7]. At the end of month 3 the amnion meets the chorion, obliterating the chorionic cavity [f6]. As the allantois and vitelline structures regress, two arteries and one vein remain in Wharton jelly [f8]. The jelly is proteoglycan-rich and protective [f9]. The arteries' muscular, elastic walls contract quickly after the cord is tied [f10]. At term the cord is 1–2 cm thick and 50–60 cm long [f11]. Insertion is usually eccentric, sometimes marginal, rarely velamentous [f13]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "In week 5, structures pass through the primitive umbilical ring, where the amnion meets the embryo's ectoderm.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "The connecting stalk passes through the ring, carrying the allantois, two umbilical arteries and one umbilical vein.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The yolk stalk (vitelline duct) and its vessels also pass through the ring.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "So does a canal that joins the cavities inside and outside the embryo.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "As the amnion expands, it wraps the stalks together into the primitive umbilical cord.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "At the end of month 3 the amnion reaches the chorion and the chorionic cavity closes.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "From week 6, gut loops lie in the cord as a normal physiological hernia; they return by about week 12 after fertilization.",
+   "cite": "E08.01, E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "Once the allantois, vitelline duct and vitelline vessels are gone, the cord holds two arteries and one vein in Wharton jelly.",
+   "cite": "E08.05, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Wharton jelly is rich in proteoglycans and protects the cord vessels.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "The umbilical arteries have muscular, elastic walls that clamp down quickly after the cord is tied.",
+   "cite": "E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "At birth the cord is about 1–2 cm thick and 50–60 cm long, often twisted, with false knots.",
+   "cite": "E08.07 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f12",
+   "text": "Cord length reflects how much the fetus moves.",
+   "cite": "E08.07 CC",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f13",
+   "text": "The cord usually joins the placenta off-centre, sometimes at its edge, and rarely into the membranes outside it (velamentous insertion).",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f14",
+   "text": "About 1 in 200 newborns have only one umbilical artery.",
+   "cite": "E08.07 CC · R05bf",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05bf: 0.55 % of live-born"
+  },
+  {
+   "id": "f15",
+   "text": "The book reports heart or other blood-vessel defects in about 20 % of babies with a single umbilical artery.",
+   "cite": "E08.07 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f16",
+   "text": "The umbilical arteries carry the fetus's used blood to the placenta; the umbilical vein brings oxygen-rich blood back.",
+   "cite": "E13.08",
+   "mark": "✔",
+   "where": "main",
+   "note": "dossier §6 m5: Ch 13 fetal circulation; Ch 8 gives no flow direction"
+  },
+  {
+   "id": "f17",
+   "text": "Beyond Langman: a single umbilical artery found on its own carries no extra risk of chromosome disorders.",
+   "cite": "· R05bg",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.allantois",
+   "E.t.vitelline-duct"
+  ],
+  "known": [
+   "E.t.amnion",
+   "E.t.connecting-stalk",
+   "E.t.chorionic-cavity"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Umbilical arteries carry oxygen-rich blood because they are arteries.",
+   "right": "They carry the fetus's used blood to the placenta; the single vein brings oxygen-rich blood back.",
+   "cite": "E13.08",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Gut in the cord at 9 weeks means an omphalocele.",
+   "right": "It is normal: gut loops sit in the cord from week 6 and return by about week 12 after fertilization.",
+   "cite": "E08.01, E08.05",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "order",
+   "prompt": "Put the steps in forming the umbilical cord in order.",
+   "options": [
+    "Stalks pass through the primitive umbilical ring",
+    "The amnion wraps the stalks into the primitive cord",
+    "The amnion reaches the chorion and the chorionic cavity closes"
+   ],
+   "why": "The stalks pass the ring in week 5, the amnion then wraps them, and by the end of month 3 it reaches the chorion.",
+   "tests": "objective"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "What does the umbilical cord hold at birth?",
+   "options": [
+    "Two arteries and one vein in Wharton jelly",
+    "One artery and two veins in Wharton jelly",
+    "Two arteries, one vein and the open allantois",
+    "One artery and one vein in Wharton jelly"
+   ],
+   "answer": 0,
+   "why": "The allantois and vitelline structures are gone by then, leaving two arteries and one vein in jelly.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "At 9 weeks after fertilization, loops of gut are seen in the cord. What is this most likely to be?",
+   "options": [
+    "A normal stage: gut loops sit in the cord for a while",
+    "An omphalocele",
+    "Gastroschisis",
+    "A knot in the cord"
+   ],
+   "answer": 0,
+   "why": "Gut loops normally sit in the cord from week 6 and return by about week 12 after fertilization.",
+   "tests": "objective",
+   "refutes": "m2"
+  }
+ ],
+ "clinical": "About 1 in 200 newborns have only one umbilical artery [f14]. In the book's figures, about 20 % of these babies also have heart or other blood-vessel defects [f15].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What does the umbilical cord hold at birth?",
+   "a": "Two arteries and one vein in Wharton jelly [f8]."
+  },
+  {
+   "id": "r2",
+   "q": "Which structure wraps the stalks into the cord?",
+   "a": "The expanding amnion [f5]."
+  },
+  {
+   "id": "r3",
+   "q": "Which way do the umbilical arteries carry blood?",
+   "a": "From the fetus to the placenta, carrying used blood [f16]."
+  }
+ ],
+ "shows_up": [
+  "E13.08.06",
+  "E08.06.01",
+  "E04.03.02",
+  "E08.02.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 8)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
+    "body.mbbs.12": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
+    "f13": "ok",
+    "f14": "ok",
+    "f15": "ok",
+    "f16": "ok",
+    "f17": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fixes landed: f7 and mbbs.6 say 'week 12 after fertilization'; new General gut-in-cord line carries the clock too. f16/m1 on E13.08 right; SUA ✔✔/✔ split as dossier; ✚ R05bg in More."
+  },
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "fix: step 3 (the amnion reaches the chorion and the chorionic cavity closes, f6) is not in General, and General never names the chorion. Add it at General (90/90 now, so trim, e.g. merge the allantois/yolk-stalk sentences).",
+    "q2": "ok",
+    "q3": "fix: refutes m2 but uses 'omphalocele' and 'gastroschisis', not taught at General. Give a plain gloss at General ('this is normal, not the birth defect omphalocele'), or reword the options in plain words.",
+    "m1": "fix: the flow direction it corrects (f16) is taught in no body level, General or MBBS. Add one sentence: the arteries carry the baby's used blood to the placenta; the vein brings fresh blood back [f16].",
+    "m2": "fix: 'omphalocele' is not taught at General (see q3).",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "fix: tests f16 (artery flow direction), which no body level teaches (see m1).",
+    "shows_up": "ok"
+   },
+   "notes": "Fail. The artery flow direction (f16) carries m1 and r3 but appears in no body text. q1 step 3 and the omphalocele name are not taught at General. No give-aways; no adult line, which suits the cord."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch08-fetus-placenta.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 8)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f7 + body.mbbs.6 'week 12 after fertilization'; q1 cut to 3 steps without the gut (it gave q3 away, ruling a); General adds the gut-in-cord step + names Wharton jelly (ruling b); q3 option + m2 in plain words",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 5 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

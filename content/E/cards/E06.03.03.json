@@ -1,0 +1,302 @@
+{
+ "spec": 1,
+ "id": "E06.03.03",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "What endoderm builds",
+ "tier": "A",
+ "objective": {
+  "verb": "name",
+  "text": "Name the organs that endoderm lines or builds."
+ },
+ "body": {
+  "general": "What does the innermost germ layer, endoderm, become? It lines the gut [f1]. It also lines the airways [f2]. It lines the bladder and the tube that drains it, the urethra [f3]. It lines the middle-ear air space, the tympanic cavity, and the auditory tube that links it to the throat [f4]. It makes the working cells of the thyroid, parathyroids, liver and pancreas [f5]. It also forms the supporting framework of the tonsils and thymus [f6].",
+  "mbbs": "Endoderm forms the epithelial lining of the gut tube [f1]. It lines the respiratory tract [f2]. It lines the urinary bladder and urethra [f3]. It lines the tympanic cavity and auditory tube [f4]. It forms the parenchyma of the thyroid, parathyroids, liver and pancreas [f5]. It forms the reticular stroma of the tonsils and thymus [f6]. The yolk sac, lined by endoderm, gives early nutrition [f7]. It makes the first, short-lived blood cells [f8]. Its back wall houses primordial germ cells before they migrate to the gonads [f9]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Endoderm lines the gut tube.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Endoderm lines the respiratory tract.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Endoderm lines the urinary bladder and urethra.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Endoderm lines the tympanic cavity and auditory tube.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Endoderm forms the working cells (parenchyma) of the thyroid, parathyroids, liver and pancreas.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Endoderm forms the supporting framework (stroma) of the tonsils and thymus.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "The yolk sac provides early nutrition.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "The yolk sac makes the first, short-lived blood cells.",
+   "cite": "E06.03 · R05o",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "The back wall of the yolk sac houses primordial germ cells before they migrate to the gonads.",
+   "cite": "E06.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "Definitive blood stem cells arise in mesoderm around the aorta, not in the yolk sac.",
+   "cite": "E06.02 · R05o",
+   "mark": "✔✔",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.endoderm",
+   "E.t.foregut",
+   "E.t.midgut",
+   "E.t.hindgut",
+   "E.t.yolk-sac"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The bladder is mesoderm like the rest of the urogenital system.",
+   "right": "Its lining is endoderm, from the cloaca; kidneys, gonads and ducts are mesoderm.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Blood stem cells come from the yolk sac.",
+   "right": "The yolk sac makes the first short-lived blood cells; definitive stem cells arise around the aorta.",
+   "cite": "E06.02 · R05o",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Which of these is lined by endoderm?",
+   "options": [
+    "The urinary bladder",
+    "The kidney tubules",
+    "The skin epidermis",
+    "The heart muscle"
+   ],
+   "answer": 0,
+   "why": "The bladder lining is endoderm; kidney tubules are mesoderm and the epidermis is ectoderm.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "In the liver and pancreas, what does endoderm form?",
+   "options": [
+    "The blood vessels",
+    "The working cells",
+    "The outer capsule",
+    "The nerves"
+   ],
+   "answer": 1,
+   "why": "Endoderm gives the parenchyma, the working cells; vessels and connective tissue come from mesoderm.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Which part of the ear is lined by endoderm?",
+   "options": [
+    "The skin of the outer ear",
+    "The tympanic cavity and auditory tube",
+    "The inner ear's sensory lining",
+    "The outer ear canal"
+   ],
+   "answer": 1,
+   "why": "The middle-ear cavity and the auditory tube are endoderm-lined.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "In the adult, endoderm is the lining of the gut, airways and bladder [f1,f2,f3].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Which glands get their working cells from endoderm?",
+   "a": "Thyroid, parathyroids, liver and pancreas [f5]."
+  },
+  {
+   "id": "r2",
+   "q": "Which ear spaces does endoderm line?",
+   "a": "The tympanic cavity and the auditory tube [f4]."
+  },
+  {
+   "id": "r3",
+   "q": "Where does the bladder lining come from?",
+   "a": "Endoderm [f3]."
+  }
+ ],
+ "shows_up": [
+  "E05.04.01",
+  "E07.02.02",
+  "E03.05.02"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6b)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": false,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "fix: 'cloaca' unglossed and 'urogenital system' not in General words (ruling b). Write 'Its lining is endoderm, from the cloaca (the shared end chamber of the gut); kidneys, gonads and genital ducts are mesoderm.'",
+    "m2": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-1 fixes landed: objective no longer gives away q2; tympanic cavity and auditory tube named at General; primordial germ cells dropped from new. Only the m1 gloss is left. Minor: the card now teaches urethra, tympanic cavity and auditory tube with terms.new empty."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fixes landed: f7 and f9 cite E06.03 only; R05o kept only on f8, f10, m2. Derivatives match the dossier; ✔✔ on f10/m2 has its Tier 1 source."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6b)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: obj (no give-away), terms (tympanic cavity + auditory tube named at General; primordial germ cells dropped from new), f7 + f9 cite E06.03 only",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  }
+ ]
+}

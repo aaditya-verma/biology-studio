@@ -2,7 +2,7 @@
    Owner docs: docs/card-spec.md §7 (how the reader uses a card), build/design-plan.md §2 (Card row) + §4.8, master plan §9; RULES B4, A1, C13, H1, H5.
    Statuses (B4): Read (card open CONFIG.learn.readMs) → Understood (its Check passed: every question right in one run) → Can explain (self-check after Understood).
    Remember deck: each card's remember[] prompts join on Read; spacing CONFIG.learn.deckDays (1 · 3 · 7 days). Saved in IndexedDB `biostudio` (state.cards, state.deck — add-only, A1).
-   Try it = the card's scene in the V1 viewer, inline (13-viewer.js scViewer(…,{inline:true})). Watch it = "Coming soon" until L3.
+   Try it = the card's scene in the V1 viewer, inline (13-viewer.js scViewer(…,{inline:true})); a card with no scene yet shows "Coming soon" (D-058). Watch it = "Coming soon" until L3.
    Layout per class (C13): phone = 3D on top, text below · phone landscape = 3D │ text · tablet portrait = 3D on top, text at reading width ·
    tablet landscape = 3D │ text · desktop = 3D │ text │ card rail. Partial repaints (check, level, explain) keep the 3D, scroll and focus.
    V2 drills (card-spec §2a, D-054): a Check question may be a 3D drill driven by the card's scene — rotate · day · label use the live inline
@@ -96,13 +96,14 @@ SCREENS.card=function(v){
   const lv=lnLevel(card),L=lnLevels(card),sc=card.scene&&card.scene.id,list=lnList(),i=list.findIndex(c=>c.id===id),prev=list[i-1],next=list[i+1];
   const grp=list.filter(c=>c.id.slice(0,3)===id.slice(0,3));
   const run=lnRun(id);SC.runOff=run;   // L1F: Try it labels off while a run is open
-  v.innerHTML=`<div class="ln-card${run?' ck-on':''}" id="lnCard" data-id="${esc(id)}">
+  v.innerHTML=`<div class="ln-card${run?' ck-on':''}${sc?'':' no-3d'}" id="lnCard" data-id="${esc(id)}">
   <header class="ln-head"><div class="row"><span class="mono mut">${esc(id)} · ${esc(STR.tierShort(card.tier))}${card.kind==='guide'?' · ⓘ':''}</span><span class="sp"></span><span id="lnStatus">${lnChip(id)}</span>${editBtn('card',id,CONFIG.cards.dir+id+'.json')}</div>
       <h1 id="cpT" tabindex="-1">${esc(card.title)}</h1>
       ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-pressed="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
     <section class="ln-obj"><h2 class="ln-h">${esc(STR.ln.objT)}</h2><p><b>${esc(card.objective.text)}</b></p></section></header>
   <div class="ln-media">
-    <section class="ln-try" id="lnTry" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>
+    ${sc?`<section class="ln-try" id="lnTry" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>`
+      :`<section class="ln-try ln-try-none" id="lnTry" aria-labelledby="lnTryT"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="badge">${esc(STR.ln.soon)}</span><span class="xs mut">${esc(STR.ln.trySoon)}</span></section>`}
     <section class="ln-watch" aria-labelledby="lnWatchT"><h2 id="lnWatchT" class="ln-h">${esc(STR.ln.watchT)}</h2><span class="badge">${esc(STR.ln.soon)}</span><span class="xs mut">${esc(STR.ln.watchSoon)}</span></section>
   </div>
   <article class="ln-text" aria-labelledby="cpT">
@@ -183,7 +184,7 @@ function lnDrillMount(card){const q=lnLiveQ(card);if(!q){lnDrillEnd(card);return
     scViewer(host,S,{inline:true,drill:SC.drill});dlog('learn','drill',q.type,card.id,q.id,two?'beside':'in check');});}
 function lnDrillEnd(card){if(!SC.drill&&!LN.keep)return;SC.drill=null;SC.pinFocus=-1;LN.drillKey=null;const k=LN.keep;LN.keep=null;if(k){SC.st[k.id]=k.st;SC.cur=null;}
   $('#lnTry')?.classList.remove('drill');const d=$('#lnDVw');if(d)d.innerHTML='';
-  if(card&&ROUTE.name==='card'&&ROUTE.id===card.id){const t=$('#lnVw'),S=SC.loaded[card.scene.id];if(t&&S)scViewer(t,S,{inline:true});}}
+  if(card&&ROUTE.name==='card'&&ROUTE.id===card.id){const t=$('#lnVw'),S=card.scene&&SC.loaded[card.scene.id];if(t&&S)scViewer(t,S,{inline:true});}}
 /* stills for frames, folded and the rotate target: the same engine renders each show (no labels) with its scale bar drawn in (B2) */
 function lnSnapsFill(card,tries=0){const imgs=$$('#lnCheck img[data-snap]:not([src])');if(!imgs.length)return;const S=SC.loaded[card.scene.id],ck=LN.ck[card.id];
   if(SC.engErr||!S||!ck){imgs.forEach(i=>{const f=i.closest('figure');if(f)f.classList.add('nopic');});return;}

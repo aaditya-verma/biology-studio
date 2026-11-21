@@ -108,10 +108,12 @@ def card_check(card, stem, ctx):
     src = ctx["src"]
     # 1. schema
     want = {"spec": int, "id": str, "version": int, "book": str, "status": str, "title": str, "tier": str, "objective": dict, "body": dict,
-            "facts": list, "terms": dict, "misconceptions": list, "checks": list, "scene": dict, "made": dict, "review": dict, "log": list, "remember": list}
+            "facts": list, "terms": dict, "misconceptions": list, "checks": list, "made": dict, "review": dict, "log": list, "remember": list}
     for k, t in want.items():
         if not (is_int(card.get(k)) if t is int else isinstance(card.get(k), t)):
             E("E-schema", k, f"'{k}' missing or not {t.__name__}")
+    if "scene" in card and not isinstance(card.get("scene"), dict):   # optional (D-058): no scene yet → Try it says Coming soon
+        E("E-schema", "scene", "'scene' must be an object, or left out when the concept has no scene yet")
     if out:
         return out
     # 1b. shapes inside the fields (a badly typed card is reported, never a traceback — G-Eng R3)
@@ -287,7 +289,8 @@ def card_check(card, stem, ctx):
             (E if final else W)("E-approx" if final else "W-approx", mid, "≈ blocks reviewed/shipped")
     # 9. checks (H1: test the objective; one right answer; refute a misconception) + 3D drills (card-spec §2a)
     qs = card["checks"]
-    SF = ctx.get("scene_files", {}).get(card["scene"].get("id"))
+    scn = card.get("scene")   # optional (D-058)
+    SF = ctx.get("scene_files", {}).get(scn.get("id")) if scn else None
     if len(qs) < LIMITS["min_checks"]:
         E("E-checks", "checks", f"{len(qs)} checks < {LIMITS['min_checks']}")
     for q in qs:
@@ -309,6 +312,8 @@ def card_check(card, stem, ctx):
         if ty in ("order", "frames", "label", "folded") and q.get("answer") is not None:
             E("E-check", qid, f"a{'n' if ty == 'order' else ''} {ty} check has no answer field (card-spec §2a)")
         if ty in DRILL_TYPES:
+            if not scn:
+                E("E-drill", qid, "a 3D drill needs the card's scene (card-spec §2a) — this card has none")
             drill_rules(q, qid, ty, opts, SF, E)
         if not (q.get("why") or "").strip():
             E("E-check", qid, "why missing (the explanation shown after answering)")
@@ -320,10 +325,12 @@ def card_check(card, stem, ctx):
         E("E-checks", "checks", "no check refutes a misconception (playbook §3.4)")
     if verb in SPATIAL and not any(q.get("type") in SPATIAL_TYPES for q in qs):
         E("E-checks", "checks", f"spatial verb '{verb}' needs a spatial check (order, frames, label or rotate)")
-    # 10. scene
-    sc = card["scene"].get("id")
+    # 10. scene (optional, D-058: left out = no 3D yet)
+    sc = scn.get("id") if scn else None
     S = next((s for s in ctx["scenes"] if s["id"] == sc), None)   # scenes/index.json (scene-check keeps it in step with the files), as the app does
-    if not sc or not S:
+    if not scn:
+        pass
+    elif not sc or not S:
         E("E-scene", "scene", f"scene {sc} not found")
     else:
         if card["id"] not in S.get("cards", []):

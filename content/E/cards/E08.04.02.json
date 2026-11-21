@@ -1,0 +1,367 @@
+{
+ "spec": 1,
+ "id": "E08.04.02",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "The placental membrane: thin, not a wall",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain what the placental membrane separates and what passes across it."
+ },
+ "body": {
+  "general": "Is the placenta a wall that keeps everything out? No; it is a thin membrane, not a true barrier [f6]. It keeps the mother's blood and the baby's blood apart, so they normally do not mix [f1]. Early on it has four cell layers; from month 4 many places thin to two, the syncytium and the baby's capillary lining, speeding exchange [f3,f4]. Oxygen, food and salts pass easily [f6,f7]. So do the mother's antibodies of the IgG type, which protect the baby [f8]. Most drugs and many viruses cross too [f10].",
+  "mbbs": "The placental membrane separates maternal and fetal blood, which normally do not mix [f1]. A few fetal cells still escape through small breaks in it [f2]. Initially it has four layers: fetal endothelium, villous connective tissue, cytotrophoblast and syncytium [f3]. From month 4 many villi lose cytotrophoblast and core tissue, leaving syncytium and endothelium [f4]. Because maternal blood directly bathes chorion-derived syncytium, the placenta is haemochorial [f5]. It is not a true barrier [f6]. Gases cross by simple diffusion, so fetal oxygen supply depends on placental blood flow [f6]. Nutrients and electrolytes pass readily [f7]. Maternal IgG crosses from about week 14 after fertilization, giving passive immunity [f8]. Steroid hormones cross easily; thyroxine crosses slowly [f11]. Most drugs and many viruses, such as rubella, cytomegalovirus, varicella and measles, cross too [f10]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "The placental membrane separates maternal from fetal blood; normally the two do not mix.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "A few fetal blood cells still leak into the mother's blood through tiny breaks in the membrane.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "At first the membrane has four layers: the lining of fetal capillaries (endothelium), villus connective tissue, cytotrophoblast and syncytium.",
+   "cite": "E08.02, E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "From month 4 many villi lose their cytotrophoblast and much core tissue, leaving syncytium and endothelium, which speeds exchange.",
+   "cite": "E08.02, E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Maternal blood directly bathes a layer made by the chorion, so the human placenta is called haemochorial.",
+   "cite": "E08.04, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The membrane is not a true barrier: oxygen and carbon dioxide cross by simple diffusion, so supply depends mainly on blood flow.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Nutrients and electrolytes cross the membrane readily.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "The mother's IgG antibodies cross from about week 14 after fertilization, giving the fetus passive immunity.",
+   "cite": "E08.04 · R05bb, R05bc",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05bb: fetal IgG rises from early in the second trimester"
+  },
+  {
+   "id": "f9",
+   "text": "A child reaches adult IgG levels only by about age 3.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "Most drugs and many viruses cross, including rubella, cytomegalovirus, varicella and measles.",
+   "cite": "E08.04 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "Steroid hormones cross easily; thyroxine crosses only slowly.",
+   "cite": "E08.04 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f12",
+   "text": "If the mother uses heroin or cocaine, the fetus can become dependent on the drug.",
+   "cite": "E08.04 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f13",
+   "text": "Fetal red cells that leak across can lead the mother to make antibodies against them, as in Rh disease.",
+   "cite": "E08.04 CC · R05bd",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f14",
+   "text": "At term the fetus takes up about 20–30 mL of oxygen a minute.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f15",
+   "text": "Synthetic progestins given in pregnancy can masculinize female fetuses, and the drug DES caused vaginal cancer and reproductive-tract defects.",
+   "cite": "E08.04 CC",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f16",
+   "text": "Beyond Langman: IgG is the only antibody class that crosses; the FcRn receptor on the syncytiotrophoblast carries it across.",
+   "cite": "· R05bc",
+   "mark": "✚",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.cytotrophoblast",
+   "E.t.syncytiotrophoblast",
+   "E.t.cotyledons"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The placenta is a barrier that protects the baby from drugs and germs.",
+   "right": "Most drugs and many viruses cross the placental membrane freely.",
+   "cite": "E08.04 CC",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Maternal and fetal blood mix in the placenta.",
+   "right": "A membrane keeps them apart, though a few fetal red cells leak across, which is why Rh disease can happen.",
+   "cite": "E08.04, E08.04 CC",
+   "mark": "✔"
+  },
+  {
+   "id": "m3",
+   "wrong": "Maternal antibodies of every class protect the fetus.",
+   "right": "Only IgG crosses the placenta.",
+   "cite": "E08.04 · R05bc",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "A pregnant woman asks whether the placenta will keep a medicine away from her baby. Which answer is right?",
+   "options": [
+    "No: most drugs cross the placental membrane",
+    "Yes: the placenta blocks all drugs",
+    "Only steroid drugs are blocked",
+    "Drugs are blocked after month 4"
+   ],
+   "answer": 0,
+   "why": "The placental membrane is not a true barrier; most drugs and many viruses cross it.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which class of maternal antibody crosses to the fetus?",
+   "options": [
+    "IgG",
+    "IgM",
+    "IgA",
+    "Every class"
+   ],
+   "answer": 0,
+   "why": "Only IgG crosses, from about week 14, giving passive immunity.",
+   "tests": "objective",
+   "refutes": "m3"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "From month 4, which layers separate the two bloods in many villi?",
+   "options": [
+    "Syncytium and the fetal capillary lining",
+    "Syncytium and villus connective tissue",
+    "Fetal capillary lining and villus connective tissue",
+    "Amnion and chorion"
+   ],
+   "answer": 0,
+   "why": "Many villi lose their inner cell layer and core tissue, leaving only syncytium over the fetal capillary lining.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "After birth the baby is still protected by the mother's IgG; its own levels reach adult values only by about age 3 [f8,f9].",
+ "clinical": "Most drugs and many viruses, such as rubella and cytomegalovirus, can reach the fetus [f10]. If a mother uses heroin or cocaine, her baby can be born dependent on the drug [f12]. Because a few fetal red cells leak across, a mother can make antibodies against her baby's red cells, as in Rh disease [f2,f13].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Do maternal and fetal blood mix in the placenta?",
+   "a": "No; the placental membrane keeps them apart, though a few fetal cells leak across [f1,f2]."
+  },
+  {
+   "id": "r2",
+   "q": "Which maternal antibody crosses the placenta?",
+   "a": "IgG, from about week 14 after fertilization, giving passive immunity [f8]."
+  },
+  {
+   "id": "r3",
+   "q": "Which layers remain in many villi after month 4?",
+   "a": "Syncytium and the fetal capillary lining [f4]."
+  }
+ ],
+ "shows_up": [
+  "E08.04.04",
+  "E08.04.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 8)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
+    "f13": "ok",
+    "f14": "ok",
+    "f15": "ok",
+    "f16": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "adult": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fixes landed: mbbs.9 and r2 say 'week 14 after fertilization'. New General (two layers left) is right. Marks and ✚ FcRn line correct; clinical humane."
+  },
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "fix: the right answer uses 'syncytium', which General names but never explains. Add a plain gloss at General, e.g. 'the syncytium (the merged outer layer of the villus)'.",
+    "m1": "ok",
+    "m2": "fix: 'Rh disease' is taught in no body level (f13 is in no body). Add a sentence at General ('those leaked cells can make the mother form antibodies, as in Rh disease'), or drop Rh disease from m2.",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "fix: 'passive immunity' is not taught at General (it says 'protect the baby'). Write 'protection borrowed from the mother' or gloss the term at General.",
+    "r3": "fix: 'syncytium' unexplained at General (see q3).",
+    "shows_up": "ok"
+   },
+   "notes": "Fail, small fixes: gloss syncytium and passive immunity at General, and teach Rh disease somewhere in the body. No give-aways; IgM/IgA distractors are fine as named wrong options."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch08-fetus-placenta.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 8)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: body.mbbs.9 + r2 'week 14 after fertilization'; General names the two layers left (ruling b); q3 options + r3 in plain words",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 4 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

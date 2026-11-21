@@ -319,6 +319,501 @@
    "pmid": "26467243"
   },
   {
+   "id": "R05aa",
+   "tier": 1,
+   "name": "Merrell AJ et al",
+   "licence": "© Springer Nature (PMC author manuscript) → facts only",
+   "ref_only": false,
+   "doi": "10.1038/ng.3250",
+   "pmid": "25807280"
+  },
+  {
+   "id": "R05ab",
+   "tier": 1,
+   "name": "McGivern MR, Best KE, Rankin J et al",
+   "licence": "© BMJ → facts only",
+   "ref_only": false,
+   "doi": "10.1136/archdischild-2014-306174",
+   "pmid": "25411443"
+  },
+  {
+   "id": "R05ac",
+   "tier": 1,
+   "name": "Politis MD et al",
+   "licence": "PMC author manuscript → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.annepidem.2020.11.007",
+   "pmid": "33253899"
+  },
+  {
+   "id": "R05ad",
+   "tier": 1,
+   "name": "Burgos CM, Frenckner B, Luco M et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.jpedsurg.2017.10.027",
+   "pmid": "29122292"
+  },
+  {
+   "id": "R05ae",
+   "tier": 1,
+   "name": "Feldkamp ML, Canfield MA, Krikov S et al",
+   "licence": "Open access in PMC (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1002/bdr2.2306",
+   "pmid": "38411327"
+  },
+  {
+   "id": "R05af",
+   "tier": 1,
+   "name": "Mastroiacovo P et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ajmg.a.31607",
+   "pmid": "17357116"
+  },
+  {
+   "id": "R05ag",
+   "tier": 1,
+   "name": "Nembhard WN, Bergman JEH, Politis MD et al",
+   "licence": "Open access in PMC (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1002/bdr2.1822",
+   "pmid": "33067932"
+  },
+  {
+   "id": "R05ah",
+   "tier": 1,
+   "name": "Williams AP, Marayati R, Beierle EA",
+   "licence": "PMC author manuscript → facts only",
+   "ref_only": false,
+   "doi": "10.1053/j.sempedsurg.2019.04.006",
+   "pmid": "31072457"
+  },
+  {
+   "id": "R05ai",
+   "tier": 1,
+   "name": "Nakamura T, Yamada S et al",
+   "licence": "Open access in PMC (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/joa.13174",
+   "pmid": "32064626"
+  },
+  {
+   "id": "R05aj",
+   "tier": 1,
+   "name": "Hayashi S et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ar.21351",
+   "pmid": "21370493"
+  },
+  {
+   "id": "R05ak",
+   "tier": 1,
+   "name": "Godlewski G et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": null,
+   "pmid": "9407542"
+  },
+  {
+   "id": "R05al",
+   "tier": 1,
+   "name": "Neo DT, Martin CL, Carmichael SL",
+   "licence": "PMC author manuscript → facts only",
+   "ref_only": false,
+   "doi": "10.1002/bdr2.2224",
+   "pmid": "37439400"
+  },
+  {
+   "id": "R05am",
+   "tier": 1,
+   "name": "Feldkamp ML, Botto LD, Amar E et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ajmg.c.30317",
+   "pmid": "22002951"
+  },
+  {
+   "id": "R05an",
+   "tier": 1,
+   "name": "Syngelaki A et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.20844",
+   "pmid": "31408229"
+  },
+  {
+   "id": "R05ao",
+   "tier": 1,
+   "name": "Hikspoors JPJM et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.semcdb.2018.08.009",
+   "pmid": "30142441"
+  },
+  {
+   "id": "R05ap",
+   "tier": 1,
+   "name": "Jukic AM, Baird DD, Weinberg CR, McConnaughey DR, Wilcox AJ",
+   "licence": "PMC open access (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1093/humrep/det297",
+   "pmid": "23922246"
+  },
+  {
+   "id": "R05aq",
+   "tier": 1,
+   "name": "Wilcox AJ, Weinberg CR, Baird DD",
+   "licence": "© NEJM → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJM199512073332301",
+   "pmid": "7477165"
+  },
+  {
+   "id": "R05ar",
+   "tier": 1,
+   "name": "Robinson HP, Fleming JE",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1111/j.1471-0528.1975.tb00710.x",
+   "pmid": "1182090"
+  },
+  {
+   "id": "R05as",
+   "tier": 1,
+   "name": "Selbing A, Fjällbrant B",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/jcu.1870120606",
+   "pmid": "6438162"
+  },
+  {
+   "id": "R05at",
+   "tier": 1,
+   "name": "Gordijn SJ et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.15884",
+   "pmid": "26909664"
+  },
+  {
+   "id": "R05au",
+   "tier": 1,
+   "name": "Woods KA, Camacho-Hübner C, Savage MO, Clark AJ",
+   "licence": "© NEJM → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJM199610313351805",
+   "pmid": "8857020"
+  },
+  {
+   "id": "R05av",
+   "tier": 1,
+   "name": "Barker DJ",
+   "licence": "PMC (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1136/bmj.311.6998.171",
+   "pmid": "7613432"
+  },
+  {
+   "id": "R05aw",
+   "tier": 1,
+   "name": "Goldenberg RL, Culhane JF, Iams JD, Romero R",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/S0140-6736(08)60074-4",
+   "pmid": "18177778"
+  },
+  {
+   "id": "R05ax",
+   "tier": 1,
+   "name": "Ohuma EO et al",
+   "licence": "© Elsevier (check OA) → facts only",
+   "ref_only": false,
+   "doi": "10.1016/S0140-6736(23)00878-4",
+   "pmid": "37805217"
+  },
+  {
+   "id": "R05ay",
+   "tier": 1,
+   "name": "Abalos E et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.ejogrb.2013.05.005",
+   "pmid": "23746796"
+  },
+  {
+   "id": "R05az",
+   "tier": 1,
+   "name": "Zhou Y, Damsky CH, Fisher SJ",
+   "licence": "PMC open access (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1172/JCI119388",
+   "pmid": "9151787"
+  },
+  {
+   "id": "R05ba",
+   "tier": 1,
+   "name": "Costea DM, Gunn LK, Hargreaves C, Howell RJ, Chard T",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0020-7292(99)00177-0",
+   "pmid": "10717816"
+  },
+  {
+   "id": "R05bb",
+   "tier": 1,
+   "name": "Simister NE",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0264-410x(03)00334-7",
+   "pmid": "12850341"
+  },
+  {
+   "id": "R05bc",
+   "tier": 1,
+   "name": "Palmeira P et al",
+   "licence": "Open access (CC BY ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1155/2012/985646",
+   "pmid": "22235228"
+  },
+  {
+   "id": "R05bd",
+   "tier": 1,
+   "name": "Legler TJ",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.transci.2020.102950",
+   "pmid": "33004277"
+  },
+  {
+   "id": "R05be",
+   "tier": 1,
+   "name": "Brace RA, Wolf EJ",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/0002-9378(89)90527-9",
+   "pmid": "2764058"
+  },
+  {
+   "id": "R05bf",
+   "tier": 1,
+   "name": "Thummala MR, Raju TN, Langenberg P",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0022-3468(98)90320-7",
+   "pmid": "9574755"
+  },
+  {
+   "id": "R05bg",
+   "tier": 1,
+   "name": "Voskamp BJ et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.12541",
+   "pmid": "23775879"
+  },
+  {
+   "id": "R05bh",
+   "tier": 1,
+   "name": "Jauniaux E, Bunce C, Grønbeck L, Langhoff-Roos J",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.ajog.2019.01.233",
+   "pmid": "30716286"
+  },
+  {
+   "id": "R05bi",
+   "tier": 1,
+   "name": "Wee LY, Fisk NM",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1053/siny.2002.0106",
+   "pmid": "12234743"
+  },
+  {
+   "id": "R05bj",
+   "tier": 1,
+   "name": "Hoekstra C et al",
+   "licence": "© OUP → facts only",
+   "ref_only": false,
+   "doi": "10.1093/humupd/dmm036",
+   "pmid": "18024802"
+  },
+  {
+   "id": "R05bk",
+   "tier": 1,
+   "name": "Jin H, Han Y, Zenker J",
+   "licence": "PMC open access (licence ≈) → facts only",
+   "ref_only": false,
+   "doi": "10.1093/humupd/dmae022",
+   "pmid": "38996087"
+  },
+  {
+   "id": "R05bl",
+   "tier": 1,
+   "name": "Salomon LJ, Sotiriadis A, Wulff CB, Odibo A, Akolekar R",
+   "licence": "© Wiley/ISUOG → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.20353",
+   "pmid": "31124209"
+  },
+  {
+   "id": "R05bm",
+   "tier": 1,
+   "name": "Akolekar R, Beta J, Picciarelli G, Ogilvie C, D'Antonio F",
+   "licence": "© Wiley/ISUOG → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.14636",
+   "pmid": "25042845"
+  },
+  {
+   "id": "R05bn",
+   "tier": 1,
+   "name": "Di Mascio D, Khalil A, Rizzo G, et al",
+   "licence": "© Wiley/ISUOG → facts only",
+   "ref_only": false,
+   "doi": "10.1002/uog.22143",
+   "pmid": "32632979"
+  },
+  {
+   "id": "R05bo",
+   "tier": 1,
+   "name": "Iwarsson E, Jacobsson B, Dagerhamn J, Davidson T, Bernabé E, Heibert A",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1111/aogs.13047",
+   "pmid": "27779757"
+  },
+  {
+   "id": "R05bp",
+   "tier": 1,
+   "name": "Geppert J, Stinton C, Johnson S, Clarke A, Grammatopoulos D, Taylor-Ph",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/pd.5621",
+   "pmid": "31834626"
+  },
+  {
+   "id": "R05bq",
+   "tier": 1,
+   "name": "Malone FD, Canick JA, Ball RH, et al",
+   "licence": "© MMS → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJMoa043693",
+   "pmid": "16282175"
+  },
+  {
+   "id": "R05br",
+   "tier": 1,
+   "name": "Adzick NS, Thom EA, Spong CY, et al",
+   "licence": "© MMS (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJMoa1014379",
+   "pmid": "21306277"
+  },
+  {
+   "id": "R05bt",
+   "tier": 1,
+   "name": "Centers for Disease Control and Prevention",
+   "licence": "US Gov, public domain → may quote figures with credit",
+   "ref_only": false,
+   "doi": null,
+   "pmid": "15129193"
+  },
+  {
+   "id": "R05bu",
+   "tier": 1,
+   "name": "Tomson T, Battino D, Bonizzoni E, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/S1474-4422(18)30107-8",
+   "pmid": "29680205"
+  },
+  {
+   "id": "R05bv",
+   "tier": 1,
+   "name": "Huybrechts KF, Hernández-Díaz S, Straub L, et al",
+   "licence": "© AMA (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1001/jama.2018.18307",
+   "pmid": "30561479"
+  },
+  {
+   "id": "R05bw",
+   "tier": 1,
+   "name": "Reynolds MR, Jones AM, Petersen EE, et al",
+   "licence": "US Gov, public domain → may quote figures with credit",
+   "ref_only": false,
+   "doi": "10.15585/mmwr.mm6613e1",
+   "pmid": "28384133"
+  },
+  {
+   "id": "R05bx",
+   "tier": 1,
+   "name": "Enders G, Miller E, Cradock-Watson J, Bolley I, Ridehalgh M",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0140-6736(94)92943-2",
+   "pmid": "7802767"
+  },
+  {
+   "id": "R05by",
+   "tier": 1,
+   "name": "May PA, Chambers CD, Kalberg WO, et al",
+   "licence": "© AMA (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1001/jama.2017.21896",
+   "pmid": "29411031"
+  },
+  {
+   "id": "R05bz",
+   "tier": 1,
+   "name": "Stothard KJ, Tennant PWG, Bell R, Rankin J",
+   "licence": "© AMA → facts only",
+   "ref_only": false,
+   "doi": "10.1001/jama.2009.113",
+   "pmid": "19211471"
+  },
+  {
+   "id": "R05ca",
+   "tier": 1,
+   "name": "Vinceti M, Malagoli C, Rothman KJ, et al",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/s10654-014-9913-4",
+   "pmid": "24861339"
+  },
+  {
+   "id": "R05cb",
+   "tier": 1,
+   "name": "Lanzieri TM, Dollard SC, Bialek SR, Grosse SD",
+   "licence": "© Elsevier (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.ijid.2013.12.010",
+   "pmid": "24631522"
+  },
+  {
+   "id": "R05cc",
+   "tier": 1,
+   "name": "Suzumori N, Ebara T, Yamada T, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/jhg.2016.25",
+   "pmid": "26984559"
+  },
+  {
+   "id": "R05cd",
+   "tier": 1,
+   "name": "Strömland K, Miller MT",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF00164652",
+   "pmid": "1577294"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -437,7 +932,10 @@
   "D-052",
   "D-053",
   "D-054",
-  "D-055"
+  "D-055",
+  "D-056",
+  "D-057",
+  "D-058"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",

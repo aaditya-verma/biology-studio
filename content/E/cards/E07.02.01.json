@@ -1,0 +1,256 @@
+{
+ "spec": 1,
+ "id": "E07.02.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "A cavity opens in the mesoderm",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain how the embryo's first body cavity forms in weeks 3–4."
+ },
+ "body": {
+  "general": "Where do the spaces that hold the heart, lungs and gut come from? At the end of week 3 the middle layer, the mesoderm, forms three strips on each side [f1]. The outer strip, the lateral plate, is the one that makes the body cavity [f1]. Small clefts appear in this solid strip and merge, splitting it into two sheets [f2]. The gap between the sheets is the first body cavity [f2]. At first it is one single space, not yet divided [f3]. Early on it also opens into the fluid space outside the embryo [f4].",
+  "mbbs": "By the end of week 3 intraembryonic mesoderm has formed paraxial, intermediate and lateral plate strips [f1]. The lateral plate builds the body cavity [f1]. Clefts appear in the solid lateral plate and merge, splitting it into parietal and visceral layers [f2]. The space between them is the primitive (intraembryonic) body cavity [f2]. At first it is one continuous cavity, not yet divided into pericardial, pleural and abdominopelvic parts [f3]. Early on it opens widely into the extraembryonic cavity; the book shows this at about 21 days [f4]. So the coelom forms inside the mesoderm, not between ectoderm and endoderm [f2]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "At the end of week 3 the intraembryonic mesoderm forms three strips on each side. The lateral plate is the strip that builds the body cavity.",
+   "cite": "E07.02, E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Clefts appear in the solid lateral plate and merge, splitting it into two layers; the gap between them is the primitive body cavity.",
+   "cite": "E07.02 · R06 CS9",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06: vesicles fuse; one CS9 embryo still has separate left and right cavities"
+  },
+  {
+   "id": "f3",
+   "text": "At first the body cavity is one continuous space, not yet divided into pericardial, pleural and abdominopelvic parts.",
+   "cite": "E07.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Early on the body cavity opens widely into the extraembryonic cavity (book figure: about 21 days).",
+   "cite": "E07.02 · R06 CS10",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06 CS9–10: passage seen in advanced CS10 (22–23 d), about 1–2 days later than the book figure, inside the age error (D-030)"
+  },
+  {
+   "id": "f5",
+   "text": "Beyond Langman: the first part of the cavity to appear is the heart region, a horseshoe of cavity across the head half of the disc.",
+   "cite": "· R06 CS9",
+   "mark": "✚",
+   "where": "more",
+   "note": "the book shows the pericardial cavity from 22 d"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.primitive-body-cavity"
+  ],
+  "known": [
+   "E.t.mesoderm",
+   "E.t.lateral-plate-mesoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The body cavity (coelom) forms between the ectoderm and the endoderm.",
+   "right": "It forms inside the lateral plate mesoderm, splitting it into two layers.",
+   "cite": "E07.02 · R06 CS9",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Where does the body cavity first open up?",
+   "options": [
+    "Between the ectoderm and the endoderm",
+    "Inside the lateral plate mesoderm",
+    "Inside the somites",
+    "Inside the yolk sac"
+   ],
+   "answer": 1,
+   "why": "Clefts open inside the lateral plate and merge, so the cavity lies within the mesoderm, between its two new layers.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "order",
+   "prompt": "Put the steps in order.",
+   "options": [
+    "The mesoderm forms three strips on each side",
+    "Small clefts appear in the lateral plate",
+    "The clefts merge, splitting the plate into two layers around one cavity"
+   ],
+   "why": "The lateral plate must exist before it can cleave; merging clefts then make one cavity between two layers.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "What is the body cavity like when it has just formed?",
+   "options": [
+    "Three separate spaces for heart, lungs and belly",
+    "One continuous space",
+    "A solid block of cells",
+    "A tube inside the gut"
+   ],
+   "answer": 1,
+   "why": "It starts as one continuous cavity; the walls that divide it come later.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "This one cavity is later divided into the pericardial, pleural and abdominopelvic cavities [f3].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Which mesoderm strip makes the body cavity?",
+   "a": "The lateral plate mesoderm [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "How does the body cavity form?",
+   "a": "Clefts in the lateral plate merge, splitting it into two layers with the cavity between [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "Is the early body cavity one space or several?",
+   "a": "One continuous space, not yet divided into heart, chest and belly parts [f3]."
+  }
+ ],
+ "shows_up": [
+  "E07.02.02",
+  "E06.02.06",
+  "E06.02.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 7)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fix landed: f4 now cites R06 CS10 (passage at advanced CS10), ✔✔ and timing note kept. Fresh read: all lines match the dossier; ✚ horseshoe line in More, labelled."
+  },
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": false
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "fix: the right answer is set against 'between the ectoderm and the endoderm' (the refuted idea), but General never names the ectoderm or the endoderm, so a General reader can't weigh it. Add a plain contrast at General, e.g. 'It opens inside the middle layer, not between the outer layer (ectoderm) and inner layer (endoderm)'. General is at 90/90, so trim another sentence (e.g. the extraembryonic-cavity line).",
+    "q2": "fix: give-away of q3. Option 3 says 'around one cavity' and the why says 'make one cavity'; q3 then asks whether the new cavity is one space or several. Drop 'one' from both (e.g. 'The clefts merge, splitting the plate into two layers'), or put q3 before q2.",
+    "q3": "ok",
+    "m1": "fix: uses 'coelom', 'ectoderm' and 'endoderm', none taught at General. Teach them there (see q1 fix) or write the wrong idea in plain words with the term in brackets.",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Fail. q2 now gives away q3 ('one cavity'); General does not name ectoderm/endoderm/coelom used in q1 and m1. adult uses 'pericardial, pleural and abdominopelvic', also untaught at General: write 'the heart, lung and belly cavities' (adult has no line id; checklist adult = false until fixed)."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch07-gut-tube-body-cavities.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f4 cite locator R06 CS9 → R06 CS10",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 3 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+# Biology Studio — general feedback from Reviewer mode (H2). Opened by "Send general feedback" on the Review page.
+name: General feedback
+description: Anything that is not about one card — the app, a screen, an idea.
+title: "[feedback] "
+labels: ["review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write it the way you would say it. Press **Create** when you are done.
+  - type: textarea
+    id: note
+    attributes:
+      label: What would you like to tell us?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where in the app (optional)
+      placeholder: "Today page, on my phone"

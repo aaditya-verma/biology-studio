@@ -1,0 +1,310 @@
+{
+ "spec": 1,
+ "id": "E08.03.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Bushy chorion, smooth chorion and the deciduae",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the chorion and the uterine lining change by month 3 to set up the placenta and membranes."
+ },
+ "body": {
+  "general": "Why does the placenta sit on one side of the sac? At first, finger-like villi cover the whole outer sac, the chorion [f1]. Near the embryo they keep growing: the bushy chorion frondosum [f2]. Elsewhere they fade: the smooth chorion laeve, by month 3 [f3]. The uterine lining, the decidua, has three parts [f4,f6]. The decidua basalis lies under the bushy chorion; together they make the placenta [f5,f8]. The decidua capsularis covers the far side; the decidua parietalis lines the rest [f6]. The amnion and chorion fuse as the amniochorionic membrane, which breaks in labour [f9,f10].",
+  "mbbs": "Early on, villi cover the entire chorion [f1]. Villi at the embryonic pole keep growing and branching as the chorion frondosum [f2]. Those at the abembryonic pole degenerate, so by month 3 that side is the smooth chorion laeve [f3]. The decidua is the functional layer of the endometrium, shed at parturition [f4]. Over the frondosum lies the decidua basalis [f5]. Its compact layer of large, lipid- and glycogen-rich decidual cells, the decidual plate, is firmly bound to the chorion [f5,f11]. Over the abembryonic pole lies the decidua capsularis; the rest is the decidua parietalis [f6]. As the sac grows, the capsularis stretches and degenerates [f7]. The chorion laeve then fuses with the decidua parietalis, obliterating the uterine cavity [f7]. Only the frondosum takes part in exchange; with the decidua basalis it forms the placenta [f8]. Amnion and chorion fuse as the amniochorionic membrane, obliterating the chorionic cavity [f9]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Early in development, villi cover the whole surface of the chorion.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Villi at the embryonic pole keep growing and branching; this part is the chorion frondosum, the bushy chorion.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Villi at the opposite, abembryonic pole degenerate, so by month 3 that side is smooth: the chorion laeve.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The decidua is the functional layer of the uterine lining, which is shed at birth.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "The decidua over the chorion frondosum is the decidua basalis; its compact layer, the decidual plate, is tightly bound to the chorion.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The decidua over the abembryonic pole is the decidua capsularis; the rest of the uterine lining is the decidua parietalis.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "As the chorionic sac grows, the decidua capsularis stretches and degenerates, and the chorion laeve fuses with the decidua parietalis, closing off the uterine cavity.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "Only the chorion frondosum takes part in exchange; together with the decidua basalis it forms the placenta.",
+   "cite": "E08.03, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "The amnion fuses with the chorion to form the amniochorionic membrane, which closes off the chorionic cavity.",
+   "cite": "E08.03, E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "The amniochorionic membrane is the membrane that ruptures in labour, when the waters break.",
+   "cite": "E08.03, E08.05",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "The decidual plate is made of large decidual cells rich in lipid and glycogen.",
+   "cite": "E08.03",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.chorion-frondosum-leafy-chorion",
+   "E.t.chorion-laeve-smooth-chorion",
+   "E.t.amniochorionic-membrane"
+  ],
+  "known": [
+   "E.t.chorion",
+   "E.t.amnion"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The placenta is purely fetal.",
+   "right": "It has a fetal part, the chorion frondosum, and a maternal part, the decidua basalis.",
+   "cite": "E08.03, E08.04",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Which tissues together make the placenta?",
+   "options": [
+    "Chorion frondosum and decidua basalis",
+    "Chorion frondosum alone",
+    "Chorion laeve and decidua parietalis",
+    "Chorion frondosum and decidua capsularis",
+    "Amnion and chorion laeve"
+   ],
+   "answer": 0,
+   "why": "The placenta has a fetal part (chorion frondosum) and a maternal part (the decidua basalis beneath it).",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "order",
+   "prompt": "Put these changes in the chorion in order.",
+   "options": [
+    "Villi cover the whole chorion",
+    "Villi on the far (abembryonic) side degenerate, leaving the chorion laeve",
+    "The chorion laeve fuses with the decidua parietalis and the uterine cavity closes"
+   ],
+   "why": "The far-side villi are lost first; only later, as the sac grows, does the smooth chorion meet and fuse with the opposite uterine wall.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Early on, which part of the decidua covers the chorion laeve on the side facing the uterine cavity?",
+   "options": [
+    "Decidua capsularis",
+    "Decidua basalis",
+    "Decidua parietalis",
+    "Amnion"
+   ],
+   "answer": 0,
+   "why": "The capsularis covers the abembryonic pole; the basalis lies under the frondosum and the parietalis lines the rest of the uterus.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "This becomes the placenta, chorion frondosum plus decidua basalis [f8], and the membrane that breaks in labour [f10].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What is the chorion frondosum?",
+   "a": "The bushy chorion at the embryonic pole, where the villi keep growing [f2]."
+  },
+  {
+   "id": "r2",
+   "q": "Which decidua lies under the placenta?",
+   "a": "The decidua basalis [f5,f8]."
+  },
+  {
+   "id": "r3",
+   "q": "Which membrane breaks when the waters break?",
+   "a": "The amniochorionic membrane, amnion fused to chorion [f9,f10]."
+  }
+ ],
+ "shows_up": [
+  "E08.04.01",
+  "E08.02.01",
+  "E08.06.01",
+  "E05.06.02"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 8)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "fix: round-1 fix landed (3 steps, one order). But step 3 (chorion laeve fuses with the decidua parietalis, uterine cavity closes, f7) is not taught at General, so a General reader can't place it. Add one General sentence for f7 (trim elsewhere; 89/90 now), or swap step 3 for something General teaches.",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "fix: 'embryonic pole' is not used at General (it says 'near the embryo'). Write 'next to the embryo' or teach the term.",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Fail, small fixes. Round-1 q2 fix landed and General now names the three decidua parts. Still, q2's last step is not taught at General, and r1 uses 'embryonic pole'."
+  },
+  "G-Sci": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": false,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "fix: 'has three parts' refs [f4,f6], but f6 names only capsularis and parietalis; the basalis is f5. Ref [f4,f5,f6].",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Passed G-Sci in round 1; cleared by the G-Learn edits (General now names the three deciduae + amniochorionic membrane). New General sentence 5 needs f5 in its refs; all else right vs dossier."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch08-fetus-placenta.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 8)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: q2 cut to 3 steps with one order (G-Learn); General now names the three deciduae and the amniochorionic membrane (lead ruling b); q3 distractor plainer; q2 why no longer hints q3",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

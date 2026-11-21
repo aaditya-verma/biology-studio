@@ -1,11 +1,11 @@
 # Visual style — how our videos look
 
-*(Purpose: owner doc for the look of rendered video and app 3D — frame, chapter grammar, titles, tissue, palette, focus, dust, light; formats, segment colours, labels, mixed media, clinical slots, recaps, honesty tags, media licences. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §10–§16 from QR04 + QR05 (D-046). Created: 20 Nov 2026 · Bio · Fix · Visual style port (D-041; from the owner's reel QR03, research/quality-references.md). Germ-layer colours: D-031 / RULES B3. Gates that use it: G-Art (look, §1–§15) and G-Sci (playbook §2 video checklist, items 8 and 13–18).)*
+*(Purpose: owner doc for the look of rendered video and app 3D — frame, chapter grammar, titles, tissue, palette, focus, dust, light; formats, segment colours, labels, mixed media, clinical slots, recaps, honesty tags, media licences. Updated: 21 Nov 2026 · Bio · Build · M1b v7 results — §1 host-shot caption band 68–72 % (D-059). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §10–§16 from QR04 + QR05 (D-046). Created: 20 Nov 2026 · Bio · Fix · Visual style port (D-041; from the owner's reel QR03, research/quality-references.md). Germ-layer colours: D-031 / RULES B3. Gates that use it: G-Art (look, §1–§15) and G-Sci (playbook §2 video checklist, items 8 and 13–18).)*
 
 ## 1. Frame (Short, 9:16)
 - Design and master at 1080×1920; ship the 720×1280 rendition until the 1080p rung is Measured (RULES H8, D-033).
 - Safe zones (at 1080×1920): top 14 %, bottom 25 %, right 14 % (action rail), left 4 %. `--safe` overlays the Instagram Reels + YouTube Shorts UI.
-- Bands, never overlapping: chapter title 15–21 % from the top · day/stage 22–24 % · legend chip (segment mode, §11) 25–27 % · captions 55–65 %, max width 70 % · axes + scale bar bottom-left at 66–71 % (RULES H4, B2) · honesty tag or media tag on a second line at 71–74 % (§13, §15).
+- Bands, never overlapping: chapter title 15–21 % from the top · day/stage 22–24 % · legend chip (segment mode, §11) 25–27 % · captions 55–65 %, max width 70 % (**host shots with no axes/scale: 68–72 %, bottom-anchored at 72 %** — owner M1b.q9, D-059; anatomy shots keep 55–65 % until M1b.q10) · axes + scale bar bottom-left at 66–71 % (RULES H4, B2) · honesty tag or media tag on a second line at 71–74 % (§13, §15).
 - Captions (D-032 kinetic captions): ≤ 2 lines, ≤ 28 characters per line, cap height ≥ 40 px at 1080, weight ≥ 600, scrim ≥ 4.5:1; burned in on Shorts, toggleable (VTT) in the app; Devanagari +15 % size.
 - Fps: 30 at 720p (60 only once Measured). End card + cover frame: key structure and title inside the centre 4:5 crop (Instagram grid).
 - Lesson (16:9): see §10.

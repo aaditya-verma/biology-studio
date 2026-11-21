@@ -1027,6 +1027,39 @@
     }
    },
    "expect": "E-check"
+  },
+  {
+   "name": "drill on a card with no scene",
+   "del": [
+    "scene"
+   ],
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "prompt": "Which day is this?",
+     "why": "Because.",
+     "tests": "objective",
+     "type": "day",
+     "show": {
+      "day": 16
+     },
+     "options": [
+      15,
+      16,
+      17
+     ],
+     "answer": 1,
+     "alt": "A disc with a groove along its midline."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "scene not an object",
+   "set": {
+    "scene": "sc-E00.01.04"
+   },
+   "expect": "E-schema"
   }
  ]
 }

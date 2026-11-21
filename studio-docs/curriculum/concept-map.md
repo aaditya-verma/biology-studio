@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -209,15 +209,15 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E09.01.01 | Types of birth defects | B | C | x |  | none | defects | E06.00.01 | 3 |  | ≈ |
-| E09.01.02 | Principles of teratology | A | CT | core | 15–56 | none | defects | E06.00.01 | 2 |  | ≈ |
-| E09.01.03 | Key teratogens | B | C | x |  | none | defects | E09.01.02 | 1 |  | ≈ |
-| E09.01.04 | Preventing birth defects | B | C | x |  | none | defects | E09.01.03 |  |  | ≈ |
-| E09.02.01 | Prenatal screening | B | C | x |  | none | defects | E09.01.01 | 2 |  | ≈ |
-| E09.02.02 | Amniocentesis and chorionic villus sampling | B | C | x |  | extra | defects | E09.02.01 |  |  | ≈ |
-| E09.03.01 | Fetal therapy | C | C | d |  | none | defects | E09.02.01 |  |  | ≈ |
+| E09.01.01 | Types of birth defects | B | C | x |  | none | defects | E06.00.01 | 3 | AN79.5 | ✔ |
+| E09.01.02 | Principles of teratology | A | CT | core | 15–56 | none | defects | E06.00.01 | 2 | AN79.5, AN79.6 | ✔ |
+| E09.01.03 | Key teratogens | B | C | x |  | none | defects | E09.01.02 | 1 | AN79.6 | ⚑ |
+| E09.01.04 | Preventing birth defects | B | C | x |  | none | defects | E09.01.03 |  | AN79.5, AN79.6 | ✔✔ |
+| E09.02.01 | Prenatal screening | B | C | x |  | none | defects | E09.01.01 | 2 | AN81.1, AN79.6 | ✔ |
+| E09.02.02 | Amniocentesis and chorionic villus sampling | B | C | x |  | extra | defects | E09.02.01 |  | AN81.2, AN81.3 | ✔ |
+| E09.03.01 | Fetal therapy | C | C | d |  | none | defects | E09.02.01 |  | AN81.1 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E09.01.02 — “Weeks 1–2 are the most sensitive (exposure then usually is all-or-none).”
+*Misconceptions to refute (cited in the chapter dossier):* E09.01.02 — “Weeks 1–2 are the most sensitive (exposure then usually is all-or-none).”
 
 ## E10 — The Axial Skeleton · pp 147–159 · 11 concepts
 

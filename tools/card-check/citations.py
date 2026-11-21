@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "studio-docs"
 SEC_RE = re.compile(r"^(E\d\d)(?:\.(\d\d))?(?:\s+(.+))?$")          # E05.01 [locator] · E10 (chapter)
-SRC_RE = re.compile(r"^(R\d\d[a-z]?)(?:\s+(.+))?$")                  # R06 CS6 · R05b
+SRC_RE = re.compile(r"^(R\d\d[a-z]{0,2})(?:\s+(.+))?$")                  # R06 CS6 · R05b
 # EDIT: registry section headings → tier
 TIER_HEADS = [("## Tier 0", 0), ("## Tier 1", 1), ("## Tier 2", 2), ("## Tier 3", 3), ("## Curriculum", "C"), ("## Teaching-science", None), ("## Tools", None), ("## Not used", None)]
 
@@ -26,7 +26,7 @@ def parse_registry(md):
         for head, t in TIER_HEADS:
             if line.startswith(head):
                 tier = t
-        m = re.match(r"^\|\s*(R\d\d[a-z]?)\s*\|(.+)\|\s*$", line)
+        m = re.match(r"^\|\s*(R\d\d[a-z]{0,2})\s*\|(.+)\|\s*$", line)
         if not m or tier is None:
             continue
         cells = [c.strip() for c in m.group(2).split("|")]

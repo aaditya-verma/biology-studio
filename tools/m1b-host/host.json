@@ -1,470 +1,504 @@
 {
-  "_purpose": "M1b host shot spec — one home for every value (RULES I6). Owner doc: studio-docs/build/studio-playbook.md §5b; look: build/visual-style.md. Edit here, not in code.",
-  "shot_id": "M1b-hs01",
-  "version": 7,
-  "host": {
-    "id": "nani-koshika",
-    "name": "Nani Koshika",
-    "reference": {
-      "canva_turnaround": "MAHbd5r-vTY",
-      "canva_portrait": "MAHbd_uSIxM",
-      "note": "Canva AI refs (look only; laptop/Drive, never repo). Our 3D model is built from this sheet, not traced."
-    },
-    "_EDIT_palette": "Quality pass (20 Nov, Bio · Build · M1b host quality): swatch ΔE00 worst over normal+deut+prot+trit (de.py). body #F5EBFF 17.7 (endo, trit) — kept: target ivory #F4EBDD is 17.1 normal but 7.0 vs hypo under deut, so the ivory look comes from the warm inner glow + lamp, not the albedo. shawl #5E0F1A 19.0 (accent, trit) — deep wine per G-Art R3 (v2 #761424 read salmon); target #7A1F2B is 13.9 under trit. shawl_dark 20.7. embroidery thread = body pearl (17.7). Feature colours (brow, iris, glasses, gold, sclera, lip) are small features, logged not gated. Rendered-pixel check: `python m1b.py palette` (probe masks).",
-    "palette": {
-      "body": "#F5EBFF",
-      "body_floor": "#EBE1F5",
-      "glow": "#FFB466",
-      "ink": "#1F1A24",
-      "ink2": "#2A1C40",
-      "shawl": "#6E1024",
-      "shawl_dark": "#3E0A12",
-      "glasses": "#C8B07A",
-      "book_cover": "#6A4630",
-      "book_pages": "#E8D9BC",
-      "plate_top": "#2B1D1A",
-      "plate_bottom": "#120C0B",
-      "lamp": "#FFC27A",
-      "blush": "#E9B8C4",
-      "embroidery": "#F5EBFF",
-      "brow": "#5E5048",
-      "iris": "#5E361A",
-      "iris_rim": "#2A1608",
-      "sclera": "#F6F1EE",
-      "lip": "#5A3036",
-      "crease": "#D9CCE6",
-      "corner_gold": "#B8903E",
-      "ribbon": "#4A1420",
-      "wood": "#2A1A12",
-      "studio_top": "#5E5E64",
-      "studio_bottom": "#2A2A2E",
-      "lamp_shade": "#E8B070",
-      "studio_floor": "#4A4A50"
-    },
-    "body": {
-      "height": 1.0,
-      "width": 0.74,
-      "egg_taper": 0.03,
-      "sss_radius": 0.08,
-      "glow_strength": 4.2,
-      "low_bias": 0.22
-    },
-    "seed": 4613,
-    "_EDIT_palette_R5": "G-Art R5 (21 Nov, D-051): shawl #5E0F1A rendered brown under the warm key → #6E1024 (swatch 16.8 vs accent, trit; still ≥ 15). Book cover #4E3222 read as a black slab → #6A4630 lighter leather (11.2 vs accent: props are logged, not gated)."
+ "_purpose": "M1b host shot spec — one home for every value (RULES I6). Owner doc: studio-docs/build/studio-playbook.md §5b; look: build/visual-style.md. Edit here, not in code.",
+ "shot_id": "M1b-hs01",
+ "version": 7,
+ "host": {
+  "id": "nani-koshika",
+  "name": "Nani Koshika",
+  "reference": {
+   "canva_turnaround": "MAHbd5r-vTY",
+   "canva_portrait": "MAHbd_uSIxM",
+   "note": "Canva AI refs (look only; laptop/Drive, never repo). Our 3D model is built from this sheet, not traced."
   },
-  "line": {
-    "en": "What if a flat disc had to build a whole body?",
-    "hi": "अगर एक चपटी डिस्क को पूरा शरीर बनाना पड़े तो?",
-    "key_en": "whole body",
-    "key_hi": "पूरा शरीर",
-    "voice": {
-      "engine": "Kokoro-82M",
-      "voice": "af_heart",
-      "lang_code": "a",
-      "speed": 0.66,
-      "_EDIT": "preview 1: 0.92 gave 213 wpm (3.1 s); 0.66 → ~4.3 s ≈ 150 wpm (H6 130–150)"
-    },
-    "hi_note": "HI track reuses the EN audio for this sample (caption-only test); a Hindi voice is a later step (script-first, D-032)."
+  "_EDIT_palette": "Quality pass (20 Nov, Bio · Build · M1b host quality): swatch ΔE00 worst over normal+deut+prot+trit (de.py). body #F5EBFF 17.7 (endo, trit) — kept: target ivory #F4EBDD is 17.1 normal but 7.0 vs hypo under deut, so the ivory look comes from the warm inner glow + lamp, not the albedo. shawl #5E0F1A 19.0 (accent, trit) — deep wine per G-Art R3 (v2 #761424 read salmon); target #7A1F2B is 13.9 under trit. shawl_dark 20.7. embroidery thread = body pearl (17.7). Feature colours (brow, iris, glasses, gold, sclera, lip) are small features, logged not gated. Rendered-pixel check: `python m1b.py palette` (probe masks).",
+  "palette": {
+   "body": "#F5EBFF",
+   "body_floor": "#EBE1F5",
+   "glow": "#FFB466",
+   "ink": "#1F1A24",
+   "ink2": "#2A1C40",
+   "shawl": "#6E1024",
+   "shawl_dark": "#3E0A12",
+   "glasses": "#C8B07A",
+   "book_cover": "#6A4630",
+   "book_pages": "#E8D9BC",
+   "plate_top": "#2B1D1A",
+   "plate_bottom": "#120C0B",
+   "lamp": "#FFC27A",
+   "blush": "#E9B8C4",
+   "embroidery": "#F5EBFF",
+   "brow": "#5E5048",
+   "iris": "#5E361A",
+   "iris_rim": "#2A1608",
+   "sclera": "#F6F1EE",
+   "lip": "#5A3036",
+   "crease": "#D9CCE6",
+   "corner_gold": "#B8903E",
+   "ribbon": "#4A1420",
+   "wood": "#2A1A12",
+   "studio_top": "#5E5E64",
+   "studio_bottom": "#2A2A2E",
+   "lamp_shade": "#E8B070",
+   "studio_floor": "#4A4A50"
   },
-  "video": {
-    "fps": 30,
-    "seconds": 5.0,
-    "design": [
-      1080,
-      1920
-    ],
-    "ship": [
-      720,
-      1280
-    ],
-    "preview": [
-      360,
-      640
-    ],
-    "lead_in_s": 0.25,
-    "_EDIT_shots": "Two angles, same identity. Cut lands on a word boundary near the middle (cuts every 1–3 s, D-032).",
-    "shots": [
-      {
-        "id": "A",
-        "name": "front 3/4 medium close",
-        "start_s": 0.0,
-        "end_s": 2.6,
-        "cam_yaw_deg": -22,
-        "cam_pitch_deg": 4,
-        "lens_mm": 70,
-        "dist": 3.3,
-        "push_in": 0.06
-      },
-      {
-        "id": "B",
-        "name": "low 3/4 close-up",
-        "start_s": 2.6,
-        "end_s": 5.0,
-        "cam_yaw_deg": 30,
-        "cam_pitch_deg": -5,
-        "lens_mm": 85,
-        "dist": 3.3,
-        "push_in": 0.0
-      }
-    ],
-    "expression_track": [
-      {
-        "t": 0.0,
-        "expr": "surprised"
-      },
-      {
-        "t": 0.7,
-        "expr": "curious"
-      },
-      {
-        "t": 1.6,
-        "expr": "delighted"
-      },
-      {
-        "t": 3.6,
-        "expr": "surprised"
-      },
-      {
-        "t": 4.6,
-        "expr": "warm"
-      }
-    ],
-    "blink_every_s": [
-      2.2,
-      3.8
-    ],
-    "engine": "BLENDER_EEVEE_NEXT",
-    "samples": 32,
-    "cycles_samples": 64,
-    "version_note": "v7 = M1b v6 results (D-052): view-dependent rim glow on the pearl (quality.rim) so the body edge stands off the dark plate on every camera (v6 host-vs-plate p10 1.6–2.8:1, 76–85 % of edge ≥ 3:1). Gate overlay out\\review\\sep_<tag>.png. Look otherwise = v6 (owner T1b pass, 21 Nov).",
-    "book_open_s": [
-      0.05,
-      0.25
-    ],
-    "_EDIT_hook": "Hook ≤ 1 s: surprised face + book snaps open (blank pages) at 0.05–0.25 s.",
-    "view_transform": "AgX",
-    "palette_pass": "Standard",
-    "grade": {
-      "glare": 0.3,
-      "vignette": 0.35,
-      "grain": 0.03,
-      "lift": [
-        1.0,
-        0.98,
-        0.96
-      ],
-      "gamma": [
-        1.0,
-        1.0,
-        0.98
-      ],
-      "gain": [
-        1.04,
-        1.0,
-        0.95
-      ],
-      "_EDIT": "compositor grade (visual-style §5: warm on plate/light; host keeps its own pass)",
-      "glare_threshold": 2.0,
-      "_EDIT_bloom": "threshold 2.0 = only the lamp/bokeh emitters bloom (target 8)"
-    },
-    "practical_lamp": true,
-    "rim_flicker_hz": 0.5,
-    "exposure": -0.5,
-    "view_look": "AgX - Punchy"
+  "body": {
+   "height": 1.0,
+   "width": 0.74,
+   "egg_taper": 0.03,
+   "sss_radius": 0.08,
+   "glow_strength": 4.2,
+   "low_bias": 0.22
   },
-  "expressions": [
-    "warm",
-    "curious",
-    "delighted",
-    "surprised",
-    "thinking",
-    "tsk"
+  "seed": 4613,
+  "_EDIT_palette_R5": "G-Art R5 (21 Nov, D-051): shawl #5E0F1A rendered brown under the warm key → #6E1024 (swatch 16.8 vs accent, trit; still ≥ 15). Book cover #4E3222 read as a black slab → #6A4630 lighter leather (11.2 vs accent: props are logged, not gated)."
+ },
+ "line": {
+  "en": "What if a flat disc had to build a whole body?",
+  "hi": "अगर एक चपटी डिस्क को पूरा शरीर बनाना पड़े तो?",
+  "key_en": "whole body",
+  "key_hi": "पूरा शरीर",
+  "voice": {
+   "engine": "Kokoro-82M",
+   "voice": "af_heart",
+   "lang_code": "a",
+   "speed": 0.66,
+   "_EDIT": "preview 1: 0.92 gave 213 wpm (3.1 s); 0.66 → ~4.3 s ≈ 150 wpm (H6 130–150)"
+  },
+  "hi_note": "HI track reuses the EN audio for this sample (caption-only test); a Hindi voice is a later step (script-first, D-032)."
+ },
+ "video": {
+  "fps": 30,
+  "seconds": 5.0,
+  "design": [
+   1080,
+   1920
   ],
-  "captions": {
-    "_EDIT": "visual-style §1: captions band 55–65 % from top, max width 70 %, ≤ 2 lines, ≤ 28 chars/line, cap height ≥ 40 px at 1080, weight ≥ 600, scrim ≥ 4.5:1, Devanagari +15 %.",
-    "font_latin": "Inter",
-    "font_latin_weight": 700,
-    "font_deva": "Noto Sans Devanagari",
-    "font_deva_weight": 700,
-    "size_px_1080": 64,
-    "deva_scale": 1.15,
-    "text": "#FFFFFF",
-    "outline": "#120C0B",
-    "key": "#FFC48A",
-    "scrim_alpha": 0.92,
-    "band_top_pct": 55,
-    "band_bottom_pct": 65,
-    "max_width_pct": 70,
-    "phrases_en": [
-      "What if",
-      "a flat disc",
-      "had to build",
-      "a whole body?"
-    ],
-    "fonts_dir": "../../apps/fonts",
-    "key_weight": 900,
-    "key_scale": 1.08,
-    "phrases_hi": [
-      "अगर एक चपटी डिस्क को",
-      "पूरा शरीर बनाना पड़े तो?"
-    ],
-    "tracks": [
-      "en",
-      "hi"
-    ],
-    "_EDIT_tracks": "EN and HI ship as separate caption tracks / renders (G-A11y R1), never switched mid-shot.",
-    "_EDIT_scrim": "0.92 = worst case over the brightest pearl pixel: white ≥ 8:1, key ≥ 5:1 (measured by m1b.py qa on rendered frames; 0.75 gave 3.5:1 / 2.2:1).",
-    "hi_times_s": null
-  },
-  "safe": {
-    "top_pct": 14,
-    "bottom_pct": 25,
-    "right_pct": 14,
-    "left_pct": 4
-  },
-  "audio": {
-    "lufs": -14.0,
-    "tp": -1.5,
-    "limiter_margin_db": 1.0,
-    "_EDIT": "H6 + D-051: two-pass loudnorm (loud.py) → −14 LUFS ±0.5 and true peak ≤ −1.5 dBTP, measured on every encoded mp4. Limiter ceiling = tp − limiter_margin_db (room for AAC overshoot)."
-  },
-  "encode": {
-    "codec": "libx264",
-    "preset": "veryfast",
-    "crf": 20,
-    "_EDIT": "x264 beat Pascal NVENC on size at 720p (D-045); h264_nvenc is the --nvenc option"
-  },
-  "credit": "Host character: Biology Studio original (3D, Blender). Concept reference made with Canva AI. Voice: Kokoro-82M (Apache 2.0).",
-  "reduced_motion": {
+  "ship": [
+   720,
+   1280
+  ],
+  "preview": [
+   360,
+   640
+  ],
+  "lead_in_s": 0.25,
+  "_EDIT_shots": "Two angles, same identity. Cut lands on a word boundary near the middle (cuts every 1–3 s, D-032).",
+  "shots": [
+   {
+    "id": "A",
+    "name": "front 3/4 medium close",
+    "start_s": 0.0,
+    "end_s": 2.6,
+    "cam_yaw_deg": -22,
+    "cam_pitch_deg": 4,
+    "lens_mm": 70,
+    "dist": 3.3,
+    "push_in": 0.06
+   },
+   {
+    "id": "B",
+    "name": "low 3/4 close-up",
+    "start_s": 2.6,
+    "end_s": 5.0,
+    "cam_yaw_deg": 30,
+    "cam_pitch_deg": -5,
+    "lens_mm": 85,
+    "dist": 3.55,
     "push_in": 0.0,
-    "caption_pop": false,
-    "book_snap": false,
-    "_EDIT": "H5 reduced-motion render (--reduced-motion)"
+    "shift_x": 0.12,
+    "_EDIT_v7c": "D-058 (M1b.q9, G-Art): crown + shawl were cut by the right frame edge → pull back 3.3 → 3.55 (~7 %) and pan so she sits 0.12 screen units (~6 % of width) left. Check headroom ≥ 5 %."
+   }
+  ],
+  "expression_track": [
+   {
+    "t": 0.0,
+    "expr": "surprised"
+   },
+   {
+    "t": 0.7,
+    "expr": "curious"
+   },
+   {
+    "t": 1.6,
+    "expr": "delighted"
+   },
+   {
+    "t": 3.6,
+    "expr": "surprised"
+   },
+   {
+    "t": 4.6,
+    "expr": "warm"
+   }
+  ],
+  "blink_every_s": [
+   2.2,
+   3.8
+  ],
+  "engine": "BLENDER_EEVEE_NEXT",
+  "samples": 32,
+  "cycles_samples": 64,
+  "version_note": "v7 = M1b v6 results (D-052): view-dependent rim glow on the pearl (quality.rim) so the body edge stands off the dark plate on every camera (v6 host-vs-plate p10 1.6–2.8:1, 76–85 % of edge ≥ 3:1). Gate overlay out\\review\\sep_<tag>.png. Look otherwise = v6 (owner T1b pass, 21 Nov).",
+  "book_open_s": [
+   0.05,
+   0.25
+  ],
+  "_EDIT_hook": "Hook ≤ 1 s: surprised face + book snaps open (blank pages) at 0.05–0.25 s.",
+  "view_transform": "AgX",
+  "palette_pass": "Standard",
+  "grade": {
+   "glare": 0.3,
+   "vignette": 0.35,
+   "grain": 0.03,
+   "lift": [
+    1.0,
+    0.98,
+    0.96
+   ],
+   "gamma": [
+    1.0,
+    1.0,
+    0.98
+   ],
+   "gain": [
+    1.04,
+    1.0,
+    0.95
+   ],
+   "_EDIT": "compositor grade (visual-style §5: warm on plate/light; host keeps its own pass)",
+   "glare_threshold": 2.0,
+   "_EDIT_bloom": "threshold 2.0 = only the lamp/bokeh emitters bloom (target 8)"
   },
-  "face_at_pct": 38,
-  "quality": {
-    "_purpose": "Quality-pass knobs (handoff/m1b-host/quality-target.md). Every value here is an # EDIT hook; code has the same defaults.",
-    "tex": {
-      "shawl_px": [
-        4096,
-        1024
-      ],
-      "leather_px": 2048,
-      "stitch_unit_px": 15.0,
-      "border_u": 0.05,
-      "hem_v": 0.86,
-      "top_v": 0.08,
-      "sprigs": 34,
-      "thread_dim": 0.9
+  "practical_lamp": true,
+  "rim_flicker_hz": 0.5,
+  "exposure": -0.5,
+  "view_look": "AgX - Punchy"
+ },
+ "expressions": [
+  "warm",
+  "curious",
+  "delighted",
+  "surprised",
+  "thinking",
+  "tsk"
+ ],
+ "captions": {
+  "_EDIT": "visual-style §1 (owner M1b.q9, 21 Nov 2026, D-058): captions band 68–72 % from top, bottom-anchored at 72 % (a 2nd line grows up) (was 55–65 %; clear of the book and hands, above the Shorts UI), max width 70 %, ≤ 2 lines, ≤ 28 chars/line, cap height ≥ 40 px at 1080, weight ≥ 600, scrim ≥ 4.5:1, Devanagari +15 %.",
+  "font_latin": "Inter",
+  "font_latin_weight": 700,
+  "font_deva": "Noto Sans Devanagari",
+  "font_deva_weight": 700,
+  "size_px_1080": 64,
+  "deva_scale": 1.15,
+  "text": "#FFFFFF",
+  "outline": "#120C0B",
+  "key": "#FFC48A",
+  "scrim_alpha": 0.92,
+  "band_top_pct": 68,
+  "band_bottom_pct": 72,
+  "max_width_pct": 70,
+  "phrases_en": [
+   "What if",
+   "a flat disc",
+   "had to build",
+   "a whole body?"
+  ],
+  "fonts_dir": "../../apps/fonts",
+  "key_weight": 900,
+  "key_scale": 1.08,
+  "phrases_hi": [
+   "अगर एक चपटी डिस्क को",
+   "पूरा शरीर बनाना पड़े तो?"
+  ],
+  "tracks": [
+   "en",
+   "hi"
+  ],
+  "_EDIT_tracks": "EN and HI ship as separate caption tracks / renders (G-A11y R1), never switched mid-shot.",
+  "_EDIT_scrim": "0.92 = worst case over the brightest pearl pixel: white ≥ 8:1, key ≥ 5:1 (measured by m1b.py qa on rendered frames; 0.75 gave 3.5:1 / 2.2:1).",
+  "hi_times_s": null
+ },
+ "safe": {
+  "top_pct": 14,
+  "bottom_pct": 25,
+  "right_pct": 14,
+  "left_pct": 4
+ },
+ "audio": {
+  "lufs": -14.0,
+  "tp": -1.5,
+  "limiter_margin_db": 1.0,
+  "_EDIT": "H6 + D-051: two-pass loudnorm (loud.py) → −14 LUFS ±0.5 and true peak ≤ −1.5 dBTP, measured on every encoded mp4. Limiter ceiling = tp − limiter_margin_db (room for AAC overshoot)."
+ },
+ "encode": {
+  "codec": "libx264",
+  "preset": "veryfast",
+  "crf": 20,
+  "_EDIT": "x264 beat Pascal NVENC on size at 720p (D-045); h264_nvenc is the --nvenc option"
+ },
+ "credit": "Host character: Biology Studio original (3D, Blender). Concept reference made with Canva AI. Voice: Kokoro-82M (Apache 2.0).",
+ "reduced_motion": {
+  "push_in": 0.0,
+  "caption_pop": false,
+  "book_snap": false,
+  "_EDIT": "H5 reduced-motion render (--reduced-motion)"
+ },
+ "face_at_pct": 38,
+ "quality": {
+  "_purpose": "Quality-pass knobs (handoff/m1b-host/quality-target.md). Every value here is an # EDIT hook; code has the same defaults.",
+  "tex": {
+   "shawl_px": [
+    4096,
+    1024
+   ],
+   "leather_px": 2048,
+   "stitch_unit_px": 15.0,
+   "border_u": 0.05,
+   "hem_v": 0.86,
+   "top_v": 0.08,
+   "sprigs": 34,
+   "thread_dim": 0.9
+  },
+  "shawl": {
+   "sim": true,
+   "sim_frames": 70,
+   "nu": 128,
+   "nv": 36,
+   "phi_open_deg": 30,
+   "z_front": -0.06,
+   "z_back": 0.26,
+   "z_hem": -0.36,
+   "gap": 0.022,
+   "flare": 0.0,
+   "folds": 7,
+   "fold_amp": 0.022,
+   "mass": 0.3,
+   "tension": 15,
+   "bending": 0.4,
+   "air": 1.0,
+   "quality": 6,
+   "thickness": 0.022,
+   "bump": 0.6,
+   "fringe_len": [
+    0.12,
+    0.15
+   ],
+   "fringe_every": 1,
+   "fringe_r": 0.0019,
+   "sheen": 0.45,
+   "spec": 0.0,
+   "shrink": 0.06,
+   "sheen_rough": 0.5,
+   "sheen_tint": "#E8B4A0",
+   "_EDIT_v7c": "D-058 (M1b.q9 A2): wool sheen 0.2 → 0.45, roughness 0.5, warm tint — grazing highlight so the shawl edge reads on the dark plate. Plastic look → lower sheen."
+  },
+  "face": {
+   "eye_x": 0.105,
+   "eye_z": 0.11,
+   "eye_r": 0.046,
+   "iris_r": 0.04,
+   "lid_open_deg": -62,
+   "glasses_z": 0.066,
+   "glasses_rx": 0.072,
+   "glasses_rz": 0.042,
+   "wire_r": 0.0032,
+   "nose": [
+    0.0,
+    0.045,
+    0.028,
+    0.03
+   ],
+   "cheeks": [
+    0.15,
+    -0.005,
+    0.07,
+    0.025
+   ],
+   "lens_glass": true,
+   "chain": true,
+   "chain_sag": 0.03,
+   "micro_bump": 0.15,
+   "body_rough": 0.26,
+   "chain_end_z": -0.06,
+   "blush": 1.0,
+   "brow_w": 0.0068,
+   "coat_rough": 0.18,
+   "glow_top": 0.28,
+   "temple_gap": 0.003,
+   "surprise_eye_scale": 0.0,
+   "_EDIT_surprise": "G-Art R1: wide eyes come from the upper-lid caps (lid_deg), not from scaling the eyeball; 0 = no scaling.",
+   "_EDIT_R5": "G-Art R5: body read matte porcelain → rougher 0.36→0.26, coat 0.32→0.18 for a glassier sheen. Watch the crown hot spot in shot B.",
+   "temple_end_deg": 84,
+   "temple_sink": 0.006,
+   "mouth_scale": 1.3,
+   "mouth_col": "#1A070B",
+   "_EDIT_v7c": "D-058 (G-Art): temples stop at 84° and sink 6 mm into the body (were running past the head line in A and B); mouth ×1.3 and darker inside (#1A070B) to read on a phone."
+  },
+  "arms": {
+   "root_phi_deg": 42,
+   "root_z": -0.14,
+   "radius": [
+    0.046,
+    0.04
+   ],
+   "hand": [
+    0.078,
+    0.066,
+    0.052
+   ]
+  },
+  "book": {
+   "half_w": 0.22,
+   "h": 0.25,
+   "pages_t": 0.034,
+   "curl": 0.018,
+   "open_deg": -24,
+   "closed_deg": -84,
+   "z": -0.31,
+   "forward": 0.11,
+   "overhang": 0.026,
+   "tilt_deg": -42,
+   "flip": true,
+   "ribbon_tail": 0.03
+  },
+  "plate": {
+   "shot": "library",
+   "sheet": "studio",
+   "shelf_radius": 3.6,
+   "shelf_deg": [
+    -78,
+    78
+   ],
+   "shelf_z": [
+    -1.4,
+    2.0
+   ],
+   "shelf_step": 0.4,
+   "lamps": [
+    {
+     "shot": "A",
+     "at": [
+      0.86,
+      0.62,
+      5.0
+     ]
     },
-    "shawl": {
-      "sim": true,
-      "sim_frames": 70,
-      "nu": 128,
-      "nv": 36,
-      "phi_open_deg": 30,
-      "z_front": -0.06,
-      "z_back": 0.26,
-      "z_hem": -0.36,
-      "gap": 0.022,
-      "flare": 0.0,
-      "folds": 7,
-      "fold_amp": 0.022,
-      "mass": 0.3,
-      "tension": 15,
-      "bending": 0.4,
-      "air": 1.0,
-      "quality": 6,
-      "thickness": 0.022,
-      "bump": 0.6,
-      "fringe_len": [
-        0.12,
-        0.15
-      ],
-      "fringe_every": 1,
-      "fringe_r": 0.0019,
-      "sheen": 0.2,
-      "spec": 0.0,
-      "shrink": 0.06
-    },
-    "face": {
-      "eye_x": 0.105,
-      "eye_z": 0.11,
-      "eye_r": 0.046,
-      "iris_r": 0.04,
-      "lid_open_deg": -62,
-      "glasses_z": 0.066,
-      "glasses_rx": 0.072,
-      "glasses_rz": 0.042,
-      "wire_r": 0.0032,
-      "nose": [
-        0.0,
-        0.045,
-        0.028,
-        0.03
-      ],
-      "cheeks": [
-        0.15,
-        -0.005,
-        0.07,
-        0.025
-      ],
-      "lens_glass": true,
-      "chain": true,
-      "chain_sag": 0.03,
-      "micro_bump": 0.15,
-      "body_rough": 0.26,
-      "chain_end_z": -0.06,
-      "blush": 1.0,
-      "brow_w": 0.0068,
-      "coat_rough": 0.18,
-      "glow_top": 0.28,
-      "temple_gap": 0.003,
-      "surprise_eye_scale": 0.0,
-      "_EDIT_surprise": "G-Art R1: wide eyes come from the upper-lid caps (lid_deg), not from scaling the eyeball; 0 = no scaling.",
-      "_EDIT_R5": "G-Art R5: body read matte porcelain → rougher 0.36→0.26, coat 0.32→0.18 for a glassier sheen. Watch the crown hot spot in shot B."
-    },
-    "arms": {
-      "root_phi_deg": 42,
-      "root_z": -0.14,
-      "radius": [
-        0.046,
-        0.04
-      ],
-      "hand": [
-        0.078,
-        0.066,
-        0.052
-      ]
-    },
-    "book": {
-      "half_w": 0.22,
-      "h": 0.25,
-      "pages_t": 0.034,
-      "curl": 0.018,
-      "open_deg": -24,
-      "closed_deg": -84,
-      "z": -0.31,
-      "forward": 0.11,
-      "overhang": 0.026,
-      "tilt_deg": -42,
-      "flip": true,
-      "ribbon_tail": 0.03
-    },
-    "plate": {
-      "shot": "library",
-      "sheet": "studio",
-      "shelf_radius": 3.6,
-      "shelf_deg": [
-        -78,
-        78
-      ],
-      "shelf_z": [
-        -1.4,
-        2.0
-      ],
-      "shelf_step": 0.4,
-      "lamps": [
-        {
-          "shot": "A",
-          "at": [
-            0.86,
-            0.62,
-            5.0
-          ]
-        },
-        {
-          "shot": "B",
-          "at": [
-            -0.97,
-            0.74,
-            5.2
-          ]
-        }
-      ],
-      "bokeh_per_shot": 6,
-      "lamp_energy": 60,
-      "eevee_raytracing": true,
-      "_EDIT_bokeh": "Owner 21 Nov: 8-sided (near-round lens shape, not cells), dimmer, top corners only.",
-      "bokeh_sides": 8,
-      "bokeh_emit": 2.5,
-      "bokeh_size": [
-        0.03,
-        0.06
-      ],
-      "shade_emit": 1.2,
-      "_EDIT_lampB": "D-051: v5 lamp B shade sat behind the crown (light on light). Moved further out and up: fx −0.97, fy 0.74."
-    },
-    "_EDIT_R4": "G-Art R4 (21 Nov 03:45): book z −0.31/tilt −42 (mouth visible, page tops show), arms 0.046/hands ×1.35, glasses_z 0.066 (looks over rims), coat/body rough up (crown hot spot), glow_top 0.28, shawl spec 0 + top 0.26/−0.06 + open 30°, shade_emit 1.2, bokeh 2.5 + size 0.03–0.06, lamps pushed out of her silhouette, cameras 3.3.",
-    "outline": {
-      "on": false,
-      "mm": 4,
-      "color": "#2A1C40",
-      "strength": 1.0,
-      "_EDIT": "D-051 + G-Art R5: OFF by default (a violet ring reads as a cartoon line or a cell membrane). Fallback only: turn on if RESULTS says 'Host vs plate … FAIL' after the lamp move + rim. v7: still OFF; the rim glow (quality.rim) is the fix (D-052)."
-    },
-    "rim": {
-      "on": true,
-      "strength": 1.6,
-      "power": 2.0,
-      "blend": 0.35,
-      "_EDIT": "D-052: rim glow added to the body emission (Layer Weight Facing^power × strength), same warm glow colour, every camera. v6 needs ≈ +0.05 edge luminance for shot A, +0.15–0.2 for shot B and the front sheet (measured on v6 frames, 21 Nov). Too strong = halo/cartoon ring → lower strength; red dots still on the crown → raise strength or blend. 0 = v6 look."
+    {
+     "shot": "B",
+     "at": [
+      -0.97,
+      0.74,
+      5.2
+     ]
     }
+   ],
+   "bokeh_per_shot": 6,
+   "lamp_energy": 60,
+   "eevee_raytracing": true,
+   "_EDIT_bokeh": "Owner 21 Nov: 8-sided (near-round lens shape, not cells), dimmer, top corners only.",
+   "bokeh_sides": 8,
+   "bokeh_emit": 2.5,
+   "bokeh_size": [
+    0.03,
+    0.06
+   ],
+   "shade_emit": 1.2,
+   "_EDIT_lampB": "D-051: v5 lamp B shade sat behind the crown (light on light). Moved further out and up: fx −0.97, fy 0.74.",
+   "bokeh_host_margin": 0.1,
+   "_EDIT_v7b": "D-058: bokeh discs never overlap the host's screen box + bokeh_host_margin (shot B had 2 discs behind the crown).",
+   "shawl_lift": [
+    {
+     "shot": "B",
+     "at": [
+      0.92,
+      -0.12
+     ],
+     "depth": 6.0,
+     "size": 0.3,
+     "emit": 0.6
+    }
+   ],
+   "_EDIT_v7c": "D-058 (M1b.q9 A1): one dim warm glow behind the shawl shoulder in shot B (plate target luminance 0.06–0.08, above the fringe). Must not sit behind the BODY edge (gate). Tune emit until RESULTS 'Shawl vs plate shot_B' p10 ≥ 1.5:1."
   },
-  "lights_studio": {
-    "_EDIT": "sheet only: near-neutral, like the grey turnaround ref",
-    "key": [
-      -1.6,
-      -2.2,
-      1.7,
-      230,
-      "#FFF1E4",
-      1.6
-    ],
-    "rim": [
-      1.3,
-      1.9,
-      1.3,
-      300,
-      "#FFE6C8",
-      1.0
-    ],
-    "fill": [
-      2.0,
-      -1.6,
-      0.1,
-      70,
-      "#F6F0EA",
-      2.0
-    ]
+  "_EDIT_R4": "G-Art R4 (21 Nov 03:45): book z −0.31/tilt −42 (mouth visible, page tops show), arms 0.046/hands ×1.35, glasses_z 0.066 (looks over rims), coat/body rough up (crown hot spot), glow_top 0.28, shawl spec 0 + top 0.26/−0.06 + open 30°, shade_emit 1.2, bokeh 2.5 + size 0.03–0.06, lamps pushed out of her silhouette, cameras 3.3.",
+  "outline": {
+   "on": false,
+   "mm": 4,
+   "color": "#2A1C40",
+   "strength": 1.0,
+   "_EDIT": "D-051 + G-Art R5: OFF by default (a violet ring reads as a cartoon line or a cell membrane). Fallback only: turn on if RESULTS says 'Host vs plate … FAIL' after the lamp move + rim. v7: still OFF; the rim glow (quality.rim) is the fix (D-052)."
   },
-  "tokens_on_screen": [],
-  "_EDIT_tokens_on_screen": "Germ-layer tokens visible in this shot (e.g. ['endo','hypo']). Rendered-pixel ΔE gates only against these; [] = host-only shot → rendered ΔE is info. Swatches always gate (worst of normal/deut/prot/trit ≥ 15). Owner, 21 Nov 2026.",
-  "lights": {
-    "_EDIT": "library shot: warm side key; R4 fill warmed (cool fill made the crown lavender)",
-    "key": [
-      -2.3,
-      -1.2,
-      1.3,
-      220,
-      "#FFC890",
-      1.4
-    ],
-    "rim": [
-      1.3,
-      1.9,
-      1.3,
-      340,
-      "#FFC27A",
-      1.0
-    ],
-    "fill": [
-      2.0,
-      -1.6,
-      0.1,
-      45,
-      "#FFE6D2",
-      2.0
-    ]
+  "rim": {
+   "on": true,
+   "strength": 1.6,
+   "power": 2.0,
+   "blend": 0.35,
+   "_EDIT": "D-052: rim glow added to the body emission (Layer Weight Facing^power × strength), same warm glow colour, every camera. v6 needs ≈ +0.05 edge luminance for shot A, +0.15–0.2 for shot B and the front sheet (measured on v6 frames, 21 Nov). Too strong = halo/cartoon ring → lower strength; red dots still on the crown → raise strength or blend. 0 = v6 look.",
+   "low_boost": 0.0,
+   "_EDIT_v7b": "D-058: low_boost (rim × strength × (1 + low_boost·low)) is OFF: G-Art — underlight looks fake on a lit floor; G-Eng — 1.6×1.7 ≈ 2.7 crosses the 2.0 glare threshold. Fix the lower curve with quality.contact instead."
+  },
+  "contact": {
+   "on": true,
+   "r0": 0.45,
+   "r1": 1.3,
+   "dark": 0.45,
+   "_EDIT": "D-058 (G-Art): soft contact shadow on the floor under the host; floor base colour × (1 − dark) at r ≤ r0 (m from the body), fading to 0 at r1. Simulated on v7 frames: front 87 → ~98 % with plate luminance × 0.55 next to the lower curve. Too dark/blotchy → lower dark; halo of light round the foot → raise r1."
   }
+ },
+ "lights_studio": {
+  "_EDIT": "sheet only: near-neutral, like the grey turnaround ref",
+  "key": [
+   -1.6,
+   -2.2,
+   1.7,
+   230,
+   "#FFF1E4",
+   1.6
+  ],
+  "rim": [
+   1.3,
+   1.9,
+   1.3,
+   300,
+   "#FFE6C8",
+   1.0
+  ],
+  "fill": [
+   2.0,
+   -1.6,
+   0.1,
+   70,
+   "#F6F0EA",
+   2.0
+  ]
+ },
+ "tokens_on_screen": [],
+ "_EDIT_tokens_on_screen": "Germ-layer tokens visible in this shot (e.g. ['endo','hypo']). Rendered-pixel ΔE gates only against these; [] = host-only shot → rendered ΔE is info. Swatches always gate (worst of normal/deut/prot/trit ≥ 15). Owner, 21 Nov 2026.",
+ "lights": {
+  "_EDIT": "library shot: warm side key; R4 fill warmed (cool fill made the crown lavender)",
+  "key": [
+   -2.3,
+   -1.2,
+   1.3,
+   220,
+   "#FFC890",
+   1.4
+  ],
+  "rim": [
+   1.3,
+   1.9,
+   1.3,
+   340,
+   "#FFC27A",
+   1.0
+  ],
+  "fill": [
+   2.0,
+   -1.6,
+   0.1,
+   45,
+   "#FFE6D2",
+   2.0
+  ]
+ }
 }

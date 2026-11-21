@@ -23,7 +23,7 @@ const CD={src:null,srcP:null,idx:null,idxP:null,files:{},cal:null,calP:null,err:
 const cdJson=u=>fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(u.split('/').pop()+' HTTP '+r.status);return r.json();});
 function cdSources(){if(!CD.srcP)CD.srcP=cdJson(CONFIG.cards.sources).then(j=>(CD.src=j)).catch(e=>{CD.err=e.message;CD.srcP=null;throw e;});return CD.srcP;}
 function cdIndex(){if(!CD.idxP)CD.idxP=cdJson(CONFIG.cards.dir+'index.json').then(j=>(CD.idx=j)).catch(e=>{CD.err=e.message;CD.idxP=null;throw e;});return CD.idxP;}
-function cdCard(id){if(!CD.files[id])CD.files[id]=cdJson((FLAGS.fixture&&CONFIG.cards.fixtures[id]?CONFIG.cards.fixtures[id]:CONFIG.cards.dir+encodeURIComponent(id)+'.json')).catch(e=>{delete CD.files[id];throw e;});return CD.files[id];}
+function cdCard(id){if(!CD.files[id])CD.files[id]=cdJson((FLAGS.fixture==='drills'&&CONFIG.cards.fixtures[id]?CONFIG.cards.fixtures[id]:CONFIG.cards.dir+encodeURIComponent(id)+'.json')).catch(e=>{delete CD.files[id];throw e;});return CD.files[id];}
 function cdCal(){if(!CD.calP)CD.calP=cdJson(CONFIG.cards.dir+'calibration.json').then(j=>(CD.cal=j)).catch(e=>{CD.calP=null;throw e;});return CD.calP;}
 async function cardsCtx(){await Promise.all([cdSources(),mapLoad(),scIndexLoad()]);
   const sceneFiles=Object.fromEntries(await Promise.all(((SC.idx&&SC.idx.scenes)||[]).map(s=>scFile(s.id).then(S=>[s.id,S],()=>[s.id,null]))));   // drills check against the scene file (V2)
@@ -37,7 +37,7 @@ const cSentences=t=>String(t||'').trim().split(/(?<=[.!?])\s+/).map(s=>s.trim())
 const cRefs=s=>[...String(s).matchAll(REF_RX())].flatMap(m=>m[1].split(',').map(x=>x.trim()));
 
 /* ---------- citations (card-spec §4; tools/card-check/citations.py) ---------- */
-const SEC_RX=/^(E\d\d)(?:\.(\d\d))?(?:\s+(.+))?$/, SRC_RX=/^(R\d\d[a-z]?)(?:\s+(.+))?$/;
+const SEC_RX=/^(E\d\d)(?:\.(\d\d))?(?:\s+(.+))?$/, SRC_RX=/^(R\d\d[a-z]{0,2})(?:\s+(.+))?$/;
 const locOk=l=>l==null||/^(CC|MR|Tbl \d+\.\d+|Fig \d+\.\d+|CS\d{1,2}(?:[–-]\d{1,2})?|p \d+)$/.test(l);
 function parseCite(cite){
   if(typeof cite!=='string'||!cite.trim())throw new Error('empty citation');
@@ -79,9 +79,10 @@ function appRules(cite,mk,line,guide,E){const loc=appCite(cite);
 function cardCheck(card,stem,ctx){
   const R=CARD_RULES,out=[],E=(code,line,msg)=>out.push({lvl:'E',code,line,msg}),W=(code,line,msg)=>out.push({lvl:'W',code,line,msg}),src=ctx.src;
   const isObj=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
-  const want={spec:'int',id:'str',version:'int',book:'str',status:'str',title:'str',tier:'str',objective:'dict',body:'dict',facts:'list',terms:'dict',misconceptions:'list',checks:'list',scene:'dict',made:'dict',review:'dict',log:'list',remember:'list'};
+  const want={spec:'int',id:'str',version:'int',book:'str',status:'str',title:'str',tier:'str',objective:'dict',body:'dict',facts:'list',terms:'dict',misconceptions:'list',checks:'list',made:'dict',review:'dict',log:'list',remember:'list'};
   const ok={int:Number.isInteger,str:x=>typeof x==='string',dict:isObj,list:Array.isArray};
   for(const [k,t] of Object.entries(want))if(!ok[t](card[k]))E('E-schema',k,`'${k}' missing or not ${t}`);
+  if('scene' in card&&!isObj(card.scene))E('E-schema','scene',"'scene' must be an object, or left out when the concept has no scene yet");   // optional (D-058): no scene yet → Try it says Coming soon
   if(out.length)return out;
   /* shapes inside the fields (a badly typed card is reported, never a crash — G-Eng R3) */
   if(!Object.values(card.body).every(v=>typeof v==='string'))E('E-schema','body','every level text must be text');
@@ -164,7 +165,7 @@ function cardCheck(card,stem,ctx){
     else if(m.cite){validateCitation(m.cite,src).errors.forEach(e=>E('E-cite',mid,e));if(m.mark==='ⓘ')E('E-mark',mid,'ⓘ needs an APP cite in a guide card');}
     if(m.mark&&!R.marks.includes(m.mark))E('E-mark',mid,`unknown mark ${m.mark}`);
     if(m.mark==='≈')(final?E:W)(final?'E-approx':'W-approx',mid,'≈ blocks reviewed/shipped');}
-  const qs=card.checks,SF=(ctx.sceneFiles||{})[card.scene.id]||null;
+  const qs=card.checks,scn=card.scene||null,SF=scn?(ctx.sceneFiles||{})[scn.id]||null:null;   // scene optional (D-058)
   if(qs.length<R.limits.minChecks)E('E-checks','checks',`${qs.length} checks < ${R.limits.minChecks}`);
   for(const q of qs){const qid=q.id||'q?',opts=q.options||[],[lo,hi]=R.limits.opt,ty=q.type,known=R.types.includes(ty);
     if(!known)E('E-check',qid,`type must be one of ${R.types.join(', ')}`);
@@ -174,14 +175,15 @@ function cardCheck(card,stem,ctx){
       if(new Set(opts.filter(o=>typeof o==='string').map(o=>o.trim().toLowerCase())).size!==opts.length)E('E-check',qid,'options repeat — exactly one right answer');}
     if(['mcq','rotate','day'].includes(ty)&&!(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<opts.length))E('E-check',qid,'answer must be the index of the one right option');
     if(['order','frames','label','folded'].includes(ty)&&q.answer!==undefined&&q.answer!==null)E('E-check',qid,`a ${ty} check has no answer field (card-spec §2a)`);
-    if(DRILL_TYPES.includes(ty))drillRules(q,qid,ty,opts,SF,E);
+    if(DRILL_TYPES.includes(ty)){if(!scn)E('E-drill',qid,"a 3D drill needs the card's scene (card-spec §2a) — this card has none");drillRules(q,qid,ty,opts,SF,E);}
     if(!String(q.why||'').trim())E('E-check',qid,'why missing');
     if(q.tests!=='objective')E('E-check',qid,"tests must be 'objective' (H1)");
     if(q.refutes&&!mids.includes(q.refutes))E('E-check',qid,`refutes ${q.refutes}, which is not a misconception here`);}
   if(qs.length&&!qs.some(q=>q.refutes))E('E-checks','checks','no check refutes a misconception');
   if(R.spatial.includes(verb)&&!qs.some(q=>R.spatialTypes.includes(q.type)))E('E-checks','checks',`spatial verb '${verb}' needs a spatial check (order, frames, label or rotate)`);
-  const sc=card.scene.id,S=ctx.scenes.find(s=>s.id===sc);
-  if(!sc||!S)E('E-scene','scene',`scene ${sc} not found`);
+  const sc=scn?scn.id:null,S=ctx.scenes.find(s=>s.id===sc);
+  if(!scn){}   // no scene yet (D-058)
+  else if(!sc||!S)E('E-scene','scene',`scene ${sc} not found`);
   else{if(!S.cards.includes(card.id))W('W-scene-cards','scene',`${sc} does not list ${card.id}`);
     const d=card.scene.day;if(d!=null&&!(typeof d==='number'&&S.days[0]<=d&&d<=S.days[1]))E('E-scene','scene',`day ${d} outside ${sc} days ${S.days[0]}–${S.days[1]}`);}
   if(R.needs[st])for(const g of R.needs[st]){const r=card.review[g]||{};

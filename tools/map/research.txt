@@ -75,3 +75,11 @@ E08.07.02|AN80.1|✔|
 E08.08.01|AN80.4|⚑|
 E08.08.02|AN80.4|✔|
 E08.09.01|AN80.5|✔|
+# --- E09 · X1 21 Nov 2026 (dossier ch09-birth-defects-prenatal-dx.md; teratogenic window CS7–CS23 from R08, D-030; AN codes from NMC Vol I — AN82 is Ethics, not teratology, D-057 e) ---
+E09.01.01|AN79.5|✔|
+E09.01.02|AN79.5,AN79.6|✔|7-23
+E09.01.03|AN79.6|⚑|
+E09.01.04|AN79.5,AN79.6|✔✔|
+E09.02.01|AN81.1,AN79.6|✔|
+E09.02.02|AN81.2,AN81.3|✔|
+E09.03.01|AN81.1|✔|

@@ -75,5 +75,40 @@ function appTests(){
   t('accent set',cs.getPropertyValue('--accent').trim().toLowerCase()==='#994774');
   // strings: every nav item has a label
   t('strings for nav',CONFIG.nav.every(k=>STR.nav[k]&&STR.navHint[k]));
+  // Reviewer mode (H2, D-061): addresses, Up, title/body parse, issue state → words, form link, card sorting, log parse, saved shape
+  ['review','review=news','review=mine','rcard=E06.02.01','rtour','rtour=3','updates','updates=2'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
+  t('review bad tab → todo',parseHash('#review=nope').view==='todo'&&hashOf(parseHash('#review=todo'))==='review');
+  t('rcard bad id → review',parseHash('#rcard=xyz').name==='review');
+  t('rtour step: out of range → 1',parseHash('#rtour=9').step===1&&parseHash('#rtour=2').step===2);
+  t('up rcard/rtour/updates → review',['rcard=E06.02.01','rtour=2','updates'].every(h=>upOf(parseHash('#'+h)).name==='review'));
+  t('strings for review nav',STR.nav.review&&STR.navHint.review&&STR.rv.tourS.length===3);
+  t('review nav off in testing mode',!navItems().includes('review')||!FLAGS.test);
+  const pt=rvParseTitle('[review] E06.02.01 v2 ✎ Three strips');t('review title parse',pt.card==='E06.02.01'&&pt.ver===2&&pt.verdict==='fix',JSON.stringify(pt));
+  t('review title ✓ and ?',rvParseTitle('[review] E05.01.01 v1 ✓ x').verdict==='ok'&&rvParseTitle('[review] E05.01.01 v1 ? x').verdict==='ask');
+  t('review feedback title',rvParseTitle('[feedback] hi').kind==='other'&&rvParseTitle('hello')===null);
+  const pb=rvParseBody('### Card\n\nE05.02.01 v1 · Notochord\n\n### Overall\n\n? Question');t('review body parse',pb.card==='E05.02.01'&&pb.ver===1&&pb.verdict==='ask',JSON.stringify(pb));
+  const I=(o)=>Object.assign({number:1,title:'[review] E05.01.01 v1 ✎ x',state:'open',labels:[{name:'review'}],milestone:null,created_at:'2026-11-21T06:00:00Z',user:{login:CONFIG.review.login}},o);
+  t('state open → sent',rvParseIssue(I()).st==='sent');
+  t('state fixing label',rvParseIssue(I({labels:[{name:'review'},{name:CONFIG.review.fixingLabel}]})).st==='fixing');
+  const fx=rvParseIssue(I({state:'closed',milestone:{title:'v12'}}));t('state closed + milestone → fixed in 12',fx.st==='fixed'&&fx.fixedIn===12);
+  t('state closed not planned',rvParseIssue(I({state:'closed',state_reason:'not_planned'})).st==='noChange');
+  t('state closed ✓ → done, ? → answered',rvParseIssue(I({state:'closed',title:'[review] E05.01.01 v1 ✓ x'})).st==='done'&&rvParseIssue(I({state:'closed',title:'[review] E05.01.01 v1 ? x'})).st==='answered');
+  t('pull requests left out',rvParseIssue(I({pull_request:{}}))===null);
+  t('card state: none → todo · same-version ✎ → wait · ✓ → done · older version → todo changed · fixed → todo',
+    rvCardState({id:'E05.01.01',version:1},[]).k==='todo'&&rvCardState({id:'E05.01.01',version:1},[rvParseIssue(I())]).k==='wait'
+    &&rvCardState({id:'E05.01.01',version:1},[rvParseIssue(I({title:'[review] E05.01.01 v1 ✓ x'}))]).k==='done'
+    &&rvCardState({id:'E05.01.01',version:2},[rvParseIssue(I({title:'[review] E05.01.01 v1 ✓ x'}))]).why==='changed'
+    &&rvCardState({id:'E05.01.01',version:1},[fx]).why==='fixed');
+  {const u=new URL(rvFormUrl('E05.01.01',1,{list:{facts:true},verdict:'fix',where:'body',sure:'mid',note:'Day 16, not 15'})),q=u.searchParams,F=REVIEW_FIELDS;
+    t('form link: template, label, title, fields',q.get('template')===CONFIG.review.form&&q.get('labels')===CONFIG.review.label&&/^\[review\] E05\.01\.01 v1 ✎/.test(q.get('title'))
+      &&q.get(F.card).startsWith('E05.01.01 v1')&&q.get(F.verdict)===STR.rv.verdicts.fix&&q.get(F.where)===STR.rv.where.body&&q.get(F.sure)===STR.rv.sure.mid
+      &&q.get(F.checklist).startsWith('- [x] ')&&q.get(F.checklist).includes('- [ ] ')&&q.get(F.note)==='Day 16, not 15',u.search.slice(0,120));
+    t('form link round-trips its own title',rvParseTitle(q.get('title')).verdict==='fix');}
+  t('form needs a verdict, a note for ✎ / ?',!rvFormOk({verdict:''})&&!rvFormOk({verdict:'fix',note:' '})&&rvFormOk({verdict:'ok',note:''})&&rvFormOk({verdict:'ask',note:'why?'}));
+  {const L=rvParseLog('# Build log\n\n- 21 Nov 2026 · **L1 polish (app v10, D-056 proposed)** · Fix chat · by A. <!--plain: Card fixes.-->\n- 20 Nov 2026 · **X1 Research · Ch 8** · notes\nnot a line');
+    t('updates parse: plain line, else title without ids',L.length===2&&L[0].plain==='Card fixes.'&&L[0].title==='L1 polish'&&L[1].plain===''&&L[1].title==='X1 Research · Ch 8',JSON.stringify(L));}
+  {const s=stFill({});t('saved shape has review',s.review&&s.review.on===false&&typeof s.review.seen==='object'&&typeof s.review.drafts==='object');
+    const m=stMerge({review:{seen:{a:1},drafts:{x:{t:1,note:'old'}},t:1}},{review:{seen:{a:2,b:1},drafts:{x:{t:2,note:'new'}},on:true,t:2}});
+    t('merge review: higher seen, newer draft, newer on',m.review.seen.a===2&&m.review.seen.b===1&&m.review.drafts.x.note==='new'&&m.review.on===true,JSON.stringify(m.review));}
   dlog('test',out.filter(x=>!x.ok).length+' failed of '+out.length);return out;
 }

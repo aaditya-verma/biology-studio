@@ -1,4 +1,4 @@
-/* Biology Studio — Settings (theme, motion (V1, H5), storage + save log, backup, testing mode, version) and the Colour key (D-031 re-check on this screen).
+/* Biology Studio — Settings (theme, motion (V1, H5), storage + save log, backup, Reviewer mode (H2), testing mode, version) and the Colour key (D-031 re-check on this screen).
    Owner doc: build/design-plan.md §4.4–4.5. EDIT: words in STR; colour tokens in src/css/app.css :root. */
 'use strict';
 SCREENS.settings=function(v){
@@ -14,6 +14,7 @@ SCREENS.settings=function(v){
    <section class="card"><h2>${esc(STR.backupT)}</h2><p class="sm mut">${esc(STR.exportHint)}</p><div class="row">
      <button type="button" class="btn" data-act="export">${esc(STR.exportB)}</button>
      <label class="btn">${esc(STR.importB)}<input type="file" accept="application/json,.json" data-act="import" class="sr"></label></div></section>
+   <section class="card"><h2>${esc(STR.rv.setT)}</h2><p class="sm mut">${esc(STR.rv.setHint)}</p><div class="row"><button type="button" class="btn" data-act="rvmode"${FLAGS.test?' disabled':''}>${esc(state.review.on?STR.rv.setOff:STR.rv.setOn)}</button><a class="btn" href="#review">${esc(STR.rv.title)}</a></div></section>
    <section class="card"><h2>${esc(STR.testT)}</h2><p class="sm mut">${esc(STR.testHint)}</p><button type="button" class="btn" data-act="testmode">${esc(FLAGS.test?STR.testOff:STR.testOn)}</button></section>
    <section class="card"><h2>${esc(STR.versionT)}</h2><p class="mono">${esc(appVerLine())}</p><p class="xs mut">${esc(DEV.cls)} · ${esc(DEV.input)} · ${innerWidth}×${innerHeight}</p></section>
   </div>`;
@@ -22,6 +23,7 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('[data-theme-set]');if(t){setTheme(t.dataset.themeSet);return;}
   const mo=e.target.closest('[data-motion-set]');if(mo){state.settings.motion=mo.dataset.motionSet;state.settings.t=Date.now();stSave();render();return;}
   if(e.target.closest('[data-act=export]')){stExport();return;}
+  if(e.target.closest('[data-act=rvmode]')){state.review.on=!state.review.on;state.review.t=Date.now();stSave();buildShell();render();return;}   // H2: show / hide the Review tab
   if(e.target.closest('[data-act=testmode]')){setFlags({test:!FLAGS.test,debug:new Set(FLAGS.test?[]:['test'])});location.reload();}
 });
 document.addEventListener('change',async e=>{if(!e.target.matches('[data-act=import]'))return;const f=e.target.files[0];if(!f)return;

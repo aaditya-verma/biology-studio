@@ -1,0 +1,307 @@
+{
+ "spec": 1,
+ "id": "E06.01.04",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Neural crest cells",
+ "tier": "A",
+ "objective": {
+  "verb": "explain",
+  "text": "Explain what neural crest cells are and why they matter so widely."
+ },
+ "body": {
+  "general": "Which cells start at the fold edges, then roam the body? Cells along the edges of the neural folds break free from their neighbours [f1]. These neural crest cells become loose, mobile cells, called mesenchyme, and travel into the tissue below [f1,f6]. In the trunk they leave after the tube closes; in the head, before [f2]. Some settle under the skin and make pigment cells [f3]. Others form nerve clusters, nerve-wrapping cells and the inner adrenal gland [f8]. They build so much that they are called the fourth germ layer [f4].",
+  "mbbs": "Neural crest cells arise at the crests (lateral edges) of the neural folds [f1]. They undergo epithelial-to-mesenchymal transition and migrate into the underlying mesoderm [f1]. Trunk crest leaves after neural tube closure; cranial crest leaves before closure [f2]. Trunk crest follows two routes [f3]. The dorsal route runs under the ectoderm and gives melanocytes [f3]. The ventral route passes through the cranial half of each somite [f8]. It gives sensory ganglia, sympathetic and enteric neurons, Schwann cells and adrenal medulla [f8]. Crest is ectoderm that makes mesenchyme, so mesenchyme is not the same as mesoderm [f6]. Crest is called the fourth germ layer [f4]. It takes part in at least a third of birth defects and in melanoma and neuroblastoma [f9]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Cells at the crest (edge) of the neural folds let go of their neighbours, an epithelial-to-mesenchymal transition, and migrate into the mesoderm below.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "In the trunk, crest cells leave after the tube closes; in the head they leave before closure.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main",
+   "note": "R05m: spinal crest from CS11"
+  },
+  {
+   "id": "f3",
+   "text": "Trunk crest on the dorsal route travels under the skin and makes melanocytes.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "Ventral-route trunk crest crosses the front half of each somite and makes sensory ganglia, sympathetic and enteric neurons, Schwann cells and adrenal medulla.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Crest cells build so many tissues that they are called the fourth germ layer.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Crest cells take part in at least a third of birth defects and in cancers such as melanoma and neuroblastoma.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Tier D: medium BMP at the plate–skin border, with FGF and WNT, switches on PAX3; SNAIL and FOXD3 then specify crest, and SLUG drives migration.",
+   "cite": "E06.01 MR",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f10",
+   "text": "Tier D: high BMP gives epidermis, medium BMP gives crest, and very low BMP gives neural plate.",
+   "cite": "E06.01 MR",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f6",
+   "text": "Neural crest is ectoderm, from the edge of the neuroectoderm, even though it makes mesenchyme; mesenchyme is not the same as mesoderm.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Crest cells build mostly peripheral and non-neural tissues, such as ganglia, melanocytes, face bones and adrenal medulla, not the brain or spinal cord.",
+   "cite": "E06.01 Tbl 6.1",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.neural-crest-cells",
+   "E.t.mesenchyme"
+  ],
+  "known": [
+   "E.t.neurulation",
+   "E.t.somites",
+   "E.t.neuropores"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Neural crest is part of the brain and spinal cord.",
+   "right": "Crest cells leave the folds and build mostly peripheral and non-neural tissues: ganglia, melanocytes, face bones, adrenal medulla.",
+   "cite": "E06.01 Tbl 6.1",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "Neural crest is mesoderm because it makes bone and connective tissue.",
+   "right": "It is ectoderm that makes mesenchyme; mesenchyme is not mesoderm.",
+   "cite": "E06.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Neural crest cells come from which germ layer?",
+   "options": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm",
+    "Yolk-sac wall"
+   ],
+   "answer": 0,
+   "why": "Crest cells start at the edge of the neural folds, which are ectoderm; they make mesenchyme, not mesoderm.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which of these is made by neural crest cells?",
+   "options": [
+    "Spinal cord",
+    "Adrenal medulla",
+    "Skeletal muscle of the back",
+    "Lining of the gut"
+   ],
+   "answer": 1,
+   "why": "Trunk crest on the ventral route forms the adrenal medulla; the spinal cord comes from the neural tube itself.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Trunk crest cells on the dorsal route, under the skin, become what?",
+   "options": [
+    "Schwann cells",
+    "Sensory ganglia",
+    "Melanocytes (pigment cells)",
+    "Enteric neurons"
+   ],
+   "answer": 2,
+   "why": "The dorsal route under the ectoderm gives pigment cells; the other choices come from the ventral route.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "Crest cells become pigment cells, sensory and autonomic ganglia, Schwann cells and the adrenal medulla [f3,f8].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "Where do neural crest cells come from?",
+   "a": "The edges of the neural folds, by epithelial-to-mesenchymal transition [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Do trunk crest cells leave before or after the tube closes?",
+   "a": "After; head crest leaves before closure [f2]."
+  },
+  {
+   "id": "r3",
+   "q": "Why is the neural crest called the fourth germ layer?",
+   "a": "Because it builds so many different tissues [f4]."
+  }
+ ],
+ "shows_up": [
+  "E06.01.05",
+  "E13.06.05",
+  "E17.00.01",
+  "E18.01.03"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6a)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": false
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "fix: right option 'Adrenal medulla' is not taught at General (body says 'inner adrenal gland'). Write 'Inner adrenal gland (adrenal medulla)'.",
+    "q3": "fix: 'dorsal route' (prompt), 'ventral route' (why) and the options Schwann cells / Sensory ganglia / Enteric neurons are untaught at General (body: 'under the skin', 'nerve clusters', 'nerve-wrapping cells'). Prompt: 'Trunk crest cells that travel just under the skin become what?'; options in plain words with names in brackets, e.g. 'Nerve-wrapping cells (Schwann cells)', 'Nerve clusters (ganglia)', 'Pigment cells (melanocytes)', 'Gut nerve cells'; why: 'Crest that travels under the skin makes pigment cells; the others come from crest that goes deeper.'",
+    "m1": "fix: right side uses 'peripheral', 'ganglia', 'melanocytes', 'adrenal medulla', untaught at General. Plain: 'Crest cells leave the folds and build other tissues: nerve clusters, pigment cells, face bones, the inner adrenal gland.'",
+    "m2": "ok",
+    "r1": "fix: 'epithelial-to-mesenchymal transition' is MBBS-only. Answer: 'The edges of the neural folds; they break free and become mesenchyme [f1].'",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-1 fix landed (r3). Fresh review: Checks, m1, r1 and the adult line use names the General text never teaches. Adult line (G-Sci signs it; G-Learn checklist) names sensory/autonomic ganglia, Schwann cells, adrenal medulla: say it in General's words, names in brackets."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f8": "ok",
+    "f4": "ok",
+    "f9": "ok",
+    "f5": "ok",
+    "f10": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fix landed: r3 answers from f4 only. EMT, trunk-after/head-before timing, dorsal vs ventral (cranial-half-of-somite) routes, fourth germ layer, ≥ 1/3 of birth defects, ectoderm-not-mesoderm all match dossier §2/§5, ✔; Tier D BMP lines in More."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §2 + §3 (E06.01.05) + §5 #2, #3",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6a)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 1 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: r3 answer from f4 only; q3 option glossed (optional note)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 4 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 # M1b host-shot kit — Nani Koshika, shot M1b-hs01
 
-*(Purpose: make the 5-s 9:16 host test shot on Laptop 1. Owner docs: `build/studio-playbook.md` §5b (host), `build/visual-style.md` (look), `build/pipeline-reference.md` §7 (kit layout). Updated: 21 Nov 2026 · Bio · Build · M1b v6 results — v7: rim glow on the body (`quality.rim`) for the host-vs-plate gate, red/green gate overlays `out\review\sep_<tag>.png` (D-052). Before: 21 Nov 2026 · Bio · Build · M1b host results — v6: `t1b` one-run step, two-pass loudness (`loud.py`), body-vs-plate gate + ink outline, per-clip manifests, `--onion` (D-051). Made: 20 Nov 2026 · Bio · Build · M1b host shot.)*
+*(Purpose: make the 5-s 9:16 host test shot on Laptop 1. Owner docs: `build/studio-playbook.md` §5b (host), `build/visual-style.md` (look), `build/pipeline-reference.md` §7 (kit layout). Updated: 21 Nov 2026 · Bio · Build · M1b v7 results — v7c (owner M1b.q9): captions band 68–72 %, shot B pulled back + panned left (`shift_x`), temples end on the body, mouth ×1.3 darker, shawl wool sheen + a dim glow behind the shawl in B (`quality.plate.shawl_lift`). v7b: gate skips body samples touching shawl/book/face parts or the frame edge (hands/arms own region, still gated), grey = skipped in `sep_*.png`; bokeh kept off the host (`quality.plate.bokeh_host_margin`); floor contact shadow (`quality.contact`); `quality.rim.low_boost` hook, off (D-058). Before: Bio · Build · M1b v6 results — v7: rim glow on the body (`quality.rim`) for the host-vs-plate gate, red/green gate overlays `out\review\sep_<tag>.png` (D-052). Before: 21 Nov 2026 · Bio · Build · M1b host results — v6: `t1b` one-run step, two-pass loudness (`loud.py`), body-vs-plate gate + ink outline, per-clip manifests, `--onion` (D-051). Made: 20 Nov 2026 · Bio · Build · M1b host shot.)*
 
 **Where it runs:** Studio home `tools\m1b-host\` (paths to `apps\` and `handoff\` are relative to it). The repo copy `tools/m1b-host/` is the versioned record of the same files.
 
@@ -30,14 +30,14 @@ Flags on every step (RULES I5): `--dry-run` (print, write nothing) · `--debug` 
 4. `python m1b.py check`: the output should show Blender, ffmpeg, libass `yes`, your GPU, the fonts, and `kokoro`.
 
 ## Run (Anaconda Prompt → `conda activate bio` → `cd D:\Projects\biology_studio\tools\m1b-host`)
-1. **v7 check first (~5 min): `python m1b.py all --preview`** → open `out\RESULTS.md` (Host vs plate lines) and `out\review\sep_*.png` (red = edge still too dark). Tune `host.json → quality.rim.strength` if needed, repeat. Then:
+1. **v7b check first (~5 min): `python m1b.py all --preview`** → open `out\RESULTS.md` (Host vs plate lines) and `out\review\sep_*.png` (green = OK, red = fails, grey = skipped as contact/frame edge). Front sheet still red on the lower curve → raise `quality.contact.dark` (0.45 → 0.55); shot B crown red → raise `quality.plate.bokeh_host_margin`. Repeat. Then:
 2. **For T1b: `python m1b.py t1b`** — one run, 720×1280: tex → sheet → shot → palette → captions → encode → report → compare (~10–20 min on the GTX 1060; keep it plugged in). Re-uses `out\audio\line.wav` (voice unchanged).
 3. Optional: `python m1b.py shot --reduced-motion`, then `captions --reduced-motion`, then `encode --reduced-motion`.
 4. Optional: `python m1b.py compare --onion` for the onion boards.
 
 ## What the gates check (report → QA)
 - **Loudness:** every mp4 −14 LUFS ±0.5 and true peak ≤ −1.5 dBTP, measured after AAC.
-- **Host vs plate (G-A11y):** the body edge must reach ≥ 3:1 against the real background behind it (sheet front + the middle frame of each shot camera) on ≥ 90 % of edge samples. v7 passes it with a view-dependent rim glow on the pearl (`quality.rim`, D-052); the ink outline (`quality.outline`) stays off, fallback only. `palette` writes `out\review\sep_<tag>.png`: green = sample ≥ 3:1, red = fails.
+- **Host vs plate (G-A11y):** the body edge must reach ≥ 3:1 against the real background behind it (sheet front + the middle frame of each shot camera) on ≥ 90 % of edge samples. v7 passes it with a view-dependent rim glow on the pearl (`quality.rim`, D-052); the ink outline (`quality.outline`) stays off, fallback only. `palette` writes `out\review\sep_<tag>.png`: green = sample ≥ 3:1, red = fails, grey = skipped (within 2 probe steps of shawl, book, face parts or the frame edge — contact, not figure/ground; D-058).
 - **Colour vs germ-layer tokens:** swatches ≥ 15 always; rendered pixels gated only for tokens on screen in the shot (`tokens_on_screen`, [] = info). Embroidery thread vs endoderm is measured on rendered pixels and listed.
 - **Captions:** scrim contrast ≥ 4.5:1 for text and key word on the brightest frame behind them.
 

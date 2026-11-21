@@ -1,6 +1,6 @@
 # Owner test checklist
 
-*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Fix · L1 polish — T7b written (L1F re-checks, v10). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — T8 written + result (pass, 3 notes → L1F). Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 result (pass except deck; deck step 22 Nov), step 4 button name, "open from the icon" note. Before: 21 Nov 2026 · Bio · Build · M1b v6 results — T1b result logged (pass, D-052). Before: 21 Nov 2026 · Bio · Build · M1b host results — T1b rewritten for the kit that actually runs (`m1b.py t1b`, v6, D-051). Before: 21 Nov 2026 · Bio · Build · L1 learning core — T7 written. Before: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
+*(Purpose: owner checks on real devices, T1…; no next build until the last is done. Updated: 21 Nov 2026 · Bio · Build · H2 reviewer mode — T10 written (part A you, part B the Professor; D-060, D-061). Before: 21 Nov 2026 · Bio · Content · C2 Ch 6–8 — T3d written (part A now, part B after round 3; D-058). Before: 21 Nov 2026 · Bio · Fix · L1 polish — T7b written (L1F re-checks, v10). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — T8 written + result (pass, 3 notes → L1F). Before: 21 Nov 2026 · Bio · Review · T7 learning core — T7 result (pass except deck; deck step 22 Nov), step 4 button name, "open from the icon" note. Before: 21 Nov 2026 · Bio · Build · M1b v6 results — T1b result logged (pass, D-052). Before: 21 Nov 2026 · Bio · Build · M1b host results — T1b rewritten for the kit that actually runs (`m1b.py t1b`, v6, D-051). Before: 21 Nov 2026 · Bio · Build · L1 learning core — T7 written. Before: 21 Nov 2026 · Bio · Fix · M1b merge — T3c result logged (pass, from the L1 chat 03:43 IST). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — T1b written. Before: 21 Nov 2026 · Bio · Plan · App-first — T7, T8, T8b, T9, T3d stubs; T4 now the L3 player check (D-047). Before: 20 Nov 2026 · Bio · Build · M1 bake-off — T1 opened (3 clips, Method C pending). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — T3c written. Before: 19 Nov 2026 · Bio · Build · W1 progress map — T6 written, T1b stub; open/pass state of each check now lives in `build/steps.json` (D-040). Before: V1 viewer — T3b written.)*
 
 Run on real devices. Write each result on its **Result** line, then tick it in `claude/STATUS.md` › Owner reminders. Newest open items first. No next build starts until the last check is done (D-010).
 
@@ -11,6 +11,27 @@ Run on real devices. Write each result on its **Result** line, then tick it in `
 **Status, 17 Nov 2026:** T1 written (opened 20 Nov, M1 run done). T2 open (K1 published the explorer). (Renumbered 17 Nov: old T2 → T3, old T3 → T4, after K1 was added, D-017.)
 
 ---
+
+## T10. Reviewer mode *(part A ~15 min you: phone, then laptop (+ tablet or device mode) · part B ~20 min the Professor: 2 real cards)* — OPEN (H2, 21 Nov 2026)
+*(Numbered T10: T9 is L2's planned check — ids are permanent, A2.)*
+**Before (2 min, laptop, once):** run `sync.bat "H2: Reviewer mode v12, D-060 D-061"` (this one sync also carries the C2 and M1b work waiting on the laptop) and press **Sync now**. On github.com/aaditya-verma/biology-studio: **Settings › General › Features › Issues** is ticked; **Issues › Labels › New label** `review` and `fixing` (chats can't change repo settings). **Issues › New issue** shows *Card review* and *General feedback*.
+**Part A — you walk it (real mode: no `?test=1`).**
+1. **Demo first (phone P):** `…/?test=1&fixture=review#review` — To review shows *Changed since your review* / *Fixed — please look again* chips; My feedback shows 7 items: *Sent — waiting for Aaditya*, *Being fixed*, *Fixed in app update 12*, *Done — thank you*, *No change needed — see the reply*, *Answered — see the reply*, each with its meaning printed under it. Add `&rvlimit=1`: the list stays, with *GitHub asks us to wait a little … can check again after HH:MM*.
+2. **First visit (phone P, real mode, her link):** `…/#review` (pull to refresh until Settings shows **v12**). The **tour** opens by itself: 3 screens, Back/Next/Skip, buttons near the bottom. *Start reviewing* → Review home; a **Review** tab now sits after Cards. No ✎ pencils or *test* chip anywhere.
+3. **Home (phone P → L):** *Hello, Komal* + three tabs (To review · What's new · My feedback) with counts; landscape puts the tabs in a side strip. What's new is empty today (the first visit is the starting point); *All updates* shows plain-English lines grouped by date.
+4. **Card review (phone P, top card under To review):** the card reads in plain sections (numbered facts with book section + source names, mix-ups, questions with right answers). Tap **Send on GitHub** with nothing chosen → *Pick ✓ … first*. Pick **✎ Needs a fix** → it asks for a note. Write a test note, tick two boxes, pick *How sure*. Rotate to landscape → answers and place kept. **Send on GitHub** → GitHub opens with Card, Overall, Which part, How sure, Checklist and Note filled in, title `[review] <id> v1 ✎ …`. Press **Create** (a test — you'll close it).
+5. **My feedback for your test:** it's under *your* name, so open `…/?debug=review#review=mine` → Debug → *Pretend to be* `aaditya-verma` → OK: *Sent — waiting for Aaditya*. On GitHub add label `fixing` → **Check for news** → *Being fixed*. Create milestone `v12`, set it, close the issue → *Fixed in app update 12*. Then close it as *not planned* (→ *No change needed*) or delete it.
+6. **Laptop:** `#review` = three panes side by side; a card review = card │ your review, with **Send** in view at the bottom of the form. Tablet (or device mode iPad): portrait = tabs + one pane; landscape = To review │ My feedback over What's new.
+7. **Settings › Reviewer mode:** *Turn off* hides the Review tab; *Turn on* brings it back.
+8. **G-Owner on D-061** (addresses, 8-line checklist, ✓/✎/? + note rule, the issue words, 5-min check, updates from the build log): "D-061 confirmed" or what to change. Then send the welcome message (**H2.q3**) — WhatsApp or email, as is:
+   > Hi Komal — Biology Studio is ready for your science review.
+   > 1. Open https://aaditya-verma.github.io/biology-studio/#review on your phone or laptop — a 3-screen tour shows you around.
+   > 2. Sign in to GitHub once (komalverma00500-byte). For each card: tick what's right, pick ✓ / ✎ / ?, press Send on GitHub, then Create.
+   > 3. My feedback shows what happened to each note. Help, if you need it: https://github.com/aaditya-verma/biology-studio/blob/main/studio-docs/build/setup-guide.md#0-reviewer-start-here-no-setup-5-min
+**Part B — the Professor (her phone or laptop, after the welcome message):**
+9. She opens the link, takes the tour, signs in to GitHub and reviews **2 cards** from *To review* (one ✓; one ✎ or ? if she finds anything), pressing **Create** each time.
+10. You: both issues are on GitHub with label `review`; decide the ✎ (label `fixing`, or close *not planned* with a reply); answer a ?. She sees the new words after **Check for news**. Her ✓ = the human science pass for that card version (D-060): the next content chat adds `G-Sci human ✓ · the Professor · issue #n` to the card's log.
+- **Result T10:** ☐ pass / ☐ notes · A: demo states ☐ · tour + Review tab ☐ · home tabs P/L ☐ · send blocked + note rule ☐ · form pre-filled ☐ · rotate keeps answers ☐ · issue words after label/milestone ☐ · laptop 3 panes + Send in view ☐ · tablet ☐ · Settings toggle ☐ · D-061 ☐ · B: her 2 reviews arrived ☐ · her words ("easy / confusing at …") ☐ · devices: phone P/L ☐ tablet ☐ laptop ☐
 
 ## T6. Progress map *(~6 min: phone, then tablet or laptop)* — OPEN (W1)
 Open https://aaditya-verma.github.io/biology-studio/#progress on the phone (pull to refresh once so v5 loads), then a tablet (or the laptop's device mode, marked emulated), then the laptop.
@@ -69,8 +90,17 @@ Open the app **without** `?test=1` and pull to refresh until Settings shows **v8
 ## T9. Lessons, Today, Mixed review *(phone, tablet, laptop)* — PLANNED (L2 writes the steps)
 - **Result:** ☐ pass ☐ problems · notes: ___
 
-## T3d. Ch 6–8 cards *(phone, tablet, laptop)* — PLANNED (C2 writes the steps, like T3c)
-- **Result:** ☐ pass ☐ problems · notes: ___
+## T3d. Ch 6–8 cards *(part A ~8 min now; part B ~15 min after C2 round 3: phone, tablet, laptop)* — OPEN (C2, 21 Nov 2026; D-058)
+**Part A — now (app v11).** First run `sync.bat`, then on each device pull to refresh until Settings shows **v11**.
+1. Open https://aaditya-verma.github.io/biology-studio/#cards. You should see **Ch 6 · Weeks 3 to 8**, **Ch 7 · Gut tube and body cavities** and **Ch 8 · Fetus and placenta**, with 4 cards so far: *Foregut, midgut, hindgut*, *A tube on a tube*, *Linings and mesenteries* and *Counting to birth*. The other 19 are drafts, shown only in testing mode.
+2. Open *A tube on a tube* on the phone (portrait, then landscape), the tablet (portrait, then landscape) and the laptop. There is no 3D yet: **Try it** and **Watch it** should both be small *Coming soon* strips above the text, in one reading column. On the laptop the chapter list stays on the right. Nothing should overlap or be cut off.
+3. Run its Check once: the card text folds away, and you can pass or miss.
+4. Open a Ch 5 card (e.g. *Notochord*). Its 3D still works as before.
+5. On the laptop, run `python tools/layout-check/check.py` in the repo and send me the summary line. This chat couldn't run it here.
+- **Result T3d part A:** ☐ pass ☐ fail · notes:
+
+**Part B — after `Bio · Content · C2 round 3`.** Read the remaining Ch 6–8 cards and the two fixed Ch 5 cards in testing mode (`?test=1#cards`) on phone, tablet and laptop. Check: plain words at General, nothing in a Check is answered by an earlier answer, and any ⚑ line reads fairly (D-039, D-043, D-044). Give **G-Owner** on one card of your choice (Studio › its G-Owner gate › name, role **Owner**, agent `T3d`, tick, **Pass**).
+- **Result T3d part B:** ☐ pass ☐ fail · G-Owner: ☐ · notes:
 
 ## T1b. Host shot: Nani Koshika test *(~15–20 min laptop run + ~10 min phone, tablet/laptop)* — PASS 21 Nov 2026 on v6 (M1b, rewritten 21 Nov 2026 for v6, D-051; result D-052)
 Host: **Nani Koshika** (D-048), voice Kokoro `af_heart`, route H-a = our 3D model in Blender (D-049). The v5 preview (360p) is not enough: T1b runs on the v6 720p render.

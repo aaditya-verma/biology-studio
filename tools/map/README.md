@@ -1,6 +1,6 @@
 # tools/map — K1 concept map builder
 
-Purpose: turns `concepts.txt` (our concept rows) + `research.txt` (X1 layer: AN codes, marks, cited stages per concept) + I1 index (`content/E/index/`) into `content/E/map.json`, `curriculum/concept-map.md` and `curriculum/roadmap.md`. Owner doc: `build/master-plan.md` §5. Updated: 20 Nov 2026 · Bio · Research · X1 Ch 08 (E08 rows in research.txt: AN80 codes + marks, cs blank for the fetal period). Before: X1 Ch 07 (E07 rows; septtr/diaphragm definitions fixed, D-043 c).
+Purpose: turns `concepts.txt` (our concept rows) + `research.txt` (X1 layer: AN codes, marks, cited stages per concept) + I1 index (`content/E/index/`) into `content/E/map.json`, `curriculum/concept-map.md` and `curriculum/roadmap.md`. Owner doc: `build/master-plan.md` §5. Updated: 21 Nov 2026 · Bio · Research · X1 Ch 09 (E09 rows in research.txt: AN79.5/79.6 + AN81 codes, cs 7–23 on the teratogenic window only). Before: X1 Ch 08 (E08 rows: AN80 codes + marks, cs blank for the fetal period). Before: X1 Ch 07 (E07 rows; septtr/diaphragm definitions fixed, D-043 c).
 
 Run from this folder (Python 3, no packages):
 ```

@@ -164,8 +164,11 @@ def compose_sheet(a):
 
 
 MAIN_REGIONS = ("body", "shawl")  # ΔE ≥ 15 vs on-screen tokens (D-046 main colours); props are logged, not gated
-HOST_REGIONS = ("body",)          # figure/ground gate (G-A11y, D-051): the pearl body must stand off the real plate
+HOST_REGIONS = ("body", "hand")  # figure/ground gate (G-A11y, D-051); v7b: hands/arms are their own probe region but still gated (G-Eng #1)
+SAME_SKIN = {"body", "hand"}      # body↔hand is one pearl surface: not a contact
 SEP_RATIO, SEP_SHARE = 3.0, 0.90  # EDIT: WCAG 1.4.11 non-text contrast ≥ 3:1 on ≥ 90 % of the body's edge samples
+SEP_RING = 2  # EDIT: v7b (D-058) skip body edge samples within SEP_RING probe steps of another host part (shawl, fringe, book,
+#               pages, hands/arms, face props) or of the frame border — those are contact/cut pixels, not figure vs ground
 
 
 def hexc(c):
@@ -196,13 +199,20 @@ def separation(im, pr, de, regions=HOST_REGIONS):
     the edge pixel and the plate pixel one step out; score = best of (inner vs plate, edge vs plate) — so a dark outline
     counts on a light plate and a light body counts on a dark one. ΔE00 = worst of normal/deut/prot/trit."""
     st = pr["step"]; reg = {(x, y): r for r, pts in pr["pts"].items() for x, y in pts}
-    W, Hh = im.size; rat, des, pts = [], [], []
+    W, Hh = im.size; rat, des, pts, skip = [], [], [], []; drop = {"contact": 0, "frame": 0}
     for r in regions:
+        same = SAME_SKIN if r in SAME_SKIN else {r}
         for x, y in pr["pts"].get(r, []):
             for dx, dy in ((st, 0), (-st, 0), (0, st), (0, -st)):
                 ox, oy = x + 2 * dx, y + 2 * dy  # plate 2 steps out: past the anti-aliased edge, inside any halo the viewer sees
-                if reg.get((x + dx, y + dy)) == "plate" and reg.get((ox, oy)) == "plate" and reg.get((x - dx, y - dy)) == r \
+                if reg.get((x + dx, y + dy)) == "plate" and reg.get((ox, oy)) == "plate" and reg.get((x - dx, y - dy)) in same \
                         and 0 <= ox < W and 0 <= oy < Hh:
+                    m = SEP_RING * st  # v7b (D-058): frame-cut pixels are not an edge the viewer reads
+                    if min(x, y, ox, oy) < m or max(x, ox) >= W - m or max(y, oy) >= Hh - m:
+                        drop["frame"] += 1; skip.append((x, y)); continue
+                    if any(reg.get((x + i * st, y + j * st), "host") not in same | {"plate"}
+                           for i in range(-SEP_RING, SEP_RING + 1) for j in range(-SEP_RING, SEP_RING + 1)):
+                        drop["contact"] += 1; skip.append((x, y)); continue  # touches shawl/book/hand/face part (unlabelled host parts = None → "host")
                     e, i, p = im.getpixel((x, y)), im.getpixel((x - dx, y - dy)), im.getpixel((ox, oy))
                     rat.append(max(contrast(i, p), contrast(e, p))); pts.append((x, y, rat[-1]))
                     des.append(max(min(de.de00(de.sim(hexc(i), v), de.sim(hexc(p), v)) for v in ("norm", "deut", "prot", "trit")),
@@ -212,13 +222,15 @@ def separation(im, pr, de, regions=HOST_REGIONS):
     rat.sort(); des.sort(); k = len(rat) // 10
     share = sum(1 for x in rat if x >= SEP_RATIO) / len(rat)
     return {"n": len(rat), "p10_ratio": round(rat[k], 2), "min_ratio": round(rat[0], 2), "share_ok": round(share, 3),
-            "p10_de": round(des[k], 1), "ok": share >= SEP_SHARE, "_pts": pts}
+            "p10_de": round(des[k], 1), "ok": share >= SEP_SHARE, "dropped": drop, "_pts": pts, "_skip": skip}
 
 
 def sep_overlay(im, sep, path):
     """v7 (D-052) debug board: every edge sample the gate scored — green ≥ 3:1, red < 3:1 — so G-A11y/G-Art see WHERE it fails."""
     from PIL import ImageDraw
     ov = im.copy(); d = ImageDraw.Draw(ov)
+    for x, y in sep.get("_skip", []):  # v7b: skipped contact/frame samples in grey, so reviewers see what the gate ignored (G-Eng #7)
+        d.rectangle([x - 2, y - 2, x + 2, y + 2], fill=(150, 150, 150))
     for x, y, r in sep.get("_pts", []):
         d.rectangle([x - 2, y - 2, x + 2, y + 2], fill=(0, 230, 0) if r >= SEP_RATIO else (255, 0, 0))
     ov.save(path)
@@ -277,10 +289,10 @@ def s_palette(a):
         if sep:
             if not a.dry_run:  # EDIT: out\review\sep_<tag>.png — red = failing edge samples (local only)
                 rv = os.path.join(OUT, "review"); os.makedirs(rv, exist_ok=True); sep_overlay(im, sep, os.path.join(rv, f"sep_{tag}.png"))
-            sep.pop("_pts", None); res_["separation"][tag] = sep
+            sep.pop("_pts", None); sep.pop("_skip", None); res_["separation"][tag] = sep
         sh_ = separation(im, pr, de, ("shawl",))  # G-A11y R5: shawl edge reported, not gated (costume, not the identity cue)
         if sh_:
-            sh_.pop("_pts", None)
+            sh_.pop("_pts", None); sh_.pop("_skip", None)
             res_.setdefault("separation_shawl_info", {})[tag] = dict(sh_, ok=None)
     sw = {k: de.check(v) for k, v in SPEC["host"]["palette"].items() if k in ("body", "shawl", "shawl_dark", "embroidery", "book_cover")}
     res_["swatches"] = {k: [round(v[0], 1), v[1], v[2]] for k, v in sw.items()}
@@ -452,12 +464,12 @@ def qa(man, vids=None):
     out = {"grade_ok": (man.get("render") or {}).get("grade", "on") == "on"}
     C = SPEC["captions"]; clean = [v for v in (vids or []) if v.endswith("_clean.mp4")]
     if clean:
-        worst = 1.0
+        worst = 0.0  # v7c (G-Eng): was 1.0, which made the check a constant (always the white-background worst case)
         for t in (0.5, 1.5, 2.5, 3.5, 4.5):  # brightest pixel in the caption band, under the scrim
             png = os.path.join(OUT, "qa_frame.png")
             subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", str(t), "-i", clean[0], "-frames:v", "1", png])
             im = Image.open(png).convert("RGB"); W, Hh = im.size
-            box = im.crop((int(W * 0.15), int(Hh * C["band_top_pct"] / 100), int(W * 0.85), int(Hh * C["band_bottom_pct"] / 100)))
+            box = im.crop((int(W * 0.15), int(Hh * (C["band_top_pct"] - 6) / 100), int(W * 0.85), int(Hh * C["band_bottom_pct"] / 100)))  # v7c: +6 % above for a 2nd line
             worst = max(worst, max(lum(p) for p in (box.get_flattened_data() if hasattr(box, "get_flattened_data") else box.getdata())))
         s = int(C["outline"][1:3], 16) / 255  # scrim colour ≈ dark; composite: alpha·scrim + (1−alpha)·bg
         bgL = C["scrim_alpha"] * lum(tuple(int(C["outline"][i:i + 2], 16) for i in (1, 3, 5))) + (1 - C["scrim_alpha"]) * worst
@@ -514,9 +526,9 @@ def s_report(a):
     if pal:
         for tg, rr in pal.items():
             if tg.startswith(("front", "shot")) and isinstance(rr, dict):
-                lines.append(f"- ΔE tokens {tg}: " + " · ".join(f"{r} {x['median']} {x['worst_de']} ({x['vs']},{x['vision']}){' OK' if x['ok'] else (' LOW' if x['ok'] is False else '')}" for r, x in rr.items()))
+                lines.append(f"- ΔE tokens {tg}{'' if pal.get('tokens_on_screen') else ' (info: no tokens on screen, D-051)'}: " + " · ".join(f"{r} {x['median']} {x['worst_de']} ({x['vs']},{x['vision']}){' OK' if x['ok'] else ((' LOW' if x.get('gate') else ' low (info)') if x['ok'] is False else '')}" for r, x in rr.items()))
         for tg, sep in (pal.get("separation") or {}).items():
-            lines.append(f"- Host vs plate {tg}: edge contrast p10 {sep['p10_ratio']}:1 · ΔE p10 {sep['p10_de']} · {'OK' if sep['ok'] else 'FAIL'} (≥ 3:1 on 90 % of the edge)")
+            lines.append(f"- Host vs plate {tg}: edge contrast p10 {sep['p10_ratio']}:1 · ΔE p10 {sep['p10_de']} · {round(100 * sep['share_ok'])} % ≥ 3:1 · {'OK' if sep['ok'] else 'FAIL'} (≥ 3:1 on 90 % of the edge; skipped {sep.get('dropped')})")
         if pal.get("separation_missing"):
             lines.append(f"- Host vs plate NOT MEASURED for {pal['separation_missing']} → gate FAIL (run sheet + shot first)")
         for tg, sep in (pal.get("separation_shawl_info") or {}).items():

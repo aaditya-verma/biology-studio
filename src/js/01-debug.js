@@ -1,5 +1,5 @@
 /* Biology Studio — debug flags, tagged logs and the overlay (RULES I5). Owner doc: build/design-plan.md §7.
-   Flags: ?test=1 (testing mode: ✎ edit hooks, overlay — tap it to shrink, nothing saved) · ?debug=1 (all areas) or ?debug=map,viewer,studio,tracker,learn,layout,store,router,device,test (learn: card id, status, level, deck size + due) (tracker: load time, issues, lock age + a Debug section on #progress/#step; viewer: fps, triangles, draw calls + Measure fps; studio: loads, card-check counts, gate decisions, exports + overlay line).
+   Flags: ?test=1 (testing mode: ✎ edit hooks, overlay — tap it to shrink, nothing saved) · ?debug=1 (all areas) or ?debug=map,viewer,studio,tracker,learn,review,layout,store,router,device,test (learn: card id, status, level, deck size + due) (review: source live/fixture/cache, issues, last check + HTTP status, rate left, cache age + a Debug section on #review) (tracker: load time, issues, lock age + a Debug section on #progress/#step; viewer: fps, triangles, draw calls + Measure fps; studio: loads, card-check counts, gate decisions, exports + overlay line).
    Flags also survive in sessionStorage (Settings › Testing mode). Off by default; never on in published output. */
 'use strict';
 const FLAGS=(()=>{
@@ -9,14 +9,14 @@ const FLAGS=(()=>{
   const dq=q.get('debug')??saved.debug??'';
   const debug=new Set(dq===''||dq==='0'?[]:dq==='1'?['all']:dq.split(',').map(s=>s.trim()).filter(Boolean));
   if(test&&!debug.size&&dq!=='0')debug.add('test');   // ?test=1&debug=0 = testing mode without the overlay (clean screenshots)
-  return {test,debug,boxes:q.has('boxes'),fixture:test&&q.get('fixture')||''};   // ?test=1&fixture=drills: a card's demo copy from tools/layout-check/fixtures/ (V2 — every drill type)
+  return {test,debug,boxes:q.has('boxes'),fixture:test&&q.get('fixture')||''};   // H2: ?test=1&fixture=review — demo reviewer issues (CONFIG.review.fixture)   // ?test=1&fixture=drills: a card's demo copy from tools/layout-check/fixtures/ (V2 — every drill type)
 })();
 const dbgOn=area=>FLAGS.debug.has('all')||FLAGS.debug.has(area);
 function dlog(area,...a){if(dbgOn(area))console.log('['+area+']',...a);}
 function setFlags(o){Object.assign(FLAGS,o);try{sessionStorage.setItem('biostudio.flags',JSON.stringify({test:FLAGS.test,debug:[...FLAGS.debug].join(',')}));}catch(_){}}
 
 /* overlay: version, route + ids, fps, state size, device class, viewport, dpr, pointer */
-const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:'',studio:'',tracker:'',learn:''};
+const DBG={el:null,fps:0,frames:0,t0:0,timer:0,extra:'',viewer:'',studio:'',tracker:'',learn:'',review:''};
 function dbgStart(){
   if(!FLAGS.debug.size)return;
   if(!DBG.el){DBG.el=document.createElement('div');DBG.el.id='dbg';DBG.el.setAttribute('aria-hidden','true');document.body.appendChild(DBG.el);
@@ -43,6 +43,7 @@ function dbgPaint(){
     dbgOn('studio')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='studio'||ROUTE.name==='calib')?DBG.studio:'',
     dbgOn('tracker')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='progress'||ROUTE.name==='step')?DBG.tracker:'',
     dbgOn('learn')&&typeof ROUTE!=='undefined'&&['card','cards','deck'].includes(ROUTE.name)?DBG.learn:'',
+    dbgOn('review')&&typeof ROUTE!=='undefined'&&['review','rcard','rtour','updates'].includes(ROUTE.name)?DBG.review:'',
     DBG.extra].filter(Boolean).join('\n');
 }
 function dbgNote(s){DBG.extra=s;dbgPaint();}

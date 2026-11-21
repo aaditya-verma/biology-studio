@@ -1,0 +1,387 @@
+{
+ "spec": 1,
+ "id": "E08.04.01",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Fetal trees in a maternal lake",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the fetal and maternal parts of the placenta are arranged from month 4."
+ },
+ "body": {
+  "general": "How can a baby's blood take up food without mixing with its mother's? The placenta has a baby's part and a mother's part [f1,f2]. From the baby's side, tree-like villi grow down into pools of the mother's blood, the intervillous spaces [f3,f5]. Her spiral arteries spurt blood into these pools, and her veins drain it away [f9]. Low walls from her side split the pools into lobes called cotyledons [f6,f7]. The walls stop short, so the lobes stay connected [f6,f7]. The placenta thickens by branching its villi, not by digging deeper [f8].",
+  "mbbs": "From month 4 the placenta has a fetal part, the chorion frondosum bounded by the chorionic plate [f1]. Its maternal part is the decidua basalis, whose decidual plate is most firmly incorporated [f2]. Between the two plates lie the intervillous spaces, filled with maternal blood [f3]. They arise from syncytiotrophoblast lacunae and are lined by fetal syncytium [f4]. Villous trees project into these blood lakes [f5]. In months 4–5 decidual septa project into the spaces but never reach the chorionic plate [f6]. So the cotyledons they outline still communicate [f7]. The placenta thickens by villous branching, not by deeper invasion [f8]. Blood enters from 80–100 spiral arteries and leaves by endometrial veins [f9]. Endovascular cytotrophoblast first converts these arteries into wide, low-resistance channels [f11]. At term about 150 mL of maternal blood fills the spaces, renewed 3–4 times a minute [f10]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "From month 4 the placenta has a fetal part: the chorion frondosum, bordered by the chorionic plate.",
+   "cite": "E08.04, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "Its maternal part is the decidua basalis, whose decidual plate is the layer most firmly built into the placenta.",
+   "cite": "E08.04, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Between the chorionic and decidual plates lie the intervillous spaces, which are filled with maternal blood.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "The intervillous spaces come from lacunae in the syncytiotrophoblast and are lined by fetal syncytium.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "The fetus's villous trees grow into these pools of maternal blood.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "In months 4 and 5, decidual septa grow into the intervillous spaces but do not reach the chorionic plate.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "The septa divide the placenta into compartments, the cotyledons, which stay connected because the septa stop short.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f8",
+   "text": "The placenta grows thicker by branching of its villi, not by invading deeper into the uterus.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Maternal blood enters through 80–100 spiral arteries that spurt it deep into the intervillous spaces; it drains back through endometrial veins.",
+   "cite": "E08.04, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f10",
+   "text": "A mature placenta holds about 150 mL of maternal blood, replaced 3–4 times a minute, over 4–14 m² of villus surface.",
+   "cite": "E08.04, E08.10",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f11",
+   "text": "Endovascular cytotrophoblast cells invade the ends of the spiral arteries, replace their lining and turn narrow, high-resistance vessels into wide, low-resistance ones.",
+   "cite": "E08.02 · R05az",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05az: invading cytotrophoblast switches to a vascular adhesion phenotype"
+  },
+  {
+   "id": "f12",
+   "text": "At term the placenta is a disc 15–25 cm across, about 3 cm thick and 500–600 g, with 15–20 cotyledons visible on its maternal side.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f13",
+   "text": "In the junctional zone, trophoblast and decidual cells mix; by month 4 most cytotrophoblast has gone.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f14",
+   "text": "The placenta covers about 15–30 % of the inner wall of the uterus.",
+   "cite": "E08.04",
+   "mark": "✔",
+   "where": "more"
+  },
+  {
+   "id": "f15",
+   "text": "In preeclampsia the mother has high blood pressure and protein in the urine; the book puts it at about 5 % of pregnancies.",
+   "cite": "E08.02 CC · R05ay",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05ay: 4.6 % of deliveries worldwide"
+  },
+  {
+   "id": "f16",
+   "text": "Its cause is unknown, but cytotrophoblast fails to switch to a vessel-lining type, so invasion of the spiral arteries stays shallow.",
+   "cite": "E08.02 CC · R05az",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f17",
+   "text": "Delivering the baby and placenta is the only cure; the disease usually settles afterwards.",
+   "cite": "E08.02 CC",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f18",
+   "text": "Preeclampsia starts suddenly, any time from about 20 weeks of pregnancy to term.",
+   "cite": "E08.02 CC",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.cotyledons"
+  ],
+  "known": [
+   "E.t.chorion-frondosum-leafy-chorion",
+   "E.t.chorion"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "Maternal and fetal blood mix in the placenta.",
+   "right": "Fetal blood stays inside the villi; maternal blood bathes them from outside, with a membrane between.",
+   "cite": "E08.04, E08.04 CC",
+   "mark": "✔"
+  },
+  {
+   "id": "m2",
+   "wrong": "The placenta grows thicker by invading deeper.",
+   "right": "It thickens by more branching of the villi it already has.",
+   "cite": "E08.04",
+   "mark": "✔"
+  },
+  {
+   "id": "m3",
+   "wrong": "Cotyledons are completely separate compartments.",
+   "right": "The walls between them stop short, so the spaces of neighbouring cotyledons connect.",
+   "cite": "E08.04",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "What fills the intervillous spaces?",
+   "options": [
+    "Maternal blood",
+    "Fetal blood",
+    "A mix of maternal and fetal blood",
+    "Amniotic fluid"
+   ],
+   "answer": 0,
+   "why": "Maternal blood bathes the villi from outside; fetal blood stays inside the villus vessels.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "How does the placenta get thicker as pregnancy goes on?",
+   "options": [
+    "Its villi branch more",
+    "It invades deeper into the uterine muscle",
+    "The low walls between its lobes thicken",
+    "The amnion over it thickens"
+   ],
+   "answer": 0,
+   "why": "Growth in thickness comes from branching of existing villi, not deeper invasion.",
+   "tests": "objective",
+   "refutes": "m2"
+  },
+  {
+   "id": "q3",
+   "type": "order",
+   "prompt": "Put the path of maternal blood through the placenta in order.",
+   "options": [
+    "Spiral arteries of the uterus",
+    "Spurts deep into the intervillous space",
+    "Bathes the villous trees",
+    "Drains out through veins of the uterine lining"
+   ],
+   "why": "Maternal blood arrives by spiral arteries, washes over the villi and leaves by endometrial veins.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "By term this is a disc about 15–25 cm across and 500–600 g [f12].",
+ "clinical": "In preeclampsia the mother develops high blood pressure and protein in the urine [f15]. The book puts it at about 5 % of pregnancies, starting suddenly from about 20 weeks of pregnancy [f15,f18]. Its cause is unknown, but the spiral arteries are only shallowly remodelled [f16]. Delivering the baby and placenta is the only cure, and the disease usually settles afterwards [f17].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What fills the intervillous spaces?",
+   "a": "Maternal blood, brought by the spiral arteries [f3,f9]."
+  },
+  {
+   "id": "r2",
+   "q": "What are cotyledons?",
+   "a": "Placental compartments outlined by decidual septa that stop short of the chorionic plate [f6,f7]."
+  },
+  {
+   "id": "r3",
+   "q": "How does the placenta grow thicker?",
+   "a": "By more branching of its villi [f8]."
+  }
+ ],
+ "shows_up": [
+  "E08.04.02",
+  "E08.02.02",
+  "E08.04.03",
+  "E08.06.01",
+  "E08.04.05"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 8)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "body.mbbs.10": "ok",
+    "body.mbbs.11": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "f8": "ok",
+    "f9": "ok",
+    "f10": "ok",
+    "f11": "ok",
+    "f12": "ok",
+    "f13": "ok",
+    "f14": "ok",
+    "f15": "ok",
+    "f16": "ok",
+    "f17": "ok",
+    "f18": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "adult": "ok",
+    "clinical": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Round-1 fix landed: f17 and clinical sentence 4 now say delivery is the only cure and the disease 'usually' settles (no over-claim). Placenta structure and preeclampsia lines match the dossier and R05ay/R05az."
+  },
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "m2": "ok",
+    "m3": "ok",
+    "r1": "ok",
+    "r2": "fix: answer uses 'decidual septa' and 'chorionic plate', neither named at General (it says 'low walls from her side'). Write e.g. 'Lobes of the placenta, made by low walls from the mother's side that stop short, so the lobes connect'.",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Fail on r2 only (names not taught at General). Checks are clean: no give-aways, and the blood path has one order."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch08-fetus-placenta.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 8)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 2 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f17 + clinical.4 ('only cure; usually settles afterwards'); General names intervillous spaces + spiral arteries (ruling b); q1 why no longer gives q3's path (ruling a); q2/q3 options + m3 in plain words",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Learn): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch C)"
+  }
+ ]
+}

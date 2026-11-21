@@ -79,6 +79,144 @@
    "title": "The disc becomes a pear",
    "status": "reviewed",
    "version": 1
+  },
+  {
+   "id": "E06.00.01",
+   "title": "The embryonic period",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.01.01",
+   "title": "Making the neural plate",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.01.02",
+   "title": "Neurulation",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.01.03",
+   "title": "The neuropores close",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.01.04",
+   "title": "Neural crest cells",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.02.01",
+   "title": "Three strips of mesoderm",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.02.02",
+   "title": "Somites: blocks that keep time",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.02.04",
+   "title": "How a somite splits",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.02.05",
+   "title": "Intermediate mesoderm",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.02.06",
+   "title": "Lateral plate: two layers and a cavity",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.03.01",
+   "title": "Body folding",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E06.03.02",
+   "title": "Foregut, midgut, hindgut",
+   "status": "reviewed",
+   "version": 1
+  },
+  {
+   "id": "E06.03.03",
+   "title": "What endoderm builds",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E07.01.01",
+   "title": "A tube on a tube",
+   "status": "reviewed",
+   "version": 1
+  },
+  {
+   "id": "E07.02.01",
+   "title": "A cavity opens in the mesoderm",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E07.02.02",
+   "title": "Body wall and gut wall layers",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E07.03.01",
+   "title": "Linings and mesenteries",
+   "status": "reviewed",
+   "version": 1
+  },
+  {
+   "id": "E07.05.01",
+   "title": "Diaphragm and its parts",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E08.01.03",
+   "title": "Counting to birth: 38 or 40 weeks?",
+   "status": "reviewed",
+   "version": 1
+  },
+  {
+   "id": "E08.03.01",
+   "title": "Bushy chorion, smooth chorion and the deciduae",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E08.04.01",
+   "title": "Fetal trees in a maternal lake",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E08.04.02",
+   "title": "The placental membrane: thin, not a wall",
+   "status": "draft",
+   "version": 1
+  },
+  {
+   "id": "E08.05.01",
+   "title": "How the umbilical cord forms",
+   "status": "draft",
+   "version": 1
   }
  ]
 }

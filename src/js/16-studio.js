@@ -48,7 +48,7 @@ function sdHome(v){
 }
 function sdNew(id){const c=MAPD.byId[id];if(!c)return;const sc=scenesFor(id)[0],d=sdToday();
   ST.draft[id]={spec:1,id,version:1,book:CONFIG.book,status:'draft',title:c.name,tier:c.tier,objective:{verb:'explain',text:''},body:{general:'',mbbs:''},
-    facts:[{id:'f1',text:'',cite:c.sec,mark:'≈',where:'main'}],terms:{new:[],known:(c.terms||[]).slice()},misconceptions:[],checks:[],remember:[],scene:{id:sc?sc.id:''},
+    facts:[{id:'f1',text:'',cite:c.sec,mark:'≈',where:'main'}],terms:{new:[],known:(c.terms||[]).slice()},misconceptions:[],checks:[],remember:[],...(sc?{scene:{id:sc.id}}:{}),
     made:{by:ST.who.by||'',role:'Lead scientist',agent:'Studio (testing mode)',date:d},review:{},log:[{date:d,ev:'draft started in Studio',by:'Lead scientist · Studio'}]};
   ST.orig[id]='';go('studio='+id);}
 
@@ -103,7 +103,7 @@ function sdDraftHtml(c){
     <button type="button" class="btn ghost sm" data-st-act="rmrem" data-i="${i}">${esc(S.removeRem)} ${esc(r.id)}</button></fieldset>`).join('')}<button type="button" class="btn" data-st-act="addrem">+ ${esc(S.addRem)}</button>
    ${sdField(S.fClinical,'clinical',c.clinical,'opt',{area:1})}${sdField(S.fShows,'shows_up',c.shows_up,'optlist',{wide:1,nospell:1,ph:S.showsHint})}
    <h3>${esc(S.fScene)}</h3>${sdField(S.fAdult,'adult',c.adult,'opt',{area:1})}
-   <div class="st-grid">${sdField(S.fScene,'scene.id',c.scene.id,'str',{select:[['','—'],...((SC.idx&&SC.idx.scenes)||[]).map(s=>[s.id,s.id+' · '+s.title])]})}${sdField(S.fDay,'scene.day',c.scene.day,'num',{nospell:1,num:1})}</div>
+   <div class="st-grid">${sdField(S.fScene,'scene.id',(c.scene||{}).id||'','str',{select:[['','—'],...((SC.idx&&SC.idx.scenes)||[]).map(s=>[s.id,s.id+' · '+s.title])]})}${sdField(S.fDay,'scene.day',(c.scene||{}).day,'num',{nospell:1,num:1})}</div>
   </div>`;
 }
 function sdCiteNote(f){if(!ST.ctx)return '';
@@ -205,7 +205,7 @@ async function sdCopy(text,okMsg){try{await navigator.clipboard.writeText(text);
 /* ---------- sources pane: import links → a cited line; sections; registry ---------- */
 function sdImpParse(t,src){t=(t||'').trim();if(!t)return null;const reg=src.registry;let m;
   if(/^\[?\s*(E\d\d|·)/.test(t))return {kind:'cite',cite:t.replace(/^\[|\]$/g,'').trim()};
-  if((m=t.match(/^(R\d\d[a-z]?)(?:\s+(.+))?$/)))return {kind:'reg',hit:reg.find(r=>r.id===m[1])||null,id:m[1],loc:m[2]||''};
+  if((m=t.match(/^(R\d\d[a-z]{0,2})(?:\s+(.+))?$/)))return {kind:'reg',hit:reg.find(r=>r.id===m[1])||null,id:m[1],loc:m[2]||''};
   if((m=t.match(/pubmed\.ncbi\.nlm\.nih\.gov\/(\d+)/i)||t.match(/^(?:PMID:?\s*)?(\d{6,9})$/i)))return {kind:'pmid',key:m[1],hit:reg.find(r=>r.pmid===m[1])||null};
   if((m=t.match(/(10\.\d{4,9}\/[^\s"<>]+)/)))return {kind:'doi',key:m[1].replace(/[.,;]$/,''),hit:reg.find(r=>r.doi&&r.doi.toLowerCase()===m[1].replace(/[.,;]$/,'').toLowerCase())||null};
   if((m=t.match(/\b(PMC\d+)\b/i)))return {kind:'pmc',key:m[1].toUpperCase(),hit:null};

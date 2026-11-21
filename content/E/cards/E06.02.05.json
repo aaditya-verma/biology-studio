@@ -1,0 +1,256 @@
+{
+ "spec": 1,
+ "id": "E06.02.05",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Intermediate mesoderm",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how intermediate mesoderm is laid out along the body and what it builds."
+ },
+ "body": {
+  "general": "Which strip of tissue builds the kidneys? It is intermediate mesoderm, a thin strip of middle-layer tissue between two wider strips [f5]. It builds the urinary and genital organs [f1]. In the neck and upper chest it breaks into small repeating clusters, the nephrotomes [f2]. Lower down it stays one continuous cord, the nephrogenic cord [f3]. From these come the kidney's urine-making units and the sex glands, or gonads [f4]. The bladder's inner lining is different: it comes from endoderm, the inner germ layer [f6].",
+  "mbbs": "Intermediate mesoderm is the narrow strip between paraxial mesoderm and the lateral plate [f5]. It forms the urogenital system [f1]. In the cervical and upper thoracic regions it forms segmental cell clusters, the nephrotomes [f2]. More caudally it stays an unsegmented mass, the nephrogenic cord [f3]. These give rise to the excretory units of the urinary system and to the gonads [f4]. Not every urogenital lining is mesoderm: the urinary bladder's lining comes from endoderm [f6]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Intermediate mesoderm forms the urogenital system.",
+   "cite": "E06.02 · E16",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "In the neck and upper chest it forms segmental clusters called nephrotomes.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "Further down it stays an unsegmented strip, the nephrogenic cord.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "It gives the excretory units of the kidney and the gonads.",
+   "cite": "E06.02 · E16",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f5",
+   "text": "Intermediate mesoderm lies between paraxial mesoderm and the lateral plate.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "The lining of the urinary bladder comes from endoderm, not mesoderm.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔",
+   "where": "main"
+  }
+ ],
+ "terms": {
+  "new": [],
+  "known": [
+   "E.t.intermediate-mesoderm",
+   "E.t.mesoderm",
+   "E.t.paraxial-mesoderm",
+   "E.t.lateral-plate-mesoderm",
+   "E.t.endoderm"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The bladder is mesoderm like the rest of the urogenital system.",
+   "right": "Its lining is endoderm, from the cloaca; kidneys, gonads and ducts are mesoderm.",
+   "cite": "E06.03, E06.06",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "What does intermediate mesoderm form in the neck and upper chest?",
+   "options": [
+    "One continuous cord",
+    "Small repeating clusters called nephrotomes",
+    "Somites",
+    "The gut wall"
+   ],
+   "answer": 1,
+   "why": "Up high it breaks into repeating nephrotomes; lower down it stays one continuous nephrogenic cord.",
+   "tests": "objective"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "Which of these comes from intermediate mesoderm?",
+   "options": [
+    "The gonads",
+    "The vertebrae",
+    "The gut wall",
+    "The sternum"
+   ],
+   "answer": 0,
+   "why": "Intermediate mesoderm builds the urogenital system, including the gonads and the kidney's excretory units.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "Where does the lining of the urinary bladder come from?",
+   "options": [
+    "Intermediate mesoderm",
+    "Lateral plate mesoderm",
+    "Endoderm",
+    "Ectoderm"
+   ],
+   "answer": 2,
+   "why": "Kidneys and gonads are mesoderm, but the bladder lining is endoderm.",
+   "tests": "objective",
+   "refutes": "m1"
+  }
+ ],
+ "adult": "This strip becomes the kidney's excretory units and the gonads [f4].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What does intermediate mesoderm build?",
+   "a": "The urogenital system: the kidney's excretory units and the gonads [f1,f4]."
+  },
+  {
+   "id": "r2",
+   "q": "How does intermediate mesoderm differ high versus low in the body?",
+   "a": "Repeating clusters (nephrotomes) in the neck and upper chest; one continuous nephrogenic cord below [f2,f3]."
+  }
+ ],
+ "shows_up": [
+  "E16.00.01",
+  "E16.02.02",
+  "E05.04.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6b)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": false,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "fix: round-1 fix landed (nephrotomes, nephrogenic cord named at General), but terms.new is still empty though the card teaches both; add ids or log why (none in terms.json). adult says 'excretory units' unglossed; use General's 'urine-making units' (ruling b).",
+    "q1": "fix: right option 'Small repeating clusters called nephrotomes' is the only one carrying a name and is twice as long (cue). Use 'Small repeating clusters' (name stays in why), or make the cord option 'One continuous cord, the nephrogenic cord'.",
+    "q2": "fix: why uses 'urogenital system' and 'kidney's excretory units', not taught at General. Use 'urinary and genital organs, including the gonads and the kidney's urine-making units'.",
+    "q3": "ok",
+    "m1": "fix: 'cloaca' is unglossed (ruling b); write 'from the cloaca (the shared end chamber of the gut)' and 'kidneys, gonads and genital ducts'.",
+    "r1": "fix: answer 'urogenital system… excretory units' uses names General gives only in plain words. Use 'The urinary and genital organs: the kidney's urine-making units and the gonads [f1,f4]'.",
+    "r2": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Round-1 naming fix landed. Left: plain-word swaps for urogenital/excretory units (q2, r1, adult), a cloaca gloss in m1, the q1 length cue, and the empty terms.new."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch B)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok"
+   },
+   "notes": "Re-review after G-Learn wording fixes: layout (nephrotomes up high, nephrogenic cord below), derivatives and endoderm bladder lining all match the dossier; cites and marks right."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §2 + §5",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6b)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: terms (nephrotomes, nephrogenic cord named at General; segmental → repeating in q1, r2), General excretory wording",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "reopened; passes cleared (G-Sci): content changed — to review again (card-spec §5; hand edit, logged here)",
+   "by": "card-spec §5 rule"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 5 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch B)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch B)"
+  }
+ ]
+}

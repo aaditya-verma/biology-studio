@@ -1,15 +1,44 @@
 # Setup guide — run Biology Studio on a second laptop
 
-*(Purpose: step-by-step setup for a new collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
+*(Purpose: §0 = the reviewer's zero-setup start; §0a–§8 = full setup for a collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 21 Nov 2026 · Bio · Build · H2 reviewer mode — §0 Reviewer: start here (D-060, D-061). Before: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
 
-**Who this is for:** a collaborator (first: the Professor) who joins the owner (Aaditya) on one **shared** project (D-025). Same kind of machine: Windows laptop with an NVIDIA GPU.
+**Reviewing only?** Read **§0** and stop there — nothing to install.
+
+**Who §0a–§8 are for:** a collaborator (first: the Professor, at Level 3) who joins the owner (Aaditya) on one **shared** project (D-025). Same kind of machine: Windows laptop with an NVIDIA GPU.
 **Time:** about 1 h 30 min (mostly downloads) + 40 min if you also set up AI video. **Disk:** ≥ 40 GB free (≥ 20 GB without AI video).
 **Cost:** free tools only, except your own Claude plan (§1). Nothing paid without the owner's OK (RULES §F).
 **Shareable copy:** the owner sends you a Doc made from this page; this markdown is the source of truth — if they differ, this page wins.
 
 ---
 
-## 0. How the sharing works (read once)
+## 0. Reviewer: start here (no setup, ~5 min)
+*For the Professor (Komal Verma) as the human science reviewer (D-060). You need a browser and a free GitHub account — nothing else: no install, no repo, no Claude Project, no book PDF.*
+
+1. **Open the app:** https://aaditya-verma.github.io/biology-studio/#review — on your phone or laptop (Chrome or Edge). On a phone you can keep it: browser menu ⋮ → **Add to Home screen** (or **Install app**).
+2. **Take the tour** — three short screens open by themselves the first time. You can see them again from the Review page (**Show me around again**).
+3. **Sign in to GitHub once** in the same browser: github.com → **Sign in** (your username `komalverma00500-byte`). The app never asks for your password; GitHub does, on its own page.
+4. **Review a card:** Review → **To review** → open the top card → read it → tick what looks right → pick **✓ Looks right**, **✎ Needs a fix** or **? Question** → for ✎ or ? write a short note (a page number or source helps) → **Send on GitHub**. A GitHub page opens with everything filled in → check it → press **Create**. That's it — it isn't sent until you press Create.
+5. **Follow it:** **My feedback** shows each thing you sent: *Sent — waiting for Aaditya* → *Being fixed* → *Fixed in app update N* (or *Done*, *Answered*, *No change needed*; tap one to read the reply on GitHub). A fixed card comes back under To review for a last look. On a phone, stay in the browser if GitHub offers its app. **What's new** lists new or changed cards and the team's updates; **All updates** shows the full list in plain words.
+
+**Good to know**
+- Your ✓ is the **human science check** for that version of the card. Aaditya decides on each ✎ before anything changes (D-060).
+- Feedback on GitHub is **public**. Write as you would on a public page: no patient details, and **don't paste book text or figures** — a chapter and page number is enough (RULES §G).
+- Your email address is not in the app or the repo.
+- Something general (the app, a screen, an idea)? Review → My feedback → **Send general feedback**.
+
+**If something looks wrong**
+| You see | Do this |
+|---|---|
+| A blank or old page | Pull down to refresh (phone) or press Ctrl + Shift + R (laptop). |
+| "GitHub asks us to wait a little" | Normal — GitHub limits how often the app may ask. Your list is still shown; it checks again later by itself. |
+| You sent something but it's not in My feedback | Did you press **Create** on GitHub? Then tap **Check for news**. |
+| GitHub says "Sign in" | Sign in, then press **Send on GitHub** in the app again — your answers are still there. |
+
+*Later (Level 3), if you want to build too: the rest of this guide, from §0a.*
+
+---
+
+## 0a. How the sharing works (read once)
 | Thing | Shared how | Notes |
 |---|---|---|
 | **Project docs** (plans, rules, status…) | One copy in the private GitHub repo `aaditya-verma/biology-studio`, folder `studio-docs/`; each person's Claude Project reads it via **GitHub → Sync now** | Chats change docs only by a git commit (§6a). |

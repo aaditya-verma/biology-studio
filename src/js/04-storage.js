@@ -12,12 +12,15 @@ const STORE={mode:'mem',db:null,rev:0,timer:0,busy:false,again:false,err:null,me
 /* EDIT: the saved shape. Add a field here AND a default in stFill (never rename or remove — A1). */
 function stNew(){return {schema:1,rev:0,app:APP.v,created:Date.now(),settings:{theme:'system',motion:'system',level:CONFIG.learn.level,t:0},last:{route:'today',card:null},visited:{},answers:{},
   cards:{},   // L1: {<card id>:{read,und,exp: first time (ms) each status was reached · checks: runs · best: best score · t: last change}} (B4)
-  deck:{}};}  // L1: Remember deck {<card id>#<r id>:{step, due (ms, local midnight), n: reviews, lapses, t: last change}}
+  deck:{},    // L1: Remember deck {<card id>#<r id>:{step, due (ms, local midnight), n: reviews, lapses, t: last change}}
+  review:{on:false,tour:0,seen:{},seenAt:0,updKey:'',drafts:{},cache:null,t:0}};}   // H2 Reviewer mode: on (Review tab) · tour (time seen) · seen {card id: version at last visit} · seenAt (last 'Mark all as seen') · updKey (newest update seen) · drafts {card id: form answers not sent yet} · cache {at, items, etag, status} of her GitHub issues · t: last change
 function stFill(s){const d=stNew();s=s&&typeof s==='object'?s:{};
   for(const k of Object.keys(d))if(s[k]===undefined)s[k]=d[k];
   s.settings=Object.assign({},d.settings,s.settings);s.last=Object.assign({},d.last,s.last);
   if(typeof s.visited!=='object'||!s.visited)s.visited={};if(typeof s.answers!=='object'||!s.answers)s.answers={};
   if(typeof s.cards!=='object'||!s.cards||Array.isArray(s.cards))s.cards={};if(typeof s.deck!=='object'||!s.deck||Array.isArray(s.deck))s.deck={};   // L1 back-fill (A1, A4)
+  if(typeof s.review!=='object'||!s.review||Array.isArray(s.review))s.review={};s.review=Object.assign({},d.review,s.review);   // H2 back-fill
+  for(const k of ['seen','drafts'])if(typeof s.review[k]!=='object'||!s.review[k]||Array.isArray(s.review[k]))s.review[k]={};
   return s;}
 /* merge two saves: visited = newest time per id; answers = union by key, newer wins; settings = newer save wins; rev = max */
 function stMerge(a,b){a=stFill(a);b=stFill(b);const newer=(b.savedAt||0)>(a.savedAt||0)?b:a,m=stFill(JSON.parse(JSON.stringify(newer)));
@@ -29,6 +32,12 @@ function stMerge(a,b){a=stFill(a);b=stFill(b);const newer=(b.savedAt||0)>(a.save
     for(const k of ['read','und','exp']){const v=[x[k],y[k]].filter(n=>typeof n==='number'&&n>0);if(v.length)o[k]=Math.min(...v);else delete o[k];}
     o.checks=Math.max(x.checks||0,y.checks||0);o.best=Math.max(x.best||0,y.best||0);o.t=Math.max(x.t||0,y.t||0);m.cards[id]=o;}
   m.deck={...a.deck};for(const[k,v]of Object.entries(b.deck)){const o=m.deck[k];if(!o||(v&&v.t||0)>(o.t||0))m.deck[k]=v;}
+  /* H2: reviewer — on/tour from the copy changed last; seen = the higher version per card; drafts = newer per card; cache = the newer check */
+  {const x=a.review,y=b.review,n=(y.t||0)>(x.t||0)?y:x;m.review={...n,seen:{...x.seen},drafts:{...x.drafts}};
+    for(const[k,v]of Object.entries(y.seen))m.review.seen[k]=Math.max(m.review.seen[k]||0,v);
+    for(const[k,v]of Object.entries(y.drafts)){const o=m.review.drafts[k];if(!o||(v&&v.t||0)>(o.t||0))m.review.drafts[k]=v;}
+    m.review.tour=Math.max(x.tour||0,y.tour||0);m.review.seenAt=Math.max(x.seenAt||0,y.seenAt||0);
+    m.review.cache=((y.cache&&y.cache.at)||0)>((x.cache&&x.cache.at)||0)?y.cache:x.cache;}
   m.rev=Math.max(a.rev||0,b.rev||0);m.created=Math.min(a.created||Infinity,b.created||Infinity);return m;}
 
 /* save log (this device only) */

@@ -1,0 +1,267 @@
+{
+ "spec": 1,
+ "id": "E07.01.01",
+ "version": 1,
+ "book": "E",
+ "status": "reviewed",
+ "title": "A tube on a tube",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe the embryo's body plan once folding is done at the end of week 4."
+ },
+ "body": {
+  "general": "What shape is the embryo once it has folded? It is a tube on a tube: the neural tube (future brain and spinal cord) along the back, the gut tube below [f1]. Both form at almost the same time, in weeks 3–4 [f1]. The side walls of the body swing down and meet in the midline, closing the belly side [f2]. Head and tail folds help by curling the embryo [f3]. One gap stays open: the stalk that becomes the umbilical cord [f4]. There a narrow duct still joins the gut to the yolk sac [f4].",
+  "mbbs": "In weeks 3–4 the ectoderm rolls into the neural tube dorsally while the endoderm rolls into the gut tube ventrally, at almost the same time [f1]. The result is a tube on a tube, held together by mesoderm [f1]. The lateral body-wall folds, made of parietal mesoderm, ectoderm and cells from nearby somites, swing ventrally and meet in the midline [f2]. This closes the ventral body wall by the end of week 4 [f2]. Head and tail folds help by curling the embryo [f3]. Closure stays open only at the connecting stalk, the future umbilical cord [f4]. There the gut still opens into the yolk sac through the vitelline duct [f4]. The duct later thins and disappears with the yolk sac in months 2–3 [f5]. Where the gut meets the dorsal body wall, the parietal and visceral mesoderm layers stay continuous [f6]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "In weeks 3–4 the ectoderm rolls up into the neural tube on the back. Almost at the same time the endoderm rolls into the gut tube below, with mesoderm between.",
+   "cite": "E07.01, E07.06 · R06 CS10",
+   "mark": "✔",
+   "where": "main",
+   "note": "R06 CS10–12 confirms each process; the 'tube on a tube' picture is the book's"
+  },
+  {
+   "id": "f2",
+   "text": "The lateral body-wall folds swing ventrally and meet in the midline, closing the ventral body wall by the end of week 4. They are parietal mesoderm, ectoderm and cells from nearby somites.",
+   "cite": "E07.01, E07.02",
+   "mark": "✔",
+   "where": "main",
+   "note": "later muscle and rib layer: D-043 (a), see f7"
+  },
+  {
+   "id": "f3",
+   "text": "Head and tail folds help close the body by curling the embryo.",
+   "cite": "E07.01, E07.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f4",
+   "text": "Closure stays open at one place, the connecting stalk (future umbilical cord), where the gut still opens into the yolk sac through the vitelline duct.",
+   "cite": "E07.01 · R06 CS12",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06 CS12–13: umbilical stalk forms; amnion closes around it"
+  },
+  {
+   "id": "f5",
+   "text": "The vitelline duct joins the cord, thins and disappears with the yolk sac in months 2–3.",
+   "cite": "E07.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Where the gut meets the dorsal body wall, the parietal and visceral mesoderm layers stay continuous with each other.",
+   "cite": "E07.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f7",
+   "text": "Beyond Langman (human 3D study): the later muscle, rib and sternum layer of the front wall spreads toward the midline from stage 15 to 23. This happens mostly through faster growth of the back.",
+   "cite": "· R05z",
+   "mark": "✚",
+   "where": "more",
+   "note": "D-043 (a) recommended option (2); studied the later musculoskeletal wall, not the week-4 somatopleure"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.vitelline-duct"
+  ],
+  "known": [
+   "E.t.ectoderm",
+   "E.t.endoderm",
+   "E.t.mesoderm",
+   "E.t.parietal",
+   "E.t.visceral",
+   "E.t.connecting-stalk",
+   "E.t.yolk-sac"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The gut tube and the neural tube form one after the other.",
+   "right": "They form at almost the same time, in weeks 3–4.",
+   "cite": "E07.01",
+   "mark": "✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "When do the neural tube and the gut tube form?",
+   "options": [
+    "The gut tube first, the neural tube weeks later",
+    "The neural tube first, the gut tube after week 8",
+    "At almost the same time, in weeks 3–4",
+    "Only after the ventral body wall has closed"
+   ],
+   "answer": 2,
+   "why": "While the ectoderm rolls into the neural tube, the endoderm rolls into the gut tube, both in weeks 3–4.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "prompt": "At the end of week 4, where is the ventral body wall still open?",
+   "options": [
+    "At the head end",
+    "At the connecting stalk, the future umbilical cord",
+    "Along the whole midline",
+    "Nowhere; it is fully closed"
+   ],
+   "answer": 1,
+   "why": "The lateral folds meet everywhere except at the connecting stalk, where the vitelline duct still joins gut to yolk sac.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "In a cross-section after folding, which tube lies toward the back (dorsal)?",
+   "options": [
+    "The neural tube",
+    "The gut tube",
+    "The vitelline duct",
+    "The amnion"
+   ],
+   "answer": 0,
+   "why": "The neural tube lies dorsally and the gut tube ventrally: a tube on a tube.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "The connecting stalk becomes the umbilical cord, and the vitelline duct normally disappears in months 2–3 [f4,f5].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What is the body plan after folding?",
+   "a": "A tube on a tube: neural tube on the back, gut tube below, joined by mesoderm [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "What closes the ventral body wall by the end of week 4?",
+   "a": "The lateral body-wall folds meeting in the midline, helped by the head and tail folds [f2,f3]."
+  },
+  {
+   "id": "r3",
+   "q": "Where does the ventral body wall stay open?",
+   "a": "At the connecting stalk, where the vitelline duct joins gut to yolk sac [f4]."
+  }
+ ],
+ "shows_up": [
+  "E06.03.01",
+  "E07.02.02",
+  "E07.03.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 7)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 1, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": true,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "ok",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Pass. Objective gives nothing away; q1 refutes m1; General explains the duct and neural tube in plain words, shape before names."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 1, batch C)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "body.mbbs.9": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f6": "ok",
+    "f7": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "Pass. D-043 (a) handled per recommended option (2): book answer in f2, R05z as a ✚ More line (f7) labelled beyond Langman."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch07-gut-tube-body-cavities.md §2 + §5 (D-043 (a) option 2: ✚ More line)",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 7)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch C)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
+  }
+ ]
+}

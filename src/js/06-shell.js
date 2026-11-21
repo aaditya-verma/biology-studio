@@ -11,6 +11,7 @@ const ICONS={cards:'<rect x="4" y="5" width="13" height="15" rx="2"/><path d="M8
   back:'<path d="M15 5l-7 7 7 7"/>',up:'<path d="M12 19V5M5 12l7-7 7 7"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/>',
   studio:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/><path d="M14 20h6"/>',
   progress:'<circle cx="5" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 6h3.5l5.5 5M7.5 18h3.5l5.5-5"/>',
+  review:'<path d="M9 4H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="9" y="2.5" width="6" height="3.5" rx="1"/><path d="M8.5 13.5l2.5 2.5 4.5-5"/>',
   moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>'};
 const icon=(k,sz=22)=>`<svg viewBox="0 0 24 24" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]||''}</svg>`;
 
@@ -21,16 +22,19 @@ function applyTheme(){const m=themeMode(),dark=m==='dark'||(m==='system'&&matchM
 function setTheme(m){state.settings.theme=m;state.settings.t=Date.now();try{localStorage.setItem(CONFIG.keys.theme,m);}catch(_){}applyTheme();stSave();render();}
 try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(themeMode()==='system'){applyTheme();render();}});}catch(_){}
 
-const navItems=()=>CONFIG.nav.concat(FLAGS.test?CONFIG.navTest:[]);
+/* H2: Reviewer mode adds Review after Cards (6 items, labels shrink like testing mode); testing mode keeps its own nav (Review by address) */
+const rvNavOn=()=>!FLAGS.test&&!!(state&&state.review&&state.review.on);
+const navItems=()=>{const n=CONFIG.nav.slice();if(rvNavOn())n.splice(Math.max(1,n.indexOf('cards')+1),0,CONFIG.navReview);return n.concat(FLAGS.test?CONFIG.navTest:[]);};
 function buildShell(){
   $('#nav').innerHTML=navItems().map(k=>`<button type="button" data-nav="${k}" aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('');
   $('#editChatL').textContent=STR.editChat;$('#editCopy').textContent=STR.copy;$('#editClose').textContent=STR.close;$('#editTxt').setAttribute('aria-label',STR.editT);
-  $('#brand').textContent=STR.app;
+  $('#brand').textContent=STR.app;toastRegion();
   $('#backb').innerHTML=icon('back',20);$('#backb').setAttribute('aria-label',STR.back);$('#backb').title=STR.back;
   $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
+  document.documentElement.classList.toggle('rvnav',rvNavOn());
   if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
-const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today'}[r.name]||r.name);
+const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today',rcard:'review',rtour:'review',updates:'review'}[r.name]||r.name);
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];
@@ -66,8 +70,9 @@ function editPrompt(kind,id,file){
 function openEdit(kind,id,file){const d=$('#editdlg');$('#editT').textContent='✎ '+kind+' '+id;$('#editChat').textContent='Bio · Fix · '+id;
   $('#editTxt').value=editPrompt(kind,id,file);$('#editMsg').textContent='';d.showModal();}
 
-function toast(msg){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';t.setAttribute('role','status');document.body.appendChild(t);}
-  t.textContent=msg;t.classList.remove('hidden');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.add('hidden'),2200);}
+function toastRegion(){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast off';t.setAttribute('role','status');document.body.appendChild(t);}return t;}   // created at start (buildShell), so the first message is heard too (H2 G-A11y; L1F to-do)
+function toast(msg){const t=toastRegion();
+  t.textContent=msg;t.classList.remove('off');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.add('off'),2200);}   // 'off' = visually gone, still in the accessibility tree
 
 /* events (one delegated listener) */
 function shellEvents(){

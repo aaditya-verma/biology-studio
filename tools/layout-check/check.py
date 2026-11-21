@@ -38,7 +38,11 @@ SCREENS = {
     "progress": "progress", "progress-board": "progress=board", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
     "cards": "cards", "card": "card=E05.01.01", "card-noto": "card=E05.02.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
+    # H2 Reviewer mode — opened with the demo issues (?fixture=review, never GitHub); keep these last (the page reloads once with the fixture)
+    "review": "review", "review-news": "review=news", "review-mine": "review=mine", "rcard": "rcard=E05.01.02", "rcard-draft": "rcard=E06.02.01",
+    "rtour": "rtour", "rtour-3": "rtour=3", "updates": "updates",
 }
+REVIEW_SCREENS = ("review", "review-news", "review-mine", "rcard", "rcard-draft", "rtour", "rtour-3", "updates")
 
 
 def expected_class(kind, w, h):
@@ -113,8 +117,13 @@ async def run(a):
                     page.on("pageerror", lambda e: errors.append(str(e)))
                     page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
                     first = True
+                    in_fx = False
                     for sname, route in screens.items():
-                        if first:
+                        if sname in REVIEW_SCREENS and not in_fx:   # H2: one reload into the demo issues; the next screens change the hash only
+                            await page.goto(f"{base}?test=1&debug=0&fixture=review#{route}")
+                            await page.wait_for_function("window.BOOTED", timeout=20000)
+                            in_fx, first = True, False
+                        elif first:
                             await page.goto(f"{base}?test=1&debug=0#{route}")
                             await page.wait_for_function("window.BOOTED && MAPD && (MAPD.M || MAPD.err)", timeout=20000)
                             first = False
@@ -132,6 +141,11 @@ async def run(a):
                             if route.startswith("card="):
                                 await page.wait_for_function("window.VW_READY===true", timeout=30000)
                                 await page.wait_for_timeout(80)
+                        if sname in REVIEW_SCREENS:   # H2: cards, demo issues and the build log loaded + drawn
+                            await page.wait_for_function(f"window.RV_READY==={json.dumps(route)} && (!['review','review=news','review=mine'].includes(window.RV_READY) || (RV.idx && RV.upd && !RV.busy))", timeout=20000)
+                            if route.startswith("review"):
+                                await page.evaluate("render()")
+                            await page.wait_for_timeout(80)
                         if route.startswith(("progress", "step")):   # progress map: wait for steps.json + draw (W1)
                             await page.wait_for_function(f"window.TR_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
@@ -173,11 +187,11 @@ async def run(a):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
-                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib", "progress", "step"):
+                        elif text == 125 and theme == "light" and sname in ("concept", "chapter", "settings", "viewer", "viewer-axes", "scenes", "studio-card", "calib", "progress", "step", "review", "rcard", "rtour"):
                             path = out / "shots" / f"{cls}_{w}x{h}_125_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " 125", []).append((f"{w}×{h} {sname} 125%", path))
-                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card", "progress", "progress-board", "step"):
+                        elif text == 100 and theme == "dark" and sname in ("concept", "colours", "today", "crosstab", "viewer", "studio-card", "progress", "progress-board", "step", "review-mine", "rcard"):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls + " dark", []).append((f"{w}×{h} {sname}", path))
@@ -224,6 +238,8 @@ async def run(a):
             await learn_flows(browser, base, report)
         if not a.only or a.only.startswith(("card", "drill")):
             await drill_flows(browser, base, report, a.preview)
+        if not a.only or a.only.startswith(("review", "rcard", "rtour", "updates")):
+            await review_flows(browser, base, report)
         # real mode (no ?test): saving survives a reload; Back at home stays in the app (C8)
         report.setdefault("flows", [])
         ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
@@ -543,6 +559,117 @@ async def drill_flows(browser, base, report, preview):
     ok("mouse hover names a structure (desktop), no page error", hshown and not errs, {"shown": hshown, "errs": errs})
     ok("WebGL context loss: redraws after restore", lost and mid and not st["lost"] and not st["msg"] and n1 > 0.8 * n0 and not errs, {"n0": n0, "n1": n1, **st, "errs": errs})
     await ctx.close()
+
+
+async def review_flows(browser, base, report):
+    """H2 Reviewer mode (design plan §4.10, D-061): the form link carries every answer; Send is blocked until the answers are enough;
+    rotate on a card review keeps the draft and the scroll; the rate-limit case shows the saved list + message; real mode: the first visit
+    opens the tour, finishing it lands on Review and survives a reload, the Review tab appears, and a draft survives a reload."""
+    report.setdefault("flows", [])
+    def ok(name, cond, info=""):
+        report["flows"].append({"flow": "H2 " + name, "ok": bool(cond), "seen": str(info)[:300]})
+    from urllib.parse import urlparse, parse_qs
+    # 1. demo: fill the form on a card, Send → the GitHub link (testing mode keeps the app on the page)
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+    page = await ctx.new_page()
+    await page.goto(f"{base}?test=1&debug=0&fixture=review#rcard=E05.01.03")
+    await page.wait_for_function("window.RV_READY==='rcard=E05.01.03'", timeout=20000)
+    await page.click("#rvSend", force=True); await page.wait_for_timeout(100)   # aria-disabled: a tap still reaches it and explains what is missing
+    blocked = await page.evaluate("({url:window.RV_LAST_URL||null, help:document.querySelector('#rvSendHelp').textContent})")
+    ok("send blocked with no verdict", blocked["url"] is None and "first" in blocked["help"], blocked)
+    await page.click("label.rv-tick:has(input[value=facts])")
+    await page.click("button.rv-vb[value=fix]")
+    await page.click("#rvSend", force=True); await page.wait_for_timeout(100)   # aria-disabled: a tap still reaches it and explains what is missing
+    b2 = await page.evaluate("({url:window.RV_LAST_URL||null, help:document.querySelector('#rvSendHelp').textContent})")
+    ok("send blocked: a fix needs a note", b2["url"] is None and "note" in b2["help"], b2)
+    await page.select_option("#rvWhere", "body")
+    await page.fill("#rvNote", "Day 15 should be day 16 (E05.01).")
+    await page.click(".rv-form .seg button[value=mid]")
+    await page.click("#rvSend"); await page.wait_for_timeout(150)
+    url = await page.evaluate("window.RV_LAST_URL||''")
+    q = {k: v[0] for k, v in parse_qs(urlparse(url).query).items()}
+    want = q.get("template") == "card-review.yml" and q.get("labels") == "review" and q.get("title", "").startswith("[review] E05.01.03 v1 ✎") \
+        and q.get("card", "").startswith("E05.01.03 v1") and q.get("verdict", "").startswith("✎") and q.get("where") == "The card text" \
+        and q.get("sure") == "Fairly sure" and "- [x] The facts are right" in q.get("checklist", "") and q.get("note") == "Day 15 should be day 16 (E05.01)."
+    ok("form link carries every answer", want, q)
+    # 2. rotate keeps the draft and the place
+    await page.evaluate("scrollTo(0,700)")
+    for vw, vh in [(844, 390), (390, 844)]:
+        await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(250)
+        st = await page.evaluate("({h:location.hash, cls:DEV.cls, y:scrollY, note:(document.querySelector('#rvNote')||{}).value, v:(document.querySelector('button.rv-vb[aria-pressed=true]')||{}).value})")
+        good = st["h"] == "#rcard=E05.01.03" and st["note"].startswith("Day 15") and st["v"] == "fix" and st["y"] > 0
+        report["rotate"].append({"size": f"{vw}x{vh} rcard", "ok": good, "h": st["h"], "cls": st["cls"]})
+        if not good:
+            report["issues"].append({"kind": "rotate", "what": "rcard " + json.dumps(st), "at": f"{vw}x{vh}"})
+    # 3. demo states → words; rate-limit message over the saved list
+    await page.goto(f"{base}?test=1&debug=0&fixture=review#review=mine")
+    await page.wait_for_function("window.RV_READY==='review=mine' && RV.issues && !RV.busy", timeout=20000)
+    await page.evaluate("render()")
+    words = await page.evaluate("[...document.querySelectorAll('#rv-mine .rv-st')].map(e=>e.textContent.trim())")
+    ok("demo: 7 of hers (not another person's, not a PR), every state shown", len(words) == 7 and any("Fixed in app update 12" in w for w in words) and any("Being fixed" in w for w in words)
+       and any("No change" in w for w in words) and any("Done" in w for w in words) and any("Sent" in w for w in words), words)
+    await page.goto(f"{base}?test=1&debug=0&fixture=review&rvlimit=1#review=mine")
+    await page.wait_for_function("window.RV_READY==='review=mine' && RV.issues && !RV.busy", timeout=20000)
+    await page.evaluate("render()")
+    lim = await page.evaluate("({warn:(document.querySelector('#rv-mine .rv-warn')||{}).textContent||'', n:document.querySelectorAll('#rv-mine .rv-mine').length})")
+    ok("rate limit: saved list + when to retry", "wait" in lim["warn"] and "Last checked" in lim["warn"] and lim["n"] == 7, lim)
+    await ctx.close()
+    # 4. real mode (no ?test, no GitHub: the API is answered by a stub): first visit → tour → Review; tab appears; tour + draft survive a reload
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+    fx = json.loads((ROOT / "tools" / "layout-check" / "fixtures" / "review-issues.json").read_text())["items"]
+    hits = []
+    async def stub(route):
+        hits.append(route.request.url)
+        await route.fulfill(status=200, content_type="application/json", body=json.dumps(fx), headers={"etag": "W/\"h2\"", "x-ratelimit-remaining": "59", "access-control-allow-origin": "*", "access-control-expose-headers": "etag, x-ratelimit-remaining"})
+    await ctx.route("https://api.github.com/**", stub)
+    page = await ctx.new_page()
+    await page.goto(f"{base}#review")
+    await page.wait_for_function("window.BOOTED && STORE.mode==='idb' && window.RV_READY==='rtour'", timeout=20000)
+    ok("first visit opens the tour", await page.evaluate("location.hash") == "#rtour")
+    for _ in range(3):
+        await page.click("[data-rvt]:not([data-rvt='done']).pri, [data-rvt='done'].pri"); await page.wait_for_timeout(120)
+    await page.wait_for_function("window.RV_READY==='review' && RV.src==='live'", timeout=20000)
+    nav = await page.evaluate("[...document.querySelectorAll('#nav [data-nav]')].map(b=>b.dataset.nav)")
+    ok("tour done → Review, Review tab after Cards, GitHub asked once with her name", nav[:3] == ["today", "cards", "review"] and len(hits) == 1 and "creator=komalverma00500-byte" in hits[0], [nav, hits])
+    await page.evaluate("location.hash='#rcard=E05.01.03'")
+    await page.wait_for_function("window.RV_READY==='rcard=E05.01.03'", timeout=20000)
+    await page.click("button.rv-vb[value=ask]"); await page.fill("#rvNote", "Is this day 15 or 16?")
+    await page.wait_for_timeout(900)   # saves after CONFIG.saveDelayMs
+    await page.reload()
+    await page.wait_for_function("window.BOOTED && STORE.mode==='idb' && window.RV_READY==='rcard=E05.01.03'", timeout=20000)
+    st = await page.evaluate("({tour:state.review.tour>0, on:state.review.on, note:(document.querySelector('#rvNote')||{}).value, v:(document.querySelector('button.rv-vb[aria-pressed=true]')||{}).value, cache:!!(state.review.cache&&state.review.cache.items.length)})")
+    ok("reload keeps tour, Review tab, draft and the saved list", st["tour"] and st["on"] and st["note"] == "Is this day 15 or 16?" and st["v"] == "ask" and st["cache"], st)
+    await page.evaluate("location.hash='#review'"); await page.wait_for_timeout(400)
+    ok("cached list within 5 min: no second GitHub call", len(hits) == 1, hits)
+    await ctx.close()
+    # 5. errors never loop or crash (G-Eng round 1): a 500, a rate limit and offline → at most one call, no page error, the right words
+    for case in ("500", "403", "offline"):
+        ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True)
+        await ctx.add_init_script("indexedDB.deleteDatabase('biostudio')")
+        calls, errs = [], []
+        def mk(case):
+          async def bad(route, *_):   # Playwright may pass the request as a 2nd argument
+              calls.append(route.request.url)
+              if case == "500":
+                  await route.fulfill(status=500, body="oops", headers={"access-control-allow-origin": "*"})
+              else:
+                  await route.fulfill(status=403, body="{}", content_type="application/json", headers={"access-control-allow-origin": "*", "access-control-expose-headers": "x-ratelimit-remaining, x-ratelimit-reset",
+                      "x-ratelimit-remaining": "0", "x-ratelimit-reset": str(int(time.time()) + 1200)})
+          return bad
+        await ctx.route("https://api.github.com/**", mk(case))
+        page = await ctx.new_page()
+        page.on("pageerror", lambda e: errs.append(str(e)))
+        await page.goto(f"{base}#rtour")
+        await page.wait_for_function("window.BOOTED && STORE.mode==='idb'", timeout=20000)
+        await page.evaluate("state.review.tour=Date.now()")
+        if case == "offline":
+            await ctx.set_offline(True)
+        await page.evaluate("location.hash='#review=mine'")
+        await page.wait_for_timeout(2500)
+        txt = await page.evaluate("(document.querySelector('#rv-mine')||{}).textContent||''")
+        words = {"500": "Could not reach GitHub", "403": "GitHub asks us to wait", "offline": "offline"}[case]
+        ok(f"error {case}: ≤ 1 call, no page error, says so", len(calls) <= 1 and not errs and words in txt, [len(calls), errs[:2], txt[:160]])
+        await ctx.close()
 
 
 async def tracker_flows(browser, base, report, vps):

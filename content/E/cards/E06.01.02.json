@@ -1,0 +1,293 @@
+{
+ "spec": 1,
+ "id": "E06.01.02",
+ "version": 1,
+ "book": "E",
+ "status": "draft",
+ "title": "Neurulation",
+ "tier": "A",
+ "objective": {
+  "verb": "describe",
+  "text": "Describe how the flat neural plate becomes a closed tube."
+ },
+ "body": {
+  "general": "How does a flat sheet roll itself into a tube? This process, neurulation, makes the neural tube [f1]. First the plate grows longer as its cells crowd toward the midline [f2]. Its edges rise as ridges, the neural folds, with a groove between them [f3]. The folds first meet in the future neck, beside the fifth somite [f4]. Somites are paired blocks of tissue beside the tube [f9]. From there the seam zips toward head and tail [f4]. For a while each end stays open; these openings are the neuropores [f5].",
+  "mbbs": "Neurulation converts the neural plate into the neural tube [f1]. The plate lengthens by convergent extension, with cells moving toward the midline [f2]. Planar cell polarity signalling drives this lengthening [f2]. Its lateral edges rise as neural folds around a midline neural groove, around days 19–20 [f3]. The folds first fuse in the future neck, at about the fifth somite pair [f4]. Somites are paired blocks of paraxial mesoderm beside the tube [f9]. Fusion then proceeds both cranially and caudally, like a zip [f4]. Until closure is complete, the tube opens to the amniotic cavity through the cranial and caudal neuropores [f5]."
+ },
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Neurulation turns the flat neural plate into the neural tube, which becomes the brain and spinal cord.",
+   "cite": "E06.01 · R05l",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f2",
+   "text": "The plate lengthens by convergent extension, cells crowding toward the midline, driven by planar cell polarity signalling.",
+   "cite": "E06.01",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f3",
+   "text": "The plate's edges rise as neural folds around a central neural groove, around days 19–20.",
+   "cite": "E06.01 · R06 CS9",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R06 CS9 neural folds, 19–21 d"
+  },
+  {
+   "id": "f4",
+   "text": "The folds first meet in the neck region, at about the fifth somite, and the seam zips both toward the head and toward the tail.",
+   "cite": "E06.01 · R05l, R08 CS10",
+   "mark": "✔✔",
+   "where": "main",
+   "note": "R05l first fusion site α near the hindbrain–neck junction, spreading both ways"
+  },
+  {
+   "id": "f5",
+   "text": "While closing, the tube opens to the amniotic cavity at both ends through the cranial and caudal neuropores.",
+   "cite": "E06.01 · R05l",
+   "mark": "✔✔",
+   "where": "main"
+  },
+  {
+   "id": "f9",
+   "text": "Somites are paired blocks of paraxial mesoderm that form beside the neural tube.",
+   "cite": "E06.02",
+   "mark": "✔",
+   "where": "main"
+  },
+  {
+   "id": "f6",
+   "text": "Beyond Langman: human embryos also have a second fusion site at the front of the forebrain, which zips backward only.",
+   "cite": "· R05l",
+   "mark": "✚",
+   "where": "more"
+  },
+  {
+   "id": "f8",
+   "text": "Beyond Langman: the same study found no convincing sign of the mouse's extra fusion sites in humans; others dispute this.",
+   "cite": "· R05l",
+   "mark": "✚",
+   "where": "more"
+  },
+  {
+   "id": "f7",
+   "text": "Mutations in the planar cell polarity gene VANGL occur in some families with neural tube defects.",
+   "cite": "E06.01 CC · R05w",
+   "mark": "✔✔",
+   "where": "more"
+  }
+ ],
+ "terms": {
+  "new": [
+   "E.t.neurulation",
+   "E.t.neuropores",
+   "E.t.somites"
+  ],
+  "known": [
+   "E.t.induction",
+   "E.t.bone-morphogenetic-proteins-bmps"
+  ]
+ },
+ "misconceptions": [
+  {
+   "id": "m1",
+   "wrong": "The neural tube closes all at once, or from one end.",
+   "right": "It starts in the neck and zips both ways; the two ends (neuropores) close last.",
+   "cite": "E06.01 · R05l",
+   "mark": "✔✔"
+  }
+ ],
+ "checks": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "prompt": "Where do the neural folds first meet?",
+   "options": [
+    "At the head end",
+    "At the tail end",
+    "In the future neck",
+    "Along the whole length at once"
+   ],
+   "answer": 2,
+   "why": "Fusion starts near the fifth somite, in the neck region, then spreads both ways.",
+   "tests": "objective",
+   "refutes": "m1"
+  },
+  {
+   "id": "q2",
+   "type": "order",
+   "prompt": "Put the steps of neurulation in order.",
+   "options": [
+    "The neural plate lengthens toward head and tail",
+    "Its edges rise as neural folds around a groove",
+    "The folds meet in the future neck",
+    "The seam zips toward both ends"
+   ],
+   "why": "The plate lengthens, folds rise, they fuse first at the neck, and closure spreads toward both ends.",
+   "tests": "objective"
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "prompt": "While the tube is closing, what are the neuropores?",
+   "options": [
+    "Openings at the two ends of the tube",
+    "Holes along the side of the tube",
+    "Pores in the notochord",
+    "The groove between the folds"
+   ],
+   "answer": 0,
+   "why": "The cranial and caudal neuropores are the still-open ends, joined to the amniotic cavity.",
+   "tests": "objective"
+  }
+ ],
+ "adult": "The neural tube becomes the brain and spinal cord [f1].",
+ "remember": [
+  {
+   "id": "r1",
+   "q": "What does neurulation make?",
+   "a": "The neural tube, from the flat neural plate [f1]."
+  },
+  {
+   "id": "r2",
+   "q": "Where do the neural folds first fuse?",
+   "a": "In the neck region, about the fifth somite; then closure zips both ways [f4]."
+  },
+  {
+   "id": "r3",
+   "q": "What are the neuropores?",
+   "a": "The open head and tail ends of the closing tube [f5]."
+  }
+ ],
+ "shows_up": [
+  "E06.01.03",
+  "E06.01.04",
+  "E18.01.01",
+  "E18.02.01"
+ ],
+ "made": {
+  "by": "Aaditya",
+  "role": "Lead scientist",
+  "agent": "Bio · Content · C2 Ch 6–8 (maker 6a)",
+  "date": "21 Nov 2026"
+ },
+ "review": {
+  "G-Learn": {
+   "result": "fail",
+   "by": "Fresh-eyes reviewer",
+   "role": "Learning designer",
+   "agent": "C2 G-Learn reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "objective": true,
+    "checks": false,
+    "refutes": true,
+    "terms": true,
+    "budget": true,
+    "adult": true
+   },
+   "lines": {
+    "obj": "ok",
+    "terms": "ok",
+    "q1": "ok",
+    "q2": "ok",
+    "q3": "fix: why names 'cranial and caudal' and 'amniotic cavity', not taught at General (General says head and tail). Use: 'The neuropores are the two ends of the tube, at head and tail, still open while the rest closes.'",
+    "m1": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok",
+    "shows_up": "ok"
+   },
+   "notes": "Both round-1 fixes landed: somites explained at General; q2 option no longer answers q3. One jargon why left."
+  },
+  "G-Sci": {
+   "result": "pass",
+   "by": "Fresh-eyes reviewer",
+   "role": "Research librarian",
+   "agent": "C2 G-Sci reviewer agent (round 2, batch A)",
+   "date": "21 Nov 2026",
+   "checklist": {
+    "cited": true,
+    "sections": true,
+    "accuracy": true,
+    "flags": true,
+    "plus": true,
+    "noapprox": true
+   },
+   "lines": {
+    "body.general.1": "ok",
+    "body.general.2": "ok",
+    "body.general.3": "ok",
+    "body.general.4": "ok",
+    "body.general.5": "ok",
+    "body.general.6": "ok",
+    "body.general.7": "ok",
+    "body.general.8": "ok",
+    "body.mbbs.1": "ok",
+    "body.mbbs.2": "ok",
+    "body.mbbs.3": "ok",
+    "body.mbbs.4": "ok",
+    "body.mbbs.5": "ok",
+    "body.mbbs.6": "ok",
+    "body.mbbs.7": "ok",
+    "body.mbbs.8": "ok",
+    "f1": "ok",
+    "f2": "ok",
+    "f3": "ok",
+    "f4": "ok",
+    "f5": "ok",
+    "f9": "ok",
+    "f6": "ok",
+    "f8": "ok",
+    "f7": "ok",
+    "m1": "ok",
+    "adult": "ok",
+    "r1": "ok",
+    "r2": "ok",
+    "r3": "ok"
+   },
+   "notes": "All three round-1 fixes landed: f7 VANGL is now 'E06.01 CC · R05w' ✔✔ in More with no 'beyond' label; f1 carries the brain + spinal cord fate (adult); new f9 (somites = paraxial mesoderm blocks, E06.02 ✔) supports body.general.5 and body.mbbs.6. ✚ f6/f8 R05l (Tier 1) in More, labelled."
+  }
+ },
+ "log": [
+  {
+   "date": "21 Nov 2026",
+   "ev": "drafted from research/dossiers/ch06-embryonic-period.md §2 + §5 #1",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8 (maker 6a)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 2 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci fail — 3 fix line(s)",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 1, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: f7 book fact (E06.01 CC · R05w ✔✔, label dropped), f1 adds brain + spinal cord fate (adult), new f9 somites (body.mbbs.6, terms: somites explained at General), q2 option 4 no q3 leak",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "round-1 fixes: body.general trimmed to budget",
+   "by": "Lead scientist · Bio · Content · C2 Ch 6–8"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Learn fail — 1 fix line(s)",
+   "by": "Learning designer · C2 G-Learn reviewer agent (round 2, batch A)"
+  },
+  {
+   "date": "21 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · C2 G-Sci reviewer agent (round 2, batch A)"
+  }
+ ]
+}
