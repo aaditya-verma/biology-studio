@@ -1,6 +1,6 @@
 # Pipeline reference — Expected vs Measured
 
-*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 21 Nov 2026 · Bio · Fix · L1 polish — §2 notochord fps row still open (T7b step 10). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — §2 notochord scene row (owner fps open, T8) + stills row. Before: 21 Nov 2026 · Bio · Build · M1b host results — §3 host rows from the v5 RESULTS.md, §5 log rows, §7 host kit (D-051). Before: 21 Nov 2026 · Bio · Fix · M1b merge — §1 idle row (P8 · 6 W · 43 °C, from M1b Step 1). Before: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
+*(Purpose: laptop, phone, tablet, desktop, render and voice numbers; build only on Measured. Updated: 21 Nov 2026 · Bio · Build · M1b v7c results — §3 host ship rows (720p render, size, laptop loudness, gates) + §5 row (D-062). Before: 21 Nov 2026 · Bio · Fix · L1 polish — §2 notochord fps row still open (T7b step 10). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — §2 notochord scene row (owner fps open, T8) + stills row. Before: 21 Nov 2026 · Bio · Build · M1b host results — §3 host rows from the v5 RESULTS.md, §5 log rows, §7 host kit (D-051). Before: 21 Nov 2026 · Bio · Fix · M1b merge — §1 idle row (P8 · 6 W · 43 °C, from M1b Step 1). Before: 20 Nov 2026 · Bio · Build · M1 bake-off (part 2) — Laptop 1 + toolchain recorded, §3 Measured, §5 log, §6 driver/FFmpeg pin; before: 19 Nov 2026 · Bio · Build · V1 viewer — §2 viewer rows; before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy (D-033): §2 phone + tablet + desktop, 1080p rows in §2–§3, §4 check 2.)*
 
 Rule C4: build only on the **Measured** column. Expected values are rough starting guesses, to be replaced by measurements (M1 onwards). Fill "Checked on" with date + device. Local-first on the owner's NVIDIA laptop (D-014, RULES C12).
 
@@ -66,7 +66,10 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | Local TTS voice 2 Piper `en_US-ryan-high`: same | — | CPU: 49.7 s total (includes Python start per call); **197 wpm** (fast for teaching). Quality + wrong terms: T1 | owner's MSI, 20 Nov 2026 · `out\hw.json` |
 | Subtitle drift over 90 s after alignment | < 100 ms | | |
 | **Host shot M1b-hs01 (Nani, 5 s, 150 frames, Eevee Next, AgX Punchy, cloth-sim shawl, library plate)** — shot render at 360×640, 8 samples | — | **93.4 s** (0.62 s/frame) · v5 preview | owner's MSI, 21 Nov 2026 03:53 · `tools\m1b-host\out\RESULTS.md` |
-| Host shot — same at 720×1280 ship (`m1b.py t1b`) | ~4× preview ≈ 6–8 min | **not measured** — v6 ship run pending (T1b) | |
+| Host shot — same at 720×1280 ship (`m1b.py t1b`) | ~4× preview ≈ 6–8 min | **584.5 s** (3.9 s/frame, 150 frames; whole `t1b` ≈ 11 min incl. sheet 54 s) · v7c ship | owner's MSI, 21 Nov 2026 21:23 · `out\render_stats_ship.json`, `timings.json` |
+| Host clip size, 5 s 720×1280 x264 (ship) | ≤ 12 MB/min (H8) | **0.59–0.61 MB** (clean / cap-hi / cap-en) ≈ 7.2 MB/min · v7c; v7b 0.57–0.59 MB | owner's MSI, 21 Nov 2026 · `out\RESULTS.md` |
+| Host loudness on the laptop, ship (two-pass `loud.py`) | −14 ±0.5 / ≤ −1.5 dBTP | **−14.05 LUFS / −1.98 dBTP** ×3 (gain +14.69 dB, limiter −2.5) · v7c; v7b −14.04 / −2.11 | owner's MSI, 21 Nov 2026 · `out\loudness.json` |
+| Host vs plate + captions, ship | ≥ 3:1 on ≥ 90 % · text ≥ 4.5:1 | front 91 %, A 100 %, B 98–99 % · captions 11.5:1 text / 7.4:1 key · v7c | owner's MSI, 21 Nov 2026 · `out\RESULTS.md` |
 | Host character sheet (8 tiles + cloth sim 70 frames) at preview | — | **55.8 s** (sim 32.4 s) · v5 | owner's MSI, 21 Nov 2026 · `out\build_log_sheet.json` |
 | Kokoro `af_heart` host line (4.6 s, speed 0.66) | — | load 3.2 s (warm) · synth 1.26 s · **143 wpm** · step 12.2 s | owner's MSI, 21 Nov 2026 · manifest v5 |
 | Host clip size, 5 s 360×640 x264 veryfast crf 20 | — | **0.29–0.30 MB** (clean / cap-en / cap-hi) | owner's MSI, 21 Nov 2026 · v5 |
@@ -90,6 +93,7 @@ Numbers measured on one laptop are labelled with it; a step built on Measured nu
 | 20 Nov 2026 | M1 kit run, Laptop 1 (`bakeoff.py all`) | Done: Cycles 44.8 min, Eevee 14.5 min, three.js 9 s for the 20 s shot; NVENC + x264 both OK; Kokoro + Piper OK; 3 blind clips. Method C (AI) not run. 1080p not timed | T1 on the phone; owner picks D-024/D-045; 1080p + Method C pending |
 | 20 Nov 2026 | Encode | Pascal NVENC (p5 cq 23) files 2.4–9× larger than x264 veryfast crf 23 and not faster at 20 s | Re-measure on a 90 s assemble in R1; default encoder per D-045 |
 | 21 Nov 2026 | M1b host kit v1–v5 previews, Laptop 1 (`m1b.py all --preview`) | 5 preview rounds 23:37 → 03:53 IST; v5: no failed parts, QA pass, but −15.17 LUFS (target −14) and ΔE on rendered px info-only | D-051: two-pass loudness, body-vs-plate gate + outline, per-clip manifests; owner runs `m1b.py t1b` (v6, 720p) |
+| 21 Nov 2026 | M1b host kit v7c `t1b`, Laptop 1 (720×1280) | QA PASS; shot 584.5 s; −14.05 LUFS / −1.98 dBTP; 0.59–0.61 MB / 5 s; T1b pass (owner phone) | M1b done (D-062); v8 look pass next |
 
 ## 6. Known setup facts
 - Book PDF: Langman 14e, 429 pp, ~211 MB; in Drive › Projects › Embryo Studio › book/ (uploaded 17 Nov 2026; keep private).
