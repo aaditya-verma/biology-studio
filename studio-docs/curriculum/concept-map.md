@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -324,29 +324,29 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E15.01.01 | Gut divisions and their arteries | A | SA | core | 22–28 | endo | gi | E06.03.02 | 22 |  | ≈ |
-| E15.02.01 | Molecular regionalisation of the gut | D | M | d |  | endo | gi | E06.03.02, E01.05.06 |  |  | ≈ |
-| E15.03.01 | Dorsal and ventral mesenteries | A | S | core | 28–35 | meso | gi | E07.03.01 | 2 |  | ≈ |
-| E15.04.01 | Oesophagus | B | S | s | 28–56 | endo | gi | E14.01.01 |  |  | ≈ |
-| E15.04.02 | Stomach rotation | A | F | core | 28–49 | endo | gi | E15.01.01 | 6 |  | ≈ |
-| E15.04.03 | Omenta and lesser sac | B | A | x | 35–70 | meso | gi | E15.04.02, E15.03.01 | 1 |  | ≈ |
-| E15.04.04 | Duodenum | B | S | x | 28–56 | endo | gi | E15.04.02 | 2 |  | ≈ |
-| E15.04.05 | Liver and gallbladder | A | SG | core | 22–42 | endo | gi | E15.01.01, E07.04.01 | 2 |  | ≈ |
-| E15.04.06 | Pyloric stenosis | C | C | x |  | endo | defects | E15.04.02 |  |  | ≈ |
-| E15.04.07 | Spleen | B | S | x | 35–56 | meso | gi | E15.04.03 |  |  | ≈ |
-| E15.05.01 | Molecular regulation of liver induction | D | M | d |  | endo | gi | E15.04.05, E01.05.04 |  |  | ≈ |
-| E15.05.02 | Biliary atresia and duct anomalies | C | C | s |  | endo | defects | E15.04.05 |  |  | ≈ |
-| E15.06.01 | Pancreas | A | S | core | 28–49 | endo | gi | E15.04.04 | 1 |  | ≈ |
-| E15.06.02 | Annular pancreas and pancreas divisum | C | C | x |  | endo | defects | E15.06.01 |  |  | ≈ |
-| E15.07.01 | Physiological umbilical herniation | A | F | core | 42–70 | endo | gi | E15.01.01 | 3 |  | ≈ |
-| E15.07.02 | Midgut rotation | A | F | core | 42–77 | endo | gi | E15.07.01 | 2 |  | ≈ |
-| E15.07.03 | Fixation and retroperitoneal parts | B | A | x | 70–84 | endo | gi | E15.07.02 |  |  | ≈ |
-| E15.07.04 | Midgut defects | C | C | x |  | endo | defects | E15.07.02 |  |  | ≈ |
-| E15.08.01 | Cloaca division | A | S | core | 28–49 | endo | gi | E15.01.01 | 7 |  | ≈ |
-| E15.08.02 | Anal canal: two origins | A | SA | core | 49–63 | multi | gi | E15.08.01 |  |  | ≈ |
-| E15.08.03 | Hindgut defects | C | C | x |  | multi | defects | E15.08.01, E06.01.04 |  |  | ≈ |
+| E15.01.01 | Gut divisions and their arteries | A | SA | core | 22–28 | endo | gi | E06.03.02 | 22 | AN52.6, AN47.9 | ⚑ |
+| E15.02.01 | Molecular regionalisation of the gut | D | M | d |  | endo | gi | E06.03.02, E01.05.06 |  | AN52.6 | ✔ |
+| E15.03.01 | Dorsal and ventral mesenteries | A | S | core | 28–35 | meso | gi | E07.03.01 | 2 | AN52.6, AN47.1, AN47.2, AN79.4 | ✔ |
+| E15.04.01 | Oesophagus | B | S | s | 28–56 | endo | gi | E14.01.01 |  | AN23.1, AN52.6 | ✔ |
+| E15.04.02 | Stomach rotation | A | F | core | 28–49 | endo | gi | E15.01.01 | 6 | AN52.6, AN47.5 | ⚑ |
+| E15.04.03 | Omenta and lesser sac | B | A | x | 35–70 | meso | gi | E15.04.02, E15.03.01 | 1 | AN47.1, AN47.2, AN52.6 | ✔ |
+| E15.04.04 | Duodenum | B | S | x | 28–56 | endo | gi | E15.04.02 | 2 | AN52.6, AN47.5 | ✔ |
+| E15.04.05 | Liver and gallbladder | A | SG | core | 22–42 | endo | gi | E15.01.01, E07.04.01 | 2 | AN52.6, AN47.5, AN47.8 | ⚑ |
+| E15.04.06 | Pyloric stenosis | C | C | x |  | endo | defects | E15.04.02 |  | AN52.6 | ⚑ |
+| E15.04.07 | Spleen | B | S | x | 35–56 | meso | gi | E15.04.03 |  | AN47.6, AN47.5 | ✔✔ |
+| E15.05.01 | Molecular regulation of liver induction | D | M | d |  | endo | gi | E15.04.05, E01.05.04 |  | AN52.6 | ✔ |
+| E15.05.02 | Biliary atresia and duct anomalies | C | C | s |  | endo | defects | E15.04.05 |  | AN52.6 | ✔ |
+| E15.06.01 | Pancreas | A | S | core | 28–49 | endo | gi | E15.04.04 | 1 | AN52.6, AN47.5 | ⚑ |
+| E15.06.02 | Annular pancreas and pancreas divisum | C | C | x |  | endo | defects | E15.06.01 |  | AN52.6 | ✔ |
+| E15.07.01 | Physiological umbilical herniation | A | F | core | 42–70 | endo | gi | E15.01.01 | 3 | AN52.6, AN52.4 | ⚑ |
+| E15.07.02 | Midgut rotation | A | F | core | 42–77 | endo | gi | E15.07.01 | 2 | AN52.6 | ⚑ |
+| E15.07.03 | Fixation and retroperitoneal parts | B | A | x | 70–84 | endo | gi | E15.07.02 |  | AN52.6, AN47.1 | ✔ |
+| E15.07.04 | Midgut defects | C | C | x |  | endo | defects | E15.07.02 |  | AN52.6 | ⚑ |
+| E15.08.01 | Cloaca division | A | S | core | 28–49 | endo | gi | E15.01.01 | 7 | AN52.6, AN49.2 | ✔✔ |
+| E15.08.02 | Anal canal: two origins | A | SA | core | 49–63 | multi | gi | E15.08.01 |  | AN48.2, AN49.2, AN52.6 | ✔ |
+| E15.08.03 | Hindgut defects | C | C | x |  | multi | defects | E15.08.01, E06.01.04 |  | AN52.6, AN48.2 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E15.04.07 — “The spleen is a gut (endoderm) organ.” · E15.07.01 — “Physiological herniation is an omphalocele.”
+*Misconceptions to refute (cited in the chapter dossier):* E15.04.07 — “The spleen is a gut (endoderm) organ.” · E15.07.01 — “Physiological herniation is an omphalocele.”
 
 ## E16 — Urogenital System · pp 256–283 · 23 concepts
 

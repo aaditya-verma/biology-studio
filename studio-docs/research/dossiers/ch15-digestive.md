@@ -1,0 +1,303 @@
+# Research dossier — Ch 15 · Digestive system (for C-step cards + episodes)
+
+*(Purpose: cited, marked facts, staging, misconceptions and clinical correlates for Ch 15, the sixth chapter of Part 2 and one of its longest — 11 sections, 5 clinical boxes, read region by region (tube and mesentery → foregut → liver, pancreas → midgut → hindgut). Cards draft from this file. Updated: 22 Nov 2026 · Bio · Research · X1 Ch 15 · by Aaditya. Own words only; no book sentences, figures or tables (RULES §G) — every list below is regrouped in our own order (by mechanism, by time or by adult destination), never the book's. Pattern: `ch14-respiratory.md`.)*
+
+**How to read a line:** fact in our words · `[book section · registry source]` · mark (RULES B6–B7): **✔✔** book + Tier 1 agree · **✔** book only · **⚑** book vs Tier 1 disagree (D-entry) · **✚** beyond the book (Tier 1 only; More / Tier D only, "beyond Langman") · **≈** blocks final. **Species tag:** a Tier 1 line from mouse, chick or rat says so (*mouse*). Those lines can confirm a mechanism; they never give a human day or number. **Rates** are per 10,000 births unless stated; "total" = live births + stillbirths + terminations, "live" = live births only.
+
+**Citation check, read before you cite:** checked 22 Nov 2026. `tools/card-check/citations.py` matches `R\d\d[a-z]{0,2}`, so the new ids **R05ga–R05hf** parse. Every PMID was grepped in the registry before its id was given (none was already there — R05gz and R05hd were found by DOI and their PMIDs added after G-Sci; R05ed and R05bs stay retired). `sources.json` is rebuilt in this commit (`check.py --write-sources`, D-065 (6)). Registry sources re-used: R05ae, R05af, R05ag (abdominal wall), R05ai (omental bursa), R05ak (liver stroma), R05ao (dorsal mesentery).
+
+**Ages — three clocks.** (1) The book's embryonic events are in **weeks or days after fertilization** (stomach in week 4, herniation in week 6, return in week 10, cloacal membrane gone at the end of week 7) and in **prenatal months** for fetal events (islets month 3, insulin about month 5), clock undefined — read as after fertilization (D-030). (2) The Kyoto, Maastricht and Carnegie specimen papers give **Carnegie stages**; matched here to the classic R08 day ranges (`tools/indexer/carnegie.json`: CS12 26–30 d, CS14 31–35, CS15 35–38, CS16 37–42, CS17 42–44, CS18 44–48, CS19 48–51, CS20 51–53, CS23 ~56–60). (3) Ultrasound papers use **gestational age from the last period**, about **2 weeks more** than the book's clock: the midgut hernia seen on a scan until "12 weeks of pregnancy" is the book's "returns in week 10". Every card number carries its clock.
+
+**Section locators (checked against the PDF, 22 Nov 2026; printed page = PDF page − 19):**
+- **E15.00** p 230 (opener shares the page with E15.01's heading).
+- **E15.01 pp 230–231:** four divisions and the yolk-sac link p 230; the midgut/hindgut boundaries and endoderm-vs-mesoderm jobs **p 231**. Recorded 230 only.
+- **E15.02 pp 231–232:** heading p 231; the RA gradient, regional transcription factors, SHH → HOX in the mesoderm **p 232**. Recorded 231 only.
+- **E15.03 pp 232–233:** old vs new definition of a mesentery p 232; continuous dorsal mesentery, Toldt fascia, ventral mesentery from the septum transversum, peritoneal reflections **p 233**. Recorded 232 only.
+- **E15.04 pp 233–242:** oesophagus 233–234, *oesophageal abnormalities* box **p 235**; stomach rotation 235–236, omental bursa, spleen and greater omentum 236–238; ventral mesentery and the portal pedicle 238–240; duodenum 240; liver and gallbladder 240–**242** (liver weight, haematopoiesis, bile, bile-duct shift); *stomach abnormalities* box **p 241**. Recorded 233–241.
+- **E15.05 pp 242–243:** liver induction p 242–243; the *liver and gallbladder abnormalities* box **p 243** sits here (it is about E15.04's liver and ducts; cards cite it as `E15.05 CC`, where I1 files it). Range right.
+- **E15.06 pp 244–245:** two buds, duct fusion, islets, insulin, molecular regulation p 244; the *pancreatic abnormalities* box **p 245**. Recorded 244 only.
+- **E15.07 pp 244–252:** midgut, primary loop, herniation, rotation, return, caecum and appendix pp 244–247; *mesenteries of the intestinal loops* **p 248**; its clinical box runs **pp 249–252** (mesentery defects, vitelline remnants, body-wall defects, rotation defects, duplications p 249; atresias and stenoses pp 251–252). Recorded 244–247.
+- **E15.08 pp 248–253:** heading and hindgut derivatives p 248; cloaca, urorectal septum, anal canal pp 252–253; *hindgut abnormalities* box **p 253**. Range right, but its first box (pp 249–252) is E15.07's.
+- **E15.09 pp 254–255** (Summary; recorded 254 only) · **E15.10** p 255.
+
+**I1 gaps** (tree.json) → I1 to-do:
+- **E15.01** ends p 231, not 230 · **E15.02** ends p 232, not 231 · **E15.03** ends p 233, not 232 · **E15.04** ends p 242, not 241 · **E15.06** ends p 245, not 244 · **E15.07** ends p 252 (text p 248, box pp 249–252), not 247 · **E15.09** ends p 255, not 254.
+- **Boxes mis-assigned:** I1 gives E15.07 one box and E15.08 two. The p 245 box is the **pancreas** box → `E15.06 CC`; the pp 249–252 box is the **midgut** box → `E15.07 CC`; only the p 253 box is the hindgut's → `E15.08 CC`. The liver box on p 243 stays `E15.05 CC` (where I1 files it).
+- Same shape as Ch 9–14: ranges stop at the last heading page; here, unusually, **every short opening section** also spills one page (two-column layout).
+
+---
+
+## 1. Staging & scale — gut tube to fixed bowel (RULES B2)
+Human anchors: **R05gf** (Kyoto MRI, 377 embryos: stomach CS16–23), **R05ai** (omental bursa CS13–21), **R05gh** (liver bud and veins, 3–10 wk), **R05gg** (liver volume CS14–23), **R05gi** (spleen, 228 embryos), **R05gm** (pancreatic buds CS15–23), **R05ga/R05gc** (Kyoto midgut CS14–23), **R05gb** (Maastricht midgut loops), **R05gd** (return phase, CRL 30–50 mm), **R05gk** (cloaca 4–10 wk), **R05gl** (anorectum CS11–23), **R05gp** (enteric crest 4–14 wk), **R05gq/R05gr** (ultrasound, LMP clock). Days are the book's unless a source is named.
+
+| When | Carnegie / clock | What happens `[section · source]` | Mark |
+|---|---|---|---|
+| End of week 4 (~day 28) | CS12–13 | Folding has closed the gut: **foregut and hindgut are blind tubes**, the **midgut opens into the yolk sac** through the vitelline duct; a thick dorsal mesentery begins to thin `[E15.01, E15.03 · R05ao]` | ✔✔ (Ch 7 staged this, R06 CS12–13) |
+| Book: mid-week 3 · specimens: ~day 23–30 | CS11–12 | **Liver bud** grows from the foregut endoderm into the septum transversum; by CS12 it is already a three-lobed bud in the septum, CS13 it wraps the vitelline veins, CS14 the umbilical veins `[E15.04 · R05gh, R05ak]` | **⚑ timing** (D-074 e — the book's own figure shows it at ~25 days) · ✔✔ that it grows into the septum |
+| Week 4 → 8 | CS13 → CS23 | **Stomach**: a spindle-shaped widening after CS13; cardia and angular notch by CS18; fundus and pylorus distinct ~CS20; greater curvature swings left and down while cardia and pylorus stay near the midline `[E15.04 · R05gf]` | ✔✔ timing · **⚑ the second rotation axis** (D-074 d) |
+| Week 5 | CS13 → CS21 | **Omental bursa** forms behind the stomach; the growing diaphragm cuts off its upper part (infracardiac bursa) at CS17–18 `[E15.04 · R05ai]` | **✔✔** bursa + timing · ✚ from four right-sided recesses (R05ai) |
+| Week 5 | CS14–17 → CS20 | **Spleen**: a bulge inside the dorsal mesogastrium, between its two layers (CS14–17), clearly an organ after CS20; blood-forming cells from CS18 `[E15.04 · R05gi]` | **✔✔** |
+| Weeks 5–7 | CS15 → CS17 | **Pancreas**: dorsal and ventral buds both present by CS15; the ventral bud has swung behind the duodenum by CS16; they begin to merge at CS17; head + uncinate from the ventral bud `[E15.06 · R05gm]` | **✔✔** (book: contact in week 6) |
+| Weeks 4 → 7 (after conception) | — | **Enteric neural crest** enters the foregut in week 4 and has reached the end of the hindgut by week 7 `[E15.08 CC · R05gp]` | ✚ (*human*; book gives no day) |
+| Week 6 | CS16–18 | **Primary intestinal loop** (hairpin around the superior mesenteric artery) by CS16–18; **herniation into the cord** obvious after CS17 `[E15.07 · R05ga, R05gc]` | **✔✔** (end of week 6) · **⚑ why** (D-074 b) |
+| Weeks 7–8 | CS19 → CS23 | Loop grows into **four secondary loops** (CS19–21), then up to ~19 **tertiary loops** (CS21–23); the loop moves around the artery only early, then lies across it `[E15.07 · R05gc, R05ga, R05gb]` | ✔✔ coiling during herniation · **⚑ the "270° rotation"** (D-074 a) |
+| Week 6.5 (book: end of week 7) | ~CS18–19 | **Cloacal membrane ruptures**: anal and urogenital openings separate `[E15.08 · R05gk]` | **✔✔** (6.5 vs 7 weeks) |
+| Month 2 | — | **Duodenal lumen** fills with cells, then reopens `[E15.04]` | ✔ (book only — no human source retrieved, §10) |
+| Week 10 (scan: ~10–12 wk gestation) | fetal, CRL ~30–50 mm | **Return** of the loops into the abdomen; jejunum first, caecum last; the ascending colon's mesentery sticks to the back wall soon after `[E15.07 · R05gd, R05gj, R05gq, R05gr]` | **✔✔** — scans: hernia always present at 8.5–10.5 wk gestation, gone in every fetus by 12 completed weeks (R05gq); still visible in 5 % at 12 wk (R05gr) |
+| Week 10 → month 3 | fetal | Liver ~**10 % of body weight** (blood forming); **bile** from ~week 12 colours the gut contents; **islets** in month 3 `[E15.04, E15.06 · R05go]` | ✔ liver weight + bile (book) · ✔✔ islets (R05go: islets with all four hormones at 12–13 wk after conception) |
+| ~Month 5 (book) | fetal | **Insulin secretion** begins `[E15.06 · R05go, R05gn]` | **⚑** (D-074 i: fetal β-cells already act as endocrine cells by the end of the first trimester) |
+| Birth | — | Liver ~5 % of body weight, only small blood-forming islands left `[E15.04]` | ✔ |
+
+**Scale for scenes (B2):** CS12 embryo ~3–5 mm; the herniation-phase embryo at ~8 weeks ~35 mm CRL (book figure value; R05gd's fetuses across herniation, transition and return span CRL 30–50 mm); the cloaca phase 4–10 weeks spans ~3–40 mm. Show the yolk stalk as a thread, not a tube, by week 6.
+
+---
+
+## 2. Tier A facts — cited and marked
+### E15.01.01 Gut divisions and their arteries · AN52.6, AN47.9
+- **One tube, three blood supplies.** After folding, the endoderm-lined gut runs from the mouth membrane to the cloacal membrane. Its parts are named by the artery that feeds them: **foregut — coeliac**, **midgut — superior mesenteric**, **hindgut — inferior mesenteric**. The duodenum straddles the foregut–midgut border, so it takes branches from both. `[E15.01, E15.04, E15.07]` **✔** (book; the border itself is ⚑ c below)
+- **Where the parts begin and end (adult anchors).** Foregut: pharynx (Ch 17) through oesophagus and stomach to the duodenum just above the bile-duct opening — plus the liver, gallbladder and pancreas buds. Midgut: from below the bile-duct opening to about **two-thirds of the way along the transverse colon**. Hindgut: the last third of the transverse colon, descending and sigmoid colon, rectum and the **upper** anal canal. `[E15.01, E15.09]` **✔** for the foregut–midgut border · **⚑ the midgut–hindgut border** (D-074 c): 36 human embryos and fetuses traced by mesentery and artery place it at the **rectosigmoid junction**, making the rectum the only hindgut descendant (R05gj). Card + Check keep the book's border (exam answer) until the owner picks.
+- **Two layers, two jobs.** **Endoderm** gives the lining epithelium and the working cells of the glands (liver cells, pancreatic acini and islets). **Splanchnic (visceral) mesoderm** gives the muscle coat, connective tissue, the stroma of the glands and the peritoneum. `[E15.01, E15.09]` **✔**
+- **The midgut stays open to the yolk sac** through the vitelline duct for a while; a leftover piece is the Meckel diverticulum (§4). `[E15.01, E15.07 CC]` **✔✔** (R06 CS12–13, Ch 7)
+
+### E15.03.01 Dorsal and ventral mesenteries · AN52.6, AN47.1, AN47.2, AN79.4
+- **The dorsal mesentery is one continuous sheet** from the lower oesophagus to the rectum. Where it stays free it keeps a name — from the bottom up: mesorectum, sigmoid mesocolon, mesoappendix, the small bowel's mesentery proper, transverse mesocolon and, highest, the greater omentum; where it lies down on the back wall (ascending and descending colon, duodenum, pancreas) it becomes short and is glued on by a fascial plane, **Toldt fascia**. `[E15.03, E15.07 · R05ao, R05hf]` **✔✔** (R05ao: continuous dorsal mesentery in human embryos; R05hf: the adult mesentery is one continuous, helical organ)
+- **The book drops the old "retroperitoneal / secondarily retroperitoneal" labels** as incorrect and treats every mesentery as part of one organ — continuity matters for surgery (planes) and for how infection spreads. `[E15.03]` **✔** · ✚ the surgical "continuous mesentery" model (R05hf)
+- **The ventral mesentery exists only up by the stomach and liver** and comes from the **septum transversum**. The liver splits it into the **lesser omentum** (stomach + first part of duodenum → liver; its free edge carries bile duct, portal vein and hepatic artery and roofs the epiploic foramen) and the **falciform ligament** (liver → front body wall; its free edge carries the umbilical vein → ligamentum teres). `[E15.03, E15.04]` **✔** (Ch 7 D-043 c teaching note applies: the septum makes the ventral mesentery and liver stroma, not the central tendon)
+- **Peritoneum** is one serous membrane: visceral on the organs, parietal on the wall; the old "ligaments" are **peritoneal reflections** (coronary, triangular, lienorenal, gastrolienal). The liver's **bare area** is where it touches the diaphragm and is never covered. `[E15.03, E15.04]` **✔**
+
+### E15.04.02 Stomach rotation · AN52.6, AN47.5
+- **The stomach starts as a spindle in week 4** and grows unevenly: its back (dorsal) wall grows faster and becomes the **greater curvature**; the front wall becomes the **lesser curvature**. `[E15.04 · R05gf]` **✔✔** (R05gf: widening after CS13; curvatures and incisura by CS18–21)
+- **First turn — around its long axis, 90° clockwise seen from above:** the original left side faces forward, so the **left vagus ends up on the front**, the right vagus on the back. `[E15.04 · R05gf]` **✔✔** longitudinal turn (R05gf: the stomach plane turns mainly around the longitudinal axis) · ✔ 90°, clockwise, vagi (book)
+- **Second movement — the stomach tilts:** the pylorus rises to the right, the cardia moves left and a little down, so the adult axis runs from upper left to lower right. `[E15.04 · R05gf]` **✔** for the end position · **⚑ the axis** (D-074 d): the human MRI series found the cardia–pylorus line turning around a **transverse** axis, not the front-to-back axis that textbooks draw; cardia and pylorus stayed near the midline while the greater curvature swung left and down.
+- **The turn drags the mesenteries:** the dorsal mesogastrium is pulled left, opening a space behind the stomach (**omental bursa / lesser sac**); the lesser omentum is pulled right. `[E15.04 · R05ai]` **✔** for the mechanism (book) · **✔✔** that the bursa exists behind the stomach by week 5 (R05ai) · ✚ human 3D work builds the bursa from **four right-sided recesses** of the coelom rather than from rotation alone (R05ai)
+
+### E15.04.05 Liver and gallbladder · AN52.6, AN47.5
+- **The liver is an outgrowth of gut endoderm.** A bud (hepatic diverticulum) grows from the end of the foregut into the **septum transversum**, the mesoderm plate between the heart and the yolk stalk. `[E15.04 · R05gh, R05ak]` **✔✔** that it grows into the septum (R05gh, *human*: by CS12 the bud has expanded into the septum as three lobes) · **⚑ when** (D-074 e): the text says the middle of week 3; its own figure shows the bud at ~25 days; human sources place it at CS11 (R05ak) and show a three-lobed bud in the septum at CS12 (~day 26–30, R05gh).
+- **Who makes what.** Endoderm → **liver cells (parenchyma)** and the **lining of the bile ducts**. Septum transversum mesoderm → connective tissue; the book also derives the **blood-forming cells** and **Kupffer cells** from it. `[E15.04 · R05ak]` ✔✔ connective tissue (R05ak: stroma from the septum from CS12) · ✔ blood-forming + Kupffer cells (book only — lead, §5 note m)
+- **Liver cords meet the veins.** The cords grow among the **vitelline and umbilical veins**, which become the **hepatic sinusoids**. `[E15.04 · R05gh]` **✔✔** that the veins are taken into the liver (R05gh, *human*: the liver wraps the vitelline veins at CS13 and the umbilical veins at CS14; both stay traceable inside it — no large-scale break-up, links D-068, §5 note k)
+- **The stalk becomes the bile duct;** a small outgrowth of it becomes the **gallbladder and cystic duct**. As the duodenum turns, the bile-duct opening moves from front to back. `[E15.04]` **✔**
+- **A blood-making fetal organ.** The liver makes blood cells for much of fetal life, which is why it is about **10 % of body weight at week 10** and about 5 % at birth; it starts making **bile at about week 12**. `[E15.04]` **✔** (book only; no human source retrieved for the weights, §10)
+
+### E15.06.01 Pancreas · AN52.6, AN47.5
+- **Two buds from the duodenum.** A **dorsal bud** grows into the dorsal mesentery; a **ventral bud** sits beside the bile duct. `[E15.06 · R05gm]` **✔✔** (R05gm, *human* 3D: both buds identified at CS15)
+- **The ventral bud swings round behind.** When the duodenum turns right into its C-shape, the ventral bud travels with the bile-duct opening round the back of the duodenum and settles **below and behind** the dorsal bud; then they fuse (book: week 6). `[E15.06 · R05gm]` **✔✔** (R05gm: in final position at CS16, merging from CS17)
+- **Who makes what.** Ventral bud → **uncinate process and lower head**; dorsal bud → the rest (upper head, neck, body, tail). `[E15.06 · R05gm]` **✔✔**
+- **Ducts join.** The **main duct (Wirsung)** = distal dorsal duct + the whole ventral duct, opening with the bile duct at the **major papilla**; the proximal dorsal duct either closes or stays as the **accessory duct (Santorini)** at the minor papilla. In about 1 in 10 people the two systems never join (pancreas divisum). `[E15.06 · R05hd]` **✔✔** (R05hd: pooled prevalence 11.1 %; 8.8 % in autopsy series, 5.6 % in healthy volunteers)
+- **Endocrine cells.** **Islets** appear in month 3 from the same parenchyma; book: insulin secretion from about month 5. `[E15.06 · R05go, R05gn]` **✔✔** islets (R05go: islet clusters with insulin, glucagon, somatostatin and PP at 12–13 wk after conception; maturity markers support β-cell function by the end of the first trimester — hormones were measured in tissue, not secretion) · **⚑ insulin timing** (D-074 i): endocrine differentiation begins ~8 wk (R05gn) and fetal β-cells act as true endocrine cells by the end of the first trimester (R05go).
+
+### E15.07.01 Physiological umbilical herniation · AN52.6, AN52.4
+- **The midgut grows faster than the abdomen.** The primary loop lengthens so quickly that in **week 6** it pushes out into the extra-embryonic coelom inside the umbilical cord — a **normal, temporary** hernia, not a defect. `[E15.07 · R05ga, R05gc]` **✔✔** (R05ga: herniation obvious after CS17)
+- **Why there's no room — book vs specimens (⚑ D-074 b).** Book: the big, fast-growing liver crowds the abdomen. Four human embryos with an absent or tiny liver (CS21, vs 2 controls) still had their gut in the cord — their abdominal cavity was smaller, yet herniation happened **independently of liver volume** (R05ge). Card + Check: "the gut outgrows the room in the abdomen" (true either way); the liver reason waits for the owner.
+- **It coils while it is out.** The small intestine forms loops in the cord (four secondary, then many tertiary loops); the large intestine lengthens but does not coil. The caecal bud appears in week 6. `[E15.07 · R05gc, R05gb]` **✔✔**
+- **It comes back in week 10** — jejunum first (settling on the left), the caecum last (right upper quadrant under the liver, then down to the right iliac fossa); the appendix forms from the tip of the caecal bud during that descent. `[E15.07 · R05gd, R05gb, R05gq]` **✔✔** (R05gd: return around CRL 40 mm and possibly longer than thought; R05gb: the caecal loop slides into the right lower abdomen only after return; R05gq: gone in every fetus by 12 completed weeks of pregnancy)
+- **Why the reason matters for exams:** while it is normal, a gut in the cord at 9–10 weeks after fertilization is **not** an omphalocele; an omphalocele is a hernia that **never returns** (Ch 7, §4 group 6). `[E15.07 CC · R05gq, R05gr]` **✔✔**
+
+### E15.07.02 Midgut rotation · AN52.6
+- **The book's model: 270° counterclockwise (seen from the front) around the superior mesenteric artery** — about **90° while out in the cord**, the remaining **180° during the return**. End result: duodenum behind the artery and to the left (duodenojejunal flexure), transverse colon in front of the duodenum, caecum on the right. `[E15.07]` **✔** as taught · **⚑ the mechanism** (D-074 a)
+- **What human 3D series show.** The loop circles the artery only early, then lies across it; by CS20 its start has moved ~180° in position while its end stayed put — explained by **uneven growth**, i.e. "rotation" is passive (R05ga). A second group argues **en-bloc rotation is a fallacy of schematic drawings**: secondary loops have fixed, pre-patterned positions, the return is a backward sliding, and malrotation is better explained by stunted secondary loops (R05gb); a Kyoto series confirms fixed secondary-loop borders (R05gc). `[E15.07 · R05ga, R05gb, R05gc]` — Tier 1 agrees on the **end positions**, not on a single 270° turn.
+- **Why the 270° rule still earns its place:** it predicts every adult position learners need (duodenum behind the SMA, transverse colon in front) and the classic malrotation patterns (§4 group 5). Cards teach the end positions first, the angle second. `[E15.07, E15.07 CC]` **✔**
+
+### E15.08.01 Cloaca division · AN52.6, AN49.2
+- **The cloaca is the shared end chamber.** The hindgut opens into its back part (future **anorectal canal**), the allantois into its front part (future **urogenital sinus**). Its floor is the **cloacal membrane** — endoderm touching ectoderm, no mesoderm between. `[E15.08 · R05gk]` **✔✔** the two passages · ✔ membrane make-up (book)
+- **A wedge of mesoderm, the urorectal septum,** comes to lie between the two parts; as caudal folding goes on its tip nears the membrane. `[E15.08 · R05gk, R05gl]` **✔✔** that a septum separates the two passages · ✚ how: human 3D data explain the separation by **unequal growth** — fast ventral/central growth, slow dorsal growth — rather than a septum descending to fuse (R05gk); no fusion of septum and membrane was seen (R05gl). The book does not claim fusion, so this is depth, not a ⚑.
+- **The membrane breaks at the end of week 7** (human 3D: 6.5 weeks), opening the anus and, in front, the urogenital sinus; the septum's tip becomes the **perineal body**. `[E15.08 · R05gk]` **✔✔**
+- **Getting the size of the back chamber wrong is what makes anorectal malformations:** a dorsal cloaca that is too small (book) / regresses too little or too much (R05gk) shifts the hindgut's opening forward into urethra or vagina, or leaves agenesis or atresia. `[E15.08 CC · R05gk]` **✔✔**
+
+### E15.08.02 Anal canal: two origins · AN48.2, AN49.2, AN52.6
+- **Upper part from endoderm, lower part from ectoderm.** The upper part (book: two-thirds) is hindgut endoderm; the lower part (one-third) comes from the ectoderm of the **anal pit (proctodeum)**; the thin anal membrane between them breaks down to join them. `[E15.08, E15.09]` **✔**
+- **The pectinate line marks the seam** — just below the anal columns, where the lining changes from **columnar to stratified squamous**. `[E15.08]` **✔**
+- **Two origins, two supplies:** above the line — **superior rectal artery** (from the inferior mesenteric, the hindgut artery); below — **inferior rectal arteries** (from the internal pudendal). Veins, lymph and nerves split the same way (book names the arteries; the rest is adult anatomy, AN48.2). `[E15.08 · R05gl]` **✔** arteries (book) · ✚ the internal sphincter forms from splanchnic mesenchyme descending to the pectinate line (R05gl, *human*)
+
+---
+
+## 3. Tier B–D facts (cards later; marked now)
+**Grouped by adult destination — the tube, the glands, the mesentery's organs — then the molecular layer; not the book's order.**
+
+| Concept | Fact (our words) | Cite | Mark |
+|---|---|---|---|
+| **The tube** | | | |
+| E15.04.01 Oesophagus (B) · AN23.1, AN52.6 | Starts short; **lengthens fast as heart and lungs descend** — needed so the stomach ends up below the diaphragm (too little → stomach pulled through the hiatus: congenital hiatal hernia). **Oesophageal stenosis** (usually the lower third: incomplete recanalization, vessel anomalies or a blood-flow accident) sits beside atresia in the box. Muscle coat from splanchnic mesoderm: **striated upper two-thirds (vagus), smooth lower third (splanchnic plexus)**. How it parts from the trachea → Ch 14 (D-072 a). | `[E15.04, E15.04 CC]` | ✔ (book only; the two-thirds split is the book's — ✚ adult texts vary on where striated muscle ends) |
+| E15.04.04 Duodenum (B) · AN52.6, AN47.5 | From the **end of the foregut + start of the midgut** (junction just below the liver bud) → supplied by coeliac **and** SMA branches. Turns into a **C-loop** with the stomach and, with the growing pancreatic head, swings right and lies on the back wall (except the duodenal cap, which keeps a mesentery). **Month 2: lumen fills with cells, then reopens.** | `[E15.04]` | ✔ (recanalization: no human source retrieved, §10) |
+| E15.07.03 Fixation and retroperitoneal parts (B) · AN52.6, AN47.1 | After return, the mesentery of the **ascending and descending colon** lies down on the back wall (Toldt fascia between the layers); jejunum, ileum, transverse and sigmoid colon keep free mesenteries; the whole stays **one continuous mesentery**. The appendix often ends up **behind the caecum or colon** (book: about half of people) because it forms during the caecum's descent. | `[E15.07 · R05gj, R05hf]` | ✔✔ continuity (R05hf) · ✚ the ascending colon's mesentery sticks to duodenum, stomach and dorsal pancreas soon after return in week 10 (R05gj) · ✔ appendix share (book) |
+| **The glands** | | | |
+| E15.05.01 Molecular regulation of liver induction (D) | All foregut endoderm **could** become liver but is held back by inhibitors from ectoderm, non-cardiac mesoderm and the notochord. **Cardiac mesoderm (FGF2) and nearby endothelium** lift the block; **BMPs from the septum transversum** make the endoderm ready to respond — induction by **removing a brake**. HNF3/HNF4 then help split hepatocyte vs bile-duct cells. | `[E15.05]` | ✔ (book; mechanism from *chick/mouse* work, no human Tier 1 retrieved) |
+| E15.05.02 Biliary atresia and duct anomalies (C) · AN52.6 | See §4 group 3. | `[E15.05 CC]` | ✔✔ rate |
+| E15.06.02 Annular pancreas and pancreas divisum (C) · AN52.6 | See §4 group 3. | `[E15.06 CC · R05hd]` | ✔ · ✔✔ divisum rate |
+| **Organs that grow in the mesentery** | | | |
+| E15.04.03 Omenta and lesser sac (B) · AN47.1, AN47.2, AN52.6 | **Lesser sac** = the space the stomach's turn opens behind it, reached through the **epiploic foramen** (under the free edge of the lesser omentum). **Greater omentum** = the dorsal mesogastrium bulging down from the greater curvature as a double apron over the colon and small bowel; its layers fuse into one sheet and its back layer fuses with the transverse mesocolon. Spleen tied to the left kidney (lienorenal) and stomach (gastrolienal) by reflections; the pancreas tail lies where the mesogastrium meets the back wall. | `[E15.04 · R05ai]` | ✔ rotation as the cause (book) · **✔✔** the bursa and its timing (R05ai, *human*: diaphragm cuts off the infracardiac bursa at CS17–18) · ✚ bursa from four right-sided recesses (R05ai) |
+| E15.04.07 Spleen (B) · AN47.6 | A **mesodermal** organ, not a gut bud: mesoderm cells multiply inside the dorsal mesogastrium, between its two layers, in **week 5**; it stays in that mesentery (lienorenal + gastrolienal reflections). **Accessory spleens** are common. | `[E15.04 · R05gi, R05he]` | **✔✔** (R05gi: bulge in the dorsal mesogastrium CS14–17, blood-forming cells from CS18) · ✚ accessory spleen in **11 %** of adults on CT (R05he) |
+| **Molecular layer (Tier D)** | | | |
+| E15.02.01 Molecular regionalisation of the gut (D) · AN52.6 | A **retinoic-acid gradient** (low at the pharynx, high at the colon) switches on a different transcription factor in each region — **SOX2** oesophagus + stomach, **PDX1** duodenum, **CDXC** small intestine, **CDXA** large intestine + rectum (chick names; the human gene family is CDX). The pattern is then **locked in by endoderm–mesoderm talk**: endodermal **SHH** sets a nested **HOX code** in the mesoderm, which tells the endoderm what to become. | `[E15.02, E15.09]` | ✔ (book; experimental basis *chick/mouse*) |
+| E15.06.01 (depth) Pancreas signals (D) | The **notochord and dorsal aorta** (FGF2, activin) **repress SHH** in the endoderm that becomes the dorsal bud; the ventral bud is induced by splanchnic mesoderm; **PDX1** rises; **PAX4 + PAX6** push cells to the endocrine lineage. | `[E15.06 · R05gn]` | ✔ (book; *mouse*-led) · ✚ in human embryos the notochord touches the dorsal foregut endoderm in week 4 before PDX1 appears, and NEUROG3 comes in a **single** wave from ~8 wk (unlike mouse) (R05gn) |
+| E15.04.05 (depth) Liver veins (D) | The **lineage view**: the vitelline and umbilical veins are engulfed whole and stay traceable inside the liver; the left-to-right shunts (ductus venosus, portal sinus) form **anew**. | `[E15.04 · R05gh]` | ✚ (*human* + pig/mouse comparison; links D-068) |
+
+---
+
+## 4. Clinical correlates — confirmed against Tier 1 (PubMed first)
+**Grouped by what went wrong: the tube didn't open · the muscle overgrew · a bud or duct went astray · a remnant stayed · the loop didn't turn or return · the wall didn't close · the cloaca or its nerves failed.** Rates per 10,000 births. Oesophageal atresia lives in Ch 14 (D-072 a; book's type split 90/4/4/1/1 repeated here, ✔✔ there).
+
+**Rates, side by side.** ✔✔ = same order of magnitude.
+
+| Lesion | Book | Tier 1 | Mark |
+|---|---|---|---|
+| Pyloric stenosis | "one of the most common" stomach anomalies; no rate | **20.1** per 10,000 live births (11 US programmes, 14.7 M births, 1999–2010; R05gs) · 1.9 per 1,000 (California; R05gt) | ✚ |
+| — age at presentation | most at **3–5 days** after birth | **95 % diagnosed at 3–12 weeks** (R05gt) | **⚑ D-074 j** |
+| Duodenal atresia | "most atresias are duodenal"; no rate | **3.08** total, 2.75 live (Finland 2004–17, R05gv); 25 % trisomy 21; heart defects are the commonest associated anomaly (36 % of them) | ✚ |
+| Small-intestinal atresia | **1 in 1,500** (≈ 6.7) | all small-intestinal atresia **1.6**, duodenal **0.9**, jejuno-ileal **0.7** (normal karyotype; 20 EUROCAT registers, 5.1 M births; R05gw) | **⚑ D-074 g** |
+| Extrahepatic biliary atresia | 1 in 15,000 (≈ 0.67) | **0.65** live (Texas, R05gx) · **1.46** (Taiwan, R05gy) — higher in East Asia | **✔✔** (Western rates) |
+| Intrahepatic duct atresia/hypoplasia | 1 in 100,000 | not retrieved | ✔ |
+| Pancreas divisum | ~10 % | **11.1 %** pooled; 5.6 % in healthy people (117 studies, R05hd) | **✔✔** |
+| Annular pancreas | no rate | not retrieved (§10) | ✔ |
+| Meckel diverticulum | **2–4 %** of people | **1.56 %** (95 % CI 0.98–2.28; 172 studies, R05gz) | **⚑ D-074 h** |
+| Malrotation | no rate | **2.86** (Hawaii registry; 94 % had other major defects — registered cases are the severe end; R05hc) | ✚ |
+| Omphalocele | 2.5 | **2.6** (R05ag) | ✔✔ (Ch 7) |
+| Gastroschisis | **1 in 10,000** (Ch 15) · ~3.5 (Ch 7) | **3.06**, rising (R05ae) | **⚑ D-074 f** |
+| Hirschsprung disease | no rate | **1.09** (31 EUROCAT registers, 12.1 M births; R05ha) | ✚ |
+| Anorectal malformations | rectourethral/rectovaginal fistulas **1 in 5,000** (≈ 2.0) | all ARM **3.26** total (ICBDSR, 24 programmes; ~60 % multiple or syndromic; R05hb) | ✔ (narrower category in the book) · ✚ total rate |
+| Accessory spleen | "common" (implied by AN47.6) | **11 %** on CT (R05he) | ✚ |
+
+**Group 1 — the tube didn't open (atresia and stenosis).**
+- **What it is:** a segment with no lumen (atresia) or a narrow one (stenosis). The duodenum is the commonest site; the colon is rarely affected. `[E15.07 CC · R05gw, R05gv]` **✔✔** (duodenal is the commonest small-bowel atresia)
+- **Two causes, by level.** Upper duodenum: the lumen fills in month 2 and **fails to reopen** (recanalization). Further down: a **vascular accident** — malrotation, volvulus, gastroschisis or omphalocele cuts the blood supply and a piece of bowel dies; newer work adds **HOX and FGF/FGF-receptor** misexpression during gut differentiation. `[E15.04, E15.07 CC]` **✔** (book; no human Tier 1 on mechanism)
+- **The shapes, by how much continuity is lost:** *partial obstruction* — a thin **web** across an otherwise intact bowel, or a **stenosis**; *complete break* — two blind ends joined only by a **fibrous cord**, or a **gap** where bowel is missing; the extreme break is **apple-peel atresia** (proximal jejunum; short bowel coiled round a mesenteric stub). Complete atresias far outnumber stenoses. `[E15.07 CC]` **✔** (the book gives per-shape percentages; cards quote none until a Tier 1 split is found)
+- **How it shows (clinical, Ch 9 link):** bilious vomiting in the newborn; on X-ray, a duodenal atresia gives the "double bubble" (map row). Duodenal atresia goes with **trisomy 21** in ~1 in 4, and heart defects are the commonest associated anomaly (R05gv). `[E15.04 · R05gv]` ✚ (the double bubble and trisomy link are not in this chapter's text)
+
+**Group 2 — the muscle overgrew: pyloric stenosis (E15.04.06).**
+- **What it is:** the pyloric muscle thickens — chiefly its **circular** layer — narrowing the outlet → **forceful (projectile) vomiting**; rarely the pylorus is atretic. `[E15.04 CC]` **✔**
+- **Not only a fetal defect:** a **postnatal exposure** — **erythromycin in the first days** — raises the risk, so some cases arise after birth. `[E15.04 CC · R05gu]` **✔✔** (R05gu, 9 studies: OR 2.45 overall, **OR 12.9 if given in the first 14 days**)
+- **When it shows (⚑ D-074 j):** book — most cases at 3–5 days; population data — 95 % diagnosed at **3–12 weeks** (R05gt). Classic male excess. `[E15.04 CC · R05gt, R05gs]`
+- **Other stomach anomalies** (duplications, prepyloric septum) are rare. `[E15.04 CC]` **✔**
+
+**Group 3 — a bud or duct went astray (liver, gallbladder, pancreas).**
+- **Extrahepatic biliary atresia** — the extrahepatic ducts (which pass through a solid phase) do not open, or are obliterated; about 1 in 15,000; 15–20 % have open proximal ducts and a correctable defect, the rest need a **liver transplant** to survive (book). `[E15.05 CC · R05gx, R05gy]` **✔✔** rate · ✚ commoner in East Asia (Taiwan 1.46) and in girls; associated with maternal pregestational diabetes (R05gx)
+- **Intrahepatic duct atresia/hypoplasia** — rare (~1 in 100,000), possibly after fetal infection; can be lethal but usually runs a long, benign course. `[E15.05 CC]` **✔**
+- **Liver and gallbladder:** odd lobes, **accessory hepatic ducts** and a **double gallbladder** are common and usually silent. `[E15.05 CC]` **✔**
+- **Annular pancreas** — the ventral bud is in two halves that normally move together; if the left half goes the **wrong way round** the duodenum, a **ring of pancreas** encircles it and can narrow or block it. `[E15.06 CC]` **✔** (no population rate retrieved)
+- **Pancreas divisum** — the dorsal and ventral ducts never join (~1 in 10; book's figure ✔✔, R05hd).
+- **Accessory (ectopic) pancreatic tissue** — anywhere from the lower oesophagus to the tip of the primary loop; most often in the **stomach wall** and in a **Meckel diverticulum**. `[E15.06 CC]` **✔**
+
+**Group 4 — a remnant stayed: the vitelline duct (E15.07.04).**
+- **Meckel (ileal) diverticulum** — a pouch from the **antimesenteric** wall of the ileum, ~40–60 cm from the ileocaecal valve; usually silent, but **ectopic gastric or pancreatic tissue** can ulcerate, bleed or perforate. `[E15.07 CC · R05gz]` **✔✔** for the description · **⚑ frequency** (D-074 h: book 2–4 % vs pooled 1.56 %) · ✚ ectopic gastric mucosa in > 40 % of children's diverticula (R05gz)
+- **Vitelline cyst** — both ends become fibrous cords, the middle swells; loops can twist round the cords (**volvulus**). **Vitelline (umbilical) fistula** — the duct stays open all the way: stool at the navel. `[E15.07 CC]` **✔**
+
+**Group 5 — the loop didn't turn, return or stick down (E15.07.04).**
+- **Malrotation** — if the loop turns only 90°, the colon and caecum come back first and settle on the **left**, the small bowel on the right (a **left-sided colon**); a loosely anchored bowel can twist — **volvulus** — and strangle its own blood supply. `[E15.07 CC · R05hc]` **✔** · ✚ registry rate 2.86 (R05hc) · R05gb proposes stunted secondary loops, not a short turn, as the cause (part of ⚑ D-074 a)
+- **Reversed rotation** — the loop turns 90° **clockwise**: the transverse colon passes **behind** the duodenum and the SMA. `[E15.07 CC]` **✔**
+- **Mobile colon** — the ascending colon fails to stick to the back wall → it can twist (caecal volvulus) or leave **retrocolic pockets** where small bowel gets trapped (retrocolic hernia). `[E15.07 CC]` **✔**
+- **Duplications and cysts** — anywhere, most often in the ileum. `[E15.07 CC]` **✔**
+
+**Group 6 — the wall didn't close or the loop didn't return (Ch 7 owns the pair).**
+- **Omphalocele** = the herniated loop **never comes back**: viscera (bowel, sometimes liver, stomach, spleen) in a **sac of amnion** at the navel; rate 2.5 (R05ag 2.6 ✔✔); high mortality and many associated defects (heart, neural tube; chromosomal in ~15 % of live-born). `[E15.07 CC · R05ag]` ✔✔ rate · ✔ the rest (Ch 7 carries R05ag's mortality figures)
+- **Gastroschisis** = a **body-wall closure** defect beside the cord (usually **right**), bowel **uncovered** in amniotic fluid; young mothers; few associated defects and good survival. Rate ⚑ D-074 f (this chapter's 1 in 10,000 contradicts Ch 7's ~3.5 and R05ae's 3.06). Associated-defect figures → D-043 d. `[E15.07 CC · R05ae, R05af]`
+
+**Group 7 — the cloaca or its nerves failed (E15.08.03).**
+- **Anorectal malformations** — a too-small dorsal cloaca or a septum that stops short opens the hindgut **forward**: **rectourethral** (boys) or **rectovaginal** fistula (girls); **rectoperineal** fistulas and atresias leave a thin tube or a cord to the skin; an **imperforate anus** is a membrane that never broke. `[E15.08 CC · R05gk, R05hb]` **✔✔** dorsal-cloaca mechanism for agenesis/atresia (R05gk) · ✔ the fistula routes (book) · ✚ all ARM 3.26 per 10,000, ~60 % with other defects (R05hb)
+- **Hirschsprung disease (congenital aganglionic megacolon)** — no **parasympathetic ganglion cells** in the distal bowel wall because **neural crest** cells did not colonise it; **RET** mutations are one cause; the **rectum** is involved in most cases (clinically, essentially always) and in most the gap reaches only the **mid-sigmoid**; longer and total-colon forms are the minority. `[E15.08 CC · R05gp, R05ha]` **✔✔** crest origin (R05gp) · ✚ timing (R05gp, *human*: crest reaches the terminal hindgut by week 7 — the last place colonised is the place most often missed) · ✚ rate 1.09 per 10,000 (R05ha) · ✔ the segment percentages (book; no population source retrieved, §10)
+
+---
+
+## 5. ⚑ Watch items → decision D-074 (owner picks)
+- **(a) Midgut rotation: one 270° turn, or the result of growth?** Book: the loop turns 270° counterclockwise around the SMA (90° outside, 180° on return). Human 3D: the loop circles the artery only early, its start moves ~180° by CS20, its end barely moves; the movement is passive, from uneven growth (R05ga). A second human series calls en-bloc rotation "a fallacy of schematic drawings" — secondary loops are pre-patterned and slide back in (R05gb); secondary-loop borders are fixed (R05gc). Both agree on the **adult end positions**. Options: (1) default — book angle on card and Check; (2) card teaches the end positions + "270° as the classic summary", the growth view in More; (3) drop the angle from cards. *Recommended (2)* — 270° is still the exam answer and predicts malrotation patterns; the growth view is the truer mechanism.
+- **(b) Why the gut herniates.** Book: the liver's growth makes the abdomen too small. Human embryos with liver agenesis or hypoplasia still herniate (R05ge). Options: (1) default; (2) card: "the gut grows faster than the abdomen" (no liver), book reason in More. *Recommended (2).*
+- **(c) Where the midgut ends.** Book: two-thirds of the way along the transverse colon (from the right). R05gj (2026, 36 human embryos/fetuses): the thin midgut mesentery and the IMA trunk put it at the **rectosigmoid junction**; the rectum is the only hindgut descendant. One group, recent. Options: (1) default (exam answer; the artery rule and AN47.9 unchanged); (2) default + one More line; (3) teach the new boundary. *Recommended (2).*
+- **(d) The stomach's second movement.** Book: a turn around the anteroposterior axis lifts the pylorus right and moves the cardia left. R05gf (377 human embryos, MRI): the cardia–pylorus line turns around a **transverse** axis; cardia and pylorus stay near the midline; the greater curvature moves left and down. The first (longitudinal, 90°) turn agrees. Options: (1) default; (2) card: the 90° longitudinal turn + "the stomach then tilts so its outlet sits right and higher", no named second axis; both models in More. *Recommended (2).*
+- **(e) When the liver bud appears.** Book text: the middle of week 3; its own figure: ~25 days (3 mm); human specimens: a lobed bud already in the septum at CS12 (~26–30 days) (R05gh), stroma from CS12 (R05ak). R05ak places hepatic-diverticulum development at **CS11** (~day 23–26; for human CS11–13 it leans on earlier literature). Options: (1) default; (2) card: "early in week 4 (about day 24–26, CS11–12)", book text in More. *Recommended (2)* — "mid-week 3" precedes the foregut it grows from; the figure and specimens agree with each other.
+- **(f) Gastroschisis rate — the book contradicts itself.** Ch 15 box: 1 in 10,000; Ch 7 box: ~3.5 per 10,000; R05ae (ICBDSR, 27 programmes): 3.06 and rising. Options: (1) cards quote Ch 7's figure (already ✔✔, D-043), with this chapter's in More as superseded; (2) quote both. *Recommended (1).* Links D-043 (d stays as is).
+- **(g) Small-intestinal atresia rate.** Book: equal in jejunum and ileum, 1 in 1,500 births (≈ 6.7 per 10,000; the sentence can be read as the jejuno-ileal or the all-atresia rate). EUROCAT (R05gw): all small-intestinal atresia 1.6, duodenal 0.9, jejuno-ileal 0.7 (normal karyotype); Finland duodenal 3.08 total (R05gv). R05gw counts normal-karyotype cases only (21 % chromosomal excluded), so the all-atresia reading is about **2–4× too high**; the jejuno-ileal reading more. Options: (1) default; (2) card: "about 1 in 3,000–6,000 births; the duodenum is the commonest site", book figure in More. *Recommended (2).*
+- **(h) Meckel diverticulum frequency.** Book: 2–4 %; pooled 1.56 % (CI 0.98–2.28; R05gz). Options: (1) default; (2) card: "about 1–2 in 100 people", book in More. *Recommended (2)* — close: the book's range sits mostly above the pooled interval and overlaps it only at 2.0–2.3 %, so this is a mild ⚑ (the owner may treat it as a wording note).
+- **(i) When insulin starts.** Book: islets in month 3 (✔✔), insulin secretion from about month 5. R05go: islets with all four hormones and maturity markers at 12–13 wk after conception — "true endocrine cells by the end of the first trimester"; R05gn: endocrine differentiation from ~8 wk. Options: (1) default; (2) card: "islets and insulin from about month 3", book's month 5 in More. *Recommended (2).*
+- **(j) When pyloric stenosis shows.** Book: most cases present 3–5 **days** after birth. Population data: 95 % diagnosed at **3–12 weeks** (California, 1,963 cases; R05gt); the classic clinical teaching is 2–8 weeks. Probably a **slip for "weeks"**. The p 241 page image was checked (G3): it does read "days". Options: (1) default; (2) card: "usually diagnosed at 3–12 weeks after birth" (R05gt), book text in More. *Recommended (2)* — an examiner would mark "3–5 days" wrong.
+
+- **(k) Links, not new ⚑ (note):** **D-043** — (a) Ch 15 repeats the body-wall-closure account of gastroschisis (no new evidence); (c) Ch 15 confirms the septum transversum gives the ventral mesentery and liver stroma (consistent with the teaching note); (d) Ch 15 says gastroschisis has no chromosomal or severe associated defects — consistent; the **new** rate conflict is (f) here. **D-072 a** — Ch 15 restates the septum and adds "posterior deviation of the septum or a mechanical push" as the EA cause; no new evidence. **D-068** — Ch 15 says liver cords and the vitelline/umbilical veins "form" the sinusoids; R05gh (*human*) finds the veins engulfed whole and traceable, with the shunts forming anew — refines Ch 13's E13.08.04 "break the veins up" wording; a More line, not a new ⚑ (one study). **D-030** — clocks as in the header.
+- **(l) Curriculum note:** see §7 — one AN code (AN52.6) covers all gut development; AN52.4 (abdominal wall) is **non-core**; no AN code names pyloric stenosis, Meckel, malrotation, biliary atresia or Hirschsprung (it appears only in **PY4.9**, physiology).
+- **(m) Lead, not a ⚑ — Kupffer and blood cells:** the book derives the liver's blood-forming and Kupffer cells from septum transversum mesoderm; current lineage work (mostly *mouse*) traces Kupffer cells to **yolk-sac-derived macrophages** and fetal-liver blood stem cells to cells that **colonise** the liver from elsewhere. No human Tier 1 retrieved that states it — find one before any card change (§10).
+- **(n) Note — the urorectal septum:** human 3D work explains cloacal division by unequal growth, with no septum–membrane fusion (R05gk, R05gl); the book does not claim fusion, so this is ✚ depth on E15.08.01, not a conflict.
+
+Until decided: cards, Checks and scenes give the **book answer**; More carries "⚑ Newer evidence (D-074)" lines; every age carries its clock.
+
+**Not a ⚑:**
+- **Herniation and return timing** — book weeks 6 and 10 vs CS17+ (R05ga) and scans gone by 12 wk gestation (R05gq): same events, two clocks.
+- **Pancreatic bud fusion** (week 6 vs CS16–17, R05gm), **spleen** (week 5 vs CS14–17, R05gi), **cloacal membrane** (end of week 7 vs 6.5 wk, R05gk) — agree within a stage.
+- **Omphalocele rate, biliary atresia rate, pancreas divisum** — book and Tier 1 agree (§4).
+- **The book's "new" mesentery model** — the book already teaches the continuous mesentery (R05hf agrees).
+
+---
+
+## 6. Top student misconceptions (refute in cards and Checks — craft §3.4)
+1. **"The gut in the cord at week 6–10 is a defect."** (map row) It is a **normal, temporary** hernia; it becomes a defect (omphalocele) only if it **does not return** `[E15.07, E15.07 CC · R05ga, R05gq]` ✔✔.
+2. **"It herniates because the liver pushes it out."** The gut simply outgrows the room; human embryos without a normal liver still herniate `[E15.07 · R05ge]` ⚑ D-074 b (*Checks ask "normal or abnormal?", never "why"*).
+3. **"Physiological herniation, omphalocele and gastroschisis are the same thing."** (map row) Herniation = normal and returns; omphalocele = never returned, **in the cord, covered by amnion**; gastroschisis = a **wall defect beside the cord, uncovered** `[E15.07 CC · R05ae, R05ag]` ✔✔.
+4. **"The midgut rotates 90°."** The classic total is **270° counterclockwise** (90 out, 180 on the way back); **90° only** is a malrotation `[E15.07, E15.07 CC]` ✔ · ⚑ D-074 a on mechanism (*Checks ask the total and direction, which are the book's*).
+5. **"Clockwise or counterclockwise doesn't matter."** Reversed (clockwise) turning puts the **transverse colon behind the duodenum and SMA** `[E15.07 CC]` ✔.
+6. **"The liver comes from mesoderm (the septum transversum)."** (map row) Liver **cells and bile-duct lining are endoderm** — a gut bud; the septum gives the scaffold `[E15.04 · R05gh, R05ak]` ✔✔.
+7. **"The pancreas forms from one bud."** (map row) **Two buds** — dorsal and ventral — that meet behind the duodenum; the ventral one makes the **uncinate process** `[E15.06 · R05gm]` ✔✔.
+8. **"The spleen is a gut organ."** (map row) It is **mesoderm** grown in the dorsal mesogastrium — it hangs in the gut's mesentery and gets a foregut-territory artery, but it is not a gut bud `[E15.04 · R05gi]` ✔✔.
+9. **"The stomach's left vagus stays on the left."** The 90° turn brings it to the **front** (anterior vagal trunk) `[E15.04]` ✔ (✔✔ only for the longitudinal turn itself, R05gf).
+10. **"The lesser sac is a separate cavity."** It is part of the one peritoneal cavity, opened behind the stomach (book: by its turn), and joined to the greater sac through the **epiploic foramen** `[E15.04 · R05ai]` ✔ (✚ R05ai builds it from right-sided recesses).
+11. **"Retroperitoneal organs have no mesentery."** Many (duodenum, pancreas, ascending/descending colon) had one and **laid it down** on the back wall (Toldt fascia); the mesentery stays **one continuous organ** `[E15.03, E15.07 · R05hf]` ✔✔.
+12. **"The ventral mesentery runs the whole length of the gut."** Only near the stomach and liver — it is septum transversum `[E15.03]` ✔.
+13. **"The duodenum belongs to the foregut."** Its first part does; the rest is **midgut** — hence coeliac **and** SMA branches `[E15.04]` ✔.
+14. **"An atresia is always a missed hole."** Upper duodenal atresias may be failed **recanalization**, but most further down follow a **blood-supply accident** (volvulus, malrotation, gastroschisis) `[E15.04, E15.07 CC]` ✔.
+15. **"Pyloric stenosis shows in the first days of life."** Usually at **3–12 weeks**; the book's "3–5 days" is the ⚑ `[E15.04 CC · R05gt]` ⚑ D-074 j (*no age in Checks until decided*).
+16. **"The whole anal canal is gut."** Upper part = **endoderm** (superior rectal artery), lower part = **ectoderm** (inferior rectal arteries); the **pectinate line** is the seam `[E15.08]` ✔.
+17. **"Hirschsprung disease is a muscle problem."** It is a **missing nerve-cell** problem: crest cells never reached the end of the bowel, so that segment can't relax `[E15.08 CC · R05gp]` ✔✔ (origin; ✚ timing).
+18. **"Meckel diverticulum is a remnant of the allantois / urachus."** It is the **vitelline (yolk) duct** — on the ileum, not the bladder `[E15.07 CC]` ✔.
+19. **"The urorectal septum zips down and fuses with the cloacal membrane."** (More / Tier D, beyond Langman) Human 3D work shows **no fusion**; unequal growth separates the passages, then the membrane breaks `[E15.08 · R05gk, R05gl]` ✚.
+
+---
+
+## 7. Curriculum map (R30 — NMC AN table; source note below)
+**Source note:** read from **NMC *Competency Based UG Curriculum Vol I*** (`UG-Curriculum-Vol-I.pdf`, staged from Studio home `references\nmc\`, 22 Nov 2026 — the D-069 folder now holds it). Vol I is the **2018** text; the 2024 MGMUHS reprint is not in `references\`, so **2024 wording is unchecked** (§10).
+
+**Where the gut sits (the prompt's guesses, checked):**
+- **AN52.6** — development and congenital anomalies of **foregut, midgut and hindgut** (core) ✔ — one code for the whole chapter; cards must not claim a finer code.
+- **AN52.4** — development of the **anterior abdominal wall** ✔ — but **non-core (N)** in Vol I; tagged on herniation (omphalocele/gastroschisis).
+- **AN52.5** diaphragm (Ch 7/14) — not tagged here. **AN52.7** urinary development — the urogenital-sinus side of the cloaca belongs to Ch 16.
+- **AN47 "Abdominal cavity" (adult):** **AN47.1** lesser and greater sac (boundaries, recesses) · **AN47.2** peritoneal folds and pouches · **AN47.5** major abdominal viscera (position, relations, blood supply…) · **AN47.6** anatomical basis of **accessory spleens** (and others) · **AN47.8** portal vein · **AN47.9** coeliac, superior and inferior mesenteric arteries.
+- **AN48.2** pelvic viscera (incl. rectum + anal canal) · **AN49.2** perineal body · **AN49.5** perianal abscess, anal fissure (non-core).
+- **AN23.1** oesophagus (adult) — tagged on E15.04.01. **AN52.1** GI histology — not tagged (adult microanatomy).
+- **AN79.4** intra-embryonic coelom — tagged on the mesentery row (E15.03.01).
+- **Not in the AN table:** pyloric stenosis, duodenal/intestinal atresia, biliary atresia, annular pancreas, Meckel diverticulum, malrotation/volvulus, anorectal malformations, Hirschsprung disease — all fall under AN52.6's "congenital anomalies" without names. **Hirschsprung** appears only in **PY4.9** (physiology of motility disorders). → **D-074 (l)**, a curriculum note.
+- **Where the 2018 wording differs from the prompt's shorthand:** AN47–AN49 are the **adult** abdomen, pelvis and perineum (no development codes there); AN52.4 is non-core.
+
+Mapping:
+- E15.01.01 → **AN52.6, AN47.9** · E15.02.01 → **AN52.6** · E15.03.01 → **AN52.6, AN47.1, AN47.2, AN79.4**
+- E15.04.01 → **AN23.1, AN52.6** · E15.04.02 → **AN52.6, AN47.5** · E15.04.03 → **AN47.1, AN47.2, AN52.6** · E15.04.04 → **AN52.6, AN47.5** · E15.04.05 → **AN52.6, AN47.5, AN47.8** · E15.04.06 → **AN52.6** · E15.04.07 → **AN47.6, AN47.5**
+- E15.05.01 → **AN52.6** · E15.05.02 → **AN52.6**
+- E15.06.01 → **AN52.6, AN47.5** · E15.06.02 → **AN52.6**
+- E15.07.01 → **AN52.6, AN52.4** · E15.07.02 → **AN52.6** · E15.07.03 → **AN52.6, AN47.1** · E15.07.04 → **AN52.6**
+- E15.08.01 → **AN52.6, AN49.2** · E15.08.02 → **AN48.2, AN49.2, AN52.6** · E15.08.03 → **AN52.6, AN48.2**
+
+Codes sit on the Ch 15 rows of `tools/map/research.txt` → map.json `an`.
+
+## 8. Scene note — visual references (look, don't copy — RULES G5)
+- **Gut tube and arteries (CS12–14):** one tube, three coloured territories by artery (coeliac / SMA / IMA) with a label and pattern each (H5); end on the adult abdomen with the same three territories (D4).
+- **Stomach (CS13–23):** use R05gf's view — cardia and pylorus near the midline, greater curvature swinging left and down; show the vagal trunks turning to front/back. Cross-section at the end: stomach, lesser sac behind, spleen in the mesogastrium (D9).
+- **Liver bud (CS12–14):** a three-lobed bud in the septum wrapping the vitelline then umbilical veins (R05gh, look only); B2 stamp "≈ day 26–30 · CS12".
+- **Pancreas (CS15–17):** two buds, the ventral one riding round the back with the bile duct (R05gm); end on the adult head/uncinate split.
+- **Midgut (CS16 → week 10):** R01 3D Atlas + R05ga/R05gc loop reconstructions (look only); show the hairpin around the SMA, the cord, coiling, the return; the 270° as a dial overlay labelled "classic model" (⚑ D-074 a), never as the only truth. B2: "not to scale" for the cord.
+- **Cloaca (weeks 4–7):** R05gk-style growth: the ventral part balloons, the dorsal part lags; membrane breaks at ~6.5–7 wk; perineal body at the septum's tip.
+- **Never from the book:** its divisions, mesentery, stomach-rotation, omentum, liver, pancreas, rotation, atresia, cloaca and fistula figures and the EA type drawings are copyrighted; every one is redrawn by us (D6, visual-style §16). The two ultrasound and two newborn photographs in the book are not reproduced; real imaging only per §16 (CC0/CC BY/PD).
+
+## 9. Why learners struggle here (M05)
+- **Rotation in 3D, taught in 2D.** Use one rule — "turn counterclockwise around the SMA as seen from the front" — and the end positions, not the frames.
+- **Mesentery vocabulary** (mesogastrium, omenta, reflections, Toldt) is a wall of names: anchor every name to "the same single mesentery, renamed where it attaches".
+- **Germ layers again:** endoderm lining and gland cells, mesoderm everything else (as Ch 14). The spleen is the trap.
+- **Three clocks:** "week 10" (book) = "12 weeks of pregnancy" on a scan — the herniation vs omphalocele trap on first-trimester scans.
+- **Similar names, different bags:** omphalocele vs gastroschisis; vitelline vs urachal remnants (Ch 16); annular pancreas vs pancreas divisum.
+
+## 10. X1 to-do — done 22 Nov 2026, with open items
+- Done: real locators + seven I1 range gaps and two mis-assigned boxes; staging from human specimens matched by Carnegie stage (R05gf, R05ai, R05gh, R05gi, R05gm, R05ga, R05gc, R05gd, R05gk, R05gp) and by stated clock for scans (R05gq, R05gr); Tier A for all ten Tier A concepts; Tier B–D table by destination; clinical correlates in seven mechanism groups with **rates per 10,000** for every requested lesion but annular pancreas; 19 misconceptions; AN map from NMC Vol I (2018); ⚑ D-074 a–j, notes k–n; 32 sources **R05ga–R05hf**; Ch 15 rows in `research.txt`; map + concept map rebuilt.
+- **Duodenal recanalization:** no human Tier 1 retrieved for the solid stage (book month 2) — E15.04.04 stays ✔.
+- **Annular pancreas** population rate: not retrieved.
+- **Hirschsprung segment shares** (rectosigmoid ~80 %, total colon ~3 %): no population source retrieved — ✔ book.
+- **Kupffer / blood-cell origin** (note m): find a human Tier 1 source.
+- **Liver weight 10 % → 5 %**, **bile at week 12**: no human source retrieved.
+- **O'Rahilly 1978** (*human* digestive timing by stage, PMID 677467): no abstract — full text would give first-appearance stages for every bud (download to `references\papers\` if wanted).
+- **Full texts not read:** R05gb, R05gc, R05gj (free in PMC — would confirm the rotation and boundary claims beyond the abstracts), R05gn, R05go.
+- **Inferior mesenteric artery origin** (Ch 13 lead): R05gj's IMA trunk finding does not settle vitelline vs umbilical origin.
+- **R01 3D Atlas:** check the CS15–23 gut models (stomach, pancreas buds, herniated loop) before the rotation scene (look only, NC-ND).
+- **2024 wording** of AN47/AN52 (MGMUHS reprint): not in `references\`.
+- **Links file:** K2 `links.txt` has no Ch 15 rows yet (becomes/defect links can now cite this dossier — a K-step task, not X1).
+- **Carried, not reopened:** D-043 (a, c, d), D-072 a, D-068, D-030 — see §5 (k).
+- **G-Sci (22 Nov 2026, fresh-eyes Research-librarian + embryologist agent):** **pass with fixes — 10 MUST and 12 SHOULD, all applied in this chat.** MUSTs: artery rule ✔✔ rested on a paper that moves the border (now ✔); lesser-sac mechanism ✔✔ against R05ai's recess model (now ✔ + ✚; research.txt E15.04.03 → ✔); duodenal-atresia heart share misread (36 % of associated anomalies); an uncited < 21-day figure (deleted); Meckel interval misstated; atresia over-estimate (2–4×, karyotype caveat, card 1 in 3,000–6,000); liver bud "late week 4" → early week 4, CS11 (R05ak); Hirschsprung timing ✔✔ without the book (now ✚); two book-order/close passages on atresias (reworded, regrouped by continuity); CRL 30 → 35 mm. SHOULDs: PMIDs for R05gz/R05hd, stomach marks split, R05gb vs R05gc attribution, R05ge numbers, R05go is tissue not secretion, pyloric age cited to R05gt (page image confirms "days"), R05gd sample range, R05gp clock, oesophageal stenosis added, three more book-order passages reordered, cloaca marks split, "always" softened.

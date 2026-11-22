@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -335,7 +335,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11) · Ch 12: E12.01 pp 167–169 confirmed, but E12.02's Clinical Correlates box ends on p 178 (recorded 170–177), the same page as the Summary · Ch 13: E13.02 ends p 183 (not 182), E13.04 p 187 (not 186), E13.05 p 188 (not 187), E13.07 p 206 (not 205), E13.08 p 219 (lymphatics, the Summary's first page; recorded to 218) — plain text, not just boxes, spills past the last heading page in five of nine sections; the HLHS paragraph labels HAND2 'left ventricle' (a book slip; the main text says right) (X1 Ch 13) · Ch 14: E14.01 ends p 225 (its EA/TEF box runs over; recorded 223–224), E14.04 ends p 229 (text to p 228, its own RDS/anomalies box on p 229; recorded 227 only), E14.05 ends p 229 (recorded 228); the p 229 box is filed under E14.05 but belongs to E14.04 (X1 Ch 14)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11) · Ch 12: E12.01 pp 167–169 confirmed, but E12.02's Clinical Correlates box ends on p 178 (recorded 170–177), the same page as the Summary · Ch 13: E13.02 ends p 183 (not 182), E13.04 p 187 (not 186), E13.05 p 188 (not 187), E13.07 p 206 (not 205), E13.08 p 219 (lymphatics, the Summary's first page; recorded to 218) — plain text, not just boxes, spills past the last heading page in five of nine sections; the HLHS paragraph labels HAND2 'left ventricle' (a book slip; the main text says right) (X1 Ch 13) · Ch 14: E14.01 ends p 225 (its EA/TEF box runs over; recorded 223–224), E14.04 ends p 229 (text to p 228, its own RDS/anomalies box on p 229; recorded 227 only), E14.05 ends p 229 (recorded 228); the p 229 box is filed under E14.05 but belongs to E14.04 (X1 Ch 14) · Ch 15: every short section spills one page — E15.01 pp 230–231, E15.02 pp 231–232, E15.03 pp 232–233, E15.04 pp 233–242, E15.06 pp 244–245, E15.07 pp 244–252 (text to p 248, its box pp 249–252), E15.09 pp 254–255; boxes mis-assigned — p 245 pancreas box → E15.06, pp 249–252 midgut box → E15.07 (I1 files both under the next section) (X1 Ch 15)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -660,7 +660,7 @@
    ],
    "inputs": [
     {"id": "X1.13.q1", "kind": "decide", "ask": "D-068 (a–e) from Ch 13: pick an option per item (pulmonary-artery origin, probe-patent foramen ovale 20 % vs 27 %, mitral not tricuspid cleft in ostium primum defect, interrupted-arch rate and its 22q11 link, single-lesion rates) — recommendations given; (f) passes limb-rate evidence to D-067 d, (g) is the curriculum note", "asked_in": "Bio · Research · X1 Ch 13", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-068"},
-    {"id": "X1.13.q2", "kind": "action", "ask": "Move the Langman PDF to D:\\Projects\\biology_studio\\references\\book\\langman-14e.pdf and UG-Curriculum-Vol-I–III.pdf to references\\nmc\\ (the README there lists it; D-069) — from X1 Ch 14 on, chats stage from references\\", "asked_in": "Bio · Research · X1 Ch 13", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-069"}
+    {"id": "X1.13.q2", "kind": "action", "ask": "Move the Langman PDF to D:\\Projects\\biology_studio\\references\\book\\langman-14e.pdf and UG-Curriculum-Vol-I–III.pdf to references\\nmc\\ (the README there lists it; D-069) — from X1 Ch 14 on, chats stage from references\\", "asked_in": "Bio · Research · X1 Ch 13", "asked": "2026-11-22", "answer": "22 Nov (X1 Ch 15): NMC Vol I–III now in references\\nmc\\ ✔; the book is in references\\book\\ but still named 'Langmans Medical Embryology 14th Edition 2.pdf' — rename it to langman-14e.pdf to close this", "status": "open", "d": "D-069"}
    ],
    "runs": [{"chat": "Bio · Research · X1 Ch 13", "by": "Aaditya", "start": "2026-11-22 01:14", "end": "2026-11-22 01:47", "outcome": "done", "note": "route A (pushed from the cloud workspace; book + NMC staged from Downloads after a first refused grant); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 11 SHOULD applied)"}]
   },
@@ -697,14 +697,44 @@
    "title": "X1 research · Ch 15 digestive system",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 15",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.14"],
+   "unblocks": ["X1.16"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-043", "D-068", "D-069", "D-072", "D-074"],
+   "prompt": "X1 Ch 15",
+   "log": "22 Nov 2026 · X1 Research · Ch 15 — gut tube → fixed bowel staged from human specimens (Kyoto/Maastricht: stomach CS13–23, liver bud CS11–12, spleen CS14, pancreas buds CS15–17, midgut loops CS16–23, cloaca 6.5 wk; scans by LMP); Tier A for 10 concepts; clinical rows in 7 mechanism groups with rates per 10,000 (pyloric stenosis 20.1, duodenal atresia 3.08, biliary atresia 0.65, Hirschsprung 1.09, ARM 3.26, malrotation 2.86); 19 misconceptions; 32 sources R05ga–R05hf; AN52.6/52.4/47/48.2/49.2 from NMC Vol I → D-074 a–j + notes k–n",
+   "todo": [
+    "Duodenal solid stage + recanalization (book month 2): no human Tier 1 retrieved — E15.04.04 stays ✔",
+    "Annular pancreas population rate; Hirschsprung segment shares (book ~80 % to mid-sigmoid, 3 % total colon): no population source retrieved",
+    "Kupffer and liver blood-cell origin (D-074 m): find a human Tier 1 source before any card change",
+    "Liver weight 10 % → 5 % and bile at week 12: no human source retrieved",
+    "O'Rahilly 1978 (human digestive timing by stage, PMID 677467): no abstract — full text to references\\papers\\ if wanted",
+    "Full texts not read: R05gb, R05gc, R05gj (free in PMC), R05gn, R05go",
+    "R01 3D Atlas: check the CS15–23 gut models (stomach, pancreas buds, herniated loop) before the rotation scene (look only, NC-ND)",
+    "2024 wording (MGMUHS reprint) of AN47/AN52 — only the 2018 Vol I text was read",
+    "K2 links.txt has no Ch 15 rows yet (becomes/defect links can now cite ch15-digestive.md) — a K-step task"
+   ],
+   "inputs": [
+    {"id": "X1.15.q1", "kind": "decide", "ask": "D-074 (a–j) from Ch 15: pick an option per item (midgut rotation model, why the gut herniates, midgut–hindgut border, stomach's second axis, liver-bud timing, gastroschisis rate — the book contradicts itself, small-bowel atresia rate, Meckel frequency, insulin timing, pyloric stenosis age) — recommendations given; (k)–(n) are notes", "asked_in": "Bio · Research · X1 Ch 15", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-074"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 15", "by": "Aaditya", "start": "2026-11-22 11:22", "end": "2026-11-22 11:45", "outcome": "done", "note": "route B (no push access from the cloud workspace: cloned origin/main, worked and checked here, files written to the laptop clone at Studio home repo folder; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (10 MUST, 12 SHOULD applied)"}]
+  },
+  {
+   "id": "X1.16",
+   "title": "X1 research · Ch 16 urogenital system",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 16",
+   "status": "ready",
+   "needs": ["X1.15"],
    "unblocks": [],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": ["D-011", "D-026", "D-030", "D-043", "D-068", "D-069", "D-072"],
-   "prompt": "X1 Ch 15",
+   "decisions": ["D-011", "D-026", "D-030", "D-043", "D-068", "D-069", "D-074"],
+   "prompt": "X1 Ch 16",
    "log": "—",
    "todo": [],
    "inputs": []
