@@ -1036,10 +1036,12 @@
    "log": "—",
    "todo": [
     "Folds IB07 Trace a cell (size M) — new drill type `trace` (card-spec §2a), first on E05.01.03 in sc-E00.01.04",
-    "Ready prompt in master plan §13 (written by L2)"
+    "Ready prompt in master plan §13 (written by L2)",
+    "Built at risk (owner decision, 22 Nov): T9 (L2), T7 deck step, T7b, T3d A + B still open"
    ],
    "inputs": [],
-   "est": {"chats": 2}
+   "est": {"chats": 2},
+   "runs": [{"chat": "Bio · Build · V3 trace a cell", "by": "Aaditya", "start": "2026-11-22 11:40", "outcome": "partial", "note": "route A (desktop app, laptop shell on)"}]
   },
   {
    "id": "L3",
