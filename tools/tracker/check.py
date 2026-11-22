@@ -13,6 +13,10 @@ Checks steps.json against the rules the app's #progress page also uses (src/js/1
                         status "proposed" without proposed_by; the owner proposing to himself (error)
   derived ............. `unblocks` must equal the reverse of every `needs` (fix: --write)
   parity .............. the app's TR_RULES (src/js/17-tracker.js) equal the vocabularies here
+  approval, no step ... (U1, D-076) a DECISIONS row dated from APPROVAL_SINCE that records an owner approval/pick, while no step in
+                        steps.json names its D-id — the approved work has no step to carry it (warning; the 19 Nov depth canvas case)
+  draft id clash ...... (U1, D-076) a committed draft (studio-docs/**/*-draft*.md) proposes a D-id that DECISIONS already uses for
+                        another decision (its row does not name the draft), or two drafts propose the same id (error — renumber the draft)
 Warnings never fail the run unless --strict. Exit 1 on any error.
 
 Run from the repo root:
@@ -48,6 +52,11 @@ STARTED = {"ready", "in progress", "gates", "owner check", "done"}
 STEP_KEYS = ["id", "title", "type", "chat", "status", "needs", "unblocks", "lock", "gates", "check", "decisions", "prompt", "log", "todo", "inputs"]
 OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note", "uses", "est", "produces", "consumes", "runs", "improves"]
 LOCK_MAX_H = 24
+# EDIT: approval rule (D-076) — rows dated on/after this day are checked; words that mark an owner approval in a DECISIONS row
+APPROVAL_SINCE = dt.date(2026, 11, 22)
+APPROVAL_RE = re.compile(r"approv|owner picks?\b|owner kept|confirmed by owner|owner OK|owner answers", re.I)
+DRAFT_ID_RE = re.compile(r"(?:Proposed decision|Decision)s?:\s*\*\*(D-\d{3})\*\*")
+MONTHS = {m: i + 1 for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
 ID_RE = re.compile(r"^(?:[A-Z][A-Z0-9]*|[A-Z][0-9]+[a-z]?|X1\.\d\d|IB\d\d|GATE)$")
 DBG = False
 
@@ -63,8 +72,42 @@ def load_refs():
     chk = set(re.findall(r"^## (T\d+[a-z]?)\b", (DOCS / "build" / "owner-test-checklist.md").read_text(), re.M))
     chk |= set(re.findall(r"\*\*(T\d+[a-z]) —", (DOCS / "build" / "owner-test-checklist.md").read_text()))
     prompts = set(re.findall(r"^\*\*Ready prompt — (.+?)\*\*", (DOCS / "build" / "master-plan.md").read_text(), re.M))
-    dbg(f"refs: {len(dec)} D-ids, T-ids {sorted(chk)}, {len(prompts)} prompts")
-    return {"dec": dec, "chk": chk, "prompts": prompts}
+    rows = {}
+    for m in re.finditer(r"^\| (D-\d{3}) \| ([^|]*)\|(.*)$", (DOCS / "claude" / "DECISIONS.md").read_text(), re.M):
+        rows[m.group(1)] = (m.group(2).strip(), m.group(3))
+    drafts = []
+    for p in sorted(DOCS.rglob("*-draft*.md")):
+        head = "\n".join(p.read_text().splitlines()[:12])
+        drafts.append((p.name, sorted(set(DRAFT_ID_RE.findall(head)))))
+    dbg(f"refs: {len(dec)} D-ids, T-ids {sorted(chk)}, {len(prompts)} prompts, drafts {drafts}")
+    return {"dec": dec, "chk": chk, "prompts": prompts, "dec_rows": rows, "drafts": drafts}
+
+
+def row_date(txt):
+    m = re.match(r"(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})", txt or "")
+    return dt.date(int(m.group(3)), MONTHS[m.group(2)], int(m.group(1))) if m and m.group(2) in MONTHS else None
+
+
+def check_refs(doc, refs):
+    """D-076: an owner approval with no step (warning); a draft's proposed D-id that clashes (error)."""
+    E, W = [], []
+    named = set()
+    for s in doc.get("steps", []):
+        named |= set(re.findall(r"D-\d{3}", json.dumps(s, ensure_ascii=False)))
+    for d, (when, txt) in sorted(refs.get("dec_rows", {}).items()):
+        day = row_date(when)
+        if day and day >= APPROVAL_SINCE and APPROVAL_RE.search(txt) and d not in named:
+            W.append(f"{d}: owner approval with no step — add the step that carries it out to build/steps.json (or name {d} on it)")
+    seen = {}
+    for name, ids in refs.get("drafts", []):
+        for d in ids:
+            if d in seen:
+                E.append(f"draft {name}: proposes {d}, also proposed by {seen[d]} — renumber one (next free id after DECISIONS)")
+            seen.setdefault(d, name)
+            row = refs.get("dec_rows", {}).get(d)
+            if row and name not in row[1]:
+                E.append(f"draft {name}: proposes {d}, but DECISIONS {d} is another decision — renumber the draft to the next free id")
+    return E, W
 
 
 def read_lock():
@@ -258,6 +301,8 @@ def check(doc, refs, only=None, lock=(None, None), now=None):
     elif holder:
         W.append(f"build lock line has no readable date: {holder}")
     E2, W2 = check_w2(doc)
+    E3, W3 = check_refs(doc, refs)
+    E2, W2 = E2 + E3, W2 + W3
     if only:
         E2 = [x for x in E2 if x.startswith(only + ":")]
         W2 = [x for x in W2 if x.startswith(only + ":")]
@@ -708,6 +753,7 @@ def preview(doc, lock):
 
 def selftest(refs):
     """Each rule must fire on a small known-bad file (and stay quiet on a good one)."""
+    refs = dict(refs, dec_rows={}, drafts=[])  # the D-076 rules get their own cases below
     good = {"owner": "Aaditya", "collaborator": "Professor", "steps": [
         {"id": "A0", "title": "a", "type": "Build", "chat": "Bio · Build · A0", "status": "done", "needs": [], "unblocks": ["V1"], "lock": True,
          "gates": {"G-Eng": "pass"}, "check": {"id": "T2", "state": "pass"}, "decisions": ["D-001"], "prompt": None, "log": "", "todo": [], "inputs": [],
@@ -755,16 +801,26 @@ def selftest(refs):
         ("run bad chat", lambda d: d["steps"][0]["runs"][0].__setitem__("chat", "my chat"), "chat must be"),
         ("run ends first", lambda d: d["steps"][0]["runs"][0].update(start="2026-11-19", end="2026-11-18"), "ends before it starts"),
         ("started, no runs = warning", lambda d: d["steps"][0].pop("runs"), "W:no `runs`"),
+        ("approval, no step = warning", ("REFS", lambda r: r.update(dec_rows={"D-002": ("1 Jan 2099", " owner approved the look |")})), "W:owner approval with no step"),
+        ("approval named on a step", ("REFS", lambda r: r.update(dec_rows={"D-001": ("1 Jan 2099", " owner approved |")})), None),
+        ("old approval ignored", ("REFS", lambda r: r.update(dec_rows={"D-002": ("1 Jan 2020", " owner approved |")})), None),
+        ("draft id clash", ("REFS", lambda r: r.update(dec_rows={"D-001": ("1 Jan 2099", " L2 lessons |")}, drafts=[("look-draft.md", ["D-001"])])), "is another decision"),
+        ("draft id twice", ("REFS", lambda r: r.update(drafts=[("a-draft.md", ["D-900"]), ("b-draft.md", ["D-900"])])), "also proposed by"),
+        ("draft recorded = ok", ("REFS", lambda r: r.update(dec_rows={"D-900": ("1 Jan 2020", " see build/look-draft.md |")}, drafts=[("look-draft.md", ["D-900"])])), None),
     ]
     ok = 0
     for name, mut, want in cases:
         d = copy.deepcopy(good)
         lock = (None, None)
-        if mut == "LOCK":
+        rr = refs
+        if isinstance(mut, tuple):
+            rr = copy.deepcopy(refs)
+            mut[1](rr)
+        elif mut == "LOCK":
             lock = ("Professor · Bio · Build · X · 1 Nov 2026, 10:00 IST", dt.datetime(2026, 11, 1, 10, tzinfo=dt.timezone.utc))
         else:
             mut(d)
-        E, W = check(d, refs, lock=lock, now=dt.datetime(2026, 11, 19, tzinfo=dt.timezone.utc))
+        E, W = check(d, rr, lock=lock, now=dt.datetime(2026, 11, 19, tzinfo=dt.timezone.utc))
         if want is None:
             hit = not E and not W
         elif want.startswith("W:"):

@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "U1", "U2", "U3", "W3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "steps": [
   {
    "id": "M0",
@@ -1058,7 +1058,7 @@
    "chat": "Bio · Build · L2 lessons",
    "status": "owner check",
    "needs": ["L1", "C2"],
-   "unblocks": ["K2", "GATE", "IB01", "IB03"],
+   "unblocks": ["K2", "U2", "GATE", "IB01", "IB03"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Learn": "pass", "G-A11y": "pass"},
    "check": {"id": "T9", "state": "open"},
@@ -1169,12 +1169,83 @@
    "est": {"chats": 1}
   },
   {
+   "id": "U1",
+   "title": "U1 look canvas — app look v2",
+   "type": "Build",
+   "chat": "Bio · Design · U1 look canvas",
+   "status": "owner check",
+   "needs": [],
+   "unblocks": ["U2"],
+   "lock": false,
+   "gates": {"G-Art": "pass", "G-A11y": "pass"},
+   "check": {"id": "T13", "state": "open"},
+   "decisions": ["D-077", "D-031", "D-034"],
+   "prompt": null,
+   "log": "22 Nov 2026 · U1 canvas (D-077): 6 screens × 5 classes × light/dark + fonts + ladder board; light edges re-proposed; tracker approval + draft-id rules; G-Art, G-A11y pass; T13 open",
+   "todo": [
+    "Type is Build because steps.json has no Design type — add `Design` to TYPES + the app's TR_RULES in a later tracker step (W3?)",
+    "Project draft claude/drafts/app-look-v2-draft.md is now superseded by build/app-look-v2-draft.md (owner may delete the Project copy)"
+   ],
+   "inputs": [
+    {"id": "U1.q1", "kind": "decide", "ask": "U0.q1 Fonts: A Figtree + Atkinson Hyperlegible Next · B Figtree only · C Inter", "asked_in": "Bio · Ideation · App look v2", "asked": "2026-11-22", "answer": "A (22 Nov 2026, U1 chat)", "status": "answered", "d": "D-077"},
+    {"id": "U1.q2", "kind": "decide", "ask": "U0.q2 Surfaces: DrumPath tonal greys · white cards + depth only", "asked_in": "Bio · Ideation · App look v2", "asked": "2026-11-22", "answer": "DrumPath tonal greys", "status": "answered", "d": "D-077"},
+    {"id": "U1.q3", "kind": "decide", "ask": "U0.q3 Background motif: faint contour · plain", "asked_in": "Bio · Ideation · App look v2", "asked": "2026-11-22", "answer": "plain", "status": "answered", "d": "D-077"},
+    {"id": "U1.q4", "kind": "decide", "ask": "U0.q4 Schedule: S1 before GATE · S2 after GATE", "asked_in": "Bio · Ideation · App look v2", "asked": "2026-11-22", "answer": "S1 — U2 + U3 after V3, before W3 and GATE; U3 in GATE needs", "status": "answered", "d": "D-077"}
+   ],
+   "est": {"chats": 1, "owner_min": 15},
+   "runs": [{"chat": "Bio · Design · U1 look canvas", "by": "Aaditya", "start": "2026-11-22 12:05", "end": "2026-11-22 12:50", "outcome": "done", "note": "route B, no lock; canvas https://claude.ai/artifact/9ToGW4nXqsRve6KGp7znw9"}]
+  },
+  {
+   "id": "U2",
+   "title": "U2 look tokens, fonts, shell",
+   "type": "Build",
+   "chat": "Bio · Build · U2 look tokens",
+   "status": "planned",
+   "needs": ["U1", "L2"],
+   "unblocks": ["U3"],
+   "lock": true,
+   "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
+   "check": {"id": "T13b", "state": "open"},
+   "decisions": ["D-077", "D-031", "D-034"],
+   "prompt": "U2 look tokens",
+   "log": "—",
+   "todo": [
+    "Re-run CIEDE2000 + colour-vision check on the proposed light edges (D-077) before shipping",
+    "Fonts: OFL woff2 Latin subset ≤ 120 KB, THIRD_PARTY + registry Tools rows; sw.js cache; replaces D-034 (5)",
+    "Write T13b"
+   ],
+   "inputs": [],
+   "est": {"chats": 2}
+  },
+  {
+   "id": "U3",
+   "title": "U3 look screens",
+   "type": "Build",
+   "chat": "Bio · Build · U3 look screens",
+   "status": "planned",
+   "needs": ["U2"],
+   "unblocks": ["GATE"],
+   "lock": true,
+   "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
+   "check": {"id": "T13c", "state": "open"},
+   "decisions": ["D-077"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Prompt written by U2 in master plan §13",
+    "Stills re-baseline after review (C11)",
+    "Write T13c"
+   ],
+   "inputs": [],
+   "est": {"chats": 1}
+  },
+  {
    "id": "GATE",
    "title": "Use gate — 7 days of use + recall Checks",
    "type": "Review",
    "chat": "Bio · Review · use gate",
    "status": "planned",
-   "needs": ["L2", "V2"],
+   "needs": ["L2", "V2", "U3"],
    "unblocks": ["K3", "K4", "D1", "G1", "IB02", "IB08", "IB09", "IB12", "IB13", "IB14", "IB15", "IB16", "IB17", "IB18", "IB19", "IB20", "IB21", "IB22", "IB23", "IB24", "IB25"],
    "lock": false,
    "gates": {"G-Owner": "open"},

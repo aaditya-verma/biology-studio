@@ -21,3 +21,4 @@ What the owner noticed while watching episodes or studying cards. Newest first. 
 
 - 19 Nov 2026 · phone P+L, tablet P+L, laptop · T3b V1 3D viewer, app v3 (GitHub Pages) · right? y (stamp/stage/size, layers, labels, cut face, Reduce motion) · drifted at — · story n/a · recall n/a · next: no fixes; D-036 confirmed; S1 studio may start · by Aaditya
 - 18 Nov 2026 · phone P+L, tablet P+L, laptop · T3a A0 shell + Book map (GitHub Pages) · right? y (Notochord ⚑, CS07–12 cited, NMC AN shown) · drifted at — · story n/a · recall n/a · next: no fixes; D-034 kept; V1 viewer may start · by Aaditya
+- 22 Nov 2026 · G-Art + G-A11y · U1 look canvas (D-077) · G-Art: FAIL → FAIL → pass with notes (open SHOULDs none; NITs: none blocking) · G-A11y: FAIL → pass with notes (SHOULD fixed: Endoderm pill vs axes) · reviewers: fresh agents, roles art director / accessibility, not the maker · by Aaditya

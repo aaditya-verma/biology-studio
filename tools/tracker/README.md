@@ -1,6 +1,6 @@
 # tools/tracker — progress map data + check (W1, D-040)
 
-*(Purpose: the format of `studio-docs/build/steps.json` and how chats update it. Updated: 22 Nov 2026 · Bio · Fix · open-run first (step 2: open run pushed first, closed at the end). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (schema 2, D-063). Before: 19 Nov 2026 · Bio · Build · W1 progress map.)*
+*(Purpose: the format of `studio-docs/build/steps.json` and how chats update it. Updated: 22 Nov 2026 · Bio · Design · U1 look canvas (approval + draft-id rules, D-077). Before: 22 Nov 2026 · Bio · Fix · open-run first (step 2: open run pushed first, closed at the end). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (schema 2, D-063). Before: 19 Nov 2026 · Bio · Build · W1 progress map.)*
 
 `studio-docs/build/steps.json` is the **owner doc for step status, dependencies, gates, owner checks and owner inputs**. The app draws it at
 https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs) and `#step=<id>`, reading it live from the repo.
@@ -35,7 +35,9 @@ https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your i
 ## Top-level fields (W2, D-063)
 `calendar` = `{"day_min": [Mon…Sun minutes of your chat time], "chat_min": 60, "check_min": 15, "input_min": 10, "off": ["YYYY-MM-DD"], "chats": {type: chats}, "note"}` · `queue` = the plan order for priority (D-047; steps not in it follow in file order). Dates are never stored — the app and `--next` compute them from today.
 
+**Draft id clash (error, D-077):** a committed `studio-docs/**/*-draft*.md` whose `Decision: **D-nnn**` line (first 12 lines) names a D-id that DECISIONS uses for another decision, or two drafts propose the same id.
+
 ## check.py
 `--next` (the schedule: rows, critical path, your inputs ranked — what a chat reads first; `--json`, `--today YYYY-MM-DD`; `--write` refreshes the auto block in STATUS § Next) · `--write` (`--dry-run` shows changes) · `--only <id>` · `--preview` (text board + inputs) · `--debug` · `--strict` (warnings fail) · `--selftest` · `--json`.
-Errors: unknown ids (steps, D-ids, T-ids, gates, prompt keys, input ids), loops, a started step with unmet needs, ready with a blocking input open, done with open gates/check, stale `unblocks`, the app's `TR_RULES` ≠ the checker's. Warnings: lock older than 24 h, an unconfirmed proposal, a started step without `runs`.
+Errors: unknown ids (steps, D-ids, T-ids, gates, prompt keys, input ids), loops, a started step with unmet needs, ready with a blocking input open, done with open gates/check, stale `unblocks`, the app's `TR_RULES` ≠ the checker's. Warnings: lock older than 24 h, an unconfirmed proposal, a started step without `runs`, **an owner approval with no step** (a DECISIONS row from 22 Nov 2026 that records an approval or pick while no step names its D-id — D-077).
 W2 errors: bad `calendar`/`queue`/`est`/`uses`/`runs`, a professor input that blocks or a need on a professor-only step, an output consumed without a producer or without needing it, two open runs on the lock or GPU row. `--selftest` also runs the scheduler on `plan-fixture.json` and compares the app's `trPlan()` (node) with `plan()` on the fixture and on the real file.
