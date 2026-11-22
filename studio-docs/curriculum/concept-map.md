@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -437,11 +437,11 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E19.01.01 | Otic vesicle and inner ear | A | S | core | 22–56 | ecto | ear | E06.01.06 | 2 |  | ≈ |
-| E19.01.02 | Membranous and bony labyrinth | B | S | s |  | multi | ear | E19.01.01 |  |  | ≈ |
-| E19.02.01 | Middle ear | A | SA | core | 28–266 | multi | ear | E17.02.01, E17.01.02 | 1 |  | ≈ |
-| E19.03.01 | External ear | B | S | x | 42–140 | multi | ear | E17.03.01 |  |  | ≈ |
-| E19.04.01 | Congenital hearing loss | C | C | s |  | multi | defects | E19.01.01, E19.02.01 |  |  | ≈ |
+| E19.01.01 | Otic vesicle and inner ear | A | S | core | 22–56 | ecto | ear | E06.01.06 | 2 | AN40.3, AN43.3 | ⚑ |
+| E19.01.02 | Membranous and bony labyrinth | B | S | s |  | multi | ear | E19.01.01 |  | AN40.3 | ✔ |
+| E19.02.01 | Middle ear | A | SA | core | 28–266 | multi | ear | E17.02.01, E17.01.02 | 1 | AN40.2, AN43.4 | ✔ |
+| E19.03.01 | External ear | B | S | x | 42–140 | multi | ear | E17.03.01 |  | AN40.1, AN43.4 | ⚑ |
+| E19.04.01 | Congenital hearing loss | C | C | s |  | multi | defects | E19.01.01, E19.02.01 |  | AN74.1, AN75.1 | ✔ |
 
 ## E20 — Eye · pp 360–369 · 9 concepts
 

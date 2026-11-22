@@ -243,3 +243,9 @@ E18.05.01|AN7.8,AN23.5|✔|14-23
 E18.05.02||✔|
 E18.05.03|AN7.1|✔|
 E18.05.04||✔|
+# --- E19 · X1 22 Nov 2026 (dossier ch19-ear.md; stages from R06/R08 + human specimens R05iu, R05iv, R05jk, R05jl, R05jm, R05jp, D-030; NMC 2018 Vol I has no ear development code — AN40.x adult ear, AN43.4 for arch-derived parts, D-080 k) ---
+E19.01.01|AN40.3,AN43.3|⚑|11-23
+E19.01.02|AN40.3|✔|
+E19.02.01|AN40.2,AN43.4|✔|16-23
+E19.03.01|AN40.1,AN43.4|⚑|13-23
+E19.04.01|AN74.1,AN75.1|✔|
