@@ -3,7 +3,7 @@
  "id": "L-E05",
  "book": "E",
  "ch": "E05",
- "version": 1,
+ "version": 2,
  "budget": {
   "min": 10,
   "max": 15
@@ -80,7 +80,7 @@
      "id": "E05.01.03:check",
      "card": "E05.01.03",
      "kind": "check",
-     "est_s": 105
+     "est_s": 165
     },
     {
      "id": "E05.01.03:scene",

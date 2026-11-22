@@ -25,7 +25,8 @@ from citations import ROOT, build_sources, validate_citation, suggest_mark  # no
 # EDIT: limits (card-spec §3) — mirror CARD_RULES in src/js/15-cards.js
 VERBS = ["explain", "describe", "identify", "label", "locate", "order", "compare", "distinguish", "predict", "name", "trace", "relate"]
 SPATIAL = {"identify", "label", "locate", "order"}
-TYPES = ["mcq", "order", "rotate", "day", "frames", "label", "folded"]   # card-spec §2a (V2 drills, D-054)
+TYPES = ["mcq", "order", "rotate", "day", "frames", "label", "folded", "trace"]   # card-spec §2a (V2 drills, D-054; trace V3, D-075)
+TRACE_IN = ("epiblast", "streak", "mesoderm", "endoderm")   # where a tracer path can end (scene-spec §6 tracer)
 SPATIAL_TYPES = {"order", "frames", "label", "rotate"}
 DRILL = {"alt_words": 40, "frame_words": 25, "tol": (10, 45), "tol_default": 25, "zoom": (0.5, 6), "pins": (2, 4), "items": (2, 5), "label_words": 3}
 BUDGET = {"general": 90, "school": 110, "neet": 140, "mbbs": 160, "pg": 200}
@@ -302,12 +303,12 @@ def card_check(card, stem, ctx):
             E("E-check", qid, "prompt missing")
         opts = q.get("options") or []
         lo, hi = LIMITS["options"]
-        if ty in ("mcq", "order", "rotate", "label") or ty not in TYPES:
+        if ty in ("mcq", "order", "rotate", "label", "trace") or ty not in TYPES:
             if not (lo <= len(opts) <= hi) or any(not (isinstance(o, str) and o.strip()) for o in opts):
                 E("E-check", qid, f"{lo}–{hi} non-empty options")
             if len(set(o.strip().lower() for o in opts if isinstance(o, str))) != len(opts):
                 E("E-check", qid, "options repeat — exactly one right answer")
-        if ty in ("mcq", "rotate", "day") and not (is_int(q.get("answer")) and 0 <= q["answer"] < len(opts)):
+        if ty in ("mcq", "rotate", "day", "trace") and not (is_int(q.get("answer")) and 0 <= q["answer"] < len(opts)):
             E("E-check", qid, "answer must be the index of the one right option")
         if ty in ("order", "frames", "label", "folded") and q.get("answer") is not None:
             E("E-check", qid, f"a{'n' if ty == 'order' else ''} {ty} check has no answer field (card-spec §2a)")
@@ -362,7 +363,7 @@ def card_check(card, stem, ctx):
     return out
 
 
-DRILL_TYPES = ("rotate", "day", "frames", "label", "folded")
+DRILL_TYPES = ("rotate", "day", "frames", "label", "folded", "trace")
 
 
 def scene_anchors(S):
@@ -384,6 +385,8 @@ def scene_anchors(S):
             out |= {"plane-" + str(pl.get("id")) for pl in p.get("planes", [])}
         elif k == "ruler":
             out.add("ruler")
+        elif k == "tracer":
+            out.add("tracer-" + str(p.get("id")))
     return out
 
 
@@ -527,6 +530,36 @@ def drill_rules(q, qid, ty, opts, S, E):
                     ans.append(a)
             if len(set(ans)) != len(ans):
                 E("E-drill", qid, "two pins share a label — each pin needs its own")
+    elif ty == "trace":   # V3 (D-075): a marked cell's path in the scene; where does it end up?
+        show_rules(q.get("show"), S, qid, E)
+        alt()
+        tid = q.get("tracer")
+        T = next((p for p in S.get("parts", []) if p.get("kind") == "tracer" and p.get("id") == tid), None) if S else None
+        if not (isinstance(tid, str) and tid.strip()):
+            E("E-check", qid, "tracer must be the id of a scene tracer part")
+        elif S and T is None:
+            E("E-drill", qid, f"tracer {tid} is not a tracer part of {S['id']}")
+        if q.get("ends") not in TRACE_IN:
+            E("E-check", qid, f"ends must be where the path ends: {' · '.join(TRACE_IN)}")
+        if "mask_day" in q and not isinstance(q["mask_day"], bool):
+            E("E-check", qid, "mask_day must be true/false")
+        P = (T.get("path") or []) if T else []
+        sd = q["show"].get("day") if isinstance(q.get("show"), dict) else None
+        if P and all(num(k.get("day")) for k in P) and num(sd):
+            if not (P[0]["day"] <= sd <= P[-1]["day"]):
+                E("E-drill", qid, f"show.day {sd} outside the path's days {P[0]['day']}–{P[-1]['day']}")
+            else:
+                at = [k for k in P if k["day"] <= sd + 1e-9][-1]
+                if at.get("in") != "epiblast":
+                    E("E-drill", qid, f"on show.day {sd} the cell has already left the epiblast — start where the path is still in it")
+            if q.get("ends") in TRACE_IN and P[-1].get("in") != q["ends"]:
+                E("E-drill", qid, f"ends {q['ends']} but the path ends in {P[-1].get('in')}")
+        a = q.get("answer")
+        if is_int(a) and 0 <= a < len(opts) and isinstance(opts[a], str) and opts[a].strip():
+            w = opts[a].strip().lower()
+            for f in ("prompt", "alt"):
+                if w in str(q.get(f) or "").lower():
+                    E("E-drill", qid, f"the right option '{opts[a]}' is in the {f} — answerable from the words (D-065)")
     elif ty == "folded":
         if not (len(opts) == 2 and all(isinstance(o, str) and o.strip() for o in opts)) or len(set(o.strip().lower() for o in opts if isinstance(o, str))) != len(opts):
             E("E-check", qid, "exactly 2 different options (e.g. Folded · Not yet folded)")

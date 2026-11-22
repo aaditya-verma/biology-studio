@@ -6,6 +6,9 @@ L1: + cards list, card reader (concept, guide, clinical), Remember deck; L2: + l
 L1F: + D-053 fold (Check hides the card text; Read again ends the run unscored), saved app/savedAt, pins clear of overlays + pinned labels after a
     label drill, the day drill keeps the ruler clear of overlays (2 phone sizes), mid-word titles (in-app audit). V2: + notochord card; every drill type (the demo fixture ?fixture=drills) on 5 classes × 100/125 % with audit + contact sheet; label pins drawn;
     rotate mid-drill moves the stage (in the Check ↔ beside it) and keeps the view; Try it gets its view back; WebGL context loss redraws.
+    V3 (D-075): the trace drill on E05.01.03 at 5 classes × 100/125 % — the marked cell on the stage and clear of the overlays at its start and end,
+    its label shown, ▶ steps over the path's keys to the endoderm, the stamp unmasked, the right answer scores; reduced-motion Play steps key to key;
+    rotate mid-drill keeps the day.
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -446,6 +449,84 @@ async def learn_flows(browser, base, report):
 
 
 FONT = [None]   # set from --font (drill flows use it too)
+
+TRACE_CARD = "E05.01.03"   # EDIT (V3): the card whose Check carries a trace drill
+CELLJS = """(()=>{const st=document.querySelector('#vwStage').getBoundingClientRect(),A=SC.eng.anchors(false),k=Object.keys(A).find(x=>x.startsWith('tracer-')),a=k&&A[k];
+  const R=e=>e&&e.offsetParent!==null?e.getBoundingClientRect():null,ov=['#vwStamp','#vwDisc','#vwGiz','#vwScale'].map(s=>R(document.querySelector(s))).filter(Boolean);
+  if(!a)return {cell:false};const x=st.left+a.s.x,y=st.top+a.s.y,r=10,hit=o=>x+r>o.left&&x-r<o.right&&y+r>o.top&&y-r<o.bottom;
+  const lb=SC.lbl.find(it=>it.at===k),lab=!!(lb&&lb.el&&!lb.el.classList.contains('hidden'));
+  return {cell:true,in:a.in,on:x-r>=st.left&&x+r<=st.right&&y-r>=st.top&&y+r<=st.bottom,under:ov.filter(hit).length,lab,day:SC.eng.state().day,stamp:document.querySelector('#vwStamp').innerText};})()"""
+
+
+async def trace_open(page, base):
+    await page.goto(f"{base}?test=1&debug=0#card={TRACE_CARD}")
+    await page.wait_for_function(f"window.LN_READY==='card={TRACE_CARD}' && window.VW_READY===true", timeout=30000)
+    await page.evaluate(f"(()=>{{const c=LN.open['{TRACE_CARD}'],k=LN.ck[c.id]=lnCkNew(c);k.i=c.checks.findIndex(q=>q.type==='trace');lnPaint('check');}})()")
+    await page.wait_for_function("window.VW_READY===true && !!SC.drill && SC.drill.type==='trace'", timeout=30000)
+    await page.wait_for_timeout(500)
+
+
+async def trace_flows(browser, base, report, preview, ok, out):
+    """V3 (card-spec §2a trace, D-075): the trace drill at 5 classes × 100/125 %, reduced-motion Play, rotate mid-drill."""
+    for kind, w, h in PREVIEW:
+        for text in ([100] if preview else [100, 125]):
+            ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=kind != "desktop", is_mobile=kind != "desktop", device_scale_factor=1)
+            if FONT[0]:
+                await ctx.add_init_script(FONT_JS % FONT[0])
+            if text != 100:
+                await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='html{font-size:%d%%!important}';document.head.appendChild(s);});" % text)
+            page = await ctx.new_page(); errs = []
+            page.on("pageerror", lambda e: errs.append(str(e)))
+            await trace_open(page, base)
+            cls = await page.evaluate("DEV.cls"); at = f"{w}x{h} {text}%"
+            await page.evaluate("document.querySelector('#lnQ').scrollIntoView({block:'start'})"); await page.wait_for_timeout(150)
+            c0 = await page.evaluate(CELLJS)
+            ok(f"V3 trace: the cell starts in the epiblast, on the stage, clear of the overlays, labelled; stamp shows the day at {at}",
+               c0.get("cell") and c0["in"] == "epiblast" and c0["on"] and c0["under"] == 0 and c0["lab"] and "?" not in c0["stamp"] and "15" in c0["stamp"], c0)
+            iss = await page.evaluate("layoutAudit()")
+            report["runs"].append({"at": at + " trace start", "class": cls, "issues": len(iss)})
+            report["issues"] += [dict(x, at=at + " trace") for x in iss]
+            steps = await page.evaluate("SC.drill.steps.length")
+            for _ in range(steps - 1):
+                await page.evaluate("document.querySelector('[data-vw=dnext]').click()"); await page.wait_for_timeout(120)
+            await page.wait_for_timeout(300)
+            c1 = await page.evaluate(CELLJS)
+            ok(f"V3 trace: ▶ steps to the path's end — endoderm, on the stage, clear of the overlays at {at}",
+               c1.get("cell") and c1["in"] == "endoderm" and abs(c1["day"] - 17) < 1e-6 and c1["on"] and c1["under"] == 0 and c1["lab"], c1)
+            iss = await page.evaluate("layoutAudit()")
+            report["runs"].append({"at": at + " trace end", "class": cls, "issues": len(iss)})
+            report["issues"] += [dict(x, at=at + " trace end") for x in iss] + [{"kind": "js-error", "what": e, "at": at + " trace"} for e in errs]
+            path = out / f"{cls}_{w}x{h}_{text}_drill_trace.png"
+            await page.screenshot(path=str(path))
+            report["_extra"].append((cls + (" 125" if text != 100 else "") + " drills", f"{w}×{h} trace (day 17){' 125%' if text != 100 else ''}", str(path)))
+            await page.evaluate("(()=>{const b=[...document.querySelectorAll('#lnCheck [data-ln=pick]')].find(x=>x.textContent.trim()==='Endoderm');b&&b.click();})()"); await page.wait_for_timeout(300)
+            res = await page.evaluate(f"(()=>{{const c=LN.ck['{TRACE_CARD}'];return {{res:c.res[c.i],fb:!!document.querySelector('#lnFb')}};}})()")
+            ok(f"V3 trace: the right answer scores, feedback shown at {at}", res["res"] is True and res["fb"], res)
+            await page.evaluate("document.querySelector('#lnCheck [data-ln=next]').click()"); await page.wait_for_timeout(700)   # finish the run: Try it gets its view back, with no marked cell (G-Eng V3)
+            gone = await page.evaluate("({drill:!!SC.drill,trace:SC.eng.state().trace||null,anchor:Object.keys(SC.eng.anchors(false)).some(k=>k.startsWith('tracer-')),saved:Object.values(SC.st).some(s=>s&&s.trace)})")
+            ok(f"V3 trace: after the run Try it has no marked cell at {at}", not gone["drill"] and gone["trace"] is None and not gone["anchor"] and not gone["saved"], gone)
+            await ctx.close()
+    # reduced motion: Play steps from path key to path key (spec §8a)
+    ctx = await browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True, reduced_motion="reduce")
+    page = await ctx.new_page()
+    await trace_open(page, base)
+    await page.evaluate("document.querySelector('[data-vw=play]').click()")
+    seen = set()
+    for _ in range(40):
+        seen.add(round(await page.evaluate("SC.eng.state().day"), 2)); await page.wait_for_timeout(150)
+    steps = set(round(x, 2) for x in await page.evaluate("SC.drill.steps"))
+    ok("V3 trace: reduced-motion Play steps key to key (no in-between days)", seen <= steps and len(seen) >= 3, {"seen": sorted(seen), "steps": sorted(steps)})
+    # rotate mid-drill (phone portrait → landscape → portrait): the day and the drill are kept
+    await page.evaluate("scStop();scDay(15.9)"); await page.wait_for_timeout(200)
+    kept = []
+    for vw, vh in [(844, 390), (390, 844)]:
+        await page.set_viewport_size({"width": vw, "height": vh}); await page.wait_for_timeout(700)
+        kept.append(await page.evaluate("({type:SC.drill&&SC.drill.type,day:SC.eng.state().day,cls:DEV.cls,cell:!!SC.eng.anchors(false)['tracer-t-endo']})"))
+    good = all(k["type"] == "trace" and abs(k["day"] - 15.9) < 1e-6 and k["cell"] for k in kept)
+    report["rotate"].append({"size": "844x390 ↔ 390x844 trace", "ok": good, "cls": kept[-1]["cls"]})
+    if not good:
+        report["issues"].append({"kind": "rotate", "what": "trace " + json.dumps(kept), "at": "844x390"})
+    await ctx.close()
 FONT_JS = "document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent=':root{--font:\"%s\",sans-serif!important}';document.head.appendChild(s);});"
 
 
@@ -546,6 +627,7 @@ async def drill_flows(browser, base, report, preview):
           return {inside:box.left>=st.left-1&&box.right<=st.right+1&&box.top>=st.top-1&&box.bottom<=st.bottom+1,under:ov.filter(hit).length,zoom:+SC.eng.state().zoom.toFixed(2),h:Math.round(st.height)};})()""")
         ok(f"L1F: day drill keeps the embryo + ruler in view, clear of overlays at {vw}x{vh}", fr["inside"] and fr["under"] == 0, fr)
         await ctx.close()
+    await trace_flows(browser, base, report, preview, ok, out)
     # WebGL context loss (V1 note): lose + restore → the scene draws again, no error message left up
     ctx = await browser.new_context(viewport={"width": 1366, "height": 768})
     page = await ctx.new_page(); errs = []

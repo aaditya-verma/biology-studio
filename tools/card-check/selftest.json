@@ -1060,6 +1060,263 @@
     "scene": "sc-E00.01.04"
    },
    "expect": "E-schema"
+  },
+  {
+   "name": "trace: tracer not in the scene",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-nope",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "trace: ends ≠ the path's end",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "mesoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "trace: starts after the cell left",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 16
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "trace: right option in the prompt",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Does the ringed cell end up in the endoderm?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "trace: right option in the alt",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell goes under the top layer and ends in the endoderm."
+    }
+   },
+   "expect": "E-drill"
+  },
+  {
+   "name": "trace: ends unknown",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "notochord",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "trace: no alt",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm"
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "trace: mask_day not true/false",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer.",
+     "mask_day": "yes"
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "trace: two options",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "tracer": "t-endo",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Endoderm",
+      "Mesoderm"
+     ],
+     "answer": 0,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-check"
+  },
+  {
+   "name": "trace: no tracer",
+   "set": {
+    "checks.2": {
+     "id": "q3",
+     "type": "trace",
+     "prompt": "Follow the ringed cell. Where does it end up?",
+     "why": "Because.",
+     "tests": "objective",
+     "show": {
+      "day": 15
+     },
+     "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Hypoblast"
+     ],
+     "answer": 2,
+     "ends": "endoderm",
+     "alt": "A ringed cell on the top layer moves to the groove, slips under it and ends in the bottom layer."
+    }
+   },
+   "expect": "E-check"
   }
  ]
 }

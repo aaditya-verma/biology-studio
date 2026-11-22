@@ -22,7 +22,7 @@ const CONFIG={
     scenesUrl:'content/E/scenes/',            // EDIT: scene files (docs/scene-spec.md)
     engine:'src/js/14-scene3d.mjs',           // loaded on first open (three.js r170 in lib/three-r170/)
     dprCap:2,                                 // §2 rule 7
-    turn:{az:15,el:12}, lostMs:1500, drillShift:0.1, pinOffset:12, frame:{padTop:30,pad:8,pin:34,maxIn:2.5},   // frame (L1F): room kept around the embryo + ruler when a drill frames itself (px; padTop fits the ruler's '1 mm' label; pin = room around each pinned structure in a label drill)
+    turn:{az:15,el:12}, lostMs:1500, drillShift:0.1, pinOffset:12, frame:{padTop:30,pad:8,pin:34,maxIn:2.5,traceMaxIn:4,trace:26,cellGap:11},   // frame (L1F): room kept around the embryo + ruler when a drill frames itself (px; padTop fits the ruler's '1 mm' label; pin = room around each pinned structure in a label drill)
       // EDIT (V2): drill turn buttons (°), wait before 'The 3D stopped', drill framing (share of the stage height), pin offset (px)
     still:{w:360,h:240}, tolDefault:25,       // EDIT (V2): drill stills (px), rotate tolerance when a card sets none (card-spec §2a)
     budget:{phoneTris:150000,phoneFps:30},    // H8 until Measured

@@ -279,6 +279,8 @@ html.dev-pl .vw-tabs button{padding:0 4px;font-size:var(--fs-xs);min-width:0}
 .vw-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);min-width:0}
 .vw-head h1{font-size:var(--fs-h2);margin:2px 0 8px}
 .vw-day{display:flex;align-items:center;gap:6px}
+.vw-dl{color:var(--muted);font-weight:600;min-width:2.6em}
+.vw.dt-trace .vw-day{margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}   /* V3 (G-Art): the Day row reads apart from the Turn row */   /* V3: the trace drill's day row says "Day" (its ◀ ▶ look like the turn buttons above) */
 .vw-range{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
 .vw-range.wide{margin-top:10px}
 .vw input[type=range]{width:100%;min-height:var(--tap);accent-color:var(--accent);margin:0}

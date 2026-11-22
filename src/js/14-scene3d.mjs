@@ -5,6 +5,8 @@
    V2 (D-054): `notochord` part (lofted midline tube: prenotochordal strand → notochordal plate → rod, cranial end first per the book, D-029),
    per-key fit_mm, disc streak_scale + meso_midline_gap, stills of any state (snapshot — drills), viewAngle (rotate drills), context-loss hooks.
    L1F: `axis-o` anchor (the arrows' origin — the viewer keeps labels off the axis arrows) and screenBox() (drill framing keeps the embryo + ruler clear of the overlays).
+   V3 (D-075): `tracer` part — one marked cell on a path keyed by day (traceAt, shared with the viewer + tests; scene-check mirrors it); drawn only while
+   a trace drill names it (state.trace), over the tissue, ctx fill + accent ring (B3), at least min_px on screen.
    EDIT: lights + materials in makeRenderer(); pattern drawings in PATTERNS; budgets in CONFIG.viewer (02-config.js). */
 import * as THREE from '../../lib/three-r170/three.module.min.js';
 
@@ -227,6 +229,26 @@ function delayed(scene, day, part) {
   return p;
 }
 
+/* ---------- tracer (spec §6, V3): where the marked cell is at a day. Path keys {day, x, y, in}: x, y = shares of the disc's half-length /
+   half-width at that day (so it keeps its place as the disc grows), in = the layer it sits in (depth = that slab's middle; streak = just below the
+   epiblast under the groove — going in).
+   Between keys x, y and depth ease (smoothstep); outside the keys it stays put. → {x, y, z} in units, in = the layer now (the nearer key's), t ---------- */
+export const TRACE_IN = ['epiblast', 'streak', 'mesoderm', 'endoderm'];
+export function traceDepth(disc, inLayer) {   // z (units) of the middle of a layer slab — the same numbers as discPieces
+  const te = disc.epiblast_thick, g = disc.gap, th = disc.hypoblast_thick;
+  return { epiblast: te / 2, streak: -0.4 * g, mesoderm: (-g + 0.035 - 0.02) / 2, endoderm: -g - th / 2 }[inLayer] ?? te / 2;   // streak: just out of the epiblast's underside, below the groove (the dive shows — G-Art)
+}
+export function traceAt(scene, id, day) {
+  const part = scene.parts.find(p => p.kind === 'tracer' && p.id === id), disc = scene.parts.find(p => p.kind === 'disc');
+  if (!part || !disc || !(part.path || []).length) return null;
+  const P = part.path, d = Math.max(P[0].day, Math.min(P[P.length - 1].day, day));
+  let i = 0; while (i < P.length - 2 && d > P[i + 1].day) i++;
+  const a = P[i], b = P[Math.min(i + 1, P.length - 1)], span = b.day - a.day, t = span > 0 ? smooth((d - a.day) / span) : 0;
+  const p = delayed(scene, day, disc), L = p.length_units, W = p.width_ratio * L;
+  const fx = lerp(a.x, b.x, t), fy = lerp(a.y, b.y, t), z = lerp(traceDepth(disc, a.in), traceDepth(disc, b.in), t);
+  return { x: fx * L / 2, y: fy * W / 2, z, fx, fy, in: t < 0.5 ? a.in : b.in, a: a.in, b: b.in, t, end: P[P.length - 1].in };
+}
+
 /* ---------- 3. the viewer ---------- */
 export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CURRENT stage element (re-renders replace it)
   const dprCap = opt.dprCap || 2;
@@ -245,7 +267,7 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
   const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 400); cam.up.set(0, 0, 1);
   const V = { scene: null, day: 0, layersOn: {}, cut: { on: false, axis: 'y', at: -0.3 }, az: -90, el: 55, zoom: 1, fitU: 6,
     T: null, mats: {}, edgeMats: {}, objs: [], anchors: {}, dirty: true, w: 1, h: 1, cont: false, raf: 0, onFrame: null,
-    ft: [], stress: null, orbit: 0, dbg: null, hoverables: [], front: new Set() };
+    ft: [], stress: null, orbit: 0, dbg: null, hoverables: [], front: new Set(), trace: null, tracer: null };
 
   function tokenOf(layerId) { const L = V.scene.layers.find(l => l.id === layerId); return L ? L.token : 'guide'; }
   function opacityOf(layerId) { const L = V.scene.layers.find(l => l.id === layerId); return L && L.opacity != null ? L.opacity : 1; }
@@ -264,14 +286,16 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     return (V.mats[k] = c);
   }
   /* edges in the layer's edge token; a layer with ring:true is outlined in the accent ("look here" ring, never a fill — B3, D-036) */
-  function edgeMat(layerId) { const L = V.scene.layers.find(l => l.id === layerId) || {}, tok = tokenOf(layerId), k = L.ring ? 'ring' : tok;
-    return V.edgeMats[k] ||= new THREE.LineBasicMaterial({ color: new THREE.Color(L.ring ? V.T.accent.edge : V.T[tok].edge) }); }
+  const ringOn = L => !!L.ring && (!V.trace || !!L.drill);   // V3 (G-Art): while a marked cell is drawn, the accent ring is its alone (B3: one "look here")
+  function edgeMat(layerId) { const L = V.scene.layers.find(l => l.id === layerId) || {}, tok = tokenOf(layerId), r = ringOn(L), k = r ? 'ring' : tok;
+    return V.edgeMats[k] ||= new THREE.LineBasicMaterial({ color: new THREE.Color(r ? V.T.accent.edge : V.T[tok].edge) }); }
   function guideMat(alpha) { return new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.guide.fill), transparent: alpha < 1, opacity: alpha, depthWrite: alpha >= 1, side: THREE.DoubleSide }); }
   function disposeMats() { for (const [k, m] of Object.entries(V.mats)) { if (!k.startsWith('cap:') && m.map) m.map.dispose(); m.dispose(); } V.mats = {};
     for (const m of Object.values(V.edgeMats)) m.dispose(); V.edgeMats = {}; }
   const ORDER = { hypoblast: 0, endoderm: 1, mesoderm: 2, 'meso-r': 2, noto: 2, prechordal: 2, streak: 3, epiblast: 4, 'lip-l': 5, 'lip-r': 5, node: 5 };
 
   function clear() {
+    V.tracer = null;
     for (const o of V.objs) { root.remove(o); o.traverse(c => { if (c.geometry && !c.userData.keepGeo) c.geometry.dispose(); if (c.material && c.userData.ownMat) [].concat(c.material).forEach(m => m.dispose()); }); }
     V.objs = []; V.anchors = {}; V.hoverables = [];
   }
@@ -298,10 +322,20 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
           const m = new THREE.Mesh(pc.geo, [mat(pc.layer), capMat(pc.layer)]); m.renderOrder = ORDER[pc.name] ?? 3; m.visible = V.layersOn[pc.layer] !== false; addObj(m, pc.layer); V.hoverables.push(m);
           const e = new THREE.LineSegments(new THREE.EdgesGeometry(pc.geo, 35), edgeMat(pc.layer)); e.visible = m.visible; e.renderOrder = m.renderOrder; addObj(e, pc.layer);
           if (pc.hull) { const L = S.layers.find(l => l.id === pc.layer) || {};
-            if (L.ring) { const h = new THREE.Mesh(pc.hull, new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.accent.edge), side: THREE.BackSide })); h.userData.ownMat = true; h.renderOrder = m.renderOrder; h.visible = m.visible; addObj(h, pc.layer); }   // inverted hull = a silhouette ring in the accent (B3: outline, never a fill)
+            if (ringOn(L)) { const h = new THREE.Mesh(pc.hull, new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.accent.edge), side: THREE.BackSide })); h.userData.ownMat = true; h.renderOrder = m.renderOrder; h.visible = m.visible; addObj(h, pc.layer); }   // inverted hull = a silhouette ring in the accent (B3: outline, never a fill)
             else pc.hull.dispose(); }
           if (pc.anchor) V.anchors[pc.name] = { layer: pc.layer, p: pc.anchor };
         }
+      } else if (part.kind === 'tracer') {
+        if (!V.disc || V.trace !== part.id) continue;   // drill-only (spec §5 drill layers): the path is the answer, so never in Try it or stills
+        const at = traceAt(S, part.id, V.day); if (!at) continue;
+        const r = (part.radius_mm || 0.006) / u, g = new THREE.Group(); g.position.set(at.x, at.y, at.z);
+        const fillM = mat(part.layer).clone(); Object.assign(fillM, { transparent: true, opacity: 1, depthTest: false, depthWrite: false, side: THREE.FrontSide });   // over the tissue: it never hides inside a layer; transparent pass, so it draws after the translucent epiblast (G-Art)
+        const ringM = new THREE.MeshBasicMaterial({ color: new THREE.Color(V.T.accent.edge), side: THREE.BackSide, transparent: true, opacity: 1, depthTest: false, depthWrite: false });   // inverted hull = the accent ring (B3: a ring, never a fill)
+        const cell = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), fillM), ring = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), ringM);   // ring width set per frame: 22 % of the cell, at least 2.5 px (G-Art)
+        cell.renderOrder = 41; ring.renderOrder = 40; cell.userData.ownMat = ring.userData.ownMat = true; g.add(ring, cell);
+        g.userData.noFrame = true; addObj(g, part.layer); V.tracer = { g, ring, r, min: part.min_px || 0 };
+        V.anchors['tracer-' + part.id] = { layer: part.layer, p: [at.x, at.y, at.z], tracer: true, in: at.in };
       } else if (part.kind === 'axes') {
         const len = part.length_mm / u, c = new THREE.Color(V.T.guide.edge), z = 0.11;
         const dirs = { cranial: [1, 0, 0], caudal: [-1, 0, 0], left: [0, 1, 0], right: [0, -1, 0], dorsal: [0, 0, 1], ventral: [0, 0, -1] };
@@ -387,7 +421,8 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     V.raf = 0;
     if (V.cont) { if (V.orbit) { V.az += V.orbit * 16 / 1000 * 12; } V.dirty = true; }
     if (V.dirty && !V.lost) {
-      placeCamera(); renderer.render(scene3, cam); V.dirty = false;
+      placeCamera(); if (V.tracer) { const ppu = pxPerUnit(), s = Math.max(V.tracer.r, V.tracer.min / ppu); V.tracer.g.scale.setScalar(s); V.tracer.ring.scale.setScalar(Math.max(1.22, 1 + 2.5 / (s * ppu))); }   // at least min_px on screen (the drill adds the part's disclaimer); EDIT: ring 22 % / ≥ 2.5 px
+      renderer.render(scene3, cam); V.dirty = false;
       if (V.onFrame) V.onFrame();
       const now = performance.now(); if (V.cont) { if (V.lastT) V.ft.push(now - V.lastT); V.lastT = now; }
     }
@@ -403,11 +438,12 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     setScene(S, st = {}) {
       V.scene = S; V.front = new Set(S.parts.filter(p => p.kind === 'notochord').flatMap(p => Object.values(p.layers || {}))); V.day = st.day ?? S.start_day ?? S.days[0].day; V.fitU = keyState(S, V.day).fit_mm / S.units.mm_per_unit;
       V.layersOn = { ...(st.layersOn || Object.fromEntries(S.layers.map(l => [l.id, l.on !== false]))) };
-      V.cut = { ...(st.cut || S.cut) }; V.az = st.az ?? S.camera.azimuth_deg; V.el = st.el ?? S.camera.elevation_deg; V.zoom = st.zoom ?? 1;
+      V.cut = { ...(st.cut || S.cut) }; V.trace = st.trace || null; V.az = st.az ?? S.camera.azimuth_deg; V.el = st.el ?? S.camera.elevation_deg; V.zoom = st.zoom ?? 1;
       disposeMats();
       if (!V.T) api.setTokens(); else build(); kick();
     },
-    state() { return { day: V.day, layersOn: { ...V.layersOn }, cut: { ...V.cut }, az: V.az, el: V.el, zoom: V.zoom }; },
+    state() { return { day: V.day, layersOn: { ...V.layersOn }, cut: { ...V.cut }, az: V.az, el: V.el, zoom: V.zoom, trace: V.trace }; },
+    setTrace(id) { V.trace = id || null; build(); kick(); },   // V3: draw this tracer (a trace drill) or none
     setDay(d) { const K = V.scene.days; V.day = Math.max(K[0].day, Math.min(K[K.length - 1].day, d)); build(); kick(); },
     setLayer(id, on) { V.layersOn[id] = on; for (const o of V.objs) if (o.userData.layer === id) o.visible = on; kick(); },
     setCut(c) { Object.assign(V.cut, c); build(); kick(); },
@@ -446,13 +482,13 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
     snapshot(st, w, h, decorate) {
       if (!V.scene || V.lost || !V.T) return null;
       const keep = api.state(), kw = V.w, kh = V.h, dpr = renderer.getPixelRatio();
-      V.day = st.day ?? keep.day; V.layersOn = { ...keep.layersOn, ...(st.layersOn || {}) }; V.cut = { ...keep.cut, ...(st.cut || {}) };
+      V.day = st.day ?? keep.day; V.layersOn = { ...keep.layersOn, ...(st.layersOn || {}) }; V.trace = null;   // a still never draws a marked cell (V3: the path is the answer) V.cut = { ...keep.cut, ...(st.cut || {}) };
       V.az = st.az ?? keep.az; V.el = st.el ?? keep.el; V.zoom = st.zoom ?? 1;
       build(); renderer.setPixelRatio(1); renderer.setSize(w, h, false); V.w = w; V.h = h; placeCamera(); renderer.render(scene3, cam);
       const ppm = pxPerUnit() / V.scene.units.mm_per_unit;
       let url; if (decorate) { const c2 = document.createElement('canvas'); c2.width = w; c2.height = h; const g = c2.getContext('2d'); g.drawImage(canvas, 0, 0, w, h); decorate(g, { w, h, pxPerMm: ppm }); url = c2.toDataURL('image/png'); }
       else url = canvas.toDataURL('image/png');
-      Object.assign(V, { day: keep.day, layersOn: keep.layersOn, cut: keep.cut, az: keep.az, el: keep.el, zoom: keep.zoom, w: kw, h: kh });
+      Object.assign(V, { day: keep.day, layersOn: keep.layersOn, cut: keep.cut, az: keep.az, el: keep.el, zoom: keep.zoom, w: kw, h: kh, trace: keep.trace });
       renderer.setPixelRatio(dpr); renderer.setSize(kw, kh, false); build(); kick();
       return { url, pxPerMm: ppm, w, h };
     },

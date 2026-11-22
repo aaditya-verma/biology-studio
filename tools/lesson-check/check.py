@@ -27,7 +27,7 @@ CONFIG_JS = ROOT / "src" / "js" / "02-config.js"
 
 # EDIT: lesson-spec §3–§4
 KINDS = ["read", "check", "scene", "drill", "remember"]
-DRILLS = {"rotate", "day", "frames", "label", "folded"}
+DRILLS = {"rotate", "day", "frames", "label", "folded", "trace"}   # trace: V3 (D-075) — 60 s, inside the Check
 SHOW = {"reviewed", "shipped"}           # mirror CONFIG.learn.show
 TIME = {"wpm": 150, "read_base": 40, "q": 30, "q_order": 45, "q_drill": 60, "scene": 60, "drill": 60, "prompt": 15}   # read = MBBS text (medical students) + 40 s (opening the card, moving on); G-Learn L2
 BUDGET = {"min": 10, "max": 15}          # minutes per sitting
@@ -305,6 +305,7 @@ def selftest(W):
         ("prereq wrong", lambda L: L["prereq"].pop(), "E-prereq"),
         ("other chapter's card", lambda L: L["sittings"][-1]["steps"].extend([{"id": "E06.00.01:" + k, "card": "E06.00.01", "kind": k, "est_s": est(W["cards"]["E06.00.01"], k)} for k in card_steps(W["cards"]["E06.00.01"])]), "E-chapter"),
         ("shipped step gone", lambda L: L["sittings"][-1]["steps"].pop(), "E-gone"),
+        ("trace priced as an mcq (a drill is 60 s, V3)", lambda L: [st.__setitem__("est_s", st["est_s"] - (TIME["q_drill"] - TIME["q"])) for sit in L["sittings"] for st in sit["steps"] if st["id"] == "E05.01.03:check"], "E-est"),
         ("chapter outside L2 scope", lambda L: L.__setitem__("ch", "E09") or L.__setitem__("id", "L-E09"), "E-scope"),
     ]
     # scene-on-no-scene needs a no-scene chapter
@@ -328,6 +329,12 @@ def selftest(W):
             W_bak = W["cards"]["E05.01.01"].get("status")
             if name == "not Reviewed":
                 Wc["cards"]["E05.01.01"]["status"] = "draft"
+            elif name.startswith("trace priced"):   # independent of the card's review state (G-Eng V3): force E05.01.03 Reviewed, rebuild
+                for k in ("cards", "index"):
+                    if isinstance(Wc.get(k), dict) and "E05.01.03" in Wc[k]:
+                        Wc[k]["E05.01.03"]["status"] = "reviewed"
+                L = build(Wc, "E05")
+                f(L)
             else:
                 f(L)
             fname = "E09.json" if name == "chapter outside L2 scope" else "E05.json"

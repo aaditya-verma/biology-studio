@@ -29,7 +29,9 @@ jobs:
           python build_map.py --selftest
           python build_map.py --out /tmp/k2-rebuild > /dev/null && cmp /tmp/k2-rebuild/map.json ../../content/E/map.json   # CI = reference build; a stale or machine-dependent map.json fails here
       - name: Scene check (C3)
-        run: python tools/scene-check/check.py
+        run: |
+          python tools/scene-check/check.py
+          python tools/scene-check/check.py --selftest
       - name: Card check (C3) — cards, index, sources.json, selftest, calibration, parity
         run: |
           python tools/card-check/check.py

@@ -161,7 +161,7 @@ function lnSrcHtml(card){const src=CD.src||{},secN=src.sections||{},chN=src.chap
     +`<p class="xs mut">${esc(STR.ln.marksKey)}</p>`;}
 
 /* ---------- Check (H1: Checks test the objective; one right answer; explain on a miss) ---------- */
-const LN_LIVE=['rotate','day','label'],LN_STILL=['frames','folded'],LN_ABC='ABCDE';
+const LN_LIVE=['rotate','day','label','trace'],LN_STILL=['frames','folded'],LN_ABC='ABCDE';   // trace (V3, D-075): the live stage + a day row
 const lnIsDrill=q=>LN_LIVE.includes(q.type)||LN_STILL.includes(q.type);
 function lnCkNew(card){const perm=(q,n,keep)=>{const ix=[...Array(n).keys()];if(keep)return ix;let p=lnShuffle(ix);for(let k=0;['order','frames'].includes(q.type)&&k<20&&p.every((v,j)=>v===j);k++)p=lnShuffle(ix);return p;};   // an order/frames item never starts solved (G-Eng, G-Learn)
   return {i:0,res:[],run:Date.now(),perm:Object.fromEntries(card.checks.map(q=>[q.id,perm(q,(q.options||[]).length,q.type==='day'||q.type==='folded')])),
@@ -180,8 +180,10 @@ function lnDrillMount(card){const q=lnLiveQ(card);if(!q){lnDrillEnd(card);return
     if(!LN.keep)LN.keep={id:S.id,card:card.id,st:JSON.parse(JSON.stringify(SC.st[S.id]||{}))};
     const home=lnShowState(S,q.show);if(LN.drillKey!==key){LN.drillKey=key;SC.st[S.id]=JSON.parse(JSON.stringify(home));SC.cur=null;}
     const fr=(SC.frames||{})[key];   // L1F: a ruler scene frames itself (scene-spec §8a); the framed view is this drill's Start view
-    SC.drill={type:q.type,mask:q.type==='day'&&ck.pick===null,labels:q.type==='label'&&ck.pick!==null,pins:q.type==='label'?q.pins.map((p,i)=>({at:p.at,n:i+1})):null,
-      home:fr?{...home,zoom:fr.zoom}:home,zoom0:home.zoom,key,frame:q.type==='label'||S.parts.some(p=>p.kind==='ruler'),shift:fr?fr.shift:undefined};
+    const tp=q.type==='trace'?(S.parts.find(p=>p.kind==='tracer'&&p.id===q.tracer)||{path:[]}).path:null,t1=tp&&tp.length?tp[tp.length-1].day:q.show.day;   // V3: the trace scrubs show.day → the path's end, stepping over its keys
+    SC.drill={type:q.type,mask:(q.type==='day'||(q.type==='trace'&&q.mask_day===true))&&ck.pick===null,labels:q.type==='label'&&ck.pick!==null,pins:q.type==='label'?q.pins.map((p,i)=>({at:p.at,n:i+1})):null,
+      trace:tp?q.tracer:null,d0:q.show.day,d1:t1,steps:tp?[q.show.day,...tp.map(k=>k.day).filter(d=>d>q.show.day+0.01)]:null,
+      home:fr?{...home,zoom:fr.zoom}:home,zoom0:home.zoom,key,frame:q.type==='label'||q.type==='trace'||S.parts.some(p=>p.kind==='ruler'),shift:fr?fr.shift:undefined};
     const other=two?$('#lnDVw'):$('#lnVw');
     if(other)other.innerHTML=two?`<p class="sm mut ln-inchk">${esc(STR.ln.dr.beside)}</p>`:`<p class="sm mut ln-inchk">${esc(STR.ln.dr.inCheck)} <button type="button" class="lk" data-ln="tochk">${esc(STR.ln.dr.toCheck)}</button></p>`;
     $('#lnTry')?.classList.toggle('drill',two);
@@ -209,7 +211,7 @@ function lnOrderHtml(q,ck,answered,item,label){const perm=ck.perm[q.id],ord=ck.o
   return `<ol class="ln-order${q.type==='frames'?' ln-frames':''}">${ord.map((k,j)=>`<li>${item(k)}${answered?(ck.pickOk[j]?` <span class="ln-ok" aria-hidden="true">✓</span><span class="sr"> — ${esc(STR.ln.rightPlace)}</span>`:` <span class="ln-x" aria-hidden="true">✗</span><span class="sr"> — ${esc(STR.ln.wrongPlace)}</span>`):`<span class="ln-mv"><button type="button" class="btn icon" data-ln="mv" data-j="${j}" data-d="-1" aria-label="${esc(STR.ln.up(label(k)))}" ${j===0?'disabled':''} data-fk="ln-u${k}">${icon('up',18)}</button><button type="button" class="btn icon ln-dn" data-ln="mv" data-j="${j}" data-d="1" aria-label="${esc(STR.ln.down(label(k)))}" ${j===ord.length-1?'disabled':''} data-fk="ln-d${k}">${icon('up',18)}</button></span>`}</li>`).join('')}</ol>
     ${answered?'':`<button type="button" class="btn pri" data-ln="order" data-fk="ln-order">${esc(STR.ln.checkOrder)}</button>`}`;}
 const lnFig=(snap,alt,cap)=>`<figure class="ln-fig"><img data-snap="${snap}" alt="${esc(alt)}" width="360" height="240"><figcaption class="xs">${esc(cap)}</figcaption><p class="xs ln-nopic">${esc(STR.ln.dr.noPic)} ${esc(alt)}</p></figure>`;
-function lnDrillHtml(card,q,ck,answered){const D=STR.ln.dr,S=SC.loaded[card.scene.id],stage=`<div class="ln-dvw" id="lnDVw"></div>`,altD=t=>`<details class="ln-alt"><summary>${esc(D.alt)}</summary><p class="sm">${esc(t)}</p></details>`;
+function lnDrillHtml(card,q,ck,answered){const D=STR.ln.dr,S=SC.loaded[card.scene.id],stage=`<div class="ln-dvw" id="lnDVw"></div>`,altD=(t,o)=>`<details class="ln-alt"${o?' open':''}><summary>${esc(D.alt)}</summary><p class="sm">${esc(t)}</p></details>`;
   let h=`<p class="xs mut ln-dname">${icon('scene',16)} ${esc(D.names[q.type])}</p>`;
   if(q.type==='rotate'&&SC.engErr)ck.words=true;   // no WebGL: the words question carries the drill (card-spec §2a, G-A11y)
   if(q.type==='rotate'){const t=S&&lnView(S,q.target),lab=t?t.label:q.target;
@@ -217,6 +219,7 @@ function lnDrillHtml(card,q,ck,answered){const D=STR.ln.dr,S=SC.loaded[card.scen
     return h+`<div class="ln-dr">${stage}${lnFig('t',D.targetAlt(lab),D.target)}</div>`
       +(answered?'':`<div class="row ln-dact"><button type="button" class="btn pri" data-ln="rcheck" data-fk="ln-rcheck">${esc(D.checkView)}</button><button type="button" class="lk sm" data-ln="rwords" data-fk="ln-rwords">${esc(D.words)}</button></div>`)+altD(q.alt);}
   if(q.type==='day')return h+stage+lnOptsHtml(q,ck,answered,D.dayOpt)+altD(q.alt);
+  if(q.type==='trace')return h+(answered?'':`<p class="xs mut">${esc(D.traceHint)}</p>`)+stage+lnOptsHtml(q,ck,answered,o=>o)+altD(q.alt,!!SC.engErr);   // no WebGL: the path is told in words (open)
   if(q.type==='label'){const perm=ck.perm[q.id],all=q.pins.every((_,i)=>ck.sel[i]!=null);
     return h+stage+`<div class="ln-pins">${q.pins.map((p,i)=>{const mine=ck.sel[i],okp=answered&&mine===p.answer;
       return `<label class="ln-pin"><span class="ln-pnum" aria-hidden="true">${i+1}</span><span class="sm">${esc(D.pinIs(i+1))}</span><select data-lnpin="${i}" ${answered?'disabled':''} data-fk="ln-pin${i}"><option value="">${esc(D.choose)}</option>${perm.map(k=>`<option value="${k}"${mine===k?' selected':''}>${esc(q.options[k])}</option>`).join('')}</select>${answered?(okp?' <span class="ln-ok" aria-hidden="true">✓</span>':' <span class="ln-x" aria-hidden="true">✗</span>')+`<span class="sr"> — ${esc(okp?STR.ln.right:STR.ln.wrong)}</span>`:''}</label>`;}).join('')}</div>`
@@ -234,6 +237,7 @@ function lnDrillHtml(card,q,ck,answered){const D=STR.ln.dr,S=SC.loaded[card.scen
 function lnRightHtml(card,q,ck){const D=STR.ln.dr;
   if(q.type==='mcq')return ' '+esc(STR.ln.rightWas(q.options[q.answer]));
   if(q.type==='day')return ' '+esc(STR.ln.rightWas(D.dayOpt(q.options[q.answer])));
+  if(q.type==='trace')return ' '+esc(STR.ln.rightWas(q.options[q.answer]));
   if(q.type==='rotate')return ck.words?' '+esc(STR.ln.rightWas(q.options[q.answer])):`</p><p class="sm">${esc(D.offBy(Math.round(ck.pick),q.tol_deg||CONFIG.viewer.tolDefault))} <button type="button" class="lk" data-ln="rshow">${esc(D.showTarget)}</button>`;
   if(q.type==='label')return `</p><ul class="sm">${q.pins.map((p,i)=>`<li>${esc(D.pinRight(i+1,q.options[p.answer]))}</li>`).join('')}</ul><p>`;
   if(q.type==='order')return `</p><p class="sm">${esc(STR.ln.rightOrder)}</p><ol class="sm">${q.options.map(o=>`<li>${esc(o)}</li>`).join('')}</ol><p>`;

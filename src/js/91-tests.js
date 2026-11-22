@@ -115,6 +115,22 @@ function appTests(){
   {const s=stFill({});t('saved shape has review',s.review&&s.review.on===false&&typeof s.review.seen==='object'&&typeof s.review.drafts==='object');
     const m=stMerge({review:{seen:{a:1},drafts:{x:{t:1,note:'old'}},t:1}},{review:{seen:{a:2,b:1},drafts:{x:{t:2,note:'new'}},on:true,t:2}});
     t('merge review: higher seen, newer draft, newer on',m.review.seen.a===2&&m.review.seen.b===1&&m.review.drafts.x.note==='new'&&m.review.on===true,JSON.stringify(m.review));}
+  // V3 trace a cell (D-075): rules mirror the spec, path stepping, notes, a give-away refused, the engine's path (when loaded)
+  t('trace rules + strings',CARD_RULES.types.includes('trace')&&DRILL_TYPES.includes('trace')&&CARD_RULES.traceIn.join()==='epiblast,streak,mesoderm,endoderm'&&LN_LIVE.includes('trace')&&!!STR.ln.dr.names.trace&&!!STR.ln.dr.traceHint);
+  {const S={id:'sc-x',days:[{day:15},{day:17}],layers:[{id:'tracer',token:'ctx',ring:true,drill:true,label:'Marked cell'}],views:[],
+      parts:[{kind:'disc',layers:{}},{kind:'tracer',id:'t-a',layer:'tracer',disclaimer:'marked cell drawn larger',path:[{day:15,x:0,y:0,in:'epiblast'},{day:15.5,x:0,y:0,in:'streak'},{day:17,x:0,y:0,in:'endoderm'}]}],disclaimers:['colours illustrative']};
+    const run=q=>{const c=[];drillRules(q,'q9','trace',q.options,S,(code)=>c.push(code));return c;},q0={prompt:'Where does the marked cell end up?',tracer:'t-a',show:{day:15},options:['Ectoderm','Mesoderm','Endoderm'],answer:2,ends:'endoderm',alt:'It goes under and settles in the bottom layer.'};
+    t('trace drill: a good one is clean',run(q0).length===0,run(q0).join());
+    t('trace drill: answer in the prompt refused (D-065)',run({...q0,prompt:'Does it end in the endoderm?'}).includes('E-drill'));
+    t('trace drill: ends ≠ path, late start, unknown tracer',run({...q0,ends:'mesoderm'}).includes('E-drill')&&run({...q0,show:{day:16}}).includes('E-drill')&&run({...q0,tracer:'t-b'}).includes('E-drill'));
+    t('trace anchor listed',sceneAnchors(S).has('tracer-t-a'));
+    const keep=SC.drill;try{SC.drill={type:'trace',trace:'t-a',d0:15,d1:17,steps:[15,15.5,17]};
+    t('trace steps: ▶ next key, ◀ previous, stays at the ends',scStep(15,1)===15.5&&scStep(15.5,1)===17&&scStep(17,1)===17&&scStep(17,-1)===15.5&&scStep(15,-1)===15);
+    t('trace notes: the drawn-larger line first',scDiscs(S)[0]==='marked cell drawn larger'&&scDiscs(S).length===2);
+    SC.drill=null;t('no trace: whole-day steps, scene notes',scStep(15.3,1)===16&&scStep(15.3,-1)===15&&scDiscs(S).length===1);}finally{SC.drill=keep;}}
+  if(SC.mod&&SC.mod.TRACE_IN)t('trace layers: engine = card rules',SC.mod.TRACE_IN.join()===CARD_RULES.traceIn.join());
+  if(SC.mod&&SC.mod.traceAt&&SC.loaded['sc-E00.01.04']){const S=SC.loaded['sc-E00.01.04'],A=SC.mod.traceAt(S,'t-endo',15),B=SC.mod.traceAt(S,'t-endo',17),M=SC.mod.traceAt(S,'t-endo',15.5);
+    t('traceAt: epiblast → streak → endoderm, deeper at the end',A.in==='epiblast'&&M.in==='streak'&&B.in==='endoderm'&&B.z<M.z&&M.z<A.z&&B.end==='endoderm',JSON.stringify([A.in,M.in,B.in]));}
   if(typeof lsTests==='function')lsTests(t);   // L2 lessons, Today plans, Mixed review (20-lessons.js)
   dlog('test',out.filter(x=>!x.ok).length+' failed of '+out.length);return out;
 }

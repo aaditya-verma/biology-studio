@@ -34,7 +34,8 @@ const STR={
     open:'Open in 3D', all:'All 3D scenes', loading:'Loading…', loading3d:'Starting 3D…', loadFail:'Could not load the 3D scenes',
     noScene:id=>'No scene '+id+'.', noGL:'3D needs WebGL, which this browser has turned off. The facts are still under About.',
     stageLabel:t=>'3D view: '+t+'. Drag to turn, pinch or scroll to zoom.', controls:'3D controls', sections:'Control sections',
-    dayGroup:'Day', day:'Day', dayPrev:'One day back', dayNext:'One day on', play:'Play the days', pause:'Pause',
+    dayGroup:'Day', day:'Day', dayPrev:'One day back', dayNext:'One day on', trPrev:'Back one step of the path', trNext:'On one step of the path',   // trace drill (V3)
+    play:'Play the days', pause:'Pause',
     dayShort:d=>'d'+d, dayLong:d=>'Day '+d, daysRange:d=>'Days '+d[0]+'–'+d[1],
     tabs:{layers:'Layers',cut:'Cut',view:'View',about:'About',debug:'Debug'},
     heads:{layers:'Layers',cut:'Labels & cut',view:'View',about:'About this scene',debug:'Debug'},
@@ -45,7 +46,7 @@ const STR={
     hintTouch:'Drag to turn · pinch to zoom · double-tap to reset.',
     gizmo:'Axis key: Cr cranial (head), Cd caudal (tail), D dorsal (back), V ventral (belly), L left, R right of the embryo.',
     axes:{cranial:'Cranial',caudal:'Caudal',dorsal:'Dorsal',ventral:'Ventral',left:'Left',right:'Right'},
-    drillT:'Turn it to look closer', turnGroup:'Turn the view', turn:{l:'Turn left',r:'Turn right',u:'Tilt up',d:'Tilt down'}, dReset:'Start view',
+    drillT:'Turn it to look closer', turnGroup:'Turn the view', turnShort:'Turn', turn:{l:'Turn left',r:'Turn right',u:'Tilt up',d:'Tilt down'}, dReset:'Start view',
     masked:'Day ? · stage ? · size ?', lost:'The 3D stopped: the browser took back the graphics.', relaunch:'Restart 3D',
     lose:'Lose + restore context (test)', loseOk:'Context dropped — it should redraw in about a second.', loseNo:'This browser cannot simulate it.',
     mm:m=>(m<0.1?(m*1000)+' µm':m+' mm'), cardsT:'Cards:', marksKey:'Marks: ✔✔ book + Tier 1 source agree · ✔ book only · ⚑ disagree (logged) · ✚ beyond the book · ≈ not yet cited.',
@@ -176,7 +177,8 @@ const STR={
     tryT:'Try it', tryLead:'Turn it and scrub the days. Open full 3D to slice it.', openFull:'Open full 3D', watchT:'Watch it', soon:'Coming soon', watchSoon:'Episodes come in a later build (L3).', trySoon:'No 3D for this card yet — it comes with a later 3D build.',
     checkT:'Check', checkLead:n=>n+' questions on this card’s objective. Get them all right to mark it Understood.', checkStart:'Start the Check', checkAgain:'Try the Check again',
     qOf:(i,n)=>'Question '+i+' of '+n, right:'Right.', wrong:'Not quite.', rightWas:t=>'The right answer: '+t, next:'Next question', finish:'See result',
-    dr:{names:{rotate:'Rotate to match',day:'Which day is this?',frames:'Order the frames',label:'Label it',folded:'Folded or not?'},
+    dr:{names:{rotate:'Rotate to match',day:'Which day is this?',frames:'Order the frames',label:'Label it',folded:'Folded or not?',trace:'Trace a cell'},
+      traceHint:'Move the day (slider, ◀ ▶ or Play) and follow the marked cell. Turn the 3D to look closer. Then choose where it ends up.',   // V3 (D-075)
       alt:'Describe the picture', altMany:'Describe the pictures', pic:l=>'Picture '+l, inCheck:'The 3D is in the Check below while you answer.', toCheck:'Go to the question',
       beside:'Use the 3D for this question — turn it to look closer.', target:'Target view', targetAlt:t=>'Target view: '+t, checkView:'Check my view',
       words:'Answer in words instead', useView:'Use the 3D instead', wordsQ:'In words: which view is the target?', offBy:(d,t)=>'Your view was '+d+'° from the target (within '+t+'° counts).',

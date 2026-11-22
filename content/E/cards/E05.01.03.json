@@ -11,7 +11,7 @@
   "text": "Explain how epiblast cells move through the primitive streak to form endoderm and mesoderm."
  },
  "body": {
-  "general": "How does a flat sheet of cells grow new layers under itself? Cells of the top layer, the epiblast, crawl toward the streak [f1]. There they let go of their neighbours and slip under the sheet, a move called invagination [f1]. The first cells through push out the old bottom layer and become endoderm [f2]. The next ones fill the gap between the layers as mesoderm and spread sideways and toward the head [f3,f4]. Cells that never go in become ectoderm [f5].",
+  "general": "How does a flat sheet of cells grow new layers under itself? Cells of the top layer, the epiblast, crawl toward the streak [f1]. There they let go of their neighbours and slip under the sheet, a move called invagination [f1]. The first cells through push out the old bottom layer, the hypoblast, and become endoderm [f2]. The next ones fill the gap between the layers as mesoderm and spread sideways and toward the head [f3,f4]. Cells that never go in become ectoderm [f5].",
   "mbbs": "Epiblast cells head for the primitive streak [f1]. There they change shape, loosen from their neighbours and dive under the sheet, a move called invagination [f1]. The first cells to ingress invade the hypoblast and displace it, forming definitive endoderm [f2]. Later cells settle in the gap between epiblast and endoderm as intraembryonic mesoderm [f3]. Mesoderm spreads laterally and cranially and meets the extraembryonic mesoderm at the disc margin [f4]. Cells that remain in the epiblast form ectoderm [f5]. Mesoderm goes on to build muscle, bone, connective tissue, the heart, vessels and blood [f6]."
  },
  "facts": [
@@ -137,9 +137,30 @@
     "Cells from outside the embryo"
    ],
    "answer": 0,
-   "why": "All intraembryonic mesoderm comes from epiblast cells that ingressed at the streak.",
+   "why": "All the mesoderm inside the embryo comes from epiblast cells that moved in at the streak.",
    "tests": "objective",
    "refutes": "m2"
+  },
+  {
+   "id": "q4",
+   "type": "trace",
+   "prompt": "Follow the marked cell from day 15. Which layer does it end up in?",
+   "tracer": "t-endo",
+   "show": {
+    "day": 15
+   },
+   "options": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm",
+    "Hypoblast"
+   ],
+   "answer": 2,
+   "ends": "endoderm",
+   "alt": "A marked cell starts on the top layer. It crawls to the front of the midline groove and slips under around day 15½. By day 16 it is in the bottom layer, then moves toward the head within it.",
+   "why": "It went in among the first cells, so it pushed into the old lower layer and became endoderm: the endoderm is built from epiblast cells like this one.",
+   "tests": "objective",
+   "refutes": "m1"
   }
  ],
  "adult": "The mesoderm cells that slip in here go on to build muscle, bone, the heart and blood [f6].",
@@ -180,8 +201,8 @@
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Research librarian",
-   "agent": "C1 G-Sci reviewer agent (round 2)",
-   "date": "20 Nov 2026",
+   "agent": "V3 G-Sci reviewer agent (round 2)",
+   "date": "22 Nov 2026",
    "checklist": {
     "cited": true,
     "sections": true,
@@ -219,14 +240,14 @@
     "r2": "ok",
     "r3": "ok"
    },
-   "notes": "MBBS 1–3 reworded in our own structure; r2 matches f4."
+   "notes": "Round 2. Round 1 failed accuracy: the trace path entered at mid-streak (x −0.68), which the E05.04 fate map gives to mesoderm; now it goes in at the front of the streak (x −0.44, day 15.5, just behind the node), is in the endoderm from day 16 and drifts toward the head to x +0.56 by day 17 (honest: front-end endoderm spreads cranially). q4 why no longer clashes with f8. Scene fact kept at book level (E05.01 ✔). SHOULD (later V pass): the disc's endoderm sheet grows from the tail end, real endoderm spreads from the front of the streak."
   },
   "G-Learn": {
    "result": "pass",
    "by": "Fresh-eyes reviewer",
    "role": "Learning designer",
-   "agent": "C1 G-Learn reviewer agent (round 2)",
-   "date": "20 Nov 2026",
+   "agent": "V3 G-Learn reviewer agent (round 2)",
+   "date": "22 Nov 2026",
    "checklist": {
     "objective": true,
     "checks": true,
@@ -241,6 +262,7 @@
     "q1": "ok",
     "q2": "ok",
     "q3": "ok",
+    "q4": "ok",
     "m1": "ok",
     "m2": "ok",
     "r1": "ok",
@@ -248,22 +270,7 @@
     "r3": "ok",
     "shows_up": "ok"
    },
-   "notes": "Invagination is now named at General, and r2 is unique to this card."
-  },
-  "G-A11y": {
-   "result": "pass",
-   "by": "Fresh-eyes reviewer",
-   "role": "QA & accessibility",
-   "agent": "C1 G-A11y reviewer agent (round 1)",
-   "date": "20 Nov 2026",
-   "checklist": {
-    "alt": true,
-    "input": true,
-    "colour": true,
-    "text125": true
-   },
-   "lines": {},
-   "notes": "Checked body (general, mbbs), facts incl. More, misconceptions, checks (prompt/options/why), adult, clinical, remember against linked scene labels/disclaimers. alt: text carries meaning with scene unseen; no pointer phrases to the visual. input: plain mcq/order, short text options, no visual-only or 'all/both of the above' options. colour: no colour word anywhere in card text. text125: no unbroken run > 22 chars; longest option 47 chars (limit ~70). check.py --preview renders, 0 errors. sc-E00.01.04. Cell journey fully narrated. Order check: 4 short steps. Advisory: f7 (More) gene names FGF8, E-cadherin, BRACHYURY (T) are proper names, readable as letters; acceptable in More."
+   "notes": "Round 2: hypoblast now named at General (s4, f2), so q1/q4 whys are taught; q3 why in plain words; q4 alt gives only place and day words and no layer name, and matches the path; q4 why refutes m1 without clashing with f8. The trace is a real picture test: nothing in the prompt, options, alt or q1–q3 says where this cell goes (q2's mesoderm ending is a lure); last place is right since q4's why would answer q1. SHOULD: gloss 'streak' at General via f1 on the next G-Sci pass."
   }
  },
  "log": [
@@ -306,6 +313,51 @@
    "date": "20 Nov 2026",
    "ev": "G-A11y pass",
    "by": "QA & accessibility · C1 G-A11y reviewer agent (round 1)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "content edit (V3, D-075): q4 trace drill added (sc-E00.01.04 tracer t-endo) — every pass cleared (card-spec §5); was G-Sci pass, G-Learn pass, G-A11y pass",
+   "by": "Engineers · Bio · Build · V3 trace a cell"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "status → draft",
+   "by": "Studio rule (card-spec §5)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "round-1 fixes (G-Sci: trace path enters at the front of the streak, why softened vs f8; G-Learn: General s4 names the hypoblast, q3 why in plain words, q4 alt = place + day only, 'marked' not 'ringed')",
+   "by": "Engineers · Bio · Build · V3 trace a cell"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Sci fail (round 1: trace enters mid-streak — fate map)",
+   "by": "Research librarian · V3 G-Sci reviewer agent (round 1)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Learn fail (round 1: hypoblast not named at General; q3 why terms; q4 alt echoed q1 why)",
+   "by": "Learning designer · V3 G-Learn reviewer agent (round 1)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "round-2 fix: q4 alt says the cell moves toward the head (path ends cranially in the endoderm, G-Art)",
+   "by": "Engineers · Bio · Build · V3 trace a cell"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Sci pass",
+   "by": "Research librarian · V3 G-Sci reviewer agent (round 2)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "G-Learn pass",
+   "by": "Learning designer · V3 G-Learn reviewer agent (round 2)"
+  },
+  {
+   "date": "22 Nov 2026",
+   "ev": "status → reviewed",
+   "by": "Studio rule (card-spec §5)"
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
  "spec": 1,
  "id": "sc-E00.01.04",
- "version": 1,
+ "version": 2,
  "book": "E",
  "cards": [
   "E00.01.04",
@@ -78,6 +78,13 @@
    "token": "ctx",
    "ring": true,
    "label": "Primitive streak + node"
+  },
+  {
+   "id": "tracer",
+   "token": "ctx",
+   "ring": true,
+   "label": "Marked cell",
+   "drill": true
   }
  ],
  "parts": [
@@ -106,6 +113,46 @@
    },
    "meso_delay": 0.3,
    "endo_delay": 0.0
+  },
+  {
+   "kind": "tracer",
+   "id": "t-endo",
+   "layer": "tracer",
+   "radius_mm": 0.006,
+   "min_px": 7,
+   "disclaimer": "marked cell drawn larger",
+   "path": [
+    {
+     "day": 15,
+     "x": -0.2,
+     "y": -0.26,
+     "in": "epiblast"
+    },
+    {
+     "day": 15.3,
+     "x": -0.42,
+     "y": -0.1,
+     "in": "epiblast"
+    },
+    {
+     "day": 15.5,
+     "x": -0.44,
+     "y": 0,
+     "in": "streak"
+    },
+    {
+     "day": 16,
+     "x": -0.44,
+     "y": -0.2,
+     "in": "endoderm"
+    },
+    {
+     "day": 17,
+     "x": 0.56,
+     "y": -0.26,
+     "in": "endoderm"
+    }
+   ]
   }
  ],
  "labels": [
@@ -173,6 +220,16 @@
     17
    ],
    "priority": 5
+  },
+  {
+   "layer": "tracer",
+   "at": "tracer-t-endo",
+   "text": "Marked cell",
+   "days": [
+    15,
+    17
+   ],
+   "priority": 1
   }
  ],
  "facts": [
@@ -204,6 +261,11 @@
   {
    "text": "Cells that stay in the epiblast become ectoderm — so all three layers come from the epiblast.",
    "cite": "E05.01, E05.07",
+   "mark": "✔"
+  },
+  {
+   "text": "A cell that goes in through the streak among the first ones ends up in the endoderm, in the bottom layer where the hypoblast was.",
+   "cite": "E05.01",
    "mark": "✔"
   }
  ],

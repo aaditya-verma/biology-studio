@@ -1,6 +1,6 @@
 # Lesson spec — the one definition of a chapter lesson (RULES C2)
 
-*(Purpose: the lesson file format that drives the chapter path (`#lessons`, `#lesson=<ch>`), the lesson bar on a card, Today's Study plan and Mixed review. Updated: 22 Nov 2026 · Bio · Build · L2 lessons (first version; after G-Learn/G-Eng round 1: no separate drill step, MBBS-based time model, Mixed review keeps card order; D-070). Change this spec first, then the code: `tools/lesson-check/` (Python, CI) and `src/js/20-lessons.js` (the app).)*
+*(Purpose: the lesson file format that drives the chapter path (`#lessons`, `#lesson=<ch>`), the lesson bar on a card, Today's Study plan and Mixed review. Updated: 22 Nov 2026 · Bio · Build · V3 trace a cell (`trace` is a drill: 60 s in the Check, no step of its own; D-075). Before: 22 Nov 2026 · Bio · Build · L2 lessons (first version; after G-Learn/G-Eng round 1: no separate drill step, MBBS-based time model, Mixed review keeps card order; D-070). Change this spec first, then the code: `tools/lesson-check/` (Python, CI) and `src/js/20-lessons.js` (the app).)*
 
 ## 1. Where lessons live
 - **One lesson per chapter:** `content/<book>/lessons/<ch>.json` (`content/E/lessons/E05.json`). Chapters with a lesson are listed in `CONFIG.learn.lessons` (order = the chapter path). L2 ships Part 0 (`E00`), Ch 5, Ch 6, Ch 7 and Ch 8.
@@ -25,7 +25,7 @@
 Cards follow **roadmap order** (`curriculum/roadmap.md`: prerequisites first). Each card adds, in this order:
 1. **read** — open the card and read it. Done when the card is **Read** (B4).
 2. **check** — its Check (every card has one). Done when one Check run has finished (any score — the status chip shows Understood only for a clean run, B4). *Skip for now* moves on and marks the step skipped (it stays open on the path).
-3. **scene** — only when the card has a `scene` (no-scene cards skip it, D-058): explore *Try it* — turn it, scrub the days. Done by *Done*. A card's **3D drills** (`rotate` `day` `frames` `label` `folded`; today only E05.02.01 and E05.05.01) run **inside its Check** (D-054), so they get no step of their own; when a drill's latest answer was wrong, the scene step says so and suggests the Check again (G-Learn: a separate drill step only repeated the Check and took away the explore step). The kind **`drill`** is reserved — lesson-check rejects it.
+3. **scene** — only when the card has a `scene` (no-scene cards skip it, D-058): explore *Try it* — turn it, scrub the days. Done by *Done*. A card's **3D drills** (`rotate` `day` `frames` `label` `folded` `trace`; today E05.02.01, E05.05.01 and — `trace`, V3, D-075 — E05.01.03) run **inside its Check** (D-054), so they get no step of their own; when a drill's latest answer was wrong, the scene step says so and suggests the Check again (G-Learn: a separate drill step only repeated the Check and took away the explore step). The kind **`drill`** is reserved — lesson-check rejects it.
 4. **remember** — say each Remember prompt's answer aloud, then open it. Done by *Done*. (Prompts already join the deck on Read; this step does not move the deck.)
 
 A lesson never blocks: any step can be opened from the path, and steps done outside the lesson (a card read from Cards) count.

@@ -1086,23 +1086,30 @@
    "title": "V3 Trace a cell",
    "type": "Build",
    "chat": "Bio · Build · V3 trace a cell",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["V2"],
    "unblocks": ["W3", "IB07"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
+   "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T8b", "state": "open"},
-   "decisions": ["D-047"],
+   "decisions": ["D-047", "D-054", "D-065", "D-070", "D-075"],
    "prompt": "V3 trace a cell",
-   "log": "—",
+   "log": "22 Nov 2026 · V3 trace a cell (app v15, D-075, route A) — drill Check type `trace` (spec card-spec §2a + scene-spec `tracer` part, path = scene data keyed by day); engine traceAt + drill-only marked cell (ctx + accent ring + label, drawn larger); Day row in the drill; card-check py + app (parity 123), scene-check (+ --selftest 15, in CI), lesson-check (60 s drill, 17/17), layout-check trace flows; first use E05.01.03 q4 (early cell → endoderm, enters at the front of the streak), re-reviewed → Reviewed; gates G-Sci pass (2 rounds + scene fact), G-Learn pass (2), G-Eng pass, G-Art pass (3 rounds), G-A11y pass; layout-check local full 3766 checks, 0 issues (154 flows); stills 11/11 unchanged; T8b open",
    "todo": [
     "Folds IB07 Trace a cell (size M) — new drill type `trace` (card-spec §2a), first on E05.01.03 in sc-E00.01.04",
     "Ready prompt in master plan §13 (written by L2)",
-    "Built at risk (owner decision, 22 Nov): T9 (L2), T7 deck step, T7b, T3d A + B still open"
+    "Built at risk (owner decision, 22 Nov): T9 (L2), T7 deck step, T7b, T3d A + B still open",
+    "Owner check T8b (build/owner-test-checklist.md) + G-Owner on D-075 (input V3.q1)",
+    "Later V pass (G-Sci SHOULD): the disc's endoderm sheet grows from the tail end; real definitive endoderm spreads from the front of the streak",
+    "Next G-Sci pass on E05.01.03 (G-Learn SHOULD): gloss 'streak' at General, carried by f1",
+    "G-A11y SHOULD: without WebGL the trace's Day row still moves the stamp (harmless) — hide or explain it",
+    "G-Art SHOULDs (round 3): keep the *Marked cell* label off the disc on phone landscape (bias above-left); a larger gizmo corner box at 125 % text on phone portrait; the day-17 endoderm slab is only 3–4 px on phones — a thicker endoderm in the drill view would make the cue less subtle"
    ],
-   "inputs": [],
+   "inputs": [
+    {"id": "V3.q1", "kind": "decide", "ask": "D-075: confirm the trace drill as built (Check type, path as scene data, cell only during its question, ringed + labelled, drawn larger; first use early cell → endoderm) — say 'D-075 confirmed' or what to change", "asked_in": "Bio · Build · V3 trace a cell", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-075"}
+   ],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Build · V3 trace a cell", "by": "Aaditya", "start": "2026-11-22 11:40", "outcome": "partial", "note": "route A (desktop app, laptop shell on)"}]
+   "runs": [{"chat": "Bio · Build · V3 trace a cell", "by": "Aaditya", "start": "2026-11-22 11:40", "end": "2026-11-22 12:41", "outcome": "done", "note": "route A (desktop app, laptop shell on; pushed from the chat); built at risk (T9, T7 deck, T7b, T3d A + B open); gates by 5 fresh reviewer agents: G-Sci 2 rounds + scene fact, G-Learn 2, G-Eng 1, G-Art pass (3 rounds), G-A11y 1 + confirm; also committed X1 Ch 15's route-B files (8fa322b) so sync.bat has nothing to autostash"}]
   },
   {
    "id": "W3",

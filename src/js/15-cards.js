@@ -6,7 +6,8 @@
 const CARD_RULES={
   verbs:['explain','describe','identify','label','locate','order','compare','distinguish','predict','name','trace','relate'],
   spatial:['identify','label','locate','order'],
-  types:['mcq','order','rotate','day','frames','label','folded'], spatialTypes:['order','frames','label','rotate'],   // card-spec §2a (V2 drills, D-054)
+  types:['mcq','order','rotate','day','frames','label','folded','trace'], spatialTypes:['order','frames','label','rotate'],   // card-spec §2a (V2 drills, D-054; trace V3, D-075)
+  traceIn:['epiblast','streak','mesoderm','endoderm'],   // where a trace path can end (scene-spec §6 tracer; = TRACE_IN in 14-scene3d.mjs)   // card-spec §2a (V2 drills, D-054)
   drill:{altWords:40,frameWords:25,tol:[10,45],tolDefault:25,zoom:[0.5,6],pins:[2,4],items:[2,5],labelWords:3},
   budget:{general:90,school:110,neet:140,mbbs:160,pg:200}, required:['general','mbbs'],
   marks:['✔✔','✔','⚑','✚','≈','ⓘ'], kinds:['concept','guide'], appLocs:['Today','Cards','Card','Check','Explain','Deck','Try it','Watch it','Status','Settings','Lessons','Mixed review'], statuses:['draft','reviewed','shipped','retired'],
@@ -170,10 +171,10 @@ function cardCheck(card,stem,ctx){
   for(const q of qs){const qid=q.id||'q?',opts=q.options||[],[lo,hi]=R.limits.opt,ty=q.type,known=R.types.includes(ty);
     if(!known)E('E-check',qid,`type must be one of ${R.types.join(', ')}`);
     if(!String(q.prompt||'').trim())E('E-check',qid,'prompt missing');
-    if(['mcq','order','rotate','label'].includes(ty)||!known){
+    if(['mcq','order','rotate','label','trace'].includes(ty)||!known){
       if(!(opts.length>=lo&&opts.length<=hi)||opts.some(o=>!(typeof o==='string'&&o.trim())))E('E-check',qid,`${lo}–${hi} non-empty options`);
       if(new Set(opts.filter(o=>typeof o==='string').map(o=>o.trim().toLowerCase())).size!==opts.length)E('E-check',qid,'options repeat — exactly one right answer');}
-    if(['mcq','rotate','day'].includes(ty)&&!(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<opts.length))E('E-check',qid,'answer must be the index of the one right option');
+    if(['mcq','rotate','day','trace'].includes(ty)&&!(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<opts.length))E('E-check',qid,'answer must be the index of the one right option');
     if(['order','frames','label','folded'].includes(ty)&&q.answer!==undefined&&q.answer!==null)E('E-check',qid,`a ${ty} check has no answer field (card-spec §2a)`);
     if(DRILL_TYPES.includes(ty)){if(!scn)E('E-drill',qid,"a 3D drill needs the card's scene (card-spec §2a) — this card has none");drillRules(q,qid,ty,opts,SF,E);}
     if(!String(q.why||'').trim())E('E-check',qid,'why missing');
@@ -196,14 +197,15 @@ function cardCheck(card,stem,ctx){
   return out;}
 
 /* ---------- 3D drills (card-spec §2a) — mirror of drill_rules() in tools/card-check/check.py (--parity) ---------- */
-const DRILL_TYPES=['rotate','day','frames','label','folded'];
+const DRILL_TYPES=['rotate','day','frames','label','folded','trace'];
 function sceneAnchors(S){const out=new Set();
   for(const p of S.parts||[]){const k=p.kind;
     if(k==='disc')Object.keys(p.layers||{}).forEach(x=>out.add(x));
     else if(k==='notochord'){const L=p.layers||{};if('notochord' in L)['noto-cord','noto-plate','notochord'].forEach(x=>out.add(x));if('prechordal' in L)out.add('prechordal');}
     else if(k==='axes')['cranial','caudal','left','right','dorsal','ventral'].forEach(a=>out.add('axis-'+a));
     else if(k==='planes')(p.planes||[]).forEach(pl=>out.add('plane-'+pl.id));
-    else if(k==='ruler')out.add('ruler');}
+    else if(k==='ruler')out.add('ruler');
+    else if(k==='tracer')out.add('tracer-'+p.id);}
   return out;}
 /* same maths as viewAngle() in 14-scene3d.mjs (the engine may not be loaded in Studio) */
 function cdViewAngle(a1,e1,a2,e2){const B=(az,el)=>{const a=az*Math.PI/180,e=el*Math.PI/180,b=[Math.cos(e)*Math.cos(a),Math.cos(e)*Math.sin(a),Math.sin(e)],n=Math.hypot(b[1],b[0])||1,r=[-b[1]/n,b[0]/n,0];
@@ -236,6 +238,18 @@ function drillRules(q,qid,ty,opts,S,E){const D=CARD_RULES.drill,[lo,hi]=CARD_RUL
     else if(new Set(opts).size!==opts.length)E('E-check',qid,'options repeat — exactly one right answer');
     else if(S){for(const o of opts)if(!(S.days[0].day<=o&&o<=S.days[S.days.length-1].day))E('E-drill',qid,`day option ${o} outside the scene's days`);
       const a=q.answer,sd=obj(q.show)?q.show.day:null;if(isInt(a)&&a>=0&&a<opts.length&&cdNum(sd)&&opts[a]!==sd)E('E-drill',qid,`the right option (day ${opts[a]}) is not the day shown (${sd})`);}}
+  else if(ty==='trace'){showRules(q.show,S,qid,E);alt();const TI=CARD_RULES.traceIn,tid=q.tracer;   // V3 (D-075): where does the marked cell end up?
+    const T=S?(S.parts||[]).find(p=>p.kind==='tracer'&&p.id===tid)||null:null;
+    if(!(typeof tid==='string'&&tid.trim()))E('E-check',qid,'tracer must be the id of a scene tracer part');else if(S&&!T)E('E-drill',qid,`tracer ${tid} is not a tracer part of ${S.id}`);
+    if(!TI.includes(q.ends))E('E-check',qid,`ends must be where the path ends: ${TI.join(' · ')}`);
+    if('mask_day' in q&&typeof q.mask_day!=='boolean')E('E-check',qid,'mask_day must be true/false');
+    const P=T&&Array.isArray(T.path)?T.path:[],sd=obj(q.show)?q.show.day:null;
+    if(P.length&&P.every(k=>cdNum(k.day))&&cdNum(sd)){
+      if(!(P[0].day<=sd&&sd<=P[P.length-1].day))E('E-drill',qid,`show.day ${sd} outside the path's days`);
+      else{const at=P.filter(k=>k.day<=sd+1e-9).pop();if(at.in!=='epiblast')E('E-drill',qid,`on show.day ${sd} the cell has already left the epiblast`);}
+      if(TI.includes(q.ends)&&P[P.length-1].in!==q.ends)E('E-drill',qid,`ends ${q.ends} but the path ends in ${P[P.length-1].in}`);}
+    const a=q.answer;if(isInt(a)&&a>=0&&a<opts.length&&typeof opts[a]==='string'&&opts[a].trim()){const w=opts[a].trim().toLowerCase();
+      for(const f of ['prompt','alt'])if(String(q[f]||'').toLowerCase().includes(w))E('E-drill',qid,`the right option '${opts[a]}' is in the ${f} — answerable from the words (D-065)`);}}
   else if(ty==='frames'){
     if(!(opts.length>=lo&&opts.length<=hi)||opts.some(o=>!obj(o)))E('E-check',qid,`${lo}–${hi} frames {text, show} as options`);
     else{const texts=[];opts.forEach((o,i)=>{const tx=o.text;
