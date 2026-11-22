@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "U1", "U2", "U3", "W3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "steps": [
   {
    "id": "M0",
@@ -1041,6 +1041,7 @@
    "log": "21 Nov 2026 · C2 round 3 — the 21 drafts (19 Ch 6–8 + 2 Ch 5) fixed and re-reviewed over 7 rounds by fresh agents → all Reviewed; Ch 5 fixes replace the repo copies; G-A11y pass on 25 (layoutAudit 6 sizes × 100/125 %, 0 findings); D-065 (reading of D-058 (5), write-sources rule); card-check 36/0 errors, selftest 77/77, calibrate 5/5, parity 113",
    "todo": [
     "T3d part A + part B (owner, phone + tablet + laptop; G-Owner on one card) → then C2 done",
+    "Missing map terms (card-check W-terms, owner to-do 22 Nov): E.t.cloacal-membrane-plate ×4 (E06.01.01, E06.02.01, E06.02.06, E07.02.01), E.t.myotome (E06.02.04), E.t.parietal + E.t.visceral (E06.02.06) — add to each card's terms (new or known) or drop from the map row; a terms edit clears the card's passes (card-spec §5) → re-review",
     "Map: E.t.cloacal-membrane-plate is listed on E06.01.01, E06.02.01, E06.02.06, E07.02.01 — looks like an I1/K1 term-placement error (W-terms); fix in the map at the next X1/K1 touch",
     "Indexer gaps (I1): no terms.json ids for nephrotome(s), nephrogenic cord, urethra, tympanic cavity, auditory tube, dermomyotome, decidua basalis/capsularis/parietalis — terms.new stays empty on E06.02.05, E06.03.03; tree.json has no box entries for E06.06",
     "Dossier ch06 §5: add E06.00.01's two misconceptions (map field + §2 fact) — G-Learn note",

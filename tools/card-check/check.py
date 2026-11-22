@@ -631,11 +631,11 @@ def mark_rules(f, p, fid, card, src, final, E, W):
 
 
 def load_ctx(book):
-    M = json.loads((ROOT / "content" / book / "map.json").read_text())
+    M = json.loads((ROOT / "content" / book / "map.json").read_text(encoding="utf-8"))
     sp = ROOT / "content" / book / "sources.json"
-    return {"src": json.loads(sp.read_text()) if sp.exists() else build_sources(book),
+    return {"src": json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else build_sources(book),
             "map_ids": {c["id"] for c in M["concepts"]}, "map_terms": {c["id"]: c.get("terms", []) for c in M["concepts"]},
-            "scenes": json.loads((ROOT / "content" / book / "scenes" / "index.json").read_text())["scenes"],
+            "scenes": json.loads((ROOT / "content" / book / "scenes" / "index.json").read_text(encoding="utf-8"))["scenes"],
             "scene_files": {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (ROOT / "content" / book / "scenes").glob("sc-*.json")}}
 
 
@@ -652,19 +652,19 @@ def check_all(a):
     res, glob = {}, []
     fresh = build_sources(book)
     sp = cdir.parent / "sources.json"
-    if not sp.exists() or {k: v for k, v in json.loads(sp.read_text()).items()} != fresh:
+    if not sp.exists() or {k: v for k, v in json.loads(sp.read_text(encoding="utf-8")).items()} != fresh:
         glob.append({"lvl": "E", "code": "E-sources", "line": "sources.json", "msg": "out of date — run with --write-sources"})
     cards = {}
     for p in files:
         try:
-            cards[p.stem] = json.loads(p.read_text())
+            cards[p.stem] = json.loads(p.read_text(encoding="utf-8"))
         except Exception as e:
             res[p.stem] = [{"lvl": "E", "code": "E-schema", "line": "file", "msg": f"not JSON: {e}"}]
             continue
         res[p.stem] = card_check(cards[p.stem], p.stem, ctx)
     ip = cdir / "index.json"
     if not a.only:
-        idx = json.loads(ip.read_text()) if ip.exists() else {"cards": []}
+        idx = json.loads(ip.read_text(encoding="utf-8")) if ip.exists() else {"cards": []}
         want = [{"id": c["id"], "title": c["title"], "status": c["status"], "version": c["version"]} for c in cards.values()]
         if sorted(idx.get("cards", []), key=lambda x: x["id"]) != sorted(want, key=lambda x: x["id"]):
             glob.append({"lvl": "E", "code": "E-index", "line": "index.json", "msg": "out of step with the card files (id, title, status, version)"})
@@ -694,7 +694,7 @@ def preview(a):
     for p in sorted(cdir.glob("*.json")):
         if p.stem in ("index", "calibration") or (a.only and p.stem != a.only):
             continue
-        c = json.loads(p.read_text())
+        c = json.loads(p.read_text(encoding="utf-8"))
         print(f"## {c['id']} · {c['title']} · {c['status']} v{c['version']}\nObjective: {c['objective'].get('text')}")
         for lvl, t in c["body"].items():
             print(f"\n[{lvl} · {words(t)}/{BUDGET.get(lvl, '?')} words]\n{strip_refs(t)}")
@@ -704,7 +704,7 @@ def preview(a):
 
 def calibrate(a):
     src = build_sources(a.book)
-    cal = json.loads((ROOT / "content" / a.book / "cards" / "calibration.json").read_text())
+    cal = json.loads((ROOT / "content" / a.book / "cards" / "calibration.json").read_text(encoding="utf-8"))
     ok = 0
     for f in cal["facts"]:
         errs, p = validate_citation(f["cite"], src)
@@ -743,9 +743,9 @@ def apply_case(card, case):
 
 
 def selftest(a):
-    st = json.loads((Path(__file__).resolve().parent / "selftest.json").read_text())
+    st = json.loads((Path(__file__).resolve().parent / "selftest.json").read_text(encoding="utf-8"))
     ctx = load_ctx(a.book)
-    base = json.loads((ROOT / "content" / a.book / "cards" / f"{st['base']}.json").read_text())
+    base = json.loads((ROOT / "content" / a.book / "cards" / f"{st['base']}.json").read_text(encoding="utf-8"))
     bad = 0
     for case in st["cases"]:
         c = apply_case(base, case)
@@ -762,9 +762,9 @@ def parity(a):
     import asyncio, functools, http.server, os, socketserver, threading
     _, py = check_all(argparse.Namespace(book=a.book, only=None, dry_run=False))
     py = {k: sorted(f"{i['lvl']} {i['code']} {i['line']}" for i in v) for k, v in py.items() if k != "_global"}
-    cases = json.loads((Path(__file__).resolve().parent / "selftest.json").read_text())
+    cases = json.loads((Path(__file__).resolve().parent / "selftest.json").read_text(encoding="utf-8"))
     ctx = load_ctx(a.book)
-    base = json.loads((ROOT / "content" / a.book / "cards" / f"{cases['base']}.json").read_text())
+    base = json.loads((ROOT / "content" / a.book / "cards" / f"{cases['base']}.json").read_text(encoding="utf-8"))
     for cs in cases["cases"]:
         c = apply_case(base, cs)
         py["case: " + cs["name"]] = sorted(f"{i['lvl']} {i['code']} {i['line']}" for i in card_check(c, c.get("id"), ctx))
@@ -810,6 +810,11 @@ def parity(a):
 
 
 def main():
+    for st in (sys.stdout, sys.stderr):   # Windows consoles default to cp1252: print ✓ ✗ ⚑ without -X utf8 / PYTHONUTF8
+        try:
+            st.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
     global DEBUG
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--book", default="E")
@@ -826,7 +831,7 @@ def main():
     DEBUG = a.debug
     if a.write_sources:
         p = ROOT / "content" / a.book / "sources.json"
-        p.write_text(json.dumps(build_sources(a.book), ensure_ascii=False, indent=1) + "\n")
+        p.write_text(json.dumps(build_sources(a.book), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         print(f"wrote {p.relative_to(ROOT)}")
         return 0
     if a.preview:

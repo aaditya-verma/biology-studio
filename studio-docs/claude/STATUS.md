@@ -31,12 +31,12 @@
 - **M1b done on kit v7c** (21 Nov, D-062): 720p `t1b` QA PASS (front 91 %, A 100 %, B 98–99 %, −14.05 LUFS, 0.6 MB / 5 s), your T1b all fine, G-Art + G-A11y pass with notes (→ v8). Pushed 22:21 (`f9353c8`, app v12 live). Next on the animator track: install the parked **v8 kit** (`Bio · Build · M1b v8 install`), then **P1 S1E01** — answer **M1b.q10** (anatomy caption band) before P1.
 - **M1 run measured** (20 Nov, D-045): GTX 1060 6 GB · 20 s shot = Cycles 45 min, Eevee 14.5 min, three.js 9 s; x264 beats Pascal NVENC on size. Method C (AI) and 1080p pending. G-Sci pass (notes) · G-Art fail (Eevee artefact, key unreadable on phone — scene-spec fixes). Owner check **T1** open.
 - In flight: owner checks **T9**, **T11**, **T10**, **T3d** parts A + B, **T7** (deck step only, 22 Nov), **T7b**, **T1**, **T2**, **T5** (Level 3 only).
-- Can start now: **W3 run surface** (build lock, next in the lock lane — your W3.q1 first), then **M1b v8 install** = step **M1V8** (build lock, short — before R1), **X1 Ch 17** (research, no lock — head and neck, 15 short sections; prompt in master plan §13).
+- Can start now: **W3 run surface** (build lock, next in the lock lane — your W3.q1 first; your pick: W3 before U2/U3), **X1 Ch 17** (research, no lock — head and neck, 15 short sections; prompt in master plan §13).
 
 ## Next (in order)
 <!-- next:auto -->
 Schedule (auto · check.py --next · est. from 22 Nov; order fixed, dates move):
-- Lock: U2 ~22 Nov next → U3 ~23 Nov → W3 ~23 Nov → M1V8 ~23 Nov
+- Lock: W3 ~22 Nov next → U2 ~23 Nov → U3 ~23 Nov → M1V8 ~23 Nov
 - GPU: P1 ~24 Nov next
 - Research: X1.17 ~22 Nov now
 - You (no lock): M1·T1 ~22 Nov now → H1·T5 ~22 Nov now → H2·T10 ~22 Nov now → +9 more now → GATE ~30 Nov next
@@ -45,5 +45,5 @@ Schedule (auto · check.py --next · est. from 22 Nov; order fixed, dates move):
 - Lock: free
 <!-- /next:auto -->
 1. You: **T13** (~15 min, U1 look canvas — fonts, greys, light outlines; unblocks U2) · **T9** (~25 min, lessons + Today + Mixed review; + 2 min tomorrow) with **L2.q1** (D-070), **L2.q2**. **T10 part A** (~15 min: labels `review` + `fixing` first, **H2.q1**) → send Komal the welcome message (**H2.q3**). **T3d A + B** (~25 min). **22 Nov:** T7 step 8 deck (**L1.q2**) and **T7b** → L1 + L1F done. Answer **M1b.q10** when you can (before P1).
-2. **W3** — `Bio · Build · W3 run surface` (prompt: master plan §13; answer **W3.q1** first), then **M1V8** — `Bio · Build · M1b v8 install` (prompt in §13). Both take the lock; both prompts carry the start, dependency, pipeline and scheduling checks. You first or alongside: **T8b** (~15 min, trace drill on phone, tablet, laptop) + **V3.q1**. No lock, any time: **X1 Ch 17** — `Bio · Research · X1 Ch 17` (prompt in master plan §13; 15 short sections); rename the book PDF in `references\` first, X1.13.q2); **P1 S1E01** — `Bio · Episode · S1E01` (after M1b.q10; may run alongside v8).
+2. **W3** — `Bio · Build · W3 run surface` (prompt: master plan §13; answer **W3.q1** first), then **U2** → **U3** (U1 look, after T13), then **M1V8** — `Bio · Build · M1b v8 install` (prompt in §13). All take the lock; the W3 and M1V8 prompts carry the start, dependency, pipeline and scheduling checks. You first or alongside: **T8b** (~15 min, trace drill on phone, tablet, laptop) + **V3.q1**. No lock, any time: **X1 Ch 17** — `Bio · Research · X1 Ch 17` (prompt in master plan §13; 15 short sections); rename the book PDF in `references\` first, X1.13.q2); **P1 S1E01** — `Bio · Episode · S1E01` (after M1b.q10; may run alongside v8).
 3. You: **T1** → pick O/V/E (D-045), then **T11** (+ **W2.q1**) and the top **Your inputs** on Plan — **D-076 a–i** (Ch 16), **D-074 a–j** (Ch 15), **D-072 a–e** (Ch 14), **D-068 a–e** (Ch 13), **D-067 a–e** (Ch 12), **D-066 a–e** (Ch 11), **D-064 a, b, d** (Ch 10), **D-057 a–d** (Ch 9), D-039 / D-043 / D-044 (⚑ defaults now on cards).

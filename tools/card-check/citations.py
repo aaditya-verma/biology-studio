@@ -43,10 +43,10 @@ def parse_registry(md):
 
 def build_sources(book="E"):
     """The derived look-up the app's Studio reads (no book text: headings + term names only, G1)."""
-    tree = json.loads((ROOT / "content" / book / "index" / "tree.json").read_text())
-    terms = json.loads((ROOT / "content" / book / "index" / "terms.json").read_text())
-    reg = parse_registry((DOCS / "research" / "source-registry.md").read_text())
-    dec = sorted(set(re.findall(r"^\|\s*(D-\d{3})\s*\|", (DOCS / "claude" / "DECISIONS.md").read_text(), re.M)))
+    tree = json.loads((ROOT / "content" / book / "index" / "tree.json").read_text(encoding="utf-8"))
+    terms = json.loads((ROOT / "content" / book / "index" / "terms.json").read_text(encoding="utf-8"))
+    reg = parse_registry((DOCS / "research" / "source-registry.md").read_text(encoding="utf-8"))
+    dec = sorted(set(re.findall(r"^\|\s*(D-\d{3})\s*\|", (DOCS / "claude" / "DECISIONS.md").read_text(encoding="utf-8"), re.M)))
     secs, chs = {}, {}
     for c in tree["chapters"]:
         chs[c["id"]] = c["title"]
