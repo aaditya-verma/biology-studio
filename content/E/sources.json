@@ -2353,6 +2353,150 @@
    "pmid": "22296782"
   },
   {
+   "id": "R05iu",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF00389597",
+   "pmid": "3826651"
+  },
+  {
+   "id": "R05iv",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF00310083",
+   "pmid": "3688450"
+  },
+  {
+   "id": "R05iw",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF00185521",
+   "pmid": "2268071"
+  },
+  {
+   "id": "R05ix",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF02433497",
+   "pmid": "2252222"
+  },
+  {
+   "id": "R05iy",
+   "tier": 1,
+   "name": "Shiraishi N, Katayama A, Nakashima T, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.neuroimage.2015.04.044",
+   "pmid": "25934469"
+  },
+  {
+   "id": "R05iz",
+   "tier": 1,
+   "name": "Okado N",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ar.1092020407",
+   "pmid": "7072990"
+  },
+  {
+   "id": "R05ja",
+   "tier": 1,
+   "name": "Verney C, Monier A, Fallet-Bianco C, et al",
+   "licence": "© Wiley (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/j.1469-7580.2010.01245.x",
+   "pmid": "20557401"
+  },
+  {
+   "id": "R05jb",
+   "tier": 1,
+   "name": "Ginhoux F, Greter M, Leboeuf M, et al",
+   "licence": "© AAAS (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1126/science.1194637",
+   "pmid": "20966214"
+  },
+  {
+   "id": "R05jc",
+   "tier": 1,
+   "name": "Saifuddin A, Burnett SJ, White J",
+   "licence": "© Wolters Kluwer → facts only",
+   "ref_only": false,
+   "doi": "10.1097/00007632-199807010-00005",
+   "pmid": "9670396"
+  },
+  {
+   "id": "R05jd",
+   "tier": 1,
+   "name": "Wolf S, Schneble F, Tröger J",
+   "licence": "© Springer → facts only",
+   "ref_only": false,
+   "doi": "10.1007/BF02015359",
+   "pmid": "1491937"
+  },
+  {
+   "id": "R05je",
+   "tier": 1,
+   "name": "Sahin F, Selçuki M, Ecin N, et al",
+   "licence": "© BMJ (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1136/fn.77.1.f67",
+   "pmid": "9279188"
+  },
+  {
+   "id": "R05jf",
+   "tier": 1,
+   "name": "Kruepunga N, Hikspoors JPJM, Hülsman CJM, et al",
+   "licence": "© Wiley (PMC; licence not checked) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/joa.13415",
+   "pmid": "33641166"
+  },
+  {
+   "id": "R05jg",
+   "tier": 1,
+   "name": "Khoshnood B, Loane M, de Walle H, et al",
+   "licence": "© BMJ (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1136/bmj.h5949",
+   "pmid": "26601850"
+  },
+  {
+   "id": "R05jh",
+   "tier": 1,
+   "name": "Garne E, Loane M, Addor MC, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.ejpn.2009.03.005",
+   "pmid": "19410489"
+  },
+  {
+   "id": "R05ji",
+   "tier": 1,
+   "name": "Morris JK, Rankin J, Garne E, et al",
+   "licence": "© BMJ (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1136/bmj.i4721",
+   "pmid": "27623840"
+  },
+  {
+   "id": "R05jj",
+   "tier": 1,
+   "name": "Santoro M, Coi A, Barišić I, et al",
+   "licence": "© Karger → facts only",
+   "ref_only": false,
+   "doi": "10.1159/000501238",
+   "pmid": "31302658"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -2494,7 +2638,8 @@
   "D-075",
   "D-076",
   "D-077",
-  "D-078"
+  "D-078",
+  "D-079"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",

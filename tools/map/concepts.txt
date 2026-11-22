@@ -381,7 +381,7 @@ ntlayers|Neural tube layers|A|S|c|ecto|cns|28-56|neurul| Ventricular (neuroepith
 alarbasal|Alar and basal plates|A|S|c|ecto|cns|28-56|ntlayers| Dorsal alar plate = sensory; ventral basal plate = motor; the sulcus limitans divides them; the lateral horn (intermediate column) holds autonomic neurons.|The basal plate is sensory.
 spnerve|Spinal nerves and dorsal root ganglia|B|S A|x|multi|cns|28-42|alarbasal,crest| Motor fibres leave from the basal plate; sensory neurons sit in crest-derived ganglia.|
 myelin|Myelination|B|S|s|multi|cns|112-266|spnerve| Schwann cells in nerves; oligodendrocytes in the cord and brain.|
-cordpos|Position of the cord end|B|A|x|ecto|cns|84-266|ntlayers| The cord ends lower in the fetus and rises relative to the spine (about L3 at birth, higher in adults; exact adult level ⚑ X1 checks book vs anatomy sources).|
+cordpos|Position of the cord end|B|A|x|ecto|cns|84-266|ntlayers| The cord ends lower in the fetus and rises relative to the spine (book: L3 at birth, L2–L3 in adults; imaging puts it near L1–L2 at birth and about L1 in adults — ⚑ D-079 a).|
 spbifida|Spina bifida types|C|C|x|ecto|defects||ntd,vertebra| Occulta, meningocele, myelomeningocele, rachischisis; raised AFP; folic acid helps prevent.|
 dvpat|Dorsoventral patterning of the tube|D|M|x|ecto|cns||alarbasal,shh| SHH from notochord and floor plate makes ventral (motor) cells; BMPs from the roof make dorsal ones.|
 @ E18.02

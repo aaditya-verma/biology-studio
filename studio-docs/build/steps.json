@@ -335,7 +335,7 @@
    "prompt": null,
    "log": "17 Nov 2026 · I1 Book index — 21 chapters, 178 sections, 98.9 % glossary placed",
    "todo": [
-    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11) · Ch 12: E12.01 pp 167–169 confirmed, but E12.02's Clinical Correlates box ends on p 178 (recorded 170–177), the same page as the Summary · Ch 13: E13.02 ends p 183 (not 182), E13.04 p 187 (not 186), E13.05 p 188 (not 187), E13.07 p 206 (not 205), E13.08 p 219 (lymphatics, the Summary's first page; recorded to 218) — plain text, not just boxes, spills past the last heading page in five of nine sections; the HLHS paragraph labels HAND2 'left ventricle' (a book slip; the main text says right) (X1 Ch 13) · Ch 14: E14.01 ends p 225 (its EA/TEF box runs over; recorded 223–224), E14.04 ends p 229 (text to p 228, its own RDS/anomalies box on p 229; recorded 227 only), E14.05 ends p 229 (recorded 228); the p 229 box is filed under E14.05 but belongs to E14.04 (X1 Ch 14) · Ch 15: every short section spills one page — E15.01 pp 230–231, E15.02 pp 231–232, E15.03 pp 232–233, E15.04 pp 233–242, E15.06 pp 244–245, E15.07 pp 244–252 (text to p 248, its box pp 249–252), E15.09 pp 254–255; boxes mis-assigned — p 245 pancreas box → E15.06, pp 249–252 midgut box → E15.07 (I1 files both under the next section) (X1 Ch 15) · Ch 16: E16.02 is pp 267–282 (its hernias + cryptorchidism box, PDF 301, sits on p 282, which I1 also gives the Summary), E16.03 pp 282–283; four untitled boxes — PDF 285 Bladder and urethra defects, PDF 294 Uterine and vaginal defects, PDF 296 Defects in the male genitalia, PDF 301 Hernias and cryptorchidism (X1 Ch 16) · Ch 17: seven short sections spill one page — E17.01 pp 286–290, E17.02 pp 290–291, E17.03 pp 291–292, E17.05 pp 297–298, E17.06 pp 298–300, E17.07 pp 300–301 (+ table p 303), E17.09 pp 301–302; E17.11 ends p 310, E17.12 p 311, E17.13 p 312; boxes mis-assigned — tongue-tie (PDF 317) → E17.05, facial clefts pp 305–308 (PDF 324) → E17.09 (I1 files them under E17.06 and E17.11); untitled boxes — PDF 313 Pouch, cleft and crest defects, PDF 318 Thyroglossal cyst and ectopic thyroid, PDF 324 Facial clefts, PDF 330 Tooth anomalies (X1 Ch 17)"
+    "Locator gaps for the next I1 run: no Index pages (D-026) · E05.01/E05.02 are pp 59–60 · E10.03 holds spina bifida/Chiari terms · E12.02 spans most of Ch 12 · Day 27 missing · E06.02 is pp 80–87 · timeline.json stops at day 49 — add Table 6.4 as a numeric table · Ch 7: E07.01 is pp 96–97, E07.04 pp 101–102, E07.05 pp 102–104, E07.06 pp 104–105 · Ch 8: E08.01 is pp 106–110, E08.04 pp 113–118, E08.05 pp 118–119, E08.08 pp 121–124 and E08.09 p 121 + p 125 (twin pages 122–124 are filed under E08.09, so twin terms land there) — Table 8.1 now complete in timeline.json (X1 Ch 08) · Ch 9: E09.01 is pp 128–138 but its Clinical Correlates box sits on p 139 (inside E09.02’s range), and E09.02’s last subhead (noninvasive prenatal screening) runs onto p 143, filed under E09.03 (X1 Ch 09) · Ch 10: E10.01's Clinical Correlates box runs onto p 156 (acromegaly, microcephaly — filed under E10.02), E10.02's box ends on p 158 (spina bifida cystica, AFP, lemon sign — filed under E10.03; explains the 'E10.03 holds spina bifida/Chiari terms' note), and E10.03's sternum box ends on p 159 (X1 Ch 10) · Ch 11: E11.01 runs to p 161, E11.02 to p 163, E11.05's craniofacial-muscle table is on p 164, E11.07 ends p 164, E11.09's Clinical Correlates box runs to p 165, the Summary ends p 166; E11.06 is read before E11.03 on p 163 (left column first — ids stay, A2) (X1 Ch 11) · Ch 12: E12.01 pp 167–169 confirmed, but E12.02's Clinical Correlates box ends on p 178 (recorded 170–177), the same page as the Summary · Ch 13: E13.02 ends p 183 (not 182), E13.04 p 187 (not 186), E13.05 p 188 (not 187), E13.07 p 206 (not 205), E13.08 p 219 (lymphatics, the Summary's first page; recorded to 218) — plain text, not just boxes, spills past the last heading page in five of nine sections; the HLHS paragraph labels HAND2 'left ventricle' (a book slip; the main text says right) (X1 Ch 13) · Ch 14: E14.01 ends p 225 (its EA/TEF box runs over; recorded 223–224), E14.04 ends p 229 (text to p 228, its own RDS/anomalies box on p 229; recorded 227 only), E14.05 ends p 229 (recorded 228); the p 229 box is filed under E14.05 but belongs to E14.04 (X1 Ch 14) · Ch 15: every short section spills one page — E15.01 pp 230–231, E15.02 pp 231–232, E15.03 pp 232–233, E15.04 pp 233–242, E15.06 pp 244–245, E15.07 pp 244–252 (text to p 248, its box pp 249–252), E15.09 pp 254–255; boxes mis-assigned — p 245 pancreas box → E15.06, pp 249–252 midgut box → E15.07 (I1 files both under the next section) (X1 Ch 15) · Ch 16: E16.02 is pp 267–282 (its hernias + cryptorchidism box, PDF 301, sits on p 282, which I1 also gives the Summary), E16.03 pp 282–283; four untitled boxes — PDF 285 Bladder and urethra defects, PDF 294 Uterine and vaginal defects, PDF 296 Defects in the male genitalia, PDF 301 Hernias and cryptorchidism (X1 Ch 16) · Ch 17: seven short sections spill one page — E17.01 pp 286–290, E17.02 pp 290–291, E17.03 pp 291–292, E17.05 pp 297–298, E17.06 pp 298–300, E17.07 pp 300–301 (+ table p 303), E17.09 pp 301–302; E17.11 ends p 310, E17.12 p 311, E17.13 p 312; boxes mis-assigned — tongue-tie (PDF 317) → E17.05, facial clefts pp 305–308 (PDF 324) → E17.09 (I1 files them under E17.06 and E17.11); untitled boxes — PDF 313 Pouch, cleft and crest defects, PDF 318 Thyroglossal cyst and ectopic thyroid, PDF 324 Facial clefts, PDF 330 Tooth anomalies (X1 Ch 17) · Ch 18: E18.00 ends p 314, E18.01 p 324, E18.02 p 336, E18.03 p 338 (its Cranial defects box pp 338–341); E18.04's recorded pages 338–341 are mostly E18.03's box — its text is p 338 + pp 341–344 (tables pp 343–344); box mis-assigned — Pheochromocytomas + Congenital megacolon (PDF 367) → E18.05 (I1 files it under E18.04); untitled boxes — PDF 350 Hypophyseal defects, PDF 357 Cranial defects; cut title PDF 340 → Molecular regulation of nerve differentiation in the spinal cord (X1 Ch 18)"
    ],
    "inputs": [
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
@@ -787,14 +787,43 @@
    "title": "X1 research · Ch 18 central nervous system",
    "type": "Research",
    "chat": "Bio · Research · X1 Ch 18",
-   "status": "ready",
+   "status": "done",
    "needs": ["X1.17"],
+   "unblocks": ["X1.19"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-011", "D-026", "D-030", "D-057", "D-064", "D-065", "D-066", "D-069", "D-078", "D-079"],
+   "prompt": "X1 Ch 18",
+   "log": "22 Nov 2026 · X1 Research · Ch 18 — CNS staged from human specimens (fusion sites R05l; rostral neuropore CS11 R05iu; caudal neuropore + sulcus limitans CS12 R05iv; plexuses CS18–20 R05iw; cortical plate CS21 + anterior commissure CS23 R05ix; Kyoto brain volumes CS13–23 R05iy; sympathetic crest CS14 R05jf); Tier A for 4 concepts + cord position; brainstem nuclei by job; clinical rows in 5 mechanism groups with rates per 10,000 (NTD 9.1 EUROCAT, hydrocephalus 4.65, microcephaly 1.53, Dandy–Walker 0.68); 21 misconceptions; 16 sources R05iu–R05jj (R05l re-used); AN64.2 the CNS development code (NMC Vol I) → D-079 a–d + notes e–l",
+   "todo": [
+    "Rates not retrieved: encephaloceles, spina bifida occulta (~10 %), pheochromocytoma (extra-adrenal, familial), schizencephaly, Chiari II, anencephaly sex ratio",
+    "Hippocampus function (D-079 e): a Tier 1 abstract before Tier D says memory",
+    "Human corpus callosum timing with a stated clock; human cerebellar timeline after week 12 and gyrification ages (fetal MRI)",
+    "Full texts: R05ja (clock, ⚑ b), R05iz (lumbar cord, ⚑ c)",
+    "R01 3D Atlas and R04 Kyoto brain MRIs before the vesicle/ventricle scenes; R03 HDBR sections for the cord-layer scene (look only)",
+    "Neuroblastoma (map row cresttum) — find where 14e covers it",
+    "Ch 6 map row neurul: consider its mark in light of D-079 d",
+    "2024 wording of AN64.2/64.3 and AN57.2 (MGMUHS reprint) not in references"
+   ],
+   "inputs": [
+    {"id": "X1.18.q1", "kind": "decide", "ask": "D-079 (a–d) from Ch 18: pick an option per item (where the cord ends at birth and in adults, where microglia come from and when, when cord myelination starts, which way the forebrain fusion site runs) — recommendations given; (e)–(l) are notes", "asked_in": "Bio · Research · X1 Ch 18", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-079"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 18", "by": "Aaditya", "start": "2026-11-22 13:05", "outcome": "done", "note": "route B (cloud workspace; push refused, origin read by public clone, files written to the laptop clone; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (7 MUST, 11 SHOULD applied; ⚑ d commissure → note f, new ⚑ d forebrain fusion direction) + a second agent re-check of D-079 and research.txt (0 MUST, 3 SHOULD applied)", "end": "2026-11-22 13:25"}]
+  },
+  {
+   "id": "X1.19",
+   "title": "X1 research · Ch 19 ear",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 19",
+   "status": "ready",
+   "needs": ["X1.18"],
    "unblocks": [],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
-   "decisions": ["D-011", "D-026", "D-030", "D-057", "D-064", "D-065", "D-069", "D-078"],
-   "prompt": "X1 Ch 18",
+   "decisions": ["D-011", "D-026", "D-030", "D-057", "D-065", "D-069", "D-078", "D-079"],
+   "prompt": "X1 Ch 19",
    "log": "—",
    "todo": [],
    "inputs": []

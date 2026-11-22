@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -409,29 +409,29 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E18.01.01 | Neural tube layers | A | S | core | 28–56 | ecto | cns | E06.01.02 | 7 |  | ≈ |
-| E18.01.02 | Alar and basal plates | A | S | core | 28–56 | ecto | cns | E18.01.01 | 4 |  | ≈ |
-| E18.01.03 | Spinal nerves and dorsal root ganglia | B | SA | x | 28–42 | multi | cns | E18.01.02, E06.01.04 | 1 |  | ≈ |
-| E18.01.04 | Myelination | B | S | s | 112–266 | multi | cns | E18.01.03 |  |  | ≈ |
-| E18.01.05 | Position of the cord end | B | A | x | 84–266 | ecto | cns | E18.01.01 |  |  | ≈ |
-| E18.01.06 | Spina bifida types | C | C | x |  | ecto | defects | E06.01.07, E10.02.01 |  |  | ≈ |
-| E18.01.07 | Dorsoventral patterning of the tube | D | M | x |  | ecto | cns | E18.01.02, E01.05.01 |  |  | ≈ |
-| E18.02.01 | Brain vesicles and flexures | A | F | core | 28–42 | ecto | cns | E06.01.02 | 16 |  | ≈ |
-| E18.02.02 | Hindbrain: medulla, pons, cerebellum | B | S | x | 35–266 | ecto | cns | E18.02.01 |  |  | ≈ |
-| E18.02.03 | Midbrain | B | S | s |  | ecto | cns | E18.02.01 |  |  | ≈ |
-| E18.02.04 | Diencephalon and pituitary | B | S | x | 35–84 | multi | cns | E18.02.01 |  |  | ≈ |
-| E18.02.05 | Cerebral hemispheres | B | S | x | 35–266 | ecto | cns | E18.02.01 |  |  | ≈ |
-| E18.02.06 | Ventricles and CSF | B | S | s |  | ecto | cns | E18.02.01 |  |  | ≈ |
-| E18.02.07 | Meninges | B | S | s |  | multi | cns | E18.01.01 |  |  | ≈ |
-| E18.02.08 | Brain defects | C | C | x |  | ecto | defects | E18.02.01 |  |  | ≈ |
-| E18.03.01 | Brain patterning | D | M | s |  | ecto | cns | E18.02.01, E06.04.01 |  |  | ≈ |
-| E18.04.01 | Cranial nerves | B | SA | x | 35–56 | multi | cns | E18.01.02, E17.01.02 |  |  | ≈ |
-| E18.05.01 | Sympathetic system | B | S | x | 35–56 | crest | cns | E06.01.05 | 2 |  | ≈ |
-| E18.05.02 | Adrenal gland: two origins | A | SG | core | 42–266 | multi | cns | E18.05.01 | 1 |  | ≈ |
-| E18.05.03 | Parasympathetic system | B | S | s |  | crest | cns | E06.01.05 |  |  | ≈ |
-| E18.05.04 | Neural crest tumours | C | C | s |  | crest | defects | E18.05.02 |  |  | ≈ |
+| E18.01.01 | Neural tube layers | A | S | core | 28–56 | ecto | cns | E06.01.02 | 7 | AN64.2, AN79.3 | ⚑ |
+| E18.01.02 | Alar and basal plates | A | S | core | 28–56 | ecto | cns | E18.01.01 | 4 | AN64.2 | ✔ |
+| E18.01.03 | Spinal nerves and dorsal root ganglia | B | SA | x | 28–42 | multi | cns | E18.01.02, E06.01.04 | 1 | AN7.4, AN64.2 | ✔ |
+| E18.01.04 | Myelination | B | S | s | 112–266 | multi | cns | E18.01.03 |  | AN64.2 | ⚑ |
+| E18.01.05 | Position of the cord end | B | A | x | 84–266 | ecto | cns | E18.01.01 |  | AN57.2 | ⚑ |
+| E18.01.06 | Spina bifida types | C | C | x |  | ecto | defects | E06.01.07, E10.02.01 |  | AN64.3, AN79.5, AN50.4 | ✔ |
+| E18.01.07 | Dorsoventral patterning of the tube | D | M | x |  | ecto | cns | E18.01.02, E01.05.01 |  | AN64.2 | ✔ |
+| E18.02.01 | Brain vesicles and flexures | A | F | core | 28–42 | ecto | cns | E06.01.02 | 16 | AN64.2, AN79.3 | ✔ |
+| E18.02.02 | Hindbrain: medulla, pons, cerebellum | B | S | x | 35–266 | ecto | cns | E18.02.01 |  | AN64.2, AN60.1, AN58.3 | ✔ |
+| E18.02.03 | Midbrain | B | S | s |  | ecto | cns | E18.02.01 |  | AN64.2, AN61.1 | ✔ |
+| E18.02.04 | Diencephalon and pituitary | B | S | x | 35–84 | multi | cns | E18.02.01 |  | AN43.4, AN62.5 | ✔ |
+| E18.02.05 | Cerebral hemispheres | B | S | x | 35–266 | ecto | cns | E18.02.01 |  | AN64.2, AN62.4 | ✔ |
+| E18.02.06 | Ventricles and CSF | B | S | s |  | ecto | cns | E18.02.01 |  | AN63.1, AN56.2 | ✔ |
+| E18.02.07 | Meninges | B | S | s |  | multi | cns | E18.01.01 |  | AN56.1 | ✔ |
+| E18.02.08 | Brain defects | C | C | x |  | ecto | defects | E18.02.01 |  | AN63.2, AN64.3, AN79.5 | ✔ |
+| E18.03.01 | Brain patterning | D | M | s |  | ecto | cns | E18.02.01, E06.04.01 |  | AN64.2 | ✔ |
+| E18.04.01 | Cranial nerves | B | SA | x | 35–56 | multi | cns | E18.01.02, E17.01.02 |  | AN62.1, AN58.3, AN59.3 | ✔ |
+| E18.05.01 | Sympathetic system | B | S | x | 35–56 | crest | cns | E06.01.05 | 2 | AN7.8, AN23.5 | ✔ |
+| E18.05.02 | Adrenal gland: two origins | A | SG | core | 42–266 | multi | cns | E18.05.01 | 1 |  | ✔ |
+| E18.05.03 | Parasympathetic system | B | S | s |  | crest | cns | E06.01.05 |  | AN7.1 | ✔ |
+| E18.05.04 | Neural crest tumours | C | C | s |  | crest | defects | E18.05.02 |  |  | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E18.01.02 — “The basal plate is sensory.” · E18.02.04 — “The whole pituitary comes from the brain.” · E18.05.02 — “The whole adrenal comes from one layer.”
+*Misconceptions to refute (cited in the chapter dossier):* E18.01.02 — “The basal plate is sensory.” · E18.02.04 — “The whole pituitary comes from the brain.” · E18.05.02 — “The whole adrenal comes from one layer.”
 
 ## E19 — Ear · pp 351–359 · 5 concepts
 
