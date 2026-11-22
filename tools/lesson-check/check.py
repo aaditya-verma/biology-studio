@@ -16,6 +16,8 @@ Owner doc: docs/lesson-spec.md. EDIT: time model in TIME, budget in BUDGET, step
 """
 import argparse, copy, json, math, re, subprocess, sys
 from pathlib import Path
+for _f in (sys.stdout, sys.stderr):   # Windows consoles default to cp1252; output prints → − ✔
+    if hasattr(_f, "reconfigure"): _f.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).resolve().parents[2]
 BOOK = "E"

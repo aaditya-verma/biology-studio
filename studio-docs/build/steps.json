@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "U2F", "MAPF", "SR1", "U3", "FA", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "U2F", "MAPF", "WCON", "SR1", "U3", "FA", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "surfaces": {"on": ["Code", "Cowork", "split"], "traits": ["tests", "connectors", "artifacts", "owner"], "rules": [{"if": {"uses": "prof"}, "on": ["Cowork", "Code"], "warn": ["Code"], "why": "the Professor's chats: Cowork by default, Code allowed with a warning (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "hard": true, "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"trait": "tests"}, "on": "Code", "hard": true, "why": "runs the tests and repo tools"}, {"if": {"files_over": 15}, "on": "Code", "hard": true, "why": "touches more than 15 files"}, {"if": {"lock": true}, "on": "Code", "hard": true, "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"trait": "connectors"}, "on": "Cowork", "split": true, "why": "needs connectors (PubMed, Drive, GitHub web, …)"}, {"if": {"trait": "artifacts"}, "on": "Cowork", "split": true, "why": "makes or reads an artifact or design canvas"}, {"if": {"trait": "owner"}, "on": "Cowork", "split": true, "why": "an owner check or review with you"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit (a tie goes to Code — W3 answer 2)"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough (a tie goes to Cowork — W3 answer 2)"}], "note": "Where each chat runs (W3 D-080, W3F). Code · Cowork · split (a Code part + a Cowork part joined by run.handoff). The first matching rule gives the suggestion; a `hard` rule (GPU, tests, > 15 files, the lock) makes Code required — Cowork is then an error; a hard rule + a `split` rule (connectors, artifacts, owner) → split. `warn` = allowed but warned (the Professor on Code). Steps add `traits`/`files` to their `run` so the rules can see them. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
@@ -1731,7 +1731,7 @@
    "chat": "Bio · Fix · map CI compare",
    "status": "done",
    "needs": ["K2"],
-   "unblocks": [],
+   "unblocks": ["WCON"],
    "lock": true,
    "gates": {"G-Eng": "pass"},
    "check": null,
@@ -1746,6 +1746,26 @@
    "est": {"chats": 1},
    "runs": [{"chat": "Bio · Fix · map CI compare", "by": "Aaditya", "start": "2026-11-22 22:28", "outcome": "done", "note": "route B (Claude Code, laptop clone; owner runs sync.bat); start at 176bc87; CI red since f2b884f: Map data checks `cmp` differs — Windows `python -X utf8` rebuild = committed byte for byte, Linux CI rounds one rim ring r 0.96 vs 0.9601 (layout.py R4 on ~0.96005); owner chose a tolerant compare; map_compare.py selftest 11/11; all guard checks + map dry-run/selftest/compare PASS locally; G-Eng pass (4 SHOULD applied); also build_map.py index opens without encoding (cp1252 build drops a term on E01.03.02)", "end": "2026-11-22 22:31"}],
    "run": {"on": "Code", "why": "takes the build lock: changes tools and CI, runs the checks, pushes"}
+  },
+  {
+   "id": "WCON",
+   "title": "Windows console UTF-8 — scene-check, lesson-check, build_map print without cp1252 crashes",
+   "type": "Fix",
+   "chat": "Bio · Fix · Windows console UTF-8",
+   "status": "done",
+   "needs": ["MAPF"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": "22 Nov 2026 · Windows console UTF-8 (WCON) — tools/scene-check/check.py, tools/lesson-check/check.py and tools/map/build_map.py reconfigure stdout/stderr to UTF-8 (pattern from tools/tracker/check.py), so plain `python …` on a Windows console no longer dies on → − ✔ (build_map --selftest, scene-check, lesson-check --selftest crashed with UnicodeEncodeError); stills.py and card-check already fine; CI (Linux) unaffected; map.json unchanged",
+   "todo": [],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · Windows console UTF-8", "by": "Aaditya", "start": "2026-11-22 22:35", "outcome": "done", "note": "route B (Claude Code, laptop clone; owner runs sync.bat); found while diagnosing MAPF; edits held as a patch until MAPF committed (0629abd) so sync.bat would not sweep them in; all checks pass in the default cp1252 console and map_compare PASS", "end": "2026-11-22 22:40"}],
+   "run": {"on": "Code", "why": "changes tools, runs the checks"}
   },
   {
    "id": "SR1",

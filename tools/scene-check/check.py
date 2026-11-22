@@ -15,6 +15,8 @@ Exit code 1 on any error. Writes out/scene-check/report.md. Owner doc: docs/scen
 """
 import argparse, json, re, sys
 from pathlib import Path
+for _f in (sys.stdout, sys.stderr):   # Windows consoles default to cp1252; output prints → − ✔
+    if hasattr(_f, "reconfigure"): _f.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).resolve().parents[2]
 # EDIT: allowed values (keep in step with docs/scene-spec.md)

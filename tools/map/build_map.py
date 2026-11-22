@@ -5,6 +5,8 @@ Owner doc: build/master-plan.md §5; map.json fields: tools/map/README.md § Map
 Flags: --dry-run --debug --only <chapter id> --preview (SVG contact sheet, K2) --selftest (K2) (RULES I5).
 EDIT: concept rows live in concepts.txt, cited links in links.txt, layout numbers in layout.py LAYOUT (never in this code)."""
 import json, re, sys, argparse, collections, math
+for _f in (sys.stdout, sys.stderr):   # Windows consoles default to cp1252; selftest prints → ✔
+    if hasattr(_f, "reconfigure"): _f.reconfigure(encoding="utf-8")
 ap = argparse.ArgumentParser()
 ap.add_argument('--index', default='../../content/E/index/')
 ap.add_argument('--src', default='concepts.txt'); ap.add_argument('--out', default='out')
