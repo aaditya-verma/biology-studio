@@ -163,5 +163,6 @@ Docs exist **only** in `studio-docs/` of the repo. Project knowledge is a read-o
 | Claude can't see my files | Open the chat in the desktop app on this laptop and connect the Studio folder. |
 | Project docs look old | Press **Sync now** in Project knowledge. Still old → the change wasn't pushed: check the repo's commits on github.com. |
 | `sync.bat` says *Stopped: a check failed* | Nothing was pushed. Read the `FAILED:` line above it (the failing check's output is also in `out\sync-check.txt`; after the pull, run the same line once more first — it rebuilds sources.json); ask a chat (route B) to fix it, then run the same `sync.bat "message"` line again. |
+| `ci.bat` says *gh (GitHub CLI) not found* | Install it: `winget install GitHub.cli`, then `gh auth login`. Already installed → `ci.bat` also looks in `C:\Program Files\GitHub CLI\`; still missing → close and reopen the window (an old window keeps the old PATH). |
 | `sync.bat` says pull failed | You have local edits that clash. Don't delete anything; open a chat with route B and ask it to merge. |
 | Chat can't attach the repo (route A) | GitHub → Settings → Applications → Claude → Configure → tick `biology-studio`. Meanwhile use route B. |

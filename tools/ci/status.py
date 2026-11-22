@@ -25,10 +25,14 @@ RUNS = 5
 TAIL = 80
 FIELDS = "databaseId,status,conclusion,headSha,displayTitle,createdAt,event,url"
 DEBUG = False
+# EDIT: where winget / the MSI put gh — used when gh is not on this window's PATH (a window opened before the install keeps the old PATH)
+GH_PATHS = [r"C:\Program Files\GitHub CLI\gh.exe", r"C:\Program Files (x86)\GitHub CLI\gh.exe",
+            str(Path.home() / "AppData" / "Local" / "Programs" / "GitHub CLI" / "gh.exe")]
+GH = shutil.which("gh") or next((p for p in GH_PATHS if Path(p).exists()), None)
 
 
 def gh(args, dry):
-    cmd = ["gh"] + args
+    cmd = [GH or "gh"] + args
     if dry or DEBUG:
         print("$ " + " ".join(cmd))
     if dry:
@@ -99,7 +103,7 @@ def main():
     ap.add_argument("--tail", type=int, default=TAIL, help=f"failed-log lines to keep (default {TAIL})")
     a = ap.parse_args()
     DEBUG = a.debug
-    if not a.dry_run and not shutil.which("gh"):
+    if not a.dry_run and not GH:
         print("ci-status: gh (GitHub CLI) not found — install it: winget install GitHub.cli, then gh auth login")
         return 2
     try:
