@@ -35,14 +35,14 @@ E06.02.01|AN79.4|✔|8-10
 E06.02.02|AN79.4|⚑|9-16
 E06.02.03||✔|9-16
 E06.02.04|AN79.4|✔|10-13
-E06.02.05||✔|
+E06.02.05|AN52.7|✔|
 E06.02.06|AN79.4|✔|9-10
 E06.02.07||✔|
 E06.02.08||⚑|
 E06.02.09||⚑|
-E06.03.01||✔|11-14
+E06.03.01|AN52.4|✔|11-14
 E06.03.02|AN52.6|✔|11-19
-E06.03.03||✔|
+E06.03.03|AN52.6,AN25.2,AN43.4|✔|
 E06.04.01||✔|
 E06.05.01||⚑|12-23
 E06.05.02|AN79.6|✔|9-23
@@ -76,12 +76,12 @@ E08.08.01|AN80.4|⚑|
 E08.08.02|AN80.4|✔|
 E08.09.01|AN80.5|✔|
 # --- E09 · X1 21 Nov 2026 (dossier ch09-birth-defects-prenatal-dx.md; teratogenic window CS7–CS23 from R08, D-030; AN codes from NMC Vol I — AN82 is Ethics, not teratology, D-057 e) ---
-E09.01.01|AN79.5|✔|
+E09.01.01|AN79.5|⚑|
 E09.01.02|AN79.5,AN79.6|✔|7-23
 E09.01.03|AN79.6|⚑|
 E09.01.04|AN79.5,AN79.6|✔✔|
 E09.02.01|AN81.1,AN79.6|✔|
-E09.02.02|AN81.2,AN81.3|✔|
+E09.02.02|AN81.2,AN81.3|⚑|
 E09.03.01|AN81.1|✔|
 # --- E10 · X1 21 Nov 2026 (dossier ch10-axial-skeleton.md; stages from human specimens R05m/R05cj/R05ce/R05cg, R08 classic ages, D-030; AN codes checked against NMC UG Curriculum Vol I (owner download from nmc.org.in; first read from the MGMUHS reprint); AN8/AN9 are upper limb, D-064 e) ---
 E10.01.01|AN2.2,AN2.4,AN26.6|✔|
@@ -100,7 +100,7 @@ E11.00.01|AN3.1,AN79.4|✔|9-23
 E11.01.01|AN3.1,AN67.2,AN67.3|⚑|14-22
 E11.02.01|AN79.4|⚑|15-18
 E11.02.02|AN7.4,AN45.3|✔|15-20
-E11.02.03|AN4.1,AN7.5,AN79.4,AN24.4|≈|
+E11.02.03|AN4.1,AN7.5,AN79.4,AN24.4|✔|
 E11.03.01||⚑|
 E11.04.01||✔|
 E11.05.01|AN28.1,AN31.1|≈|16-21
@@ -112,7 +112,7 @@ E11.09.02|AN74.4|⚑|
 # --- E12 · X1 22 Nov 2026 (dossier ch12-limbs.md; staging from the human limb atlas R05ds + R08 classic ages, D-030; limb muscle staging stays in Ch 11; AN codes read from NMC UG Curriculum Vol I (owner download) — limbs are regional topics AN8–AN20, no lower-limb dermatome code (D-067 f); ⚑ → D-067) ---
 E12.01.01|AN13.8,AN20.10,AN79.4|✔|12-13
 E12.01.02|AN13.8,AN20.10,AN2.4,AN2.5|✔|14-23
-E12.01.03|AN2.1,AN2.2,AN14.3,AN8.5|≈|23-23
+E12.01.03|AN2.1,AN2.2,AN14.3,AN8.5|⚑|23-23
 E12.02.01||✔|14-19
 E12.02.02||⚑|14-19
 E12.02.03|AN13.2,AN4.1,AN7.5,AN10.3|✔|13-19
@@ -142,7 +142,7 @@ E13.08.02|AN38.3,AN25.6|✔|
 E13.08.03|AN22.3|✔|
 E13.08.04|AN25.6,AN23.3,AN5.5|✔|
 E13.08.05|AN25.5|⚑|
-E13.08.06|AN25.3,AN5.2|✔|
+E13.08.06|AN25.3,AN5.2|⚑|
 E13.08.07|AN25.3|⚑|
 E13.08.08|AN5.1,AN23.2,AN23.7|✔|
 # --- E14 · X1 22 Nov 2026 (dossier ch14-respiratory.md; cs from human specimens — bud CS12 + separation CS13–16 (R05fb, R05fd), larynx CS17–23 (R05fj), bronchial tree CS15–23 (R05fh/fi); fetal phases have no cs) ---
@@ -161,7 +161,7 @@ E15.03.01|AN52.6,AN47.1,AN47.2,AN79.4|✔|
 E15.04.01|AN23.1,AN52.6|✔|
 E15.04.02|AN52.6,AN47.5|⚑|13-23
 E15.04.03|AN47.1,AN47.2,AN52.6|✔|13-21
-E15.04.04|AN52.6,AN47.5|✔|
+E15.04.04|AN52.6,AN47.5|⚑|12-23
 E15.04.05|AN52.6,AN47.5,AN47.8|⚑|12-23
 E15.04.06|AN52.6|⚑|
 E15.04.07|AN47.6,AN47.5|✔✔|14-23
@@ -251,7 +251,7 @@ E19.03.01|AN40.1,AN43.4|⚑|13-23
 E19.04.01|AN74.1,AN75.1|✔|
 # --- E20 · X1 22 Nov 2026 (dossier ch20-eye.md; stages from R06/R08 stage features + human specimens R05kc (fissure ~CS16–17), R05kd (eyelids), R05ke, R05kf, R05kh (fetal, clocks read both ways), D-030; NMC 2018 Vol I AN43.4 names the eye, D-085 k) ---
 E20.01.01|AN43.4,AN41.1|✔|10-17
-E20.02.01|AN41.1,AN43.2|≈|
+E20.02.01|AN41.1,AN43.2|✔|
 E20.02.02|AN41.1,AN41.3|✔|
 E20.03.01|AN41.1,AN41.2|✔|
 E20.04.01|AN41.1,AN43.2|✔|

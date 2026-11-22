@@ -1,6 +1,6 @@
 # Research dossier — Ch 5 · Week 3 · gastrulation (for C1 cards + S1E01)
 
-*(Purpose: cited, marked facts, misconceptions and staging for Ch 5 — the source C1 drafts from. Updated: 17 Nov 2026 · Bio · Research · X1 Ch 05. Started 17 Nov 2026 (D-011). Own words only; no book sentences or figures (RULES §G).)*
+*(Purpose: cited, marked facts, misconceptions and staging for Ch 5 — the source C1 drafts from. Updated: 22 Nov 2026 · Bio · Research · X2 gaps Part 1 (§9 re-checked: nothing closable, reasons given). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05. Started 17 Nov 2026 (D-011). Own words only; no book sentences or figures (RULES §G).)*
 
 **How to read a line:** fact in our words · `[book section · registry source]` · mark (RULES B6–B7): **✔✔** book + Tier 1 agree · **✔** book only · **⚑** book vs Tier 1 disagree (D-entry) · **✚** beyond the book (More / Tier D only, "beyond Langman") · **≈** blocks final.
 **Ages:** days after fertilization (the book's convention). R06/R08 count post-ovulation (≈ same, ±1 day). R02's revised ages run older — see D-030.
@@ -105,7 +105,7 @@ NMC 2024 Anatomy: topic 79 "Third to eighth week": **AN79.1** primitive streak (
 ## 8. Why learners struggle here (M05)
 Movement *through* the streak and spreading *between* layers is 3D; 2D slides lose it → spend S1E01's 3D budget on one tracked cell ingressing and spreading (Journey format), and end on the transverse section.
 
-## 9. X1 to-do — done 17 Nov 2026
+## 9. To-do — X1 done 17 Nov 2026 · X2a checked 22 Nov 2026
 - [x] Section numbers from I1 → every `E05.xx` replaced
 - [x] Every Ch 5 Tier A fact marked (23 fact lines: ✔✔ 8 · ✔ 13 · ⚑ 1 · ✚ 1 · ≈ 0; plus 1 ✚ note)
 - [x] Notochord D-entry (D-029); other ⚑ (D-030)
@@ -113,4 +113,4 @@ Movement *through* the streak and spreading *between* layers is 3D; 2D slides lo
 - [x] AN codes on the Ch 5 concept rows
 - [x] Two clinical correlates confirmed by Tier 1
 - [x] GLOSSARY §7 CS06–CS10 + timeline `cs` column
-- [ ] Left for later: R01 look check (needs PDFs) · Tier 2 (R10/R11) second opinions could lift ✔ → ✔✔ when a copy is available · I1 locator fix for E05.01/02
+- [ ] Left for later — **all three re-checked in X2a (22 Nov 2026) and none can be closed yet**: R01 look check (needs the R01 plate PDFs; not in `references\`, and `references\papers\` does not exist) · Tier 2 (R10/R11) second opinions could lift ✔ → ✔✔ — blocked for the same reason, and under B7 Tier 2 could not create a ⚑ or ✚ anyway · I1 locator fix for E05.01/02 (an I1 run, not research). No open Ch 5 item is answerable from PubMed, so Ch 5 gained no new sources in X2a.

@@ -1,6 +1,6 @@
 # Research dossier — Ch 6 · Weeks 3–8 · the embryonic period (for C1 cards + S1 episodes)
 
-*(Purpose: cited, marked facts, misconceptions and staging for Ch 6 — the source C1 drafts from. Updated: 19 Nov 2026 · Bio · Research · X1 Ch 06. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch05-gastrulation.md`.)*
+*(Purpose: cited, marked facts, misconceptions and staging for Ch 6 — the source C1 drafts from. Updated: 22 Nov 2026 · Bio · Research · X2 gaps Part 1 (four “AN — none found ≈” headings closed against NMC Vol I). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch05-gastrulation.md`.)*
 
 **How to read a line:** fact in our words · `[book section · registry source]` · mark (RULES B6–B7): **✔✔** book + Tier 1 agree · **✔** book only · **⚑** book vs Tier 1 disagree (D-entry) · **✚** beyond the book (More / Tier D only, "beyond Langman") · **≈** blocks final.
 **Ages:** days after fertilization (the book's convention). R06/R08 count post-ovulation (≈ same, ±1 day). R02's ages differ by stage — see §1 and D-039 (c).
@@ -83,7 +83,7 @@ Sources: R08 NMHM stage table (lengths, both age columns, features; fetched 19 N
 - Each somite keeps its own segmental nerve wherever its cells go. `[E06.02]` **✔**
 - (Tier D) SHH + noggin from notochord and floor plate → sclerotome (PAX1); WNT from dorsal tube → PAX3 dermomyotome and MYF5 (primaxial muscle); BMP4 + FGF from lateral plate with epidermal WNT → MYOD (ventrolateral muscle precursors); NT-3 from dorsal tube → dermis. `[E06.02 MR]` **✔**
 
-### E06.02.05 Intermediate mesoderm · AN — none found ≈
+### E06.02.05 Intermediate mesoderm · AN52.7 (urinary system)
 - It forms the urogenital system: segmental nephrotomes in neck and upper chest, an unsegmented nephrogenic cord lower down → kidney excretory units and gonads. `[E06.02 · E16]` **✔**
 
 ### E06.02.06 Lateral plate mesoderm · AN79.4
@@ -91,19 +91,19 @@ Sources: R08 NMHM stage table (lengths, both age columns, features; fetched 19 N
 - Parietal layer + ectoderm make the lateral body-wall folds; it forms limb and body-wall dermis, limb bones and connective tissue, and the sternum. `[E06.02]` **✔**
 - Visceral layer + endoderm make the gut wall; both layers give serous membranes (peritoneum, pleura, pericardium). `[E06.02 · E07]` **✔**
 
-### E06.03.01 Body folding · AN — none found ≈
+### E06.03.01 Body folding · AN52.4 (anterior abdominal wall)
 - The growing brain and lengthening neural tube make the flat disc bulge into the amniotic cavity; head and tail folds swing ventrally and the embryo curls into the fetal position. `[E06.03]` **✔** (book: folding under way 24–25 d, tight C-shape 31–35 d)
 - At the same time two lateral body-wall folds move ventrally and close the belly wall, except where the connecting stalk and yolk-sac duct stay attached (the umbilical region). `[E06.03]` **✔**
 - The folds pull the amnion around the embryo, so it ends up inside the amniotic cavity. `[E06.03]` **✔**
 - Failure of the lateral folds to close gives ventral body-wall defects. `[E06.03 · E07]` **✔**
 
-### E06.03.02 Foregut, midgut, hindgut · AN — none found ≈
+### E06.03.02 Foregut, midgut, hindgut · AN52.6
 - Folding takes in more and more endoderm to form the gut tube: foregut, midgut and hindgut. `[E06.03]` **✔**
 - The midgut stays joined to the yolk sac by the vitelline (yolk-sac) duct — wide at first, later long and thin. `[E06.03]` **✔**
 - The foregut is closed at the head end by the oropharyngeal membrane, which ruptures in week 4; the hindgut is closed by the cloacal membrane, which breaks in week 7 to open the anus. `[E06.03 · R06 CS11]` **✔✔** (oropharyngeal rupture in week 4, R06 CS11) · **✔** (cloacal, week 7)
 - Part of the allantois is taken into the body as the cloaca; by week 5 yolk-sac duct, allantois and umbilical vessels are gathered at the umbilical region. `[E06.03]` **✔**
 
-### E06.03.03 Endoderm derivatives · AN — none found ≈
+### E06.03.03 Endoderm derivatives · AN52.6, AN25.2, AN43.4
 - Endoderm lines the gut, respiratory tract, urinary bladder and urethra, tympanic cavity and auditory tube; it forms the working cells of thyroid, parathyroids, liver and pancreas, and the tonsil and thymus stroma. `[E06.03, E06.06]` **✔**
 - The yolk sac's roles: early nutrition, the first (short-lived) blood cells, and housing primordial germ cells in its back wall before they migrate to the gonads. `[E06.03 · R05o]` **✔** (R05o: the first **stem** cells arise in the embryo's aorta region, not the yolk sac — see E06.02.08)
 
@@ -161,7 +161,7 @@ NMC 2024 Anatomy, topic 79 "Third to eighth week": **AN79.3** neurulation (E06.0
 ## 8. Why learners struggle here (M05)
 Folding is 3D in two directions at once (head–tail and side-to-side), and neurulation, crest migration and somite splitting happen in the same cross-section. → Use one recurring transverse section (day 19 → 21 → 28) that ends every beat (D9), and one sagittal section for the head/tail folds; show shape first, then names (D1); stagger new terms (D2: ≤ 3 per minute).
 
-## 9. X1 to-do — done 19 Nov 2026
+## 9. To-do — X1 done 19 Nov 2026 · X2a gaps closed 22 Nov 2026
 - [x] Section ids from I1 → every `E06.xx`; locators checked (E06.02 runs to p 87 — I1 fix)
 - [x] Staging table CS11–CS23 (R08 fetched; R06 somite ranges; R02 ages)
 - [x] Every Tier A fact marked (48 lines: ✔✔ 12 · ✔ 33 · ⚑ 1 · ✚ 2 · ≈ 0); Tier B–D table marked (3 more ⚑ there)
@@ -170,4 +170,5 @@ Folding is 3D in two directions at once (head–tail and side-to-side), and neur
 - [x] Two clinical correlates confirmed by Tier 1
 - [x] GLOSSARY §7 CS11–CS23 events
 - [x] G-Sci fresh-eyes review: pass with fixes, 9 MUST + 10 SHOULD applied (19 Nov 2026)
-- [ ] Left for later: R01 look check (needs PDFs) · Tier 2 (R10/R11) second opinions · I1: E06.02 pp 80–87; add Table 6.4 as a numeric table so days 27 and 50–56 enter `timeline.json`
+- [x] **X2a (22 Nov 2026): the four “AN — none found ≈” headings closed** against `references\nmc\UG-Curriculum-Vol-I.pdf` itself. The NMC list has no competency named for these four concepts inside topic 79 (“3rd to 8th week”, AN79.1–79.6), but each is examined under its regional topic, so they are mapped there — the same cross-topic mapping Ch 7 used for AN52.6: **E06.02.05** → **AN52.7** (development of the urinary system) · **E06.03.01** → **AN52.4** (development of the anterior abdominal wall) · **E06.03.02** → **AN52.6** (development and congenital anomalies of foregut, midgut and hindgut — already on the research.txt row) · **E06.03.03** → **AN52.6** + **AN25.2** (development of pleura, lung and heart) + **AN43.4** (face, palate, tongue, branchial apparatus, pituitary, thyroid, eye). The ≈ was about curriculum coverage, not about a fact, so no fact mark changes.
+- [ ] Left for later: R01 look check (needs PDFs) · Tier 2 (R10/R11) second opinions — **still blocked: no copy of R10/R11 in `references\`, and `references\papers\` does not exist** · I1: E06.02 pp 80–87; add Table 6.4 as a numeric table so days 27 and 50–56 enter `timeline.json` (I1 work, not research)

@@ -158,7 +158,8 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 | Hemifacial microsomia / OAV spectrum | ~1 in 5,600 (1.8) | **0.38** (EUROCAT, 34 registries, OAVS = microtia + one major feature, R05is) ≈ 1 in 26,000 | **⚑** (D-078 d) — definitions differ |
 | Holoprosencephaly | not given | **1.2** (California, total births; 41 % chromosomal, mostly trisomy 13, R05ir) | ✚ |
 | Treacher Collins | 1 in 50,000 (0.2) | not retrieved (§10) | ✔ |
-| Branchial cyst/fistula, thyroglossal cyst, lingual thyroid, tongue-tie, natal teeth | not given | not retrieved (§10) | — |
+| Branchial cyst/fistula, thyroglossal cyst, lingual thyroid, tongue-tie | not given | not retrieved (§10) | — |
+| Natal teeth | not given | **34.6** per 10,000 newborns (≈ 1 in 290; meta-analysis of 23 studies; Asia 11.3 → North America 75.3; neonatal teeth 4.5; no study met every quality item; R05mx) | ✚ |
 
 **Crest cells failed (arch 1 and the crest-built glands).**
 - **22q11.2 deletion** (DiGeorge / velocardiofacial): the commonest human deletion; heart and **aortic-arch** defects, small thymus (T-cell infections), small parathyroids (low calcium, seizures), mild facial signs, learning difficulties, later psychiatric illness; **TBX1** in the deleted interval can cause it alone. `[E17.04 CC · R05io, R05fa, R05ez]` ✔ features · **⚑ rate** (c) · links **D-068 d** (half of interrupted aortic arch carries the deletion, R05ez) — a link, not new.
@@ -185,7 +186,7 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 
 **A membrane didn't let go.**
 - **Tongue-tie (ankyloglossia):** the frenulum, normally the only anchor left after cell death, reaches the tip. `[E17.05 CC]` ✔ (rate not retrieved — §10)
-- **Tooth anomalies:** natal teeth; number, shape, size; tetracycline stains; enamel defects (vitamin D). `[E17.12 CC]` ✔
+- **Tooth anomalies:** natal teeth; number, shape, size; tetracycline stains; enamel defects (vitamin D). `[E17.12 CC · R05mx]` ✔ · ✚ natal teeth in ~1 in 290 newborns (More only, beyond Langman)
 
 ---
 
@@ -285,14 +286,16 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 - **Front vs back clefts** — one landmark (incisive foramen) sorts every facial cleft.
 - **Clocks:** book weeks vs Carnegie stages for the palate (⚑ a); the thyroid source's clock is unclear (note g).
 
-## 10. X1 to-do — done 22 Nov 2026, with open items
-- Done: real locators + sub-locators; seven short-section spills, two misfiled boxes and four untitled boxes named (→ I1); staging from human specimens (R06/R08 by stage; R05ii, R05ij, R05ik, R05ic, R05ib, R05if by Carnegie stage; R05id/R05ie by weeks post conception; R05ih clock unclear); Tier A for 8 concepts (head sources, arches, arch derivatives, pouches, tongue, thyroid, face, secondary palate); Tier B–D with the arch table by tissue; clinical rows in 6 mechanism groups with rates per 10,000; 20 misconceptions; AN map from NMC Vol I; 19 sources **R05ib–R05it** (R05il–R05is clinical); G-Sci fresh-eyes review: pass with fixes, 9 MUST + 13 SHOULD, all applied (⚑ f downgraded to a note).
-- **Rates not retrieved:** Treacher Collins (book 1 in 50,000), branchial cysts/fistulas, thyroglossal cyst (classic autopsy ~7 % has no PubMed abstract found), lingual/ectopic thyroid, tongue-tie (only a breastfeeding meta-analysis found), natal teeth, median cleft, van der Woude lip-pit figures.
-- **ICBDSR/IPDTOC cleft-palate-alone paper** — needed before D-078 e can move to option 2.
-- **Human tooth timing** (lamina, bud, cap, bell; book weeks only) — no human Tier 1 retrieved; Kyoto or Ooë-type human series next.
-- **Human thyroid stage** (bud CS, in place week 7): none retrieved; **R05ih full text** for its clock (note g).
-- **Human EAM origin** (14e's correction): no human Tier 1 retrieved; Ch 19 (ear) X1 should look.
-- **Female shelves close ~1 week later** (book): Burdi & Silvey 1969 has no abstract — read the full text or find a newer human series before a card says it.
-- **R01 3D Atlas:** check CS13–23 face and pharynx models before the arch, pouch and face scenes (look only, NC-ND). **R04 Kyoto:** the palate CT/MRI series behind R05ib for the palate scene (licence per dataset).
-- **Full texts not read:** R05ib (stage-by-stage shelf positions), R05ic, R05if, R05ig (thymus stage), R05ii (crest tables).
+## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026
+- **Done (X1, 22 Nov 2026):** real locators + sub-locators; seven short-section spills, two misfiled boxes and four untitled boxes named (→ I1); staging from human specimens (R06/R08 by stage; R05ii, R05ij, R05ik, R05ic, R05ib, R05if by Carnegie stage; R05id/R05ie by weeks post conception; R05ih clock unclear); Tier A for 8 concepts (head sources, arches, arch derivatives, pouches, tongue, thyroid, face, secondary palate); Tier B–D with the arch table by tissue; clinical rows in 6 mechanism groups with rates per 10,000; 20 misconceptions; AN map from NMC Vol I; 19 sources **R05ib–R05it** (R05il–R05is clinical); G-Sci fresh-eyes review: pass with fixes, 9 MUST + 13 SHOULD, all applied (⚑ f downgraded to a note).
+- **Done (X2c, 22 Nov 2026):** **natal teeth** rate (✚, R05mx).
+
+**Still open (X2c searched 22 Nov 2026 unless noted):**
+- **Rates not retrieved:** Treacher Collins (book 1 in 50,000; registry search found only microtia papers), branchial cysts/fistulas, thyroglossal cyst, lingual/ectopic thyroid, tongue-tie, median cleft, van der Woude lip-pit figures.
+- **ICBDSR/IPDTOC cleft-palate-alone paper** — only the CL ± P paper (R05il) is on PubMed with rates in its abstract; D-078 e stays at its current pick.
+- **Human tooth timing** (lamina, bud, cap, bell), **human thyroid stage** (bud CS, in place week 7): no human Carnegie-staged Tier 1 found.
+- **Human EAM origin** (14e's correction): no human lineage study (Ch 19 note e also open).
+- **Female shelves close ~1 week later** (book): no newer human series found; Burdi & Silvey 1969 needs its full text.
+- **Full texts not read:** R05ib, R05ic, R05if, R05ig, R05ih (clock, note g), R05ii — `references\papers\` does not exist yet.
+- **R01 3D Atlas** CS13–23 face/pharynx and **R04 Kyoto** palate series: look-only browser/owner steps.
 - **2024 wording** of AN43.4 (MGMUHS reprint): not in `references\`.

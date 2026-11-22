@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X2 Part 2b commit (scheduled task) — X2c done (G-Sci pass, run closed, R05mq–R05mz, no D-entry, no owner inputs). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -914,7 +914,7 @@
    "chat": "Bio · Research · X1 Ch 21",
    "status": "done",
    "needs": ["X1.20"],
-   "unblocks": ["FD"],
+   "unblocks": ["X2a", "X2b", "X2c", "FD"],
    "lock": false,
    "gates": {"G-Sci": "pass"},
    "check": null,
@@ -937,6 +937,89 @@
     {"id": "X1.21.q1", "kind": "decide", "ask": "D-088 (b) from Ch 21: is ichthyosis 'usually' autosomal recessive? pick option 1 (book default), 2 (card: commonest is filaggrin type, semidominant; next X-linked; severe newborn forms like harlequin recessive — book line in More) or 3 ('inherited — several patterns') — recommended 2; (a), (c)–(k) are notes", "asked_in": "Bio · Research · X1 Ch 21", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-088"}
    ],
    "runs": [{"chat": "Bio · Research · X1 Ch 21", "by": "Aaditya", "start": "2026-11-22 15:03", "end": "2026-11-22 18:20", "outcome": "done", "note": "route B (cloud workspace; started while U2 held the clone — research needs no lock); research + G-Sci fresh-eyes reviewer done (pass with fixes, 6 MUST + 8 SHOULD applied); drafts parked in handoff\\x1-ch21 (not yet in the repo); commit by scheduled task `Bio · Research · X1 Ch 21 commit` (hourly, gate = U2 pushed), which closes this run. Ch 21 decision: next free D (D-087 now U2's). Committed by scheduled task `Bio · Research · X1 Ch 21 commit` (22 Nov 18:20 IST, gate passed: U2 runs ended, lock free, main = origin/main): G-Sci pass with fixes, 6 MUST + 8 SHOULD applied; ⚑ decision is D-088 (D-087 is U2's, renumbered in dossier §5, research rows and the D-row); files written to the laptop clone, owner commits with the git add line + sync.bat."}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
+  },
+  {
+   "id": "X2a",
+   "title": "X2 research gaps · Part 1 (Ch 5–9)",
+   "type": "Research",
+   "chat": "Bio · Research · X2 gaps Part 1",
+   "status": "done",
+   "needs": ["X1.21"],
+   "unblocks": ["X2b"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-030", "D-044", "D-057", "D-074", "D-090"],
+   "prompt": null,
+   "log": "22 Nov 2026 · X2a Research · Ch 5–9 open to-dos: Ch 5 nothing closable (3 open); Ch 6 four AN ≈ closed from NMC Vol I (E06.02.05 AN52.7, E06.03.01 AN52.4, E06.03.03 AN52.6/25.2/43.4); Ch 7 pleuroperitoneal fold week 5 ✔✔ (R05lg), central tendon demoted to ✔ + ✚ mouse (R05lh; R05aa row fixed too); Ch 8 INTERGROWTH-21st (R05li–R05lk) week-12 CRL ✔✔, polyhydramnios diabetes share ✔✔ (R05ll), postpartum preeclampsia ✚ (R05lm); Ch 9 3 % major ✔✔ (R05ln), 3+ minor → 19.6 % ✔✔ (R05lp), CVS limb signal ✔✔ (R05lq–R05ls), radiation window ✚ (R05lu), alcohol–Shh ✚ animal (R05lv), R05bw full text read; E09.01.01 + E09.02.02 → ⚑; 16 sources R05lg–R05lv → D-090 a–c + notes d–f. G-Sci pass with fixes, 16 MUST + 17 SHOULD, all applied",
+   "todo": [
+    "Ch 5–6: R01 look check (needs R01 plate PDFs) and Tier 2 (R10/R11) second opinions — no copies yet",
+    "Ch 5: I1 locator fix for E05.01/02 (I1's work)",
+    "Ch 6/8: re-check the AN52.7 / AN52.4 / AN52.6 / AN25.2 / AN43.4 mappings and the AN81 closure in a chat with NMC Vol I (reviewer could not see the PDF)",
+    "Ch 7: Tier 1 day for the pleuropericardial folds (stays ≈); Tier 2 on the central-tendon split",
+    "Ch 8: read the R05lj / R05lk centile tables (newborn and fetal size); a mid/late-pregnancy CRL standard; Csapo lutectomy full texts (D-044 a); ISSHP preeclampsia statement full text",
+    "Ch 9: a guideline (FOGSI / ACOG / RCOG) for 'amniocentesis from 15 weeks'; R05lr full text for the 10-week CVS boundary; Chernobyl; the 15 % minor-anomaly prevalence; CC0/CC BY/PD screening images (media step)"
+   ],
+   "inputs": [
+    {"id": "X2a.q1", "kind": "decide", "ask": "D-090 (a): birth defects cause ~25 % of infant deaths (book) or 20.6 % in 2017 (Tier 1)? options 1 (book default), 2 (card: about 1 in 5 infant deaths in the US; book figure + falling death rate in More) or 3 (25 % + '20.6 % in 2017' in one line) — recommended 2", "asked_in": "Bio · Research · X2 gaps Part 1", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-090"},
+    {"id": "X2a.q2", "kind": "decide", "ask": "D-090 (b): keep or drop the Hiroshima/Nagasaki 28 % / 25 % / 25 % trio? options 1 (quote as the book does), 2 (drop the three percentages; teach 'worst 8–15 weeks after fertilization' as ✚, no dose claim; book figures in More) or 3 (keep, qualified as the heavily exposed subgroup) — recommended 2", "asked_in": "Bio · Research · X2 gaps Part 1", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-090"},
+    {"id": "X2a.q3", "kind": "decide", "ask": "D-090 (c): amniocentesis 'not usually before 14 weeks' (book) or 'from 15 weeks'? options 1 (book default), 2 (book's ~14 weeks but the reason becomes loss + club foot, fluid reason in More; '15–16 weeks in practice' only once a guideline is cited) or 3 ('14–15 weeks', no reason) — recommended 2", "asked_in": "Bio · Research · X2 gaps Part 1", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-090"}
+   ],
+   "runs": [{"chat": "Bio · Research · X2 gaps Part 1", "by": "Aaditya", "start": "2026-11-22 17:18", "end": "2026-11-22 17:45", "outcome": "done", "note": "Cowork, parked route (the clone was held by U2, so nothing was written then; staged in Studio home handoff/x2-part1); G-Sci fresh-eyes reviewer: pass with fixes, 16 MUST + 17 SHOULD, all applied; committed into the clone by scheduled task `bio-x2a-commit-when-clear` (gate: lock free, no open runs, main = origin/main, X1.21 done; ids R05lg–R05lv, D-090)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
+  },
+  {
+   "id": "X2b",
+   "title": "X2 research gaps · Part 2a (Ch 10–15)",
+   "type": "Research",
+   "chat": "Bio · Research · X2 gaps Part 2a",
+   "status": "done",
+   "needs": ["X1.21", "X2a"],
+   "unblocks": ["X2c"],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-091"],
+   "prompt": null,
+   "log": "22 Nov 2026 · X2b Research · Ch 10–15 open to-dos: closed 14 + 4 in part, 44 stay open (each with a reason in its dossier §10). Ch 10 ossicle start ✔✔ (R05ly), pectus excavatum adult rate ✚ (R05lx); Ch 11 dermatome source (R05ma; E11.02.03 ≈ → ✔); Ch 12 human AER ✔✔ (R05ds full text), knee centres at birth → ⚑ D-091 a (R05md, R05me; E12.01.03 ≈ → ⚑), bone age ✚ (R05mg); Ch 13 ductus venosus sphincter → ⚑ D-091 b (R05mh, R05mi; E13.08.06 ✔ → ⚑), septum secundum wording (R05mj), IMA origin (mouse, R05mk, not a ⚑); Ch 14 fetal breathing well before birth ✔✔ (R05ml); Ch 15 duodenal recanalization timing ✔✔, mechanism → ⚑ D-091 c (R05mo, R05mp; E15.04.04 ✔ → ⚑, cs 12–23), annular pancreas rate ✚ (R05mm), R05gb + R05gj full texts read. 20 sources R05lw–R05mp → D-091 a–c + notes d–h. G-Sci pass with fixes, 8 MUST + 11 SHOULD, all applied",
+   "todo": [
+    "Ch 10 (5 open): R01 look-only check; the book's 20–50 % / 6–20 % figures; 'first fully ossified'; pectus carinatum + child rates; human resegmentation split",
+    "Ch 11 (8 open): dermomyotome lips (look-only); R01; Poland registry rate; BMD onset (GeneReviews has no abstract); 2024 wording; 4 full texts (PMC blocks R05df; others not in PMC); inferior oblique ≈; somitomeres (no human data)",
+    "Ch 12 (7 open): R01; five-part AER split + human interdigital death; week-7 rotation; syndactyly / all-limb rate; Lenz/Nowack primary; R05ea/R05dz full texts; 2024 wording (+ the Check-to-build card note, carried)",
+    "Ch 13 (7 open): R01; first heartbeat; ectopia cordis rate; fetal saturations; human IMA; R05en/R05ew full texts; 2024 wording",
+    "Ch 14 (9 open): exact fetal-breathing onset week (de Vries part I has no abstract); RDS share of deaths; agenesis/larynx rates; respiratory bronchioles; branching mode; O'Rahilly & Boyden 1973; R05fe/R05fn (not needed); R01; 2024 wording",
+    "Ch 15 (8 open): Hirschsprung segment shares; human Kupffer origin; liver weight/bile; O'Rahilly 1978; R05gc/gn/go full texts; human IMA; R01; 2024 wording (+ K-step links file, carried)",
+    "Common blockers: R01/R02 look-only checks (owner); 2024 NMC reprint not in references\\; references\\papers\\ does not exist (no full texts for the 1972–78 O'Rahilly papers)"
+   ],
+   "inputs": [
+    {"id": "X2b.q1", "kind": "decide", "ask": "D-091 (a) knee centres at birth: book 'epiphyses all cartilage at birth' vs lower femur from ~30 wk (often upper tibia) — recommended 2 (card: '…except at the knee', book line in More); (b) ductus venosus sphincter: book 'a sphincter' vs human 13–17 wk histology, no muscle sphincter but flow still regulated — recommended 2 ('can narrow to limit flow'); (c) how the duodenum closes: book 'cell proliferation' vs human morphometry, cells converge and number falls — recommended 2 ('closes, then reopens', no mechanism on the card). Pick 1 / 2 / 3 for each", "asked_in": "Bio · Research · X2 gaps Part 2a", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-091"}
+   ],
+   "runs": [{"chat": "Bio · Research · X2 gaps Part 2a", "by": "Aaditya", "start": "2026-11-22 17:14", "end": "2026-11-22 17:40", "outcome": "done", "note": "parked + committed by this scheduled task (`Bio · Research · X2 Part 2a commit`; Cowork, parked in Studio home handoff/x2-part2a; gate: lock free, U2 ended, main = origin/main, X1.21 + X2a done; ids R05lw–R05mp, D-091); gates G-Sci pass with fixes 8 MUST + 11 SHOULD, all applied"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
+  },
+  {
+   "id": "X2c",
+   "title": "X2 research gaps · Part 2b (Ch 16–21)",
+   "type": "Research",
+   "chat": "Bio · Research · X2 gaps Part 2b",
+   "status": "done",
+   "needs": ["X1.21", "X2b"],
+   "unblocks": [],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-076"],
+   "prompt": null,
+   "log": "22 Nov 2026 · X2c Research · Ch 16–21 open to-dos: closed 9, 51 stay open (each with a reason in its dossier §10 or the handoff README). Ch 16 epispadias rate ✔✔ (R05ms; D-076 d gains a second ICBDSR-family figure), MRKH rate ✚ (R05mq), AIS rate ✚ (R05mr, 46,XY females), PUV rate + kidney failure ✚ (R05mt, R05mu), cryptorchidism → testicular cancer ✚ (R05mv), preterm nephrogenesis → D-076 c evidence (R05mw); Ch 17 natal teeth ✚ (R05mx); Ch 18 hippocampus function note e ✚ (R05my, one case); Ch 20 retinal detachment plane ✚, E20.02.01 ≈ → ✔ (R05mz); Ch 19 and Ch 21 nothing closed. 10 sources R05mq–R05mz; no new ⚑, no D-entry. G-Sci pass with fixes, 2 MUST + 7 SHOULD, all applied",
+   "todo": [
+    "Ch 16 (10 open), Ch 17 (8 open), Ch 18 (7 open), Ch 20 (7 open): see each dossier §10 (Still open)",
+    "Ch 19 (9 open): no human EAM lineage study; O'Rahilly 1963 no abstract; registry rates for atresia, TCS, stapes fixation, inner-ear types, CRS share; primary genetic-share cohort; scalae/canal timing + R05jn/R05jr/R05jk full texts; eardrum note (optional); R01/R04 look-only; 2024 wording",
+    "Ch 21 (10 open): Carnegie-staged milk-line/apocrine series; harlequin/ARCI birth rate; polythelia site count; skin-condition rates; fingerprint twin letter; eccrine palm/sole timing; dermis lineage mouse-only (D-066); Vol III + 2024 wording; R01/R04 look-only",
+    "Common blocker: references\\papers\\ does not exist — owner can drop free PDFs there to unlock ~12 full-text items"
+   ],
+   "inputs": [],
+   "runs": [{"chat": "Bio · Research · X2 gaps Part 2b", "by": "Aaditya", "start": "2026-11-22 17:15", "end": "2026-11-22 17:25", "outcome": "done", "note": "parked + committed by this scheduled task (`Bio · Research · X2 Part 2b commit`; Cowork, parked in Studio home handoff/x2-part2b; gate: lock free, U2 ended, main = origin/main, X1.21 + X2b done; ids R05mq–R05mz, no D-entry); gates G-Sci pass with fixes 2 MUST + 7 SHOULD, all applied"}],
    "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
   },
   {

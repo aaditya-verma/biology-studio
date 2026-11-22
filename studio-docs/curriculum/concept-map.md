@@ -150,14 +150,14 @@
 | E06.02.02 | Somites | A | TG | core | 20–35 | meso | msk | E06.02.01 | 59 | AN79.4 | ⚑ |
 | E06.02.03 | Segmentation clock | D | M | s | 20–35 | meso | msk | E06.02.02, E01.05.05 |  |  | ✔ |
 | E06.02.04 | Somite differentiation | A | G | core | 22–35 | meso | msk | E06.02.02 | 32 | AN79.4 | ✔ |
-| E06.02.05 | Intermediate mesoderm | A | G | x | 20–28 | meso | uro | E06.02.01 | 20 |  | ✔ |
+| E06.02.05 | Intermediate mesoderm | A | G | x | 20–28 | meso | uro | E06.02.01 | 20 | AN52.7 | ✔ |
 | E06.02.06 | Lateral plate mesoderm | A | GF | core | 17–21 | meso | cav | E06.02.01 | 77 | AN79.4 | ✔ |
 | E06.02.07 | Vasculogenesis and angiogenesis | B | S | x | 17–28 | meso | cv | E06.02.01 | 8 |  | ✔ |
 | E06.02.08 | Sites of blood formation | B | ST | x |  | meso | cv | E06.02.07 |  |  | ⚑ |
 | E06.02.09 | Capillary haemangiomas | C | C | d |  | meso | defects | E06.02.07 |  |  | ⚑ |
-| E06.03.01 | Body folding | A | F | core | 21–28 | multi | early | E05.05.01, E06.02.06 | 63 |  | ✔ |
+| E06.03.01 | Body folding | A | F | core | 21–28 | multi | early | E05.05.01, E06.02.06 | 63 | AN52.4 | ✔ |
 | E06.03.02 | Foregut, midgut, hindgut | A | FG | core | 22–28 | endo | gi | E06.03.01 | 34 | AN52.6 | ✔ |
-| E06.03.03 | Endoderm derivatives | A | GA | x |  | endo | gi | E06.03.02 |  |  | ✔ |
+| E06.03.03 | Endoderm derivatives | A | GA | x |  | endo | gi | E06.03.02 |  | AN52.6, AN25.2, AN43.4 | ✔ |
 | E06.04.01 | Hox genes pattern the head–tail axis | D | M | x |  | multi | mol | E01.01.02 | 1 |  | ✔ |
 | E06.05.01 | External appearance in month 2 | B | T | s | 29–56 | multi | early | E06.03.01 | 3 |  | ⚑ |
 | E06.05.02 | Estimating embryo age | B | T | s | 20–56 | multi | early | E06.05.01, E06.02.02 |  | AN79.6 | ✔ |
@@ -209,12 +209,12 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E09.01.01 | Types of birth defects | B | C | x |  | none | defects | E06.00.01 | 3 | AN79.5 | ✔ |
+| E09.01.01 | Types of birth defects | B | C | x |  | none | defects | E06.00.01 | 3 | AN79.5 | ⚑ |
 | E09.01.02 | Principles of teratology | A | CT | core | 15–56 | none | defects | E06.00.01 | 2 | AN79.5, AN79.6 | ✔ |
 | E09.01.03 | Key teratogens | B | C | x |  | none | defects | E09.01.02 | 1 | AN79.6 | ⚑ |
 | E09.01.04 | Preventing birth defects | B | C | x |  | none | defects | E09.01.03 |  | AN79.5, AN79.6 | ✔✔ |
 | E09.02.01 | Prenatal screening | B | C | x |  | none | defects | E09.01.01 | 2 | AN81.1, AN79.6 | ✔ |
-| E09.02.02 | Amniocentesis and chorionic villus sampling | B | C | x |  | extra | defects | E09.02.01 |  | AN81.2, AN81.3 | ✔ |
+| E09.02.02 | Amniocentesis and chorionic villus sampling | B | C | x |  | extra | defects | E09.02.01 |  | AN81.2, AN81.3 | ⚑ |
 | E09.03.01 | Fetal therapy | C | C | d |  | none | defects | E09.02.01 |  | AN81.1 | ✔ |
 
 *Misconceptions to refute (cited in the chapter dossier):* E09.01.02 — “Weeks 1–2 are the most sensitive (exposure then usually is all-or-none).”
@@ -245,7 +245,7 @@
 | E11.01.01 | Myoblasts fuse into fibres | B | S | s |  | meso | msk | E11.00.01 |  | AN3.1, AN67.2, AN67.3 | ⚑ |
 | E11.02.01 | Primaxial domain and abaxial domain | B | S | s |  | meso | msk | E06.02.04 | 3 | AN79.4 | ⚑ |
 | E11.02.02 | Epaxial and hypaxial muscles | B | SA | x |  | meso | msk | E11.02.01 | 2 | AN7.4, AN45.3 | ✔ |
-| E11.02.03 | Dermatomes and myotomes keep their nerve | A | SA | core |  | meso | msk | E06.02.04 | 1 | AN4.1, AN7.5, AN79.4, AN24.4 | ≈ |
+| E11.02.03 | Dermatomes and myotomes keep their nerve | A | SA | core |  | meso | msk | E06.02.04 | 1 | AN4.1, AN7.5, AN79.4, AN24.4 | ✔ |
 | E11.03.01 | Molecular regulation of muscle | D | M | d |  | meso | msk | E11.00.01 |  |  | ⚑ |
 | E11.04.01 | Patterning of muscles | D | S | d |  | meso | msk | E11.00.01 |  |  | ✔ |
 | E11.05.01 | Head muscles | B | S | x |  | meso | head | E11.00.01 | 4 | AN28.1, AN31.1 | ≈ |
@@ -263,7 +263,7 @@
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | E12.01.01 | Limb buds | A | SF | core | 26–28 | meso | limb | E06.02.06 | 8 | AN13.8, AN20.10, AN79.4 | ✔ |
 | E12.01.02 | Shaping and rotating the limbs | A | F | core | 33–56 | meso | limb | E12.01.01 | 2 | AN13.8, AN20.10, AN2.4, AN2.5 | ✔ |
-| E12.01.03 | Limb bone growth | B | S | x | 42–266 | meso | limb | E10.01.01, E12.01.01 |  | AN2.1, AN2.2, AN14.3, AN8.5 | ≈ |
+| E12.01.03 | Limb bone growth | B | S | x | 42–266 | meso | limb | E10.01.01, E12.01.01 |  | AN2.1, AN2.2, AN14.3, AN8.5 | ⚑ |
 | E12.02.01 | Apical ectodermal ridge | D | M | x | 26–49 | ecto | limb | E12.01.01, E01.05.04 |  |  | ✔ |
 | E12.02.02 | Zone of polarizing activity | D | M | x | 28–49 | meso | limb | E12.01.01, E01.05.01 |  |  | ⚑ |
 | E12.02.03 | Limb musculature and innervation | B | SA | s |  | meso | limb | E11.07.01, E11.02.03 |  | AN13.2, AN4.1, AN7.5, AN10.3 | ✔ |
@@ -299,7 +299,7 @@
 | E13.08.03 | Vitelline and umbilical arteries | B | SA | x |  | meso | cv | E06.02.07 |  | AN22.3 | ✔ |
 | E13.08.04 | Vitelline, umbilical and cardinal veins | B | SA | x | 28–56 | meso | cv | E06.02.07 | 3 | AN25.6, AN23.3, AN5.5 | ✔ |
 | E13.08.05 | Arterial defects | C | C | x |  | meso | defects | E13.08.01 |  | AN25.5 | ⚑ |
-| E13.08.06 | Fetal circulation | A | S | core | 57–266 | multi | cv | E13.08.04, E13.06.02, E13.08.01, E08.05.01 | 1 | AN25.3, AN5.2 | ✔ |
+| E13.08.06 | Fetal circulation | A | S | core | 57–266 | multi | cv | E13.08.04, E13.06.02, E13.08.01, E08.05.01 | 1 | AN25.3, AN5.2 | ⚑ |
 | E13.08.07 | Changes at birth and adult remnants | A | SA | core | 266–266 | multi | cv | E13.08.06 |  | AN25.3 | ⚑ |
 | E13.08.08 | Lymphatic system | C | S | d |  | meso | cv | E13.08.04 |  | AN5.1, AN23.2, AN23.7 | ✔ |
 
@@ -330,7 +330,7 @@
 | E15.04.01 | Oesophagus | B | S | s | 28–56 | endo | gi | E14.01.01 |  | AN23.1, AN52.6 | ✔ |
 | E15.04.02 | Stomach rotation | A | F | core | 28–49 | endo | gi | E15.01.01 | 6 | AN52.6, AN47.5 | ⚑ |
 | E15.04.03 | Omenta and lesser sac | B | A | x | 35–70 | meso | gi | E15.04.02, E15.03.01 | 1 | AN47.1, AN47.2, AN52.6 | ✔ |
-| E15.04.04 | Duodenum | B | S | x | 28–56 | endo | gi | E15.04.02 | 2 | AN52.6, AN47.5 | ✔ |
+| E15.04.04 | Duodenum | B | S | x | 28–56 | endo | gi | E15.04.02 | 2 | AN52.6, AN47.5 | ⚑ |
 | E15.04.05 | Liver and gallbladder | A | SG | core | 22–42 | endo | gi | E15.01.01, E07.04.01 | 2 | AN52.6, AN47.5, AN47.8 | ⚑ |
 | E15.04.06 | Pyloric stenosis | C | C | x |  | endo | defects | E15.04.02 |  | AN52.6 | ⚑ |
 | E15.04.07 | Spleen | B | S | x | 35–56 | meso | gi | E15.04.03 |  | AN47.6, AN47.5 | ✔✔ |
@@ -448,7 +448,7 @@
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | E20.01.01 | Optic cup and lens vesicle | A | S | core | 22–42 | ecto | eye | E18.02.01, E06.01.06 | 8 | AN43.4, AN41.1 | ✔ |
-| E20.02.01 | Retina | A | S | core | 35–266 | ecto | eye | E20.01.01 | 1 | AN41.1, AN43.2 | ≈ |
+| E20.02.01 | Retina | A | S | core | 35–266 | ecto | eye | E20.01.01 | 1 | AN41.1, AN43.2 | ✔ |
 | E20.02.02 | Iris and ciliary body | B | S | x | 56–266 | multi | eye | E20.02.01 |  | AN41.1, AN41.3 | ✔ |
 | E20.03.01 | Lens | B | S | s | 35–266 | ecto | eye | E20.01.01 |  | AN41.1, AN41.2 | ✔ |
 | E20.04.01 | Choroid, sclera and cornea | B | S | s |  | multi | eye | E20.01.01 |  | AN41.1, AN43.2 | ✔ |

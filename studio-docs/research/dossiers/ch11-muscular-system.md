@@ -1,6 +1,6 @@
 # Research dossier — Ch 11 · The muscular system (for C-step cards + episodes)
 
-*(Purpose: cited, marked facts, staging, misconceptions and clinical correlates for Ch 11, the second chapter of Part 2. Cards draft from this file. Updated: 22 Nov 2026 · Bio · Research · X1 Ch 11 · by Aaditya. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch10-axial-skeleton.md`.)*
+*(Purpose: cited, marked facts, staging, misconceptions and clinical correlates for Ch 11, the second chapter of Part 2. Cards draft from this file. Updated: 22 Nov 2026 · Bio · Research · X2 gaps Part 2a (step X2b — §10 gaps: dermatome source, Poland rate, full texts) · by Aaditya. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 · by Aaditya. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch10-axial-skeleton.md`.)*
 
 **How to read a line:** fact in our words · `[book section · registry source]` · mark (RULES B6–B7): **✔✔** book + Tier 1 agree · **✔** book only · **⚑** book vs Tier 1 disagree (D-entry) · **✚** beyond the book (More / Tier D only, "beyond Langman") · **≈** blocks final. **Species tag:** a Tier 1 line from chick or mouse says so (*chick*, *mouse*). Those lines can confirm a mechanism, but they never give a human day or number.
 
@@ -71,7 +71,7 @@ Ch 11 gives only two times: limb musculature first seen in **week 7**, and cross
 - **The nerve goes where the muscle goes.** A muscle that migrates far keeps its home segment's nerve, so the nerve is dragged along. The book's own example: the **phrenic nerve (C3–C5)** supplies the diaphragm low in the trunk because its muscle starts in the neck (Ch 7). `[E11.11, E07.05]` **✔** (Ch 7 dossier, E07.05.01)
 - **Because of resegmentation, each myotome bridges an intervertebral disc** and attaches to two vertebrae, which is what lets segmental muscles move the spine — the other half of Ch 10's story. **Not re-argued here:** see E10.02.01 (Ch 10 dossier §2 and §5 c — human R05cj, chick R05ck/R05cl, axolotl R05dd). `[E10.02 · R05cl]` **✔✔**
 - The lateral somitic frontier is also the border between back dermis (from dermatomes) and body-wall dermis (from lateral plate). `[E11.01]` **✔**
-- Each segment's skin area (the adult dermatome) is supplied by that segment's sensory nerve. Ch 11 does not say this; it belongs with the nerve chapters. `[— ]` **≈** (source to add before a card uses it — §10)
+- Each segment's skin area (the adult dermatome) is supplied by that segment's sensory nerve. Ch 11 does not say this; it belongs with the nerve chapters. `[— · R05ma]` **✚** beyond Langman (R05ma, *human* systematic review: an evidence-based map of the skin each dorsal root reliably supplies; neighbouring dermatomes **overlap** and vary between people, and the usual textbook maps rest on weak studies — a card says "about", never a hard border)
 - **Dorsal ramus → epaxial (true back) muscles; ventral ramus → hypaxial muscles (body wall and limbs).** This is a rule about *innervation*, not about origin. `[E11.02, E11.10 · R05dn]` **✔✔** dorsal half (R05dn, *human*) · ventral half **✔**
 
 ## 3. Tier B–D facts (cards later; marked now)
@@ -93,7 +93,7 @@ Ch 11 gives only two times: limb musculature first seen in **week 7**, and cross
 | Correlate | Embryology in one line | Book `[section]` | Tier 1 | Mark |
 |---|---|---|---|---|
 | Absent muscle (palmaris longus etc.) | One muscle fails to form; usually no deficit | `[E11.09 CC]` | R05du | ✔✔ |
-| Poland sequence | One-sided failure of the pectoral muscles (and often the hand) to form | `[E11.09 CC]` | R05dy | ✔ · ✚ sternocostal head, side, sex ratio |
+| Poland sequence | One-sided failure of the pectoral muscles (and often the hand) to form | `[E11.09 CC]` | R05dy, R05mb | ✔ · ✚ sternocostal head, side, sex ratio · ✔ rate: the book's 1 in 20,000 sits inside a review's **1 in 7,000 – 1 in 100,000** (R05mb, narrative, not a registry) |
 | Prune belly (Eagle–Barrett) syndrome | Abdominal-wall muscle deficiency + urinary-tract abnormalities + undescended testes (boys); cause unsettled | `[E11.09 CC]` | R05dv, R05dw, R05dx | **⚑ D-066 e** |
 | Duchenne / Becker muscular dystrophy | Dystrophin missing (DMD) or reduced (BMD) → fibres break down | `[E11.09 CC]` | R05dt | ✔✔ genetics · **⚑ D-066 d** rate |
 | MYF5/MYOD | The two MRFs that commit cells to muscle; both lost → no skeletal muscle (*mouse*) | `[E11.03]` | R05dj, R05dk | ✔✔ (*mouse*) · ✚ |
@@ -111,7 +111,7 @@ Until decided: cards, Checks and scenes give the **book answer**; More carries "
 
 **Not a ⚑:**
 - **Limb-muscle timing.** The book's week-7 condensation fits human myotubes at CS17–19 (✔✔); myoblasts already in the bud at CS14 (R05dp) is a ✚ for More.
-- **Poland sequence.** The book's rate (1 in 20,000) has no population-based check yet (§10); R05dy refines the defining sign (sternocostal head of pectoralis major) and the sex ratio — ✚, not a contradiction.
+- **Poland sequence.** The book's rate (1 in 20,000) has no population-based check yet (§10) — a surgical review quotes 1 in 7,000 to 1 in 100,000 (R05mb), which brackets it; R05dy refines the defining sign (sternocostal head of pectoralis major) and the sex ratio — ✚, not a contradiction.
 - **Resegmentation.** Settled in Ch 10 (D-064 c). Ch 11 only adds the myotome's half: it bridges the disc and keeps its segment's nerve — link E10.02.01.
 
 ## 6. Top student misconceptions (refute in cards and Checks — craft §3.4)
@@ -173,14 +173,15 @@ Codes sit on the Ch 11 rows of `tools/map/research.txt` → map.json `an`.
 - **Moving muscles, fixed nerves.** The phrenic nerve and the limb plexuses make sense only once the "nerve follows the muscle" rule is seen in motion — animate it once.
 - **Animal data in a human chapter.** Most of the mechanism is chick and mouse; the human sources give timing only. Every species is labelled.
 
-## 10. X1 to-do — done 22 Nov 2026, with open items
+## 10. X1 to-do — done 22 Nov 2026, with open items · gaps pass X2b, 22 Nov 2026
 - Done: real locators + I1 gaps; staging CS9 → fetal weeks from human specimens (R05m, R05dn, R05do, R05dp, R05dq) with R08 ages; Tier A for E11.00.01 and E11.02.03; Tier B–D table; clinical correlates; 16 misconceptions; AN map from NMC Vol I; ⚑ D-066 a–e; Ch 11 rows in `research.txt`; map rebuilt.
-- **Human stage for the dermomyotome and its lips** (CS11–13): check R02 VHE sections (look only); the line is ✔/≈ until then.
-- **R01 3D Atlas:** confirm the CS14–17 models show myotomes and limb muscle masses before the frontier scene.
-- **Population-based Poland-sequence rate** (the book's 1 in 20,000): none retrieved.
-- **BMD onset ages** (book 8–25 years) and the DMD onset line: not checked against Tier 1.
-- **2024 wording** of the Ch 11 AN codes (MGMUHS reprint): not re-read this chat.
-- **Full-text checks before cards use them:** R05df (PMC2409079) — only rib 1 has an abaxial part; intercostals, latissimus dorsi, spinotrapezius, scapula straddle the frontier (here read from the R05dg review, not the abstract); R05de — chick sternal ribs abaxial; R05dg — only chick and mouse mapped, and limb muscle patterns form without muscle; R05dm — crest connective tissue patterns head muscle.
-- **Sources to add:** segment-matched sensory supply of the dermatome (§2, ≈); inferior oblique origin and nerve for AN31.1 (≈).
+- **Done 22 Nov 2026 (X2b):** **dermatome source** — the §2 line on segment-matched skin supply is now ✚ with R05ma (was ≈); research.txt E11.02.03 ≈ → ✔. **Poland rate** — a review range that brackets the book's figure (R05mb, ✔ in §4; still no registry figure).
+- **Human stage for the dermomyotome and its lips** (CS11–13): check R02 VHE sections (look only); the line is ✔/≈ until then. *Still open:* look-only (R02); no human Tier 1 indexed for the lips.
+- **R01 3D Atlas:** confirm the CS14–17 models show myotomes and limb muscle masses before the frontier scene. — *still open:* owner look-only check.
+- **Still open — population-based Poland rate:** only a narrative review range found (R05mb); EUROCAT/ICBDSR do not report Poland sequence as a subgroup in the abstracts searched.
+- **BMD onset ages** (book 8–25 years) and the DMD onset line: not checked against Tier 1. *Still open:* the standard source (GeneReviews *Dystrophinopathies*, PMID 20301298) is a Bookshelf chapter with no PubMed abstract; PubMed natural-history cohorts found were DMD-only.
+- **2024 wording** of the Ch 11 AN codes (MGMUHS reprint): not re-read this chat. *Still open:* the 2024 reprint is not in `references\`.
+- **Full-text checks before cards use them:** R05df (PMC2409079) — only rib 1 has an abaxial part; intercostals, latissimus dorsi, spinotrapezius, scapula straddle the frontier (here read from the R05dg review, not the abstract); R05de — chick sternal ribs abaxial; R05dg — only chick and mouse mapped, and limb muscle patterns form without muscle; R05dm — crest connective tissue patterns head muscle. *Still open (X2b):* PMC sends **no full text** for R05df (PMC2409079, publisher block); R05de, R05dg, R05dm are not in PMC. Abstract-level marks stand.
+- **Sources to add:** ~~segment-matched sensory supply of the dermatome~~ — done (R05ma). Inferior oblique origin and nerve for AN31.1 (≈) — *still open:* no embryology source indexed (adult anatomy only).
 - **G-Sci (22 Nov 2026, fresh-eyes agent):** pass with fixes — 5 MUST (marks on segmental supply and fusion timing, dermatome citation, week-8 arithmetic, the head-muscle table restated row by row) and 16 SHOULD, all applied.
-- **Somitomeres:** whether the seven head somitomeres are real segments in humans (the book's table rests on them) — no Tier 1 retrieved; R05dm says head mesoderm does not epithelialise.
+- **Somitomeres:** whether the seven head somitomeres are real segments in humans (the book's table rests on them) — no Tier 1 retrieved; R05dm says head mesoderm does not epithelialise. *X2b:* the somitomere concept rests on SEM of chick, quail, mouse and newt embryos (PMID 3077109); a later review notes those methods' limits (PMID 21384798) — still **no human evidence**, so the book's seven head somitomeres stay ✔ book, not ✔✔. Not added to the registry (no fact changed).

@@ -1,6 +1,6 @@
 # Research dossier — Ch 7 · The gut tube and the body cavities (for C-step cards + S1 episodes)
 
-*(Purpose: cited, marked facts, staging, misconceptions and clinical correlates for Ch 7 — the source cards draft from. Updated: 20 Nov 2026 · Bio · Research · X1 Ch 07 · by Aaditya. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch06-embryonic-period.md`.)*
+*(Purpose: cited, marked facts, staging, misconceptions and clinical correlates for Ch 7 — the source cards draft from. Updated: 22 Nov 2026 · Bio · Research · X2 gaps Part 1 · by Aaditya (week-5 pleuroperitoneal fold now Tier 1, R05lg/02). Before: 20 Nov 2026 · Bio · Research · X1 Ch 07. Own words only; no book sentences, figures or tables (RULES §G). Pattern: `ch06-embryonic-period.md`.)*
 
 **How to read a line:** fact in our words · `[book section · registry source]` · mark (RULES B6–B7): **✔✔** book + Tier 1 agree · **✔** book only · **⚑** book vs Tier 1 disagree (D-entry) · **✚** beyond the book (More / Tier D only, "beyond Langman") · **≈** blocks final.
 **Ages:** days after fertilization (the book's convention). R06/R08 count post-ovulation (≈ same, ±1 day). Ages quoted from R05z use that paper's own week labels (CS15 = "5.5 weeks"); they run older than R08 — compare by stage, not by week (D-030, D-039 c).
@@ -23,6 +23,7 @@ The book gives days through its figures (no table in Ch 7). On screen = **book d
 | Start of week 5 | Pleuroperitoneal folds appear at the caudal end of the canals `[E07.05]` | ~CS13–CS14 | No Tier 1 day found (R06 does not name the folds) | ✔ | E07.05.01 |
 | Week 6 | Faster growth of the back moves the diaphragm ventrally and caudally `[E07.05]` | CS15–CS16 (36–42 d) | — | ✔ | E07.05.01 |
 | Week 7 | Pleuroperitoneal membranes fuse with the oesophageal mesentery and grow toward each other over the septum transversum `[E07.05]` | CS17–CS19 (43–49 d) | R05ai (human, serial sections, 3D): the diaphragm cuts off the infracardiac bursa at CS17–CS18 (42–48 d) — timing only, not the membranes | ✔ (timing ≈ R05ai) | E07.05.01 |
+| Week 5 (start) | Crescent pleuroperitoneal folds appear in the walls of the pleuroperitoneal canals `[E07.05]` | CS13–CS15 (**ours, not the source's** — see the caveat) | **R05lg** (12 **human** embryos at 5 weeks): at that age the developing diaphragm sits **in the pleuroperitoneal fold** — the fold exists, as the book has it; in 3 of the 12 the lung still touched the liver where the fold had not yet divided them. **Thin evidence, stated as such:** the human embryos are an incidental series inside a chick/quail study, and the abstract gives **no Carnegie stage and no clock** for "5 weeks" — the CS13–CS15 band is our own reading of that age on the book's clock (D-030), not the paper's | ✔✔ (the fold is present at about week 5) · ✔ (the CS band) | E07.05.01 |
 | Month 4 | Fused membranes = central tendon; muscle from C3–C5 fills the rim `[E07.05]` | fetal | — | ✔ | E07.05.01 |
 
 **Not dated by the book:** pleuropericardial folds/membranes (shown with the lung buds, ~week 5 → scenes use CS13–CS16; the timing is ≈ until a Tier 1 day is found — the facts themselves stay ✔). Ventral body-wall muscles and sternum: R05z (human 3D, CS15–CS23) — ribs and flank muscle grow ventrally from CS15; sternal bars fuse after CS20; rectus muscles reach the umbilicus at CS23 → ✚ (More / Tier D).
@@ -58,8 +59,8 @@ The book gives days through its figures (no table in Ch 7). On screen = **book d
 
 ### E07.05.01 Diaphragm · AN52.5
 - The septum transversum leaves two pericardioperitoneal canals beside the foregut, so the chest and belly cavities still connect. `[E07.04, E07.05]` **✔✔** (R06 CS13 canals)
-- From the start of week 5, crescent pleuroperitoneal folds grow from the canal walls; by week 7 they are thin pleuroperitoneal membranes that fuse with the oesophageal mesentery, then with each other, covering the septum transversum. `[E07.05]` **✔** (timing ≈ consistent: R05ai — the diaphragm cuts off the infracardiac bursa by CS17–18, 42–48 d)
-- The fused membranes make the **central tendon**; their rim is connective tissue that guides incoming muscle cells. `[E07.05 · R05aa]` **✔✔** (mouse lineage tracing, R05aa full text: the folds make the central tendon and the muscle connective tissue — label species)
+- From the start of week 5, crescent pleuroperitoneal folds grow from the canal walls; by week 7 they are thin pleuroperitoneal membranes that fuse with the oesophageal mesentery, then with each other, covering the septum transversum. `[E07.05 · R05lg]` **✔✔** (the week-5 fold itself: R05lg, human embryos at 5 weeks, diaphragm developing in the pleuroperitoneal fold) · **✔** (the week-7 fusion sequence: book only; timing ≈ consistent with R05ai — the diaphragm cuts off the infracardiac bursa by CS17–18, 42–48 d)
+- The fused membranes make the **central tendon**; their rim is connective tissue that guides incoming muscle cells. `[E07.05 · R05aa, R05lh]` **✔** (book) · **✚ (mouse)** R05aa lineage tracing and R05lh: in the mouse the folds give the central tendon and the muscle connective tissue — species-labelled, so it supports the book's answer but cannot make it ✔✔ for a human claim (B7). **Pre-existing fix for the commit runner: R05aa's own registry row says "✔✔ Ch 7, label species" and needs the same correction.** · **✚ R05lh** (**mouse**, beyond Langman — More / Tier D only): the earliest events are muscle progenitors leaving the cervical somites and phrenic-nerve axons growing in, and **both target the pleuroperitoneal folds**; the folds' **expansion** over the liver then runs ahead of muscle morphogenesis, the vascular network and phrenic-nerve branching; CDH begins before E12.5, from failure of early fold formation **or of their ability to recruit muscle**
 - Muscle comes from somites at **C3–C5**; the **oesophageal mesentery** makes the **crura**. `[E07.05, E07.06]` **✔**
 - The phrenic nerve (motor + sensory) comes from **C3–C5**, because the diaphragm starts opposite these neck segments in week 4. `[E07.05]` **✔**
 - From week 6 the back grows faster than the front, so the diaphragm moves ventrally and caudally to its adult level and the phrenic nerves become long. `[E07.05]` **✔**
@@ -125,13 +126,14 @@ Codes sit on the Ch 7 rows of `tools/map/research.txt` → map.json `an`.
 ## 8. Visual references for scenes (look, don't copy — RULES G5)
 - **R06 CS9–CS13** text + R02 sections: coelom splitting, pericardial horseshoe, septum transversum under the heart, umbilical stalk.
 - **R05z** reconstructions (body-wall muscles, sternum, CS15–CS23) and **R05ai** (diaphragm vs bursa, CS13–21) — reference only.
+- **R05lh**'s whole-mount figures (mouse) show the pyramidal fold shape our week-5 keyframe needs — look, don't copy (G5); the shot stays our own drawing and is labelled mouse-informed if its shape is used. (Not yet opened: only the abstract was read this run.)
 - **R01 3D Atlas CS10–CS18:** body cavity, septum transversum, diaphragm. *Not yet viewed — needs the owner's download (still open from Ch 6).*
 - **R22** folding module: pacing for transverse + sagittal folding shown together.
 
 ## 9. Why learners struggle here (M05)
 Two cavities and two partitions change shape while the embryo folds, and the words pair confusingly (parietal/visceral, somatopleure/splanchnopleure, pleuropericardial/pleuroperitoneal). → One recurring transverse section (D9); colour the two lateral-plate layers with `--g-meso` + two patterns and label them on the structure (B3, D8); teach the partitions as "plug the holes": septum (front) → pleuropericardial membranes (heart from lungs) → pleuroperitoneal membranes (lungs from belly) — shape first, names after (D1); ≤ 3 new terms per beat (D2).
 
-## 10. X1 to-do — done 20 Nov 2026
+## 10. To-do — X1 done 20 Nov 2026 · X2a gaps closed 22 Nov 2026
 - [x] Section ids + locators checked against the PDF (4 I1 gaps → I1 to-do)
 - [x] Staging from book figure days → CS9–CS19 (R06 stage chapters, R08 ranges, R05ai)
 - [x] Tier A lines marked (§2: 26 lines — ✔✔ 10 · ✔ 13 · ⚑ 0 · ✚ 3 · ≈ 0); Tier B–D table + clinical table marked (3 ⚑ there)
@@ -140,4 +142,5 @@ Two cavities and two partitions change shape while the embryo folds, and the wor
 - [x] AN codes on the Ch 7 rows + AN52.6 on E06.03.02; AN79 checked against NMC Vol I 2024
 - [x] `timeline.json` cs: no new days (all Ch 7 days 17–28 already carry cs; weeks 5–7 are not day rows)
 - [x] G-Sci fresh-eyes review — pass with fixes: 7 MUST + 11 SHOULD applied (20 Nov 2026)
-- [ ] Left for later: R01 look check · Tier 2 second opinion on the septum-transversum/central-tendon split (R10/R11) · a Tier 1 day for pleuroperitoneal/pleuropericardial folds (Wells 1954, Carnegie Contrib. — not in PubMed)
+- [x] **X2a (22 Nov 2026): a Tier 1 age for the pleuroperitoneal folds** — R05lg (human embryos at 5 weeks, the diaphragm developing inside the pleuroperitoneal fold) confirms the book's week-5 start, so §1 gains a week-5 row and the §2 line goes ✔✔ for the fold. R05lh (mouse) adds the fold-first sequence as ✚.
+- [ ] Left for later: R01 look check · Tier 2 second opinion on the septum-transversum/central-tendon split (R10/R11) — **still blocked: no R10/R11 copy in `references\`, and B7 bars Tier 2 from creating a ⚑ or ✚** · **a Tier 1 day for the pleuropericardial folds specifically** — still not found (Wells 1954, Carnegie Contrib., is not in PubMed; R05lg and R05ai date the *pleuroperitoneal* side only), so the pleuropericardial timing stays ≈ in §1 and the scenes keep CS13–CS16

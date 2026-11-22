@@ -66,7 +66,7 @@ Human anchors: **R06/R08** (stage definitions and classic ages; eye stage featur
 - **Why it matters:** a fissure that does not close leaves a **coloboma** — a gap at the bottom of the iris and sometimes deeper (§4, ⚑ a). `[E20.07 CC]` **✔**
 
 ### E20.02.01 Retina · AN41.1, AN43.2
-- **Two walls, two jobs.** The cup's **outer wall** becomes the thin **pigment layer**; the **inner wall** becomes the thick **neural retina**. The space between them (**intraretinal space**) closes as the two walls come to lie against each other. `[E20.01, E20.02]` **✔** · ≈ the clinical link — a **retinal detachment** opens this old space (neural retina off the pigment layer) — is not in the book and no Tier 1 source was read; misconception 1, §10
+- **Two walls, two jobs.** The cup's **outer wall** becomes the thin **pigment layer**; the **inner wall** becomes the thick **neural retina**. The space between them (**intraretinal space**) closes as the two walls come to lie against each other. `[E20.01, E20.02]` **✔** · ✚ the clinical link (More only, beyond Langman): a **retinal detachment** is the neural retina separating from the retinal pigment epithelium `[R05mz]` — which is the plane where the two cup walls met `[E20.01, E20.02]`; misconception 1
 - **Built like the brain.** The back four-fifths (**pars optica**) layers itself as the brain wall does: cells next to the old space become **rods and cones**; a **mantle layer** gives the **outer and inner nuclear layers** and the **ganglion cell layer**; on the inner surface a **fibre layer** carries ganglion-cell axons to the stalk. `[E20.02]` **✔**
 - **Light goes the long way.** Because the cup folded in, the light-sensing cells face **away** from the light: light crosses the other layers first. `[E20.02]` **✔**
 - **Rods far outnumber cones.** Book: ~**120 million** rods, ~**6–7 million** cones; rods are more sensitive, cones see colour. `[E20.02 · R05kg]` **✔✔** — *human* whole retinas: ~**92 million** rods and ~**4.6 million** cones (R05kg; within ~1.4×, note d)
@@ -151,7 +151,7 @@ Human anchors: **R06/R08** (stage definitions and classic ages; eye stage featur
 ---
 
 ## 6. Top student misconceptions (refute in cards and Checks — craft §3.4)
-1. **"A retinal detachment pulls the retina off the choroid."** (map row) It splits the **neural retina from its own pigment layer** — the two walls of the optic cup, whose gap (intraretinal space) closed as they met `[E20.01, E20.02]` ✔ the two walls · ≈ the detachment plane (no Tier 1 read; §10).
+1. **"A retinal detachment pulls the retina off the choroid."** (map row) It splits the **neural retina from its own pigment layer** — the two walls of the optic cup, whose gap (intraretinal space) closed as they met `[E20.01, E20.02 · R05mz]` ✔ the two walls · ✚ the detachment plane (neural retina off the pigment epithelium, R05mz).
 2. **"The iris muscles are mesoderm, like other muscle."** (map row) Sphincter and dilator pupillae grow from the **optic cup's ectoderm** `[E20.02]` ✔.
 3. **"The eye grows from the skin."** The retina and optic nerve are **brain** (forebrain wall); of the eyeball's own tissues, only the lens and the front corneal layer are surface ectoderm `[E20.01]` ✔.
 4. **"The lens is part of the retina's cup."** It comes from a separate **placode** of surface ectoderm that the vesicle induces `[E20.01 · R05kj]` ✔ (*mouse* mechanism).
@@ -203,14 +203,15 @@ Human anchors: **R06/R08** (stage definitions and classic ages; eye stage featur
 - **Molecular alphabet** — PAX6 / SHH / PAX2 / FGF / TGF-β / MITF / CHX10 / SOX2 / L-MAF: teach only "one field, SHH splits it; front skin makes lens, PAX6 dose matters" at Tier A–B; the rest is Tier D.
 - **Clocks:** all embryonic events are after fertilization, including the book's "gestation" lines (note h); fetal papers often give no clock (note i).
 
-## 10. X1 to-do — done 22 Nov 2026, with open items
-- Done: G-Sci fresh-eyes review **pass with fixes, 4 MUST + 14 SHOULD, all applied** — a thalidomide line the source did not support, SIX3 reversed, the PAX6-and-cup clash raised to ⚑ b, the detachment line marked ≈. Also: real locators + sub-locators; page spills, two-column overlaps, box title, empty opener row and the missing eyelid text named (→ I1); staging from human specimens (R06/R08 stage features; R05kc fissure days 41–44 = ~CS16–17; R05kd eyelids CS18 → 20 weeks after fertilization; R05ke hyaloid; R05kf optic nerve; R05kh fovea — fetal clocks read both ways); Tier A for 2 concepts (optic cup and lens vesicle, retina); Tier B–D grouped by source tissue; clinical rows in 5 groups with rates per 10,000 (all ✚ — the book has none); 17 misconceptions; AN map from NMC Vol I (AN43.4 names the eye); 15 new sources **R05kc–R05kq**; 1 ⚑ (D-085 a, b) + notes c–k.
-- **O'Rahilly 1983** (PMID 6650859, no abstract): full text to `references\papers\` — it would turn the R06 stage-feature rows (groove CS10 … lens vesicle CS15) into checked ✔✔ lines.
-- **Rates not retrieved:** aniridia (primary registry), persistent fetal vasculature / hyaloid remnants, persistent pupillary membrane, cyclopia alone, eyelid coloboma.
-- **Rubella window for cataract:** a primary human series (weeks of infection vs eye outcome) — book box 4–7 vs Problem 2's 4–8 (note g).
-- **Human lineage of the corneal stroma/endothelium** (crest) — only a review (R05kk, species not stated in its abstract).
-- **Human retinal cell birth order** (ganglion cells first, rods/cones later) and **optic-nerve myelination** timing — not searched to the end.
-- **Retinal detachment plane** (neural retina off the pigment layer): a Tier 1 source, then the ≈ lines (§2, misconception 1) can go.
-- **Full texts:** R05kh and R05kf (clock), R05km (which "anterior segment" cases were iris-only).
-- **R01 3D Atlas / R04 Kyoto** eye models before the cup and fissure scenes (look only; R01 NC-ND, R04 licence per dataset).
-- **2024 wording** of AN41.1–41.3 and AN43.4 (MGMUHS reprint): not in `references\`.
+## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026
+- **Done (X1, 22 Nov 2026):** G-Sci fresh-eyes review **pass with fixes, 4 MUST + 14 SHOULD, all applied** — a thalidomide line the source did not support, SIX3 reversed, the PAX6-and-cup clash raised to ⚑ b, the detachment line marked ≈. Also: real locators + sub-locators; page spills, two-column overlaps, box title, empty opener row and the missing eyelid text named (→ I1); staging from human specimens (R06/R08 stage features; R05kc fissure days 41–44 = ~CS16–17; R05kd eyelids CS18 → 20 weeks after fertilization; R05ke hyaloid; R05kf optic nerve; R05kh fovea — fetal clocks read both ways); Tier A for 2 concepts (optic cup and lens vesicle, retina); Tier B–D grouped by source tissue; clinical rows in 5 groups with rates per 10,000 (all ✚ — the book has none); 17 misconceptions; AN map from NMC Vol I (AN43.4 names the eye); 15 new sources **R05kc–R05kq**; 1 ⚑ (D-085 a, b) + notes c–k.
+- **Done (X2c, 22 Nov 2026):** **retinal detachment plane** — ✚ R05mz; the ≈ in §2 and misconception 1 are gone, so E20.02.01 moves ≈ → ✔.
+
+**Still open (X2c searched 22 Nov 2026 unless noted):**
+- **O'Rahilly 1983** (PMID 6650859, no abstract): full text to `references\papers\` (folder does not exist yet) would turn the R06 stage rows into ✔✔.
+- **Rates not retrieved:** aniridia (primary registry — the Danish paper R05kq gives the Wilms risk, not a rate), persistent fetal vasculature, persistent pupillary membrane, cyclopia alone, eyelid coloboma.
+- **Rubella window for cataract** (note g): the systematic review found gives risk by pregnancy timing but no eye-specific weeks in its abstract.
+- **Human corneal stroma/endothelium lineage**, **retinal cell birth order**, **optic-nerve myelination** — not found on PubMed this run.
+- **Full texts:** R05kh, R05kf (clock), R05km (iris-only cases).
+- **R01 / R04** eye models: look-only browser/owner steps.
+- **2024 wording** of AN41.1–41.3 and AN43.4: not in `references\`.
