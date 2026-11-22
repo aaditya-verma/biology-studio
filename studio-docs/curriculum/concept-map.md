@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E01, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E01, E02, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -49,21 +49,21 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E02.01.01 | Primordial germ cells | A | TG | x | 14–35 | multi | gam | E03.05.01 | 13 |  | ≈ |
-| E02.01.02 | Teratomas from germ cells | C | C | s |  | multi | defects | E02.01.01 |  |  | ≈ |
-| E02.02.01 | Mitosis | A |  | core |  | none | gam |  | 288 |  | ≈ |
-| E02.02.02 | Meiosis | A | T | core |  | none | gam | E02.02.01 | 286 |  | ≈ |
-| E02.02.03 | Nondisjunction and numerical abnormalities | B | C | x |  | none | defects | E02.02.02 | 1 |  | ≈ |
-| E02.02.04 | Structural chromosome abnormalities | C | C | s |  | none | defects | E02.02.02 |  |  | ≈ |
-| E02.02.05 | Mosaicism | B | C | s |  | none | defects | E02.02.01 |  |  | ≈ |
-| E02.02.06 | Karyotype and genetic testing | C | C | d |  | none | defects | E02.02.03 |  |  | ≈ |
-| E02.03.01 | Oogenesis | A | T | x |  | none | gam | E02.02.02 | 279 |  | ≈ |
-| E02.03.02 | Follicle maturation | B |  | x |  | none | gam | E02.03.01 | 6 |  | ≈ |
-| E02.03.03 | Spermatogenesis | A | T | x |  | none | gam | E02.02.02 | 274 |  | ≈ |
-| E02.03.04 | Spermiogenesis | B |  | s |  | none | gam | E02.03.03 | 272 |  | ≈ |
-| E02.03.05 | Abnormal gametes | C | C | d |  | none | gam | E02.03.01, E02.03.03 |  |  | ≈ |
+| E02.01.01 | Primordial germ cells | A | TG | x | 14–35 | multi | gam | E03.05.01 | 13 | AN77.3 | ✔ |
+| E02.01.02 | Teratomas from germ cells | C | C | s |  | multi | defects | E02.01.01 |  | AN79.5 | ✔ |
+| E02.02.01 | Mitosis | A |  | core |  | none | gam |  | 288 | AN73.1 | ✔ |
+| E02.02.02 | Meiosis | A | T | core |  | none | gam | E02.02.01 | 286 | AN77.3, AN75.4 | ⚑ |
+| E02.02.03 | Nondisjunction and numerical abnormalities | B | C | x |  | none | defects | E02.02.02 | 1 | AN75.1, AN75.3, AN73.3 | ⚑ |
+| E02.02.04 | Structural chromosome abnormalities | C | C | s |  | none | defects | E02.02.02 |  | AN75.1, AN75.3 | ⚑ |
+| E02.02.05 | Mosaicism | B | C | s |  | none | defects | E02.02.01 |  | AN75.2, AN74.1 | ✔ |
+| E02.02.06 | Karyotype and genetic testing | C | C | d |  | none | defects | E02.02.03 |  | AN73.2, AN81.1 | ✔ |
+| E02.03.01 | Oogenesis | A | T | x |  | none | gam | E02.02.02 | 279 | AN77.3 | ✔ |
+| E02.03.02 | Follicle maturation | B |  | x |  | none | gam | E02.03.01 | 6 | AN77.3 | ✔ |
+| E02.03.03 | Spermatogenesis | A | T | x |  | none | gam | E02.02.02 | 274 | AN77.3 | ⚑ |
+| E02.03.04 | Spermiogenesis | B |  | s |  | none | gam | E02.03.03 | 272 | AN77.3 | ✔ |
+| E02.03.05 | Abnormal gametes | C | C | d |  | none | gam | E02.03.01, E02.03.03 |  | AN77.3 | ⚑ |
 
-*Misconceptions to refute (≈ until X1):* E02.01.01 — “Germ cells start in the gonad.” · E02.02.02 — “Crossing over happens in meiosis II.” · E02.03.01 — “Women make new eggs every month.” · E02.03.04 — “Spermiogenesis is another word for spermatogenesis.”
+*Misconceptions to refute (cited in the chapter dossier):* E02.01.01 — “Germ cells start in the gonad.” · E02.02.02 — “Crossing over happens in meiosis II.” · E02.03.01 — “Women make new eggs every month.” · E02.03.04 — “Spermiogenesis is another word for spermatogenesis.”
 
 ## E03 — First Week of Development: Ovulation to Implantation · pp 34–49 · 17 concepts
 

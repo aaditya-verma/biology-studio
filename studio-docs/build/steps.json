@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 1) — X1.01 done (G-Sci pass, run closed, R05na–R05oa, D-092, inputs X1.01.q1–q2). Before: 22 Nov 2026 · Bio · Research · X2 Part 2b commit (scheduled task) — X2c done (G-Sci pass, run closed, R05mq–R05mz, no D-entry, no owner inputs). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 2) — X1.02 done (G-Sci pass, run closed, R05ob–R05ow, D-093, inputs X1.02.q1–q2). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 1) — X1.01 done (G-Sci pass, run closed, R05na–R05oa, D-092, inputs X1.01.q1–q2). Before: 22 Nov 2026 · Bio · Research · X2 Part 2b commit (scheduled task) — X2c done (G-Sci pass, run closed, R05mq–R05mz, no D-entry, no owner inputs). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -365,7 +365,7 @@
    "chat": "Bio · Build · K1 concept map",
    "status": "owner check",
    "needs": ["I1"],
-   "unblocks": ["K2", "X1.01", "X1.05", "A0"],
+   "unblocks": ["K2", "X1.01", "X1.02", "X1.05", "A0"],
    "lock": true,
    "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T2", "state": "open", "since": "2026-11-17", "note": "22 Nov: step 1 problem — no Back from a Needs-first link (owner video) → D-084, built in U2. The K1 explorer artifact is retired; T2 re-runs on the app Book map after U2"},
@@ -474,6 +474,33 @@
     {"id": "X1.01.q2", "kind": "decide", "ask": "E01.05.06 Retinoic acid has no Ch 1 text: retire-hide the row (A2) or re-point it to Ch 5/6?", "asked_in": "Bio · Research · X1 Ch 01", "asked": "2026-11-22", "answer": null, "status": "open"}
    ],
    "runs": [{"chat": "Bio · Research · X1 Ch 01", "by": "Aaditya", "start": "2026-11-22 17:30", "end": "2026-11-22 17:47", "outcome": "done", "note": "Cowork, parked in Studio home handoff\\x1-ch01 (clone read-only); G-Sci fresh-eyes reviewer: pass with fixes, 6 MUST + 15 SHOULD (all MUST + 14 SHOULD applied; SHOULD 2, a lens ⚑, declined). Committed by Code (`Bio · Research · X3a commit`, code-queue item 1; gate: lock free, main = origin/main, tree clean, X2c done): R05na–R05oa, D-092; parked; committed by Code queue"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
+  },
+  {
+   "id": "X1.02",
+   "title": "X1 research · Ch 2 gametogenesis",
+   "type": "Research",
+   "chat": "Bio · Research · X1 Ch 02",
+   "status": "done",
+   "needs": ["K1"],
+   "unblocks": [],
+   "lock": false,
+   "gates": {"G-Sci": "pass"},
+   "check": null,
+   "decisions": ["D-030", "D-076", "D-078", "D-092", "D-093"],
+   "prompt": null,
+   "log": "22 Nov 2026 · X1 Research · Ch 2 — gametogenesis (germ cells, meiosis, chromosome and gene abnormalities, oogenesis, spermatogenesis); 90 fact lines ✔✔ 12 · ✔ 68 · ⚑ 8 · ✚ 2; Tier A E02.01.01, E02.02.01, E02.02.02, E02.03.01, E02.03.03; only E02.01.01 gets cs 6-15 (D-030); 22 sources R05ob–R05ow; NMC 2018 Vol I AN77.3 + AN73.1–73.3, AN74.1, AN75.1–75.4, AN79.5, AN81.1 → D-093 a–e, g–i (f withdrawn); links D-092 a/c, D-076 h, D-078 c",
+   "todo": [
+    "I1: E02.02 pp 15–25 (I1 ends p 24), E02.03 pp 25–32 (abnormal-gametes box p 32), Summary pp 32–33",
+    "K1: gene-mutation text (pp 23–24) has no concept row — owner input X1.02.q2",
+    "Germ-cell counts ≈ — read Baker 1963 / Hansen 2008 full text",
+    "PWS/AS population rates ≈"
+   ],
+   "inputs": [
+    {"id": "X1.02.q1", "kind": "decide", "ask": "D-093 (a–e, g–i; f withdrawn) from Ch 2: pick an option per item (crossovers per meiosis; maternal share of trisomy 21; T18/T13 first-year survival; Klinefelter extra X origin; fragile X rate and sex; when spermatogonia form; spermatogenesis length; abnormal sperm share) — recommended a2 b2 c3 d2 e3 g2 h2 i2", "asked_in": "Bio · Research · X1 Ch 02", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-093"},
+    {"id": "X1.02.q2", "kind": "decide", "ask": "The gene-mutation text (Ch 2 pp 23–24) has no concept row: add a row (A1, new id) or fold it into E02.02.05?", "asked_in": "Bio · Research · X1 Ch 02", "asked": "2026-11-22", "answer": null, "status": "open"}
+   ],
+   "runs": [{"chat": "Bio · Research · X1 Ch 02", "by": "Aaditya", "start": "2026-11-22 17:49", "end": "2026-11-22 18:08", "outcome": "done", "note": "Cowork, parked in Studio home handoff\\x1-ch02 (clone read-only); G-Sci fresh-eyes reviewer: pass with fixes, 8 MUST + 9 SHOULD, all applied. Committed by Code (`Bio · Research · X3a commit`, code-queue item 2; gate: lock free, main = origin/main, tree clean, X1.01 committed f2b884f): R05ob–R05ow, D-093; parked; committed by Code queue"}],
    "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
   },
   {

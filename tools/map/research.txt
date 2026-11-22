@@ -284,3 +284,17 @@ E01.05.03|PY1.3,PY1.4|✔|
 E01.05.04|PY1.3|✔|
 E01.05.05|PY1.3|⚑|
 E01.05.06||≈|
+# --- E02 · X1 22 Nov 2026 (dossier ch02-gametogenesis.md; only PGC origin/migration is embryonic — E02.01.01 cs 6-15 = week 2 to end of week 5, days ~14-35, D-030, read both ways; the rest is fetal/postnatal, no cs; NMC 2018 Vol I: AN77.3 is the only gametogenesis code, genetics rows carry AN73-AN75; ⚑ D-093 a-e, g-i (f withdrawn at G-Sci); links D-092 a/c, D-076 h, D-078 c) ---
+E02.01.01|AN77.3|✔|6-15
+E02.01.02|AN79.5|✔|
+E02.02.01|AN73.1|✔|
+E02.02.02|AN77.3,AN75.4|⚑|
+E02.02.03|AN75.1,AN75.3,AN73.3|⚑|
+E02.02.04|AN75.1,AN75.3|⚑|
+E02.02.05|AN75.2,AN74.1|✔|
+E02.02.06|AN73.2,AN81.1|✔|
+E02.03.01|AN77.3|✔|
+E02.03.02|AN77.3|✔|
+E02.03.03|AN77.3|⚑|
+E02.03.04|AN77.3|✔|
+E02.03.05|AN77.3|⚑|
