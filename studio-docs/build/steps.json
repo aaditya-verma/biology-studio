@@ -1316,15 +1316,15 @@
    "title": "U1 look canvas — app look v2",
    "type": "Build",
    "chat": "Bio · Design · U1 look canvas",
-   "status": "owner check",
+   "status": "done",
    "needs": [],
    "unblocks": ["U2"],
    "lock": false,
    "gates": {"G-Art": "pass", "G-A11y": "pass"},
-   "check": {"id": "T13", "state": "open"},
+   "check": {"id": "T13", "state": "pass", "since": "2026-11-22"},
    "decisions": ["D-077", "D-031", "D-034"],
    "prompt": null,
-   "log": "22 Nov 2026 · U1 canvas (D-077): 6 screens × 5 classes × light/dark + fonts + ladder board; light edges re-proposed; tracker approval + draft-id rules; G-Art, G-A11y pass; T13 open",
+   "log": "22 Nov 2026 · T13 pass — D-077 confirmed (no changes), fonts A, light outlines OK; U2 can start",
    "todo": [
     "Type is Build because steps.json has no Design type — add `Design` to TYPES + the app's TR_RULES in a later tracker step (W3?)",
     "Project draft claude/drafts/app-look-v2-draft.md is now superseded by build/app-look-v2-draft.md (owner may delete the Project copy)"
