@@ -1399,7 +1399,7 @@
    "title": "U2 look tokens, fonts, shell",
    "type": "Build",
    "chat": "Bio · Build · U2 look tokens",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["U1", "L2"],
    "unblocks": ["U3"],
    "lock": true,
@@ -1416,6 +1416,7 @@
    ],
    "inputs": [],
    "est": {"chats": 2},
+   "runs": [{"chat": "Bio · Build · U2 look tokens", "by": "Aaditya", "start": "2026-11-22 14:26", "outcome": "partial", "note": "route B (Claude Code in the laptop clone; owner runs sync.bat); start at 835bc6a; CI checks 81–83 green, 84–86 (CI guard, D-084) still running at start; T13 = D-077 confirmed, fonts A, light outlines OK"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
