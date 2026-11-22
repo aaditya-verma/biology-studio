@@ -1,13 +1,13 @@
 # tools/tracker — progress map data + check (W1, D-040)
 
-*(Purpose: the format of `studio-docs/build/steps.json` and how chats update it. Updated: 21 Nov 2026 · Bio · Build · W2 scheduler (schema 2, D-063). Before: 19 Nov 2026 · Bio · Build · W1 progress map.)*
+*(Purpose: the format of `studio-docs/build/steps.json` and how chats update it. Updated: 22 Nov 2026 · Bio · Fix · open-run first (step 2: open run pushed first, closed at the end). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (schema 2, D-063). Before: 19 Nov 2026 · Bio · Build · W1 progress map.)*
 
 `studio-docs/build/steps.json` is the **owner doc for step status, dependencies, gates, owner checks and owner inputs**. The app draws it at
 https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs) and `#step=<id>`, reading it live from the repo.
 
 ## Every chat that changes a step
 1. Edit the step's row (status, gates, check, log, todo, inputs). Add a new step as a new row at the end of its lane.
-2. Add a **run** to the step's `runs` (chat, by, start, end, outcome; commit if known) — every chat that worked on it, even a partial one.
+2. Add a **run** to the step's `runs` (chat, by, start, end, outcome; commit if known) — every chat that worked on it, even a partial one. **Open run first** (RULES I8 (8)): right after the start checks, write the run with no `end` (outcome `partial`) and push it (route A) or have the owner run `sync.bat` (route B), before any other work; at the end, close it (set `end`, `outcome`, `commit`).
 3. `python tools/tracker/check.py --write` — re-derives `unblocks` and formats the file. Then `python tools/tracker/check.py` must PASS (CI runs it).
 4. Collaborator chats (the Professor) **don't change `status`** — they set `proposed_by`, `proposed_status`, `proposed_on`; the owner's next chat confirms (sets `status`, deletes the three fields) or rejects (deletes them).
 

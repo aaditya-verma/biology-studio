@@ -1,6 +1,6 @@
 # Templates
 
-*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
+*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 22 Nov 2026 · Bio · Fix · open-run first (§2 open-run line, RULES I8 (8)). Before: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
 
 Change the words in angle brackets.
 
@@ -14,7 +14,9 @@ Usage check: <1–3 suggestions, or "nothing to suggest">.
 
 ## 2. Build prompt (each plan holds one per step)
 ```
-Chat: Bio · Build · <step> (Build). Read claude/STATUS.md, claude/RULES.md, claude/DECISIONS.md and <plan §n>.
+Chat: Bio · Build · <step> (Build).
+First action: add an open run to <step> (start = now IST, outcome partial) and push it (route A), or tell me to run sync.bat (route B). Then read.
+Read claude/STATUS.md, claude/RULES.md, claude/DECISIONS.md and <plan §n>.
 Take the build lock in STATUS (RULES I8); check the latest commit. Scope: <…>. Out of scope: <…>. Don't break: <…>.
 Test: <…>. End: STATUS, build log, DECISIONS (next free id), owner test steps, next prompt + chat name, usage check.
 ```
