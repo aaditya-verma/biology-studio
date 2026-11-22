@@ -49,7 +49,7 @@
   --e2:inset 0 1px 0 var(--hair),0 2px 4px rgb(20 22 26 / .08),0 8px 18px rgb(20 22 26 / .12);
   --e3:inset 0 1px 0 var(--hair),0 4px 8px rgb(20 22 26 / .10),0 12px 28px rgb(20 22 26 / .16);
   /* EDIT: frosted chrome (header + floating bar); opaque under prefers-reduced-transparency */
-  --chrome:color-mix(in srgb,var(--L0) 82%,transparent); --blur:14px;
+  --chrome:color-mix(in srgb,var(--L0) 88%,transparent); --blur:14px;
   --focus:3px solid var(--accent);   /* #994774 light / #C77BA2 dark, 3 px (U2) */
   /* EDIT: progress map status looks (W1) — state colours mixed light, so text stays ink; patterns carry the meaning with the word */
   --st-acc:color-mix(in srgb,var(--accent) 10%,var(--surface));   /* owner check = rose: the only tinted status ("look here", yours) */
@@ -80,7 +80,7 @@
   --L0:#252930; --L1:#1F2228; --L2:#1A1D22; --L3:#16181C; --L4:#121417;   /* EDIT */
   --bg:var(--L0); --surface:var(--L1); --surface-2:var(--L2);
   --heat0:#2A2E35; --heat1:#3E434C; --heat2:#596069; --heat3:#9AA0AA; --heat4:#DCDDE0; --heat-ink-hi:#14161A;
-  --chrome:color-mix(in srgb,var(--L0) 82%,transparent);
+  --chrome:color-mix(in srgb,var(--L0) 88%,transparent);
 }
 .stage-dark{--L0:#14161A; --L1:#1C1F24; --L2:#252930; --L3:#2A2E35; --L4:#30343C}   /* the island's own steps (old dark surfaces) */
 
@@ -194,6 +194,8 @@ html.dev-pl body,html.dev-tp body,html.dev-tl body,html.dev-d body{padding-left:
 html.dev-pl #view,html.dev-tp #view,html.dev-tl #view,html.dev-d #view{padding-bottom:calc(var(--pad) + env(safe-area-inset-bottom))}
 html.dev-pl .top,html.dev-tp .top,html.dev-tl .top,html.dev-d .top{z-index:30}
 html.dev-p #view{padding-bottom:calc(var(--bar-h) + 26px + var(--pad) + env(safe-area-inset-bottom))}   /* room under the last line for the floating bar */
+html.dev-p.can-back #view{padding-bottom:calc(var(--bar-h) + 84px + var(--pad) + env(safe-area-inset-bottom))}   /* …and for the Back dock above it (G-A11y) */
+html.dev-p{scroll-padding-bottom:calc(var(--bar-h) + 30px);scroll-padding-top:var(--top-h)}   /* a focused item scrolls clear of the bar (2.4.11) */
 /* Back dock (D-084): phone portrait, floating, left, above the bar; shows whenever there is history */
 .dock{display:none}
 html.dev-p .dock{position:fixed;z-index:26;left:calc(14px + env(safe-area-inset-left));bottom:calc(var(--bar-h) + 22px + env(safe-area-inset-bottom));
@@ -210,6 +212,8 @@ html.dev-p .sheet{margin:auto auto calc(10px + env(safe-area-inset-bottom));bord
 /* opaque chrome where transparency is unwanted or blur is missing (D-077) */
 @media (prefers-reduced-transparency:reduce){.top,html.dev-p .nav,html.dev-p .dock{background:var(--L0);backdrop-filter:none;-webkit-backdrop-filter:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.top,html.dev-p .nav,html.dev-p .dock{background:var(--L0)}}
+@supports not (background:color-mix(in srgb,red 50%,blue)){.top,html.dev-p .nav,html.dev-p .dock{background:var(--L0)}}
+html.dev-pl .toast,html.dev-tp .toast,html.dev-tl .toast,html.dev-d .toast{bottom:calc(16px + env(safe-area-inset-bottom))}   /* rails: no bar under the toast */
 @media (prefers-reduced-motion:reduce){html.dev-p .nav,html.dev-p .dock{transition:none}}
 
 /* toast + dialog */
@@ -265,7 +269,7 @@ html.dev-tl .bm[data-focus="concept"]>.p-con{display:block}
 html.dev-d .bm{grid-template-columns:minmax(280px,1fr) minmax(0,1.6fr) minmax(320px,1.2fr)}
 html.dev-d .bm .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
 html.dev-tp .bm .p-tree .pane,html.dev-tl .bm .p-tree .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
-html.dev-tp .bm .p-tree .pane{max-height:calc(100dvh - var(--top-h) - var(--bar-h) - env(safe-area-inset-bottom) - 40px)}
+/* U2: tablet portrait has the rail now, so no bottom-bar room is reserved (the rule above sets its height) */
 .tree details{border-top:1px solid var(--line)} .tree details:first-of-type{border-top:0}
 .tree summary{display:flex;align-items:center;gap:8px;min-height:var(--tap);cursor:pointer;list-style:none;padding:4px 2px}
 .tree summary::-webkit-details-marker{display:none}
@@ -364,7 +368,8 @@ html.dev-pl .vw-tabs button{padding:0 4px;font-size:var(--fs-xs);min-width:0}
 .vw-t[aria-checked="true"]:hover{background:var(--ink)}
 .vw-t[aria-checked="false"]{color:var(--muted);background:var(--L3)}
 .vw-t[aria-checked="false"] .sw{opacity:.35}
-.vw-t[aria-checked="true"]::after{content:"✓";color:var(--L0);font-weight:800}
+.vw-t[aria-checked="true"]::after{content:"✓"/"";color:var(--L0);font-weight:800}   /* decorative: the name stays the label (G-A11y) */
+.vw-t[aria-checked="true"]:focus-visible{outline-offset:6px}   /* focus ring clear of the plum on-ring (G-A11y, 2.4.7) */
 .vw .seg{margin-top:10px}
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
@@ -716,7 +721,7 @@ html.dev-pl .ln-media:has(.ln-try.drill) .ln-watch,html.dev-pl .ln-try.drill>.ro
 .vw-turn .btn{flex:0 0 auto}
 .vw-pin{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 13px/1 var(--font);
   color:var(--ink);background:rgb(20 22 26 / .9);border:2px solid var(--accent-on-dark);pointer-events:none}
-.vw-lb[data-pinno]::before{content:attr(data-pinno) / '';display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:6px;border-radius:50%;border:2px solid var(--accent-on-dark);font-weight:800;font-size:11px;line-height:1}   /* L1F: a pinned label placed away from its pin carries the pin's number */
+.vw-lb[data-pinno]::before{content:attr(data-pinno) / '';display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:6px;border-radius:50%;border:2px solid var(--accent-on-dark);font-weight:800;font-size:max(var(--fs-min),.75em);line-height:1}   /* L1F: a pinned label placed away from its pin carries the pin's number */
 .vw-pin.on{box-shadow:0 0 0 4px var(--accent-on-dark)}
 .vw-lost{position:absolute;left:12px;right:12px;top:40%;text-align:center;padding:10px;border-radius:var(--r);background:rgb(20 22 26 / .92)}
 .vw-lost p{margin:0 0 8px}

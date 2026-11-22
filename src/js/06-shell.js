@@ -52,6 +52,7 @@ function syncShell(){
   $$('#moreL [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   barShow(true);
   document.title=cr[cr.length-1].label+' · '+STR.app;
+  const ae=document.activeElement;if(ae&&ae!==document.body&&!ae.getClientRects().length)view().focus({preventScroll:true});   // the dock/Back just hid under focus: keep focus in the page
 }
 
 /* screens register themselves: SCREENS[name]=fn(view) */
@@ -95,7 +96,8 @@ function shellEvents(){
     if(e.target.closest('#brand')){go(CONFIG.home);return;}
     if(e.target.closest('#backb')||e.target.closest('#dock')){goBack();return;}
     if(e.target.closest('#moreb')){$('#moresh').showModal();return;}
-    if(e.target.closest('#moreX')||e.target===$('#moresh')){$('#moresh').close();return;}   // a tap on the backdrop closes the sheet
+    if(e.target.closest('#moreX')){$('#moresh').close();return;}
+    if(e.target===$('#moresh')){const b=e.target.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)$('#moresh').close();return;}   // only a tap on the backdrop (outside the sheet) closes it
     if(e.target.closest('#srchb')){searchGo();return;}
     if(e.target.closest('#upb')){goUp();return;}
   });
@@ -104,7 +106,7 @@ function shellEvents(){
   /* desktop keys (§8a rule 5): / search · Esc back (or close) */
   document.addEventListener('keydown',e=>{
     if(e.target.matches('input,textarea,select')){if(e.key==='Escape')e.target.blur();return;}
-    if(e.key==='/'){e.preventDefault();searchGo();}
+    if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!$('dialog[open]')&&!e.target.closest('[contenteditable]')){e.preventDefault();searchGo();}
     else if(e.key==='Escape'&&!$('dialog[open]')&&(canBack()||upOf(ROUTE))){goBack();}
   });
   barScroll();
@@ -115,7 +117,7 @@ function searchGo(){const f=()=>{const q=$('#bmq');if(q&&q.getClientRects().leng
 /* U2 — the floating bar hides on scroll down, comes back on scroll up, and stays away while the keyboard is up (a text field has focus) — D-084 (6) */
 const TYPING='input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=button]),textarea,select';
 function barShow(on){document.documentElement.classList.toggle('bar-away',!on);}
-function barScroll(){let y=scrollY;
+function barScroll(){let y=scrollY;onDevice(()=>barShow(true));   // a rotation always brings the bar back
   addEventListener('scroll',()=>{const d=scrollY-y;if(Math.abs(d)<8)return;
     if(DEV.cls==='dev-p'&&!(document.activeElement&&document.activeElement.matches(TYPING)))barShow(d<0||scrollY<40||(innerHeight+scrollY>=document.documentElement.scrollHeight-4));y=scrollY;},{passive:true});
   document.addEventListener('focusin',e=>{if(DEV.cls==='dev-p'&&e.target.matches(TYPING))barShow(false);});

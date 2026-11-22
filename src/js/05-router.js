@@ -10,7 +10,7 @@
    Session only (A1): n lives in the browser's history entries, the step names in memory. */
 'use strict';
 let ROUTE={name:'today',raw:'today'};
-const HIST={n:1,names:{}};   // n of the current entry; names[n] = route name at that step (this session)
+const HIST={n:1,names:{},busy:false,push:false};   // busy: a Back/close is in flight (double taps ignored); push: the next unmarked entry is a new step   // n of the current entry; names[n] = route name at that step (this session)
 const canBack=()=>HIST.n>1;
 function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,raw:''};
   let p;try{p=new URLSearchParams(h.replace(/^([a-z]+)$/,'$1='));}catch(_){return {name:CONFIG.home,raw:h,unknown:true};}   // URLSearchParams decodes; a bad escape never throws past here
@@ -49,14 +49,14 @@ function upOf(r){switch(r.name){case 'concept':return {name:'map',ch:r.ch};case 
   case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};case 'step':return {name:'progress'};case 'card':return r.lesson?{name:'lesson',ch:r.lesson}:{name:'cards'};case 'deck':return {name:'today'};
   case 'lesson':return {name:'lessons'};case 'lessons':case 'mix':return {name:'today'};
   case 'rcard':case 'rtour':case 'updates':return {name:'review'};default:return r.name===CONFIG.home?null:{name:CONFIG.home};}}
-function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));
+function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));HIST.push=!opts.replace;
   if(opts.replace){history.replaceState(history.state,'',h);routeChanged();}
   else if(location.hash===h)routeChanged();else location.hash=h;}   // a hash change = one history entry
 function goUp(){const u=upOf(ROUTE);if(u)go(u);}
-function goBack(){if(canBack())history.back();else{const u=upOf(ROUTE);if(u)go(u);}}   // U2: Back never leaves the app — with no step behind, it goes Up
-function closeStack(name){   // D-084 (3): ✕ closes the whole panel stack — back past every consecutive step of this route name
+function goBack(){if(HIST.busy)return;if(canBack()){HIST.busy=true;setTimeout(()=>{HIST.busy=false;},700);history.back();}else{const u=upOf(ROUTE);if(u)go(u);}}   // U2: Back never leaves the app — with no step behind, it goes Up
+function closeStack(name){if(HIST.busy)return;   // D-084 (3): ✕ closes the whole panel stack — back past every consecutive step of this route name
   let k=0;while(HIST.n-k>1&&HIST.names[HIST.n-k]===name)k++;
-  if(k&&HIST.names[HIST.n-k]!==undefined&&HIST.names[HIST.n-k]!==name)history.go(-k);else{const u=upOf(ROUTE);if(u)go(u,{replace:true});}}
+  if(k&&HIST.names[HIST.n-k]!==undefined&&HIST.names[HIST.n-k]!==name){HIST.busy=true;setTimeout(()=>{HIST.busy=false;},700);history.go(-k);}else{const u=upOf(ROUTE);if(u)go(u,{replace:true});}}
 const LEAVE={armed:0};
 function routerStart(){
   const target=location.hash||'#'+CONFIG.home;
@@ -64,13 +64,16 @@ function routerStart(){
   addEventListener('popstate',e=>{
     if(e.state&&e.state.bs==='base'){          // Back pressed at the first page
       if(Date.now()-LEAVE.armed<CONFIG.leaveWindowMs){history.back();return;}
-      LEAVE.armed=Date.now();toast(STR.leaveHint);history.pushState({bs:'app',n:1},'','#'+CONFIG.home);routeChanged();}
+      LEAVE.armed=Date.now();toast(STR.leaveHint);history.pushState({bs:'app',n:1},'','#'+CONFIG.home);routeChanged();return;}
+    /* a step between two entries with the same address fires no hashchange: re-read the step here (G-Eng round 2) */
+    setTimeout(()=>{const st=history.state;if(st&&st.n!=null&&st.n!==HIST.n)routeChanged();HIST.busy=false;},0);
   });
   addEventListener('hashchange',routeChanged);
   routeChanged();
 }
 function routeChanged(){const prev=ROUTE;ROUTE=parseHash(location.hash);
-  const st0=history.state||{bs:'app'};if(st0.n==null)history.replaceState(Object.assign({},st0,{n:st0.bs==='base'?0:HIST.n+1}),'',location.hash||'#'+CONFIG.home);   // every entry is marked: reloads never add a second base; a new step = n + 1
+  const st0=history.state||{bs:'app'},fresh=HIST.push||!history.state;HIST.push=false;HIST.busy=false;   // an unmarked entry reached by Back (pre-v18 history) counts down, a new one up
+  if(st0.n==null)history.replaceState(Object.assign({},st0,{n:st0.bs==='base'?0:fresh?HIST.n+1:Math.max(1,HIST.n-1)}),'',location.hash||'#'+CONFIG.home);   // every entry is marked: reloads never add a second base; a new step = n + 1
   HIST.n=Math.max(1,history.state.n|0);HIST.names[HIST.n]=ROUTE.name;
   dlog('router',prev.raw,'→',ROUTE.raw);
   if(state&&!['settings','colours','studio','calib','progress','step'].includes(ROUTE.name)){state.last.route=hashOf(ROUTE);stSave();}

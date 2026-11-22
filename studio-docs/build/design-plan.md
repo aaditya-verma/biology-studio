@@ -18,7 +18,7 @@ Ink light `#1B1D21` · muted `#55585F` · line `#D6D3CB` · control border `--li
 
 **Elevation** (hairline + soft shadow, no grey borders): `--e1` card = 1 px top hairline (light: white 70 %; dark: white 6 %) + 6 px ambient · `--e2` sheet / menu = hairline + 18 px · `--e3` floating bar / dock = hairline + 28 px. Pressed = one ladder level darker + `scale(.97)` (motion on only).
 **Radii:** `--r-card 20px` · `--r-in 14px` · `--r-pill 999px` · `--r-input 12px` (`--r` stays 12 px for old screens until U3). **Primary button:** plum fill + white label + a 3 px **lift** (`--lift`, a darker plum shade below: `#6E3254` light / `#8E4F72` dark); the only plum fill in the app, always with a label (B3).
-**Chrome:** header + floating bar are frosted (`--chrome` = L0 at 82 % + 14 px blur, never over 3D or text); **opaque L0 under `prefers-reduced-transparency: reduce`** and wherever `backdrop-filter` is missing.
+**Chrome:** header + floating bar are frosted (`--chrome` = L0 at 88 % (≥ 4.9:1 for muted text even with the dark 3D stage under it — G-A11y) + 14 px blur, never over 3D or text); **opaque L0 under `prefers-reduced-transparency: reduce`** and wherever `backdrop-filter` is missing.
 
 **Germ layers (D-031 fills, D-034 edges, D-077 light edges; RULES B3)** — fill · edge (2 px, ≥ 3.5:1 on **every ladder level**) · label text · pattern:
 
