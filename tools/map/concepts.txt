@@ -84,7 +84,7 @@ decidual|Decidual reaction|B||s|none|plac|11-13|uteroplac| Stromal cells of the 
 @ E04.04
 villi1|Primary villi|B||x|extra|plac|13-13|uteroplac| Cytotrophoblast columns push into the syncytium.|
 ysac2|Secondary yolk sac|B|G|s|extra|early|13-13|psac| A smaller definitive yolk sac forms; exocoelomic cysts pinch off.|
-chcav|Chorionic cavity and connecting stalk|A|G|c|extra|early|13-13|xmeso| The extraembryonic coelom becomes the chorionic cavity; the embryo hangs from the connecting stalk.|
+chcav|Chorionic cavity and connecting stalk|A|G|c|extra|early|11-13|xmeso| The extraembryonic coelom becomes the chorionic cavity; the embryo hangs from the connecting stalk.|
 ectopic|Abnormal implantation and ectopic pregnancy|C|C|x|extra|defects||implant| Implantation outside the uterine body, most often the tube; can rupture and bleed.|
 mole|Hydatidiform mole and hCG|C|C|x|extra|defects||troph2| Trophoblast overgrowth without a normal embryo; high hCG; risk of choriocarcinoma.|
 @ E05.00

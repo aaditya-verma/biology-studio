@@ -323,3 +323,17 @@ E00.01.03||✔✔|
 E00.01.04||✔|
 E00.01.05||✔|
 E00.01.06||✔|
+# --- E04 · X1 22 Nov 2026 (dossier ch04-second-week.md; book days 8 / 9 / 11-12 / 13 = CS5a / 5b / 5c / 6a from R06 + R08, D-030, read both ways — Ch 4's own range is CS5-6, CS4 is Ch 3's end of week 1; E04.04.04 clinical, no cs; NMC 2018 Vol I topic AN78 "Second week" + AN80 fetal membranes, AN79.6 pregnancy test; ⚑ D-095 a-f; link Ch 3 implantation day) ---
+E04.00.01|AN78.2|✔|5-6
+E04.01.01|AN78.4|✔|5-6
+E04.01.02|AN78.4,AN80.1|✔✔|5
+E04.02.01|AN78.2|✔|5-6
+E04.02.02|AN78.4,AN80.1|✔✔|5
+E04.03.01|AN78.2,AN80.3|⚑|5-6
+E04.03.02|AN78.4|⚑|5
+E04.03.03|AN78.5,AN80.1|⚑|5-6
+E04.04.01|AN78.2,AN80.3|✔|6
+E04.04.02|AN80.1|✔|6
+E04.04.03|AN78.4,AN80.1,AN80.2|✔|5-6
+E04.04.04|AN78.3|⚑|
+E04.04.05|AN78.5,AN79.6|⚑|6

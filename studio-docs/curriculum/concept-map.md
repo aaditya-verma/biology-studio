@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E00, E01, E02, E03, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E00, E01, E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -93,19 +93,19 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E04.00.01 | Cytotrophoblast and syncytiotrophoblast | A | G | core | 8–9 | extra | plac | E03.04.02 | 19 |  | ≈ |
-| E04.01.01 | Bilaminar disc | A | GF | core | 8–9 | multi | early | E03.05.01 | 236 |  | ≈ |
-| E04.01.02 | Amniotic cavity | A | G | x | 8–9 | extra | early | E04.01.01 | 2 |  | ≈ |
-| E04.02.01 | Trophoblastic lacunae | B |  | s | 9–9 | extra | plac | E04.00.01 | 17 |  | ≈ |
-| E04.02.02 | Primitive yolk sac and exocoelomic membrane | B | G | x | 9–9 | extra | early | E04.01.01 | 6 |  | ≈ |
-| E04.03.01 | Uteroplacental circulation begins | A | T | core | 11–12 | extra | plac | E04.02.01 | 16 |  | ≈ |
-| E04.03.02 | Extraembryonic mesoderm | B | G | x | 11–12 | extra | early | E04.02.02 | 4 |  | ≈ |
-| E04.03.03 | Decidual reaction | B |  | s | 11–13 | none | plac | E04.03.01 |  |  | ≈ |
-| E04.04.01 | Primary villi | B |  | x | 13–13 | extra | plac | E04.03.01 | 14 |  | ≈ |
-| E04.04.02 | Secondary yolk sac | B | G | s | 13–13 | extra | early | E04.02.02 |  |  | ≈ |
-| E04.04.03 | Chorionic cavity and connecting stalk | A | G | core | 13–13 | extra | early | E04.03.02 | 3 |  | ≈ |
-| E04.04.04 | Abnormal implantation and ectopic pregnancy | C | C | x |  | extra | defects | E03.04.02 |  |  | ≈ |
-| E04.04.05 | Hydatidiform mole and hCG | C | C | x |  | extra | defects | E04.00.01 |  |  | ≈ |
+| E04.00.01 | Cytotrophoblast and syncytiotrophoblast | A | G | core | 8–9 | extra | plac | E03.04.02 | 19 | AN78.2 | ✔ |
+| E04.01.01 | Bilaminar disc | A | GF | core | 8–9 | multi | early | E03.05.01 | 236 | AN78.4 | ✔ |
+| E04.01.02 | Amniotic cavity | A | G | x | 8–9 | extra | early | E04.01.01 | 2 | AN78.4, AN80.1 | ✔✔ |
+| E04.02.01 | Trophoblastic lacunae | B |  | s | 9–9 | extra | plac | E04.00.01 | 17 | AN78.2 | ✔ |
+| E04.02.02 | Primitive yolk sac and exocoelomic membrane | B | G | x | 9–9 | extra | early | E04.01.01 | 6 | AN78.4, AN80.1 | ✔✔ |
+| E04.03.01 | Uteroplacental circulation begins | A | T | core | 11–12 | extra | plac | E04.02.01 | 16 | AN78.2, AN80.3 | ⚑ |
+| E04.03.02 | Extraembryonic mesoderm | B | G | x | 11–12 | extra | early | E04.02.02 | 4 | AN78.4 | ⚑ |
+| E04.03.03 | Decidual reaction | B |  | s | 11–13 | none | plac | E04.03.01 |  | AN78.5, AN80.1 | ⚑ |
+| E04.04.01 | Primary villi | B |  | x | 13–13 | extra | plac | E04.03.01 | 14 | AN78.2, AN80.3 | ✔ |
+| E04.04.02 | Secondary yolk sac | B | G | s | 13–13 | extra | early | E04.02.02 |  | AN80.1 | ✔ |
+| E04.04.03 | Chorionic cavity and connecting stalk | A | G | core | 11–13 | extra | early | E04.03.02 | 3 | AN78.4, AN80.1, AN80.2 | ✔ |
+| E04.04.04 | Abnormal implantation and ectopic pregnancy | C | C | x |  | extra | defects | E03.04.02 |  | AN78.3 | ⚑ |
+| E04.04.05 | Hydatidiform mole and hCG | C | C | x |  | extra | defects | E04.00.01 |  | AN78.5, AN79.6 | ⚑ |
 
 ## E05 — Third Week of Development: Trilaminar Germ Disc · pp 59–71 · 20 concepts
 
