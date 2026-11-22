@@ -1146,7 +1146,7 @@
    "title": "W3 run surface — code/cowork tags",
    "type": "Build",
    "chat": "Bio · Build · W3 run surface",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["V3"],
    "unblocks": [],
    "lock": true,
@@ -1159,9 +1159,10 @@
     "run {on, why} on every step; surface rules config; check.py --next suggestion + warnings; [Code]/[Cowork] tag in STATUS auto block; Run in: line in prompt template"
    ],
    "inputs": [
-    {"id": "W3.q1", "kind": "decide", "ask": "Professor's chats: Code + Cowork, or Cowork only?", "asked_in": "Bio · Ideation", "asked": "2026-11-22", "answer": null, "status": "open", "d": null}
+    {"id": "W3.q1", "kind": "decide", "ask": "Professor's chats: Code + Cowork, or Cowork only?", "asked_in": "Bio · Ideation", "asked": "2026-11-22", "answer": "Code + Cowork (22 Nov 2026, W3 chat)", "status": "answered", "d": null}
    ],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "outcome": "partial", "note": "route A (Claude Code, fresh clone); open run"}]
   },
   {
    "id": "M1V8",
