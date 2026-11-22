@@ -20,6 +20,8 @@ Checks steps.json against the rules the app's #progress page also uses (src/js/1
   run surface ......... (W3, D-080) `surfaces` (top level) = where chats run (Code · Cowork) + rules, first match wins; each step's
                         `run {on, why}` — bad shape / unknown surface = error; no `run`, no rule, or an `on` the rules don't allow
                         (without `override`) = warning. --write fills a missing `run` from the rules; --next tags each step [Code]/[Cowork]
+                        W3F (D-081): `hard` rules (GPU, tests, > 15 files, lock) make Code required — Cowork is an error; hard + a `split`
+                        rule (connectors, artifacts, owner) → split, which needs run.handoff (error); `warn` = allowed, warned (Professor on Code)
 Warnings never fail the run unless --strict. Exit 1 on any error.
 
 Run from the repo root:
@@ -623,7 +625,9 @@ def plan_parity(doc, today):
 
 # ---- W3 run surface (D-080) — mirror of trSurface() in src/js/17-plan.js; --selftest compares both (node) ----
 SURF_DEF = {"on": ["Code", "Cowork"], "rules": []}
-SURF_IF = ("lock", "uses", "type")
+SURF_IF = ("lock", "uses", "type", "trait", "files_over")
+SURF_RULE = ("if", "on", "why", "warn", "hard", "split")   # W3F: warn = allowed but warned · hard = Code is required · split = with a hard rule → split
+RUN_KEYS = ("on", "why", "override", "traits", "files", "handoff")   # W3F: traits (surfaces.traits) · files = how many it touches · handoff = split note
 
 
 def surf_cfg(doc):
@@ -632,10 +636,15 @@ def surf_cfg(doc):
 
 
 def surf_match(rule_if, s):
-    """Every key in the rule's `if` must hold: lock (bool) · uses ("prof" = professor-only step, else in uses) · type (name or list)."""
+    """Every key in the rule's `if` must hold: lock (bool) · uses ("prof" = professor-only step, else in uses) · type (name or list)
+    · trait (in run.traits) · files_over (run.files > n)."""
     if not isinstance(rule_if, dict):   # a malformed rule never matches (check_surface reports it)
         return False
     u = s.get("uses") or []
+    run = s.get("run") if isinstance(s.get("run"), dict) else {}
+    tr = run.get("traits") if isinstance(run.get("traits"), list) else []
+    f = run.get("files")
+    f = f if isinstance(f, (int, float)) and not isinstance(f, bool) else None
     for k, v in rule_if.items():
         if k == "lock" and bool(s.get("lock")) != bool(v):
             return False
@@ -643,23 +652,40 @@ def surf_match(rule_if, s):
             return False
         if k == "type" and s.get("type") not in (v if isinstance(v, list) else [v]):
             return False
+        if k == "trait" and v not in tr:
+            return False
+        if k == "files_over" and not (f is not None and isinstance(v, (int, float)) and not isinstance(v, bool) and f > v):
+            return False
     return True
 
 
 def surface(doc, s):
-    """Where a step's chat runs: {on, allowed (what the first matching rule allows), why, rule (index or None), fit, override, set}."""
-    rule, ri = None, None
-    rules = surf_cfg(doc).get("rules")
+    """Where a step's chat runs: {on, allowed (what the first matching rule allows), why, rule (index or None), fit, override, set,
+    hard (a matching rule says Code is required), warn (on is allowed, but its rule warns on it)}.
+    W3F: a hard rule and a `split` rule both matching → allowed ["split"] (a Code part + a Cowork part, joined by run.handoff)."""
+    rule, ri, hard, spl = None, None, None, None
+    cfg = surf_cfg(doc)
+    rules = cfg.get("rules")
     for i, r in enumerate(rules if isinstance(rules, list) else []):
         if isinstance(r, dict) and surf_match(r.get("if"), s):
-            rule, ri = r, i
-            break
+            if rule is None:
+                rule, ri = r, i
+            if r.get("hard") is True and hard is None:
+                hard = (r, i)
+            if r.get("split") is True and spl is None:
+                spl = r
+    names = cfg.get("on") if isinstance(cfg.get("on"), list) else []
+    if hard and spl and "split" in names:
+        rule, ri = {"on": ["split"], "why": f"{hard[0].get('why')} + {spl.get('why')}"}, hard[1]
+    elif hard:   # G-Eng W3F: Code is required — the hard rule wins over an earlier match (a Professor step that runs tests stays Code, unwarned)
+        rule, ri = hard
     allowed = [] if rule is None else (rule.get("on") if isinstance(rule.get("on"), list) else [rule.get("on")])
     run = s.get("run") if isinstance(s.get("run"), dict) else None
     on = run.get("on") if run else (allowed[0] if allowed else None)
     why = run.get("why") if run and run.get("why") else (rule.get("why") if rule else "")
+    warn = rule.get("warn") if rule and isinstance(rule.get("warn"), list) else []
     return {"on": on, "allowed": allowed, "why": why, "rule": ri, "fit": on in allowed, "override": bool(run and run.get("override")),
-            "set": run is not None}
+            "set": run is not None, "hard": hard is not None, "warn": on in warn, "rule_why": (rule.get("why") if rule else None)}
 
 
 def surf_fill(s, doc):
@@ -680,12 +706,16 @@ def check_surface(doc):
         if not isinstance(cfg, dict):
             return ["surfaces: must be an object"], []
         for k in cfg:
-            if k not in ("on", "rules", "note"):
+            if k not in ("on", "rules", "note", "traits"):
                 E.append(f"surfaces: unknown key `{k}`")
         names = cfg.get("on")
         if not (isinstance(names, list) and names and all(isinstance(n, str) and n for n in names)):
             E.append("surfaces: `on` must be a list of surface names")
             names = SURF_DEF["on"]
+        traits = cfg.get("traits", [])
+        if not (isinstance(traits, list) and all(isinstance(x, str) and x for x in traits)):
+            E.append("surfaces: `traits` must be a list of names")
+            traits = []
         rules = cfg.get("rules")
         if not isinstance(rules, list):
             E.append("surfaces: `rules` must be a list")
@@ -695,8 +725,17 @@ def check_surface(doc):
                 E.append(f"surfaces: rule {i + 1}: must be an object")
                 continue
             for k in r:
-                if k not in ("if", "on", "why"):
+                if k not in SURF_RULE:
                     E.append(f"surfaces: rule {i + 1}: unknown key `{k}`")
+            for k in ("hard", "split"):
+                if k in r and not isinstance(r[k], bool):
+                    E.append(f"surfaces: rule {i + 1}: `{k}` must be true or false")
+            if "warn" in r and not (isinstance(r["warn"], list) and all(w in names and w in (r.get("on") if isinstance(r.get("on"), list) else [r.get("on")]) for w in r["warn"])):
+                E.append(f"surfaces: rule {i + 1}: `warn` must be a list of surfaces this rule allows (its `on`)")
+            if r.get("hard") is True and r.get("on") != "Code":
+                E.append(f"surfaces: rule {i + 1}: a hard rule must say `on` Code")
+            if isinstance(r.get("if"), dict) and "trait" in r["if"] and r["if"]["trait"] not in traits:
+                E.append(f"surfaces: rule {i + 1}: trait `{r['if']['trait']}` not in surfaces.traits")
             if not isinstance(r.get("if"), dict) or any(k not in SURF_IF for k in r.get("if") or {}):
                 E.append(f"surfaces: rule {i + 1}: `if` must be an object with keys from {list(SURF_IF)}")
             on = r.get("on") if isinstance(r.get("on"), list) else [r.get("on")]
@@ -704,6 +743,7 @@ def check_surface(doc):
                 E.append(f"surfaces: rule {i + 1}: `on` {r.get('on')} must be one of {names} (or a list of them)")
             if not (isinstance(r.get("why"), str) and r["why"].strip()):
                 E.append(f"surfaces: rule {i + 1}: `why` missing")
+    traits = cfg.get("traits") if isinstance(cfg, dict) and isinstance(cfg.get("traits"), list) else []
     for s in doc.get("steps", []):
         sid = s.get("id", "?")
         if s.get("type") == "Idea":
@@ -716,8 +756,12 @@ def check_surface(doc):
             E.append(f"{sid}: `run` must be {{on, why}}")
             continue
         for k in run:
-            if k not in ("on", "why", "override"):
+            if k not in RUN_KEYS:
                 E.append(f"{sid}: run: unknown key `{k}`")
+        if "traits" in run and not (isinstance(run["traits"], list) and all(x in traits for x in run["traits"])):
+            E.append(f"{sid}: run.traits must be a list from surfaces.traits {traits}")
+        if "files" in run and not (isinstance(run["files"], int) and not isinstance(run["files"], bool) and run["files"] >= 0):
+            E.append(f"{sid}: run.files must be a whole number ≥ 0")
         if run.get("on") not in names:
             E.append(f"{sid}: run.on `{run.get('on')}` not one of {names}")
             continue
@@ -725,9 +769,18 @@ def check_surface(doc):
             E.append(f"{sid}: run.why missing — say why it runs there")
         if "override" in run and not isinstance(run["override"], bool):
             E.append(f"{sid}: run.override must be true or false")
+        if run.get("on") == "split" and not (isinstance(run.get("handoff"), str) and run["handoff"].strip()):
+            E.append(f"{sid}: run.on split needs run.handoff — what the Code part hands the Cowork part (a handoff note)")
         if cfg is None:
             continue
         x = surface(doc, s)
+        if x["hard"] and run.get("on") == "Cowork":
+            E.append(f"{sid}: runs on Cowork but must run in Code ({x['rule_why']}) — Code is hard for the GPU, tests, > 15 files and the build lock; "
+                     "override can't change it")
+            continue
+        if x["warn"]:
+            W.append(f"{sid}: runs on {run['on']} — allowed, but the default is {x['allowed'][0]} ({x['rule_why']})")
+            continue
         if x["rule"] is None:
             W.append(f"{sid}: no surface rule matches (type {s.get('type')}) — add one to `surfaces.rules`")
         elif not x["fit"] and not x["override"]:
@@ -766,7 +819,8 @@ def next_text(doc, P, lock):
     """The short schedule a chat reads first (INSTRUCTIONS §2) and STATUS § Next shows between the auto markers."""
     by = {s["id"]: s for s in doc["steps"]}
     name = lambda i: by[i]["title"] if i in by else i
-    on = lambda c: surface(doc, by[c["step"]])["on"] if c["kind"] == "step" and c["step"] in by else None
+    own = (surface(doc, {"type": "Review", "run": {"traits": ["owner"]}})["allowed"] or [None])[0]   # W3F: owner checks run where the owner rule says
+    on = lambda c: surface(doc, by[c["step"]])["on"] if c["kind"] == "step" and c["step"] in by else (own if c["kind"] == "check" else None)
     tag = lambda c: f" [{on(c)}]" if on(c) else ""
     cell = lambda c: f"{c['step'] if c['kind'] == 'step' else c['id']}{tag(c)} ~{fmt_day(c['end'])}" + (" (slipped)" if c["slipped"] else "")
     lab = {"lock": "Lock", "gpu": "GPU", "research": "Research", "owner": "You (no lock)"}
@@ -790,17 +844,22 @@ def next_text(doc, P, lock):
         out.append(f"- Professor (optional, {len(P['prof'])}): " + " · ".join(x["id"] for x in P["prof"][:3]))
     nx = [c for r in ("lock", "gpu", "research") for c in P["rows"][r]["next"] if c["kind"] == "step" and c["step"] in by]
     if nx:
-        out.append("- Run in: " + " · ".join(f"{c['step']} → {on(c)} ({surface(doc, by[c['step']])['why']})" for c in nx))
+        hand = lambda s: f"; handoff: {s['run']['handoff']}" if isinstance(s.get("run"), dict) and s["run"].get("on") == "split" and s["run"].get("handoff") else ""
+        out.append("- Run in: " + " · ".join(f"{c['step']} → {on(c)} ({surface(doc, by[c['step']])['why']}{hand(by[c['step']])})" for c in nx))
     if doc.get("surfaces"):
         mis = []
         for s in doc["steps"]:
             if s.get("type") == "Idea" or s.get("status") in ("done", "parked") or not isinstance(s.get("run"), dict):
                 continue
             x = surface(doc, s)
-            if x["rule"] is not None and not x["fit"] and not x["override"]:
-                mis.append(s["id"])
+            if x["hard"] and s["run"].get("on") == "Cowork":
+                mis.append(f"{s['id']} (error: must run in Code)")
+            elif x["rule"] is not None and not x["fit"] and not x["override"]:
+                mis.append(f"{s['id']} (warning: rules say {' or '.join(map(str, x['allowed']))})")
+            elif x["warn"]:
+                mis.append(f"{s['id']} (allowed, default {x['allowed'][0]})")
         if mis:
-            out.append("- Surface check: " + ", ".join(mis[:6]) + " — run.on is not what the rules say (check.py warns)")
+            out.append("- Surface check: " + ", ".join(mis[:6]) + " — run.on vs the surface rules (check.py)")
     out.append(f"- Lock: {lock[0] or 'free'}")
     return "\n".join(out)
 
@@ -988,6 +1047,46 @@ def selftest(refs):
         ("surface: rule unknown key", lambda d: d["surfaces"]["rules"][1].__setitem__("when", "now"), "rule 2: unknown key `when`"),
         ("surface: rule if a list", lambda d: d["surfaces"]["rules"][1].__setitem__("if", ["lock"]), "rule 2: `if`"),
     ]
+    # W3F (owner's W3 answers): Professor default Cowork + warn on Code · hard Code (GPU, tests, > 15 files, lock) · split + handoff
+    def w3f(d):
+        d["surfaces"] = {"on": ["Code", "Cowork", "split"], "traits": ["tests", "connectors", "artifacts", "owner"], "rules": [
+            {"if": {"uses": "prof"}, "on": ["Cowork", "Code"], "warn": ["Code"], "why": "prof"},
+            {"if": {"uses": "gpu"}, "on": "Code", "hard": True, "why": "gpu"},
+            {"if": {"trait": "tests"}, "on": "Code", "hard": True, "why": "tests"},
+            {"if": {"files_over": 15}, "on": "Code", "hard": True, "why": "files"},
+            {"if": {"lock": True}, "on": "Code", "hard": True, "why": "lock"},
+            {"if": {"trait": "connectors"}, "on": "Cowork", "split": True, "why": "connectors"},
+            {"if": {"trait": "owner"}, "on": "Cowork", "split": True, "why": "owner"},
+            {"if": {"type": ["Build", "Fix"]}, "on": "Code", "why": "tie Code"},
+            {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "tie Cowork"}]}
+        return d
+    v1 = lambda d, **kw: d["steps"][1].update(kw)
+    cases += [
+        ("W3F: good file with the full rules", lambda d: w3f(d), None),
+        ("W3F: professor default Cowork = ok", lambda d: (w3f(d), v1(d, lock=False, uses=["prof"], type="Review", run={"on": "Cowork", "why": "p"})), None),
+        ("W3F: professor on Code = warning", lambda d: (w3f(d), v1(d, lock=False, uses=["prof"], type="Review", run={"on": "Code", "why": "p"})), "W:allowed, but the default is Cowork"),
+        ("W3F: lock on Cowork = error", lambda d: (w3f(d), d["steps"][1]["run"].update(on="Cowork")), "must run in Code"),
+        ("W3F: hard ignores override", lambda d: (w3f(d), d["steps"][1]["run"].update(on="Cowork", override=True)), "override can't change it"),
+        ("W3F: gpu on Cowork = error", lambda d: (w3f(d), v1(d, lock=False, uses=["gpu"], run={"on": "Cowork", "why": "x"})), "must run in Code"),
+        ("W3F: > 15 files on Cowork = error", lambda d: (w3f(d), v1(d, lock=False, type="Research", run={"on": "Cowork", "why": "x", "files": 16})), "must run in Code"),
+        ("W3F: 15 files on Cowork = ok", lambda d: (w3f(d), v1(d, lock=False, type="Research", run={"on": "Cowork", "why": "x", "files": 15})), None),
+        ("W3F: tests trait on Cowork = error", lambda d: (w3f(d), v1(d, lock=False, type="Research", run={"on": "Cowork", "why": "x", "traits": ["tests"]})), "must run in Code"),
+        ("W3F: connectors = Cowork", lambda d: (w3f(d), v1(d, lock=False, type="Build", run={"on": "Cowork", "why": "x", "traits": ["connectors"]})), None),
+        ("W3F: lock + connectors on Code = warning (split)", lambda d: (w3f(d), d["steps"][1]["run"].update(traits=["connectors"])), "W:the surface rules say split"),
+        ("W3F: split without handoff = error", lambda d: (w3f(d), d["steps"][1]["run"].update(on="split", traits=["connectors"])), "needs run.handoff"),
+        ("W3F: split with handoff = ok", lambda d: (w3f(d), d["steps"][1]["run"].update(on="split", traits=["owner"], handoff="T-check notes → Code chat")), None),
+        ("W3F: tie Build → Code", lambda d: (w3f(d), v1(d, lock=False, run={"on": "Cowork", "why": "x"})), "W:the surface rules say Code"),
+        ("W3F: tie Research → Cowork", lambda d: (w3f(d), v1(d, lock=False, type="Research", run={"on": "Code", "why": "x"})), "W:the surface rules say Cowork"),
+        ("W3F: unknown trait", lambda d: (w3f(d), d["steps"][1]["run"].update(traits=["magic"])), "run.traits must be"),
+        ("W3F: files not whole", lambda d: (w3f(d), d["steps"][1]["run"].update(files=2.5)), "run.files must be"),
+        ("W3F: rule trait not listed", lambda d: (w3f(d), d["surfaces"]["rules"][2]["if"].__setitem__("trait", "magic")), "not in surfaces.traits"),
+        ("W3F: hard rule not Code", lambda d: (w3f(d), d["surfaces"]["rules"][1].__setitem__("on", "Cowork")), "a hard rule must say"),
+        ("W3F: warn not a list", lambda d: (w3f(d), d["surfaces"]["rules"][0].__setitem__("warn", "Code")), "`warn` must be"),
+        ("W3F: split not bool", lambda d: (w3f(d), d["surfaces"]["rules"][5].__setitem__("split", "yes")), "`split` must be"),
+        ("W3F: professor + tests on Code = ok (hard wins)", lambda d: (w3f(d), v1(d, lock=False, uses=["prof"], type="Review", run={"on": "Code", "why": "p", "traits": ["tests"]})), None),
+        ("W3F: professor + 40 files on Cowork = error", lambda d: (w3f(d), v1(d, lock=False, uses=["prof"], type="Review", run={"on": "Cowork", "why": "p", "files": 40})), "must run in Code"),
+        ("W3F: warn outside the rule's on", lambda d: (w3f(d), d["surfaces"]["rules"][1].__setitem__("warn", ["Cowork"])), "`warn` must be a list of surfaces this rule allows"),
+    ]
     ok = 0
     for name, mut, want in cases:
         d = copy.deepcopy(good)
@@ -1044,7 +1143,19 @@ def selftest(refs):
     bad["surfaces"]["rules"][0]["if"] = ["lock"]
     bad["surfaces"]["rules"][1].pop("on")
     bad2 = dict(copy.deepcopy(d), surfaces=dict(d["surfaces"], rules="nope"))
+    wd = w3f(copy.deepcopy(good))
+    base = dict(copy.deepcopy(good["steps"][1]), needs=[], unblocks=[], inputs=[])
+    for k, kw in enumerate([dict(lock=False, uses=["prof"], type="Review", run={"on": "Cowork", "why": "p"}),
+                            dict(lock=False, uses=["prof"], type="Review", run={"on": "Code", "why": "p"}),
+                            dict(lock=False, uses=["prof"], type="Review", run={"on": "Code", "why": "p", "traits": ["tests"]}),
+                            dict(lock=False, uses=["prof"], type="Review", run={"on": "Cowork", "why": "p", "files": 40}),
+                            dict(run={"on": "split", "why": "s", "traits": ["connectors"], "handoff": "h"}),
+                            dict(lock=False, type="Research", run={"on": "Cowork", "why": "c", "traits": ["connectors", "owner"]}),
+                            dict(lock=False, type="Research", run={"on": "Cowork", "why": "f", "files": 16}),
+                            dict(lock=False, uses=["gpu"], type="Episode", run={"on": "Code", "why": "g", "traits": ["owner"]})]):
+        wd["steps"].append(dict(copy.deepcopy(base), id=f"Z{k}", **kw))
     for name, doc in (("surface parity (cases)", d), ("surface parity (malformed rules)", bad), ("surface parity (rules not a list)", bad2),
+                      ("surface parity (W3F rules: professor, split, files)", wd),
                       ("surface parity (steps.json)", json.loads(STEPS.read_text(encoding="utf-8")))):
         n += 1
         E2, W2 = surface_parity(doc)

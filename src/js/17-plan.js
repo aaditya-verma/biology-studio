@@ -85,21 +85,31 @@ function trPlan(doc,today){
   return {today,end:last,critical,rows,ranked,prof,dates};}
 
 // W3 run surface (D-080): where a step's chat runs — Code or Cowork. Rules live in steps.json `surfaces` (first match wins);
-// each step's `run {on, why, override?}` says where it actually runs. Same answer as check.py surface() (--selftest compares in node).
+// each step's `run {on, why, override?, traits?, files?, handoff?}` says where it actually runs. Same answer as check.py surface()
+// (--selftest compares in node). W3F: a `hard` rule = Code is required; `hard` + a `split` rule both matching → split; `warn` = allowed, warned.
 const SURF_DEF={"on":["Code","Cowork"],"rules":[]};
 function surfMatch(c,s){if(!c||typeof c!=='object'||Array.isArray(c))return false;   // a malformed rule never matches (check.py reports it)
-  const u=s.uses||[];return Object.keys(c).every(k=>{const v=c[k];
+  const u=s.uses||[],run=s.run&&typeof s.run==='object'&&!Array.isArray(s.run)?s.run:{},tr=Array.isArray(run.traits)?run.traits:[],
+    f=typeof run.files==='number'?run.files:null;return Object.keys(c).every(k=>{const v=c[k];
   if(k==='lock')return !!s.lock===!!v;
   if(k==='uses')return v==='prof'?(u.length===1&&u[0]==='prof'):u.includes(v);
   if(k==='type')return (Array.isArray(v)?v:[v]).includes(s.type);
+  if(k==='trait')return tr.includes(v);
+  if(k==='files_over')return f!==null&&typeof v==='number'&&f>v;
   return true;});}
 function trSurface(doc,s){
   const cfg=doc&&doc.surfaces&&typeof doc.surfaces==='object'&&!Array.isArray(doc.surfaces)?doc.surfaces:SURF_DEF;
-  let rule=null,ri=null;(Array.isArray(cfg.rules)?cfg.rules:[]).some((r,i)=>{if(r&&typeof r==='object'&&surfMatch(r.if,s)){rule=r;ri=i;return true;}return false;});
+  let rule=null,ri=null,hard=null,spl=null;const py=x=>x===undefined||x===null?'None':x;   // py(): Python's f-string of a missing value
+  (Array.isArray(cfg.rules)?cfg.rules:[]).forEach((r,i)=>{if(!(r&&typeof r==='object'&&!Array.isArray(r)&&surfMatch(r.if,s)))return;
+    if(rule===null){rule=r;ri=i;}if(r.hard===true&&hard===null)hard=[r,i];if(r.split===true&&spl===null)spl=r;});
+  if(hard&&spl&&Array.isArray(cfg.on)&&cfg.on.includes('split')){rule={on:['split'],why:py(hard[0].why)+' + '+py(spl.why)};ri=hard[1];}
+  else if(hard){rule=hard[0];ri=hard[1];}   // Code is required: the hard rule wins over an earlier match (G-Eng W3F)
   const allowed=(rule==null?[]:(Array.isArray(rule.on)?rule.on:[rule.on])).map(x=>x===undefined?null:x);
   const run=s.run&&typeof s.run==='object'&&!Array.isArray(s.run)?s.run:null;
   const on=run?(run.on===undefined?null:run.on):(allowed.length?allowed[0]:null);   // allowed[0] is never undefined (mapped to null, like Python's None)
   const why=run&&run.why?run.why:(rule?(rule.why===undefined?null:rule.why):'');
-  return {on,allowed,why,rule:ri,fit:allowed.includes(on),override:!!(run&&run.override),set:run!==null};}
+  const warn=rule&&Array.isArray(rule.warn)?rule.warn:[];
+  return {on,allowed,why,rule:ri,fit:allowed.includes(on),override:!!(run&&run.override),set:run!==null,hard:hard!==null,warn:warn.includes(on),
+    rule_why:rule?(rule.why===undefined?null:rule.why):null};}
 
 if(typeof module!=='undefined'&&module.exports)module.exports={trPlan,PLAN_DEF,planChats,planCal,trSurface};

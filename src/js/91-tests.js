@@ -38,6 +38,14 @@ function appTests(){
       e=trSurface(d,{type:'Build',lock:true,run:{on:'Cowork',why:'x',override:true}}),f=trSurface(d,{type:'Review',uses:['prof'],run:{on:'Cowork',why:'y'}}),g=trSurface(d,{type:'Fix',lock:false});
     t('surface: rules + run (W3)',a.on==='Code'&&a.rule===1&&b.on==='Cowork'&&!c.fit&&c.on==='Cowork'&&e.override&&f.fit&&g.rule===null&&g.on===null);
     t('surface: words',typeof STR.tr.runLine==='function'&&STR.tr.pl.runT&&STR.tr.pl.runSr('Code').includes('Code'));})();
+  (()=>{const d={surfaces:{on:['Code','Cowork','split'],traits:['tests','connectors'],rules:[{if:{uses:'prof'},on:['Cowork','Code'],warn:['Code'],why:'p'},
+      {if:{uses:'gpu'},on:'Code',hard:true,why:'g'},{if:{files_over:15},on:'Code',hard:true,why:'f'},{if:{trait:'connectors'},on:'Cowork',split:true,why:'c'},
+      {if:{type:['Build']},on:'Code',why:'b'}]},steps:[]};
+    const p=trSurface(d,{type:'Review',uses:['prof']}),pc=trSurface(d,{type:'Review',uses:['prof'],run:{on:'Code',why:'x'}}),
+      sp=trSurface(d,{type:'Build',uses:['gpu'],run:{on:'split',why:'x',traits:['connectors'],handoff:'h'}}),
+      fl=trSurface(d,{type:'Research',run:{on:'Cowork',why:'x',files:20}}),cw=trSurface(d,{type:'Research',run:{on:'Cowork',why:'x',traits:['connectors']}});
+    t('surface: W3F professor default + warn, split, hard files',p.on==='Cowork'&&!p.warn&&pc.warn&&pc.fit&&sp.allowed.join()==='split'&&sp.fit&&sp.hard
+      &&fl.hard&&trRunOff(fl)&&!cw.hard&&cw.on==='Cowork'&&cw.fit&&typeof STR.tr.pl.runWarn==='function'&&STR.tr.pl.runHard);})();
   t('tracker rules',TR_RULES.statuses.length===9&&TR_RULES.met.join()==='owner check,done'&&Object.keys(TR_SLUG).length===9&&TR_RULES.statuses.every(s=>STR.tr.st[s]&&STR.tr.stShort[s]&&STR.tr.stHelp[s]));
   (()=>{const S=[{id:'A',status:'done',needs:[],inputs:[]},{id:'B',status:'owner check',needs:['A'],inputs:[]},{id:'C',status:'ready',needs:['B'],inputs:[],lock:true,chat:'Bio · Build · C'},
       {id:'D',status:'planned',needs:['C'],inputs:[{id:'D.q1',status:'open',blocks:true}]}],by={};S.forEach(s=>by[s.id]=s);

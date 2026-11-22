@@ -202,10 +202,11 @@ function trPlanView(){const T=STR.tr,P=trPlanFresh(),by=trBy();
     <p class="xs mut tr-pcal">${esc(L.calT)}: ${esc(L.calLine(hrs,cal.off.join(', ')))} ${editBtn('step','calendar','studio-docs/build/steps.json › calendar')}</p>`;}
 // W3 run surface (D-080): [Code]/[Cowork] from trSurface() (17-plan.js); a run.on the rules don't allow shows ⚠ unless override
 function trRunTag(s){const x=typeof trSurface==='function'&&TR.D?trSurface(TR.D,s):null;   // one trSurface() per cell
-  if(!x||!x.on||s.type==='Idea')return '';const off=x.rule!=null&&!x.fit&&!x.override;
-  return ` <span class="badge tr-on${off?' bad':''}" aria-hidden="true">${esc(x.on)}${off?' ⚠':''}</span><span class="sr">${esc(STR.tr.pl.runSr(x.on))}</span>`;}
+  if(!x||!x.on||s.type==='Idea')return '';const off=trRunOff(x);   // W3F: hard Code on Cowork is always off; a warned surface (Professor on Code) shows ⚠ too
+  return ` <span class="badge tr-on${off?' bad':''}" aria-hidden="true">${esc(x.on)}${off||x.warn?' ⚠':''}</span><span class="sr">${esc(STR.tr.pl.runSr(x.on))}${x.warn?', '+esc(STR.tr.pl.runWarn(x.allowed[0])):''}</span>`;}
+const trRunOff=x=>(x.hard&&x.on==='Cowork')||(x.rule!=null&&!x.fit&&!x.override);
 function trRunLine(s){const T=STR.tr.pl,x=typeof trSurface==='function'&&TR.D?trSurface(TR.D,s):null;if(!x||!x.on)return esc(s.type==='Idea'?STR.none:T.runNone);
-  const off=x.rule!=null&&!x.fit&&!x.override;return `<b>${esc(x.on)}</b>${x.why?' — '+esc(x.why):''}${off?` <span class="badge bad">⚠ ${esc(T.runOff(x.allowed.join(' / ')))}</span>`:''}${x.override?` <span class="xs mut">(${esc(T.runOver)})</span>`:''} ${trEdit(s.id,'run')}`;}
+  const off=trRunOff(x),r=s.run||{};return `<b>${esc(x.on)}</b>${x.why?' — '+esc(x.why):''}${off?` <span class="badge bad">⚠ ${esc(x.hard&&x.on==='Cowork'?T.runHard:T.runOff(x.allowed.join(' / ')))}</span>`:''}${x.warn?` <span class="badge">⚠ ${esc(T.runWarn(x.allowed[0]))}</span>`:''}${x.override&&!(x.hard&&x.on==='Cowork')?` <span class="xs mut">(${esc(T.runOver)})</span>`:''}${x.on==='split'?`<br><span class="xs">${esc(r.handoff?T.runHand(r.handoff):T.runNoHand)}</span>`:''} ${trEdit(s.id,'run')}`;}
 function trWhy(b){const T=STR.tr;return b.k==='need'?b.id+' ('+(T.st[b.st]||b.st)+')':b.k==='input'?T.yourAnswer(b.id):T.theLock;}
 function trInputsView(){const T=STR.tr,L=trInputs();
   return `<p class="sm mut">${esc(T.inputsLead(L.length))}</p><ol class="tr-inputs">${L.map((x,i)=>`<li class="card tr-in">

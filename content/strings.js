@@ -166,7 +166,8 @@ const STR={
       estVsRun:(e,r)=>r+' run'+(r===1?'':'s')+' · est. '+e+' chat'+(e===1?'':'s'), outcome:{done:'done',partial:'partial',stopped:'stopped',fail:'failed'},
       calT:'Calendar', calLine:(h,o)=>'Your chat time: '+h+(o?' · days off: '+o:''), days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
       planT:'Plan', planLine:(w,row)=>w+' · '+row, runsN:n=>n+' run'+(n===1?'':'s'),
-      runT:'Run in', runSr:on=>'runs in '+on, runOff:want=>'the rules say '+want, runOver:'kept on purpose', runNone:'no surface set yet'}},
+      runT:'Run in', runSr:on=>'runs in '+on, runOff:want=>'the rules say '+want, runOver:'kept on purpose', runNone:'no surface set yet',
+      runWarn:d=>'allowed — the default is '+d, runHard:'must run in Code (GPU, tests, > 15 files or the build lock)', runHand:h=>'Handoff: '+h, runNoHand:'Split, but no handoff note yet'}},
   // learning core (L1): card reader, statuses, Check, Remember deck, Try it (docs/card-spec.md §7, design plan §4.8)
   ln:{cardsT:'Cards', cardsLead:'Each card teaches one idea. Read it, pass its Check, then explain it in your own words.',
     loading:'Loading cards…', loadFail:'Could not load the cards', noCard:id=>'No card '+id+'.', notYet:'This card is not reviewed yet.',
