@@ -841,7 +841,8 @@
    "inputs": [
     {"id": "X1.18.q1", "kind": "decide", "ask": "D-079 (a–d) from Ch 18: pick an option per item (where the cord ends at birth and in adults, where microglia come from and when, when cord myelination starts, which way the forebrain fusion site runs) — recommendations given; (e)–(l) are notes", "asked_in": "Bio · Research · X1 Ch 18", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-079"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 18", "by": "Aaditya", "start": "2026-11-22 13:05", "outcome": "done", "note": "route B (cloud workspace; push refused, origin read by public clone, files written to the laptop clone; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (7 MUST, 11 SHOULD applied; ⚑ d commissure → note f, new ⚑ d forebrain fusion direction) + a second agent re-check of D-079 and research.txt (0 MUST, 3 SHOULD applied)", "end": "2026-11-22 13:25"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 18", "by": "Aaditya", "start": "2026-11-22 13:05", "outcome": "done", "note": "route B (cloud workspace; push refused, origin read by public clone, files written to the laptop clone; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (7 MUST, 11 SHOULD applied; ⚑ d commissure → note f, new ⚑ d forebrain fusion direction) + a second agent re-check of D-079 and research.txt (0 MUST, 3 SHOULD applied)", "end": "2026-11-22 13:25"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.19",
@@ -1222,23 +1223,24 @@
    "title": "W3 run surface — code/cowork tags",
    "type": "Build",
    "chat": "Bio · Build · W3 run surface",
-   "status": "in progress",
+   "status": "done",
    "needs": ["V3"],
    "unblocks": [],
    "lock": true,
-   "gates": {"G-Eng": "open"},
+   "gates": {"G-Eng": "pass"},
    "check": null,
    "decisions": ["D-080"],
    "prompt": "W3 run surface",
-   "log": "—",
+   "log": "22 Nov 2026 · W3 run surface (app v16, D-080) · steps.json `surfaces` + `run` on every step, check.py rules + --next tags, Plan tag + Run in row; G-Eng pass",
    "todo": [
-    "run {on, why} on every step; surface rules config; check.py --next suggestion + warnings; [Code]/[Cowork] tag in STATUS auto block; Run in: line in prompt template"
+    "Add Design to TYPES + TR_RULES when a Design step is next (U1 to-do) — then add a surface rule for it",
+    "No owner check of its own: the Plan tag and Run in row ride on T11 (W1 + W2 Plan) — glance at them there"
    ],
    "inputs": [
     {"id": "W3.q1", "kind": "decide", "ask": "Professor's chats: Code + Cowork, or Cowork only?", "asked_in": "Bio · Ideation", "asked": "2026-11-22", "answer": "Code + Cowork (22 Nov 2026, W3 chat)", "status": "answered", "d": "D-080"}
    ],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "outcome": "partial", "note": "route A (Claude Code, fresh clone); open run"}],
+   "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "end": "2026-11-22 13:46", "outcome": "done", "note": "route A (Claude Code, fresh clone); W3.q1 answered Code + Cowork; G-Eng pass (1 round, 0 MUST, 5 SHOULD applied); layout-check: full local run hit a Studio load timeout (flaky, unrelated), then progress-plan, step, step-blocked, step-idea and studio re-run alone — 0 issues; CI runs the full matrix"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
