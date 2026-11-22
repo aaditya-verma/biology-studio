@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "SR1", "U3", "FA", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "U2F", "SR1", "U3", "FA", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "surfaces": {"on": ["Code", "Cowork", "split"], "traits": ["tests", "connectors", "artifacts", "owner"], "rules": [{"if": {"uses": "prof"}, "on": ["Cowork", "Code"], "warn": ["Code"], "why": "the Professor's chats: Cowork by default, Code allowed with a warning (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "hard": true, "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"trait": "tests"}, "on": "Code", "hard": true, "why": "runs the tests and repo tools"}, {"if": {"files_over": 15}, "on": "Code", "hard": true, "why": "touches more than 15 files"}, {"if": {"lock": true}, "on": "Code", "hard": true, "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"trait": "connectors"}, "on": "Cowork", "split": true, "why": "needs connectors (PubMed, Drive, GitHub web, …)"}, {"if": {"trait": "artifacts"}, "on": "Cowork", "split": true, "why": "makes or reads an artifact or design canvas"}, {"if": {"trait": "owner"}, "on": "Cowork", "split": true, "why": "an owner check or review with you"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit (a tie goes to Code — W3 answer 2)"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough (a tie goes to Cowork — W3 answer 2)"}], "note": "Where each chat runs (W3 D-080, W3F). Code · Cowork · split (a Code part + a Cowork part joined by run.handoff). The first matching rule gives the suggestion; a `hard` rule (GPU, tests, > 15 files, the lock) makes Code required — Cowork is then an error; a hard rule + a `split` rule (connectors, artifacts, owner) → split. `warn` = allowed but warned (the Professor on Code). Steps add `traits`/`files` to their `run` so the rules can see them. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
@@ -1446,7 +1446,7 @@
    "chat": "Bio · Build · U2 look tokens",
    "status": "owner check",
    "needs": ["U1", "L2"],
-   "unblocks": ["SR1", "U3"],
+   "unblocks": ["U2F", "SR1", "U3"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T13b", "state": "open"},
@@ -1463,6 +1463,26 @@
    "est": {"chats": 2},
    "runs": [{"chat": "Bio · Build · U2 look tokens", "by": "Aaditya", "start": "2026-11-22 14:26", "outcome": "done", "note": "route B (Claude Code in the laptop clone; owner runs sync.bat); start at 835bc6a; CI checks 81–83 green, 84–86 (CI guard, D-084) still running at start; T13 = D-077 confirmed, fonts A, light outlines OK; part 2 (`Bio · Build · U2 part 2`, 22 Nov ~15:10 IST, same lock, route B): owner T13b notes 1–5 (D-087), start at ed211a7; ended part 2 at ~18:00 IST — 3 full layout-check runs (1st spoiled at 16:22 by a staged-only sync.bat in this clone that stashed U2's files — restored, cause fixed; 2nd hit the local Studio-load flake — now retried once), G-Eng 4 rounds, G-A11y 2, G-Art 2", "end": "2026-11-22 18:00"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
+  },
+  {
+   "id": "U2F",
+   "title": "U2 fix — split-screen test badge (CI layout-check red on v19)",
+   "type": "Fix",
+   "chat": "Bio · Fix · split-screen test badge",
+   "status": "in progress",
+   "needs": ["U2"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": null,
+   "todo": [],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · split-screen test badge", "by": "Aaditya", "start": "2026-11-22 19:35", "outcome": "partial", "note": "route B (Claude Code, laptop clone; owner runs sync.bat); start at 116f2af; CI run 45024099997 on cdc3f85 red: layout-check 176 issues, all `text-small` span#testflag 0px at 427x800 split (font-size:0 icon-only trick in app.css @media max-width:479px)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app code, runs the checks, pushes"}
   },
   {
    "id": "SR1",
