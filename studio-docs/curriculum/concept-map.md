@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -352,31 +352,31 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E16.00.01 | Three kidney systems | A | ST | core | 22–35 | meso | uro | E06.02.05 | 14 |  | ≈ |
-| E16.01.01 | Mesonephros and its duct | B | S | x | 28–63 | meso | uro | E16.00.01 | 13 |  | ≈ |
-| E16.01.02 | Metanephros: two sources | A | S | core | 35–266 | meso | uro | E16.01.01 | 5 |  | ≈ |
-| E16.01.03 | Nephron formation | B | S | x |  | meso | uro | E16.01.02 |  |  | ≈ |
-| E16.01.04 | Kidney ascent | B | F | x | 42–63 | meso | uro | E16.01.02 |  |  | ≈ |
-| E16.01.05 | Renal anomalies | C | C | x |  | meso | defects | E16.01.02 |  |  | ≈ |
-| E16.01.06 | Bladder and urethra | B | S | x | 35–84 | endo | uro | E15.08.01 | 1 |  | ≈ |
-| E16.01.07 | Urachal anomalies | C | C | s |  | endo | defects | E16.01.06 |  |  | ≈ |
-| E16.01.08 | Molecular regulation of kidney development | D | M | d |  | meso | uro | E16.01.02 | 1 |  | ≈ |
-| E16.01.09 | Wilms tumour | C | C | s |  | meso | defects | E16.01.02, E16.01.08 |  |  | ≈ |
-| E16.02.01 | Sex determination | A | M | core | 42–49 | none | gen | E03.02.03 | 10 |  | ≈ |
-| E16.02.02 | Indifferent gonad | A | S | core | 35–49 | multi | gen | E02.01.01, E06.02.05 | 11 |  | ≈ |
-| E16.02.03 | Testis | B | S | x | 49–84 | meso | gen | E16.02.02, E16.02.01 | 9 |  | ≈ |
-| E16.02.04 | Ovary | B | S | s | 49–140 | meso | gen | E16.02.02 |  |  | ≈ |
-| E16.02.05 | Genital ducts: two sets | A | S | core | 42–84 | meso | gen | E16.02.02, E16.01.01, E16.02.01, E16.02.03 | 6 |  | ≈ |
-| E16.02.06 | Male ducts and glands | B | SA | x |  | multi | gen | E16.02.05 |  |  | ≈ |
-| E16.02.07 | Female ducts and vagina | B | SA | x |  | meso | gen | E16.02.05 | 1 |  | ≈ |
-| E16.02.08 | Uterine and vaginal anomalies | C | C | x |  | meso | defects | E16.02.07 |  |  | ≈ |
-| E16.02.09 | External genitalia | A | S | core | 49–84 | multi | gen | E16.02.05, E16.02.01, E15.08.01 | 2 |  | ≈ |
-| E16.02.10 | Hypospadias and epispadias | C | C | x |  | multi | defects | E16.02.09 |  |  | ≈ |
-| E16.02.11 | Differences of sex development | C | C | x |  | multi | defects | E16.02.01, E16.02.09 |  |  | ≈ |
-| E16.02.12 | Descent of the testis | A | F | core | 56–266 | meso | gen | E16.02.03 | 1 |  | ≈ |
-| E16.02.13 | Inguinal hernia, hydrocele, cryptorchidism | C | C | x |  | meso | defects | E16.02.12 |  |  | ≈ |
+| E16.00.01 | Three kidney systems | A | ST | core | 22–35 | meso | uro | E06.02.05 | 14 | AN52.7 | ✔ |
+| E16.01.01 | Mesonephros and its duct | B | S | x | 28–63 | meso | uro | E16.00.01 | 13 | AN52.7 | ✔ |
+| E16.01.02 | Metanephros: two sources | A | S | core | 35–266 | meso | uro | E16.01.01 | 5 | AN52.7, AN52.2 | ⚑ |
+| E16.01.03 | Nephron formation | B | S | x |  | meso | uro | E16.01.02 |  | AN52.7, AN52.2 | ⚑ |
+| E16.01.04 | Kidney ascent | B | F | x | 42–63 | meso | uro | E16.01.02 |  | AN52.7, AN47.5 | ⚑ |
+| E16.01.05 | Renal anomalies | C | C | x |  | meso | defects | E16.01.02 |  | AN52.7 | ≈ |
+| E16.01.06 | Bladder and urethra | B | S | x | 35–84 | endo | uro | E15.08.01 | 1 | AN52.7, AN48.2, AN49.2 | ⚑ |
+| E16.01.07 | Urachal anomalies | C | C | s |  | endo | defects | E16.01.06 |  | AN52.7 | ✔ |
+| E16.01.08 | Molecular regulation of kidney development | D | M | d |  | meso | uro | E16.01.02 | 1 | AN52.7 | ✔ |
+| E16.01.09 | Wilms tumour | C | C | s |  | meso | defects | E16.01.02, E16.01.08 |  | AN52.7 | ⚑ |
+| E16.02.01 | Sex determination | A | M | core | 42–49 | none | gen | E03.02.03 | 10 | AN52.8 | ✔ |
+| E16.02.02 | Indifferent gonad | A | S | core | 35–49 | multi | gen | E02.01.01, E06.02.05 | 11 | AN52.8 | ✔ |
+| E16.02.03 | Testis | B | S | x | 49–84 | meso | gen | E16.02.02, E16.02.01 | 9 | AN52.8, AN46.1, AN52.2 | ✔ |
+| E16.02.04 | Ovary | B | S | s | 49–140 | meso | gen | E16.02.02 |  | AN52.8, AN52.2 | ✔ |
+| E16.02.05 | Genital ducts: two sets | A | S | core | 42–84 | meso | gen | E16.02.02, E16.01.01, E16.02.01, E16.02.03 | 6 | AN52.8 | ✔ |
+| E16.02.06 | Male ducts and glands | B | SA | x |  | multi | gen | E16.02.05 |  | AN52.8, AN46.2, AN48.2 | ✔ |
+| E16.02.07 | Female ducts and vagina | B | SA | x |  | meso | gen | E16.02.05 | 1 | AN52.8, AN48.2 | ⚑ |
+| E16.02.08 | Uterine and vaginal anomalies | C | C | x |  | meso | defects | E16.02.07 |  | AN52.8 | ✔ |
+| E16.02.09 | External genitalia | A | S | core | 49–84 | multi | gen | E16.02.05, E16.02.01, E15.08.01 | 2 | AN52.8, AN46.3 | ⚑ |
+| E16.02.10 | Hypospadias and epispadias | C | C | x |  | multi | defects | E16.02.09 |  | AN52.8, AN46.3 | ⚑ |
+| E16.02.11 | Differences of sex development | C | C | x |  | multi | defects | E16.02.01, E16.02.09 |  | AN52.8, AN75.1 | ⚑ |
+| E16.02.12 | Descent of the testis | A | F | core | 56–266 | meso | gen | E16.02.03 | 1 | AN46.1, AN44.4, AN52.8 | ✔ |
+| E16.02.13 | Inguinal hernia, hydrocele, cryptorchidism | C | C | x |  | meso | defects | E16.02.12 |  | AN44.5, AN46.1 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E16.00.01 — “All three systems form the adult kidney together.” · E16.01.02 — “Nephrons and collecting ducts come from the same tissue.” · E16.02.01 — “Female development needs no genes at all.” · E16.02.05 — “Testosterone makes the paramesonephric ducts regress.”
+*Misconceptions to refute (cited in the chapter dossier):* E16.00.01 — “All three systems form the adult kidney together.” · E16.01.02 — “Nephrons and collecting ducts come from the same tissue.” · E16.02.01 — “Female development needs no genes at all.” · E16.02.05 — “Testosterone makes the paramesonephric ducts regress.”
 
 ## E17 — Head and Neck · pp 284–312 · 20 concepts
 
