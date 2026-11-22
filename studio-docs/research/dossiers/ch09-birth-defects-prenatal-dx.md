@@ -128,7 +128,8 @@ Codes sit on the Ch 9 rows of `tools/map/research.txt` → map.json `an`.
 ## 9. Why learners struggle here (M05)
 Two clocks run at once and the chapter switches between them without saying so; the five words for defect types sound interchangeable; and the screening tests arrive as a list of acronyms with no shape. → Teach the two-clock strip first and label every number with its clock (the single highest-yield fix in this chapter); teach the defect words as **one picture each** — formed wrong, destroyed, squashed, known cause, unexplained cluster (shape before names, D1); lay the tests on the two-clock timeline in the order a pregnancy meets them (NT 11–14 → CVS → serum/quad → amniocentesis → cordocentesis, with cfDNA alongside from 10 weeks) so the acronyms get positions rather than definitions; then one branching card: **screen → positive → confirm**, which is the exam point and misconception 17. ≤ 3 new terms per beat (D2); every clinical beat stays humane and diagram-led (D6).
 
-## 10. To-do — X1 done 21 Nov 2026 · X2a gaps closed 22 Nov 2026
+## 10. To-do — X1 done 21 Nov 2026 · X2a gaps closed 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** R05lr (PMID 8140068) — **not in PMC**; owner PDF not supplied, so the 10-week CVS boundary stays ✚. Nothing closed.
 - [x] Section ids + locators checked against the PDF (2 I1 gaps → I1 to-do; teratogen table p 132 confirmed)
 - [x] Both age clocks stated, and the chapter's own mixing of them documented (header + §1)
 - [x] Sensitive-period chart rewritten as our own staging, with Carnegie ranges from R08 (§1)

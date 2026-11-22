@@ -196,7 +196,8 @@ Codes sit on the Ch 14 rows of `tools/map/research.txt` → map.json `an`.
 - **Arch numbers come back:** larynx = arches 4 + 6 = the same recurrent-nerve story as Ch 13's arch arteries. Link, don't re-teach.
 - **The lung is not finished at birth.** Learners assume birth = done; surfactant, alveoli and growth all keep going.
 
-## 10. X1 to-do — done 22 Nov 2026, with open items · gaps pass X2b, 22 Nov 2026
+## 10. X1 to-do — done 22 Nov 2026, with open items · gaps pass X2b, 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** O'Rahilly & Boyden 1973 (PMID 4767583) — not in PMC, owner PDF not supplied. R05fe, R05fn — in PMC but **skipped**: no mark depends on them (this dossier says so). Nothing closed.
 - Done: real locators + three I1 gaps and one mis-assigned box; staging bud → adolescence matched by Carnegie stage for the embryonic events (R05fb, R05fd, R05fh, R05fi, R05fj) and by stated clock for the fetal phases (R05ff, R05fk, R05fl); Tier A for the two Tier A concepts; Tier B–D table by mechanism; clinical correlates in four mechanism groups with **rates per 10,000 for EA/TEF and congenital lung malformations**; 17 misconceptions; AN map read from NMC Vol I (2018); ⚑ D-072 a–e, notes f–i; 25 sources **R05fb–R05fz**; Ch 14 rows in `research.txt`; map + concept map rebuilt.
 - **Done 22 Nov 2026 (X2b):** **fetal breathing movements** — "start well before birth" now ✔✔ (R05ml: present by 10 weeks of gestation; §2 E14.04.01). The concept row stays ⚑ (other lines carry D-072).
 - **Still open — the exact onset week** of fetal breathing movements: de Vries part I (1982, PMID 7169027) still has no abstract; a diabetes cohort scanned weekly from 7 weeks (PMID 1860430) reports trends only.

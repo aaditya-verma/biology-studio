@@ -105,7 +105,8 @@ NMC 2024 Anatomy: topic 79 "Third to eighth week": **AN79.1** primitive streak (
 ## 8. Why learners struggle here (M05)
 Movement *through* the streak and spreading *between* layers is 3D; 2D slides lose it → spend S1E01's 3D budget on one tracked cell ingressing and spreading (Journey format), and end on the transverse section.
 
-## 9. To-do — X1 done 17 Nov 2026 · X2a checked 22 Nov 2026
+## 9. To-do — X1 done 17 Nov 2026 · X2a checked 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** none to read — Ch 5's items are owner PDFs (R01 plates, R10/R11 Tier 2), and `references\papers\` is still empty. Nothing closed.
 - [x] Section numbers from I1 → every `E05.xx` replaced
 - [x] Every Ch 5 Tier A fact marked (23 fact lines: ✔✔ 8 · ✔ 13 · ⚑ 1 · ✚ 1 · ≈ 0; plus 1 ✚ note)
 - [x] Notochord D-entry (D-029); other ⚑ (D-030)

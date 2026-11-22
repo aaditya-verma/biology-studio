@@ -163,7 +163,8 @@ Codes sit on the Ch 12 rows of `tools/map/research.txt` → map.json `an`.
 - **Segments that stop looking segmental.** C5–T2 and L2–S2 are tidy; adult muscles and dermatomes are not. Name the two things that blur them: splitting/fusion of muscle masses, and rotation.
 - **Animal data in a human chapter.** Almost all the molecular work is chick and mouse (the book's own AER figure is a chick). Every species is labelled.
 
-## 10. X1 to-do — done 22 Nov 2026, with open items · gaps pass X2b, 22 Nov 2026
+## 10. X1 to-do — done 22 Nov 2026, with open items · gaps pass X2b, 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** R05ea and R05dz — re-checked, **not in PMC**; owner PDFs (`R05ea_ORahilly1972.pdf`, `R05dz_ORahilly1975.pdf`) not supplied. Nothing closed.
 - Done: real locators + the E12.02 I1 gap; staging bud → fetal ossification with human atlas and R08 ages; Tier A for E12.01.01 and E12.01.02; Tier B–D table; clinical correlates against PubMed; 18 misconceptions; AN map read from NMC Vol I (including the **missing lower-limb dermatome code**); ⚑ D-067 a–f; Ch 12 rows in `research.txt`; map rebuilt.
 - **Done 22 Nov 2026 (X2b):** **human AER** — ✔✔ from the human limb atlas already in the registry (R05ds full text: FGF8-positive ridge weeks 5–6; §1, §2); **knee centres at term** — Tier 1 found (R05md, R05me), it disagrees with the book's general line → **⚑ D-091 a** (§5; research.txt E12.01.03 ≈ → ⚑); **bone age** — ✚ (R05mg, §4); **limb rates** — national reduction-defect rate added to D-067 d (R05mc, no new ⚑); **thalidomide clock** — named "after fertilization" by a second review (R05mf, added to D-067 a, no new ⚑).
 - **R01 3D Atlas:** confirm the CS18–23 models show the hand plate, digital rays and interdigital notches before the "Five rays, one hand" scene (look only, NC-ND). — *still open:* owner look-only check.

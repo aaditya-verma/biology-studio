@@ -49,6 +49,7 @@ Human anchors: **R06/R08** (stage definitions and classic ages), **R05ii** (185 
 | Week 6 | CS16–17 | **Palatal shelves** bud from the maxillary prominences (median palatine process CS16, lateral CS17), hanging beside the tongue `[E17.09 · R05ic]` | ✔✔ |
 | Week 6–7 | CS16–19 | **Oronasal membrane** breaks → primitive choanae `[E17.10]` | ✔ · the septum is present from the start (R05if) **⚑** b |
 | Week 7 | ~CS18–19 | **Thyroid** reaches the front of the trachea; isthmus + two lobes `[E17.06]` | ✔ (no human stage retrieved) |
+| Weeks 6–8 | CS16–17 → CS21 | **Thymus** (R05ig full text, weeks after fertilization): thymus marker FOXN1 in the pouch-3 thymus domain by CS16–17, **not detected in pouch 4 at any stage examined**; the shared thymus–parathyroid bud grows out by CS18; the thymus moves down along the carotid (CS18 → CS21 per Norris 1938; seen by CS21 in this study); first blood cells enter it during week 7, T-cell precursors from early week 8 `[E17.02 · R05ig]` | ✔✔ pouch 3 · ✚ stages and blood-cell entry (More only, beyond Langman) |
 | Week 7 (book) / **CS23, end of week 8 (days 56–60)** (specimens) | CS21 → CS23 | **Shelves rise** above the tongue: not yet up at CS21–22, up and touching or fused in most CS23 embryos; head lifts, Meckel cartilage and tongue move forward `[E17.09 · R05ib, R05ic, R05id]` | **⚑ timing** (D-078 a) · ✔✔ the tongue must move first |
 | Week 8 | CS23 | **Arch skeleton in cartilage**: hyoid with both horns, ring-shaped cricoid, arytenoids condensing; bone plate over most of Meckel cartilage `[E17.01 · R05ik]` | ✔✔ |
 | Weeks 9 → 12 | fetal | **Palate fusion**: looks closed from outside at week 9, fully fused only by week 12; septum joins the palate `[E17.09 · R05ic]` | ✚ (book shows a fused palate at 10 weeks) |
@@ -211,7 +212,7 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 4. **"The first cleft becomes the ear canal."** Not in 14e: first-arch ectoderm grows in; all clefts close `[E17.03]` ✔ (note k).
 5. **"Meckel cartilage turns into the mandible."** The mandible forms **in membrane around** it; Meckel leaves the malleus, incus and a ligament `[E17.01 · R05ik]` ✔✔.
 6. **"Inferior parathyroids come from pouch 4."** (map row) **Pouch 3** — pulled down by the thymus `[E17.02]` ✔.
-7. **"The thymus comes from pouches 3 and 4."** From **pouch 3** only `[E17.02 · R05ig]` ✔✔.
+7. **"The thymus comes from pouches 3 and 4."** From **pouch 3** only — in human embryos the thymus marker was not detected in pouch 4 at any stage studied (the parathyroid marker is in both — Liu 2010, cited in R05ig) `[E17.02 · R05ig]` ✔✔.
 8. **"C cells are thyroid follicle cells."** They come from the **ultimobranchial body** (pouch 4) `[E17.02, E17.06]` ✔.
 9. **"The thyroid starts in the neck."** It starts at the **tongue** (foramen caecum) and descends (map row) — why cysts are midline anywhere from tongue to neck `[E17.06]` ✔.
 10. **"Thyroglossal cysts are at the side of the neck."** Always **midline**; branchial cysts are **lateral** (front of sternocleidomastoid) `[E17.04 CC, E17.06 CC]` ✔.
@@ -286,7 +287,7 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 - **Front vs back clefts** — one landmark (incisive foramen) sorts every facial cleft.
 - **Clocks:** book weeks vs Carnegie stages for the palate (⚑ a); the thyroid source's clock is unclear (note g).
 
-## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026
+## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026 · X3a full texts 22 Nov 2026
 - **Done (X1, 22 Nov 2026):** real locators + sub-locators; seven short-section spills, two misfiled boxes and four untitled boxes named (→ I1); staging from human specimens (R06/R08 by stage; R05ii, R05ij, R05ik, R05ic, R05ib, R05if by Carnegie stage; R05id/R05ie by weeks post conception; R05ih clock unclear); Tier A for 8 concepts (head sources, arches, arch derivatives, pouches, tongue, thyroid, face, secondary palate); Tier B–D with the arch table by tissue; clinical rows in 6 mechanism groups with rates per 10,000; 20 misconceptions; AN map from NMC Vol I; 19 sources **R05ib–R05it** (R05il–R05is clinical); G-Sci fresh-eyes review: pass with fixes, 9 MUST + 13 SHOULD, all applied (⚑ f downgraded to a note).
 - **Done (X2c, 22 Nov 2026):** **natal teeth** rate (✚, R05mx).
 
@@ -296,6 +297,6 @@ Grouped **by tissue**, not by arch (the table in §3 has the full map).
 - **Human tooth timing** (lamina, bud, cap, bell), **human thyroid stage** (bud CS, in place week 7): no human Carnegie-staged Tier 1 found.
 - **Human EAM origin** (14e's correction): no human lineage study (Ch 19 note e also open).
 - **Female shelves close ~1 week later** (book): no newer human series found; Burdi & Silvey 1969 needs its full text.
-- **Full texts not read:** R05ib, R05ic, R05if, R05ig, R05ih (clock, note g), R05ii — `references\papers\` does not exist yet.
+- **Full texts (X3a, 22 Nov 2026):** **R05ig read** (PMC; clock = weeks after fertilization + Carnegie stage) — thymus staging row added (✚), pouch-3-only basis named. **Still open:** R05ib, R05ii — PMC sends no full text (publisher block); R05ic, R05if, R05ih (clock, note g) — not in PMC, owner PDF not supplied; Burdi & Silvey 1969 — not in PubMed full text.
 - **R01 3D Atlas** CS13–23 face/pharynx and **R04 Kyoto** palate series: look-only browser/owner steps.
 - **2024 wording** of AN43.4 (MGMUHS reprint): not in `references\`.

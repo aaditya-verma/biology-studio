@@ -252,7 +252,8 @@ Human anchors: **R06/R08** (stage definitions and classic ages), **R05l** (98 *h
 - **Autonomic wiring** — white vs grey rami is a counting puzzle: white only where the lateral horn is (T1–L2), grey everywhere.
 - **Clocks:** NTD scan and surgery ages are weeks of pregnancy; the rest are after fertilization; one microglia source mixes clocks (⚑ b).
 
-## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026
+## 10. To-do — X1 done 22 Nov 2026; X2c gaps run 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** R05ja — PMC sends **no full text** (publisher block), so ⚑ b's clock stays unclear; R05iz — not in PMC, owner PDF not supplied. Nothing closed.
 - **Done (X1, 22 Nov 2026):** real locators + sub-locators; four page spills, E18.04's overlapping pages, one misfiled box and two untitled boxes + one cut title named (→ I1); staging from human specimens (R06/R08, R05l, R05iu–R05ix by Carnegie stage; R05iy Kyoto by CS; R05iz ovulation age; R05jf weeks post-fertilisation; R05ja clock unclear; infant conus after birth); Tier A for 4 concepts (layers, alar/basal plates, vesicles and flexures, adrenal) + cord position; Tier B–D with the brainstem nuclei by job; clinical rows in 5 mechanism groups with rates per 10,000; 21 misconceptions; AN map from NMC Vol I; 16 sources **R05iu–R05jj** (R05l re-used). G-Sci fresh-eyes review: **pass with fixes, 7 MUST + 11 SHOULD, all applied** — the forebrain fusion direction became ⚑ d, the commissure timing went from ⚑ to note f, the brainstem table was re-ordered, and several ✔✔ were narrowed to the clause the abstract supports.
 - **Done (X2c, 22 Nov 2026):** **hippocampus function** (note e) — ✚ memory, R05my.
 

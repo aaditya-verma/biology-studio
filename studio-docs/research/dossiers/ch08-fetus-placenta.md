@@ -137,7 +137,8 @@ Codes sit on the Ch 8 rows of `tools/map/research.txt` → map.json `an`.
 ## 9. Why learners struggle here (M05)
 Two blood systems sit side by side, two age clocks run at once, and three twin layouts hang on one timing question. → Teach the placenta as "fetal trees in a maternal lake" (shape first, D1); one recurring villus cross-section, month 1 vs month 4 (D9); one twin-timing slider (2-cell → blastocyst → disc → streak) that redraws the membranes; state which clock every number uses; ≤ 3 new terms per beat (D2).
 
-## 10. To-do — X1 done 20 Nov 2026 · X2a gaps closed 22 Nov 2026
+## 10. To-do — X1 done 20 Nov 2026 · X2a gaps closed 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** Csapo 1972–73 (D-044 a) and the ISSHP statement — not in PMC; owner PDFs not supplied. Nothing closed.
 - [x] Section ids + locators checked against the PDF (5 I1 gaps → I1 to-do; T8.1 rows 6–8 added)
 - [x] Staging + sizes for the fetal period (§1; no CS after CS23)
 - [x] Tier A lines marked (§2: 31 lines — main mark ✔✔ 5 · ✔ 26 · ≈ 0; extra marks on lines: ⚑ 1 (D-044 b), ✚ 4); Tier B–D + clinical tables marked (3 more ⚑ there: D-044 a, c, e)

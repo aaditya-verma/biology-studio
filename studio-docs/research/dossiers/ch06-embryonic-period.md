@@ -161,7 +161,8 @@ NMC 2024 Anatomy, topic 79 "Third to eighth week": **AN79.3** neurulation (E06.0
 ## 8. Why learners struggle here (M05)
 Folding is 3D in two directions at once (head–tail and side-to-side), and neurulation, crest migration and somite splitting happen in the same cross-section. → Use one recurring transverse section (day 19 → 21 → 28) that ends every beat (D9), and one sagittal section for the head/tail folds; show shape first, then names (D1); stagger new terms (D2: ≤ 3 per minute).
 
-## 9. To-do — X1 done 19 Nov 2026 · X2a gaps closed 22 Nov 2026
+## 9. To-do — X1 done 19 Nov 2026 · X2a gaps closed 22 Nov 2026 · X3a full texts 22 Nov 2026
+- **X3a full texts (22 Nov 2026):** none to read — R01 and R10/R11 are owner PDFs, not supplied (`references\papers\` empty). Nothing closed.
 - [x] Section ids from I1 → every `E06.xx`; locators checked (E06.02 runs to p 87 — I1 fix)
 - [x] Staging table CS11–CS23 (R08 fetched; R06 somite ranges; R02 ages)
 - [x] Every Tier A fact marked (48 lines: ✔✔ 12 · ✔ 33 · ⚑ 1 · ✚ 2 · ≈ 0); Tier B–D table marked (3 more ⚑ there)
