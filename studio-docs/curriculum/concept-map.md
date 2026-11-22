@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E01, E02, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E00, E01, E02, E03, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -13,14 +13,14 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E00.01.01 | Axes & planes | A | F | core |  | none | ori |  | 223 |  | ≈ |
-| E00.01.02 | Days, weeks & Carnegie stages | A | T | core |  | none | ori |  | 2 |  | ≈ |
-| E00.01.03 | Scale | A | T | core |  | none | ori |  |  |  | ≈ |
-| E00.01.04 | Colour key | A | G | core |  | none | ori |  | 226 |  | ≈ |
-| E00.01.05 | Reading a section | A | F | core |  | none | ori | E00.01.01, E00.01.04 |  |  | ≈ |
-| E00.01.06 | How to use the app | A |  | s |  | none | ori |  |  |  | ≈ |
+| E00.01.01 | Axes & planes | A | F | core |  | none | ori |  | 223 |  | ✔ |
+| E00.01.02 | Days, weeks & Carnegie stages | A | T | core |  | none | ori |  | 2 | AN76.1, AN76.2 | ⚑ |
+| E00.01.03 | Scale | A | T | core |  | none | ori |  |  |  | ✔✔ |
+| E00.01.04 | Colour key | A | G | core |  | none | ori |  | 226 |  | ✔ |
+| E00.01.05 | Reading a section | A | F | core |  | none | ori | E00.01.01, E00.01.04 |  |  | ✔ |
+| E00.01.06 | How to use the app | A |  | s |  | none | ori |  |  |  | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E00.01.02 — “Gestational age and fertilization age are the same number.”
+*Misconceptions to refute (cited in the chapter dossier):* E00.01.02 — “Gestational age and fertilization age are the same number.”
 
 ## E01 — Introduction to Molecular Regulation and Signaling · pp 3–13 · 16 concepts
 
@@ -69,25 +69,25 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E03.01.01 | Ovarian cycle and its hormones | B |  | x |  | none | gam | E02.03.02 | 5 |  | ≈ |
-| E03.01.02 | Ovulation | A | T | core | 0–0 | none | gam | E03.01.01 | 2 |  | ≈ |
-| E03.01.03 | Corpus luteum | B |  | x |  | none | gam | E03.01.02 |  |  | ≈ |
-| E03.01.04 | Oocyte transport | B |  | s | 0–1 | none | gam | E03.01.02 |  |  | ≈ |
-| E03.02.01 | Capacitation and acrosome reaction | B |  | x | 0–1 | none | gam | E02.03.04 | 271 |  | ≈ |
-| E03.02.02 | Fertilization | A | T | core | 0–1 | none | gam | E03.02.01, E02.03.01 | 270 |  | ≈ |
-| E03.02.03 | Results of fertilization | A | T | core | 1–1 | none | gam | E03.02.02 | 268 |  | ≈ |
-| E03.02.04 | Contraception and assisted reproduction | C | C | s |  | none | gam | E03.02.02 |  |  | ≈ |
-| E03.03.01 | Cleavage and morula | A | T | core | 1–3 | none | early | E03.02.03 | 266 |  | ≈ |
-| E03.03.02 | Compaction; inner and outer cell mass | B |  | s | 3–4 | none | early | E03.03.01 | 265 |  | ≈ |
-| E03.04.01 | Blastocyst | A | T | core | 4–5 | multi | early | E03.03.02 | 264 |  | ≈ |
-| E03.04.02 | Implantation begins | A | T | core | 6–7 | extra | early | E03.04.01 | 21 |  | ≈ |
-| E03.05.01 | Epiblast and hypoblast | A | G | core | 7–8 | multi | early | E03.04.01 | 241 |  | ≈ |
-| E03.05.02 | Anterior visceral endoderm sets the head end | D | MF | s | 7–8 | extra | early | E03.05.01 | 4 |  | ≈ |
-| E03.05.03 | Embryonic stem cells | C | C | d |  | none | early | E03.05.01 |  |  | ≈ |
-| E03.06.01 | Uterus at implantation | B |  | x |  | none | plac | E03.01.01 | 1 |  | ≈ |
-| E03.06.02 | Menstrual cycle phases | B | T | s |  | none | plac | E03.06.01 |  |  | ≈ |
+| E03.01.01 | Ovarian cycle and its hormones | B |  | x |  | none | gam | E02.03.02 | 5 | AN77.2 | ✔ |
+| E03.01.02 | Ovulation | A | T | core | 0–0 | none | gam | E03.01.01 | 2 | AN77.2 | ✔ |
+| E03.01.03 | Corpus luteum | B |  | x |  | none | gam | E03.01.02 |  | AN77.2 | ⚑ |
+| E03.01.04 | Oocyte transport | B |  | s | 0–1 | none | gam | E03.01.02 |  | AN77.4 | ✔ |
+| E03.02.01 | Capacitation and acrosome reaction | B |  | x | 0–1 | none | gam | E02.03.04 | 271 | AN77.4 | ✔ |
+| E03.02.02 | Fertilization | A | T | core | 0–1 | none | gam | E03.02.01, E02.03.01 | 270 | AN77.4 | ⚑ |
+| E03.02.03 | Results of fertilization | A | T | core | 1–1 | none | gam | E03.02.02 | 268 | AN77.4 | ✔ |
+| E03.02.04 | Contraception and assisted reproduction | C | C | s |  | none | gam | E03.02.02 |  | AN77.5, AN77.6 | ⚑ |
+| E03.03.01 | Cleavage and morula | A | T | core | 1–3 | none | early | E03.02.03 | 266 | AN78.1 | ✔ |
+| E03.03.02 | Compaction; inner and outer cell mass | B |  | s | 3–4 | none | early | E03.03.01 | 265 | AN78.1 | ⚑ |
+| E03.04.01 | Blastocyst | A | T | core | 4–5 | multi | early | E03.03.02 | 264 | AN78.1 | ✔ |
+| E03.04.02 | Implantation begins | A | T | core | 6–7 | extra | early | E03.04.01 | 21 | AN78.3 | ✔ |
+| E03.05.01 | Epiblast and hypoblast | A | G | core | 7–8 | multi | early | E03.04.01 | 241 | AN78.4 | ⚑ |
+| E03.05.02 | Anterior visceral endoderm sets the head end | D | MF | s | 7–8 | extra | early | E03.05.01 | 4 |  | ✔ |
+| E03.05.03 | Embryonic stem cells | C | C | d |  | none | early | E03.05.01 |  |  | ✔ |
+| E03.06.01 | Uterus at implantation | B |  | x |  | none | plac | E03.01.01 | 1 | AN77.1 | ✔ |
+| E03.06.02 | Menstrual cycle phases | B | T | s |  | none | plac | E03.06.01 |  | AN77.1, AN77.2 | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E03.01.02 — “Ovulation is always on day 14.” · E03.02.02 — “Fertilization happens in the uterus.” · E03.03.01 — “The embryo grows during cleavage.”
+*Misconceptions to refute (cited in the chapter dossier):* E03.01.02 — “Ovulation is always on day 14.” · E03.02.02 — “Fertilization happens in the uterus.” · E03.03.01 — “The embryo grows during cleavage.”
 
 ## E04 — Second Week of Development: Bilaminar Germ Disc · pp 50–58 · 13 concepts
 

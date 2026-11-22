@@ -298,3 +298,28 @@ E02.03.02|AN77.3|✔|
 E02.03.03|AN77.3|⚑|
 E02.03.04|AN77.3|✔|
 E02.03.05|AN77.3|⚑|
+# --- E03 · X1 22 Nov 2026 (dossier ch03-first-week.md; conceptus dated in days after fertilization, stages R06 Table 0-1 / carnegie.json: CS1 fertilization, CS2 2-16 cells, CS3 free blastocyst, CS4 attaching, CS5 implanted; ovary/uterus rows are on the cycle clock, no cs; NMC 2018 Vol I AN77.1, 77.2, 77.4-77.6, AN78.1, AN78.3, AN78.4; ⚑ D-094 a-f; link D-044 a) ---
+E03.01.01|AN77.2|✔|
+E03.01.02|AN77.2|✔|
+E03.01.03|AN77.2|⚑|
+E03.01.04|AN77.4|✔|
+E03.02.01|AN77.4|✔|
+E03.02.02|AN77.4|⚑|1
+E03.02.03|AN77.4|✔|1
+E03.02.04|AN77.5,AN77.6|⚑|
+E03.03.01|AN78.1|✔|2
+E03.03.02|AN78.1|⚑|2
+E03.04.01|AN78.1|✔|3
+E03.04.02|AN78.3|✔|4-5
+E03.05.01|AN78.4|⚑|3-4
+E03.05.02||✔|3-4
+E03.05.03||✔|
+E03.06.01|AN77.1|✔|
+E03.06.02|AN77.1,AN77.2|✔|
+# --- E00 · X1 22 Nov 2026 (Part 0 orientation, marked from the Reviewed C1 cards' fact lines against R06/R08 + Ch 3, dossier ch03-first-week.md §11; no cs — orientation, not an event; E00.01.02 ⚑ = its own D-030 lines; E00.01.06 = app facts, ✔ pending X1.03.q4) ---
+E00.01.01||✔|
+E00.01.02|AN76.1,AN76.2|⚑|
+E00.01.03||✔✔|
+E00.01.04||✔|
+E00.01.05||✔|
+E00.01.06||✔|

@@ -3784,6 +3784,150 @@
    "pmid": "33130823"
   },
   {
+   "id": "R05ox",
+   "tier": 1,
+   "name": "Wilcox AJ, Dunson D, Baird DD",
+   "licence": "© BMJ (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1136/bmj.321.7271.1259",
+   "pmid": "11082086"
+  },
+  {
+   "id": "R05oy",
+   "tier": 1,
+   "name": "Bull JR, Rowland SP, Scherwitzl EB, et al",
+   "licence": "CC BY 4.0 → facts only (app-company authors — note)",
+   "ref_only": false,
+   "doi": "10.1038/s41746-019-0152-7",
+   "pmid": "31482137"
+  },
+  {
+   "id": "R05oz",
+   "tier": 1,
+   "name": "Scott R, Navot D, Liu HC, Rosenwaks Z",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0015-0282(16)54544-0",
+   "pmid": "1894025"
+  },
+  {
+   "id": "R05pa",
+   "tier": 1,
+   "name": "Avella MA, Baibakov B, Dean J",
+   "licence": "© Rockefeller UP (PMC, CC BY-NC-SA after 6 mo) → facts only",
+   "ref_only": true,
+   "doi": "10.1083/jcb.201404025",
+   "pmid": "24934154"
+  },
+  {
+   "id": "R05pb",
+   "tier": 1,
+   "name": "Burkart AD, Xiong B, Baibakov B, et al",
+   "licence": "© Rockefeller UP (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1083/jcb.201112094",
+   "pmid": "22472438"
+  },
+  {
+   "id": "R05pc",
+   "tier": 1,
+   "name": "Bianchi E, Doe B, Goulding D, Wright GJ",
+   "licence": "© Springer Nature (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1038/nature13203",
+   "pmid": "24739963"
+  },
+  {
+   "id": "R05pd",
+   "tier": 1,
+   "name": "Wang F, Zhang J, Kong S, et al",
+   "licence": "© Springer (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1007/s10815-020-01719-4",
+   "pmid": "32146562"
+  },
+  {
+   "id": "R05pe",
+   "tier": 1,
+   "name": "Petropoulos S, Edsgärd D, Reinius B, et al",
+   "licence": "© Cell Press (PMC open access) → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.cell.2016.03.023",
+   "pmid": "27062923"
+  },
+  {
+   "id": "R05pf",
+   "tier": 1,
+   "name": "Roode M, Blair K, Snell P, et al",
+   "licence": "© Elsevier (PMC, CC BY) → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.ydbio.2011.10.030",
+   "pmid": "22079695"
+  },
+  {
+   "id": "R05pg",
+   "tier": 1,
+   "name": "Weatherbee BAT, Weberling A, Gantner CW, et al",
+   "licence": "CC BY 4.0 → facts only",
+   "ref_only": false,
+   "doi": "10.1038/s41556-024-01367-1",
+   "pmid": "38443567"
+  },
+  {
+   "id": "R05ph",
+   "tier": 1,
+   "name": "Wilcox AJ, Baird DD, Weinberg CR",
+   "licence": "© NEJM → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJM199906103402304",
+   "pmid": "10362823"
+  },
+  {
+   "id": "R05pi",
+   "tier": 1,
+   "name": "Wilcox AJ, Weinberg CR, O'Connor JF, et al",
+   "licence": "© NEJM → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJM198807283190401",
+   "pmid": "3393170"
+  },
+  {
+   "id": "R05pj",
+   "tier": 1,
+   "name": "Cox CM, Thoma ME, Tchangalova N, et al",
+   "licence": "CC BY 4.0 → facts only",
+   "ref_only": false,
+   "doi": "10.1093/hropen/hoac051",
+   "pmid": "36483694"
+  },
+  {
+   "id": "R05pk",
+   "tier": 1,
+   "name": "Davies MJ, Moore VM, Willson KJ, et al",
+   "licence": "© NEJM → facts only",
+   "ref_only": false,
+   "doi": "10.1056/NEJMoa1008095",
+   "pmid": "22559061"
+  },
+  {
+   "id": "R05pl",
+   "tier": 1,
+   "name": "Practice Committee of the ASRM and SART",
+   "licence": "© Elsevier → facts only (guideline — Tier 1 for current practice)",
+   "ref_only": false,
+   "doi": "10.1016/j.fertnstert.2021.06.050",
+   "pmid": "34330423"
+  },
+  {
+   "id": "R05pm",
+   "tier": 1,
+   "name": "Miller BJ, Georges-Labouesse E, Primakoff P, Myles DG",
+   "licence": "© Rockefeller UP (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1083/jcb.149.6.1289",
+   "pmid": "10851025"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -3940,7 +4084,8 @@
   "D-090",
   "D-091",
   "D-092",
-  "D-093"
+  "D-093",
+  "D-094"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",
