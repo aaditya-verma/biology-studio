@@ -31,8 +31,22 @@ GH_PATHS = [r"C:\Program Files\GitHub CLI\gh.exe", r"C:\Program Files (x86)\GitH
 GH = shutil.which("gh") or next((p for p in GH_PATHS if Path(p).exists()), None)
 
 
+def origin_repo():
+    """owner/name of `origin`, read from .git/config, so gh needs neither git on PATH nor a guess (None = let gh decide)."""
+    try:
+        cfg = (ROOT / ".git" / "config").read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return None
+    m = re.search(r'\[remote "origin"\][^\[]*?url\s*=\s*(\S+)', cfg)
+    m2 = m and re.search(r"github\.com[:/]([^/\s]+/[^/\s]+?)(?:\.git)?/?$", m.group(1))
+    return m2.group(1) if m2 else None
+
+
+REPO = origin_repo()
+
+
 def gh(args, dry):
-    cmd = [GH or "gh"] + args
+    cmd = [GH or "gh"] + args + (["-R", REPO] if REPO else [])
     if dry or DEBUG:
         print("$ " + " ".join(cmd))
     if dry:
