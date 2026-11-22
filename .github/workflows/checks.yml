@@ -1,7 +1,7 @@
 # Biology Studio — automatic checks (RULES C3, C8, C13; build/design-plan.md §7). Runs on every push and pull request to main, and by hand.
 # 1. map data checks (tools/map, dry run)  2. scene-check (C3)  3. card-check (C3; + selftest, calibration, Python ↔ app parity — S1)  4. stills (C11, WebGL via SwiftShader)
 # 4b. progress map: build/steps.json — ids, loops, unmet needs, done with open gates (W1, D-040)
-# 5. layout-check: §2 matrix incl. the 3D viewer, Studio and progress map, in-app tests, rotate, Studio flows, D-031 colour re-check.
+# 5. layout-check (+ --selftest, D-087; + the sync.bat lock guard selftest): §2 matrix + real-tablet sizes + 150/200 % text, incl. the 3D viewer, Studio and progress map, in-app tests, rotate, Studio flows, D-031 colour re-check.
 # Reports + contact sheets are uploaded as artifacts (download from the run page). EDIT: Python/Playwright versions here —
 # Playwright is pinned to the version the still baselines were made with (tools/stills; a new Chromium = re-baseline after review).
 name: checks
@@ -12,7 +12,7 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 50   # D-087: layout-check gained real-tablet sizes + 150/200 % text (~+55 %)
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
@@ -48,7 +48,11 @@ jobs:
           python tools/lesson-check/check.py --selftest
       - name: Still regression (C11)
         run: python tools/stills/stills.py
-      - name: Layout check (13 sizes × orientations × 100/125 % × light/dark)
+      - name: Lock guard selftest (sync.bat, D-087)
+        run: python tools/ci/lock_guard.py --selftest
+      - name: Layout audit selftest (D-087 — each new check fails its v18 case, passes its v19 case)
+        run: python tools/layout-check/check.py --selftest
+      - name: Layout check (13 sizes × orientations + real tablets × 100/125 % × light/dark + 150/200 % text)
         run: python tools/layout-check/check.py
       - name: Upload report + contact sheets
         if: always()

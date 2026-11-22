@@ -69,7 +69,7 @@ function scViewer(v,S,o={}){
     <p class="vw-msg" id="vwMsg" role="status">${esc(STR.vw.loading3d)}</p>
     <div class="vw-lost hidden" id="vwLost" role="alert"><p>${esc(STR.vw.lost)}</p><button type="button" class="btn" data-vw="relaunch">${esc(STR.vw.relaunch)}</button></div>
   </section>
-  <section class="vw-panel" aria-label="${esc(STR.vw.controls)}">
+  <section class="vw-panel" aria-label="${esc(STR.vw.controls)}" data-cue>
     ${o.drill?`<div class="vw-head row"><h3 class="vw-it">${esc(STR.vw.drillT)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
       <div class="vw-turn row" role="group" aria-label="${esc(STR.vw.turnGroup)}">${tr?`<span class="vw-dl xs" aria-hidden="true">${esc(STR.vw.turnShort)}</span>`:''}${[['l','back'],['r','fwd'],['u','up'],['d','up']].map(([d,ic])=>`<button type="button" class="btn icon${d==='d'?' ln-dn':''}" data-vw="turn" data-d="${d}" aria-label="${esc(STR.vw.turn[d])}" title="${esc(STR.vw.turn[d])}">${icon(ic,20)}</button>`).join('')}
       <button type="button" class="btn sm" data-vw="dreset">${esc(STR.vw.dReset)}</button></div>`
@@ -78,11 +78,12 @@ function scViewer(v,S,o={}){
       <h1 id="cpT" tabindex="-1">${esc(S.title)}</h1></div>`}
     ${o.drill&&!tr?'':`<div class="vw-day" role="group" aria-label="${esc(STR.vw.dayGroup)}">${tr?`<span class="vw-dl xs" aria-hidden="true">${esc(STR.vw.day)}</span>`:''}
       <button type="button" class="btn icon" data-vw="dprev" aria-label="${esc(tr?STR.vw.trPrev:STR.vw.dayPrev)}" title="${esc(tr?STR.vw.trPrev:STR.vw.dayPrev)} ( [ )">${icon('back',20)}</button>
-      <label class="vw-range"><span class="sr">${esc(STR.vw.day)}</span><input type="range" id="vwDay" min="${R0}" max="${R1}" step="0.1" value="${st.day}"></label>
+      <div class="vw-range"><label class="vw-rl"><span class="sr">${esc(STR.vw.day)}</span><input type="range" id="vwDay" min="${R0}" max="${R1}" step="0.1" value="${st.day}"></label>
+      ${tr?'':`<div class="vw-keys" aria-hidden="true">${K.map(k=>{const q=(k.day-d0)/((d1-d0)||1);return `<span data-d="${k.day}" style="--p:${q.toFixed(4)}">${esc(STR.vw.dayShort(k.day))}</span>`;}).join('')}</div>`}</div>
       <button type="button" class="btn icon" data-vw="dnext" aria-label="${esc(tr?STR.vw.trNext:STR.vw.dayNext)}" title="${esc(tr?STR.vw.trNext:STR.vw.dayNext)} ( ] )">${icon('fwd',20)}</button>
       <button type="button" class="btn icon" data-vw="play" id="vwPlay" aria-label="${esc(STR.vw.play)}" title="${esc(STR.vw.play)} (Space)">${icon('play',20)}</button>
     </div>
-    ${tr?'':`<div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>`}`}
+    `}
     ${o.drill?'':o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull" title="${esc(STR.ln.openFull)}">${icon('scene',18)} <span class="vf-t">${esc(STR.ln.openFull)}</span></button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
     <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-current="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
     <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.filter(l=>!l.drill).map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" role="switch" aria-checked="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
@@ -114,7 +115,7 @@ function scDiscs(S){const t=scTr(),p=t&&S.parts.find(x=>x.kind==='tracer'&&x.id=
 function scMount(S,st){
   const stage=$('#vwStage'),host=$('#vwCv');SC.ready=false;window.VW_READY=false;
   if(!SC.canvas){SC.canvas=document.createElement('canvas');SC.canvas.className='vw-canvas';SC.canvas.setAttribute('aria-hidden','true');scPointer(SC.canvas);}
-  host.appendChild(SC.canvas);scDay(st.day,true);
+  host.appendChild(SC.canvas);scDay(st.day,true);setTimeout(vwKeysFit,0);
   scEngine().then(mod=>{
     if(!$('#vwStage'))return;
     SC.mod=mod;   // stamp works even without WebGL (G-Eng)
@@ -130,7 +131,7 @@ function scMount(S,st){
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
     scLabelsDom(S);SC.ready=true;if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{if(SC.ready)scOverlay();});   // L1F (G-Art): labels measured before the web font loads would grow afterwards — place them again
-    scDay(SC.st[S.id].day,true);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
+    scDay(SC.st[S.id].day,true);setTimeout(vwKeysFit,0);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
   }).catch(e=>{console.error(e);scDay(SC.st[S.id].day,true);const m=$('#vwMsg');if(m){m.textContent=STR.vw.noGL+' ('+e.message+')';m.classList.remove('hidden');}});
 }
 /* L1F: start framing. Phone portrait uses the scene's camera.phone {zoom, shift} (scene-spec §3) while the learner has not zoomed; other classes 1 / 0 */
@@ -168,7 +169,7 @@ function scDay(d,quiet){const S=scCur();if(!S)return;const K=S.days,tr=scTr();d=
     if(stp.innerHTML!==html)stp.innerHTML=html;   // write only on change: the live region speaks once per real change (G-A11y)
     if(sl)sl.setAttribute('aria-valuetext',STR.vw.dayLong(p.day)+', '+p.stage+', '+p.size);}
   else if(stp&&!p){stp.textContent=STR.vw.dayLong(Math.round(d));}
-  $$('.vw-keys span').forEach(b=>b.classList.toggle('on',Math.abs(+b.dataset.d-d)<0.05));
+  let kc=false;$$('.vw-keys span').forEach(b=>{const o=Math.abs(+b.dataset.d-d)<0.05;if(o!==b.classList.contains('on')){b.classList.toggle('on',o);kc=true;}});if(kc)vwKeysFit();   // re-fit only when the current label changes (Play calls this every frame)
   const fl=$('#vwFull');if(fl)fl.dataset.go='scene='+S.id+'&day='+fmtDay(d);   // Try it › Open full 3D keeps the day
   if(!quiet&&SC.eng)SC.eng.setDay(d);
   if(tr&&!quiet)dlog('viewer','trace',tr.trace,'day',d);   // V3 (I5)
@@ -374,3 +375,9 @@ async function scMeasure(){
     if(!aborted&&scCur()===S0){E.setScene(S0,keep);btn.disabled=false;lines.push(STR.vw.measDone);out.value=lines.join('\n');scOverlay();}
     else{SC.cur=null;if(scCur())render();}}   // moved on mid-run: the next mount rebuilds its own scene (G-Eng)
 }
+/* D-087: day labels never touch — big text or a narrow slider hides the ones that would (the current day and the ends first) */
+function vwKeysFit(){$$('.vw-keys').forEach(k=>{const sp=[...k.children];if(!sp.length||!k.getClientRects().length||!k.offsetWidth)return;sp.forEach(x=>x.classList.remove('kh'));
+  const r=x=>x.getBoundingClientRect(),keep=[];const pri=sp.slice().sort((a,b)=>(b.classList.contains('on')-a.classList.contains('on'))||((b===sp[0]||b===sp[sp.length-1])-(a===sp[0]||a===sp[sp.length-1])));
+  pri.forEach(x=>{const q=r(x);if(keep.some(o=>q.left<o.right+6&&q.right>o.left-6))x.classList.add('kh');else keep.push(q);});});}
+addEventListener('resize',()=>setTimeout(vwKeysFit,120));try{document.fonts&&document.fonts.ready.then(()=>vwKeysFit());}catch(_){}
+if(typeof onDevice==='function')onDevice(()=>setTimeout(vwKeysFit,120));

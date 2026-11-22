@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script>/* first paint in the right theme (no flash) */try{var m=localStorage.getItem('biostudio.theme')||'system';document.documentElement.dataset.theme=(m==='dark'||(m==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))?'dark':'light';}catch(e){}</script>
 <link rel="preload" href="assets/fonts/atkinson-hyperlegible-next-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="src/css/app.css?v=18">
+<link rel="stylesheet" href="src/css/app.css?v=19">
 </head>
 <body>
 <a class="sr" href="#view">Skip to content</a>
@@ -28,26 +28,27 @@
 <nav class="nav" id="nav" aria-label="Sections"></nav>
 <main id="view" tabindex="-1"></main>
 <button type="button" class="dock hidden" id="dock"></button>
-<dialog id="moresh" class="sheet" aria-labelledby="moreT"><h2 id="moreT"></h2><div class="sheet-grid" id="moreL"></div><div class="row"><span class="sp"></span><button type="button" class="btn" id="moreX"></button></div></dialog>
-<dialog id="editdlg" aria-labelledby="editT">
+<button type="button" class="dkfold" id="dkfold"><i aria-hidden="true"></i></button>
+<dialog id="moresh" class="sheet" aria-labelledby="moreT"><div class="grip" aria-hidden="true"><span></span></div><h2 id="moreT"></h2><div class="sheet-grid" id="moreL"></div><div class="row"><span class="sp"></span><button type="button" class="btn" id="moreX"></button></div></dialog>
+<dialog id="editdlg" aria-labelledby="editT"><div class="grip" aria-hidden="true"><span></span></div>
   <h2 id="editT">✎</h2>
   <p class="sm mut"><span id="editChatL">Paste into a new chat named</span> <b id="editChat"></b>.</p>
   <textarea id="editTxt" readonly aria-label="Edit prompt"></textarea>
   <div class="row" style="margin-top:8px"><button type="button" class="btn pri" id="editCopy">Copy prompt</button><button type="button" class="btn" id="editClose">Close</button><span id="editMsg" class="sm mut" role="status"></span></div>
 </dialog>
 <noscript><p style="padding:16px">Biology Studio needs JavaScript.</p></noscript>
-<script src="src/js/00-version.js?v=18"></script>
-<script src="content/strings.js?v=18"></script>
-<script src="src/js/02-config.js?v=18"></script>
-<script src="src/js/01-debug.js?v=18"></script>
-<script src="src/js/03-device.js?v=1"></script>
+<script src="src/js/00-version.js?v=19"></script>
+<script src="content/strings.js?v=19"></script>
+<script src="src/js/02-config.js?v=19"></script>
+<script src="src/js/01-debug.js?v=19"></script>
+<script src="src/js/03-device.js?v=19"></script>
 <script src="src/js/04-storage.js?v=14"></script>
 <script src="src/js/05-router.js?v=18"></script>
-<script src="src/js/06-shell.js?v=18"></script>
+<script src="src/js/06-shell.js?v=19"></script>
 <script src="src/js/10-today.js?v=14"></script>
 <script src="src/js/11-bookmap.js?v=18"></script>
-<script src="src/js/12-settings.js?v=18"></script>
-<script src="src/js/13-viewer.js?v=18"></script>
+<script src="src/js/12-settings.js?v=19"></script>
+<script src="src/js/13-viewer.js?v=19"></script>
 <script src="src/js/15-cards.js?v=15"></script>
 <script src="src/js/16-studio.js?v=11"></script>
 <script src="src/js/17-plan.js?v=17"></script>
@@ -55,8 +56,8 @@
 <script src="src/js/18-learn.js?v=15"></script>
 <script src="src/js/19-review.js?v=13"></script>
 <script src="src/js/20-lessons.js?v=14"></script>
-<script src="src/js/90-layout-audit.js?v=13"></script>
-<script src="src/js/91-tests.js?v=18"></script>
+<script src="src/js/90-layout-audit.js?v=19"></script>
+<script src="src/js/91-tests.js?v=19"></script>
 <script src="src/js/99-boot.js?v=2"></script>
 </body>
 </html>

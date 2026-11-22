@@ -50,7 +50,7 @@ function dbgPaint(){
     'route  #'+(location.hash.slice(1)||'—'),
     'ids    '+(r.id||r.ch||'—'),
     'fps    '+DBG.fps+' · state '+size+(typeof STORE!=='undefined'?' · rev '+STORE.rev+' · '+STORE.mode:''),
-    'device '+(d.cls||'?')+' · '+(d.input||'?')+' · '+innerWidth+'×'+innerHeight+' @'+devicePixelRatio,
+    'device '+(typeof devLine==='function'&&d.cls?devLine():'?')+' · '+(d.input||'?')+' @'+devicePixelRatio,
     'flags  '+(FLAGS.test?'test ':'')+[...FLAGS.debug].join(','),
     dbgOn('viewer')&&typeof ROUTE!=='undefined'&&ROUTE.name==='scene'?DBG.viewer:'',
     dbgOn('studio')&&typeof ROUTE!=='undefined'&&(ROUTE.name==='studio'||ROUTE.name==='calib')?DBG.studio:'',

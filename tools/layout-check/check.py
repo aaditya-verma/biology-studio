@@ -9,6 +9,9 @@ L1F: + D-053 fold (Check hides the card text; Read again ends the run unscored),
     V3 (D-075): the trace drill on E05.01.03 at 5 classes × 100/125 % — the marked cell on the stage and clear of the overlays at its start and end,
     its label shown, ▶ steps over the path's keys to the endoderm, the stamp unmasked, the right answer scores; reduced-motion Play steps key to key;
     rotate mid-drill keeps the day.
+    U2 part 2 (D-087): + real-tablet sizes where the window is smaller than the screen (system bars, page zoom, split screen; `screen` emulated, so
+    the class must come from the screen's short side), + 150 % / 200 % text, + the six new in-app audit checks (ctrl-overlap, ring-touch, pill-wrap,
+    slider-label, stage-collide, no-scroll-cue); --selftest runs each against its v18 case (must fail) and its v19 case (must pass).
 
 Serves the repo, opens every screen at every size of the §8a matrix (phones + tablets in portrait AND landscape,
 desktop sizes), at 100 % and 125 % text, light and dark, and runs the in-app audit (src/js/90-layout-audit.js):
@@ -17,7 +20,7 @@ Also checks: the device class each size gets, rotating keeps the place, the in-a
 colour re-check on the Colour key screen (fill or edge >= 3.5:1, label text >= 4.5:1, accent >= 3:1) in both themes.
 Writes out/layout-check/report.json, report.md and contact sheets (one PNG per device class) for G-Art.
 
-Run from the repo root:  python tools/layout-check/check.py [--preview] [--only concept] [--debug] [--dry-run] [--out DIR]
+Run from the repo root:  python tools/layout-check/check.py [--preview] [--only concept] [--debug] [--dry-run] [--selftest] [--out DIR]
 Needs: pip install playwright pillow  +  python -m playwright install chromium   (or CHROME=/path/to/chrome)
 Exit code 1 if any issue. Owner doc: build/design-plan.md §7. EDIT: sizes in MATRIX, screens in SCREENS.
 """
@@ -32,6 +35,18 @@ MATRIX = {
     "desktop": [(1280, 720), (1366, 768), (1440, 900), (1920, 1080), (2560, 1440)],
 }
 PREVIEW = [("phone", 390, 844), ("phone", 844, 390), ("tablet", 820, 1180), ("tablet", 1180, 820), ("desktop", 1440, 900)]
+# EDIT (D-087): real tablets — window (w, h) on a screen (sw, sh): system bars, page zoom, split screen. 100/125 %, light + dark.
+REAL = [
+    ("tablet", 937, 550, 1000, 640, "system bars (owner's tablet)"), ("tablet", 1000, 560, 1080, 640, "system bars"),
+    ("tablet", 900, 560, 1000, 640, "page zoom"), ("tablet", 1000, 625, 1280, 800, "page zoom"),
+    ("tablet", 560, 900, 640, 1000, "page zoom"), ("tablet", 625, 1000, 800, 1280, "page zoom"),
+    ("tablet", 640, 800, 1280, 800, "split screen"), ("tablet", 800, 640, 800, 1280, "split screen"),
+    ("tablet", 427, 800, 1280, 800, "1/3 split screen"),
+]
+SPLIT = {"split screen", "1/3 split screen"}   # these must also get html.in-split; the rest must not
+# EDIT (D-087): big text (Android font size / browser text zoom), light only — the preview sizes + the owner's tablet + a split screen
+BIG_TEXT = [150, 200]
+BIG = PREVIEW + [("tablet", 937, 550), ("tablet", 640, 800)]
 # EDIT: screens (hash routes)
 SCREENS = {
     "today": "today", "map": "map", "chapter": "map=E05", "concept": "concept=E05.02.01",
@@ -51,15 +66,21 @@ SCREENS = {
 REVIEW_SCREENS = ("review", "review-news", "review-mine", "rcard", "rcard-draft", "rtour", "rtour-3", "updates")
 
 
-def expected_class(kind, w, h):
-    short, land = min(w, h), w > h
+def expected_class(kind, w, h, sw=None, sh=None):
+    """design-plan §2 (D-087): touch — phone vs tablet from the SCREEN's short side, orientation from the window; desktop = fine pointer."""
+    land = w > h
     if kind == "desktop":
         return "dev-d"
-    if short < 600:
+    if min(sw or w, sh or h) < 600:
         return "dev-pl" if land else "dev-p"
-    if short < 1024:
-        return "dev-tl" if land else "dev-tp"
     return "dev-tl" if land else "dev-tp"
+
+
+def screen_of(w, h):
+    for k, rw, rh, sw, sh, _ in REAL:
+        if (rw, rh) == (w, h):
+            return sw, sh
+    return None
 
 
 def viewports(preview):
@@ -106,11 +127,17 @@ async def run(a):
             browser = await p.chromium.launch(**kw)
         except Exception:
             browser = await p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox"])
-        for kind, w, h in vps:
+        plan = [(k, w, h, themes, texts) for k, w, h in vps]
+        if not a.preview:   # D-087: real-tablet sizes (screen ≠ window) + big text
+            plan += [(k, w, h, themes, texts) for k, w, h, *_ in REAL]
+            plan += [(k, w, h, ["light"], BIG_TEXT) for k, w, h in BIG]
+        for kind, w, h, p_themes, p_texts in plan:
             touch = kind != "desktop"
-            for theme in themes:
-                for text in texts:
-                    ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=touch, is_mobile=touch, device_scale_factor=1, color_scheme=theme)
+            scr = screen_of(w, h)
+            for theme in p_themes:
+                for text in p_texts:
+                    ckw = {"screen": {"width": scr[0], "height": scr[1]}} if scr else {"screen": {"width": w, "height": h}}
+                    ctx = await browser.new_context(viewport={"width": w, "height": h}, has_touch=touch, is_mobile=touch, device_scale_factor=1, color_scheme=theme, **ckw)
                     await ctx.add_init_script(f"try{{localStorage.setItem('biostudio.theme','{theme}')}}catch(e){{}}")
                     if text != 100:
                         await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='html{font-size:%d%%!important}';document.head.appendChild(s);});" % text)
@@ -141,7 +168,12 @@ async def run(a):
                             await page.wait_for_function(f"window.VW_READY===true && ROUTE.id==='{sid}'", timeout=30000)
                             await page.wait_for_timeout(80)
                         if route.startswith(("studio", "calib")):   # Studio: wait for cards + sources (S1)
-                            await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
+                            try:
+                                await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=20000)
+                            except Exception:   # a known local flake (W3 log: Studio load timeout) — reload once, then wait longer; a real failure still fails
+                                await page.goto(f"{base}?test=1&debug=0#{route}")
+                                await page.wait_for_function("window.BOOTED", timeout=20000)
+                                await page.wait_for_function(f"window.ST_READY==={json.dumps(route)}", timeout=40000)
                         if route.startswith(("cards", "card=", "deck")):   # L1: cards loaded + drawn; a card also waits for its inline 3D
                             await page.wait_for_function(f"window.LN_READY==={json.dumps(route.split('&')[0] if route.startswith('card=') else route.split('=')[0] if route.startswith('deck') else route)}", timeout=20000)
                             if route.startswith("card=") and "E06" not in route.split("&")[0]:   # no-scene cards (D-058) have no 3D to wait for
@@ -161,8 +193,8 @@ async def run(a):
                             await page.wait_for_function(f"window.TR_READY==={json.dumps(route)}", timeout=20000)
                         cls = await page.evaluate("[...document.documentElement.classList].find(c=>c.startsWith('dev-'))")
                         got_theme = await page.evaluate("document.documentElement.dataset.theme")
-                        want = expected_class(kind, w, h)
-                        label = f"{w}x{h} {theme} {text}% {sname}"
+                        want = expected_class(kind, w, h, *(scr or (None, None)))
+                        label = f"{w}x{h}{'@' + str(scr[0]) + 'x' + str(scr[1]) if scr else ''} {theme} {text}% {sname}"
                         iss = await page.evaluate("layoutAudit()")
                         await page.evaluate("scrollTo(0,document.scrollingElement.scrollHeight)")
                         await page.wait_for_timeout(60)
@@ -171,6 +203,11 @@ async def run(a):
                         found = [dict(i, at=label) for i in iss + iss2]
                         if cls != want:
                             found.append({"kind": "device-class", "what": f"got {cls}, want {want}", "at": label})
+                        if scr:   # D-087: split screen = compact chrome, the others never
+                            sp = await page.evaluate("document.documentElement.classList.contains('in-split')")
+                            want_sp = any((rw, rh) == (w, h) and why in SPLIT for _, rw, rh, _, _, why in REAL)
+                            if sp != want_sp:
+                                found.append({"kind": "device-class", "what": f"in-split {sp}, want {want_sp}", "at": label})
                         if got_theme != theme:
                             found.append({"kind": "theme", "what": f"page drew {got_theme}, asked for {theme}", "at": label})
                         for e in errors:
@@ -192,9 +229,27 @@ async def run(a):
                                 report["colours"].append({"at": label, "token": k, "fill": r["fill"], "cFill": round(r["cFill"], 2), "cEdge": round(r.get("cEdge", 0), 2), "cText": round(r["cText"], 2), "ok": ok})
                                 if not ok:
                                     found.append({"kind": "colour", "what": f"{k} fill {r['cFill']:.2f} edge {r.get('cEdge', 0):.2f} text {r['cText']:.2f}", "at": label})
+                        if sname == "lesson" and text == 100 and theme == "light" and not scr:   # D-087 (G-Art): More sheet open + Back dock folded, shot + audit
+                            if cls == "dev-p":
+                                await page.evaluate("dockFoldSet(true)"); await page.wait_for_timeout(120)
+                                p2 = out / "shots" / f"{cls}_{w}x{h}_dock-folded.png"; await page.screenshot(path=str(p2)); shots.setdefault(cls, []).append((f"{w}×{h} dock folded", p2))
+                                found += [dict(i, at=label + " dock-folded") for i in await page.evaluate("layoutAudit()") if i["kind"] in ("fixed-over", "ctrl-overlap", "tap-small")]
+                                await page.evaluate("dockFoldSet(false)")
+                            await page.evaluate("$('#moresh').showModal()"); await page.wait_for_timeout(350)
+                            p3 = out / "shots" / f"{cls}_{w}x{h}_more-open.png"; await page.screenshot(path=str(p3)); shots.setdefault(cls, []).append((f"{w}×{h} More open", p3))
+                            found += [dict(i, at=label + " more-open") for i in await page.evaluate("layoutAudit(document.getElementById('moresh'))")]
+                            await page.evaluate("$('#moresh').close()")
                         report["runs"].append({"at": label, "class": cls, "issues": len(found)})
                         report["issues"] += found
-                        if text == 100 and theme == "light" or (a.preview and theme == "light"):
+                        if scr and text == 100 and theme == "light":   # D-087: the real-tablet sizes get their own contact sheet
+                            path = out / "shots" / f"real_{w}x{h}_{sname}.png"
+                            await page.screenshot(path=str(path))
+                            shots.setdefault("real tablets", []).append((f"{w}×{h} on {scr[0]}×{scr[1]} {sname}", path))
+                        elif text in BIG_TEXT and sname in ("today", "card", "viewer", "settings", "lesson", "map", "progress-plan"):
+                            path = out / "shots" / f"big{text}_{w}x{h}_{sname}.png"
+                            await page.screenshot(path=str(path))
+                            shots.setdefault(f"text {text}", []).append((f"{w}×{h} {sname} {text}%", path))
+                        elif text == 100 and theme == "light" or (a.preview and theme == "light" and text == 100):
                             path = out / "shots" / f"{cls}_{w}x{h}_{theme}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(cls, []).append((f"{w}×{h} {sname}", path))
@@ -840,6 +895,41 @@ def write_md(r, out, nvp, themes, texts, screens):
     (out / "report.md").write_text("\n".join(lines) + "\n")
 
 
+SELFTEST_CHECKS = ["ctrl-overlap", "slider-label", "ring-touch", "pill-wrap", "stage-collide", "no-scroll-cue"]   # EDIT: one case per check in selftest/cases.html
+
+
+async def selftest():
+    """D-087: every new audit check must flag its v18 case and pass its v19 case (tools/layout-check/selftest/cases.html)."""
+    from playwright.async_api import async_playwright
+    srv, base = serve()
+    bad = 0
+    async with async_playwright() as p:
+        kw = {"args": ["--no-sandbox"]}
+        if os.environ.get("CHROME"):
+            kw["executable_path"] = os.environ["CHROME"]
+        browser = await p.chromium.launch(**kw)
+        for touch in (True, False):
+            ctx = await browser.new_context(viewport={"width": 420, "height": 900}, has_touch=touch, is_mobile=touch, device_scale_factor=1)
+            page = await ctx.new_page()
+            await page.goto(base + "tools/layout-check/selftest/cases.html")
+            await page.wait_for_function("typeof layoutAudit==='function'")
+            if not touch:
+                await page.add_style_tag(content=":root{--tap:36px}")
+            for k in SELFTEST_CHECKS:
+                for ver, want in (("v18", True), ("v19", False)):
+                    kinds = await page.evaluate(f"layoutAudit(document.getElementById('{k}-{ver}')).map(i=>i.kind+': '+i.what)")
+                    got = any(x.startswith(k + ":") for x in kinds)
+                    ok = got == want
+                    bad += not ok
+                    print(f"{'ok ' if ok else 'BAD'} {'touch' if touch else 'mouse'} {k} {ver}: {'flagged' if got else 'clean'} (want {'flagged' if want else 'clean'})" + ("" if ok else "  " + "; ".join(kinds)[:300]))
+            await ctx.close()
+        await browser.close()
+    srv.shutdown()
+    n = len(SELFTEST_CHECKS) * 4
+    print(f"{'PASS' if not bad else 'FAIL'}: selftest {n - bad}/{n}")
+    return 1 if bad else 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--preview", action="store_true", help="5 key sizes, light, 100 %% text")
@@ -847,11 +937,17 @@ def main():
     ap.add_argument("--debug", action="store_true", help="outline every box in the screenshots")
     ap.add_argument("--font", help="stress test: render with this font family (e.g. \"DejaVu Sans Mono\") — CI fonts can be wider than yours (V2)")
     ap.add_argument("--dry-run", action="store_true", help="print the plan, open nothing")
+    ap.add_argument("--selftest", action="store_true", help="run each new audit check (D-087) on its v18 case (must fail) and v19 case (must pass)")
     ap.add_argument("--out", default=str(ROOT / "out" / "layout-check"))
     a = ap.parse_args()
+    if a.selftest:
+        return asyncio.run(selftest())
     vps = viewports(a.preview)
     if a.dry_run:
         print(f"{len(vps)} viewports:", ", ".join(f"{w}x{h}->{expected_class(k, w, h)}" for k, w, h in vps))
+        if not a.preview:
+            print(f"{len(REAL)} real tablets:", ", ".join(f"{w}x{h} on {sw}x{sh} ({why})->{expected_class(k, w, h, sw, sh)}" for k, w, h, sw, sh, why in REAL))
+        print(f"big text {BIG_TEXT} on:", ", ".join(f"{w}x{h}" for k, w, h in BIG))
         print("screens:", ", ".join(SCREENS if not a.only else [a.only]))
         return 0
     r = asyncio.run(run(a))

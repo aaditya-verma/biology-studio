@@ -7,6 +7,8 @@ const STR={
   navHint:{today:'Where to start and what is next',cards:'Concept cards: read, check, explain, remember',map:'Every concept in the book, mapped',scene:'3D scenes: turn, scrub the days, slice',settings:'Theme, motion, storage, backup, colour key',studio:'Draft and review cards (testing mode)',progress:'Progress map: every step, what blocks it, what you owe',review:'Check the science on cards and send feedback'},
   back:'Back', up:'Up', close:'Close', search:'Search', clear:'Clear', all:'All', none:'—',
   leaveHint:'Press Back again to leave Biology Studio',
+  navShort:{today:'Your plan for today',cards:'Read, check, remember',map:'Every concept',scene:'Turn, scrub, slice',settings:'Theme, backup, colours',studio:'Draft + review cards',progress:'Steps and blockers',review:'Check the science'},   // D-087: one line under a More tile
+  moreBelow:'More ↓', dockFold:'Fold the Back button away', dockOpen:'Show the Back button', newMark:'new',
   more:'More', moreT:'More places', searchGo:'Search the book map', closePanel:'Close — back to where you were',   // U2 shell (D-077, D-084)
   testFlag:'Testing mode — nothing is saved', testShort:'✎ test',
   // Today

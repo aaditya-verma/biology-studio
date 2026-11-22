@@ -6,15 +6,17 @@ const CONFIG={
   idb:{name:'biostudio',ver:1,stores:['state','answers','files']},   // D-019; add stores only (A1)
   saveDelayMs:400,                            // debounce between a change and the write
   saveLogMax:20,
-  keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
+  keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash',dockFold:'biostudio.dockfold'},   // dockFold (D-087): Back dock folded on this device
   nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
   navBar:['today','cards','map','scene'],     // EDIT (U2, D-077): the phone-portrait floating bar = these 4 + More; every other item goes in the More sheet
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
   routes:['today','lessons','lesson','mix','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
-  // device classes (§8a): short side < phone ⇒ phone; < tablet ⇒ tablet; desktop needs ≥ 1024 wide + fine pointer
-  device:{phone:600,tablet:1024},
+  // device classes (§2, D-087): touch — the SCREEN's short side < phone ⇒ phone, else tablet (orientation from the window); fine pointer — window ≥ tablet wide ⇒ desktop
+  // split screen = the window < splitW of the screen's width or < splitH of its height (compact chrome, never a phone)
+  device:{phone:600,tablet:1024,splitW:0.75,splitH:0.7},
+  sheet:{gripH:28,closePx:120,closeFrac:0.3},   // EDIT (D-087): phone bottom sheets — the grab zone at the top, and how far a drag must go to close (px, or share of the sheet's height)
   xt:{x:'layer',y:'day'},                     // default crosstab
   debugAreas:['map','viewer','layout','store','router','device','test','studio','tracker','learn','review','lessons'],
   navReview:'review',                         // EDIT (H2): nav item added after Cards once Reviewer mode is on (not in testing mode — its nav is full)

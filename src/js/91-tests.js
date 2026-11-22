@@ -7,6 +7,11 @@ function appTests(){
   const dc=[[360,640,0,'dev-p'],[640,360,0,'dev-pl'],[932,430,0,'dev-pl'],[768,1024,0,'dev-tp'],[1024,768,0,'dev-tl'],[1180,820,0,'dev-tl'],[1366,1024,0,'dev-tl'],[1024,1366,0,'dev-tp'],
     [1280,720,1,'dev-d'],[1366,768,1,'dev-d'],[1920,1080,1,'dev-d'],[800,1280,0,'dev-tp']];
   dc.forEach(([w,h,f,e])=>t('device '+w+'×'+h+(f?' mouse':' touch'),deviceClass(w,h,!!f)===e,deviceClass(w,h,!!f)));
+  // D-087: touch — the screen decides phone vs tablet; the window decides orientation; split screen is never a phone
+  const ds=[[937,550,1000,640,'dev-tl',0],[1000,560,1080,640,'dev-tl',0],[900,560,1000,640,'dev-tl',0],[560,900,640,1000,'dev-tp',0],[625,1000,800,1280,'dev-tp',0],
+    [640,800,1280,800,'dev-tp',1],[1180,740,820,1180,'dev-tl',0],[740,1100,820,1180,'dev-tp',0],[800,640,800,1280,'dev-tl',1],[390,780,390,844,'dev-p',0],[844,340,844,390,'dev-pl',0],[400,800,1280,800,'dev-tp',1]];
+  ds.forEach(([w,h,sw,sh,e,sp])=>t('device '+w+'×'+h+' on screen '+sw+'×'+sh,deviceClass(w,h,false,sw,sh)===e&&deviceSplit(w,h,false,sw,sh)===!!sp,deviceClass(w,h,false,sw,sh)+(deviceSplit(w,h,false,sw,sh)?' split':'')));
+  t('device mouse narrow window = window rule',deviceClass(500,800,true,1920,1080)==='dev-p'&&!deviceSplit(500,800,true,1920,1080));
   // router: parse ↔ hash round trip, Up
   ['today','map','map=E05','concept=E05.02.01','x=layer&y=day','settings','colours','scene','scene=sc-E00.01.04','scene=sc-E00.01.04&day=16','scene=sc-E00.01.04&day=15.5','day=16'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
   t('route unknown → home',parseHash('#nope').name===CONFIG.home);

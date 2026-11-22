@@ -28,9 +28,12 @@ const rvNavOn=()=>!FLAGS.test&&!!(state&&state.review&&state.review.on);
 const navItems=()=>{const n=CONFIG.nav.slice();if(rvNavOn())n.splice(Math.max(1,n.indexOf('cards')+1),0,CONFIG.navReview);return n.concat(FLAGS.test?CONFIG.navTest:[]);};
 function buildShell(){
   const bar=CONFIG.navBar;   // U2: items in the phone-portrait bar get data-bar; the rest show in rails and in the More sheet
-  $('#nav').innerHTML=navItems().map(k=>`<button type="button" data-nav="${k}"${bar.includes(k)?' data-bar':''} aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('')
-    +`<button type="button" id="moreb" data-bar aria-haspopup="dialog" aria-label="${esc(STR.more)}" title="${esc(STR.moreT)}">${icon('more')}<span aria-hidden="true">${esc(STR.more)}</span></button>`;
-  $('#moreL').innerHTML=navItems().filter(k=>!bar.includes(k)).map(k=>`<button type="button" class="btn" data-nav="${k}" data-sheet>${icon(k,20)}<span>${esc(STR.nav[k])}</span></button>`).join('');
+  // D-087 (owner's Strava pattern): icon in a pill + label under it; a logo mark tops the tablet/desktop rail; More = tiles (icon, name, one line, new-dot)
+  $('#nav').innerHTML=`<span class="nlogo" aria-hidden="true"><img src="assets/icon.svg" alt="" width="40" height="40"></span>`
+    +navItems().map(k=>`<button type="button" data-nav="${k}"${bar.includes(k)?' data-bar':''} aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}"><span class="nic">${icon(k)}</span><span class="nl" aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('')
+    +`<button type="button" id="moreb" data-bar aria-haspopup="dialog" aria-label="${esc(STR.more)}" title="${esc(STR.moreT)}"><span class="nic">${icon('more')}</span><span class="nl" aria-hidden="true">${esc(STR.more)}</span></button>`;
+  $('#moreL').innerHTML=navItems().filter(k=>!bar.includes(k)).map(k=>`<button type="button" class="mtile" data-nav="${k}" data-sheet><span class="mic">${icon(k,24)}</span><b>${esc(STR.nav[k])}</b><span class="md">${esc(STR.navShort[k]||'')}</span></button>`).join('');
+  $('#dkfold').setAttribute('aria-label',STR.dockFold);$('#dkfold').title=STR.dockFold;dockFoldSet(dockFolded());
   $('#moreT').textContent=STR.moreT;$('#moreX').textContent=STR.close;
   $('#srchb').innerHTML=icon('search',20);$('#srchb').setAttribute('aria-label',STR.searchGo);$('#srchb').title=STR.searchGo;
   $('#dock').innerHTML=icon('back',22)+`<span class="sr">${esc(STR.back)}</span>`;$('#dock').title=STR.back;
@@ -50,7 +53,7 @@ function syncShell(){
   const cb=canBack();$('#backb').classList.toggle('hidden',!cb);document.documentElement.classList.toggle('can-back',cb);$('#dock').classList.toggle('hidden',!cb);   // D-084: Back whenever there is history (never at the first step: Back there would arm "leave")
   const off=!CONFIG.navBar.includes(navOf(ROUTE)),mb=$('#moreb');if(mb){if(off)mb.setAttribute('aria-current','page');else mb.removeAttribute('aria-current');}   // a page reached from More lights More on the bar
   $$('#moreL [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
-  barShow(true);
+  navNewSync();barShow(true);document.documentElement.classList.toggle('rm',typeof motionReduced==='function'&&motionReduced());
   document.title=cr[cr.length-1].label+' · '+STR.app;
   const ae=document.activeElement;if(ae&&ae!==document.body&&!ae.getClientRects().length)view().focus({preventScroll:true});   // the dock/Back just hid under focus: keep focus in the page
 }
@@ -64,7 +67,7 @@ function render(prev){
     fk=inView&&!keep&&ae.dataset&&ae.dataset.fk?ae.dataset.fk:null,   // …or a button that marks itself with data-fk (Studio, calibration)
     sel=keep&&ae.matches('input[type=text],input:not([type]),textarea')?[ae.selectionStart,ae.selectionEnd,ae.scrollTop]:null;   // caret + scroll survive a redraw
   try{f(view(),prev||{});}catch(e){console.error(e);view().innerHTML=`<div class="card"><b>${esc(STR.drawFail)}</b><p class="mut">${esc(e.message)}</p></div>`;}
-  syncShell();if(FLAGS.test)testBanner();
+  syncShell();if(FLAGS.test)testBanner();cueSoon();
   const fkEl=fk&&document.querySelector(`#view [data-fk="${CSS.escape(fk)}"]`);
   if(keep&&document.getElementById(keep)){const k=document.getElementById(keep);k.focus({preventScroll:true});if(sel&&k.setSelectionRange){try{k.setSelectionRange(sel[0],sel[1]);k.scrollTop=sel[2];}catch(_){}}}
   else if(fkEl)fkEl.focus({preventScroll:true});
@@ -95,6 +98,7 @@ function shellEvents(){
     const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return;}
     if(e.target.closest('#brand')){go(CONFIG.home);return;}
     if(e.target.closest('#backb')||e.target.closest('#dock')){goBack();return;}
+    if(e.target.closest('#dkfold')){dockFoldSet(!dockFolded(),true);return;}
     if(e.target.closest('#moreb')){$('#moresh').showModal();return;}
     if(e.target.closest('#moreX')){$('#moresh').close();return;}
     if(e.target===$('#moresh')){const b=e.target.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)$('#moresh').close();return;}   // only a tap on the backdrop (outside the sheet) closes it
@@ -109,8 +113,44 @@ function shellEvents(){
     if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!$('dialog[open]')&&!e.target.closest('[contenteditable]')){e.preventDefault();searchGo();}
     else if(e.key==='Escape'&&!$('dialog[open]')&&(canBack()||upOf(ROUTE))){goBack();}
   });
-  barScroll();
+  barScroll();sheetDrag();
+  document.addEventListener('focusin',e=>{const b=e.target;if(b&&b.closest&&b.closest('.seg'))b.scrollIntoView({block:'nearest',inline:'nearest'});});   // G-A11y: a focused tab in a scrolled pill comes into view
+  document.addEventListener('scroll',e=>{const t=e.target;if(t&&t.nodeType===1&&(t.matches('[data-cue]')||t.matches('.seg')))cueOne(t);},{capture:true,passive:true});
+  addEventListener('resize',cueSoon);document.addEventListener('click',()=>setTimeout(cueAll,60));onDevice(cueSoon);
+  try{document.fonts&&document.fonts.ready.then(cueAll);}catch(_){}
 }
+/* D-087: scroll cues — a side panel ([data-cue]) with content hidden below shows a fade + "More ↓"; a pill (.seg) that scrolls sideways fades its hidden end */
+function cueOne(el){
+  if(el.matches('.seg')){const sl=el.scrollLeft,mx=el.scrollWidth-el.clientWidth;el.classList.toggle('ovf-r',mx>2&&sl<mx-2);el.classList.toggle('ovf-l',mx>2&&sl>2);return;}
+  let c=el.querySelector(':scope>.cue');if(!c){c=document.createElement('div');c.className='cue';c.setAttribute('aria-hidden','true');c.textContent=STR.moreBelow;el.appendChild(c);}
+  else if(c!==el.lastElementChild)el.appendChild(c);
+  const s=getComputedStyle(el),scrolls=/(auto|scroll)/.test(s.overflowY);
+  el.classList.toggle('cue-on',scrolls&&el.scrollHeight-el.clientHeight>8&&el.scrollTop+el.clientHeight<el.scrollHeight-8);}
+function cueAll(){$$('[data-cue],.seg').forEach(cueOne);}
+let cueT=0;function cueSoon(){cancelAnimationFrame(cueT);cueT=requestAnimationFrame(()=>requestAnimationFrame(cueAll));}
+/* D-087: new-dot badges — a nav item with something new for you (Review: cards changed since your last look); the More button carries the dot of its tiles */
+function navNew(k){try{return k==='review'&&typeof RV!=='undefined'&&!!RV.idx&&!!(state&&state.review&&state.review.seenAt)&&rvNews().length>0;}catch(_){return false;}}
+function navNewSync(){let more=false;
+  $$('[data-nav]').forEach(b=>{const k=b.dataset.nav,on=navNew(k),host=b.querySelector('.nic,.mic');if(!host)return;let d=host.querySelector('.ndot');
+    if(on&&!d){d=document.createElement('i');d.className='ndot';d.setAttribute('aria-hidden','true');host.appendChild(d);}else if(!on&&d)d.remove();
+    const nm=STR.nav[k]+(on?' ('+STR.newMark+')':'');if(b.matches('#nav button'))b.setAttribute('aria-label',nm);else{const t=b.querySelector('b');if(t)t.textContent=nm;}
+    if(on&&!CONFIG.navBar.includes(k))more=true;});
+  const mb=$('#moreb');if(mb){const h=mb.querySelector('.nic');let d=h.querySelector('.ndot');if(more&&!d){d=document.createElement('i');d.className='ndot';d.setAttribute('aria-hidden','true');h.appendChild(d);}else if(!more&&d)d.remove();
+    mb.setAttribute('aria-label',STR.more+(more?' ('+STR.newMark+')':''));}}
+/* D-087: the Back dock folds into a small handle; the choice is kept on this device (localStorage, never in state — A1) */
+function dockFolded(){try{return localStorage.getItem(CONFIG.keys.dockFold)==='1';}catch(_){return false;}}
+function dockFoldSet(on,user){document.documentElement.classList.toggle('dock-fold',on);try{localStorage.setItem(CONFIG.keys.dockFold,on?'1':'0');}catch(_){}
+  const b=$('#dkfold');if(b){const t=on?STR.dockOpen:STR.dockFold;b.setAttribute('aria-label',t);b.title=t;const i=b.querySelector('i');if(i)i.textContent=on?'›':'‹';}   // the label says the action (G-A11y: no aria-expanded on top of it)
+  if(user&&!on)setTimeout(()=>{const d=$('#dock');if(d&&d.getClientRects().length)d.focus();},30);}
+/* D-087: a dialog on phone portrait is a bottom sheet — drag its grip (or its top edge) down to close it; a short drag springs back */
+function sheetDrag(){let d=null,y0=0,dy=0;
+  document.addEventListener('pointerdown',e=>{const dl=e.target.closest('dialog[open]');if(!dl||DEV.cls!=='dev-p')return;const r=dl.getBoundingClientRect();
+    if(!(e.target.closest('.grip')||e.clientY-r.top<CONFIG.sheet.gripH))return;d=dl;y0=e.clientY;dy=0;d.classList.add('drag');try{d.setPointerCapture(e.pointerId);}catch(_){}});
+  document.addEventListener('pointermove',e=>{if(!d)return;dy=Math.max(0,e.clientY-y0);d.style.transform=dy?`translateY(${dy}px)`:'';},{passive:true});
+  const end=cancel=>{if(!d)return;const dl=d;d=null;dl.classList.remove('drag');
+    if(!cancel&&dy>Math.min(CONFIG.sheet.closePx,dl.offsetHeight*CONFIG.sheet.closeFrac)){const motion=!(typeof motionReduced==='function'&&motionReduced());dl.style.transform=motion?'translateY(100%)':'';setTimeout(()=>{dl.close();dl.style.transform='';},motion?200:0);}
+    else dl.style.transform='';};   // a short drag or a cancelled one springs back
+  document.addEventListener('pointerup',()=>end(false));document.addEventListener('pointercancel',()=>end(true));}
 /* U2 — Search one tap from every screen (D-084 (5)): the Book map's search box, focused */
 function searchGo(){const f=()=>{const q=$('#bmq');if(q&&q.getClientRects().length){q.focus();if(q.select)q.select();return true;}return false;};   // only a visible box (phones show one pane at a time)
   if(ROUTE.name==='map'&&f())return;go('map');let n=0;(function w(){if(!f()&&n++<40)setTimeout(w,50);})();}

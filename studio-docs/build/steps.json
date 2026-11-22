@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "SR1", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "SR1", "U3", "FA", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "surfaces": {"on": ["Code", "Cowork", "split"], "traits": ["tests", "connectors", "artifacts", "owner"], "rules": [{"if": {"uses": "prof"}, "on": ["Cowork", "Code"], "warn": ["Code"], "why": "the Professor's chats: Cowork by default, Code allowed with a warning (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "hard": true, "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"trait": "tests"}, "on": "Code", "hard": true, "why": "runs the tests and repo tools"}, {"if": {"files_over": 15}, "on": "Code", "hard": true, "why": "touches more than 15 files"}, {"if": {"lock": true}, "on": "Code", "hard": true, "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"trait": "connectors"}, "on": "Cowork", "split": true, "why": "needs connectors (PubMed, Drive, GitHub web, …)"}, {"if": {"trait": "artifacts"}, "on": "Cowork", "split": true, "why": "makes or reads an artifact or design canvas"}, {"if": {"trait": "owner"}, "on": "Cowork", "split": true, "why": "an owner check or review with you"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit (a tie goes to Code — W3 answer 2)"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough (a tie goes to Cowork — W3 answer 2)"}], "note": "Where each chat runs (W3 D-080, W3F). Code · Cowork · split (a Code part + a Cowork part joined by run.handoff). The first matching rule gives the suggestion; a `hard` rule (GPU, tests, > 15 files, the lock) makes Code required — Cowork is then an error; a hard rule + a `split` rule (connectors, artifacts, owner) → split. `warn` = allowed but warned (the Professor on Code). Steps add `traits`/`files` to their `run` so the rules can see them. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
@@ -914,7 +914,7 @@
    "chat": "Bio · Research · X1 Ch 21",
    "status": "ready",
    "needs": ["X1.20"],
-   "unblocks": [],
+   "unblocks": ["FD"],
    "lock": false,
    "gates": {"G-Sci": "open"},
    "check": null,
@@ -923,7 +923,7 @@
    "log": "—",
    "todo": [],
    "inputs": [],
-   "runs": [],
+   "runs": [{"chat": "Bio · Research · X1 Ch 21", "by": "Aaditya", "start": "2026-11-22 15:03", "outcome": "partial", "note": "route B (cloud workspace; started while U2 held the clone — research needs no lock); research + G-Sci fresh-eyes reviewer done (pass with fixes, 6 MUST + 8 SHOULD applied); drafts parked in handoff\\x1-ch21 (not yet in the repo); commit by scheduled task `Bio · Research · X1 Ch 21 commit` (hourly, gate = U2 pushed), which closes this run. Ch 21 decision: next free D (D-087 now U2's)."}],
    "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
   },
   {
@@ -1074,7 +1074,7 @@
    "chat": "Bio · Episode · S1E01",
    "status": "planned",
    "needs": ["C1", "M1b"],
-   "unblocks": ["R1"],
+   "unblocks": ["R1", "FD"],
    "lock": false,
    "gates": {"G-Sci": "open", "G-Learn": "open", "G-Story": "open", "G-Art": "open"},
    "check": null,
@@ -1431,24 +1431,24 @@
    "title": "U2 look tokens, fonts, shell",
    "type": "Build",
    "chat": "Bio · Build · U2 look tokens",
-   "status": "in progress",
+   "status": "owner check",
    "needs": ["U1", "L2"],
    "unblocks": ["SR1", "U3"],
    "lock": true,
-   "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
+   "gates": {"G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
    "check": {"id": "T13b", "state": "open"},
-   "decisions": ["D-077", "D-031", "D-034", "D-084", "D-086"],
+   "decisions": ["D-077", "D-031", "D-034", "D-084", "D-086", "D-087"],
    "prompt": "U2 look tokens",
-   "log": "—",
+   "log": "22 Nov 2026 · U2 look tokens, parts 1 + 2 (app v18 → v19, D-086, D-087 proposed, route B) — part 1: v2 tokens (ladder L0–L4, e1–e3, radii, lift, D-077 light edges), fonts A (54 KB, OFL), shell (floating bar + More + Back dock, one in-app history D-084), colour re-check tool; part 2 (owner's T13b tablet notes): device class from the screen's short side (window orientation, split screen = in-split, never phone), Strava shell pattern (pill rail + labels + logo on tablet/desktop, phone bar pills, More bottom sheet with grip + 3-column tiles + new-dot, phone dialogs as sheets, Back dock fold handle), viewer spacing (day labels inside the slider, tabs never wrap, on-ring outline, More ↓ cue), narrow-tablet + big-text layouts, six new layout audits (+ --selftest 24/24), layout-check real-tablet sizes + 150/200 % text, sync.bat lock guard (tools/ci/lock_guard.py, staged-only commits, --lock-ok); gates G-Eng pass (4 rounds), G-A11y pass (2), G-Art pass (2 rounds); layout-check full matrix 0 issues after fixes (narrow + big-text sizes re-run), appTests 167/167, stills unchanged; T13b open",
    "todo": [
-    "Re-run CIEDE2000 + colour-vision check on the proposed light edges (D-077) before shipping",
-    "Fonts: OFL woff2 Latin subset ≤ 120 KB, THIRD_PARTY + registry Tools rows; sw.js cache; replaces D-034 (5)",
-    "Write T13b",
-    "D-084 (owner-confirmed): one in-app history — Back dock whenever there is history (also inside a panel on a root tab), concept/card panel stack (link pushes, Back pops, ✕ closes all; opens beside/over, never below the list), header trail, Search one tap away, Android/browser Back stay in the app; T13b tests it and T2 re-runs on the Book map"
+    "T13b (v19): tablet landscape Settings › Version must show dev-tl; read it also at Chrome zoom 150 % — D-087 assumes zoom doesn't shrink `screen` (G-Eng r1 note)",
+    "D-087 is proposed — the owner confirms (or changes) it at T13b",
+    "Watch the `checks` run after the sync push: CI's full layout-check is the final proof on the merged code (the last local full matrix ran before the G-Art r1 fixes; narrow, big-text and preview sizes were re-run after them)",
+    "VoiceOver/TalkBack on real devices + drag-to-close with a screen reader running were not covered by G-A11y (tools only)"
    ],
    "inputs": [],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Build · U2 look tokens", "by": "Aaditya", "start": "2026-11-22 14:26", "outcome": "partial", "note": "route B (Claude Code in the laptop clone; owner runs sync.bat); start at 835bc6a; CI checks 81–83 green, 84–86 (CI guard, D-084) still running at start; T13 = D-077 confirmed, fonts A, light outlines OK"}],
+   "runs": [{"chat": "Bio · Build · U2 look tokens", "by": "Aaditya", "start": "2026-11-22 14:26", "outcome": "done", "note": "route B (Claude Code in the laptop clone; owner runs sync.bat); start at 835bc6a; CI checks 81–83 green, 84–86 (CI guard, D-084) still running at start; T13 = D-077 confirmed, fonts A, light outlines OK; part 2 (`Bio · Build · U2 part 2`, 22 Nov ~15:10 IST, same lock, route B): owner T13b notes 1–5 (D-087), start at ed211a7; ended part 2 at ~18:00 IST — 3 full layout-check runs (1st spoiled at 16:22 by a staged-only sync.bat in this clone that stashed U2's files — restored, cause fixed; 2nd hit the local Studio-load flake — now retried once), G-Eng 4 rounds, G-A11y 2, G-Art 2", "end": "2026-11-22 18:00"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
@@ -1486,7 +1486,7 @@
    "chat": "Bio · Build · U3 look screens",
    "status": "planned",
    "needs": ["U2"],
-   "unblocks": ["GATE"],
+   "unblocks": ["GATE", "FA"],
    "lock": true,
    "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
    "check": {"id": "T13c", "state": "open"},
@@ -1494,10 +1494,15 @@
    "prompt": null,
    "log": "—",
    "todo": [
-    "Prompt written by U2 in master plan §13",
     "Stills re-baseline after review (C11)",
-    "Write T13c"
-   ],
+    "Write T13c",
+    "From the owner's T13b notes (U2 part 2): 3D label placement off the model (stage-collide audit stays green)",
+    "Framing ≥ 50 % of the canvas at the start view on every class (incl. scene camera.phone)",
+    "Tab and chip look (viewer tabs, layer chips, switches; on-ring ≤ 3 px for ring-touch, tabs never wrap for pill-wrap); the day slider's plum filled track may be restyled with it (G-Art r1 #6)",
+    "Header icons at 200 % text stay 20 px (G-Art r1 #7, declined in U2 — revisit with the header restyle)",
+    "Prompt written by U2 part 2 in master plan §13 (after SR1)",
+    "Prompt written by U2 part 2 in master plan §13 (after SR1)"
+   , "Studio home handoff/u3-screen-audit drafts its decision as D-087 — taken by U2 part 2 (device class + shell); give U3's decision the next free D-id (re-check DECISIONS first)"],
    "inputs": [],
    "est": {"chats": 1},
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
@@ -2026,6 +2031,51 @@
    "todo": [],
    "inputs": [],
    "size": "S"
+  },
+  {
+   "id": "FD",
+   "title": "FD flag digest — one sheet for every open ⚑ (D-039/043/044, D-057 → Ch 21)",
+   "type": "Ideation",
+   "chat": "Bio · Ideation · flag digest",
+   "status": "planned",
+   "needs": ["P1", "X1.21"],
+   "unblocks": ["FA"],
+   "lock": false,
+   "gates": {},
+   "check": null,
+   "decisions": ["D-039", "D-043", "D-044", "D-057", "D-064", "D-066", "D-067", "D-068", "D-072", "D-074", "D-076", "D-078", "D-079", "D-082", "D-085"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Owner asked: run after Bio · Episode · S1E01 is complete in code; also waits on X1 Ch 21 so its ⚑ are in",
+    "Prompt: handoff\\flag-digest\\prompt-FD.md. No clone writes; answers parked in handoff\\flag-digest\\answers.md"
+   ],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [],
+   "run": {"on": "Cowork", "why": "reads docs, no code; answers parked outside the clone"}
+  },
+  {
+   "id": "FA",
+   "title": "FA flag answers — apply owner picks to cards + DECISIONS",
+   "type": "Content",
+   "chat": "Bio · Content · flag answers",
+   "status": "planned",
+   "needs": ["FD", "U3"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Sci": "open"},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Prompt is written by FD at its end"
+   ],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [],
+   "run": {"on": "Code", "why": "takes the lock and edits cards; card-check must pass"}
   }
  ]
 }

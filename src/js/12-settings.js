@@ -16,7 +16,7 @@ SCREENS.settings=function(v){
      <label class="btn">${esc(STR.importB)}<input type="file" accept="application/json,.json" data-act="import" class="sr"></label></div></section>
    <section class="card"><h2>${esc(STR.rv.setT)}</h2><p class="sm mut">${esc(STR.rv.setHint)}</p><div class="row"><button type="button" class="btn" data-act="rvmode"${FLAGS.test?' disabled':''}>${esc(state.review.on?STR.rv.setOff:STR.rv.setOn)}</button><a class="btn" href="#review">${esc(STR.rv.title)}</a></div></section>
    <section class="card"><h2>${esc(STR.testT)}</h2><p class="sm mut">${esc(STR.testHint)}</p><button type="button" class="btn" data-act="testmode">${esc(FLAGS.test?STR.testOff:STR.testOn)}</button></section>
-   <section class="card"><h2>${esc(STR.versionT)}</h2><p class="mono">${esc(appVerLine())}</p><p class="xs mut">${esc(DEV.cls)} · ${esc(DEV.input)} · ${innerWidth}×${innerHeight}</p></section>
+   <section class="card"><h2>${esc(STR.versionT)}</h2><p class="mono">${esc(appVerLine())}</p><p class="xs mut" id="setDev">${esc(devLine())} · ${esc(DEV.input)}</p></section>
   </div>`;
 };
 document.addEventListener('click',e=>{

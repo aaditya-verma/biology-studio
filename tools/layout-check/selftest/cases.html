@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Biology Studio — layout audit selftest (U2 part 2, D-087). Owner doc: build/design-plan.md §7. Run by `python tools/layout-check/check.py --selftest`.
+     Each case = a #<check>-v18 box built from the v18 CSS rules (copied as they were in app.css v18) that the check MUST flag,
+     and a #<check>-v19 box with the v19 rules that it must NOT flag. The v19 boxes are a FROZEN fixture (the rule shapes that pass), not a mirror of app.css — the full layout-check runs the same checks on the shipped CSS. EDIT: add a case per new audit check. -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>layout audit selftest</title>
+<style>
+:root{--tap:44px;--fs-min:12px;--fs-xs:.8125rem;--L0:#F3F1EC;--L2:#E3E1DA;--L3:#DBD8D0;--ink:#1B1D21;--muted:#55585F;--line-strong:#747169;--accent-text:#873E66;--surface:#EBE9E3}
+body{margin:0;font:16px/1.5 system-ui,sans-serif;color:var(--ink);background:var(--L0)}
+section{width:360px;margin:12px;padding:8px;outline:1px dashed #999}
+button{font:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:var(--tap);min-width:var(--tap);padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--L3)}
+/* ---- ctrl-overlap + slider-label: v18 day row (app.css v18) ---- */
+.v18 .vw-day{display:flex;align-items:center;gap:6px}
+.v18 .vw-range{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
+.v18 input[type=range]{width:100%;min-height:var(--tap);margin:0}
+.v18 .vw-keys{position:relative;height:1.6em;margin:0 calc(var(--tap) * 2 + 18px) 4px calc(var(--tap) + 12px)}
+.v18 .vw-keys span{position:absolute;top:0;transform:translateX(-50%);font-size:var(--fs-xs);white-space:nowrap}
+/* v19 day row */
+.v19{--thumb:16px;--sl-in:calc((var(--tap) - var(--thumb)) / 2)}
+.v19 .vw-day{display:flex;align-items:flex-start;gap:6px}
+.v19 .vw-day>.btn{flex:none}
+.v19 .vw-range{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
+.v19 .vw-rl{display:block;min-width:0}
+.v19 input[type=range]{min-height:var(--tap);display:block;width:calc(100% - 2 * var(--sl-in));margin:0 var(--sl-in)}
+.v19 .vw-keys{position:relative;height:1.6em;margin:0 var(--sl-in) 4px}
+.v19 .vw-keys span{position:absolute;top:0;left:calc(var(--thumb) / 2 + var(--p) * (100% - var(--thumb)));transform:translateX(calc(var(--p) * -100%));font-size:var(--fs-xs);white-space:nowrap}
+/* ---- ring-touch: layer chips "on" (v18: 4 px box-shadow spread, gap 6 · v19: 2 px outline at 1 px, gap 8) ---- */
+.vw-t{min-height:var(--tap);display:inline-flex;align-items:center;padding:0 12px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--L0)}
+.v18 .vw-tg{display:flex;flex-wrap:wrap;gap:6px}
+.v18 .vw-t{box-shadow:0 0 0 2px var(--L0),0 0 0 4px var(--accent-text)}
+.v19 .vw-tg{display:flex;flex-wrap:wrap;gap:8px}
+.v19 .vw-t{outline:2px solid var(--accent-text);outline-offset:1px}
+/* ---- pill-wrap: segments (v18: flex-wrap:wrap · v19: nowrap + sideways scroll) ---- */
+.seg button{min-height:var(--tap);padding:0 12px;border:0;border-radius:999px;background:transparent}
+.v18 .seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--line-strong);border-radius:999px;background:var(--L2)}
+.v19 .seg{display:inline-flex;flex-wrap:nowrap;gap:4px;padding:3px;border:1px solid var(--line-strong);border-radius:999px;background:var(--L2);max-width:100%;overflow-x:auto}
+.v19 .seg>*{flex:none}
+.narrow{width:200px}
+/* ---- stage-collide: a label on the stamp (synthetic) · v19: placed clear ---- */
+.vw-stage{position:relative;height:200px;background:#14161A;color:#EEE;overflow:hidden}
+.vw-stamp{position:absolute;left:10px;top:10px;padding:3px 10px;font-size:14px}
+.vw-lb{position:absolute;padding:2px 9px;border-radius:999px;font-size:13px;white-space:nowrap}
+/* ---- no-scroll-cue: a scrolling side panel (v18: no cue · v19: fade + "More ↓") ---- */
+.vw-panel{height:120px;overflow:auto;padding:8px;background:var(--surface)}
+.cue{display:none}
+.cue-on>.cue{display:flex;justify-content:flex-end;align-items:flex-end;position:sticky;bottom:0;height:44px;margin-top:-44px;pointer-events:none;background:linear-gradient(transparent,var(--surface) 70%);font-size:13px}
+</style>
+</head>
+<body>
+<!-- ctrl-overlap -->
+<section id="ctrl-overlap-v18" class="v18"><div class="vw-day"><button type="button" class="btn" aria-label="Day before">◀</button><label class="vw-range"><input type="range" min="14" max="20" value="16" aria-label="Day"></label><button type="button" class="btn" aria-label="Day after">▶</button></div></section>
+<section id="ctrl-overlap-v19" class="v19"><div class="vw-day"><button type="button" class="btn" aria-label="Day before">◀</button><div class="vw-range"><label class="vw-rl"><input type="range" min="14" max="20" value="16" aria-label="Day"></label></div><button type="button" class="btn" aria-label="Day after">▶</button></div></section>
+<!-- slider-label -->
+<section id="slider-label-v18" class="v18"><div class="vw-day"><button type="button" class="btn" aria-label="Day before">◀</button><label class="vw-range"><input type="range" min="14" max="20" value="16" aria-label="Day"></label><button type="button" class="btn" aria-label="Day after">▶</button><button type="button" class="btn" aria-label="Play">▷</button></div>
+  <div class="vw-keys" aria-hidden="true"><span style="left:0%">d14</span><span style="left:33%">d16</span><span style="left:100%">d20</span></div></section>
+<section id="slider-label-v19" class="v19"><div class="vw-day"><button type="button" class="btn" aria-label="Day before">◀</button><div class="vw-range"><label class="vw-rl"><input type="range" min="14" max="20" value="16" aria-label="Day"></label>
+  <div class="vw-keys" aria-hidden="true"><span style="--p:0">d14</span><span style="--p:.3333">d16</span><span style="--p:1">d20</span></div></div><button type="button" class="btn" aria-label="Day after">▶</button><button type="button" class="btn" aria-label="Play">▷</button></div></section>
+<!-- ring-touch -->
+<section id="ring-touch-v18" class="v18"><div class="vw-tg"><button type="button" class="vw-t" role="switch" aria-checked="true">Epiblast</button><button type="button" class="vw-t" role="switch" aria-checked="true">Hypoblast</button></div></section>
+<section id="ring-touch-v19" class="v19"><div class="vw-tg"><button type="button" class="vw-t" role="switch" aria-checked="true">Epiblast</button><button type="button" class="vw-t" role="switch" aria-checked="true">Hypoblast</button></div></section>
+<!-- pill-wrap -->
+<section id="pill-wrap-v18" class="v18"><div class="narrow"><div class="seg"><button type="button">Layers</button><button type="button">Cut</button><button type="button">View</button><button type="button">About</button></div></div></section>
+<section id="pill-wrap-v19" class="v19"><div class="narrow"><div class="seg"><button type="button">Layers</button><button type="button">Cut</button><button type="button">View</button><button type="button">About</button></div></div></section>
+<!-- stage-collide -->
+<section id="stage-collide-v18"><div class="vw-stage"><div class="vw-stamp">Day 16 · CS 7 · ≈0.4 mm</div><span class="vw-lb" style="left:60px;top:14px">Primitive streak</span></div></section>
+<section id="stage-collide-v19"><div class="vw-stage"><div class="vw-stamp">Day 16 · CS 7 · ≈0.4 mm</div><span class="vw-lb" style="left:120px;top:120px">Primitive streak</span></div></section>
+<!-- no-scroll-cue -->
+<section id="no-scroll-cue-v18"><div class="vw-panel"><p>Layers</p><p>Cut</p><p>View</p><p>About</p><p>Facts</p><p>Sources</p></div></section>
+<section id="no-scroll-cue-v19"><div class="vw-panel cue-on"><p>Layers</p><p>Cut</p><p>View</p><p>About</p><p>Facts</p><p>Sources</p><div class="cue" aria-hidden="true">More ↓</div></div></section>
+<script src="../../../src/js/90-layout-audit.js"></script>
+</body>
+</html>
