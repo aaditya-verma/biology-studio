@@ -1036,7 +1036,7 @@ html.dev-tp .ls-les{max-width:var(--measure);margin:0 auto}
   html.dev-tp .card .btn{max-width:100%;white-space:normal;height:auto;text-align:center}
   html.dev-tp .vw-day{flex-wrap:wrap;row-gap:0} html.dev-tp .vw-day>.vw-range{order:-1;flex:1 1 100%}   /* G-Art: the slider gets its own row */
 }
-@media (max-width:479px){html.dev-tp .crumbs>button,html.dev-tp .crumbs>span{display:none} html.dev-tp .testflag{font-size:0;padding:0 4px} html.dev-tp .testflag::before{content:"✎";font-size:var(--fs-sm)}}   /* G-Art r2: the title gets the room */   /* G-Art: a very narrow tablet window shows only the current title */
+@media (max-width:479px){html.dev-tp .crumbs>button,html.dev-tp .crumbs>span{display:none} html.dev-tp .testflag{position:relative;padding:0 4px} html.dev-tp .testflag .tf-i{font-size:var(--fs-sm)} html.dev-tp .testflag .tf-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}   /* G-Art r2: the title gets the room; U2F: the badge word is screen-reader-only here (same declarations as .sr above; keep in step), never font-size:0 (layout audit text-small) */   /* G-Art: a very narrow tablet window shows only the current title */
 /* G-Art (D-087): big text (≥ 175 %) on a short tablet/desktop window — the full 3D viewer stacks the panel under the stage (one column) */
 html.big-text.dev-tl .vw:not(.inl),html.big-text.dev-d .vw:not(.inl){grid-template-columns:minmax(0,1fr)}
 html.big-text.dev-tl .vw:not(.inl) .vw-stage,html.big-text.dev-d .vw:not(.inl) .vw-stage{height:clamp(240px,70dvh,700px)}

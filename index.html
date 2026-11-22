@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script>/* first paint in the right theme (no flash) */try{var m=localStorage.getItem('biostudio.theme')||'system';document.documentElement.dataset.theme=(m==='dark'||(m==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))?'dark':'light';}catch(e){}</script>
 <link rel="preload" href="assets/fonts/atkinson-hyperlegible-next-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="src/css/app.css?v=19">
+<link rel="stylesheet" href="src/css/app.css?v=20">
 </head>
 <body>
 <a class="sr" href="#view">Skip to content</a>
@@ -21,7 +21,7 @@
   <button type="button" class="brand" id="brand">Biology Studio</button>
   <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
   <span class="sp"></span>
-  <span class="testflag hidden" id="testflag"></span>
+  <span class="testflag hidden" id="testflag"><span class="tf-i" aria-hidden="true">✎</span> <span class="tf-t"></span></span>
   <button type="button" class="btn ghost icon" id="srchb"></button>
   <button type="button" class="btn ghost icon hidden" id="upb"></button>
 </header>
@@ -37,14 +37,14 @@
   <div class="row" style="margin-top:8px"><button type="button" class="btn pri" id="editCopy">Copy prompt</button><button type="button" class="btn" id="editClose">Close</button><span id="editMsg" class="sm mut" role="status"></span></div>
 </dialog>
 <noscript><p style="padding:16px">Biology Studio needs JavaScript.</p></noscript>
-<script src="src/js/00-version.js?v=19"></script>
-<script src="content/strings.js?v=19"></script>
+<script src="src/js/00-version.js?v=20"></script>
+<script src="content/strings.js?v=20"></script>
 <script src="src/js/02-config.js?v=19"></script>
 <script src="src/js/01-debug.js?v=19"></script>
 <script src="src/js/03-device.js?v=19"></script>
 <script src="src/js/04-storage.js?v=14"></script>
 <script src="src/js/05-router.js?v=18"></script>
-<script src="src/js/06-shell.js?v=19"></script>
+<script src="src/js/06-shell.js?v=20"></script>
 <script src="src/js/10-today.js?v=14"></script>
 <script src="src/js/11-bookmap.js?v=18"></script>
 <script src="src/js/12-settings.js?v=19"></script>

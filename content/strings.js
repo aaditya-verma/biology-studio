@@ -10,7 +10,7 @@ const STR={
   navShort:{today:'Your plan for today',cards:'Read, check, remember',map:'Every concept',scene:'Turn, scrub, slice',settings:'Theme, backup, colours',studio:'Draft + review cards',progress:'Steps and blockers',review:'Check the science'},   // D-087: one line under a More tile
   moreBelow:'More ↓', dockFold:'Fold the Back button away', dockOpen:'Show the Back button', newMark:'new',
   more:'More', moreT:'More places', searchGo:'Search the book map', closePanel:'Close — back to where you were',   // U2 shell (D-077, D-084)
-  testFlag:'Testing mode — nothing is saved', testShort:'✎ test',
+  testFlag:'Testing mode — nothing is saved', testShort:'test',
   // Today
   todayTitle:'Today',
   todayLead:'Short on time? On the go takes up to 5 minutes. Have a while? Study continues your lesson. Read a card and its prompts join your Remember deck: they come back after 1 day, then 3, then every 7.',

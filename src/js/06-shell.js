@@ -42,7 +42,7 @@ function buildShell(){
   $('#backb').innerHTML=icon('back',20);$('#backb').setAttribute('aria-label',STR.back);$('#backb').title=STR.back;
   $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
   document.documentElement.classList.toggle('rvnav',rvNavOn());
-  if(FLAGS.test){$('#testflag').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
+  if(FLAGS.test){$('#testflag .tf-t').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
 const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'studio',step:'progress',card:'cards',deck:'today',lessons:'cards',lesson:'cards',mix:'today',rcard:'review',rtour:'review',updates:'review'}[r.name]||r.name);
 function syncShell(){
