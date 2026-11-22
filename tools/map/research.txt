@@ -259,3 +259,11 @@ E20.05.01|AN41.1|✔|
 E20.06.01|AN41.1,AN43.3|✔|
 E20.07.01|AN43.4|⚑|
 E20.07.02|AN43.4,AN41.2,AN74.1|⚑|
+# --- E21 · X1 22 Nov 2026 (dossier ch21-integumentary.md; human fetal skin R05kr–R05kv (EGA, clock read both ways — no Carnegie stage, so no cs), D-030; NMC 2018 Vol I AN9.3 breast development, D-088 k) ---
+E21.01.01|AN4.2,AN72.1|✔|
+E21.01.02|AN4.1,AN4.2|✔|
+E21.01.03|AN4.2,AN74.1|⚑|
+E21.02.01|AN4.2,AN72.1|✔|
+E21.03.01|AN4.2|✔|
+E21.04.01|AN4.2,AN72.1|≈|
+E21.05.01|AN9.3,AN9.2|≈|
