@@ -17,6 +17,9 @@ Checks steps.json against the rules the app's #progress page also uses (src/js/1
                         steps.json names its D-id — the approved work has no step to carry it (warning; the 19 Nov depth canvas case)
   draft id clash ...... (U1, D-076) a committed draft (studio-docs/**/*-draft*.md) proposes a D-id that DECISIONS already uses for
                         another decision (its row does not name the draft), or two drafts propose the same id (error — renumber the draft)
+  run surface ......... (W3, D-080) `surfaces` (top level) = where chats run (Code · Cowork) + rules, first match wins; each step's
+                        `run {on, why}` — bad shape / unknown surface = error; no `run`, no rule, or an `on` the rules don't allow
+                        (without `override`) = warning. --write fills a missing `run` from the rules; --next tags each step [Code]/[Cowork]
 Warnings never fail the run unless --strict. Exit 1 on any error.
 
 Run from the repo root:
@@ -50,7 +53,7 @@ INPUT_STATES = ["open", "answered", "closed"]
 MET = {"done", "owner check"}            # a need counts as met when the needed step is done or only waits on the owner's check
 STARTED = {"ready", "in progress", "gates", "owner check", "done"}
 STEP_KEYS = ["id", "title", "type", "chat", "status", "needs", "unblocks", "lock", "gates", "check", "decisions", "prompt", "log", "todo", "inputs"]
-OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note", "uses", "est", "produces", "consumes", "runs", "improves"]
+OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note", "uses", "est", "produces", "consumes", "runs", "improves", "run"]
 LOCK_MAX_H = 24
 # EDIT: approval rule (D-076) — rows dated on/after this day are checked; words that mark an owner approval in a DECISIONS row
 APPROVAL_SINCE = dt.date(2026, 11, 22)
@@ -68,16 +71,16 @@ def dbg(*a):
 
 def load_refs():
     """Ids that exist in the owner docs (D-ids, T-ids, ready-prompt keys)."""
-    dec = set(re.findall(r"^\| (D-\d{3}) \|", (DOCS / "claude" / "DECISIONS.md").read_text(), re.M))
-    chk = set(re.findall(r"^## (T\d+[a-z]?)\b", (DOCS / "build" / "owner-test-checklist.md").read_text(), re.M))
-    chk |= set(re.findall(r"\*\*(T\d+[a-z]) —", (DOCS / "build" / "owner-test-checklist.md").read_text()))
-    prompts = set(re.findall(r"^\*\*Ready prompt — (.+?)\*\*", (DOCS / "build" / "master-plan.md").read_text(), re.M))
+    dec = set(re.findall(r"^\| (D-\d{3}) \|", (DOCS / "claude" / "DECISIONS.md").read_text(encoding="utf-8"), re.M))
+    chk = set(re.findall(r"^## (T\d+[a-z]?)\b", (DOCS / "build" / "owner-test-checklist.md").read_text(encoding="utf-8"), re.M))
+    chk |= set(re.findall(r"\*\*(T\d+[a-z]) —", (DOCS / "build" / "owner-test-checklist.md").read_text(encoding="utf-8")))
+    prompts = set(re.findall(r"^\*\*Ready prompt — (.+?)\*\*", (DOCS / "build" / "master-plan.md").read_text(encoding="utf-8"), re.M))
     rows = {}
-    for m in re.finditer(r"^\| (D-\d{3}) \| ([^|]*)\|(.*)$", (DOCS / "claude" / "DECISIONS.md").read_text(), re.M):
+    for m in re.finditer(r"^\| (D-\d{3}) \| ([^|]*)\|(.*)$", (DOCS / "claude" / "DECISIONS.md").read_text(encoding="utf-8"), re.M):
         rows[m.group(1)] = (m.group(2).strip(), m.group(3))
     drafts = []
     for p in sorted(DOCS.rglob("*-draft*.md")):
-        head = "\n".join(p.read_text().splitlines()[:12])
+        head = "\n".join(p.read_text(encoding="utf-8").splitlines()[:12])
         drafts.append((p.name, sorted(set(DRAFT_ID_RE.findall(head)))))
     dbg(f"refs: {len(dec)} D-ids, T-ids {sorted(chk)}, {len(prompts)} prompts, drafts {drafts}")
     return {"dec": dec, "chk": chk, "prompts": prompts, "dec_rows": rows, "drafts": drafts}
@@ -113,7 +116,7 @@ def check_refs(doc, refs):
 def read_lock():
     """STATUS § Lock line → (holder text or None, datetime IST or None)."""
     try:
-        t = (DOCS / "claude" / "STATUS.md").read_text()
+        t = (DOCS / "claude" / "STATUS.md").read_text(encoding="utf-8")
     except OSError:
         return None, None
     m = re.search(r"^- Build lock: (.+)$", t, re.M)
@@ -160,7 +163,7 @@ def find_loops(steps):
 
 def parity():
     """TR_RULES in the app (src/js/17-tracker.js) must equal the vocabularies here — one rule set in two places."""
-    js = (ROOT / "src" / "js" / "17-tracker.js").read_text()
+    js = (ROOT / "src" / "js" / "17-tracker.js").read_text(encoding="utf-8")
     m = re.search(r"const TR_RULES=(\{.*?\});", js, re.S)
     if not m:
         return ["app: TR_RULES not found in src/js/17-tracker.js"]
@@ -302,7 +305,8 @@ def check(doc, refs, only=None, lock=(None, None), now=None):
         W.append(f"build lock line has no readable date: {holder}")
     E2, W2 = check_w2(doc)
     E3, W3 = check_refs(doc, refs)
-    E2, W2 = E2 + E3, W2 + W3
+    E4, W4 = check_surface(doc)
+    E2, W2 = E2 + E3 + E4, W2 + W3 + W4
     if only:
         E2 = [x for x in E2 if x.startswith(only + ":")]
         W2 = [x for x in W2 if x.startswith(only + ":")]
@@ -603,11 +607,11 @@ def plan_parity(doc, today):
     js = ROOT / "src" / "js" / "17-plan.js"
     if not shutil.which("node"):
         return [], ["plan parity skipped: node not found"]
-    m = re.search(r"const PLAN_DEF=(\{.*?\});", js.read_text(), re.S)
+    m = re.search(r"const PLAN_DEF=(\{.*?\});", js.read_text(encoding="utf-8"), re.S)
     if not m or json.loads(m.group(1)) != PLAN_DEF:
         return ["app: PLAN_DEF in src/js/17-plan.js ≠ check.py PLAN_DEF"], []
     src = f"const {{trPlan}}=require({json.dumps(str(js))});const d=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write(JSON.stringify(trPlan(d.doc,d.today)));"
-    r = subprocess.run(["node", "-e", src], input=json.dumps({"doc": doc, "today": today}), capture_output=True, text=True, timeout=60)
+    r = subprocess.run(["node", "-e", src], input=json.dumps({"doc": doc, "today": today}), capture_output=True, text=True, encoding="utf-8", timeout=60)
     if r.returncode:
         return [f"app: trPlan failed in node: {r.stderr.strip()[:300]}"], []
     a, b = json.loads(r.stdout), plan(doc, today)
@@ -615,6 +619,136 @@ def plan_parity(doc, today):
         diff = [k for k in b if a.get(k) != b.get(k)]
         return [f"app: trPlan ≠ check.py plan() for {today} in {diff}"], []
     return [], []
+
+
+# ---- W3 run surface (D-080) — mirror of trSurface() in src/js/17-plan.js; --selftest compares both (node) ----
+SURF_DEF = {"on": ["Code", "Cowork"], "rules": []}
+SURF_IF = ("lock", "uses", "type")
+
+
+def surf_cfg(doc):
+    c = (doc or {}).get("surfaces")
+    return c if isinstance(c, dict) else SURF_DEF
+
+
+def surf_match(rule_if, s):
+    """Every key in the rule's `if` must hold: lock (bool) · uses ("prof" = professor-only step, else in uses) · type (name or list)."""
+    if not isinstance(rule_if, dict):   # a malformed rule never matches (check_surface reports it)
+        return False
+    u = s.get("uses") or []
+    for k, v in rule_if.items():
+        if k == "lock" and bool(s.get("lock")) != bool(v):
+            return False
+        if k == "uses" and not ((u == ["prof"]) if v == "prof" else (v in u)):
+            return False
+        if k == "type" and s.get("type") not in (v if isinstance(v, list) else [v]):
+            return False
+    return True
+
+
+def surface(doc, s):
+    """Where a step's chat runs: {on, allowed (what the first matching rule allows), why, rule (index or None), fit, override, set}."""
+    rule, ri = None, None
+    rules = surf_cfg(doc).get("rules")
+    for i, r in enumerate(rules if isinstance(rules, list) else []):
+        if isinstance(r, dict) and surf_match(r.get("if"), s):
+            rule, ri = r, i
+            break
+    allowed = [] if rule is None else (rule.get("on") if isinstance(rule.get("on"), list) else [rule.get("on")])
+    run = s.get("run") if isinstance(s.get("run"), dict) else None
+    on = run.get("on") if run else (allowed[0] if allowed else None)
+    why = run.get("why") if run and run.get("why") else (rule.get("why") if rule else "")
+    return {"on": on, "allowed": allowed, "why": why, "rule": ri, "fit": on in allowed, "override": bool(run and run.get("override")),
+            "set": run is not None}
+
+
+def surf_fill(s, doc):
+    """--write: a step with no `run` gets the first surface its rule allows, with the rule's why."""
+    if "run" not in s and s.get("type") != "Idea":
+        x = surface(doc, s)
+        if x["on"]:
+            s["run"] = {"on": x["on"], "why": x["why"]}
+            return True
+    return False
+
+
+def check_surface(doc):
+    E, W = [], []
+    cfg = doc.get("surfaces")
+    names = SURF_DEF["on"]
+    if cfg is not None:
+        if not isinstance(cfg, dict):
+            return ["surfaces: must be an object"], []
+        for k in cfg:
+            if k not in ("on", "rules", "note"):
+                E.append(f"surfaces: unknown key `{k}`")
+        names = cfg.get("on")
+        if not (isinstance(names, list) and names and all(isinstance(n, str) and n for n in names)):
+            E.append("surfaces: `on` must be a list of surface names")
+            names = SURF_DEF["on"]
+        rules = cfg.get("rules")
+        if not isinstance(rules, list):
+            E.append("surfaces: `rules` must be a list")
+            rules = []
+        for i, r in enumerate(rules):
+            if not isinstance(r, dict):
+                E.append(f"surfaces: rule {i + 1}: must be an object")
+                continue
+            for k in r:
+                if k not in ("if", "on", "why"):
+                    E.append(f"surfaces: rule {i + 1}: unknown key `{k}`")
+            if not isinstance(r.get("if"), dict) or any(k not in SURF_IF for k in r.get("if") or {}):
+                E.append(f"surfaces: rule {i + 1}: `if` must be an object with keys from {list(SURF_IF)}")
+            on = r.get("on") if isinstance(r.get("on"), list) else [r.get("on")]
+            if not on or any(o not in names for o in on):
+                E.append(f"surfaces: rule {i + 1}: `on` {r.get('on')} must be one of {names} (or a list of them)")
+            if not (isinstance(r.get("why"), str) and r["why"].strip()):
+                E.append(f"surfaces: rule {i + 1}: `why` missing")
+    for s in doc.get("steps", []):
+        sid = s.get("id", "?")
+        if s.get("type") == "Idea":
+            continue
+        run = s.get("run")
+        if run is None:
+            W.append(f"{sid}: no `run` {{on, why}} — check.py --write fills it from the surface rules (W3)")
+            continue
+        if not isinstance(run, dict):
+            E.append(f"{sid}: `run` must be {{on, why}}")
+            continue
+        for k in run:
+            if k not in ("on", "why", "override"):
+                E.append(f"{sid}: run: unknown key `{k}`")
+        if run.get("on") not in names:
+            E.append(f"{sid}: run.on `{run.get('on')}` not one of {names}")
+            continue
+        if not (isinstance(run.get("why"), str) and run["why"].strip()):
+            E.append(f"{sid}: run.why missing — say why it runs there")
+        if "override" in run and not isinstance(run["override"], bool):
+            E.append(f"{sid}: run.override must be true or false")
+        if cfg is None:
+            continue
+        x = surface(doc, s)
+        if x["rule"] is None:
+            W.append(f"{sid}: no surface rule matches (type {s.get('type')}) — add one to `surfaces.rules`")
+        elif not x["fit"] and not x["override"]:
+            W.append(f"{sid}: runs on {run['on']} but the surface rules say {' or '.join(x['allowed'])} "
+                     f"({cfg['rules'][x['rule']].get('why')}) — change run.on, or set run.override true and say why")
+    return E, W
+
+
+def surface_parity(doc):
+    """Run trSurface() in node on every step of `doc`; differences are errors. No node → a warning (CI has node)."""
+    js = ROOT / "src" / "js" / "17-plan.js"
+    if not shutil.which("node"):
+        return [], ["surface parity skipped: node not found"]
+    src = (f"const {{trSurface}}=require({json.dumps(str(js))});const d=JSON.parse(require('fs').readFileSync(0,'utf8'));"
+           "process.stdout.write(JSON.stringify(d.steps.map(s=>trSurface(d,s))));")
+    r = subprocess.run(["node", "-e", src], input=json.dumps(doc), capture_output=True, text=True, encoding="utf-8", timeout=60)
+    if r.returncode:
+        return [f"app: trSurface failed in node: {r.stderr.strip()[:300]}"], []
+    a, b = json.loads(r.stdout), [surface(doc, s) for s in doc["steps"]]
+    bad = [s.get("id") for s, x, y in zip(doc["steps"], a, b) if x != y]
+    return ([f"app: trSurface ≠ check.py surface() for {bad[:5]}"] if bad else []), []
 
 
 def ist_today():
@@ -632,7 +766,9 @@ def next_text(doc, P, lock):
     """The short schedule a chat reads first (INSTRUCTIONS §2) and STATUS § Next shows between the auto markers."""
     by = {s["id"]: s for s in doc["steps"]}
     name = lambda i: by[i]["title"] if i in by else i
-    cell = lambda c: f"{c['step'] if c['kind'] == 'step' else c['id']} ~{fmt_day(c['end'])}" + (" (slipped)" if c["slipped"] else "")
+    on = lambda c: surface(doc, by[c["step"]])["on"] if c["kind"] == "step" and c["step"] in by else None
+    tag = lambda c: f" [{on(c)}]" if on(c) else ""
+    cell = lambda c: f"{c['step'] if c['kind'] == 'step' else c['id']}{tag(c)} ~{fmt_day(c['end'])}" + (" (slipped)" if c["slipped"] else "")
     lab = {"lock": "Lock", "gpu": "GPU", "research": "Research", "owner": "You (no lock)"}
     out = [f"Schedule (auto · check.py --next · est. from {fmt_day(P['today'])}; order fixed, dates move):"]
     for r in ("lock", "gpu", "research", "owner"):
@@ -652,6 +788,19 @@ def next_text(doc, P, lock):
         out.append("- Your inputs first: " + " · ".join(f"{x['id']} ({'blocks a start · ' if x['blocks'] else ''}unblocks {x['unblocks']})" for x in top))
     if P["prof"]:
         out.append(f"- Professor (optional, {len(P['prof'])}): " + " · ".join(x["id"] for x in P["prof"][:3]))
+    nx = [c for r in ("lock", "gpu", "research") for c in P["rows"][r]["next"] if c["kind"] == "step" and c["step"] in by]
+    if nx:
+        out.append("- Run in: " + " · ".join(f"{c['step']} → {on(c)} ({surface(doc, by[c['step']])['why']})" for c in nx))
+    if doc.get("surfaces"):
+        mis = []
+        for s in doc["steps"]:
+            if s.get("type") == "Idea" or s.get("status") in ("done", "parked") or not isinstance(s.get("run"), dict):
+                continue
+            x = surface(doc, s)
+            if x["rule"] is not None and not x["fit"] and not x["override"]:
+                mis.append(s["id"])
+        if mis:
+            out.append("- Surface check: " + ", ".join(mis[:6]) + " — run.on is not what the rules say (check.py warns)")
     out.append(f"- Lock: {lock[0] or 'free'}")
     return "\n".join(out)
 
@@ -661,7 +810,7 @@ AUTO_A, AUTO_B = "<!-- next:auto -->", "<!-- /next:auto -->"
 
 def write_next(text, dry):
     p = DOCS / "claude" / "STATUS.md"
-    t = p.read_text()
+    t = p.read_text(encoding="utf-8")
     if AUTO_A not in t or AUTO_B not in t:
         print(f"FAIL: STATUS § Next has no {AUTO_A} … {AUTO_B} block")
         return 1
@@ -669,7 +818,7 @@ def write_next(text, dry):
     if dry:
         print("STATUS § Next auto block:", "unchanged" if new == t else "would change")
     elif new != t:
-        p.write_text(new)
+        p.write_text(new, encoding="utf-8", newline="\n")
         print("wrote STATUS § Next auto block")
     return 0
 
@@ -698,18 +847,20 @@ def write(doc, dry):
     new = copy.deepcopy(doc)
     unb = derive_unblocks(new["steps"])
     changed = []
+    filled = [s["id"] for s in new["steps"] if surf_fill(s, new)]
     for s in new["steps"]:
         if s.get("unblocks") != unb[s["id"]]:
             changed.append(f"{s['id']}: unblocks {s.get('unblocks')} → {unb[s['id']]}")
         s["unblocks"] = unb[s["id"]]
     text = fmt(new)
-    old = STEPS.read_text()
+    old = STEPS.read_text(encoding="utf-8")
     if dry:
-        print("\n".join(changed) or "unblocks already current", "·", "format changes" if text != old else "format current")
+        print("\n".join(changed) or "unblocks already current", "·", "format changes" if text != old else "format current",
+              *([f"· run would be filled on {len(filled)}"] if filled else []))
         return doc
     if text != old:
-        STEPS.write_text(text)
-    print(f"wrote {STEPS.relative_to(ROOT)} ({len(changed)} unblocks changed)")
+        STEPS.write_text(text, encoding="utf-8", newline="\n")
+    print(f"wrote {STEPS.relative_to(ROOT)} ({len(changed)} unblocks changed" + (f", run filled on {len(filled)}: {', '.join(filled[:8])}" if filled else "") + ")")
     return new
 
 
@@ -808,6 +959,35 @@ def selftest(refs):
         ("draft id twice", ("REFS", lambda r: r.update(drafts=[("a-draft.md", ["D-900"]), ("b-draft.md", ["D-900"])])), "also proposed by"),
         ("draft recorded = ok", ("REFS", lambda r: r.update(dec_rows={"D-900": ("1 Jan 2020", " see build/look-draft.md |")}, drafts=[("look-draft.md", ["D-900"])])), None),
     ]
+    # W3 run surface (D-080): the good file gets rules + a fitting `run` on both steps; each case breaks one rule
+    SURF = {"on": ["Code", "Cowork"], "rules": [{"if": {"uses": "prof"}, "on": ["Code", "Cowork"], "why": "prof"},
+                                                {"if": {"lock": True}, "on": "Code", "why": "lock"},
+                                                {"if": {"type": ["Research"]}, "on": "Cowork", "why": "docs"}]}
+    good["surfaces"] = SURF
+    for s in good["steps"]:
+        s["run"] = {"on": "Code", "why": "takes the lock"}
+    cases += [
+        ("surface: no run = warning", lambda d: d["steps"][1].pop("run"), "W:no `run`"),
+        ("surface: unknown surface", lambda d: d["steps"][1]["run"].__setitem__("on", "Phone"), "run.on `Phone`"),
+        ("surface: why missing", lambda d: d["steps"][1]["run"].__setitem__("why", ""), "run.why missing"),
+        ("surface: run unknown key", lambda d: d["steps"][1]["run"].__setitem__("where", "x"), "run: unknown key `where`"),
+        ("surface: run not an object", lambda d: d["steps"][1].__setitem__("run", "Code"), "`run` must be"),
+        ("surface: override not bool", lambda d: d["steps"][1]["run"].__setitem__("override", "yes"), "override must be"),
+        ("surface: mismatch = warning", lambda d: d["steps"][1]["run"].__setitem__("on", "Cowork"), "W:the surface rules say Code"),
+        ("surface: override silences", lambda d: d["steps"][1]["run"].update(on="Cowork", override=True), None),
+        ("surface: no rule = warning", lambda d: (d["steps"][1].__setitem__("lock", False)), "W:no surface rule matches"),
+        ("surface: prof either = ok", lambda d: (d["steps"][1].update(lock=False, uses=["prof"]), d["steps"][1]["run"].__setitem__("on", "Cowork")), None),
+        ("surface: rule bad on", lambda d: d["surfaces"]["rules"][1].__setitem__("on", "Laptop"), "rule 2: `on`"),
+        ("surface: rule bad if", lambda d: d["surfaces"]["rules"][1].__setitem__("if", {"colour": "red"}), "rule 2: `if`"),
+        ("surface: rule no why", lambda d: d["surfaces"]["rules"][2].pop("why"), "rule 3: `why` missing"),
+        ("surface: unknown key", lambda d: d["surfaces"].__setitem__("default", "Code"), "surfaces: unknown key"),
+        ("surface: bad names", lambda d: d["surfaces"].__setitem__("on", []), "`on` must be a list"),
+        ("surface: not an object", lambda d: d.__setitem__("surfaces", ["Code"]), "surfaces: must be an object"),
+        ("surface: rules not a list", lambda d: d["surfaces"].__setitem__("rules", "lock → Code"), "`rules` must be a list"),
+        ("surface: rule not an object", lambda d: d["surfaces"]["rules"].append("Code"), "rule 4: must be an object"),
+        ("surface: rule unknown key", lambda d: d["surfaces"]["rules"][1].__setitem__("when", "now"), "rule 2: unknown key `when`"),
+        ("surface: rule if a list", lambda d: d["surfaces"]["rules"][1].__setitem__("if", ["lock"]), "rule 2: `if`"),
+    ]
     ok = 0
     for name, mut, want in cases:
         d = copy.deepcopy(good)
@@ -831,25 +1011,54 @@ def selftest(refs):
         print(("PASS " if hit else "FAIL ") + name + ("" if hit else f"  E={E} W={W}"))
     # W2: the scheduler on a known file gives the known plan, and the app's trPlan gives the same (node)
     n = len(cases)
-    fx = json.loads((ROOT / "tools" / "tracker" / "plan-fixture.json").read_text())
+    fx = json.loads((ROOT / "tools" / "tracker" / "plan-fixture.json").read_text(encoding="utf-8"))
     got = plan(fx["doc"], fx["today"])
     for k, v in fx["expect"].items():
         n += 1
         hit = got.get(k) == v
         ok += hit
         print(("PASS " if hit else "FAIL ") + f"plan fixture: {k}" + ("" if hit else f"  got {json.dumps(got.get(k), ensure_ascii=False)}"))
-    for name, d, t in (("plan parity (fixture)", fx["doc"], fx["today"]), ("plan parity (steps.json)", json.loads(STEPS.read_text()), fx["today"])):
+    for name, d, t in (("plan parity (fixture)", fx["doc"], fx["today"]), ("plan parity (steps.json)", json.loads(STEPS.read_text(encoding="utf-8")), fx["today"])):
         n += 1
         E2, W2 = plan_parity(d, t)
         hit = not E2
         ok += hit
         print(("PASS " if hit else "FAIL ") + name + (f"  {W2[0]}" if W2 else "") + ("" if hit else f"  {E2}"))
+    # W3: surface() picks the first matching rule; --write fills a missing run; the app's trSurface() agrees (node)
+    d = copy.deepcopy(good)
+    d["steps"][1].pop("run")
+    d["steps"].append(dict(copy.deepcopy(d["steps"][1]), id="X1.05", type="Research", lock=False, inputs=[], unblocks=[]))
+    checks = [("surface: first match wins", surface(d, d["steps"][1])["on"] == "Code" and surface(d, d["steps"][1])["rule"] == 1),
+              ("surface: research → Cowork", surface(d, d["steps"][2])["on"] == "Cowork"),
+              ("surface: --write fills run", surf_fill(d["steps"][1], d) and d["steps"][1]["run"] == {"on": "Code", "why": "lock"}),
+              ("surface: --write keeps a set run", not surf_fill(d["steps"][0], d))]
+    d2 = copy.deepcopy(d)
+    d2["steps"][1]["run"] = {"on": "Cowork", "why": "x"}
+    nt = next_text(d2, plan(d2, "2026-11-19"), (None, None))
+    checks += [("surface: --next tags + Surface check line", "V1 [Cowork]" in nt and "- Surface check: V1" in nt)]
+    for name, hit in checks:
+        n += 1
+        ok += hit
+        print(("PASS " if hit else "FAIL ") + name)
+    bad = copy.deepcopy(d)
+    bad["surfaces"]["rules"][0]["if"] = ["lock"]
+    bad["surfaces"]["rules"][1].pop("on")
+    bad2 = dict(copy.deepcopy(d), surfaces=dict(d["surfaces"], rules="nope"))
+    for name, doc in (("surface parity (cases)", d), ("surface parity (malformed rules)", bad), ("surface parity (rules not a list)", bad2),
+                      ("surface parity (steps.json)", json.loads(STEPS.read_text(encoding="utf-8")))):
+        n += 1
+        E2, W2 = surface_parity(doc)
+        ok += not E2
+        print(("PASS " if not E2 else "FAIL ") + name + (f"  {W2[0]}" if W2 else "") + (f"  {E2}" if E2 else ""))
     print(f"selftest {ok}/{n}")
     return ok == n
 
 
 def main():
     global DBG
+    for f in (sys.stdout, sys.stderr):   # Windows consoles default to cp1252; the schedule prints → · ◆
+        if hasattr(f, "reconfigure"):
+            f.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--write", action="store_true", help="re-derive `unblocks` and rewrite in canonical format")
     ap.add_argument("--dry-run", action="store_true", help="with --write: show changes, write nothing")
@@ -867,7 +1076,7 @@ def main():
     if a.selftest:
         return 0 if selftest(refs) else 1
     try:
-        doc = json.loads(STEPS.read_text())
+        doc = json.loads(STEPS.read_text(encoding="utf-8"))
     except (OSError, ValueError) as ex:
         print(f"FAIL: cannot read {STEPS.relative_to(ROOT)}: {ex}")
         return 1

@@ -179,7 +179,7 @@ function trPlanView(){const T=STR.tr,P=trPlanFresh(),by=trBy();
   const L=T.pl,nm=c=>c.kind==='check'?L.checkItem(c.id.split('·')[1]):c.kind==='input'?L.inputItem(c.id):(by[c.step]?trTi(by[c.step]):c.step);
   const when=c=>c.start?L.when(trDay(c.start),trDay(c.end||c.start)):L.noDate;
   const crit=new Set(P.critical.map(c=>c.id)),st=c=>by[c.step]?T.st[by[c.step].status]:'';
-  const cell=c=>`<button type="button" class="lrow tr-pi${crit.has(c.id)?' crit':''}" data-go="step=${esc(c.step)}">${by[c.step]?trSw(by[c.step].status):''}<span class="nm"><b class="mono">${esc(c.kind==='step'?c.step:c.id.split('·').pop())}</b> ${esc(nm(c))}<br><span class="xs mut">${c.kind==='step'&&st(c)?esc(st(c))+' · ':''}${esc(when(c))}${c.mins?' · '+esc(L.mins(c.mins)):''}</span>${c.slipped?` <span class="badge bad">${esc(L.slipped)}</span>`:''}${crit.has(c.id)?` <span class="tr-crit" aria-hidden="true">◆</span><span class="sr">${esc(L.critSr)}</span>`:''}</span></button>`;
+  const cell=c=>`<button type="button" class="lrow tr-pi${crit.has(c.id)?' crit':''}" data-go="step=${esc(c.step)}">${by[c.step]?trSw(by[c.step].status):''}<span class="nm"><b class="mono">${esc(c.kind==='step'?c.step:c.id.split('·').pop())}</b>${c.kind==='step'&&by[c.step]?trRunTag(by[c.step]):''} ${esc(nm(c))}<br><span class="xs mut">${c.kind==='step'&&st(c)?esc(st(c))+' · ':''}${esc(when(c))}${c.mins?' · '+esc(L.mins(c.mins)):''}</span>${c.slipped?` <span class="badge bad">${esc(L.slipped)}</span>`:''}${crit.has(c.id)?` <span class="tr-crit" aria-hidden="true">◆</span><span class="sr">${esc(L.critSr)}</span>`:''}</span></button>`;
   const list=a=>a.length>3?a.slice(0,3).map(cell).join('')+`<details class="tr-pmore"><summary class="lk">${esc(L.moreN(a.length-3))}</summary>${a.slice(3).map(cell).join('')}</details>`:a.map(cell).join('');
   const rows=['lock','gpu','research','owner'].map(r=>{const R=P.rows[r];if(!R.now.length&&!R.next.length&&!R.later.length)return '';
     return `<section class="card tr-prow" aria-labelledby="trPR-${r}"><h2 id="trPR-${r}">${esc(L.rows[r])}</h2><p class="xs mut">${esc(L.rowHelp[r])}</p><div class="tr-pcols">${['now','next','later'].map(k=>`<div class="tr-pcol"><h3 class="tr-pch">${esc(L.cols[k])}</h3>${list(R[k])||`<p class="sm mut">${esc(L.empty)}</p>`}</div>`).join('')}</div></section>`;}).join('');
@@ -200,6 +200,12 @@ function trPlanView(){const T=STR.tr,P=trPlanFresh(),by=trBy();
     <section class="card" aria-labelledby="trPP"><h2 id="trPP">${esc(L.profT)}</h2><p class="xs mut">${esc(L.profHelp)}</p><ul class="tr-plist">${prof||`<li class="sm mut">${esc(L.noProf)}</li>`}</ul></section></div>
     <section class="card tr-pruns" aria-labelledby="trPRu"><h2 id="trPRu">${esc(L.runsT)}</h2><p class="xs mut">${esc(L.runsHelp)}</p><ul class="tr-runs">${runList}</ul></section>
     <p class="xs mut tr-pcal">${esc(L.calT)}: ${esc(L.calLine(hrs,cal.off.join(', ')))} ${editBtn('step','calendar','studio-docs/build/steps.json › calendar')}</p>`;}
+// W3 run surface (D-080): [Code]/[Cowork] from trSurface() (17-plan.js); a run.on the rules don't allow shows ⚠ unless override
+function trRunTag(s){const x=typeof trSurface==='function'&&TR.D?trSurface(TR.D,s):null;   // one trSurface() per cell
+  if(!x||!x.on||s.type==='Idea')return '';const off=x.rule!=null&&!x.fit&&!x.override;
+  return ` <span class="badge tr-on${off?' bad':''}" aria-hidden="true">${esc(x.on)}${off?' ⚠':''}</span><span class="sr">${esc(STR.tr.pl.runSr(x.on))}</span>`;}
+function trRunLine(s){const T=STR.tr.pl,x=typeof trSurface==='function'&&TR.D?trSurface(TR.D,s):null;if(!x||!x.on)return esc(s.type==='Idea'?STR.none:T.runNone);
+  const off=x.rule!=null&&!x.fit&&!x.override;return `<b>${esc(x.on)}</b>${x.why?' — '+esc(x.why):''}${off?` <span class="badge bad">⚠ ${esc(T.runOff(x.allowed.join(' / ')))}</span>`:''}${x.override?` <span class="xs mut">(${esc(T.runOver)})</span>`:''} ${trEdit(s.id,'run')}`;}
 function trWhy(b){const T=STR.tr;return b.k==='need'?b.id+' ('+(T.st[b.st]||b.st)+')':b.k==='input'?T.yourAnswer(b.id):T.theLock;}
 function trInputsView(){const T=STR.tr,L=trInputs();
   return `<p class="sm mut">${esc(T.inputsLead(L.length))}</p><ol class="tr-inputs">${L.map((x,i)=>`<li class="card tr-in">
@@ -235,6 +241,7 @@ SCREENS.step=function(v){
     <dt>${esc(T.checkT)}</dt><dd>${s.check?`<a href="${esc(trGh('studio-docs/build/owner-test-checklist.md'))}" target="_blank" rel="noopener">${esc(s.check.id)} ↗</a> · ${esc(T.ck[s.check.state]||s.check.state)}${s.check.by?' · '+esc(s.check.by):''}`:esc(STR.none)}</dd>
     <dt>${esc(T.decT)}</dt><dd><div class="links">${(s.decisions||[]).map(d=>`<a class="lk" href="${esc(trGh('studio-docs/claude/DECISIONS.md'))}" target="_blank" rel="noopener">${esc(d)} ↗</a>`).join('')||esc(STR.none)}</div></dd>
     <dt>${esc(T.logT)}</dt><dd class="sm">${esc(s.log||STR.none)}</dd>
+    <dt>${esc(T.pl.runT)}</dt><dd class="sm">${trRunLine(s)}</dd>
     <dt>${esc(T.pl.planT)}</dt><dd class="sm">${(()=>{const P0=trPlanFresh(),it=P0&&P0.dates[s.id];if(!it)return esc(TR_RULES.met.includes(s.status)?T.st[s.status]:STR.none);
       return esc(T.pl.planLine(it.start?T.pl.when(trDay(it.start),trDay(it.end||it.start)):T.pl.noDate,T.pl.rows[it.row]||it.row))+(it.slipped?` <span class="badge bad">${esc(T.pl.slipped)}</span>`:'')+(TR.P.critical.some(c=>c.id===s.id)?` <span class="tr-crit"><span aria-hidden="true">◆</span> ${esc(T.pl.critT)}</span>`:'');})()}
       ${(s.runs||[]).length?`<br><span class="xs mut">${esc(T.pl.runsN(s.runs.length))}: ${esc(s.runs.map(r=>trDay(String(r.start).slice(0,10))+' '+(T.pl.outcome[r.outcome]||r.outcome)).join(' · '))}</span>`:''}</dd></dl>`;
@@ -259,7 +266,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-trac
   if(a==='refresh'){TR.D=null;TR.err=null;trLoad(true).then(()=>{render();toast(TR.err?T.loadFail:T.refreshed);});render();return;}
   if(a==='done'||a==='ideas'){TR.show[a]=!TR.show[a];try{sessionStorage.setItem('biostudio.tracker',JSON.stringify(TR.show));}catch(_){}render();return;}
   let txt='';
-  if(a==='copyp'){const s=trBy()[ROUTE.id],p=s&&trPrompt(s.prompt);txt=s?(p?T.chatLine(s.chat)+'\n\n'+p:s.chat):'';}
+  if(a==='copyp'){const s=trBy()[ROUTE.id],p=s&&trPrompt(s.prompt);const rl=s?trSurface(TR.D,s):null,run=rl&&rl.on?'\n'+T.runLine(rl.on,rl.why):'';txt=s?(p?T.chatLine(s.chat)+run+'\n\n'+p:s.chat+run):'';}
   if(a==='reply'){const x=trInputs()[+b.dataset.i];if(x)txt=T.replyText(x.id,x.step.chat,x.text);}
   if(!txt)return;
   try{await navigator.clipboard.writeText(txt);toast(STR.copied);}catch(_){$('#editT').textContent=T.copyByHand;$('#editChat').textContent=a==='copyp'?trBy()[ROUTE.id].chat:((trInputs()[+b.dataset.i]||{}).step||{}).chat||'';$('#editTxt').value=txt;$('#editMsg').textContent=STR.copyFail;$('#editdlg').showModal();}

@@ -526,6 +526,7 @@ html.dev-pl .tr-pcols,html.dev-tp .tr-pcols,html.dev-tl .tr-pcols,html.dev-d .tr
 .tr-pi.crit{border-left:4px solid var(--ink);padding-left:8px;border-radius:0 var(--r-sm) var(--r-sm) 0}
 .tr-pmore>summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
 .tr-crit{font-weight:700;white-space:nowrap}
+.tr-on{font-size:var(--fs-xs);margin-left:4px;vertical-align:baseline}   /* W3: [Code]/[Cowork] tag on Plan cells */
 .tr-pside{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
 html.dev-tl .tr-pside,html.dev-d .tr-pside{grid-template-columns:repeat(2,minmax(0,1fr))}
 .tr-plist{list-style:none;padding:0;margin:0;display:grid;gap:4px}

@@ -33,6 +33,11 @@ function appTests(){
   (()=>{const d={queue:['B'],steps:[{id:'A',type:'Build',status:'done',lock:true,needs:[],inputs:[]},{id:'B',type:'Build',status:'planned',lock:true,needs:['A'],inputs:[]},
       {id:'C',type:'Research',status:'ready',lock:false,needs:['A'],inputs:[]},{id:'D',type:'Review',status:'planned',lock:false,uses:['prof'],needs:[],inputs:[]}]},P=trPlan(d,'2026-11-21');
     t('plan: dates + rows + prof never planned',P.dates.B.start==='2026-11-21'&&P.dates.B.row==='lock'&&P.dates.C.row==='research'&&!P.dates.D&&P.prof.length===1&&P.critical.length>0);})();
+  (()=>{const d={surfaces:{on:['Code','Cowork'],rules:[{if:{uses:'prof'},on:['Code','Cowork'],why:'p'},{if:{lock:true},on:'Code',why:'l'},{if:{type:['Research']},on:'Cowork',why:'r'}]},steps:[]};
+    const a=trSurface(d,{type:'Build',lock:true}),b=trSurface(d,{type:'Research',lock:false}),c=trSurface(d,{type:'Build',lock:true,run:{on:'Cowork',why:'x'}}),
+      e=trSurface(d,{type:'Build',lock:true,run:{on:'Cowork',why:'x',override:true}}),f=trSurface(d,{type:'Review',uses:['prof'],run:{on:'Cowork',why:'y'}}),g=trSurface(d,{type:'Fix',lock:false});
+    t('surface: rules + run (W3)',a.on==='Code'&&a.rule===1&&b.on==='Cowork'&&!c.fit&&c.on==='Cowork'&&e.override&&f.fit&&g.rule===null&&g.on===null);
+    t('surface: words',typeof STR.tr.runLine==='function'&&STR.tr.pl.runT&&STR.tr.pl.runSr('Code').includes('Code'));})();
   t('tracker rules',TR_RULES.statuses.length===9&&TR_RULES.met.join()==='owner check,done'&&Object.keys(TR_SLUG).length===9&&TR_RULES.statuses.every(s=>STR.tr.st[s]&&STR.tr.stShort[s]&&STR.tr.stHelp[s]));
   (()=>{const S=[{id:'A',status:'done',needs:[],inputs:[]},{id:'B',status:'owner check',needs:['A'],inputs:[]},{id:'C',status:'ready',needs:['B'],inputs:[],lock:true,chat:'Bio · Build · C'},
       {id:'D',status:'planned',needs:['C'],inputs:[{id:'D.q1',status:'open',blocks:true}]}],by={};S.forEach(s=>by[s.id]=s);

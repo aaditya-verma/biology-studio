@@ -84,4 +84,22 @@ function trPlan(doc,today){
   const dates={};items.forEach(x=>{if(x.kind==='step')dates[x.id]={start:x.start,end:x.end,row:x.row,mins:x.mins,slipped:!!x.slipped};});
   return {today,end:last,critical,rows,ranked,prof,dates};}
 
-if(typeof module!=='undefined'&&module.exports)module.exports={trPlan,PLAN_DEF,planChats,planCal};
+// W3 run surface (D-080): where a step's chat runs — Code or Cowork. Rules live in steps.json `surfaces` (first match wins);
+// each step's `run {on, why, override?}` says where it actually runs. Same answer as check.py surface() (--selftest compares in node).
+const SURF_DEF={"on":["Code","Cowork"],"rules":[]};
+function surfMatch(c,s){if(!c||typeof c!=='object'||Array.isArray(c))return false;   // a malformed rule never matches (check.py reports it)
+  const u=s.uses||[];return Object.keys(c).every(k=>{const v=c[k];
+  if(k==='lock')return !!s.lock===!!v;
+  if(k==='uses')return v==='prof'?(u.length===1&&u[0]==='prof'):u.includes(v);
+  if(k==='type')return (Array.isArray(v)?v:[v]).includes(s.type);
+  return true;});}
+function trSurface(doc,s){
+  const cfg=doc&&doc.surfaces&&typeof doc.surfaces==='object'&&!Array.isArray(doc.surfaces)?doc.surfaces:SURF_DEF;
+  let rule=null,ri=null;(Array.isArray(cfg.rules)?cfg.rules:[]).some((r,i)=>{if(r&&typeof r==='object'&&surfMatch(r.if,s)){rule=r;ri=i;return true;}return false;});
+  const allowed=(rule==null?[]:(Array.isArray(rule.on)?rule.on:[rule.on])).map(x=>x===undefined?null:x);
+  const run=s.run&&typeof s.run==='object'&&!Array.isArray(s.run)?s.run:null;
+  const on=run?(run.on===undefined?null:run.on):(allowed.length?allowed[0]:null);   // allowed[0] is never undefined (mapped to null, like Python's None)
+  const why=run&&run.why?run.why:(rule?(rule.why===undefined?null:rule.why):'');
+  return {on,allowed,why,rule:ri,fit:allowed.includes(on),override:!!(run&&run.override),set:run!==null};}
+
+if(typeof module!=='undefined'&&module.exports)module.exports={trPlan,PLAN_DEF,planChats,planCal,trSurface};

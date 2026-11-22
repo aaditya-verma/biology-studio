@@ -6,6 +6,7 @@
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
  "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "surfaces": {"on": ["Code", "Cowork"], "rules": [{"if": {"uses": "prof"}, "on": ["Code", "Cowork"], "why": "the professor's chats: either surface (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"lock": true}, "on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}], "note": "Where each chat runs (W3, D-080). First matching rule wins; each step's `run` {on, why} says where it really runs — set `override: true` to keep a different surface. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
    "id": "M0",
@@ -27,7 +28,8 @@
    "inputs": [
     {"id": "M0.q1", "kind": "action", "ask": "Optional: rename the Drive folder Embryo Studio → Biology Studio, then tell a chat so the docs follow", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Embryo · Ideation · setup", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Embryo · Ideation · setup", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "R0",
@@ -47,7 +49,8 @@
    "inputs": [
     {"id": "R0.q1", "kind": "ask", "ask": "\"GitHub projects added\" (17 Nov): not found yet — share the links so they join the registry § Tools", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Embryo · Ideation · research helper", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Embryo · Ideation · research helper", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "PB",
@@ -65,7 +68,8 @@
    "log": "17 Nov 2026 · Studio playbook — crew, 7 gates, craft standards",
    "todo": [],
    "inputs": [],
-   "runs": [{"chat": "Bio · Ideation", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "UR",
@@ -83,7 +87,8 @@
    "log": "17 Nov 2026 · Usage & upkeep rule — RULES §I",
    "todo": [],
    "inputs": [],
-   "runs": [{"chat": "Bio · Ideation", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "QB",
@@ -103,7 +108,8 @@
    "inputs": [
     {"id": "QB.q1", "kind": "action", "ask": "Put the two reference reels in Drive › research/quality-refs/ (reference only, never in the repo)", "asked_in": "Bio · Ideation (quality refs)", "asked": "2026-11-17", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Ideation (quality refs)", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation (quality refs)", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "DR",
@@ -123,7 +129,8 @@
    "inputs": [
     {"id": "DR.q1", "kind": "action", "ask": "Re-paste claude/INSTRUCTIONS.md §6 into Project → Custom instructions (it now names build/steps.json; Professor’s Project too, once set up)", "asked_in": "Bio · Fix · doc reconcile", "asked": "2026-11-18", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Ideation · Device optimisation", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation · Device optimisation", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "VS",
@@ -144,7 +151,8 @@
     {"id": "VS.q1", "kind": "action", "ask": "Name QR03's source account/link (file is in Drive › research/quality-refs/, 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": "https://youtube.com/shorts/DI7oat-HzhY (owner, 20 Nov 2026, 01:51 IST); logged in quality-references QR03", "status": "closed", "d": "D-041"},
     {"id": "VS.q2", "kind": "action", "ask": "Create the missing D-025 Drive folders audio/ assets/ index/ backup/ (research/ and research/quality-refs/ were made 20 Nov)", "asked_in": "Bio · Fix · Visual style port", "asked": "2026-11-20", "answer": "Done — audio/, assets/, index/, backup/ created in Drive (owner, 20 Nov 2026, 01:48 IST)", "status": "closed", "d": "D-025"}
    ],
-   "runs": [{"chat": "Bio · Ideation · Visual style", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation · Visual style", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "VS2",
@@ -168,7 +176,8 @@
    "inputs": [
     {"id": "VS2.q1", "kind": "ask", "ask": "QR04/QR05 (D-046 H5): (a) is QR04 heart Part 3 and QR05 fertilisation Part 1? (b) channel/account + link for each; (d) what is the \"Record_2026-11-17-03-43-37…\" file in Drive › research/quality-refs/?", "asked_in": "Bio · Ideation · Visual style 2", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-046"}
    ],
-   "runs": [{"chat": "Bio · Ideation · Visual style 2", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Ideation · Visual style 2", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "VS2P",
@@ -190,7 +199,8 @@
     "Delete the Project draft claude/drafts/visual-style-and-gsci-checklist-draft.md (owner; ported) — and handoff-visual-style-D041.md if done"
    ],
    "inputs": [],
-   "runs": [{"chat": "Bio · Fix · Visual style 2 port", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Fix · Visual style 2 port", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "M1",
@@ -221,7 +231,8 @@
     {"id": "M1.q4", "kind": "action", "ask": "Optional: download the free 3D Atlas of Human Embryology PDFs (3dembryoatlas.com) to Drive › research/ (needed for the G-Sci look check vs R01 CS7)", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
     {"id": "M1.q5", "kind": "action", "ask": "Upload out\\for_drive\\ (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff, then do T1 on the phone", "asked_in": "Bio · Build · M1 bake-off", "asked": "2026-11-20", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Build · M1 bake-off", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · M1 bake-off", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "M1b",
@@ -264,7 +275,8 @@
     {"id": "M1b.q11", "kind": "action", "ask": "On kit v7c: `python m1b.py all --preview`; if every Host vs plate line is OK, `python m1b.py t1b`; upload the files inside out\\for_drive\\ to Drive › renders › bakeoff › host; do T1b on the phone; paste RESULTS.md + T1b notes in `Bio · Build · M1b v7c results`", "asked_in": "Bio · Build · M1b v7 results", "asked": "2026-11-21", "answer": "Done — v7c preview 18:41 + t1b 720p 21:12–21:23 (QA PASS); files uploaded; T1b on the phone all fine, host OK (owner, 22:23 IST)", "status": "answered", "d": "D-062"}
    ],
    "note": "Gate details (moved from the gate fields by H2 — the tracker takes open/pass/fail/na only): G-Art: pass with notes (v7 look + v7b plan); v7c after preview; G-A11y: pass (v7b t1b 720p: host vs plate front 91 %, A 100 %, B 97–99 %; captions 7.8/5.0); v7c re-check; G-Eng: pass with notes (v7, v7b; v7c fixed after FAIL)",
-   "runs": [{"chat": "Bio · Build · M1b v7c results", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · M1b v7c results", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "H1",
@@ -291,7 +303,8 @@
     {"id": "H1.q5", "kind": "action", "ask": "Clone the repo on your laptop: cd /d D:\\Projects\\biology_studio\\repo → git clone https://github.com/aaditya-verma/biology-studio.git; run M1 from there", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
     {"id": "H1.q6", "kind": "action", "ask": "Delete the 24 uploaded Project docs (Project → knowledge; keep the GitHub studio-docs/ source), then a chat checks it still sees STATUS", "asked_in": "Bio · Fix · doc reconcile", "asked": "2026-11-18", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Build · H1 shared repo", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · H1 shared repo", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "H2",
@@ -318,7 +331,8 @@
     {"id": "H2.q2", "kind": "decide", "ask": "D-061: confirm Reviewer mode as built (addresses, 8-line checklist, ✓/✎/? + note rule, the issue → words mapping, 5-min GitHub check, updates from the build log) — or say what to change (T10 step 8)", "asked_in": "Bio · Build · H2 reviewer mode", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-061"},
     {"id": "H2.q3", "kind": "action", "ask": "After T10 part A: send the Professor the welcome message (links + 3 lines; text in the build log H2 line / chat) — then T10 part B is hers", "asked_in": "Bio · Build · H2 reviewer mode", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-060"}
    ],
-   "runs": [{"chat": "Bio · Build · H2 reviewer mode", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · H2 reviewer mode", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "I1",
@@ -341,7 +355,8 @@
     {"id": "I1.q1", "kind": "action", "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
     {"id": "I1.q2", "kind": "action", "ask": "Optional: photograph the print Index pages to Drive › book/ (missing from the PDF) for a later I1 calibration", "asked_in": "Bio · Build · I1 index", "asked": "2026-11-17", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Build · I1 index", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · I1 index", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "K1",
@@ -361,7 +376,8 @@
     "Roadmap episode numbers after S1E01 stay provisional until added to the episode catalog"
    ],
    "inputs": [],
-   "runs": [{"chat": "Bio · Build · K1 concept map", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · K1 concept map", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "K2",
@@ -385,7 +401,8 @@
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · K2 map data", "by": "Aaditya", "start": "2026-11-22 03:12", "end": "2026-11-22 09:45", "outcome": "done", "note": "route A (cloud clone, push from chat); gates by 3 fresh reviewer agents, 2 rounds; owner pick D-073 a (1.5× zoom)"}]
+   "runs": [{"chat": "Bio · Build · K2 map data", "by": "Aaditya", "start": "2026-11-22 03:12", "end": "2026-11-22 09:45", "outcome": "done", "note": "route A (cloud clone, push from chat); gates by 3 fresh reviewer agents, 2 rounds; owner pick D-073 a (1.5× zoom)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "K3",
@@ -408,7 +425,8 @@
     "Phone: opens on Parts/Chapters, concept dots from 1.5× zoom (D-073 a); K2's notes for K3 in the K2 to-dos"
    ],
    "inputs": [],
-   "est": {"chats": 2}
+   "est": {"chats": 2},
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "K4",
@@ -429,7 +447,8 @@
     "Side = three.js cone, height = day; day slider sets the viewer's day (D-071 a, e)"
    ],
    "inputs": [],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "X1.05",
@@ -449,7 +468,8 @@
    "inputs": [
     {"id": "X1.05.q1", "kind": "decide", "ask": "Skim the ⚑ list: D-029 notochord, D-030 stage ages / SCT frequency / SSRI line — say if you want a different handling", "asked_in": "Bio · Research · X1 Ch 05", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-030"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 05", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 05", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.06",
@@ -469,7 +489,8 @@
    "inputs": [
     {"id": "X1.06.q1", "kind": "decide", "ask": "D-039 (a–e) from Ch 6: pick an option per item (somite total, month-2 days, R02 ages, marrow timing, haemangioma) — recommendations given", "asked_in": "Bio · Research · X1 Ch 06", "asked": "2026-11-19", "answer": null, "status": "open", "d": "D-039"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 06", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 06", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.07",
@@ -493,7 +514,8 @@
    "inputs": [
     {"id": "X1.07.q1", "kind": "decide", "ask": "D-043 (a–d) from Ch 7: ventral body-wall closure model, CDH frequency, renaming 'Diaphragm from four parts' (septum transversum ≠ central tendon in Langman 14e), gastroschisis associated-defect figures — recommendations given", "asked_in": "Bio · Research · X1 Ch 07", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-043"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 07", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 07", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.08",
@@ -518,7 +540,8 @@
    "inputs": [
     {"id": "X1.08.q1", "kind": "decide", "ask": "D-044 (a–e) from Ch 8: pick an option per item (progesterone hand-over, CRL accuracy, share of DZ twins, accreta/previa concept name, amniotic fluid curve) — recommendations given", "asked_in": "Bio · Research · X1 Ch 08", "asked": "2026-11-20", "answer": null, "status": "open", "d": "D-044"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 08", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 08", "by": "Aaditya", "start": "2026-11-20", "end": "2026-11-20", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.09",
@@ -546,7 +569,8 @@
     {"id": "X1.09.q1", "kind": "decide", "ask": "D-057 (a–d) from Ch 9: pick an option per item (FASD rate, Zika risk, pregestational diabetes risk, ondansetron and heart defects) — recommendations given; (e) is a note, no action needed", "asked_in": "Bio · Research · X1 Ch 09", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-057"},
     {"id": "X1.09.q2", "kind": "decide", "ask": "card-check bug found this chat: tools/card-check/citations.py matches R\\d\\d[a-z]? so 56 of 98 registry sources (every R05aa onwards, i.e. all of Ch 7, 8 and 9) are dropped from sources.json and would fail validate_citation. One-char fix to [a-z]{0,2} in SRC_RE + parse_registry + the app parity copy. Fix it as the first item of C2 (it takes the lock), or as a separate Bio · Fix · citations R05 chat first?", "asked_in": "Bio · Research · X1 Ch 09", "asked": "2026-11-21", "answer": "Fixed in C2 (21 Nov 2026): R\\d\\d[a-z]{0,2} in citations.py, 15-cards.js, 16-studio.js; sources.json has all 97 sources; parity green (D-058 (2))", "status": "answered", "d": "D-058"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 09", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 09", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.10",
@@ -572,7 +596,8 @@
     {"id": "X1.10.q1", "kind": "decide", "ask": "D-064 (a, b, d) from Ch 10: pick an option per item (posterior fontanelle timing, craniosynostosis rate, acromegaly cause) — recommendations given; (c) resegmentation is a teaching note — confirm option 1 (book halves in the card, refinement in More); (e) is a curriculum note", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-064"},
     {"id": "X1.10.q2", "kind": "action", "ask": "Allow nmc.org.in in Claude in Chrome's site permissions (it was blocked), or open NMC UG Curriculum Vol I yourself, so the next chat can re-read the axial AN codes there", "asked_in": "Bio · Research · X1 Ch 10", "asked": "2026-11-21", "answer": "Done 21 Nov 2026: owner downloaded UG-Curriculum-Vol-I.pdf from nmc.org.in; every axial code matches (2018 wording differs in a few verbs)", "status": "closed", "d": "D-064"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 10", "by": "Aaditya", "start": "2026-11-21 22:40", "end": "2026-11-21 23:10", "outcome": "done", "note": "route B, written to the laptop clone; G-Sci pass with fixes (4 MUST, 12 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 10", "by": "Aaditya", "start": "2026-11-21 22:40", "end": "2026-11-21 23:10", "outcome": "done", "note": "route B, written to the laptop clone; G-Sci pass with fixes (4 MUST, 12 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.11",
@@ -601,7 +626,8 @@
    "inputs": [
     {"id": "X1.11.q1", "kind": "decide", "ask": "D-066 (a–e) from Ch 11: pick an option per item (striation timing, BMP4 role at the VLL lip, primaxial/abaxial muscle + rib lists — (3) also rewords Ch 10's rib line, DMD rate, prune belly triad + cause) — recommendations given; (f) is notes only", "asked_in": "Bio · Research · X1 Ch 11", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-066"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 11", "by": "Aaditya", "start": "2026-11-22 00:00", "end": "2026-11-22 01:00", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 16 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 11", "by": "Aaditya", "start": "2026-11-22 00:00", "end": "2026-11-22 01:00", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 16 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.12",
@@ -632,7 +658,8 @@
    "inputs": [
     {"id": "X1.12.q1", "kind": "decide", "ask": "D-067 (a–e) from Ch 12: pick an option per item (thalidomide window + which clock, retinoic acid's role, digit identity by time vs concentration, the two quotable rates, whether cards carry the hip-dysplasia prevention line) — recommendations given; (f) is the curriculum note, notes only", "asked_in": "Bio · Research · X1 Ch 12", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-067"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 12", "by": "Aaditya", "start": "2026-11-22 00:41", "end": "2026-11-22 02:05", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (15 MUST, 15 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 12", "by": "Aaditya", "start": "2026-11-22 00:41", "end": "2026-11-22 02:05", "outcome": "done", "note": "route A (pushed from the cloud workspace); G-Sci fresh-eyes reviewer agent: pass with fixes (15 MUST, 15 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.13",
@@ -662,7 +689,8 @@
     {"id": "X1.13.q1", "kind": "decide", "ask": "D-068 (a–e) from Ch 13: pick an option per item (pulmonary-artery origin, probe-patent foramen ovale 20 % vs 27 %, mitral not tricuspid cleft in ostium primum defect, interrupted-arch rate and its 22q11 link, single-lesion rates) — recommendations given; (f) passes limb-rate evidence to D-067 d, (g) is the curriculum note", "asked_in": "Bio · Research · X1 Ch 13", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-068"},
     {"id": "X1.13.q2", "kind": "action", "ask": "Move the Langman PDF to D:\\Projects\\biology_studio\\references\\book\\langman-14e.pdf and UG-Curriculum-Vol-I–III.pdf to references\\nmc\\ (the README there lists it; D-069) — from X1 Ch 14 on, chats stage from references\\", "asked_in": "Bio · Research · X1 Ch 13", "asked": "2026-11-22", "answer": "22 Nov (X1 Ch 15): NMC Vol I–III now in references\\nmc\\ ✔; the book is in references\\book\\ but still named 'Langmans Medical Embryology 14th Edition 2.pdf' — rename it to langman-14e.pdf to close this", "status": "open", "d": "D-069"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 13", "by": "Aaditya", "start": "2026-11-22 01:14", "end": "2026-11-22 01:47", "outcome": "done", "note": "route A (pushed from the cloud workspace; book + NMC staged from Downloads after a first refused grant); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 11 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 13", "by": "Aaditya", "start": "2026-11-22 01:14", "end": "2026-11-22 01:47", "outcome": "done", "note": "route A (pushed from the cloud workspace; book + NMC staged from Downloads after a first refused grant); G-Sci fresh-eyes reviewer agent: pass with fixes (5 MUST, 11 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.14",
@@ -690,7 +718,8 @@
    "inputs": [
     {"id": "X1.14.q1", "kind": "decide", "ask": "D-072 (a–e) from Ch 14: pick an option per item (how trachea and oesophagus part — Tier 1 split; alveoli at birth and until when; preterm survival age; branching after birth; what seals the larynx) — recommendations given; (f)–(i) are notes", "asked_in": "Bio · Research · X1 Ch 14", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-072"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 14", "by": "Aaditya", "start": "2026-11-22 02:20", "end": "2026-11-22 02:50", "outcome": "done", "note": "route B (no repo access from the cloud workspace; worked on a copy of the laptop clone, files written back after the two Fix merge chats had committed); G-Sci fresh-eyes reviewer agent: pass with fixes (8 MUST, 15 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 14", "by": "Aaditya", "start": "2026-11-22 02:20", "end": "2026-11-22 02:50", "outcome": "done", "note": "route B (no repo access from the cloud workspace; worked on a copy of the laptop clone, files written back after the two Fix merge chats had committed); G-Sci fresh-eyes reviewer agent: pass with fixes (8 MUST, 15 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.15",
@@ -720,7 +749,8 @@
    "inputs": [
     {"id": "X1.15.q1", "kind": "decide", "ask": "D-074 (a–j) from Ch 15: pick an option per item (midgut rotation model, why the gut herniates, midgut–hindgut border, stomach's second axis, liver-bud timing, gastroschisis rate — the book contradicts itself, small-bowel atresia rate, Meckel frequency, insulin timing, pyloric stenosis age) — recommendations given; (k)–(n) are notes", "asked_in": "Bio · Research · X1 Ch 15", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-074"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 15", "by": "Aaditya", "start": "2026-11-22 11:22", "end": "2026-11-22 11:45", "outcome": "done", "note": "route B (no push access from the cloud workspace: cloned origin/main, worked and checked here, files written to the laptop clone at Studio home repo folder; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (10 MUST, 12 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 15", "by": "Aaditya", "start": "2026-11-22 11:22", "end": "2026-11-22 11:45", "outcome": "done", "note": "route B (no push access from the cloud workspace: cloned origin/main, worked and checked here, files written to the laptop clone at Studio home repo folder; owner commits with the git add line); G-Sci fresh-eyes reviewer agent: pass with fixes (10 MUST, 12 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.16",
@@ -750,7 +780,8 @@
    "inputs": [
     {"id": "X1.16.q1", "kind": "decide", "ask": "D-076 (a–i) from Ch 16: pick an option per item (vaginal lining origin, glans urethra, when nephrons stop forming, exstrophy rates, hypospadias rate, Wilms cause, Klinefelter frequency, renal arteries in ascent) — recommendations given; (g) PKD is a note after G-Sci; (j)–(m) are notes", "asked_in": "Bio · Research · X1 Ch 16", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-076"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 16", "by": "Aaditya", "start": "2026-11-22 11:55", "end": "2026-11-22 12:14", "outcome": "done", "note": "route B (no push access from the cloud workspace: cloned origin/main 8fa322b, worked and checked here, files written to the laptop clone; owner commits with the git add line — V3 build chat holds the lock); G-Sci fresh-eyes reviewer agent: pass with fixes (6 MUST, 8 SHOULD applied)"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 16", "by": "Aaditya", "start": "2026-11-22 11:55", "end": "2026-11-22 12:14", "outcome": "done", "note": "route B (no push access from the cloud workspace: cloned origin/main 8fa322b, worked and checked here, files written to the laptop clone; owner commits with the git add line — V3 build chat holds the lock); G-Sci fresh-eyes reviewer agent: pass with fixes (6 MUST, 8 SHOULD applied)"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.17",
@@ -780,7 +811,8 @@
    "inputs": [
     {"id": "X1.17.q1", "kind": "decide", "ask": "D-078 (a–e) from Ch 17: pick an option per item (when the palatal shelves rise, how the septum meets the palate, 22q11.2 rate, hemifacial microsomia rate, cleft palate rate) — recommendations given; (f)–(l) are notes", "asked_in": "Bio · Research · X1 Ch 17", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-078"}
    ],
-   "runs": [{"chat": "Bio · Research · X1 Ch 17", "by": "Aaditya", "start": "2026-11-22 12:33", "outcome": "done", "note": "route A (cloud workspace clone with push access; V3 build chat holds the lock); G-Sci fresh-eyes reviewer agent: pass with fixes (9 MUST, 13 SHOULD applied; ⚑ f downgraded to a note)", "end": "2026-11-22 12:56"}]
+   "runs": [{"chat": "Bio · Research · X1 Ch 17", "by": "Aaditya", "start": "2026-11-22 12:33", "outcome": "done", "note": "route A (cloud workspace clone with push access; V3 build chat holds the lock); G-Sci fresh-eyes reviewer agent: pass with fixes (9 MUST, 13 SHOULD applied; ⚑ f downgraded to a note)", "end": "2026-11-22 12:56"}],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "X1.18",
@@ -826,7 +858,8 @@
    "prompt": "X1 Ch 19",
    "log": "—",
    "todo": [],
-   "inputs": []
+   "inputs": [],
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "A0",
@@ -850,7 +883,8 @@
    "inputs": [
     {"id": "A0.q1", "kind": "ask", "ask": "Which tablet can you test on (model, real or emulated)? None → checks use the laptop’s device mode, marked \"emulated\"", "asked_in": "Bio · Build · A0 shell", "asked": "2026-11-18", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Build · A0 shell", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · A0 shell", "by": "Aaditya", "start": "2026-11-18", "end": "2026-11-18", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "V1",
@@ -871,7 +905,8 @@
     "Reviewer notes done in V2 (21 Nov 2026): streak at day 18, leader lines, cut −0.3, context loss (flow + Restart 3D); scene version stays 1 until first ship"
    ],
    "inputs": [],
-   "runs": [{"chat": "Bio · Build · V1 viewer", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · V1 viewer", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "S1",
@@ -891,7 +926,8 @@
    "inputs": [
     {"id": "S1.q1", "kind": "action", "ask": "Optional: try the Studio at ?test=1#studio=E05.01.01 on the phone (review pane) and the laptop (3 panes)", "asked_in": "Bio · Build · S1 studio", "asked": "2026-11-19", "answer": null, "status": "open", "d": null}
    ],
-   "runs": [{"chat": "Bio · Build · S1 studio", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · S1 studio", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "W1",
@@ -909,7 +945,8 @@
    "log": "19 Nov 2026 · W1 progress map (app v5) — steps.json, check.py in CI, #progress Map · Board · Your inputs + #step; layout-check 1764/1764",
    "todo": [],
    "inputs": [],
-   "runs": [{"chat": "Bio · Build · W1 progress map", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · W1 progress map", "by": "Aaditya", "start": "2026-11-19", "end": "2026-11-19", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "W2",
@@ -935,7 +972,8 @@
     {"id": "W2.q1", "kind": "decide", "ask": "Calendar: are 3 h on weekdays and 6 h on Sat/Sun of chat time right? Send your minutes per day (Mon…Sun) and any days off — every date on Plan follows them", "asked_in": "Bio · Build · W2 scheduler", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-063"}
    ],
    "est": {"chats": 1, "owner_min": 15},
-   "runs": [{"chat": "Bio · Build · W2 scheduler", "by": "Aaditya", "start": "2026-11-21 22:30", "outcome": "done", "end": "2026-11-21 23:40"}]
+   "runs": [{"chat": "Bio · Build · W2 scheduler", "by": "Aaditya", "start": "2026-11-21 22:30", "outcome": "done", "end": "2026-11-21 23:40"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "C1",
@@ -961,7 +999,8 @@
     {"id": "C1.q1", "kind": "decide", "ask": "D-037: keep the D2 exception for E05.01.01 (5 new terms), or option (a) — E00.01.04 becomes a prerequisite and the colour-key card names the three layers", "asked_in": "Bio · Build · S1 studio", "asked": "2026-11-19", "answer": "Option (a), 20 Nov 2026 02:05 IST (D-042)", "status": "answered", "d": "D-037"},
     {"id": "C1.q2", "kind": "action", "ask": "T3c (~15 min): read the 12 cards in the Studio review pane on phone, tablet and laptop; give G-Owner on E05.01.01 (owner checklist T3c)", "asked_in": "Bio · Content · C1 Part 0 + Ch 5", "asked": "2026-11-20", "answer": "T3c pass + G-Owner pass E05.01.01 · by Aaditya, 21 Nov 2026 03:43 IST (reported in Bio · Build · L1 learning core)", "status": "answered", "d": null}
    ],
-   "runs": [{"chat": "Bio · Content · C1 Part 0 + Ch 5", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Content · C1 Part 0 + Ch 5", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "P1",
@@ -983,7 +1022,8 @@
    ],
    "inputs": [],
    "uses": ["gpu"],
-   "est": {"chats": 3}
+   "est": {"chats": 3},
+   "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
    "id": "R1",
@@ -1004,7 +1044,8 @@
    ],
    "inputs": [],
    "uses": ["gpu"],
-   "est": {"chats": 2}
+   "est": {"chats": 2},
+   "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
    "id": "L1",
@@ -1031,7 +1072,8 @@
     {"id": "L1.q1", "kind": "decide", "ask": "D-050: confirm guide cards (kind guide, APP cites, mark ⓘ), statuses (Read 1.5 s, Understood = clean Check run, Can explain self-check), 1·3·7 deck, learners see Reviewed cards — or say what to change (T7 step 9)", "asked_in": "Bio · Build · L1 learning core", "asked": "2026-11-21", "answer": "A — D-050 confirmed, with one change: the card text folds away while the Check runs (Read again ends the run unscored) → D-053 (21 Nov 2026, 13:55 IST)", "status": "answered", "d": "D-053"},
     {"id": "L1.q2", "kind": "action", "ask": "Tomorrow (22 Nov), installed app on the tablet or phone: T7 step 8 — Today shows the due count → Review now → answer from memory, Show answer, Got it / Not yet. Send one screenshot + anything confusing; then T7 → pass and L1 → done", "asked_in": "Bio · Review · T7 learning core", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-050"}
    ],
-   "runs": [{"chat": "Bio · Build · L1 learning core", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · L1 learning core", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "L1F",
@@ -1056,7 +1098,8 @@
    "inputs": [
     {"id": "L1F.q1", "kind": "decide", "ask": "D-056: confirm Try it labels off during a Check run, leaving the card ends a run, scene phone framing, pinned labels beside pins (T7b step 11) — or say what to change", "asked_in": "Bio · Fix · L1 polish", "asked": "2026-11-21", "answer": null, "status": "open", "d": "D-056"}
    ],
-   "runs": [{"chat": "Bio · Fix · L1 polish", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Fix · L1 polish", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "V2",
@@ -1081,7 +1124,8 @@
    "inputs": [
     {"id": "V2.q1", "kind": "decide", "ask": "D-054: confirm drills as Check types, the masked day only during 'Which day is this?', the 3D moving into the Check on phone/tablet portrait (beside it otherwise), rotate + folded waiting for Ch 6 cards — or say what to change (T8 step 8)", "asked_in": "Bio · Build · V2 3D drills", "asked": "2026-11-21", "answer": "Confirmed — \"all ok\" after T8 (D-055)", "status": "answered", "d": "D-054"}
    ],
-   "runs": [{"chat": "Bio · Build · V2 3D drills", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}]
+   "runs": [{"chat": "Bio · Build · V2 3D drills", "by": "Aaditya", "start": "2026-11-21", "end": "2026-11-21", "outcome": "done", "note": "backfilled from the log line (W2)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "C2",
@@ -1109,7 +1153,8 @@
    ],
    "inputs": [],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Content · C2 Ch 6–8", "by": "Aaditya", "start": "2026-11-21", "outcome": "partial", "note": "backfilled from the log line (W2)", "end": "2026-11-21"}, {"chat": "Bio · Content · C2 round 3", "by": "Aaditya", "start": "2026-11-21 22:56", "outcome": "done", "end": "2026-11-21 23:50", "note": "route B; 7 review rounds, 15 reviewer agents; ran in the cloud workspace on staged copies"}]
+   "runs": [{"chat": "Bio · Content · C2 Ch 6–8", "by": "Aaditya", "start": "2026-11-21", "outcome": "partial", "note": "backfilled from the log line (W2)", "end": "2026-11-21"}, {"chat": "Bio · Content · C2 round 3", "by": "Aaditya", "start": "2026-11-21 22:56", "outcome": "done", "end": "2026-11-21 23:50", "note": "route B; 7 review rounds, 15 reviewer agents; ran in the cloud workspace on staged copies"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "L2",
@@ -1138,7 +1183,8 @@
     {"id": "L2.q2", "kind": "decide", "ask": "Lesson order: move E00.01.06 How to use the app first in Part 0 (it explains Check + Understood before the first Check) and E07.01.01 A tube on a tube first in Ch 7 (the chapter's overview, book E07.01)? Roadmap order puts them last; yes needs a small order override in lesson-check (G-Learn recommendation)", "asked_in": "Bio · Build · L2 lessons", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-070"}
    ],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Build · L2 lessons", "by": "Aaditya", "start": "2026-11-22 01:06", "note": "route B (no push access, no laptop shell): built + checked in the cloud workspace, files written to the laptop clone; built at risk; gates 2 rounds (G-Eng, G-Learn, G-A11y) + G-Sci rounds on E00.01.06", "outcome": "done", "end": "2026-11-22 02:15"}, {"chat": "Bio · Fix · L2 merge", "by": "Aaditya", "start": "2026-11-22 02:27", "note": "route B: sync.bat autostash conflict (5 files) resolved in the cloud workspace, both sides kept; L2 decision D-067 → D-070", "outcome": "done", "end": "2026-11-22 02:40"}]
+   "runs": [{"chat": "Bio · Build · L2 lessons", "by": "Aaditya", "start": "2026-11-22 01:06", "note": "route B (no push access, no laptop shell): built + checked in the cloud workspace, files written to the laptop clone; built at risk; gates 2 rounds (G-Eng, G-Learn, G-A11y) + G-Sci rounds on E00.01.06", "outcome": "done", "end": "2026-11-22 02:15"}, {"chat": "Bio · Fix · L2 merge", "by": "Aaditya", "start": "2026-11-22 02:27", "note": "route B: sync.bat autostash conflict (5 files) resolved in the cloud workspace, both sides kept; L2 decision D-067 → D-070", "outcome": "done", "end": "2026-11-22 02:40"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "V3",
@@ -1168,7 +1214,8 @@
     {"id": "V3.q1", "kind": "decide", "ask": "D-075: confirm the trace drill as built (Check type, path as scene data, cell only during its question, ringed + labelled, drawn larger; first use early cell → endoderm) — say 'D-075 confirmed' or what to change", "asked_in": "Bio · Build · V3 trace a cell", "asked": "2026-11-22", "answer": null, "status": "open", "d": "D-075"}
    ],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Build · V3 trace a cell", "by": "Aaditya", "start": "2026-11-22 11:40", "end": "2026-11-22 12:41", "outcome": "done", "note": "route A (desktop app, laptop shell on; pushed from the chat); built at risk (T9, T7 deck, T7b, T3d A + B open); gates by 5 fresh reviewer agents: G-Sci 2 rounds + scene fact, G-Learn 2, G-Eng 1, G-Art pass (3 rounds), G-A11y 1 + confirm; also committed X1 Ch 15's route-B files (8fa322b) so sync.bat has nothing to autostash"}]
+   "runs": [{"chat": "Bio · Build · V3 trace a cell", "by": "Aaditya", "start": "2026-11-22 11:40", "end": "2026-11-22 12:41", "outcome": "done", "note": "route A (desktop app, laptop shell on; pushed from the chat); built at risk (T9, T7 deck, T7b, T3d A + B open); gates by 5 fresh reviewer agents: G-Sci 2 rounds + scene fact, G-Learn 2, G-Eng 1, G-Art pass (3 rounds), G-A11y 1 + confirm; also committed X1 Ch 15's route-B files (8fa322b) so sync.bat has nothing to autostash"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "W3",
@@ -1181,17 +1228,18 @@
    "lock": true,
    "gates": {"G-Eng": "open"},
    "check": null,
-   "decisions": [],
+   "decisions": ["D-080"],
    "prompt": "W3 run surface",
    "log": "—",
    "todo": [
     "run {on, why} on every step; surface rules config; check.py --next suggestion + warnings; [Code]/[Cowork] tag in STATUS auto block; Run in: line in prompt template"
    ],
    "inputs": [
-    {"id": "W3.q1", "kind": "decide", "ask": "Professor's chats: Code + Cowork, or Cowork only?", "asked_in": "Bio · Ideation", "asked": "2026-11-22", "answer": "Code + Cowork (22 Nov 2026, W3 chat)", "status": "answered", "d": null}
+    {"id": "W3.q1", "kind": "decide", "ask": "Professor's chats: Code + Cowork, or Cowork only?", "asked_in": "Bio · Ideation", "asked": "2026-11-22", "answer": "Code + Cowork (22 Nov 2026, W3 chat)", "status": "answered", "d": "D-080"}
    ],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "outcome": "partial", "note": "route A (Claude Code, fresh clone); open run"}]
+   "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "outcome": "partial", "note": "route A (Claude Code, fresh clone); open run"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "M1V8",
@@ -1213,7 +1261,8 @@
    ],
    "inputs": [],
    "uses": ["gpu"],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
    "id": "L3",
@@ -1234,7 +1283,8 @@
     "Card Watch it links to clips once R1 ships"
    ],
    "inputs": [],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "U1",
@@ -1261,7 +1311,8 @@
     {"id": "U1.q4", "kind": "decide", "ask": "U0.q4 Schedule: S1 before GATE · S2 after GATE", "asked_in": "Bio · Ideation · App look v2", "asked": "2026-11-22", "answer": "S1 — U2 + U3 after V3, before W3 and GATE; U3 in GATE needs", "status": "answered", "d": "D-077"}
    ],
    "est": {"chats": 1, "owner_min": 15},
-   "runs": [{"chat": "Bio · Design · U1 look canvas", "by": "Aaditya", "start": "2026-11-22 12:05", "end": "2026-11-22 12:50", "outcome": "done", "note": "route B, no lock; canvas https://claude.ai/artifact/9ToGW4nXqsRve6KGp7znw9"}]
+   "runs": [{"chat": "Bio · Design · U1 look canvas", "by": "Aaditya", "start": "2026-11-22 12:05", "end": "2026-11-22 12:50", "outcome": "done", "note": "route B, no lock; canvas https://claude.ai/artifact/9ToGW4nXqsRve6KGp7znw9"}],
+   "run": {"on": "Code", "why": "edits repo files and runs the validators before the commit"}
   },
   {
    "id": "U2",
@@ -1283,7 +1334,8 @@
     "Write T13b"
    ],
    "inputs": [],
-   "est": {"chats": 2}
+   "est": {"chats": 2},
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "U3",
@@ -1305,7 +1357,8 @@
     "Write T13c"
    ],
    "inputs": [],
-   "est": {"chats": 1}
+   "est": {"chats": 1},
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "GATE",
@@ -1325,7 +1378,8 @@
     "App-first (D-047): 7 days on cards, lessons and drills — no video needed"
    ],
    "inputs": [],
-   "est": {"chats": 0.5, "days": 7}
+   "est": {"chats": 0.5, "days": 7},
+   "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
    "id": "D1",
@@ -1344,7 +1398,8 @@
    "todo": [
     "Google Cloud project \"Biology Studio\" not created yet; add the Professor as an OAuth test user when it is"
    ],
-   "inputs": []
+   "inputs": [],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "G1",
@@ -1361,7 +1416,8 @@
    "prompt": null,
    "log": "—",
    "todo": [],
-   "inputs": []
+   "inputs": [],
+   "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
    "id": "IB01",

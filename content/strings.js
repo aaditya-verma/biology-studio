@@ -146,7 +146,7 @@ const STR={
     needs:'Needs', unblocks:'Unblocks', more:n=>'+'+n+' more', gatesT:'Gates', checkT:'Owner check', decT:'Decisions', logT:'Last log line',
     inputsT:'Your inputs here', answerT:'Answer:', todoT:'Carried to-dos', promptT:'Ready prompt', chatName:'Chat name', showPrompt:'Show the prompt',
     promptFrom:k=>'master plan §13 · '+k, promptMissing:k=>'Prompt “'+k+'” is not in master plan §13 yet.', noPrompt:'No ready prompt yet — a chat writes it in master plan §13.',
-    copyPrompt:'Copy prompt + chat name', copyChat:'Copy chat name', chatLine:c=>'Chat: '+c,
+    copyPrompt:'Copy prompt + chat name', copyChat:'Copy chat name', chatLine:c=>'Chat: '+c, runLine:(on,why)=>'Run in: '+on+(why?' — '+why:''),
     ideaFrom:'From build/ideas-backlog.md (the backlog owns this text).',
     // W2 scheduler (D-063): #progress=plan, dates on the step page, first tap on a map node (touch) highlights its lines
     tapAgain:'Lines for this step are highlighted — tap again to open it.', tapTwice:'On touch: tap a box once to see its lines, twice to open it.',
@@ -165,7 +165,8 @@ const STR={
       runsT:'Runs (plan vs actual)', runsHelp:'Each chat that worked on a step. More runs than the estimate = slipped.',
       estVsRun:(e,r)=>r+' run'+(r===1?'':'s')+' · est. '+e+' chat'+(e===1?'':'s'), outcome:{done:'done',partial:'partial',stopped:'stopped',fail:'failed'},
       calT:'Calendar', calLine:(h,o)=>'Your chat time: '+h+(o?' · days off: '+o:''), days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-      planT:'Plan', planLine:(w,row)=>w+' · '+row, runsN:n=>n+' run'+(n===1?'':'s')}},
+      planT:'Plan', planLine:(w,row)=>w+' · '+row, runsN:n=>n+' run'+(n===1?'':'s'),
+      runT:'Run in', runSr:on=>'runs in '+on, runOff:want=>'the rules say '+want, runOver:'kept on purpose', runNone:'no surface set yet'}},
   // learning core (L1): card reader, statuses, Check, Remember deck, Try it (docs/card-spec.md §7, design plan §4.8)
   ln:{cardsT:'Cards', cardsLead:'Each card teaches one idea. Read it, pass its Check, then explain it in your own words.',
     loading:'Loading cards…', loadFail:'Could not load the cards', noCard:id=>'No card '+id+'.', notYet:'This card is not reviewed yet.',
