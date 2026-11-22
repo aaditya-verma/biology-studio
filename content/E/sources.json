@@ -2182,6 +2182,177 @@
    "pmid": "16624884"
   },
   {
+   "id": "R05ib",
+   "tier": 1,
+   "name": "Nohara A, Owaki N, Matsubayashi J, et al",
+   "licence": "© Wiley (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/joa.13745",
+   "pmid": "35983845"
+  },
+  {
+   "id": "R05ic",
+   "tier": 1,
+   "name": "Yoon H, Chung IS, Seol EY, et al",
+   "licence": "© Yonsei → facts only",
+   "ref_only": false,
+   "doi": "10.3349/ymj.2000.41.4.477",
+   "pmid": "10992809"
+  },
+  {
+   "id": "R05id",
+   "tier": 1,
+   "name": "Diewert VM",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/aja.1001670407",
+   "pmid": "6624691"
+  },
+  {
+   "id": "R05ie",
+   "tier": 1,
+   "name": "Diewert VM",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/0002-9416(85)90107-1",
+   "pmid": "3860013"
+  },
+  {
+   "id": "R05if",
+   "tier": 1,
+   "name": "Steding G, Jian Y",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.aanat.2010.01.002",
+   "pmid": "20149609"
+  },
+  {
+   "id": "R05ig",
+   "tier": 1,
+   "name": "Farley AM, Morris LX, Vroegindeweij E, et al",
+   "licence": "© CoB (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1242/dev.087320",
+   "pmid": "23571219"
+  },
+  {
+   "id": "R05ih",
+   "tier": 1,
+   "name": "Szinnai G, Lacroix L, Carré A, et al",
+   "licence": "© Endocrine Society → facts only",
+   "ref_only": false,
+   "doi": "10.1210/jc.2006-1450",
+   "pmid": "17077129"
+  },
+  {
+   "id": "R05ii",
+   "tier": 1,
+   "name": "O'Rahilly R, Müller F",
+   "licence": "© Wiley (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1111/j.1469-7580.2007.00773.x",
+   "pmid": "17848161"
+  },
+  {
+   "id": "R05ij",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Wiley (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1046/j.1469-7580.2003.00219.x",
+   "pmid": "14529047"
+  },
+  {
+   "id": "R05ik",
+   "tier": 1,
+   "name": "Müller F, O'Rahilly R",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/aja.1001590105",
+   "pmid": "7446441"
+  },
+  {
+   "id": "R05il",
+   "tier": 1,
+   "name": "IPDTOC Working Group",
+   "licence": "© ACPA → facts only",
+   "ref_only": false,
+   "doi": "10.1597/09-217",
+   "pmid": "20507242"
+  },
+  {
+   "id": "R05im",
+   "tier": 1,
+   "name": "Calzolari E, Pierini A, Astolfi G, et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ajmg.a.31447",
+   "pmid": "17286264"
+  },
+  {
+   "id": "R05in",
+   "tier": 1,
+   "name": "Salari N, Darvishi N, Heydari M, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.jormas.2021.05.008",
+   "pmid": "34033944"
+  },
+  {
+   "id": "R05io",
+   "tier": 1,
+   "name": "Blagojevic C, Heung T, Theriault M, et al",
+   "licence": "Open access (licence not checked) → facts only",
+   "ref_only": false,
+   "doi": "10.9778/cmajo.20200294",
+   "pmid": "34404688"
+  },
+  {
+   "id": "R05ip",
+   "tier": 1,
+   "name": "Wright M, Cortina-Borja M, Knowles R, et al",
+   "licence": "Open access (licence not checked) → facts only",
+   "ref_only": false,
+   "doi": "10.1183/16000617.0133-2023",
+   "pmid": "38056889"
+  },
+  {
+   "id": "R05iq",
+   "tier": 1,
+   "name": "Paes EC, van Nunen DPF, Basart H, et al",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/ajmg.a.37150",
+   "pmid": "25994858"
+  },
+  {
+   "id": "R05ir",
+   "tier": 1,
+   "name": "Croen LA, Shaw GM, Lammer EJ",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/(SICI)1096-8628(19960823)64:3<465::AID-AJMG4>3.0.CO",
+   "pmid": "8862623"
+  },
+  {
+   "id": "R05is",
+   "tier": 1,
+   "name": "Barisic I, Odak L, Loane M, et al",
+   "licence": "© Springer Nature (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1038/ejhg.2013.287",
+   "pmid": "24398798"
+  },
+  {
+   "id": "R05it",
+   "tier": 1,
+   "name": "Kagurasho M, Yamada S, Uwabe C, et al",
+   "licence": "Open access (licence not checked; check before any image use) → facts only",
+   "ref_only": false,
+   "doi": "10.1186/1746-160X-8-2",
+   "pmid": "22296782"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -2322,7 +2493,8 @@
   "D-074",
   "D-075",
   "D-076",
-  "D-077"
+  "D-077",
+  "D-078"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",

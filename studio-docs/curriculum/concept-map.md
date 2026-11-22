@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -382,28 +382,28 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E17.00.01 | What builds the head and neck | A | G | core |  | crest | head | E06.01.04, E06.02.02 | 28 |  | ≈ |
-| E17.01.01 | Pharyngeal arches | A | SG | core | 22–35 | multi | head | E17.00.01 | 27 |  | ≈ |
-| E17.01.02 | Arch derivatives | A | A | core |  | multi | head | E17.01.01 | 7 |  | ≈ |
-| E17.01.03 | Stomodeum | B | S | s | 22–28 | ecto | head | E05.00.02 |  |  | ≈ |
-| E17.02.01 | Pharyngeal pouches | A | GA | core | 28–56 | endo | head | E17.01.01 | 3 |  | ≈ |
-| E17.03.01 | Pharyngeal clefts | B | S | x | 28–56 | ecto | head | E17.01.01 | 2 |  | ≈ |
-| E17.03.02 | Arch and pouch defects | C | C | x |  | multi | defects | E17.03.01, E17.02.01 |  |  | ≈ |
-| E17.04.01 | Molecular regulation of facial development | D | M | d |  | crest | head | E06.01.04 |  |  | ≈ |
-| E17.05.01 | Tongue | A | SA | core | 28–56 | multi | head | E17.01.02, E11.05.01 | 3 |  | ≈ |
-| E17.05.02 | Tongue-tie | C | C | d |  | multi | defects | E17.05.01 |  |  | ≈ |
-| E17.06.01 | Thyroid descent | A | S | core | 24–49 | endo | head | E17.05.01 | 1 |  | ≈ |
-| E17.06.02 | Thyroglossal cyst and ectopic thyroid | C | C | x |  | endo | defects | E17.06.01 |  |  | ≈ |
-| E17.07.01 | Face from five prominences | A | FG | core | 28–70 | crest | head | E17.01.01 | 7 |  | ≈ |
-| E17.07.02 | Nasal placodes and prominences | B | F | x | 35–49 | multi | head | E17.07.01 | 4 |  | ≈ |
-| E17.08.01 | Intermaxillary segment | B | F | x | 42–56 | crest | head | E17.07.02 | 2 |  | ≈ |
-| E17.09.01 | Secondary palate | A | F | core | 49–70 | crest | head | E17.08.01 | 1 |  | ≈ |
-| E17.09.02 | Cleft lip and cleft palate | C | C | x |  | crest | defects | E17.09.01 |  |  | ≈ |
-| E17.10.01 | Nasal cavities and sinuses | B | S | s | 42–266 | multi | head | E17.07.02 |  |  | ≈ |
-| E17.11.01 | Teeth | B | S | s | 42–266 | multi | head | E17.07.01 | 1 |  | ≈ |
-| E17.12.01 | Tooth regulation and defects | D | MC | d |  | multi | head | E17.11.01 |  |  | ≈ |
+| E17.00.01 | What builds the head and neck | A | G | core |  | crest | head | E06.01.04, E06.02.02 | 28 | AN43.4 | ✔ |
+| E17.01.01 | Pharyngeal arches | A | SG | core | 22–35 | multi | head | E17.00.01 | 27 | AN43.4, AN25.6 | ✔ |
+| E17.01.02 | Arch derivatives | A | A | core |  | multi | head | E17.01.01 | 7 | AN43.4, AN28.1, AN33.2, AN38.1, AN40.2, AN26.6 | ✔ |
+| E17.01.03 | Stomodeum | B | S | s | 22–28 | ecto | head | E05.00.02 |  | AN43.4 | ✔ |
+| E17.02.01 | Pharyngeal pouches | A | GA | core | 28–56 | endo | head | E17.01.01 | 3 | AN43.4, AN35.2, AN36.1, AN40.2 | ✔ |
+| E17.03.01 | Pharyngeal clefts | B | S | x | 28–56 | ecto | head | E17.01.01 | 2 | AN43.4, AN40.1 | ✔ |
+| E17.03.02 | Arch and pouch defects | C | C | x |  | multi | defects | E17.03.01, E17.02.01 |  | AN43.4, AN75.1 | ⚑ |
+| E17.04.01 | Molecular regulation of facial development | D | M | d |  | crest | head | E06.01.04 |  | AN43.4 | ✔ |
+| E17.05.01 | Tongue | A | SA | core | 28–56 | multi | head | E17.01.02, E11.05.01 | 3 | AN39.1, AN43.4 | ✔ |
+| E17.05.02 | Tongue-tie | C | C | d |  | multi | defects | E17.05.01 |  | AN39.1 | ✔ |
+| E17.06.01 | Thyroid descent | A | S | core | 24–49 | endo | head | E17.05.01 | 1 | AN43.4, AN35.2 | ✔ |
+| E17.06.02 | Thyroglossal cyst and ectopic thyroid | C | C | x |  | endo | defects | E17.06.01 |  | AN43.4, AN35.8 | ✔ |
+| E17.07.01 | Face from five prominences | A | FG | core | 28–70 | crest | head | E17.01.01 | 7 | AN43.4, AN28.2 | ✔ |
+| E17.07.02 | Nasal placodes and prominences | B | F | x | 35–49 | multi | head | E17.07.01 | 4 | AN43.4, AN37.1 | ✔ |
+| E17.08.01 | Intermaxillary segment | B | F | x | 42–56 | crest | head | E17.07.02 | 2 | AN43.4 | ✔ |
+| E17.09.01 | Secondary palate | A | F | core | 49–70 | crest | head | E17.08.01 | 1 | AN43.4 | ⚑ |
+| E17.09.02 | Cleft lip and cleft palate | C | C | x |  | crest | defects | E17.09.01 |  | AN43.4, AN74.3 | ⚑ |
+| E17.10.01 | Nasal cavities and sinuses | B | S | s | 42–266 | multi | head | E17.07.02 |  | AN37.1, AN37.2 | ⚑ |
+| E17.11.01 | Teeth | B | S | s | 42–266 | multi | head | E17.07.01 | 1 |  | ✔ |
+| E17.12.01 | Tooth regulation and defects | D | MC | d |  | multi | head | E17.11.01 |  |  | ✔ |
 
-*Misconceptions to refute (≈ until X1):* E17.01.01 — “Humans have gills or gill slits.” · E17.02.01 — “Inferior parathyroids come from pouch 4.” · E17.09.02 — “Cleft lip and cleft palate are one defect.”
+*Misconceptions to refute (cited in the chapter dossier):* E17.01.01 — “Humans have gills or gill slits.” · E17.02.01 — “Inferior parathyroids come from pouch 4.” · E17.03.01 — “The first cleft becomes the ear canal.” · E17.09.02 — “Cleft lip and cleft palate are one defect.”
 
 ## E18 — Central Nervous System · pp 313–350 · 21 concepts
 
@@ -591,6 +591,7 @@
 |---|---|
 | E05.01.01 Gastrulation in one picture | 21: E01, E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E05.01.04 Three germ layers from the epiblast | 21: E01, E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
+| E19.03.01 External ear | 21: E01, E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E02.02.01 Mitosis | 20: E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E02.02.02 Meiosis | 20: E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E02.03.01 Oogenesis | 20: E02, E03, E04, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
@@ -613,7 +614,6 @@
 | E09.01.01 Types of birth defects | 19: E01, E02, E03, E04, E05, E06, E08, E09, E10, E11, E12, E13, E14, E16, E17, E18, E19, E20, E21 |
 | E17.03.02 Arch and pouch defects | 19: E01, E02, E03, E04, E05, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 | E00.01.01 Axes & planes | 18: E00, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
-| E00.01.04 Colour key | 18: E00, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21 |
 
 Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs → Concept × Chapter).
 
@@ -639,9 +639,9 @@ Full matrix: `crosstabs.concept_x_chapter` in map.json (explorer → Crosstabs �
 | E14 | · | 1 | · | 1 | 3 | 3 | 3 | 3 | 2 | 1 | 2 | 2 | 3 | 4 | · | 4 | 5 | 5 | 2 | 1 | · | 1 |
 | E15 | · | 4 | · | 2 | 5 | 6 | 13 | 12 | 5 | 5 | 2 | 4 | 8 | 15 | 9 | · | 13 | 9 | 8 | 5 | 4 | 2 |
 | E16 | · | 3 | 2 | · | · | 3 | 4 | 1 | 2 | 3 | 1 | · | 2 | 4 | 2 | 5 | · | 2 | · | 1 | · | 1 |
-| E17 | · | 4 | 1 | 1 | 3 | 5 | 7 | 4 | 3 | 3 | 5 | 4 | 4 | 6 | 7 | 5 | 4 | · | 11 | 8 | 5 | 4 |
+| E17 | · | 5 | 1 | 1 | 3 | 6 | 8 | 5 | 4 | 3 | 5 | 5 | 5 | 7 | 7 | 6 | 4 | · | 12 | 8 | 6 | 5 |
 | E18 | · | 3 | 1 | 1 | 2 | 7 | 10 | 4 | 3 | 2 | 6 | 5 | 5 | 8 | 3 | 6 | 8 | 8 | · | 3 | 5 | 3 |
-| E19 | · | 2 | 1 | 1 | 1 | 2 | 2 | 1 | 2 | 2 | 3 | 2 | 3 | 3 | 2 | 1 | 2 | 4 | 5 | · | 4 | 2 |
+| E19 | · | 2 | 1 | 1 | 1 | 2 | 3 | 2 | 2 | 2 | 3 | 2 | 3 | 3 | 2 | 2 | 2 | 4 | 5 | · | 4 | 2 |
 | E20 | · | 2 | 1 | · | · | · | 3 | 2 | · | 1 | 2 | 2 | 2 | 2 | 2 | 2 | 3 | 4 | 3 | 3 | · | 2 |
 | E21 | · | 2 | · | · | 1 | 2 | 2 | 2 | 2 | · | 1 | 2 | 2 | 2 | 1 | 2 | 1 | 2 | 2 | 2 | 1 | · |
 

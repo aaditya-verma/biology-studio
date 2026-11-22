@@ -352,7 +352,7 @@ stomod|Stomodeum|B|S|s|ecto|head|22-28|oromem| The primitive mouth, closed by th
 @ E17.02
 pouches|Pharyngeal pouches|A|G A|c|endo|head|28-56|arches| 1 middle ear and tube; 2 tonsil; 3 thymus and inferior parathyroids; 4 superior parathyroids and C cells.|Inferior parathyroids come from pouch 4.
 @ E17.03
-clefts|Pharyngeal clefts|B|S|x|ecto|head|28-56|arches| The first becomes the external ear canal; the rest are buried in the cervical sinus.|
+clefts|Pharyngeal clefts|B|S|x|ecto|head|28-56|arches| All close: the second arch covers the first as it builds the outer ear (the ear canal grows in from first-arch ectoderm); the rest are buried in the cervical sinus.|The first cleft becomes the ear canal.
 branchdef|Arch and pouch defects|C|C|x|multi|defects||clefts,pouches| Branchial cysts and fistulas, DiGeorge (22q11), first-arch syndromes.|
 @ E17.04
 facereg|Molecular regulation of facial development|D|M|d|crest|head||crest| Crest cells carry patterning signals; first arch is Hox-free; SHH is needed.|
@@ -408,7 +408,7 @@ labyrinth|Membranous and bony labyrinth|B|S|s|multi|ear||otic| Mesenchyme around
 @ E19.02
 midear|Middle ear|A|S A|c|multi|ear|28-266|pouches,archder| Tympanic cavity and tube from pouch 1; ossicles from arches 1 and 2; the eardrum has all three layers.|
 @ E19.03
-extear|External ear|B|S|x|multi|ear|42-140|clefts| Canal from cleft 1; auricle from six hillocks; low-set ears flag syndromes.|
+extear|External ear|B|S|x|multi|ear|42-140|clefts| Canal grows in from first-arch ectoderm (14e: not from cleft 1); auricle from six hillocks; low-set ears flag syndromes.|
 @ E19.04
 deaf|Congenital hearing loss|C|C|s|multi|defects||otic,midear| Genetic causes, rubella and other teratogens, ear malformations.|
 @ E20.01
