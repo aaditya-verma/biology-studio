@@ -27,7 +27,8 @@ jobs:
         run: |
           python build_map.py --dry-run
           python build_map.py --selftest
-          python build_map.py --out /tmp/k2-rebuild > /dev/null && cmp /tmp/k2-rebuild/map.json ../../content/E/map.json   # CI = reference build; a stale or machine-dependent map.json fails here
+          python map_compare.py --selftest
+          python build_map.py --out /tmp/k2-rebuild > /dev/null && python map_compare.py /tmp/k2-rebuild/map.json ../../content/E/map.json   # CI = reference build; a stale map.json fails here; floats may differ by one R4 step (Linux vs Windows rounding, MAPF)
       - name: Scene check (C3)
         run: |
           python tools/scene-check/check.py

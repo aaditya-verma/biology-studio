@@ -18,8 +18,8 @@ a = ap.parse_args()
 def log(*m):
     if a.debug: print('[map]', *m)
 
-T = json.load(open(a.index + 'tree.json')); G = json.load(open(a.index + 'terms.json'))['terms']
-X = json.load(open(a.index + 'xrefs.json')); TL = json.load(open(a.index + 'timeline.json'))
+T = json.load(open(a.index + 'tree.json', encoding='utf-8')); G = json.load(open(a.index + 'terms.json', encoding='utf-8'))['terms']
+X = json.load(open(a.index + 'xrefs.json', encoding='utf-8')); TL = json.load(open(a.index + 'timeline.json', encoding='utf-8'))
 secs = {}; chap = {}
 for c in T['chapters']:
     chap[c['id']] = c
@@ -298,7 +298,7 @@ if a.preview:
 if a.dry_run: sys.exit(0)
 import os; os.makedirs(a.out, exist_ok=True)
 json.dump(M, open(f'{a.out}/map.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-json.dump(rep, open(f'{a.out}/map-report.json', 'w'), indent=1, ensure_ascii=False)
+json.dump(rep, open(f'{a.out}/map-report.json', 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
 
 # ---------- concept-map.md ----------
 L = []

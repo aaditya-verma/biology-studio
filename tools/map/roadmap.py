@@ -2,7 +2,7 @@
 """Roadmap builder — purpose: map.json -> curriculum/roadmap.md (waves -> seasons -> episodes).
 Owner doc: build/master-plan.md §5. Flags: --dry-run --debug. EDIT: SEASONS below."""
 import json, sys, collections
-M=json.load(open('out/map.json')); C=M['concepts']; byId={o['id']:o for o in C}
+M=json.load(open('out/map.json', encoding='utf-8')); C=M['concepts']; byId={o['id']:o for o in C}
 # EDIT: seasons (wave, id, question, chapters). S1 pilot is fixed (S1E01 Gastrulation, episode catalog).
 SEASONS=[
  (1,'S1','How does a flat disc become a body?',['E05','E06','E07']),
@@ -95,4 +95,4 @@ miss=[i for i in tot if i not in cov]
 L.append(f'\n---\n**Totals:** {epcount} planned episodes in 10 seasons · core + exam-high covered: {len(set(tot)&cov)}/{len(tot)}' + (f' · missing: {", ".join(miss)}' if miss else ' ✅') + '.\n')
 L.append('**Supporting and detail concepts** become cards in the same waves (card-only, tagged support where an episode uses them).\n')
 L.append('**Re-plan rule:** after each use gate, the Review chat reorders the next wave by recall results and weak spots (master plan §9); ids already in the catalog never change.\n')
-open('out/roadmap.md','w').write('\n'.join(L)); print(epcount,len(set(tot)&cov),len(tot),miss)
+open('out/roadmap.md','w',encoding='utf-8').write('\n'.join(L)); print(epcount,len(set(tot)&cov),len(tot),miss)
