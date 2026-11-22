@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """K1 map builder — purpose: concepts.txt + I1 index JSON -> content/E/map.json + curriculum/concept-map.md.
-Owner doc: build/master-plan.md §5. Flags: --dry-run --debug --only <chapter id> --preview (RULES I5).
-EDIT: concept rows live in concepts.txt (never in this code)."""
-import json, re, sys, argparse, collections
+K2 (D-071): + links.txt (cited becomes / defect links) -> per-concept links, ring, wedge, pos, side, shape + a layout block (layout.py).
+Owner doc: build/master-plan.md §5; map.json fields: tools/map/README.md § Map data.
+Flags: --dry-run --debug --only <chapter id> --preview (SVG contact sheet, K2) --selftest (K2) (RULES I5).
+EDIT: concept rows live in concepts.txt, cited links in links.txt, layout numbers in layout.py LAYOUT (never in this code)."""
+import json, re, sys, argparse, collections, math
 ap = argparse.ArgumentParser()
 ap.add_argument('--index', default='../../content/E/index/')
 ap.add_argument('--src', default='concepts.txt'); ap.add_argument('--out', default='out')
 ap.add_argument('--research', default='research.txt')  # X1 layer: AN codes, marks, cited stages
 ap.add_argument('--dry-run', action='store_true'); ap.add_argument('--debug', action='store_true')
 ap.add_argument('--only'); ap.add_argument('--preview', action='store_true')
+ap.add_argument('--links', default='links.txt')  # K2 cited links (becomes / defect)
+ap.add_argument('--docs', default='../../studio-docs/research/dossiers/')
+ap.add_argument('--selftest', action='store_true')
 a = ap.parse_args()
 def log(*m):
     if a.debug: print('[map]', *m)
@@ -28,8 +33,8 @@ SYS = dict(ori='Orientation', mol='Molecular basics', gam='Gametes & fertilizati
 LAYER = dict(ecto='Ectoderm', meso='Mesoderm', endo='Endoderm', crest='Neural crest', extra='Extraembryonic', multi='Several layers', none='No layer')
 IMP = dict(c='core', x='exam-high', s='supporting', d='detail')
 # ≈ Carnegie stage from day (fertilization age). Approximate, NOT cited — X1 replaces with registry values (GLOSSARY §7).
-CS = [(1,1,1),(2,3,2),(4,5,3),(5,6,4),(7,12,5),(13,15,6),(16,17,7),(18,19,8),(20,21,9),(22,23,10),(24,25,11),(26,28,12),(29,31,13),
-      (32,34,14),(35,37,15),(38,41,16),(42,43,17),(44,47,18),(48,50,19),(51,52,20),(53,54,21),(55,56,22),(57,60,23)]
+sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__))); import layout as LY
+CS = LY.CS   # one home: layout.py
 def cs_of(d):
     for lo, hi, n in CS:
         if lo <= d <= hi: return n
@@ -179,6 +184,12 @@ for r in rows:
         x = RES[r['id']]; o.update(an=x['an'], mark=x['mark'], cs=x['cs'], x1=True)
     out_concepts.append(o)
 
+# K2 (D-071): links + precomputed Embryo-map positions — additive fields only (A1/A4); old fields keep their meaning
+kids_all = {r['id']: desc(r['id'], set()) for r in rows}
+LAYOUT_BLOCK, LREP, lerr = LY.compute(out_concepts, kids_all, list(SYS), a.links, a.docs, log=log)
+if lerr:
+    print('\n'.join(lerr)); sys.exit(1)
+
 # crosstabs
 def ct(fx, fy):
     m = collections.defaultdict(list)
@@ -212,7 +223,8 @@ M = dict(schema='biostudio.map/1', book='E', title=T['title'], built='2026-11-17
                     threads=dict(T='timeline', G='germ layer', F='folding/shape', S='system', M='molecular', C='clinical', A='adult anatomy'), daybins=DBINS),
          chapters=chap_out, sections=secs_out, concepts=out_concepts, crosstabs=cross,
          timeline=TL['days'], xref_edges=X['edges'], shared_terms=X['chapter_shared_terms'],
-         terms={t['id']: dict(term=t['term'], primary=t.get('primary_section')) for t in G})
+         terms={t['id']: dict(term=t['term'], primary=t.get('primary_section')) for t in G},
+         layout=LAYOUT_BLOCK)
 # checks (master plan §11 map check)
 content_secs = [s for s in secs_out if s['kind'] == 'section']
 empty = [s['id'] for s in content_secs if s['id'] not in bysec]
@@ -221,7 +233,68 @@ rep = dict(concepts=len(out_concepts), sections_with_concepts=len(bysec), conten
            terms_linked=len(linked), terms_loose=sum(len(o['terms_loose']) for o in out_concepts), terms_orphan=orphan_terms,
            by_importance=collections.Counter(o['importance'] for o in out_concepts), by_tier=collections.Counter(o['tier'] for o in out_concepts),
            with_misconception=sum(1 for o in out_concepts if o['misconception']), orphan_prereqs=0)
+rep['k2'] = LREP
+BAD = LY.overlaps(out_concepts, LAYOUT_BLOCK)
+rep['k2']['overlaps'] = len(BAD)
+if BAD: print('overlapping dots at phone size:', BAD[:20])
 print(json.dumps(rep, indent=1, ensure_ascii=False))
+if a.selftest:
+    import subprocess, hashlib, tempfile
+    fails = []
+    # 1 determinism: two fresh runs write byte-identical map.json
+    hs = []
+    import shutil
+    for k in range(2):
+        d = tempfile.mkdtemp()
+        subprocess.run([sys.executable, sys.argv[0], '--out', d, '--index', a.index, '--src', a.src, '--research', a.research, '--links', a.links, '--docs', a.docs],
+                       check=True, capture_output=True)
+        hs.append(hashlib.sha256(open(f'{d}/map.json', 'rb').read()).hexdigest()); shutil.rmtree(d, ignore_errors=True)
+    if hs[0] != hs[1]: fails.append('determinism: two runs differ')
+    print(('PASS' if hs[0] == hs[1] else 'FAIL'), 'determinism (2 runs, sha256', hs[0][:12] + ')')
+    # 2 no overlaps at phone size
+    print(('PASS' if not BAD else 'FAIL'), f'no overlaps at {LAYOUT_BLOCK["phone"]["px"]} px × {LAYOUT_BLOCK["phone"]["dot_zoom"]} zoom (min centre gap {LAYOUT_BLOCK["phone"]["min_center"]})', len(BAD) or '')
+    if BAD: fails.append('overlaps')
+    # 3 every becomes / defect link carries a dossier cite whose anchor is on that exact line
+    nl = 0; bad = []
+    for o in out_concepts:
+        for kind in ('becomes', 'defect'):
+            for x in o['links'][kind]:
+                nl += 1; c = x.get('cite') or {}
+                fp = os.path.join(a.docs, c.get('doc', '').replace('research/dossiers/', ''))
+                ok = os.path.exists(fp) and c.get('line') and c['anchor'] in open(fp, encoding='utf-8').read().split('\n')[c['line'] - 1]
+                if not ok: bad.append((o['id'], kind, x['to']))
+    print(('PASS' if not bad else 'FAIL'), f'every becomes/defect link has a dossier cite ({nl} links)', bad[:5] or '')
+    if bad: fails.append('cites')
+    # 4 every concept placed; Toolkit at the centre; ring radius follows the day scale
+    unp = [o['id'] for o in out_concepts if not all(k in o for k in ('links', 'ring', 'wedge', 'pos', 'side', 'shape'))]
+    tk = [o['id'] for o in out_concepts if (o['ch'] in LY.TOOLKIT_CH) != (o['ring']['r'] <= LAYOUT_BLOCK['scale']['toolkit_r'] + 1e-4)]
+    SC = LAYOUT_BLOCK['scale']['bands']; mono = all(LY.day_r(d, SC)[0] <= LY.day_r(d + 1, SC)[0] for d in range(1, 266))
+    ph = LAYOUT_BLOCK['phone']; Rpx = ph['px'] * ph['dot_zoom'] / 2 - ph['edge_px']; W = LAYOUT_BLOCK['wedges']
+    def in_wedge(o):   # whole dot + edge space inside [a0, a1], and wedge.a itself inside [a0, a1]
+        a0, a1 = W['deg'][o['wedge']['sys']]; r = o['ring']['r']; ang = math.degrees(math.atan2(o['pos']['y'], o['pos']['x']))
+        while ang < a0 - 1e-6: ang += 360
+        half = math.degrees(math.asin(min(1.0, (ph['dot_px'] / 2 + W['edge_px']) / Rpx / max(r, 1e-6))))
+        return a0 - 1e-3 <= o['wedge']['a'] <= a1 + 1e-3 and a0 + half - 0.05 <= ang <= a1 - half + 0.05
+    wd = [o['id'] for o in out_concepts if o['wedge']['sys'] != 'toolkit' and not in_wedge(o)]
+    BB = {b['key']: b for b in SC}
+    sl = [o['id'] for o in out_concepts if o['wedge']['sys'] != 'toolkit' and not (BB[o['ring']['band']]['r0'] - 2e-4 <= o['ring']['r'] <= BB[o['ring']['band']]['r1'] + 2e-4)]
+    rg = [g['label'] for g in LAYOUT_BLOCK['rings'] if g['day'] is not None and abs(g['r'] - round(LY.day_r(g['day'], SC)[0], 4)) > 1e-9]
+    for name, v in (('every concept placed', unp), ('Toolkit (E00 + E01) inside the centre disc, nothing else', tk), ('every whole dot inside its wedge (+ edge space)', wd), ('every dot inside its own day band (±2e-4 rounding)', sl), ('every guide ring at its day radius', rg)):
+        print(('PASS' if not v else 'FAIL'), name, v[:5] or ''); fails += [name] if v else []
+    print(('PASS' if mono else 'FAIL'), 'day scale is monotonic (day 1 → term)'); fails += [] if mono else ['scale']
+    # 5 defect nodes: drawn ◆ exactly when cited; day = start of a citing concept's day
+    dn = [o['id'] for o in out_concepts if (o['shape'] == 'defect') != (o['id'] in {x['to'] for p_ in out_concepts for x in p_['links']['defect']})]
+    print(('PASS' if not dn else 'FAIL'), '◆ exactly on cited defect concepts', dn[:5] or ''); fails += ['defect shape'] if dn else []
+    # 6 old fields unchanged in meaning: links.needs == prereq, links.unlocks == unlocks
+    od = [o['id'] for o in out_concepts if o['links']['needs'] != o['prereq'] or o['links']['unlocks'] != o['unlocks']]
+    print(('PASS' if not od else 'FAIL'), 'links.needs/unlocks match prereq/unlocks', od[:5] or ''); fails += ['old fields'] if od else []
+    print('SELFTEST', 'PASS' if not fails else 'FAIL: ' + ', '.join(fails))
+    sys.exit(1 if fails else 0)
+if BAD: sys.exit(1)
+if a.preview:
+    import os; os.makedirs(a.out, exist_ok=True)
+    open(f'{a.out}/map-preview.svg', 'w', encoding='utf-8').write(LY.preview_svg(out_concepts, LAYOUT_BLOCK, dict(SYS, defects='Defects (no organ)')))
+    print('wrote', f'{a.out}/map-preview.svg')
 if a.dry_run: sys.exit(0)
 import os; os.makedirs(a.out, exist_ok=True)
 json.dump(M, open(f'{a.out}/map.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))

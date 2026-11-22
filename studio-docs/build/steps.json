@@ -368,24 +368,24 @@
    "title": "K2 map data — links + precomputed layout",
    "type": "Build",
    "chat": "Bio · Build · K2 map data",
-   "status": "in progress",
+   "status": "done",
    "needs": ["K1", "L2"],
    "unblocks": ["K3"],
    "lock": true,
-   "gates": {"G-Sci": "open", "G-Eng": "open", "G-Art": "open"},
+   "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass"},
    "check": null,
-   "decisions": ["D-071"],
+   "decisions": ["D-071", "D-073"],
    "prompt": "K2 map data",
-   "log": "—",
+   "log": "22 Nov 2026 · K2 built: links + Embryo-map layout in content/E/map.json (layout.py, links.txt, --selftest, --preview); 36 becomes + 24 defect links cited, 20 ◆; phone dots from 1.5× zoom (D-073); G-Sci, G-Eng, G-Art pass (2 rounds)",
    "todo": [
-    "Ready prompt in master plan §13 (written by the merge fix that restored D-071)",
-    "becomes / defect links only where a dossier cites them, never guessed (D-071 f)",
-    "Writes the K3 prompt in master plan §13",
-    "Built at risk: L2 owner check T9 still open (log it; K1 owner check T2 also open)"
+    "Built at risk: L2 owner check T9 and K1 owner check T2 still open",
+    "X1 follow-up: 105 concepts have no own day or cited stage → they sit on the No-day rim until their chapter's X1 cites one in research.txt (e.g. E10.01.01 chondrification ~days 42–48, ch10 staging) — rim count in map-report k2.rim_no_day",
+    "Each later X1 (E15–E21, and E02–E04 if researched) adds becomes/defect rows to tools/map/links.txt",
+    "For K3 (from G-Art): draw src none / from: visibly different (≈); a lens to dim the rim; stronger 3 px germ-layer patterns in 8 px dots (H5); week labels with a halo along an empty radius; re-check wedge labels at 1× on tablets and phone landscape; key caches on layout.hash"
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · K2 map data", "by": "Aaditya", "start": "2026-11-22 03:12", "outcome": "partial", "note": "route A (cloud clone, push from chat)"}]
+   "runs": [{"chat": "Bio · Build · K2 map data", "by": "Aaditya", "start": "2026-11-22 03:12", "end": "2026-11-22 09:45", "outcome": "done", "note": "route A (cloud clone, push from chat); gates by 3 fresh reviewer agents, 2 rounds; owner pick D-073 a (1.5× zoom)"}]
   },
   {
    "id": "K3",
@@ -399,12 +399,13 @@
    "gates": {"G-Eng": "open", "G-Learn": "open", "G-Art": "open", "G-A11y": "open"},
    "check": null,
    "decisions": ["D-071"],
-   "prompt": null,
+   "prompt": "K3 embryo map",
    "log": "—",
    "todo": [
-    "Prompt written by the K2 chat",
+    "Prompt in master plan §13 (written by K2)",
     "Write owner check T12 in build/owner-test-checklist.md (then set `check`)",
-    "Replaces the A0 Book map at #map; K1 crosstabs stay as a Tables mode (D-071 c)"
+    "Replaces the A0 Book map at #map; K1 crosstabs stay as a Tables mode (D-071 c)",
+    "Phone: opens on Parts/Chapters, concept dots from 1.5× zoom (D-073 a); K2's notes for K3 in the K2 to-dos"
    ],
    "inputs": [],
    "est": {"chats": 2}

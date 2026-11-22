@@ -1,0 +1,70 @@
+# K2 cited links (D-071 f) — "becomes" (adult structure, RULES D4) and "defect" (goes wrong as…). Owner doc: tools/map/README.md § Map data.
+# A link goes in ONLY where a chapter dossier states it; never guessed. build_map.py finds the ONE line in <doc> that contains <anchor>
+# (exact, case-sensitive) and stores {doc, line, anchor} in map.json; 0 or 2+ matches = build error (catches drift when a dossier is edited).
+# Line: kind|from concept id|to|doc (under studio-docs/research/dossiers/)|anchor
+#   becomes: to = the adult structure, in our own words (short label, no book text — RULES G1/G2)
+#   defect:  to = the birth-defect concept id (system "defects"); drawn as ◆ (shape "defect")
+# EDIT: add rows when a chapter's X1 dossier lands (E15–E21 have none yet). Order does not matter; output is sorted.
+
+# --- becomes (adult anchors) ---
+becomes|E06.01.02|spinal cord and brain|ch06-embryonic-period.md|The closed tube is narrow caudally (spinal cord)
+becomes|E06.01.05|face and skull bones, sensory and autonomic ganglia, Schwann cells, adrenal medulla, melanocytes, heart outflow septum|ch06-embryonic-period.md|| E06.01.05 Crest derivatives (B) |
+becomes|E06.01.06|brain and nerves, epidermis with hair and nails, sensory linings, tooth enamel|ch06-embryonic-period.md|Ectoderm builds the parts that face or sense the outside
+becomes|E06.02.04|vertebrae and ribs|ch06-embryonic-period.md|this is the **sclerotome** → vertebrae and ribs
+becomes|E06.02.04|back dermis, back and body-wall muscles|ch06-embryonic-period.md|together they form the **dermomyotome**
+becomes|E06.02.05|kidney excretory units and gonads|ch06-embryonic-period.md|It forms the urogenital system
+becomes|E06.03.03|lining of gut, airways and bladder; thyroid, liver and pancreas cells|ch06-embryonic-period.md|Endoderm lines the gut, respiratory tract
+becomes|E07.02.02|body wall (somatopleure)|ch07-gut-tube-body-cavities.md|it is the **somatopleure** (→ body wall)
+becomes|E07.02.02|gut wall (splanchnopleure)|ch07-gut-tube-body-cavities.md|it is the **splanchnopleure** (→ gut wall)
+becomes|E07.03.01|parietal layers of peritoneum, pleura and pericardium|ch07-gut-tube-body-cavities.md|Some parietal-layer cells become mesothelium
+becomes|E07.03.01|visceral layers covering abdominal organs, lungs and heart|ch07-gut-tube-body-cavities.md|Some visceral-layer cells become the visceral layer
+becomes|E07.04.02|fibrous pericardium|ch07-gut-tube-body-cavities.md|adult: fibrous pericardium (phrenic nerve runs in it)
+becomes|E10.02.02|intervertebral disc (nucleus pulposus + annulus fibrosus)|ch10-axial-skeleton.md|Disc = **nucleus pulposus** (notochord remnant)
+becomes|E11.00.01|skeletal muscle (via the myotome) and back dermis|ch11-muscular-system.md|Inside the somite: the ventromedial wall becomes **sclerotome**
+becomes|E11.08.01|heart muscle with intercalated discs|ch11-muscular-system.md|the future **intercalated discs**
+becomes|E12.01.01|limb bones and connective tissue|ch12-limbs.md|which becomes the limb's **bones and connective tissue**
+becomes|E12.01.02|articular cartilage, synovial membrane and menisci|ch12-limbs.md|**Joints come from interzones.**
+becomes|E12.02.03|limb flexor and extensor muscles|ch12-limbs.md|**splits into a dorsal (extensor) and a ventral (flexor) group**
+becomes|E13.02.02|rough and smooth parts of the ventricle walls|ch13-cardiovascular.md|**Adult anchor (D4):** the ventricle–bulbus junction
+becomes|E13.05.01|coronary sinus and smooth part of the right atrium|ch13-cardiovascular.md|survives only as **coronary sinus + oblique vein of the left atrium**
+becomes|E13.06.02|valve (flap) of the foramen ovale|ch13-cardiovascular.md|the remaining septum primum becomes the **flap (valve) of the foramen o
+becomes|E13.06.06|muscular and membranous interventricular septum|ch13-cardiovascular.md|merge into the **muscular septum**
+becomes|E13.07.01|SA node, AV node, bundle branches, Purkinje fibres|ch13-cardiovascular.md|Pacemaker: whole tube → caudal left → sinus venosus
+becomes|E13.08.01|aortic arch and its branches|ch13-cardiovascular.md|**Fates, grouped by adult destination:**
+becomes|E13.08.03|coeliac and superior mesenteric arteries; internal iliac and superior vesical arteries; medial umbilical ligaments|ch13-cardiovascular.md|Paired vitelline arteries fuse into the gut's dorsal-mesentery arteries
+becomes|E13.08.04|portal vein; superior vena cava|ch13-cardiovascular.md|the plexus round the duodenum → **portal vein**
+becomes|E13.08.07|ligamentum arteriosum, teres and venosum; medial umbilical ligaments; fossa ovalis|ch13-cardiovascular.md|**Adult remnants:** ductus arteriosus → **ligamentum arteriosum**
+becomes|E14.03.01|bronchopulmonary segments|ch14-respiratory.md|the adult **bronchopulmonary segments**
+becomes|E14.03.02|visceral and parietal pleura|ch14-respiratory.md|**Visceral pleura** = splanchnic mesoderm on the lung
+becomes|E05.02.01|nucleus pulposus (bits only — not the vertebrae)|ch05-gastrulation.md|in adults only bits remain (nucleus pulposus)
+becomes|E07.05.01|central tendon and the muscular rim of the diaphragm|ch07-gut-tube-body-cavities.md|Fused membranes = central tendon; muscle from C3–C5 fills the rim
+becomes|E13.06.04|mitral and tricuspid valves, chordae tendineae|ch13-cardiovascular.md|| E13.06.04 AV canal and valves (B)
+becomes|E13.06.05|ascending aorta and pulmonary trunk (spiral septum)|ch13-cardiovascular.md|**The spiral is why the great arteries twist:**
+becomes|E13.06.05|aortic and pulmonary semilunar valves|ch13-cardiovascular.md|**Semilunar valves** start as three tubercles per channel
+becomes|E14.01.01|lining of larynx, trachea, bronchi and alveoli|ch14-respiratory.md|Everything that lines the airway
+
+# --- defects (goes wrong as…) ---
+defect|E05.01.01|E05.05.02|ch05-gastrulation.md|| E05.05.02 Gastrulation going wrong |
+defect|E05.01.02|E05.05.03|ch05-gastrulation.md|| E05.05.03 Sacrococcygeal teratoma |
+defect|E05.03.02|E05.05.04|ch05-gastrulation.md|| E05.05.04 Laterality defects |
+defect|E06.01.02|E06.01.07|ch06-embryonic-period.md|| E06.01.07 Neural tube defects (C) |
+defect|E06.03.01|E07.03.02|ch07-gut-tube-body-cavities.md|| E07.03.02 Ventral body-wall defects (C) |
+defect|E07.05.01|E07.05.02|ch07-gut-tube-body-cavities.md|| E07.05.02 Congenital diaphragmatic hernia (C) |
+defect|E10.01.04|E10.01.05|ch10-axial-skeleton.md|| E10.01.05 Craniosynostosis and skull defects (C)
+defect|E06.01.03|E10.01.05|ch10-axial-skeleton.md|| E10.01.05 Craniosynostosis and skull defects (C)
+defect|E10.01.01|E10.01.06|ch10-axial-skeleton.md|| E10.01.06 Skeletal dysplasias (C)
+defect|E10.02.01|E10.02.03|ch10-axial-skeleton.md|| E10.02.03 Vertebral defects (C)
+defect|E10.03.01|E10.03.02|ch10-axial-skeleton.md|| E10.03.02 Rib and sternum defects (D)
+defect|E11.00.01|E11.09.02|ch11-muscular-system.md|| E11.09.02 Muscle defects (C)
+defect|E12.01.01|E12.02.04|ch12-limbs.md|| Amelia / meromelia / phocomelia | The bud fails
+defect|E12.01.02|E12.02.04|ch12-limbs.md|| E12.02.04 Limb defects (C)
+defect|E12.01.02|E12.02.05|ch12-limbs.md|| E12.02.05 Joints, position and later damage (C)
+defect|E05.03.02|E13.03.02|ch13-cardiovascular.md|| **1. Left–right specification fails (days 16–18)** |
+defect|E13.03.01|E13.03.02|ch13-cardiovascular.md|Loop the wrong way and the heart ends up on the right
+defect|E13.06.02|E13.06.03|ch13-cardiovascular.md|| **5. Septal tissue grows or dies wrongly** |
+defect|E13.06.05|E13.06.07|ch13-cardiovascular.md|| **4. Neural crest / outflow septation goes wrong** |
+defect|E13.06.06|E13.06.07|ch13-cardiovascular.md|| **5. Septal tissue grows or dies wrongly** |
+defect|E13.06.05|E13.06.08|ch13-cardiovascular.md|| **6. Valve leaflets fuse** |
+defect|E13.08.01|E13.08.05|ch13-cardiovascular.md|| **7. Arch arteries regress in the wrong places** |
+defect|E14.01.01|E14.01.02|ch14-respiratory.md|**Group 1 — the tubes didn't part (E14.01.02, AN25.4).**
+defect|E14.03.01|E14.04.03|ch14-respiratory.md|**Group 2 — the tree budded or branched wrongly (E14.04.03)**

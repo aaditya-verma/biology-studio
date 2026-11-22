@@ -22,9 +22,12 @@ jobs:
         run: |
           pip install playwright==1.63.0 pillow numpy
           python -m playwright install --with-deps chromium
-      - name: Map data checks (dry run)
+      - name: Map data checks (dry run + K2 selftest)
         working-directory: tools/map
-        run: python build_map.py --dry-run
+        run: |
+          python build_map.py --dry-run
+          python build_map.py --selftest
+          python build_map.py --out /tmp/k2-rebuild > /dev/null && cmp /tmp/k2-rebuild/map.json ../../content/E/map.json   # CI = reference build; a stale or machine-dependent map.json fails here
       - name: Scene check (C3)
         run: python tools/scene-check/check.py
       - name: Card check (C3) — cards, index, sources.json, selftest, calibration, parity

@@ -3,9 +3,10 @@
 *(Purpose: now · next · lock — nothing else (D-040). **Every step's status, what blocks it, pendencies and what you owe live in `build/steps.json`**, drawn at https://aaditya-verma.github.io/biology-studio/#progress (Map · Board · Your inputs). Finished work: `logs/build-log.md`. Updated: 22 Nov 2026 · Bio · Research · X1 Ch 14 (route B). Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov (route B). Before: 22 Nov 2026 · Bio · Fix · L2 merge (route B). Before: 22 Nov 2026 · Bio · Build · L2 lessons (route B). Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 (route A). Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 (route A). Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 (route A). Before: 21 Nov 2026 · Bio · Content · C2 round 3 (route B). Before: 21 Nov 2026 · Bio · Research · X1 Ch 10 (route B). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (route B). Before: 21 Nov 2026 · Bio · Build · M1b v7c results (route B). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode (scheduled run, route B). Before: 21 Nov 2026 · Bio · Build · M1b v7 results (scheduled check-in 19:19 IST, route B). Before: 21 Nov 2026 · Bio · Content · C2 Ch 6–8. Before: 21 Nov 2026 · Bio · Research · X1 Ch 09. Before: Bio · Fix · L1 polish.)*
 
 ## Lock
-- Build lock: **taken** — Aaditya · Bio · Build · K2 map data · 22 Nov 2026, 03:12 IST (before: free, merge fix released 03:00 IST)
+- Build lock: free (K2 map data released 22 Nov 2026, 09:45 IST; held from 03:12 IST · by Aaditya — `Bio · Build · K2 map data`, route A)
 
 ## Now
+- **K2 map data built** (22 Nov, `Bio · Build · K2 map data`, route A, D-073): `content/E/map.json` gains, for every concept, **links** (needs · unlocks · comes back in · **becomes** 36 · **defect** 24 — each cited to its dossier line, never guessed) and a precomputed **Embryo-map position** (ring = day, wedge = system, side = cone height, ◆ on 20 cited defects); a `layout` block (seed, bands, wedges, guide rings, hash). Only fields added — the Book map still loads (layout-check 0 issues). **Your pick (D-073 a):** on phones the map opens on Parts/Chapters and dots show from **1.5× zoom**. **105 concepts with no day** wait on a *No day yet* rim until their X1 cites one. Spec `tools/map/README.md` § Map data; tool `build_map.py --selftest` (in CI, plus a rebuild-and-compare). G-Sci, G-Eng, G-Art pass (fresh agents, 2 rounds). Built at risk: T9, T2 open. Next on the map: **K3** after GATE (prompt in master plan §13).
 - **X1 Ch 14 done** (22 Nov, D-072): dossier `research/dossiers/ch14-respiratory.md` — human-specimen staging: **lung bud CS12** (~day 26), trachea/oesophagus apart **CS13–16**, lobar bronchi by CS15 and segments CS16–23 (Kyoto CT trees), larynx sealed and reopened from CS21; phases 5–16 / 16–26 / 26–birth ✔✔ against a human review; **alveoli begin 32–36 wk gestation**. Tier A *lung bud* + *maturation phases*; clinical rows in 4 mechanism groups — **EA/TEF 2.43 per 10,000** (book 1 in 3,000 ✔✔, heart defects 29 % vs 33 %), lung malformations 1.27–4.15, steroids RR 0.71 for RDS, surfactant RR 0.70 for death; **17 misconceptions**; 25 sources **R05fb–R05fz**. 5 ⚑ for you (**D-072 a–e**: how the two tubes part — Tier 1 split; alveoli at birth (~150 M, ½–⅓ of adult, not ⅙) and added into the teens; **preterm survival from ~22–24 wk, not month 7**; airway tree complete before birth; what seals the larynx) + notes f–i (TBX4 links lung and Ch 12 clubfoot; NMC Vol I has no larynx-development or surfactant code). G-Sci **pass with fixes: 8 MUST, 15 SHOULD, all applied**.
 - **D-071 Embryo map restored** (22 Nov, `Bio · Fix · merge 22 Nov`): the Embryo map decision (owner picks, 01:03 IST) was lost when later chats saved older copies over it, and its number D-067 went to Ch 12. Now **D-071**, with steps **K2 map data** (needs K1 + L2, first lock gap after L2) → **K3** Rings view → **K4** side view + day slider (both after GATE). K2 prompt in master plan §13. Checks re-run (results in the build log). **Push with the sync line**, then `git stash drop`.
 - **L2 merged** (22 Nov, `Bio · Fix · L2 merge`): `sync.bat` set L2's unpushed work aside and it conflicted with the X1 Ch 12/13 pushes in 5 files. Both sides are kept. **L2's decision is now D-070** (Ch 12 took D-067 first). Tracker PASS. **Push it with the sync line**, then run `git stash drop`.
@@ -24,17 +25,17 @@
 - **M1b done on kit v7c** (21 Nov, D-062): 720p `t1b` QA PASS (front 91 %, A 100 %, B 98–99 %, −14.05 LUFS, 0.6 MB / 5 s), your T1b all fine, G-Art + G-A11y pass with notes (→ v8). Pushed 22:21 (`f9353c8`, app v12 live). Next on the animator track: install the parked **v8 kit** (`Bio · Build · M1b v8 install`), then **P1 S1E01** — answer **M1b.q10** (anatomy caption band) before P1.
 - **M1 run measured** (20 Nov, D-045): GTX 1060 6 GB · 20 s shot = Cycles 45 min, Eevee 14.5 min, three.js 9 s; x264 beats Pascal NVENC on size. Method C (AI) and 1080p pending. G-Sci pass (notes) · G-Art fail (Eevee artefact, key unreadable on phone — scene-spec fixes). Owner check **T1** open.
 - In flight: owner checks **T9**, **T11**, **T10**, **T3d** parts A + B, **T7** (deck step only, 22 Nov), **T7b**, **T1**, **T2**, **T5** (Level 3 only).
-- Can start now: **V3 trace a cell** (build lock), **K2 map data** (build lock, short — first gap after L2), **M1b v8 install** (build lock, short — fits before V3), **X1 Ch 15** (research, no lock — stages from `references\`; a long chapter).
+- Can start now: **V3 trace a cell** (build lock), **M1b v8 install** (build lock, short — fits before V3), **X1 Ch 15** (research, no lock — stages from `references\`; a long chapter).
 
 ## Next (in order)
 <!-- next:auto -->
 Schedule (auto · check.py --next · est. from 22 Nov; order fixed, dates move):
-- Lock: K2 ~22 Nov next → V3 ~22 Nov → K3 ~23 Nov → K4 ~23 Nov
-- GPU: P1 ~25 Nov next
-- Research: X1.15 ~24 Nov next
+- Lock: V3 ~22 Nov next → K3 ~23 Nov → K4 ~23 Nov → R1 ~25 Nov
+- GPU: P1 ~24 Nov next
+- Research: X1.15 ~23 Nov next
 - You (no lock): M1·T1 ~22 Nov now → H1·T5 ~22 Nov now → H2·T10 ~22 Nov now → +7 more now → GATE ~29 Nov next
 - Critical path: GATE (ends ~29 Nov)
-- Your inputs first: T2 (unblocks 38) · H1.q4 (unblocks 37) · H1.q5 (unblocks 37)
+- Your inputs first: T2 (unblocks 37) · H1.q4 (unblocks 36) · H1.q5 (unblocks 36)
 - Lock: free
 <!-- /next:auto -->
 1. You: **T9** (~25 min, lessons + Today + Mixed review; + 2 min tomorrow) with **L2.q1** (D-070), **L2.q2**. **T10 part A** (~15 min: labels `review` + `fixing` first, **H2.q1**) → send Komal the welcome message (**H2.q3**). **T3d A + B** (~25 min). **22 Nov:** T7 step 8 deck (**L1.q2**) and **T7b** → L1 + L1F done. Answer **M1b.q10** when you can (before P1).
