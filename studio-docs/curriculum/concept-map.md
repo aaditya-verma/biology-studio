@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E01, E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -26,24 +26,24 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E01.00.01 | Chromatin and nucleosomes | B | M | s |  | none | mol |  | 25 |  | ≈ |
-| E01.01.01 | Gene structure: promoter, exons, introns | B | M | s |  | none | mol | E01.00.01 | 23 |  | ≈ |
-| E01.01.02 | Transcription factors | B | M | x |  | none | mol | E01.01.01 | 21 |  | ≈ |
-| E01.01.03 | Enhancers | B | M | s |  | none | mol | E01.01.02 |  |  | ≈ |
-| E01.02.01 | Alternative splicing | B | M | s |  | none | mol | E01.01.01 |  |  | ≈ |
-| E01.02.02 | DNA methylation and imprinting | D | M | s |  | none | mol | E01.00.01 |  |  | ≈ |
-| E01.03.01 | Induction | A | M | core |  | none | mol | E01.01.02 | 17 |  | ≈ |
-| E01.03.02 | Epithelial–mesenchymal interactions | B | M | s |  | none | mol | E01.03.01 |  |  | ≈ |
-| E01.04.01 | Paracrine and juxtacrine signalling | B | M | x |  | none | mol | E01.03.01 | 15 |  | ≈ |
-| E01.04.02 | Morphogen gradients | B | M | s |  | none | mol | E01.04.01 |  |  | ≈ |
-| E01.05.01 | Sonic hedgehog (SHH) pathway | D | M | x |  | none | mol | E01.04.01 | 4 |  | ≈ |
-| E01.05.02 | WNT pathway | D | M | s |  | none | mol | E01.04.01 |  |  | ≈ |
-| E01.05.03 | TGF-β superfamily (BMPs, Nodal) | D | M | s |  | none | mol | E01.04.01 |  |  | ≈ |
-| E01.05.04 | FGFs and receptor tyrosine kinases | D | M | s |  | none | mol | E01.04.01 | 2 |  | ≈ |
-| E01.05.05 | Notch signalling | D | M | d |  | none | mol | E01.04.01 | 1 |  | ≈ |
+| E01.00.01 | Chromatin and nucleosomes | B | M | s |  | none | mol |  | 25 | AN73.1, BI7.1 | ⚑ |
+| E01.01.01 | Gene structure: promoter, exons, introns | B | M | s |  | none | mol | E01.00.01 | 23 | BI7.1, BI7.2 | ⚑ |
+| E01.01.02 | Transcription factors | B | M | x |  | none | mol | E01.01.01 | 21 | BI7.2, BI7.3 | ✔ |
+| E01.01.03 | Enhancers | B | M | s |  | none | mol | E01.01.02 |  | BI7.3 | ✔ |
+| E01.02.01 | Alternative splicing | B | M | s |  | none | mol | E01.01.01 |  | BI7.2, BI7.3 | ✔ |
+| E01.02.02 | DNA methylation and imprinting | D | M | s |  | none | mol | E01.00.01 |  | BI7.3, AN75.3 | ⚑ |
+| E01.03.01 | Induction | A | M | core |  | none | mol | E01.01.02 | 17 | PY1.3 | ✔ |
+| E01.03.02 | Epithelial–mesenchymal interactions | B | M | s |  | none | mol | E01.03.01 |  | PY1.3 | ✔ |
+| E01.04.01 | Paracrine and juxtacrine signalling | B | M | x |  | none | mol | E01.03.01 | 15 | PY1.3, PY1.4 | ✔ |
+| E01.04.02 | Morphogen gradients | B | M | s |  | none | mol | E01.04.01 |  | PY1.3 | ✔ |
+| E01.05.01 | Sonic hedgehog (SHH) pathway | D | M | x |  | none | mol | E01.04.01 | 4 | PY1.3 | ✔ |
+| E01.05.02 | WNT pathway | D | M | s |  | none | mol | E01.04.01 |  | PY1.3 | ✔ |
+| E01.05.03 | TGF-β superfamily (BMPs, Nodal) | D | M | s |  | none | mol | E01.04.01 |  | PY1.3, PY1.4 | ✔ |
+| E01.05.04 | FGFs and receptor tyrosine kinases | D | M | s |  | none | mol | E01.04.01 | 2 | PY1.3 | ✔ |
+| E01.05.05 | Notch signalling | D | M | d |  | none | mol | E01.04.01 | 1 | PY1.3 | ⚑ |
 | E01.05.06 | Retinoic acid | D | M | s |  | none | mol | E01.04.01 | 1 |  | ≈ |
 
-*Misconceptions to refute (≈ until X1):* E01.02.02 — “Imprinting changes the DNA sequence.” · E01.03.01 — “Induction is a one-way, one-off signal (most are reciprocal and repeated).”
+*Misconceptions to refute (cited in the chapter dossier):* E01.02.02 — “Imprinting changes the DNA sequence.” · E01.03.01 — “Induction is a one-way, one-off signal (most are reciprocal and repeated).”
 
 ## E02 — Gametogenesis: Conversion of Germ Cells into Male and Female Gametes · pp 14–33 · 13 concepts
 

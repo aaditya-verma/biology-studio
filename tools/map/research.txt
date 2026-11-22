@@ -267,3 +267,20 @@ E21.02.01|AN4.2,AN72.1|✔|
 E21.03.01|AN4.2|✔|
 E21.04.01|AN4.2,AN72.1|≈|
 E21.05.01|AN9.3,AN9.2|≈|
+# --- E01 · X1 22 Nov 2026 (dossier ch01-molecular-regulation.md; no ages, stages or clocks in Ch 1 — no cs on any row, D-030; NMC 2018 Vol I has no development code for Ch 1 — AN73.1/BI7.x/PY1.3 nearest fits; ⚑ D-092 a–d; E01.05.06 ≈ = no Ch 1 text, owner input X1.01.q2) ---
+E01.00.01|AN73.1,BI7.1|⚑|
+E01.01.01|BI7.1,BI7.2|⚑|
+E01.01.02|BI7.2,BI7.3|✔|
+E01.01.03|BI7.3|✔|
+E01.02.01|BI7.2,BI7.3|✔|
+E01.02.02|BI7.3,AN75.3|⚑|
+E01.03.01|PY1.3|✔|
+E01.03.02|PY1.3|✔|
+E01.04.01|PY1.3,PY1.4|✔|
+E01.04.02|PY1.3|✔|
+E01.05.01|PY1.3|✔|
+E01.05.02|PY1.3|✔|
+E01.05.03|PY1.3,PY1.4|✔|
+E01.05.04|PY1.3|✔|
+E01.05.05|PY1.3|⚑|
+E01.05.06||≈|

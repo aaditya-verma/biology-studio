@@ -3343,6 +3343,249 @@
    "pmid": "38485969"
   },
   {
+   "id": "R05na",
+   "tier": 1,
+   "name": "Ezkurdia I, Juan D, Rodriguez JM, et al",
+   "licence": "© OUP → facts only",
+   "ref_only": false,
+   "doi": "10.1093/hmg/ddu309",
+   "pmid": "24939910"
+  },
+  {
+   "id": "R05nb",
+   "tier": 1,
+   "name": "Luger K, Mäder AW, Richmond RK, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/38444",
+   "pmid": "9305837"
+  },
+  {
+   "id": "R05nc",
+   "tier": 1,
+   "name": "Bassett A, Cooper S, Wu C, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.gde.2009.02.010",
+   "pmid": "19346124"
+  },
+  {
+   "id": "R05nd",
+   "tier": 1,
+   "name": "Gendrel AV, Heard E",
+   "licence": "© Annual Reviews → facts only",
+   "ref_only": false,
+   "doi": "10.1146/annurev-cellbio-101512-122415",
+   "pmid": "25000994"
+  },
+  {
+   "id": "R05ne",
+   "tier": 1,
+   "name": "Csankovszki G, Nagy A, Jaenisch R",
+   "licence": "© Rockefeller UP (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1083/jcb.153.4.773",
+   "pmid": "11352938"
+  },
+  {
+   "id": "R05nf",
+   "tier": 1,
+   "name": "Fang F, Hodges E, Molaro A, et al",
+   "licence": "© PNAS → facts only",
+   "ref_only": false,
+   "doi": "10.1073/pnas.1201310109",
+   "pmid": "22523239"
+  },
+  {
+   "id": "R05ng",
+   "tier": 1,
+   "name": "Isles AR",
+   "licence": "CC BY 4.0 → facts only (may adapt with credit)",
+   "ref_only": false,
+   "doi": "10.1038/s41398-022-01972-4",
+   "pmid": "35597773"
+  },
+  {
+   "id": "R05nh",
+   "tier": 1,
+   "name": "Morison IM, Ramsay JP, Spencer HG",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.tig.2005.06.008",
+   "pmid": "15990197"
+  },
+  {
+   "id": "R05ni",
+   "tier": 1,
+   "name": "Kammandel B, Chowdhury K, Stoykova A, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1006/dbio.1998.9128",
+   "pmid": "9882499"
+  },
+  {
+   "id": "R05nj",
+   "tier": 1,
+   "name": "Hammes A, Guo JK, Lutsch G, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0092-8674(01)00453-6",
+   "pmid": "11509181"
+  },
+  {
+   "id": "R05nk",
+   "tier": 1,
+   "name": "Lechner MS, Dressler GR",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0925-4773(97)00667-9",
+   "pmid": "9152004"
+  },
+  {
+   "id": "R05nl",
+   "tier": 1,
+   "name": "Ornitz DM, Itoh N",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/wdev.176",
+   "pmid": "25772309"
+  },
+  {
+   "id": "R05nm",
+   "tier": 1,
+   "name": "Briscoe J, Thérond PP",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/nrm3598",
+   "pmid": "23719536"
+  },
+  {
+   "id": "R05nn",
+   "tier": 1,
+   "name": "Porter JA, Young KE, Beachy PA",
+   "licence": "© AAAS → facts only",
+   "ref_only": false,
+   "doi": "10.1126/science.274.5285.255",
+   "pmid": "8824192"
+  },
+  {
+   "id": "R05no",
+   "tier": 1,
+   "name": "Pepinsky RB, Zeng C, Wen D, et al",
+   "licence": "© ASBMB → facts only",
+   "ref_only": false,
+   "doi": "10.1074/jbc.273.22.14037",
+   "pmid": "9593755"
+  },
+  {
+   "id": "R05np",
+   "tier": 1,
+   "name": "Burke R, Nellen D, Bellotto M, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/s0092-8674(00)81677-3",
+   "pmid": "10619433"
+  },
+  {
+   "id": "R05nq",
+   "tier": 1,
+   "name": "Kibar Z, Vogan KJ, Groulx N, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/90081",
+   "pmid": "11431695"
+  },
+  {
+   "id": "R05nr",
+   "tier": 1,
+   "name": "Kopan R, Ilagan MX",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.cell.2009.03.045",
+   "pmid": "19379690"
+  },
+  {
+   "id": "R05ns",
+   "tier": 1,
+   "name": "Falix FA, Aronson DC, Lamers WH, et al",
+   "licence": "© Elsevier → facts only",
+   "ref_only": false,
+   "doi": "10.1016/j.bbadis.2012.02.003",
+   "pmid": "22353464"
+  },
+  {
+   "id": "R05nt",
+   "tier": 1,
+   "name": "Chapman G, Sparrow DB, Kremmer E, et al",
+   "licence": "© OUP → facts only",
+   "ref_only": false,
+   "doi": "10.1093/hmg/ddq529",
+   "pmid": "21147753"
+  },
+  {
+   "id": "R05nu",
+   "tier": 1,
+   "name": "Oda T, Elkahloun AG, Pike BL, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/ng0797-235",
+   "pmid": "9207787"
+  },
+  {
+   "id": "R05nv",
+   "tier": 1,
+   "name": "Li L, Krantz ID, Deng Y, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/ng0797-243",
+   "pmid": "9207788"
+  },
+  {
+   "id": "R05nw",
+   "tier": 1,
+   "name": "McDaniell R, Warthen DM, Sanchez-Lara PA, et al",
+   "licence": "© Cell Press → facts only",
+   "ref_only": false,
+   "doi": "10.1086/505332",
+   "pmid": "16773578"
+  },
+  {
+   "id": "R05nx",
+   "tier": 1,
+   "name": "Eldadah ZA, Hamosh A, Biery NJ, et al",
+   "licence": "© OUP → facts only",
+   "ref_only": false,
+   "doi": "10.1093/hmg/10.2.163",
+   "pmid": "11152664"
+  },
+  {
+   "id": "R05ny",
+   "tier": 1,
+   "name": "Taipale J, Cooper MK, Maiti T, et al",
+   "licence": "© Springer Nature → facts only",
+   "ref_only": false,
+   "doi": "10.1038/nature00989",
+   "pmid": "12192414"
+  },
+  {
+   "id": "R05nz",
+   "tier": 1,
+   "name": "Amaral P, Carbonell-Sala S, De La Vega FM, et al",
+   "licence": "© Springer Nature (PMC) → facts only",
+   "ref_only": false,
+   "doi": "10.1038/s41586-023-06490-x",
+   "pmid": "37794265"
+  },
+  {
+   "id": "R05oa",
+   "tier": 1,
+   "name": "Graw J",
+   "licence": "© Wiley → facts only",
+   "ref_only": false,
+   "doi": "10.1002/(SICI)1520-6408(1996)18:3<181::AID-DVG1>3.0.CO",
+   "pmid": "8631154"
+  },
+  {
    "id": "R10",
    "tier": 2,
    "name": "Moore, Persaud & Torchia, The Developing Human",
@@ -3497,7 +3740,8 @@
   "D-088",
   "D-089",
   "D-090",
-  "D-091"
+  "D-091",
+  "D-092"
  ],
  "chapters": {
   "E01": "Introduction to Molecular Regulation and Signaling",
