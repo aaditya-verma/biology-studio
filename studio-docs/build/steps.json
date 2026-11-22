@@ -5,7 +5,7 @@
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "surfaces": {"on": ["Code", "Cowork"], "rules": [{"if": {"uses": "prof"}, "on": ["Code", "Cowork"], "why": "the professor's chats: either surface (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"lock": true}, "on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}], "note": "Where each chat runs (W3, D-080). First matching rule wins; each step's `run` {on, why} says where it really runs — set `override: true` to keep a different surface. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
@@ -860,6 +860,7 @@
    "log": "—",
    "todo": [],
    "inputs": [],
+   "runs": [{"chat": "Bio · Research · X1 Ch 19", "by": "Aaditya", "start": "2026-11-22 13:45", "outcome": "partial", "note": "route B (cloud workspace; origin read by public clone, files written to the laptop clone)"}],
    "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough"}
   },
   {
@@ -1225,7 +1226,7 @@
    "chat": "Bio · Build · W3 run surface",
    "status": "done",
    "needs": ["V3"],
-   "unblocks": [],
+   "unblocks": ["W3F"],
    "lock": true,
    "gates": {"G-Eng": "pass"},
    "check": null,
@@ -1242,6 +1243,28 @@
    "est": {"chats": 1},
    "runs": [{"chat": "Bio · Build · W3 run surface", "by": "Aaditya", "start": "2026-11-22 13:17", "end": "2026-11-22 13:46", "outcome": "done", "note": "route A (Claude Code, fresh clone); W3.q1 answered Code + Cowork; G-Eng pass (1 round, 0 MUST, 5 SHOULD applied); layout-check: full local run hit a Studio load timeout (flaky, unrelated), then progress-plan, step, step-blocked, step-idea and studio re-run alone — 0 issues; CI runs the full matrix"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
+  },
+  {
+   "id": "W3F",
+   "title": "W3 fix — surface gaps (Professor default, split, files, Cowork rules)",
+   "type": "Fix",
+   "chat": "Bio · Fix · W3 surface gaps",
+   "status": "in progress",
+   "needs": ["W3"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "open"},
+   "check": null,
+   "decisions": ["D-080"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Owner's W3 answers not in D-080: W3.q1 = Cowork default for the Professor, Code allowed with a warning; split + handoff note; > 15 files and tests = Code hard; connectors, artifacts, owner checks = Cowork; W3 needs V3 + W2; U2 prompt carries T13"
+   ],
+   "inputs": [],
+   "est": {"chats": 0.5},
+   "runs": [{"chat": "Bio · Fix · W3 surface gaps", "by": "Aaditya", "start": "2026-11-22 13:55", "outcome": "partial", "note": "route A (desktop app, laptop clone); open run; same session as the W3 planning chat"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes tools and app code, runs the checks, pushes"}
   },
   {
    "id": "M1V8",
