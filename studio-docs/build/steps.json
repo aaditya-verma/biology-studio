@@ -293,14 +293,14 @@
    "prompt": "H1",
    "log": "17 Nov 2026 · H1 Shared repo — private repo, studio-docs/, sync.bat (invite pending username)",
    "todo": [
-    "After cloning on the laptop, the old tools\\ + content\\ in Studio home are retired (keep out\\)"
+    "After cloning on the laptop, the old tools\\ + content\\ in Studio home are retired (keep out\\) — clone done (H1.q5); retire once M1b/M1V8 no longer run from tools\\m1b-host. Never delete without the owner's OK"
    ],
    "inputs": [
     {"id": "H1.q1", "kind": "ask", "ask": "The Professor’s name, Google address and GitHub username (needed for invites)", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": "Komal Verma (the Professor) · GitHub komalverma00500-byte · her email stays with the owner, not in the repo (21 Nov 2026)", "status": "answered", "d": "D-060"},
     {"id": "H1.q2", "kind": "decide", "ask": "D-025 (c): the Professor as human G-Sci reviewer for cards and scripts?", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": "Yes — human science reviewer for cards and scripts, on top of the chat G-Sci; her ✓ = the human science pass; her ✎ fixes need the owner's OK (21 Nov 2026)", "status": "answered", "d": "D-060"},
     {"id": "H1.q3", "kind": "action", "ask": "Invite the Professor: repo › Settings › Collaborators › Add people (Write); then send him the T5 message", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": "Not now — no collaborator invite until Level 3; she reviews through public Issues (Reviewer mode, H2) (21 Nov 2026)", "status": "closed", "d": "D-060"},
     {"id": "H1.q4", "kind": "action", "ask": "Send the Professor the setup Doc and share Drive subfolders renders/ audio/ research/ assets/ index/ backup/ as Editor — not book/", "asked_in": "Bio · Ideation", "asked": "2026-11-17", "answer": null, "status": "open", "d": "D-025"},
-    {"id": "H1.q5", "kind": "action", "ask": "Clone the repo on your laptop: cd /d D:\\Projects\\biology_studio\\repo → git clone https://github.com/aaditya-verma/biology-studio.git; run M1 from there", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": null, "status": "open", "d": null},
+    {"id": "H1.q5", "kind": "action", "ask": "Clone the repo on your laptop: cd /d D:\\Projects\\biology_studio\\repo → git clone https://github.com/aaditya-verma/biology-studio.git; run M1 from there", "asked_in": "Bio · Build · H1 shared repo", "asked": "2026-11-17", "answer": "Done — clone at Studio home repo\\biology-studio tracking origin/main, used by sync.bat since 20 Nov (route B); M1b still runs from Studio home tools\\m1b-host on purpose until M1b is done (22 Nov 2026, checked in Bio · Ideation · L1F errors + T2)", "status": "answered", "d": null},
     {"id": "H1.q6", "kind": "action", "ask": "Delete the 24 uploaded Project docs (Project → knowledge; keep the GitHub studio-docs/ source), then a chat checks it still sees STATUS", "asked_in": "Bio · Fix · doc reconcile", "asked": "2026-11-18", "answer": null, "status": "open", "d": null}
    ],
    "runs": [{"chat": "Bio · Build · H1 shared repo", "by": "Aaditya", "start": "2026-11-17", "end": "2026-11-17", "outcome": "done", "note": "backfilled from the log line (W2)"}],
@@ -368,8 +368,8 @@
    "unblocks": ["K2", "X1.05", "A0"],
    "lock": true,
    "gates": {"G-Sci": "pass", "G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
-   "check": {"id": "T2", "state": "open", "since": "2026-11-17"},
-   "decisions": ["D-017", "D-028"],
+   "check": {"id": "T2", "state": "open", "since": "2026-11-17", "note": "22 Nov: step 1 problem — no Back from a Needs-first link (owner video) → D-084, built in U2. The K1 explorer artifact is retired; T2 re-runs on the app Book map after U2"},
+   "decisions": ["D-017", "D-028", "D-084"],
    "prompt": "K1",
    "log": "17 Nov 2026 · K1 Concept map — 314 concepts, explorer, roadmap (222/222 core + exam-high)",
    "todo": [
@@ -1405,13 +1405,14 @@
    "lock": true,
    "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},
    "check": {"id": "T13b", "state": "open"},
-   "decisions": ["D-077", "D-031", "D-034"],
+   "decisions": ["D-077", "D-031", "D-034", "D-084"],
    "prompt": "U2 look tokens",
    "log": "—",
    "todo": [
     "Re-run CIEDE2000 + colour-vision check on the proposed light edges (D-077) before shipping",
     "Fonts: OFL woff2 Latin subset ≤ 120 KB, THIRD_PARTY + registry Tools rows; sw.js cache; replaces D-034 (5)",
-    "Write T13b"
+    "Write T13b",
+    "D-084 (owner-confirmed): one in-app history — Back dock whenever there is history (also inside a panel on a root tab), concept/card panel stack (link pushes, Back pops, ✕ closes all; opens beside/over, never below the list), header trail, Search one tap away, Android/browser Back stay in the app; T13b tests it and T2 re-runs on the Book map"
    ],
    "inputs": [],
    "est": {"chats": 2},

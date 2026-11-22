@@ -198,7 +198,7 @@ Follow `build/setup-guide.md` §1–§5.
 6. First chat `Bio · Review · Laptop 2 setup` records Laptop 2 in `build/pipeline-reference.md` §1b.
 - **Result:** ☐ pass ☐ problems · GPU/VRAM: ___ · missing tools: ___ · quick run minutes: ___ · stuck at step: ___ · notes:
 
-## T2. Concept map explorer *(~10 min, phone + laptop)* — OPEN (K1)
+## T2. Concept map explorer *(~10 min, phone + laptop)* — OPEN (K1) · **22 Nov 2026: step 1 problem** — no Back from a *Needs first* link (owner video) → **D-084**, built in U2. The K1 explorer artifact is **retired**: after U2, run steps 1, 3–5 and 6b on the app's **Book map** (`#map`); step 2 + 6 (crosstabs) wait for K3 *Tables* mode; steps 7–8 as written.
 1. On the phone open https://claude.ai/artifact/Bg2DUqLgdqC3NgroWMEvin. Book tab: E05 › E05.01 › tap "Primitive streak". Read the page; tap a "Needs first" link, then go back.
 2. Crosstabs: Rows = Germ layer, Columns = Day / week; tap Mesoderm × Wk 3; open one concept. Tap ⇄ Swap; try System × Tier.
 3. Search "pouch" — the list narrows; clear it. Filters: Importance = exam-high, System = Heart & vessels.
