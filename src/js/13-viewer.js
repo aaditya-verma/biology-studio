@@ -84,12 +84,12 @@ function scViewer(v,S,o={}){
     </div>
     ${tr?'':`<div class="vw-keys" aria-hidden="true">${K.map(k=>`<span data-d="${k.day}" style="left:${(k.day-d0)/((d1-d0)||1)*100}%">${esc(STR.vw.dayShort(k.day))}</span>`).join('')}</div>`}`}
     ${o.drill?'':o.inline?`<div class="row vw-inl-act"><button type="button" class="btn sm" data-go="scene=${esc(S.id)}&day=${esc(fmtDay(st.day))}" id="vwFull" title="${esc(STR.ln.openFull)}">${icon('scene',18)} <span class="vf-t">${esc(STR.ln.openFull)}</span></button><span class="xs mut">${esc(DEV.input==='in-mouse'?STR.vw.hintMouse:STR.vw.hintTouch)}</span></div>`:`
-    <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-pressed="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
-    <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.filter(l=>!l.drill).map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" aria-pressed="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
+    <div class="seg vw-tabs" role="group" aria-label="${esc(STR.vw.sections)}">${['layers','cut','view','about'].concat(dbg?['debug']:[]).map(t=>`<button type="button" data-vw="tab" data-t="${t}" aria-current="${SC.tab===t}">${esc(STR.vw.tabs[t])}</button>`).join('')}</div>
+    <div class="vw-sec" data-sec="layers"><h2 class="vw-h">${esc(STR.vw.heads.layers)}</h2><div class="vw-tg">${lay.filter(l=>!l.drill).map(l=>`<button type="button" class="vw-t" data-vw="layer" data-l="${esc(l.id)}" role="switch" aria-checked="${on(l.id)}"><span class="sw ${tok(l.token)}" aria-hidden="true"></span><span>${esc(l.label)}</span></button>`).join('')}</div></div>
     <div class="vw-sec" data-sec="cut"><h2 class="vw-h">${esc(STR.vw.heads.cut)}</h2>
-      <div class="vw-tg"><button type="button" class="vw-t" data-vw="labels" aria-pressed="${SC.labels}"><span>${esc(STR.vw.labels)}</span></button>
-      <button type="button" class="vw-t" data-vw="cut" aria-pressed="${!!cut.on}"><span>${esc(STR.vw.cut)}</span></button></div>
-      <div class="seg" role="group" aria-label="${esc(STR.vw.cutAxis)}">${['x','y'].map(a=>`<button type="button" data-vw="axis" data-a="${a}" aria-pressed="${cut.axis===a}">${esc(STR.vw.cutAxes[a])}</button>`).join('')}</div>
+      <div class="vw-tg"><button type="button" class="vw-t" data-vw="labels" role="switch" aria-checked="${SC.labels}"><span>${esc(STR.vw.labels)}</span></button>
+      <button type="button" class="vw-t" data-vw="cut" role="switch" aria-checked="${!!cut.on}"><span>${esc(STR.vw.cut)}</span></button></div>
+      <div class="seg" role="group" aria-label="${esc(STR.vw.cutAxis)}">${['x','y'].map(a=>`<button type="button" data-vw="axis" data-a="${a}" aria-current="${cut.axis===a}">${esc(STR.vw.cutAxes[a])}</button>`).join('')}</div>
       <label class="vw-range wide"><span class="sm">${esc(STR.vw.cutAt)}</span><input type="range" id="vwCut" min="-0.9" max="0.9" step="0.05" value="${cut.at}" aria-valuetext="${esc(STR.vw.cutText(cut.axis,cut.at))}" ${cut.on?'':'disabled'}></label></div>
     <div class="vw-sec" data-sec="view"><h2 class="vw-h">${esc(STR.vw.heads.view)}</h2><div class="vw-tg">${Object.keys(STR.vw.views).map(k=>`<button type="button" class="vw-t" data-vw="view" data-v="${k}"><span>${esc(STR.vw.views[k])}</span></button>`).join('')}
       <button type="button" class="vw-t" data-vw="zin" aria-label="${esc(STR.vw.zoomIn)}"><span>＋ ${esc(STR.vw.zoom)}</span></button><button type="button" class="vw-t" data-vw="zout" aria-label="${esc(STR.vw.zoomOut)}"><span>－ ${esc(STR.vw.zoom)}</span></button></div>
@@ -322,14 +322,14 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('[data-vw]');if(!b||!b.closest('#vw'))return;const S=scCur(),E=SC.eng,a=b.dataset.vw;if(!S)return;const st=SC.st[S.id];
   if(a==='relaunch'){try{SC.eng&&SC.eng.dispose();}catch(_){}SC.eng=null;if(SC.canvas)SC.canvas.remove();SC.canvas=null;SC.cur=null;render();return;}
   if(a==='disc'){const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);SC.discOpen=o;scOverlay();return;}
-  if(a==='tab'){SC.tab=b.dataset.t;$('#vw').dataset.tab=SC.tab;$$('.vw-tabs [data-t]').forEach(x=>x.setAttribute('aria-pressed',x===b));return;}
+  if(a==='tab'){SC.tab=b.dataset.t;$('#vw').dataset.tab=SC.tab;$$('.vw-tabs [data-t]').forEach(x=>x.setAttribute('aria-current',x===b));return;}
   if(a==='dprev'||a==='dnext'){scStop();scDay(scStep(st.day,a==='dnext'?1:-1));return;}
   if(a==='play'){scPlay();return;}
   if(!E)return;
-  if(a==='layer'){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);E.setLayer(b.dataset.l,on);scSave();return;}
-  if(a==='labels'){SC.labels=!SC.labels;b.setAttribute('aria-pressed',SC.labels);scOverlay();return;}
-  if(a==='cut'){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);E.setCut({on});$('#vwCut').disabled=!on;scSave();return;}
-  if(a==='axis'){E.setCut({axis:b.dataset.a});const cs=$('#vwCut');if(cs)cs.setAttribute('aria-valuetext',STR.vw.cutText(b.dataset.a,+cs.value));$$('[data-vw=axis]').forEach(x=>x.setAttribute('aria-pressed',x===b));scSave();return;}
+  if(a==='layer'){const on=b.getAttribute('aria-checked')!=='true';b.setAttribute('aria-checked',on);E.setLayer(b.dataset.l,on);scSave();return;}
+  if(a==='labels'){SC.labels=!SC.labels;b.setAttribute('aria-checked',SC.labels);scOverlay();return;}
+  if(a==='cut'){const on=b.getAttribute('aria-checked')!=='true';b.setAttribute('aria-checked',on);E.setCut({on});$('#vwCut').disabled=!on;scSave();return;}
+  if(a==='axis'){E.setCut({axis:b.dataset.a});const cs=$('#vwCut');if(cs)cs.setAttribute('aria-valuetext',STR.vw.cutText(b.dataset.a,+cs.value));$$('[data-vw=axis]').forEach(x=>x.setAttribute('aria-current',x===b));scSave();return;}
   if(a==='view'){scView(b.dataset.v);return;} if(a==='zin'){E.zoomBy(1.25);scSave();return;} if(a==='zout'){E.zoomBy(0.8);scSave();return;}
   if(a==='turn'){const d=b.dataset.d,T=CONFIG.viewer.turn;E.orbitBy(d==='l'?-T.az:d==='r'?T.az:0,d==='u'?T.el:d==='d'?-T.el:0);scSave();return;}
   if(a==='dreset'){if(SC.drill&&SC.drill.home){const h=SC.drill.home;E.view(h.az,h.el,h.zoom);scSave();}return;}

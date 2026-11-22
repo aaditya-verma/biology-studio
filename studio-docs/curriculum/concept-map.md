@@ -4,7 +4,7 @@
 
 **314 concepts** in 124 sections (all 116 content sections covered; Summary / Problems sections carry none). Ids `E<ch>.<sec>.<nn>` (README) — permanent once a card ships (A2). Data: `content/E/map.json`. Builder: `tools/map/` (`concepts.txt` + `research.txt` + `build_map.py`; README there).
 
-**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
+**Columns:** Imp = core · exam-high (x) · supporting (s) · detail (d). Days = days after fertilization (fetal range = to term ≈ 266). Layer: ecto · meso · endo · crest · extra(embryonic) · multi · none. Pages = I1 section locator (printed pages; ≈ where I1 used OCR). AN = NMC 2024 competency codes (R30). Mark = weakest fact line in the chapter dossier (B7). **Every fact is ≈ until its chapter's X1 cites and marks it** (B1, B7; X1 done: E05, E06, E07, E08, E09, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20) — definitions here are one-line labels in our words, not card text. Carnegie ranges in map.json: `cs` = cited (X1 chapters, D-030), `cs_approx` = derived from day.
 
 **Known I1 locator issues (≈):** E05.01/E05.02 run pp 59–60 (I1: p 59; checked in X1) — concepts are placed by heading subject; E08.08/E08.09 twin vs parturition terms look swapped; E10.03 holds spina bifida/Chiari terms (page shift); E12.02 spans most of the limb chapter. X1 corrects locators per chapter.
 
@@ -447,17 +447,17 @@
 
 | Id | Concept | Tier | Thr | Imp | Days | Layer | System | Needs | Unlocks | AN | Mark |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| E20.01.01 | Optic cup and lens vesicle | A | S | core | 22–42 | ecto | eye | E18.02.01, E06.01.06 | 8 |  | ≈ |
-| E20.02.01 | Retina | A | S | core | 35–266 | ecto | eye | E20.01.01 | 1 |  | ≈ |
-| E20.02.02 | Iris and ciliary body | B | S | x | 56–266 | multi | eye | E20.02.01 |  |  | ≈ |
-| E20.03.01 | Lens | B | S | s | 35–266 | ecto | eye | E20.01.01 |  |  | ≈ |
-| E20.04.01 | Choroid, sclera and cornea | B | S | s |  | multi | eye | E20.01.01 |  |  | ≈ |
-| E20.05.01 | Vitreous and hyaloid artery | B | S | s |  | multi | eye | E20.01.01 |  |  | ≈ |
-| E20.06.01 | Optic nerve | B | SA | x | 42–266 | ecto | eye | E20.01.01 |  |  | ≈ |
-| E20.07.01 | Molecular regulation of the eye | D | M | x |  | ecto | eye | E20.01.01, E01.05.01 | 1 |  | ≈ |
-| E20.07.02 | Eye defects | C | C | x |  | ecto | defects | E20.07.01 |  |  | ≈ |
+| E20.01.01 | Optic cup and lens vesicle | A | S | core | 22–42 | ecto | eye | E18.02.01, E06.01.06 | 8 | AN43.4, AN41.1 | ✔ |
+| E20.02.01 | Retina | A | S | core | 35–266 | ecto | eye | E20.01.01 | 1 | AN41.1, AN43.2 | ≈ |
+| E20.02.02 | Iris and ciliary body | B | S | x | 56–266 | multi | eye | E20.02.01 |  | AN41.1, AN41.3 | ✔ |
+| E20.03.01 | Lens | B | S | s | 35–266 | ecto | eye | E20.01.01 |  | AN41.1, AN41.2 | ✔ |
+| E20.04.01 | Choroid, sclera and cornea | B | S | s |  | multi | eye | E20.01.01 |  | AN41.1, AN43.2 | ✔ |
+| E20.05.01 | Vitreous and hyaloid artery | B | S | s |  | multi | eye | E20.01.01 |  | AN41.1 | ✔ |
+| E20.06.01 | Optic nerve | B | SA | x | 42–266 | ecto | eye | E20.01.01 |  | AN41.1, AN43.3 | ✔ |
+| E20.07.01 | Molecular regulation of the eye | D | M | x |  | ecto | eye | E20.01.01, E01.05.01 | 1 | AN43.4 | ⚑ |
+| E20.07.02 | Eye defects | C | C | x |  | ecto | defects | E20.07.01 |  | AN43.4, AN41.2, AN74.1 | ⚑ |
 
-*Misconceptions to refute (≈ until X1):* E20.02.01 — “Retinal detachment separates retina from choroid (it splits the two retinal layers).”
+*Misconceptions to refute (cited in the chapter dossier):* E20.02.01 — “Retinal detachment separates retina from choroid (it splits the two retinal layers).”
 
 ## E21 — Integumentary System · pp 370–376 · 7 concepts
 

@@ -6,10 +6,9 @@
    Registers only on https (GitHub Pages / artifact hosts), so a local http.server test never exercises it.
    H2: the reviewer's GitHub issues come from api.github.com (another origin) — never cached here; the app keeps its own copy in the saved state.
    EDIT: bump CACHE with APP.v (src/js/00-version.js) and the ?v= in index.html — old caches are deleted on activate (RULES C6). */
-const CACHE='biostudio-v17';
-const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=16','content/strings.js?v=16',
-  'src/js/00-version.js?v=16','src/js/01-debug.js?v=14','src/js/02-config.js?v=15','src/js/03-device.js?v=1','src/js/04-storage.js?v=14','src/js/05-router.js?v=14',
-  'src/js/06-shell.js?v=14','src/js/10-today.js?v=14','src/js/11-bookmap.js?v=10','src/js/12-settings.js?v=13','src/js/13-viewer.js?v=15','src/js/15-cards.js?v=15','src/js/16-studio.js?v=11','src/js/17-plan.js?v=16','src/js/17-tracker.js?v=16','src/js/18-learn.js?v=15','src/js/19-review.js?v=13','src/js/20-lessons.js?v=14','src/js/90-layout-audit.js?v=13','src/js/91-tests.js?v=16','src/js/99-boot.js?v=2',
+const CACHE='biostudio-v18';
+const SHELL=['./','index.html','manifest.webmanifest','src/css/app.css?v=18','src/js/00-version.js?v=18','content/strings.js?v=18','src/js/02-config.js?v=18','src/js/01-debug.js?v=18','src/js/03-device.js?v=1','src/js/04-storage.js?v=14','src/js/05-router.js?v=18','src/js/06-shell.js?v=18','src/js/10-today.js?v=14','src/js/11-bookmap.js?v=18','src/js/12-settings.js?v=18','src/js/13-viewer.js?v=18','src/js/15-cards.js?v=15','src/js/16-studio.js?v=11','src/js/17-plan.js?v=17','src/js/17-tracker.js?v=17','src/js/18-learn.js?v=15','src/js/19-review.js?v=13','src/js/20-lessons.js?v=14','src/js/90-layout-audit.js?v=13','src/js/91-tests.js?v=18','src/js/99-boot.js?v=2',
+  'assets/fonts/figtree-latin-wght.woff2','assets/fonts/atkinson-hyperlegible-next-latin-wght.woff2',   // U2 fonts (D-077, 54 KB) — precached so the look works offline
   'assets/icon.svg','assets/icon-192.png','assets/icon-512.png','assets/icon-maskable-512.png','content/E/map.json','content/E/scenes/index.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});

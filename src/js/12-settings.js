@@ -5,8 +5,8 @@ SCREENS.settings=function(v){
   ROUTE.crumbs=[{label:STR.settingsTitle}];const th=state.settings.theme,L=slogRead().slice().reverse();
   const fmt=e=>new Date(e.t).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})+'  '+e.ev+(e.to!=null?' → rev '+e.to:'')+(e.err?'  '+e.err:'')+(e.why?'  '+e.why:'');
   v.innerHTML=`<h1>${esc(STR.settingsTitle)}</h1><div class="settings">
-   <section class="card"><h2>${esc(STR.themeT)}</h2><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-pressed="${th===k}">${esc(l)}</button>`).join('')}</div>
-     <h3 class="sm" style="margin-top:12px">${esc(STR.motionT)}</h3><div class="seg" role="group" aria-label="${esc(STR.motionT)}">${Object.entries(STR.motions).map(([k,l])=>`<button type="button" data-motion-set="${k}" aria-pressed="${(state.settings.motion||'system')===k}">${esc(l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.motionHint)}</p></section>
+   <section class="card"><h2>${esc(STR.themeT)}</h2><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-current="${th===k}">${esc(l)}</button>`).join('')}</div>
+     <h3 class="sm" style="margin-top:12px">${esc(STR.motionT)}</h3><div class="seg" role="group" aria-label="${esc(STR.motionT)}">${Object.entries(STR.motions).map(([k,l])=>`<button type="button" data-motion-set="${k}" aria-current="${(state.settings.motion||'system')===k}">${esc(l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.motionHint)}</p></section>
    <section class="card"><h2>${esc(STR.colourKeyT)}</h2><p class="sm mut">${esc(STR.colourKeyHint)}</p><div class="row" style="margin:8px 0">${['epi','hypo','ecto','meso','endo','crest','ctx'].map(k=>`<span class="sw L-${k}" title="${esc(STR.ckLayers[k])}"></span>`).join('')}</div>
      <button type="button" class="btn" data-go="colours">${esc(STR.colourKeyT)}</button></section>
    <section class="card"><h2>${esc(STR.storageT)}</h2><p class="sm">${STORE.mode==='idb'?esc(STR.saved)+' · IndexedDB '+esc(CONFIG.idb.name)+' · '+esc(STR.rev)+' '+STORE.rev:esc(STR.savedTest)}${STORE.err?` · <span class="bad">${esc(STORE.err)}</span>`:''}</p>
@@ -29,18 +29,18 @@ document.addEventListener('click',e=>{
 document.addEventListener('change',async e=>{if(!e.target.matches('[data-act=import]'))return;const f=e.target.files[0];if(!f)return;
   try{await stImport(f);toast(STR.importOk);render();}catch(err){toast(err.message||STR.importBad);}e.target.value='';});
 
-/* Colour key — measured live on this screen (WCAG contrast of every D-031 token against the page background) */
+/* Colour key — measured live on this screen (WCAG contrast of every D-031 token against every ladder level L0–L4, worst counts — U2) */
 function cssRGB(c){const x=document.createElement('span');x.style.color=c;document.body.appendChild(x);const m=getComputedStyle(x).color.match(/[\d.]+/g).map(Number);x.remove();return m.slice(0,3);}
 function relLum([r,g,b]){const f=v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;};return .2126*f(r)+.7152*f(g)+.0722*f(b);}
 function contrast(a,b){const A=relLum(cssRGB(a)),B=relLum(cssRGB(b));return (Math.max(A,B)+.05)/(Math.min(A,B)+.05);}
 function ckMeasure(){const cs=getComputedStyle(document.documentElement),g=k=>cs.getPropertyValue(k).trim(),bg=g('--bg'),out={};
   for(const k of ['epi','hypo','ecto','meso','endo','crest','ctx']){const fill=g('--g-'+k),edge=g('--g-'+k+'-edge'),text=g('--g-'+k+'-text');
     out[k]={fill,edge,text,cFill:contrast(fill,bg),cEdge:contrast(edge,bg),cText:contrast(text,fill)};}
-  const dark=document.documentElement.dataset.theme==='dark',acc=dark?g('--accent-on-dark'):g('--accent'),sf=[bg,g('--surface'),g('--surface-2')];
+  const dark=document.documentElement.dataset.theme==='dark',acc=dark?g('--accent-on-dark'):g('--accent'),sf=['--L0','--L1','--L2','--L3','--L4'].map(g);   // U2: every ladder level (D-077), worst one counts
   for(const k of Object.keys(out)){const r=out[k];r.cFill=Math.min(...sf.map(s=>contrast(r.fill,s)));r.cEdge=Math.min(...sf.map(s=>contrast(r.edge,s)));}   // worst of page, card, panel
   out.accent={fill:acc,cFill:Math.min(...sf.map(s=>contrast(acc,s))),cText:dark?contrast('#14161A',acc):contrast(g('--accent-ink'),acc),
     cAccentText:Math.min(...sf.map(s=>contrast(g('--accent-text'),s)))};
-  out.ui={lineStrong:Math.min(...sf.slice(0,2).map(s=>contrast(g('--line-strong'),s))),muted:Math.min(...sf.slice(0,2).map(s=>contrast(g('--muted'),s))),heat3:contrast(g('--heat-ink-hi'),g('--heat3'))};
+  out.ui={lineStrong:Math.min(...sf.map(s=>contrast(g('--line-strong'),s))),muted:Math.min(...sf.map(s=>contrast(g('--muted'),s))),heat3:contrast(g('--heat-ink-hi'),g('--heat3'))};
   out.bg=bg;return out;}
 SCREENS.colours=function(v){
   ROUTE.crumbs=[{label:STR.settingsTitle,hash:'settings'},{label:STR.ckTitle}];const m=ckMeasure(),f=n=>n.toFixed(2);

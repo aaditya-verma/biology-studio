@@ -1,4 +1,6 @@
-# App look v2 — fonts, surfaces, depth, layouts (plan draft)
+# App look v2 — fonts, surfaces, depth, layouts (plan draft) — **built → design-plan**
+
+> **Built in U2 (22 Nov 2026, `Bio · Build · U2 look tokens`, D-086):** §4.1–§4.3a now live in `build/design-plan.md` §1 (tokens — the owner doc), §4.4 in design-plan §2 (shell row + *As built in U2*) and §3 (D-084 history). Edit there, not here; this file stays as the record of the U1 proposal and its measurements. §4.4's screen rows and §4.5 motion are U3's.
 
 *(Purpose: the plan for the app's v2 look (U1 canvas → U2 tokens → U3 screens) until U2 moves the final values into `build/design-plan.md` §1–§2. Updated: 22 Nov 2026 · Bio · Design · U1 look canvas — committed from the Project ideation draft; owner answers U0.q1–q4 recorded; U1 contrast results (§4.3a); owner check renumbered **T13** (T12 is K3's). Before: 22 Nov 2026 · Bio · Ideation · App look v2 (Project draft only). Owner doc when built: `build/design-plan.md` §1–§2 (+ RULES C8, C13, B3, H5).)*
 

@@ -94,7 +94,7 @@ function bmConcept(o){const M=MAPD.M,V=M.vocab,sec=M.sections.find(s=>s.id===o.s
   const lk=ids=>ids&&ids.length?`<div class="links">${ids.filter(i=>MAPD.byId[i]).map(i=>`<button type="button" class="lk" data-go="concept=${esc(i)}">${esc(i)} ${esc(MAPD.byId[i].name)}</button>`).join('')}</div>`:STR.none;
   const cs=o.cs?`CS${pad2(o.cs[0])}${o.cs[1]!==o.cs[0]?'–'+pad2(o.cs[1]):''} · ${STR.cited}`:o.cs_approx?`≈ CS${pad2(o.cs_approx[0])}${o.cs_approx[1]!==o.cs_approx[0]?'–'+pad2(o.cs_approx[1]):''} · ${STR.approx}`:STR.none;
   const mark=o.mark||'≈';
-  return `<article class="cp" aria-labelledby="cpT"><div class="row"><span class="mono mut">${esc(o.id)}</span>${cEdit(o)}<span class="sp"></span></div>
+  return `<article class="cp" aria-labelledby="cpT"><div class="row"><span class="mono mut">${esc(o.id)}</span>${cEdit(o)}<span class="sp"></span><button type="button" class="btn ghost icon cp-x" data-act="closestack" aria-label="${esc(STR.closePanel)}" title="${esc(STR.closePanel)}">${icon('close',20)}</button></div>
    <h1 id="cpT" tabindex="-1">${esc(o.name)}</h1>
    <div class="meta">${badges(o)}<span class="badge">${sw(o.layer)} ${esc(V.layer[o.layer])}</span><span class="badge">${esc(V.system[o.system])}</span>${o.threads.map(t=>`<span class="badge" title="${esc(V.threads[t]||'')}">${esc(STR.threadShort(t,V.threads[t]))}</span>`).join('')}</div>
    <p class="def">${esc(o.def_ours)} ${mark==='≈'?`<span class="xs mut">(${esc(STR.approx)})</span>`:''}</p>
@@ -116,6 +116,7 @@ function bmWire(v){   // only the search box needs its own listener (it is re-cr
 /* one delegated listener each, added once (renders never stack listeners) */
 document.addEventListener('change',e=>{if(!e.target.closest('.bm'))return;const f=e.target.dataset.f;if(f){BM.F[f]=e.target.value||undefined;render();return;}
   const x=e.target.dataset.xt;if(x){const r={...ROUTE,cell:null};if(x==='xtx')r.x=e.target.value;else r.y=e.target.value;go(r);}});
-document.addEventListener('click',e=>{if(e.target.closest('.bm [data-act=clearf]')){BM.F={};BM.q='';render();}});
+document.addEventListener('click',e=>{if(e.target.closest('.bm [data-act=clearf]')){BM.F={};BM.q='';render();}
+  if(e.target.closest('.bm [data-act=closestack]'))closeStack('concept');});   // U2, D-084 (3): ✕ closes the whole concept stack
 function bmRefreshTree(){const t=$('.p-tree .pane');if(t){const open=$('.filt',t)?.open;t.innerHTML=bmTree(ROUTE.ch&&MAPD.M.chapters.find(c=>c.id===ROUTE.ch));if(open)$('.filt',t).open=true;bmWire(t);}
   if(ROUTE.name==='x'){const m=$('.p-mid .pane');if(m)m.innerHTML=bmXt(ROUTE);}}

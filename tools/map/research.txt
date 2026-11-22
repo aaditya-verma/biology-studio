@@ -249,3 +249,13 @@ E19.01.02|AN40.3|✔|
 E19.02.01|AN40.2,AN43.4|✔|16-23
 E19.03.01|AN40.1,AN43.4|⚑|13-23
 E19.04.01|AN74.1,AN75.1|✔|
+# --- E20 · X1 22 Nov 2026 (dossier ch20-eye.md; stages from R06/R08 stage features + human specimens R05kc (fissure ~CS16–17), R05kd (eyelids), R05ke, R05kf, R05kh (fetal, clocks read both ways), D-030; NMC 2018 Vol I AN43.4 names the eye, D-085 k) ---
+E20.01.01|AN43.4,AN41.1|✔|10-17
+E20.02.01|AN41.1,AN43.2|≈|
+E20.02.02|AN41.1,AN41.3|✔|
+E20.03.01|AN41.1,AN41.2|✔|
+E20.04.01|AN41.1,AN43.2|✔|
+E20.05.01|AN41.1|✔|
+E20.06.01|AN41.1,AN43.3|✔|
+E20.07.01|AN43.4|⚑|
+E20.07.02|AN43.4,AN41.2,AN74.1|⚑|

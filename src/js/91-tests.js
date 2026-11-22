@@ -93,6 +93,14 @@ function appTests(){
   t('accent set',cs.getPropertyValue('--accent').trim().toLowerCase()==='#994774');
   // strings: every nav item has a label
   t('strings for nav',CONFIG.nav.every(k=>STR.nav[k]&&STR.navHint[k]));
+  // U2 look tokens + shell (D-077, D-084)
+  t('ladder L0-L4 set, bg = L0, card = L1',['L0','L1','L2','L3','L4'].every(k=>/^#[0-9A-F]{6}$/i.test(cs.getPropertyValue('--'+k).trim()))&&cs.getPropertyValue('--bg').trim()===cs.getPropertyValue('--L0').trim()&&cs.getPropertyValue('--surface').trim()===cs.getPropertyValue('--L1').trim());
+  t('elevation + radii + lift tokens',['--e1','--e2','--e3','--lift','--chrome'].every(k=>cs.getPropertyValue(k).trim())&&cs.getPropertyValue('--r-card').trim()==='20px'&&cs.getPropertyValue('--r-in').trim()==='14px');
+  t('fonts: Atkinson body, Figtree display, system fallback',/Atkinson Hyperlegible Next/.test(cs.getPropertyValue('--font'))&&/Figtree/.test(cs.getPropertyValue('--font-display'))&&/system-ui/.test(cs.getPropertyValue('--font')));
+  t('3D stage keeps #14161A (D-036)',cs.getPropertyValue('--stage-bg').trim().toUpperCase()==='#14161A');
+  t('bar = 4 nav items + More, all real nav items',CONFIG.navBar.length===4&&CONFIG.navBar.every(k=>CONFIG.nav.includes(k))&&STR.more&&STR.moreT&&STR.searchGo&&STR.closePanel);
+  t('history: canBack + closeStack exist, Back never leaves at step 1',typeof canBack==='function'&&typeof closeStack==='function'&&(HIST.n>1)===canBack());
+  t('shell controls present (Search, dock, More sheet)',!!(document.getElementById('srchb')&&document.getElementById('dock')&&document.getElementById('moresh')&&document.getElementById('moreb')));
   // Reviewer mode (H2, D-061): addresses, Up, title/body parse, issue state → words, form link, card sorting, log parse, saved shape
   ['review','review=news','review=mine','rcard=E06.02.01','rtour','rtour=3','updates','updates=2'].forEach(h=>t('route '+h,hashOf(parseHash('#'+h))===h,hashOf(parseHash('#'+h))));
   t('review bad tab → todo',parseHash('#review=nope').view==='todo'&&hashOf(parseHash('#review=todo'))==='review');

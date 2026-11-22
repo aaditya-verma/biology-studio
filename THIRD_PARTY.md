@@ -1,12 +1,14 @@
 # Third-party licences (RULES H10)
 
-*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 20 Nov 2026 · Bio · Fix · Visual style 2 port — real-media section mirroring the registry § Media (D-046). Before: 18 Nov 2026 · Bio · Build · V1 viewer — three.js r170 vendored into the app; its licence checked against the file.)*
+*(Purpose: every library, model and asset the project uses, with its licence and where it may live. Updated: 22 Nov 2026 · Bio · Build · U2 look tokens — Figtree + Atkinson Hyperlegible Next self-hosted (OFL, D-077). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — real-media section mirroring the registry § Media (D-046). Before: 18 Nov 2026 · Bio · Build · V1 viewer — three.js r170 vendored into the app; its licence checked against the file.)*
 
 Licences marked ✔ were checked against the project's own licence file; the rest stay ≈ until checked. "Repo" = may be committed; "Laptop" = installed per person, never committed.
 
 | Name | Used by | Licence | Lives |
 |---|---|---|---|
 | three.js r170 (0.170.0) | **app 3D viewer** (`lib/three-r170/three.module.min.js`, sha256 `08fd7545…c39e7`, from the `r170` tag of mrdoob/three.js `build/`); `tools/m1-bakeoff/B_three` (npm) | MIT ✔ (`lib/three-r170/LICENSE`, © 2010-2024 three.js authors) | **Repo** (vendored, pinned — RULES C5, D-006/D-019); kit: npm install |
+| Figtree (variable, Latin subset; registry T44) | **app** display font — titles + numbers (`assets/fonts/figtree-latin-wght.woff2`, 20.2 KB, from Google Fonts' Latin subset; D-077, replaces D-034 (5)) | SIL OFL 1.1 ✔ (`assets/fonts/OFL-Figtree.txt`, © 2022 The Figtree Project Authors) | **Repo** (self-hosted, cached by `sw.js`; never renamed as a Reserved Font Name) |
+| Atkinson Hyperlegible Next (variable, Latin subset; registry T45) | **app** body + label font (`assets/fonts/atkinson-hyperlegible-next-latin-wght.woff2`, 34.0 KB; D-077) | SIL OFL 1.1 ✔ (`assets/fonts/OFL-AtkinsonHyperlegibleNext.txt`, © 2020-2024 The Atkinson Hyperlegible Next Project Authors) | **Repo** (self-hosted, cached by `sw.js`) |
 | Playwright | `B_three/record.mjs`; `tools/layout-check`, `tools/stills` (Python) + CI (pinned 1.63.0) | Apache-2.0 | npm / pip install |
 | GitHub Actions `checkout`, `setup-python`, `upload-artifact` | CI | MIT | GitHub-hosted |
 | pypdf | `tools/indexer` | BSD-3-Clause | pip |

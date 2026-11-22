@@ -2,35 +2,55 @@
    Owner docs: build/design-plan.md (tokens, type, spacing, screens, §8a devices), RULES B3 / C8 / C13 / H5, DECISIONS D-031 (colours), D-033 (devices).
    EDIT: every changeable value lives in :root below (RULES I6). Never hard-code a germ-layer colour elsewhere (B3). */
 
-/* ---------- 1. Tokens: base (light) ---------- */
+/* ---------- 0. Fonts (U2, D-077 fonts A; OFL, self-hosted, Latin subset — THIRD_PARTY.md, registry T44/T45). swap: the system stack shows first ---------- */
+@font-face{font-family:"Figtree";font-style:normal;font-weight:700 800;font-display:swap;src:url("../../assets/fonts/figtree-latin-wght.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Atkinson Hyperlegible Next";font-style:normal;font-weight:400 700;font-display:swap;src:url("../../assets/fonts/atkinson-hyperlegible-next-latin-wght.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* ---------- 1. Tokens: base (light) — v2 look (U2, D-077; spec design-plan §1) ---------- */
 :root{
-  /* EDIT: surfaces + ink (light). Backgrounds are the ones D-031 was measured on. */
-  --bg:#FAFAF7; --surface:#FFFFFF; --surface-2:#F1F0EB; --ink:#1B1D21; --muted:#55585F; --line:#DCDAD3; --line-strong:#858279;
+  /* EDIT: tonal ladder L0 page → L1 card → L2 inner → L3 control → L4 pressed; one tone darker per nested level (D-077) */
+  --L0:#F3F1EC; --L1:#EBE9E3; --L2:#E3E1DA; --L3:#DBD8D0; --L4:#D2CFC6;
+  /* EDIT: surfaces + ink (light). Old names keep working (C1): bg = L0, surface = L1, surface-2 = L2 */
+  --bg:var(--L0); --surface:var(--L1); --surface-2:var(--L2); --ink:#1B1D21; --muted:#55585F; --line:#D6D3CB; --line-strong:#747169;
   --good:#2E6B45; --warn:#8A5A00; --bad:#A13A2E;
   /* EDIT: D-031 germ-layer tokens — fill · edge (2 px, ≥ 3.5:1 on this background) · label text */
   /* fills = D-031; edges = D-034 (≥ 3.5:1 on page, card and panel) */
-  --g-epi:#56B4E9;  --g-epi-edge:#1986C4;  --g-epi-text:#111111;
-  --g-hypo:#BDD9B8; --g-hypo-edge:#558C4B; --g-hypo-text:#111111;
-  --g-ecto:#0072B2; --g-ecto-edge:#0072B2; --g-ecto-text:#FFFFFF;
-  --g-meso:#D55E00; --g-meso-edge:#D05C00; --g-meso-text:#111111;
-  --g-endo:#E6CF3A; --g-endo-edge:#907F12; --g-endo-text:#111111;
-  --g-crest:#009E73;--g-crest-edge:#009069;--g-crest-text:#111111;
-  --g-ctx:#828A99;  --g-ctx-edge:#767F8F;  --g-ctx-text:#111111;
+  /* light edges = D-077 (≥ 3.6:1 on every ladder level; re-checked in U2, D-086 — tools/colour-check/recheck.py) */
+  --g-epi:#56B4E9;  --g-epi-edge:#146DA0;  --g-epi-text:#111111;
+  --g-hypo:#BDD9B8; --g-hypo-edge:#45723D; --g-hypo-text:#111111;
+  --g-ecto:#0072B2; --g-ecto-edge:#006CA9; --g-ecto-text:#FFFFFF;
+  --g-meso:#D55E00; --g-meso-edge:#AB4B00; --g-meso-text:#111111;
+  --g-endo:#E6CF3A; --g-endo-edge:#75680F; --g-endo-text:#111111;
+  --g-crest:#009E73;--g-crest-edge:#007656;--g-crest-text:#111111;
+  --g-ctx:#828A99;  --g-ctx-edge:#606875;  --g-ctx-text:#111111;
   /* EDIT: heat scale — neutral, so colour only ever means a germ layer; the number is always printed */
-  --heat0:#FFFFFF; --heat1:#DEDBD2; --heat2:#C4C0B6; --heat3:#76736B; --heat4:#3D3F45; --heat-ink-hi:#FFFFFF;
+  --heat0:#E3E1DA; --heat1:#C9C6BD; --heat2:#A9A59B; --heat3:#66625A; --heat4:#3D3F45; --heat-ink-hi:#F3F1EC;   /* re-based on the ladder (D-077) */
   /* EDIT: accent = "look here" (D-031): ring/outline + label, never a layer colour */
-  --accent:#994774; --accent-ink:#FFFFFF; --accent-on-dark:#B76491; --accent-text:#994774;
+  --accent:#994774; --accent-ink:#FFFFFF; --accent-on-dark:#B76491; --accent-text:#873E66;   /* accent-text light = D-077 (≥ 4.6:1 on L0–L4) */
+  --lift:#6E3254;   /* EDIT: primary button 3 px lift (darker plum under the button) */
   /* EDIT: pattern ink (drawn over fills) */
   --pat-ink:rgb(17 17 17 / .45); --pat-ink-light:rgb(255 255 255 / .6);
   /* EDIT: type, spacing, shape — per device class below */
-  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif;
+  --font-sys:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif;
+  --font:"Atkinson Hyperlegible Next",var(--font-sys);   /* EDIT: body + labels (D-077 A) */
+  --font-display:"Figtree",var(--font-sys);              /* EDIT: screen titles + numbers, 700–800 */
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --fs:1rem; --fs-sm:.875rem; --fs-xs:.8125rem; --fs-h1:1.375rem; --fs-h2:1.125rem; --fs-min:12px;
+  --fs:1rem; --fs-read:1.0625rem; --fs-sm:.875rem; --fs-xs:.8125rem; --fs-h1:1.375rem; --fs-h2:1.125rem; --fs-min:12px; --fs-display:clamp(1.75rem,4vw,2.5rem);
   --lh:1.5; --measure:68ch;
   --gap:12px; --pad:16px; --r:12px; --r-sm:8px;
+  --r-card:20px; --r-in:14px; --r-pill:999px; --r-input:12px;   /* EDIT: v2 radii (D-077) */
   --tap:44px; --rail-w:84px; --bar-h:64px; --top-h:56px; --maxw:1280px;
   --shadow:0 1px 2px rgb(20 22 26 / .08),0 2px 8px rgb(20 22 26 / .06);
-  --focus:3px solid var(--accent);
+  /* EDIT: elevation = hairline + soft shadow, no grey borders (D-077) — e1 card · e2 sheet/menu · e3 floating bar/dock */
+  --hair:rgb(255 255 255 / .7);
+  --e1:inset 0 1px 0 var(--hair),0 1px 2px rgb(20 22 26 / .06),0 2px 6px rgb(20 22 26 / .06);
+  --e2:inset 0 1px 0 var(--hair),0 2px 4px rgb(20 22 26 / .08),0 8px 18px rgb(20 22 26 / .12);
+  --e3:inset 0 1px 0 var(--hair),0 4px 8px rgb(20 22 26 / .10),0 12px 28px rgb(20 22 26 / .16);
+  /* EDIT: frosted chrome (header + floating bar); opaque under prefers-reduced-transparency */
+  --chrome:color-mix(in srgb,var(--L0) 82%,transparent); --blur:14px;
+  --focus:3px solid var(--accent);   /* #994774 light / #C77BA2 dark, 3 px (U2) */
   /* EDIT: progress map status looks (W1) — state colours mixed light, so text stays ink; patterns carry the meaning with the word */
   --st-acc:color-mix(in srgb,var(--accent) 10%,var(--surface));   /* owner check = rose: the only tinted status ("look here", yours) */
   /* EDIT: 3D stage background (V1) — always the dark surface D-031 was measured on */
@@ -38,7 +58,8 @@
   color-scheme:light;
 }
 /* ---------- 1b. Tokens: dark ---------- */
-/* .stage-dark = the 3D stage: a dark island in both themes (same values, one home — V1) */
+/* .stage-dark = the 3D stage: a dark island in both themes (V1). It keeps the D-031 dark values (#14161A, D-036);
+   the dark theme's page uses the ladder below (U2, D-077). One home for each. */
 :root[data-theme="dark"],.stage-dark{
   --bg:#14161A; --surface:#1C1F24; --surface-2:#252930; --ink:#ECEDEF; --muted:#A9AEB7; --line:#343840; --line-strong:#737985;
   --good:#7CC79A; --warn:#E3AE63; --bad:#EE9184;
@@ -48,8 +69,20 @@
   --heat0:#1C1F24; --heat1:#2F333B; --heat2:#454A54; --heat3:#9A9DA4; --heat4:#DCDDE0; --heat-ink-hi:#14161A;
   --pat-ink:rgb(17 17 17 / .5);
   --shadow:0 1px 2px rgb(0 0 0 / .4),0 2px 10px rgb(0 0 0 / .3);
+  --lift:#8E4F72; --hair:rgb(255 255 255 / .06);
+  --e1:inset 0 1px 0 var(--hair),0 1px 2px rgb(0 0 0 / .35),0 2px 6px rgb(0 0 0 / .25);
+  --e2:inset 0 1px 0 var(--hair),0 2px 4px rgb(0 0 0 / .4),0 8px 18px rgb(0 0 0 / .35);
+  --e3:inset 0 1px 0 var(--hair),0 4px 8px rgb(0 0 0 / .45),0 12px 28px rgb(0 0 0 / .4);
   color-scheme:dark;
 }
+/* dark theme page = the dark ladder (D-077: every D-031/D-034 dark value passes on L0–L4); never applied to .stage-dark */
+:root[data-theme="dark"]{
+  --L0:#252930; --L1:#1F2228; --L2:#1A1D22; --L3:#16181C; --L4:#121417;   /* EDIT */
+  --bg:var(--L0); --surface:var(--L1); --surface-2:var(--L2);
+  --heat0:#2A2E35; --heat1:#3E434C; --heat2:#596069; --heat3:#9AA0AA; --heat4:#DCDDE0; --heat-ink-hi:#14161A;
+  --chrome:color-mix(in srgb,var(--L0) 82%,transparent);
+}
+.stage-dark{--L0:#14161A; --L1:#1C1F24; --L2:#252930; --L3:#2A2E35; --L4:#30343C}   /* the island's own steps (old dark surfaces) */
 
 /* ---------- 1c. Tokens per device class (set on <html> by src/js/03-device.js; §8a) ---------- */
 html.dev-p {--pad:14px;--gap:10px;--fs-h1:1.25rem}
@@ -67,6 +100,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 a{color:var(--accent-text)}
 :focus-visible{outline:var(--focus);outline-offset:2px}
 h1,h2,h3{line-height:1.25;margin:0 0 .4em}
+h1{font-family:var(--font-display);font-weight:800;letter-spacing:-.005em;line-height:1.15}   /* U2: display font on screen titles (sentence case kept for long terms) */
+.stat b,.num{font-family:var(--font-display);font-weight:800;font-variant-numeric:tabular-nums}
 h1{font-size:var(--fs-h1)} h2{font-size:var(--fs-h2)} h3{font-size:var(--fs)}
 p{margin:.4em 0}
 .hidden{display:none!important}
@@ -80,20 +115,24 @@ a.sr:focus{position:fixed!important;left:8px;top:8px;width:auto;height:auto;clip
 
 /* controls */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:var(--tap);min-width:var(--tap);padding:0 14px;
-  border:1px solid var(--line-strong);border-radius:999px;background:var(--surface);cursor:pointer;font-weight:600;text-decoration:none;color:var(--ink)}
-.btn:hover{background:var(--surface-2)}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  border:1px solid var(--line-strong);border-radius:var(--r-pill);background:var(--L3);cursor:pointer;font-weight:600;text-decoration:none;color:var(--ink)}
+.btn:hover{background:var(--L4)}
+/* primary = the only plum fill (B3), always labelled; 3 px lift (D-077) */
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 3px 0 var(--lift)}
+.btn.pri:hover{background:var(--accent)}
+.btn.pri:active{box-shadow:0 1px 0 var(--lift);transform:translateY(2px)}
 [data-theme="dark"] .btn.pri{background:var(--accent-on-dark);border-color:var(--accent-on-dark);color:#14161A}
+@media (prefers-reduced-motion:no-preference){.btn:active,.seg button:active,.vw-t:active{transform:scale(.97)} .btn.pri:active{transform:translateY(2px)}}
 .btn.ghost{background:transparent;border-color:transparent}
 .btn.icon{padding:0;border-radius:50%}
 label.btn:focus-within{outline:var(--focus);outline-offset:2px}
 .btn[aria-pressed="true"]{border:2px solid var(--accent-text);color:var(--accent-text)}
-input[type=search],input[type=text],select{min-height:var(--tap);border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--surface);padding:0 10px;max-width:100%}
-.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2)}
-.seg button{min-height:var(--tap);padding:0 12px;border:0;border-radius:999px;background:transparent;cursor:pointer;color:var(--muted);font-weight:600}
-.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--accent-on-dark);color:#14161A}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);box-shadow:var(--shadow);min-width:0}
+input[type=search],input[type=text],select{min-height:var(--tap);border:1px solid var(--line-strong);border-radius:var(--r-input);background:var(--L1);padding:0 10px;max-width:100%}
+/* segment (U2): pill row on L2; the chosen one = L0 chip + e1 + ink text + plum underline — marked aria-current (aria-pressed kept until U3) */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid var(--line-strong);border-radius:var(--r-pill);background:var(--L2)}
+.seg button{min-height:var(--tap);padding:0 12px;border:0;border-radius:var(--r-pill);background:transparent;cursor:pointer;color:var(--muted);font-weight:600}
+.seg button[aria-current="true"],.seg button[aria-pressed="true"]{background:var(--L0);color:var(--ink);box-shadow:var(--e1),inset 0 -3px 0 var(--accent-text);font-weight:700}
+.card{background:var(--L1);border:0;border-radius:var(--r-card);padding:var(--pad);box-shadow:var(--e1);min-width:0}   /* U2: ladder L1 + e1 (hairline + soft shadow, no grey border) */
 .badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-xs);line-height:1.5;padding:0 7px;border-radius:6px;border:1px solid var(--line-strong);background:var(--surface);white-space:nowrap}
 .b-core{border-color:var(--ink);font-weight:700} .b-exam-high{border-color:var(--accent-text);color:var(--accent-text)} .b-detail{color:var(--muted)}
 .mark{font-weight:700}
@@ -115,39 +154,63 @@ input[type=search],input[type=text],select{min-height:var(--tap);border:1px soli
 /* ---------- 4. Shell: top bar, nav (bottom bar or rail), main ---------- */
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;min-height:calc(var(--top-h) + env(safe-area-inset-top));
   padding:env(safe-area-inset-top) calc(var(--pad) + env(safe-area-inset-right)) 0 calc(var(--pad) + env(safe-area-inset-left));
-  background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  background:var(--chrome);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border-bottom:1px solid var(--line)}   /* U2: frosted chrome */
 .brand{font-weight:800;letter-spacing:.01em;white-space:nowrap;cursor:pointer;border:0;background:none;padding:0;min-height:var(--tap)}
 .crumbs{display:flex;align-items:center;gap:4px;min-width:0;overflow:hidden;font-size:var(--fs-sm);color:var(--muted)}
 .crumbs button{border:0;background:none;color:var(--muted);cursor:pointer;min-height:var(--tap);min-width:var(--tap);padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:16ch;flex:0 1 auto}
-/* phone portrait: the title is the page name only (Up + Back carry the path) */
-html.dev-p .brand,html.dev-p .crumbs>button,html.dev-p .crumbs>span{display:none}
+/* phones: the trail truncates from the left — the last two parts, the parent tappable (D-084 (4)); brand hidden on phone portrait */
+html.dev-p .brand{display:none}
+html.dev-p .crumbs>button:not(:nth-last-child(3)),html.dev-p .crumbs>span:not(:nth-last-child(2)),
 html.dev-pl .crumbs>button:not(:nth-last-child(3)),html.dev-pl .crumbs>span:not(:nth-last-child(2)){display:none}
+html.dev-p #backb{display:none}   /* phone portrait: the floating Back dock carries Back (thumb reach) */
 .crumbs b{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .tb-hide{} html.dev-pl .banner.tb{display:none}
 .testflag{font-size:var(--fs-xs);font-weight:700;border:2px dashed var(--accent-text);color:var(--accent-text);border-radius:6px;padding:0 6px;white-space:nowrap}
 #view{padding:var(--pad);padding-left:calc(var(--pad) + env(safe-area-inset-left));padding-right:calc(var(--pad) + env(safe-area-inset-right));
   max-width:var(--maxw);margin:0 auto;padding-bottom:calc(var(--bar-h) + var(--pad) + env(safe-area-inset-bottom))}
-.nav{position:fixed;z-index:25;display:flex;background:var(--surface);border-color:var(--line)}
+.nav{position:fixed;z-index:25;display:flex;background:var(--L1);border-color:var(--line)}
 .nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:none;cursor:pointer;color:var(--muted);
   font-size:var(--fs-xs);font-weight:600;min-height:var(--tap);min-width:var(--tap);border-radius:12px}
 .nav button[aria-current="page"]{color:var(--ink)}
 .nav button[aria-current="page"] svg{stroke:var(--accent-text)}
 .nav button[aria-current="page"]::after{content:"";width:22px;height:3px;border-radius:2px;background:var(--accent-text)}
-/* bottom bar: phone portrait + tablet portrait (thumb reach, §8a rule 6) */
-html.dev-p .nav,html.dev-tp .nav{left:0;right:0;bottom:0;height:calc(var(--bar-h) + env(safe-area-inset-bottom));padding:4px 8px env(safe-area-inset-bottom);border-top:1px solid var(--line);justify-content:space-around}
-html.dev-p .nav button,html.dev-tp .nav button{flex:1 1 0;min-width:0;max-width:120px;padding:0 1px}
+/* U2 (D-077, D-084): phone portrait = floating bar (Today · Learn · Map · 3D · More) at thumb reach, frosted, e3; hides on scroll down (html.bar-away) */
+html.dev-p .nav{left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));bottom:calc(10px + env(safe-area-inset-bottom));height:var(--bar-h);
+  padding:4px 6px;border-radius:24px;justify-content:space-around;background:var(--chrome);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));box-shadow:var(--e3);
+  transition:transform .22s ease-out}
+html.dev-p.bar-away .nav{transform:translateY(calc(100% + 16px + env(safe-area-inset-bottom)))}
+html.dev-p .nav button{flex:1 1 0;min-width:0;max-width:120px;padding:0 1px}
+html.dev-p .nav button:not([data-bar]){display:none}   /* the rest live in the More sheet */
+#moreb{display:none} html.dev-p #moreb{display:flex}
 .nav button span{text-align:center;line-height:1.15}
-html.test.dev-p .nav button span,html.test.dev-tp .nav button span{font-size:var(--fs-min)}   /* 6 items in testing mode: labels shrink, never break mid-word */
-/* rail: phone landscape (icons), tablet landscape, desktop (with labels) */
-html.dev-pl .nav,html.dev-tl .nav,html.dev-d .nav{top:0;bottom:0;left:0;width:calc(var(--rail-w) + env(safe-area-inset-left));flex-direction:column;justify-content:flex-start;gap:6px;
+/* rail: phone landscape (side strip, icons), tablet portrait + landscape (labels — U2), desktop (labels beside icons) */
+html.dev-pl .nav,html.dev-tp .nav,html.dev-tl .nav,html.dev-d .nav{top:0;bottom:0;left:0;width:calc(var(--rail-w) + env(safe-area-inset-left));flex-direction:column;justify-content:flex-start;gap:6px;
   padding:calc(var(--top-h) + env(safe-area-inset-top) + 8px) 8px 8px calc(8px + env(safe-area-inset-left));border-right:1px solid var(--line)}
 html.dev-pl .nav button span{display:none}
 html.dev-d .nav button{flex-direction:row;justify-content:flex-start;gap:12px;padding:0 14px;font-size:var(--fs-sm)}
 html.dev-d .nav button[aria-current="page"]{background:var(--surface-2);color:var(--accent-text);box-shadow:inset 3px 0 0 var(--accent-text)}
 html.dev-d .nav button[aria-current="page"]::after{display:none}
-html.dev-pl body,html.dev-tl body,html.dev-d body{padding-left:calc(var(--rail-w) + env(safe-area-inset-left))}
-html.dev-pl #view,html.dev-tl #view,html.dev-d #view{padding-bottom:calc(var(--pad) + env(safe-area-inset-bottom))}
-html.dev-pl .top,html.dev-tl .top,html.dev-d .top{z-index:30}
+html.dev-pl body,html.dev-tp body,html.dev-tl body,html.dev-d body{padding-left:calc(var(--rail-w) + env(safe-area-inset-left))}
+html.dev-pl #view,html.dev-tp #view,html.dev-tl #view,html.dev-d #view{padding-bottom:calc(var(--pad) + env(safe-area-inset-bottom))}
+html.dev-pl .top,html.dev-tp .top,html.dev-tl .top,html.dev-d .top{z-index:30}
+html.dev-p #view{padding-bottom:calc(var(--bar-h) + 26px + var(--pad) + env(safe-area-inset-bottom))}   /* room under the last line for the floating bar */
+/* Back dock (D-084): phone portrait, floating, left, above the bar; shows whenever there is history */
+.dock{display:none}
+html.dev-p .dock{position:fixed;z-index:26;left:calc(14px + env(safe-area-inset-left));bottom:calc(var(--bar-h) + 22px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);color:var(--ink);cursor:pointer;
+  background:var(--chrome);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));box-shadow:var(--e3);transition:transform .22s ease-out}
+html.dev-p.bar-away .dock{transform:translateY(calc(var(--bar-h) + 10px))}
+html.dev-p .dock.hidden{display:none}
+/* More sheet: bottom sheet on phones, a centred menu elsewhere (e2) */
+.sheet{border:0;border-radius:var(--r-card);background:var(--L1);box-shadow:var(--e2);width:min(480px,94vw)}
+html.dev-p .sheet{margin:auto auto calc(10px + env(safe-area-inset-bottom));border-radius:24px}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0 12px}
+.sheet-grid .btn{justify-content:flex-start;border-radius:var(--r-in)}
+.sheet-grid .btn[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--accent-text);color:var(--ink)}
+/* opaque chrome where transparency is unwanted or blur is missing (D-077) */
+@media (prefers-reduced-transparency:reduce){.top,html.dev-p .nav,html.dev-p .dock{background:var(--L0);backdrop-filter:none;-webkit-backdrop-filter:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.top,html.dev-p .nav,html.dev-p .dock{background:var(--L0)}}
+@media (prefers-reduced-motion:reduce){html.dev-p .nav,html.dev-p .dock{transition:none}}
 
 /* toast + dialog */
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bar-h) + 16px + env(safe-area-inset-bottom));z-index:60;background:var(--ink);color:var(--bg);
@@ -294,12 +357,14 @@ html.dev-pl .vw-tabs button{padding:0 4px;font-size:var(--fs-xs);min-width:0}
 .vw[data-tab="layers"] [data-sec="layers"],.vw[data-tab="cut"] [data-sec="cut"],.vw[data-tab="view"] [data-sec="view"],.vw[data-tab="about"] [data-sec="about"],.vw[data-tab="debug"] [data-sec="debug"]{display:block}
 .vw-h{display:none;font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 6px}
 .vw-tg{display:flex;flex-wrap:wrap;gap:6px}
+/* toggle = switch (U2): role=switch + aria-checked; off = L3 + control border; on = ink fill + plum ring + ✓ (no plum fill) */
 .vw-t{min-height:var(--tap);display:inline-flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--line-strong);border-radius:999px;background:var(--surface);cursor:pointer;font-weight:600;color:var(--ink);max-width:100%}
 .vw-t:hover{background:var(--surface-2)}
-.vw-t[aria-pressed="true"]{border:2px solid var(--accent-text);padding:0 11px}
-.vw-t[aria-pressed="false"]{color:var(--muted)}
-.vw-t[aria-pressed="false"] .sw{opacity:.35}
-.vw-t[aria-pressed="true"]::after{content:"✓";color:var(--accent-text);font-weight:800}
+.vw-t[aria-checked="true"]{background:var(--ink);color:var(--L0);border:1px solid var(--ink);box-shadow:0 0 0 2px var(--L0),0 0 0 4px var(--accent-text)}
+.vw-t[aria-checked="true"]:hover{background:var(--ink)}
+.vw-t[aria-checked="false"]{color:var(--muted);background:var(--L3)}
+.vw-t[aria-checked="false"] .sw{opacity:.35}
+.vw-t[aria-checked="true"]::after{content:"✓";color:var(--L0);font-weight:800}
 .vw .seg{margin-top:10px}
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}

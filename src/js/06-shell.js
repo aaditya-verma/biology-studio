@@ -1,4 +1,5 @@
-/* Biology Studio — shell: top bar, nav (bottom bar on phone/tablet portrait, rail elsewhere), theme, render, ✎ edit hooks, keys, toast.
+/* Biology Studio — shell: top bar (Back · trail · Search · Up), nav (U2: floating bar + More sheet on phone portrait, side strip on phone landscape,
+   rail with labels on tablet + desktop), Back dock (D-084), theme, render, ✎ edit hooks, keys, toast.
    Owner doc: build/design-plan.md §3–§4 (layouts per class, §8a). EDIT: nav items in CONFIG.nav, words in STR, icons below. */
 'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -12,7 +13,7 @@ const ICONS={cards:'<rect x="4" y="5" width="13" height="15" rx="2"/><path d="M8
   studio:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/><path d="M14 20h6"/>',
   progress:'<circle cx="5" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 6h3.5l5.5 5M7.5 18h3.5l5.5-5"/>',
   review:'<path d="M9 4H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="9" y="2.5" width="6" height="3.5" rx="1"/><path d="M8.5 13.5l2.5 2.5 4.5-5"/>',
-  moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>'};
+  moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',more:'<circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>'};
 const icon=(k,sz=22)=>`<svg viewBox="0 0 24 24" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]||''}</svg>`;
 
 /* theme: device / light / dark (saved in state.settings.theme; localStorage mirror so first paint is right) */
@@ -26,7 +27,13 @@ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if
 const rvNavOn=()=>!FLAGS.test&&!!(state&&state.review&&state.review.on);
 const navItems=()=>{const n=CONFIG.nav.slice();if(rvNavOn())n.splice(Math.max(1,n.indexOf('cards')+1),0,CONFIG.navReview);return n.concat(FLAGS.test?CONFIG.navTest:[]);};
 function buildShell(){
-  $('#nav').innerHTML=navItems().map(k=>`<button type="button" data-nav="${k}" aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('');
+  const bar=CONFIG.navBar;   // U2: items in the phone-portrait bar get data-bar; the rest show in rails and in the More sheet
+  $('#nav').innerHTML=navItems().map(k=>`<button type="button" data-nav="${k}"${bar.includes(k)?' data-bar':''} aria-label="${esc(STR.nav[k])}" title="${esc(STR.nav[k])} — ${esc(STR.navHint[k])}">${icon(k)}<span aria-hidden="true">${esc(STR.nav[k])}</span></button>`).join('')
+    +`<button type="button" id="moreb" data-bar aria-haspopup="dialog" aria-label="${esc(STR.more)}" title="${esc(STR.moreT)}">${icon('more')}<span aria-hidden="true">${esc(STR.more)}</span></button>`;
+  $('#moreL').innerHTML=navItems().filter(k=>!bar.includes(k)).map(k=>`<button type="button" class="btn" data-nav="${k}" data-sheet>${icon(k,20)}<span>${esc(STR.nav[k])}</span></button>`).join('');
+  $('#moreT').textContent=STR.moreT;$('#moreX').textContent=STR.close;
+  $('#srchb').innerHTML=icon('search',20);$('#srchb').setAttribute('aria-label',STR.searchGo);$('#srchb').title=STR.searchGo;
+  $('#dock').innerHTML=icon('back',22)+`<span class="sr">${esc(STR.back)}</span>`;$('#dock').title=STR.back;
   $('#editChatL').textContent=STR.editChat;$('#editCopy').textContent=STR.copy;$('#editClose').textContent=STR.close;$('#editTxt').setAttribute('aria-label',STR.editT);
   $('#brand').textContent=STR.app;toastRegion();
   $('#backb').innerHTML=icon('back',20);$('#backb').setAttribute('aria-label',STR.back);$('#backb').title=STR.back;
@@ -39,7 +46,11 @@ function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];
   $('#crumbs').innerHTML=cr.map((c,i)=>i<cr.length-1?`<button type="button" data-go="${esc(c.hash)}">${esc(c.label)}</button><span aria-hidden="true">›</span>`:`<b>${esc(c.label)}</b>`).join('');
-  const home=!upOf(ROUTE);$('#upb').classList.toggle('hidden',home);$('#backb').classList.toggle('hidden',home);   // no Back/Up at home (Back there would arm "leave")
+  const home=!upOf(ROUTE);$('#upb').classList.toggle('hidden',home);
+  const cb=canBack();$('#backb').classList.toggle('hidden',!cb);document.documentElement.classList.toggle('can-back',cb);$('#dock').classList.toggle('hidden',!cb);   // D-084: Back whenever there is history (never at the first step: Back there would arm "leave")
+  const off=!CONFIG.navBar.includes(navOf(ROUTE)),mb=$('#moreb');if(mb){if(off)mb.setAttribute('aria-current','page');else mb.removeAttribute('aria-current');}   // a page reached from More lights More on the bar
+  $$('#moreL [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  barShow(true);
   document.title=cr[cr.length-1].label+' · '+STR.app;
 }
 
@@ -79,10 +90,13 @@ function toast(msg){const t=toastRegion();
 function shellEvents(){
   document.addEventListener('click',e=>{
     const ed=e.target.closest('[data-edit]');if(ed){e.preventDefault();e.stopPropagation();const[k,i,f]=ed.dataset.edit.split('|');openEdit(k,i,f);return;}
-    const n=e.target.closest('[data-nav]');if(n){go(n.dataset.nav);return;}
+    const n=e.target.closest('[data-nav]');if(n){if(n.hasAttribute('data-sheet'))$('#moresh').close();go(n.dataset.nav);return;}
     const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return;}
     if(e.target.closest('#brand')){go(CONFIG.home);return;}
-    if(e.target.closest('#backb')){goBack();return;}
+    if(e.target.closest('#backb')||e.target.closest('#dock')){goBack();return;}
+    if(e.target.closest('#moreb')){$('#moresh').showModal();return;}
+    if(e.target.closest('#moreX')||e.target===$('#moresh')){$('#moresh').close();return;}   // a tap on the backdrop closes the sheet
+    if(e.target.closest('#srchb')){searchGo();return;}
     if(e.target.closest('#upb')){goUp();return;}
   });
   $('#editClose').onclick=()=>$('#editdlg').close();
@@ -90,7 +104,20 @@ function shellEvents(){
   /* desktop keys (§8a rule 5): / search · Esc back (or close) */
   document.addEventListener('keydown',e=>{
     if(e.target.matches('input,textarea,select')){if(e.key==='Escape')e.target.blur();return;}
-    if(e.key==='/'){const q=$('#bmq');if(q){e.preventDefault();q.focus();}}
-    else if(e.key==='Escape'&&!$('dialog[open]')&&upOf(ROUTE)){goBack();}
+    if(e.key==='/'){e.preventDefault();searchGo();}
+    else if(e.key==='Escape'&&!$('dialog[open]')&&(canBack()||upOf(ROUTE))){goBack();}
   });
+  barScroll();
+}
+/* U2 — Search one tap from every screen (D-084 (5)): the Book map's search box, focused */
+function searchGo(){const f=()=>{const q=$('#bmq');if(q&&q.getClientRects().length){q.focus();if(q.select)q.select();return true;}return false;};   // only a visible box (phones show one pane at a time)
+  if(ROUTE.name==='map'&&f())return;go('map');let n=0;(function w(){if(!f()&&n++<40)setTimeout(w,50);})();}
+/* U2 — the floating bar hides on scroll down, comes back on scroll up, and stays away while the keyboard is up (a text field has focus) — D-084 (6) */
+const TYPING='input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=button]),textarea,select';
+function barShow(on){document.documentElement.classList.toggle('bar-away',!on);}
+function barScroll(){let y=scrollY;
+  addEventListener('scroll',()=>{const d=scrollY-y;if(Math.abs(d)<8)return;
+    if(DEV.cls==='dev-p'&&!(document.activeElement&&document.activeElement.matches(TYPING)))barShow(d<0||scrollY<40||(innerHeight+scrollY>=document.documentElement.scrollHeight-4));y=scrollY;},{passive:true});
+  document.addEventListener('focusin',e=>{if(DEV.cls==='dev-p'&&e.target.matches(TYPING))barShow(false);});
+  document.addEventListener('focusout',e=>{if(e.target.matches(TYPING))setTimeout(()=>{const a=document.activeElement;if(!a||!a.matches(TYPING))barShow(true);},60);});
 }

@@ -4,9 +4,14 @@
    · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
    · #lessons · #lesson=E05 · #card=E05.01.01&lesson=E05&step=check · #mix · #mix=go · #deck=go (L2 lessons, Today plans, Mixed review — docs/lesson-spec.md)
    · #review · #review=news · #review=mine · #rcard=E06.02.01 · #rtour · #rtour=2 · #updates · #updates=2 (H2 Reviewer mode). Back/Forward = the browser's history; Up = the parent address.
-   Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves. */
+   Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves.
+   U2 (D-084): one in-app history — history.state.n counts the app's steps (1 = the first page above the base); Back shows whenever n > 1
+   (canBack), on root tabs and in panels too; closeStack(name) leaves a run of panel steps (concept → linked concept …) in one go.
+   Session only (A1): n lives in the browser's history entries, the step names in memory. */
 'use strict';
 let ROUTE={name:'today',raw:'today'};
+const HIST={n:1,names:{}};   // n of the current entry; names[n] = route name at that step (this session)
+const canBack=()=>HIST.n>1;
 function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,raw:''};
   let p;try{p=new URLSearchParams(h.replace(/^([a-z]+)$/,'$1='));}catch(_){return {name:CONFIG.home,raw:h,unknown:true};}   // URLSearchParams decodes; a bad escape never throws past here
   const name=[...p.keys()][0]||CONFIG.home,r={name,raw:h};
@@ -48,21 +53,25 @@ function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));
   if(opts.replace){history.replaceState(history.state,'',h);routeChanged();}
   else if(location.hash===h)routeChanged();else location.hash=h;}   // a hash change = one history entry
 function goUp(){const u=upOf(ROUTE);if(u)go(u);}
-function goBack(){history.back();}
+function goBack(){if(canBack())history.back();else{const u=upOf(ROUTE);if(u)go(u);}}   // U2: Back never leaves the app — with no step behind, it goes Up
+function closeStack(name){   // D-084 (3): ✕ closes the whole panel stack — back past every consecutive step of this route name
+  let k=0;while(HIST.n-k>1&&HIST.names[HIST.n-k]===name)k++;
+  if(k&&HIST.names[HIST.n-k]!==undefined&&HIST.names[HIST.n-k]!==name)history.go(-k);else{const u=upOf(ROUTE);if(u)go(u,{replace:true});}}
 const LEAVE={armed:0};
 function routerStart(){
   const target=location.hash||'#'+CONFIG.home;
-  if(!(history.state&&history.state.bs)){history.replaceState({bs:'base'},'','#'+CONFIG.home);history.pushState({bs:'app'},'',target);}
+  if(!(history.state&&history.state.bs)){history.replaceState({bs:'base',n:0},'','#'+CONFIG.home);history.pushState({bs:'app',n:1},'',target);}
   addEventListener('popstate',e=>{
     if(e.state&&e.state.bs==='base'){          // Back pressed at the first page
       if(Date.now()-LEAVE.armed<CONFIG.leaveWindowMs){history.back();return;}
-      LEAVE.armed=Date.now();toast(STR.leaveHint);history.pushState({bs:'app'},'','#'+CONFIG.home);routeChanged();}
+      LEAVE.armed=Date.now();toast(STR.leaveHint);history.pushState({bs:'app',n:1},'','#'+CONFIG.home);routeChanged();}
   });
   addEventListener('hashchange',routeChanged);
   routeChanged();
 }
 function routeChanged(){const prev=ROUTE;ROUTE=parseHash(location.hash);
-  if(!history.state)history.replaceState({bs:'app'},'',location.hash||'#'+CONFIG.home);   // every entry is marked: reloads never add a second base
+  const st0=history.state||{bs:'app'};if(st0.n==null)history.replaceState(Object.assign({},st0,{n:st0.bs==='base'?0:HIST.n+1}),'',location.hash||'#'+CONFIG.home);   // every entry is marked: reloads never add a second base; a new step = n + 1
+  HIST.n=Math.max(1,history.state.n|0);HIST.names[HIST.n]=ROUTE.name;
   dlog('router',prev.raw,'→',ROUTE.raw);
   if(state&&!['settings','colours','studio','calib','progress','step'].includes(ROUTE.name)){state.last.route=hashOf(ROUTE);stSave();}
   render(prev||{});}

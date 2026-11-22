@@ -8,6 +8,7 @@ const CONFIG={
   saveLogMax:20,
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash'},
   nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
+  navBar:['today','cards','map','scene'],     // EDIT (U2, D-077): the phone-portrait floating bar = these 4 + More; every other item goes in the More sheet
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
   routes:['today','lessons','lesson','mix','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
   home:'today',
