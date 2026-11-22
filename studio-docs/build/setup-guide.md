@@ -1,6 +1,6 @@
 # Setup guide — run Biology Studio on a second laptop
 
-*(Purpose: §0 = the reviewer's zero-setup start; §0a–§8 = full setup for a collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 22 Nov 2026 · Bio · Research · X1 Ch 13 — §3 + §5 step 2: private `references\` folder in Studio home that chats stage from (D-069). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode — §0 Reviewer: start here (D-060, D-061). Before: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
+*(Purpose: §0 = the reviewer's zero-setup start; §0a–§8 = full setup for a collaborator's Windows + NVIDIA laptop, and how two people share the project. Updated: 22 Nov 2026 · Bio · Fix · CI guard — §6a: sync.bat pre-push guard, ci.bat CI status (D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — §3 + §5 step 2: private `references\` folder in Studio home that chats stage from (D-069). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode — §0 Reviewer: start here (D-060, D-061). Before: 17 Nov 2026 · Bio · Build · H1 shared repo — repo live, §6a commit route (D-027).)*
 
 **Reviewing only?** Read **§0** and stop there — nothing to install.
 
@@ -134,11 +134,15 @@ Docs exist **only** in `studio-docs/` of the repo. Project knowledge is a read-o
 **Route B — via your laptop clone (if A can't attach the repo).** Needs the desktop app with your Studio home connected.
 1. You double-click `sync.bat` in `<Studio home>\repo\biology-studio` (pull).
 2. Chat writes the changed files into `repo\biology-studio\studio-docs\…` on your laptop.
-3. You run `sync.bat "K1: concept map rows · by Aaditya"` (commit + push) — the chat gives the exact line — then **Sync now**.
+3. You run `sync.bat "K1: concept map rows · by Aaditya"` (commit + push) — the chat gives the exact line — then **Sync now**. If the chat gave a `git add` line too, run that first; `sync.bat` still guards the push.
 
 **No route (e.g. phone only).** End with a **handoff note** (templates §10); the next chat with a route applies it.
 
-`sync.bat` also takes `--dry-run` (shows what would be committed, changes nothing).
+**The guard (D-083).** Before it commits, `sync.bat "message"` rebuilds `content\E\sources.json` (`card-check --write-sources`) and runs **card-check, scene-check, the tracker check** (`steps.json`) **and lesson-check**, each with its `--selftest` — the fast checks CI runs; after the pull it rebuilds sources.json again (committing it if the other person's lines changed it) and re-runs them on the merged files. CI alone still runs parity, the map build, stills and layout-check. Any error → it stops and **nothing is pushed** (after the pull: your commit stays on the laptop, unpushed). Fix it or ask a chat, then run the same line again. These are the checks CI fails on most (a stale `sources.json` failed pushes on 21 and 22 Nov), so a red CI run should now be rare. Python must be installed (§5).
+
+`sync.bat` also takes `--check` (run the guard only — it rebuilds sources.json; commits and pushes nothing) and `--dry-run` (shows what would be committed, changes nothing).
+
+**CI status — `ci.bat`.** Double-click it in the clone (needs the GitHub CLI signed in: `winget install GitHub.cli`, then `gh auth login`). It lists the **last 5 runs** of the automatic checks and, for the newest red one, the **failing step and its error lines** (from `gh run view --log-failed`, cut at the error), and writes it all to `out\ci-status.txt` — paste that file into a chat to get a red run fixed. `ci.bat --preview` = runs only (fast) · `--only <run id>` = one run · `--dry-run` = show the `gh` commands · `--debug` = print each call. Tool: `tools\ci\status.py`.
 
 ## 7. What never to do
 - Share the book PDF, book sentences, figures or page photos anywhere shared (RULES §G).
@@ -158,5 +162,6 @@ Docs exist **only** in `studio-docs/` of the repo. Project knowledge is a read-o
 | Out of GPU memory (AI video) | Close games/Chrome; use the online fallback in `C_ai\README.md`. |
 | Claude can't see my files | Open the chat in the desktop app on this laptop and connect the Studio folder. |
 | Project docs look old | Press **Sync now** in Project knowledge. Still old → the change wasn't pushed: check the repo's commits on github.com. |
+| `sync.bat` says *Stopped: a check failed* | Nothing was pushed. Read the `FAILED:` line above it (the failing check's output is also in `out\sync-check.txt`; after the pull, run the same line once more first — it rebuilds sources.json); ask a chat (route B) to fix it, then run the same `sync.bat "message"` line again. |
 | `sync.bat` says pull failed | You have local edits that clash. Don't delete anything; open a chat with route B and ask it to merge. |
 | Chat can't attach the repo (route A) | GitHub → Settings → Applications → Claude → Configure → tick `biology-studio`. Meanwhile use route B. |

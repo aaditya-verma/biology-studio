@@ -1,6 +1,6 @@
 # Templates
 
-*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 22 Nov 2026 · Bio · Build · W3 run surface — §2 *Run in:* line (D-080). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — §2 End: re-run `--write-sources` after the last rebase. Before: 22 Nov 2026 · Bio · Fix · open-run first (§2 open-run line, RULES I8 (8)). Before: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
+*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 22 Nov 2026 · Bio · Fix · CI guard — §2 End line: route B relies on the sync.bat guard (D-083). Before: 22 Nov 2026 · Bio · Build · W3 run surface — §2 *Run in:* line (D-080). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — §2 End: re-run `--write-sources` after the last rebase. Before: 22 Nov 2026 · Bio · Fix · open-run first (§2 open-run line, RULES I8 (8)). Before: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
 
 Change the words in angle brackets.
 
@@ -20,7 +20,7 @@ First action: add an open run to <step> (start = now IST, outcome partial) and p
 Read claude/STATUS.md, claude/RULES.md, claude/DECISIONS.md and <plan §n>.
 Take the build lock in STATUS (RULES I8); check the latest commit. Scope: <…>. Out of scope: <…>. Don't break: <…>.
 Test: <…>. End: STATUS, build log, DECISIONS (next free id), owner test steps, next prompt + chat name, usage check.
-End (every chat that touched DECISIONS, cards, registry or terms — Build and Research): after the last `git pull --rebase`, run `python tools/card-check/check.py --write-sources` again and commit sources.json if it changed (parallel chats each write it from their own DECISIONS — CI E-sources, 22 Nov 2026).
+End (every chat that touched DECISIONS, cards, registry or terms — Build and Research): route B → give the `sync.bat "<step>: … · by <name>"` line; its guard rebuilds sources.json and runs card-check, scene-check and the tracker before the push (D-083). Route A → after the last `git pull --rebase`, `sync.bat --check` (laptop) or the same four commands (cloud), then push (parallel chats each write sources.json from their own DECISIONS — CI E-sources, 22 Nov 2026).
 ```
 
 ## 3. Card (in a book-index table and in content/cards)
