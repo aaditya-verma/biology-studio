@@ -1,11 +1,11 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Fix · CI guard — CIG added (in progress, open run). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
- "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
+ "queue": ["W2", "C2", "L2", "K2", "V3", "W3", "W3F", "CIG", "U1", "U2", "U3", "M1V8", "R1", "L3", "GATE", "K3", "K4"],
  "surfaces": {"on": ["Code", "Cowork", "split"], "traits": ["tests", "connectors", "artifacts", "owner"], "rules": [{"if": {"uses": "prof"}, "on": ["Cowork", "Code"], "warn": ["Code"], "why": "the Professor's chats: Cowork by default, Code allowed with a warning (W3.q1)"}, {"if": {"uses": "gpu"}, "on": "Code", "hard": true, "why": "renders on the laptop GPU: desktop app with the laptop shell on"}, {"if": {"trait": "tests"}, "on": "Code", "hard": true, "why": "runs the tests and repo tools"}, {"if": {"files_over": 15}, "on": "Code", "hard": true, "why": "touches more than 15 files"}, {"if": {"lock": true}, "on": "Code", "hard": true, "why": "takes the build lock: changes app or tools, runs the checks, pushes"}, {"if": {"trait": "connectors"}, "on": "Cowork", "split": true, "why": "needs connectors (PubMed, Drive, GitHub web, …)"}, {"if": {"trait": "artifacts"}, "on": "Cowork", "split": true, "why": "makes or reads an artifact or design canvas"}, {"if": {"trait": "owner"}, "on": "Cowork", "split": true, "why": "an owner check or review with you"}, {"if": {"type": ["Build", "Fix", "Content", "Episode"]}, "on": "Code", "why": "edits repo files and runs the validators before the commit (a tie goes to Code — W3 answer 2)"}, {"if": {"type": ["Research", "Ideation", "Review"]}, "on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough (a tie goes to Cowork — W3 answer 2)"}], "note": "Where each chat runs (W3 D-080, W3F). Code · Cowork · split (a Code part + a Cowork part joined by run.handoff). The first matching rule gives the suggestion; a `hard` rule (GPU, tests, > 15 files, the lock) makes Code required — Cowork is then an error; a hard rule + a `split` rule (connectors, artifacts, owner) → split. `warn` = allowed but warned (the Professor on Code). Steps add `traits`/`files` to their `run` so the rules can see them. EDIT here; check.py --write fills a missing `run`."},
  "steps": [
   {
@@ -1297,6 +1297,26 @@
    "est": {"chats": 1},
    "runs": [{"chat": "Bio · Fix · W3 surface gaps", "by": "Aaditya", "start": "2026-11-22 13:55", "outcome": "done", "note": "route A (desktop app, laptop clone); open run; same session as the W3 planning chat", "end": "2026-11-22 13:58"}],
    "run": {"on": "Code", "why": "takes the build lock: changes tools and app code, runs the checks, pushes"}
+  },
+  {
+   "id": "CIG",
+   "title": "CI guard — pre-push checks in sync.bat, ci.bat status, utf-8 in card-check",
+   "type": "Fix",
+   "chat": "Bio · Fix · CI guard",
+   "status": "in progress",
+   "needs": [],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "open"},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": "",
+   "todo": [],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · CI guard", "by": "Aaditya", "start": "2026-11-22 14:05", "outcome": "partial", "note": "route A (desktop app, laptop clone); open run; start HEAD 2da9fc2, X1 Ch 19 route-B work committed first (ac1cff4)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes sync.bat and tools, runs the checks, pushes"}
   },
   {
    "id": "M1V8",
