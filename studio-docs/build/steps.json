@@ -1,7 +1,7 @@
 {
  "schema": 2,
  "purpose": "Progress map data — the owner doc for step status, dependencies, gates, owner checks and owner inputs (D-040) and the schedule — calendar, queue, est, uses, runs (D-063). Scope, done-means and prompts: build/master-plan.md §12–§13. Parked idea text: build/ideas-backlog.md. Checked by tools/tracker/check.py; drawn by the app at #progress.",
- "updated": "22 Nov 2026 · Bio · Fix · map CI compare — MAPF done (G-Eng pass, run closed, tolerant CI map compare, UTF-8 map tools), lock released. Before: 22 Nov 2026 · Bio · Research · X3a commit (Code) — X3a done (G-Sci pass, run closed, no new sources, no new ⚑; E17.02.01 cs 16-21); X3b added (planned, needs X1.04 + X3a, D-096); FD needs X1.21 only (D-097). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 4) — X1.04 done (G-Sci pass, run closed, R05pn–R05qg + R05ph reused, D-095 decided, inputs X1.04.q1–q2 answered, E04.04.03 Days 11–13); X1.13.q2 closed (book renamed). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 3) — X1.03 done (G-Sci pass, run closed, R05ox–R05pm, D-094, E00 marks, inputs X1.03.q1–q4). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 2) — X1.02 done (G-Sci pass, run closed, R05ob–R05ow, D-093, inputs X1.02.q1–q2). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 1) — X1.01 done (G-Sci pass, run closed, R05na–R05oa, D-092, inputs X1.01.q1–q2). Before: 22 Nov 2026 · Bio · Research · X2 Part 2b commit (scheduled task) — X2c done (G-Sci pass, run closed, R05mq–R05mz, no D-entry, no owner inputs). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
+ "updated": "22 Nov 2026 · Bio · Research · X3b commit (Code) — X3b done (G-Sci pass, runs closed, 2 full texts R05oq + R05pu, no new sources, no new ⚑, no mark changes; notes under D-095 d, D-093 e, D-044 a); X1.02–X1.04 full-text to-dos point at X3b. Before: 22 Nov 2026 · Bio · Fix · map CI compare — MAPF done (G-Eng pass, run closed, tolerant CI map compare, UTF-8 map tools), lock released. Before: 22 Nov 2026 · Bio · Research · X3a commit (Code) — X3a done (G-Sci pass, run closed, no new sources, no new ⚑; E17.02.01 cs 16-21); X3b added (planned, needs X1.04 + X3a, D-096); FD needs X1.21 only (D-097). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 4) — X1.04 done (G-Sci pass, run closed, R05pn–R05qg + R05ph reused, D-095 decided, inputs X1.04.q1–q2 answered, E04.04.03 Days 11–13); X1.13.q2 closed (book renamed). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 3) — X1.03 done (G-Sci pass, run closed, R05ox–R05pm, D-094, E00 marks, inputs X1.03.q1–q4). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 2) — X1.02 done (G-Sci pass, run closed, R05ob–R05ow, D-093, inputs X1.02.q1–q2). Before: 22 Nov 2026 · Bio · Research · X3a commit (Code, queue item 1) — X1.01 done (G-Sci pass, run closed, R05na–R05oa, D-092, inputs X1.01.q1–q2). Before: 22 Nov 2026 · Bio · Research · X2 Part 2b commit (scheduled task) — X2c done (G-Sci pass, run closed, R05mq–R05mz, no D-entry, no owner inputs). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — U2F done (G-Eng + G-A11y pass, run closed, app v20; D-089 live progress tool + RULES I9), U2 T13b now on v20, lock released. Before: 22 Nov 2026 · Bio · Research · X1 Ch 21 commit (scheduled task) — X1.21 done (G-Sci pass, run closed, input X1.21.q1 D-088 b), no X1.22 (last chapter), I1 Ch 21 locator gaps, FD carries D-088. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (link prep, no lock) — SR1 to-do: R02/R06/R08 urls in the registry. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1.q1 answered: keep SR1 after U2, before U3. Before: 22 Nov 2026 · Bio · Build · SR1 sources menu (scheduling) — SR1 added (planned, lock lane after U2, needs U2 (CIG, K1, K2, L2 already in), check T14, input SR1.q1 order vs U3). Before: 22 Nov 2026 · Bio · Fix · CI guard — CIG done (G-Eng pass, run closed, D-083). Before: 22 Nov 2026 · Bio · Research · X1 Ch 15 — X1.15 done (G-Sci pass, run, D-074 input), X1.16 added (ready), I1 Ch 15 locator gaps, X1.13.q2 note. Before: 22 Nov 2026 · Bio · Research · X1 Ch 14 — X1.14 done (G-Sci pass, run, D-072 input), X1.15 added (ready), I1 Ch 14 locator gaps. Before: 22 Nov 2026 · Bio · Fix · merge 22 Nov — D-071 Embryo map restored: K2–K4 added (planned; K2 queued after L2, K3 + K4 last). Before: 22 Nov 2026 · Bio · Fix · L2 merge — L2 joined with X1 Ch 12/13; L2 decision renumbered D-067 → D-070 (L2, IB01, IB03); merge run on L2. Before: 22 Nov 2026 · Bio · Build · L2 lessons — L2 owner check (T9, gates pass, run), IB01 + IB03 done, inputs L2.q1–q2. Before: 22 Nov 2026 · Bio · Research · X1 Ch 13 — X1.13 done (G-Sci pass, run, D-068 + D-069 inputs), X1.14 added (ready), I1 Ch 13 locator gaps. Before: 22 Nov 2026 · Bio · Research · X1 Ch 12 — X1.12 done (G-Sci pass, run, D-067 input), X1.13 added (ready), I1 Ch 12 locator gap. Before: 22 Nov 2026 · Bio · Research · X1 Ch 11 — X1.11 done (G-Sci pass, run, D-066 input), X1.12 added (ready), I1 Ch 11 locator gaps. Before: 21 Nov 2026 · Bio · Build · W2 scheduler — schema 2 (calendar, queue, est, uses, runs), W2 + X1.10 rows, T6 → T11, D-063. Before: 21 Nov 2026 · Bio · Build · M1b v7c results",
  "owner": "Aaditya",
  "collaborator": "Professor",
  "calendar": {"day_min": [180, 180, 180, 180, 180, 360, 360], "chat_min": 60, "check_min": 15, "input_min": 10, "off": [], "note": "Your time for chats per day, Mon…Sun, in minutes (EDIT; W2.q1). Dates are estimates: they move with today, status and runs."},
@@ -493,7 +493,7 @@
    "todo": [
     "I1: E02.02 pp 15–25 (I1 ends p 24), E02.03 pp 25–32 (abnormal-gametes box p 32), Summary pp 32–33",
     "K1: gene-mutation text (pp 23–24) has no concept row — owner input X1.02.q2",
-    "Germ-cell counts ≈ — read Baker 1963 / Hansen 2008 full text",
+    "Germ-cell counts ≈ — X3b (22 Nov): peak timing + birth count checked via R05oq full text; 7 million not comparable, puberty count open → Baker 1963 PDF (X3b todo; Hansen 2008 not in PMC)",
     "PWS/AS population rates ≈"
    ],
    "inputs": [
@@ -520,7 +520,7 @@
    "todo": [
     "I1: E03.02 pp 38–42, E03.03 pp 42–43, E03.04 pp 43–44, E03.05 pp 44–46 (abnormal-zygotes box p 46), E03.06 pp 46–48, Summary pp 48–49; Fig 3.1 (p 35) printed sideways",
     "K1: E00.01.06 mark (owner input X1.03.q4)",
-    "Research: Csapo 1973 lutectomy full text (D-044 a); a human source for where the acrosome reaction happens; current ART share and IVF success; menopause age",
+    "Research: Csapo 1973 lutectomy full text (D-044 a) — X3b: not in PMC, still open → X3b todo; a human source for where the acrosome reaction happens; current ART share and IVF success; menopause age",
     "C-step note: E00.01.02 f3 could say 'about day 13–15' for CS6 (R06: 13 d)"
    ],
    "inputs": [
@@ -549,7 +549,7 @@
    "todo": [
     "I1: E04.01 pp 50–51, E04.02 pp 51–52, E04.03 pp 52–53, E04.04 pp 53–57, Summary pp 57–58",
     "Ectopic share of maternal deaths ≈ (a current Tier 1 share)",
-    "Hertig 1959 full text before any card shows the 34.6 % or the loss cascade"
+    "Hertig 1959 full text before any card shows the 34.6 % or the loss cascade — X3b: partly met via R05pu (34.6 % seems to use Hertig's 13-abnormal count; 42 %, CI 26–59 %); primary PDF still wanted → X3b todo"
    ],
    "inputs": [
     {"id": "X1.04.q1", "kind": "decide", "ask": "D-095 (a–f) from Ch 4: pick an option per item (uteroplacental circulation start; extraembryonic mesoderm origin; tubal pregnancy site; early embryo loss; implantation bleed; decidual reaction trigger)", "asked_in": "Bio · Research · X1 Ch 04", "asked": "2026-11-22", "answer": "22 Nov 19:54 IST in the research chat: recommended — a2 b2 c3 d3 e2 f2", "status": "answered", "d": "D-095"},
@@ -1158,22 +1158,23 @@
    "title": "X3 full-text pass · B (Ch 1–4 dossiers)",
    "type": "Research",
    "chat": "Bio · Research · X3 full texts B",
-   "status": "planned",
+   "status": "done",
    "needs": ["X1.04", "X3a"],
    "unblocks": [],
    "lock": false,
-   "gates": {},
+   "gates": {"G-Sci": "pass"},
    "check": null,
-   "decisions": ["D-096"],
+   "decisions": ["D-044", "D-093", "D-095", "D-096"],
    "prompt": null,
-   "log": "—",
+   "log": "22 Nov 2026 · X3b Research · Ch 1–4 full texts: 2 read via PMC (R05oq, R05pu); Baker 1963, Hansen 2008, Csapo 1973, Hertig 1959 not in PMC, references\\papers\\ empty. Ch 2 follicle peak timing + birth count checked (7 million not comparable, puberty open); Ch 4 Hertig 34.6 % seems to use his 13-abnormal count, 42 % CI 26–59 % (D-095 d3 stands); Csapo open (D-044 a). No new sources, no new ⚑, no mark changes; G-Sci pass with fixes, 3 MUST + 8 SHOULD, all applied",
    "todo": [
-    "Brief: handoff\\x3-full-texts\\README.md (X3b: placeholders R?X3b-nn / D-?X3b; parks in handoff\\x3-full-texts\\)",
-    "Drop any Ch 1–4 PDFs into references\\papers\\ first"
+    "Csapo 1973 PDF → D-044 a",
+    "Baker 1963 PDF → 7 million + puberty count (Ch 2 note e)",
+    "Hertig 1959 PDF → direct check of 34.6 % (Ch 4 note l)"
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [],
+   "runs": [{"chat": "Bio · Research · X3 full texts B", "by": "Aaditya", "start": "2026-11-22 22:24", "end": "2026-11-22 22:31", "outcome": "done", "note": "Cowork, parked in handoff\\x3-full-texts\\x3b\\"}, {"chat": "Bio · Research · X3b commit", "by": "Aaditya", "start": "2026-11-22 22:39", "end": "2026-11-22 22:43", "outcome": "done", "note": "Code, route A, no lock; gate: lock free, main = origin/main (33b44e9, after MAPF 0629abd + WCON), tree clean, X1.04 + X3a done, no other ch01–ch04 handoff; no R/D ids"}],
    "run": {"on": "Cowork", "why": "reads sources and writes docs; no app code or tests, route B (sync.bat) is enough", "traits": ["connectors"]}
   },
   {
