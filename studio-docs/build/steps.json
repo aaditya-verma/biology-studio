@@ -1773,7 +1773,7 @@
    "title": "SR1 sources menu — linked sources + Resources",
    "type": "Build",
    "chat": "Bio · Build · SR1 sources menu",
-   "status": "in progress",
+   "status": "owner check",
    "needs": ["U2"],
    "unblocks": ["U3"],
    "lock": true,
