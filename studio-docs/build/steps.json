@@ -1620,7 +1620,9 @@
    "log": "—",
    "todo": [
     "Own step id given in `Bio · Build · V3 trace a cell` (22 Nov) so Plan dates it; short — takes a lock gap between app builds (D-047)",
-    "Kit + notes: the v8 to-dos on M1b (parked kit `handoff\\m1b-v8\\`, INSTALL.md; G-Art/G-A11y v7c notes, D-062); its provisional decision (written D-059 in the kit) takes the next free D-id when it runs"
+    "Kit + notes: the v8 to-dos on M1b (parked kit `handoff\\m1b-v8\\`, INSTALL.md; G-Art/G-A11y v7c notes, D-062); its provisional decision (written D-059 in the kit) takes the next free D-id when it runs",
+    "sheet2d.py lost — retire it (keep the PNGs) or rewrite it; owner picks",
+    "block-scan the whole repo tree. Corruption predates the crash, so other committed files may be bad"
    ],
    "inputs": [],
    "uses": ["gpu"],
