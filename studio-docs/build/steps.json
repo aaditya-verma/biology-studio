@@ -1773,27 +1773,27 @@
    "title": "SR1 sources menu — linked sources + Resources",
    "type": "Build",
    "chat": "Bio · Build · SR1 sources menu",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["U2"],
-   "unblocks": [],
+   "unblocks": ["U3"],
    "lock": true,
-   "gates": {"G-Eng": "open", "G-A11y": "open", "G-Art": "open", "G-Learn": "open"},
+   "gates": {"G-Eng": "pass", "G-A11y": "pass", "G-Art": "pass", "G-Learn": "pass"},
    "check": {"id": "T14", "state": "open"},
-   "decisions": ["D-011", "D-077", "D-084"],
+   "decisions": ["D-011", "D-077", "D-084", "D-098"],
    "prompt": "SR1 sources menu",
-   "log": "—",
+   "log": "23 Nov 2026 · SR1 sources menu (app v20 → v21, D-098, scheduled run, route B) — sources.json gains title, learner note, url (DOI → PubMed → checked web), pubmed, species, usedBy + chapters, third_party; card-check E-srcurl / E-link / E-note / E-srcindex + derived research/source-index.md; every cite on a card = Book-map section links + source chips → source sheet; Resources (Book · Research · Curriculum · Tools & assets · How we mark facts); gates G-Eng 2 rounds, G-A11y 2, G-Learn 2, G-Art 3 — all pass; T14 open",
    "todo": [
-    "Owner request + design: Studio home handoff\\sr1-sources-menu\\README.md (22 Nov 2026 15:20 IST); record it as the next free D-entry when the build runs (D-087 is U2's, so ≥ D-088 — re-check DECISIONS first)",
-    "Needs the U2 shell: D-077 floating bar + D-084 Back history are U2's work — start only after U2 is done or in owner check",
-    "Backfill check (22 Nov): registry has 317 R rows, 288 with a DOI, 295 with a PMID; 38 Rxx cited in cards. The three cited rows with no DOI/PMID now carry a `url` in the registry (link prep, 22 Nov): R02 → ehd.org Virtual Human Embryo, R06 → ehd.org Developmental Stages (reproduced with permission) — both opened; R08 → NMHM HDAC page ≈ not opened (health.mil firewall blocks automated fetches; owner opens it once — fall back to R06 Table 0-1 if it is gone). write-sources does not read `url` yet — SR1 (1) adds it. R00 (Langman) cites go to the Book map, not a URL",
-    "sources.json already carries doi + pmid per row (CIG guard rebuilds it): add url, tier, species, licence, chapters, computed usedBy (cards, lessons, map concepts, dossiers); card-check --selftest cases for the new rule",
-    "Copyright (RULES §G): links + our own one-line note only — no abstracts or quotes",
-    "layout-check on all sizes (C8/C13); CI link check for dossier + registry links; write T14"
+    "T14 (v21): chips, source sheet, book cites, Copy sources, Resources 5 tabs, tablet/laptop columns, dark; D-098 a (species tag) + b (dossier links via source-index) to confirm; open R08's health.mil link once",
+    "U3 (G-Art r3 SHOULDs): fixed chip column in the card's Sources box (title column shifts with chip width); even spacing between book-section links (padding, not min-height); Curriculum rows show only AN code + count — add AN titles if a source for them is added",
+    "Full local layout-check stops at the known Studio load flake (W3 log) on this laptop — SR1 screens + card + Studio checked per screen locally; watch the CI `checks` run after the sync push (full matrix)",
+    "In-app SR1 cite/data tests run only once sources.json has loaded (?test=1 opened on #today skips 3 of 6) — G-Eng r2 SHOULD",
+    "Back dock fold handle overlaps row text on scrolled phone pages (G-Art r2 note, U2 shell — outside SR1)"
    ],
    "inputs": [
     {"id": "SR1.q1", "kind": "decide", "ask": "Lock-lane order: SR1 right after U2 (as asked; GATE moves ~1 day later, 29 → 30 Nov) or after U3 (keeps the U2 → U3 → GATE critical path)?", "asked_in": "Bio · Build · SR1 sources menu (scheduling)", "asked": "2026-11-22", "answer": "Keep SR1 right after U2, before U3 (owner, 22 Nov 2026)", "status": "answered", "d": null}
    ],
    "est": {"chats": 2},
+   "runs": [{"chat": "Bio · Build · SR1 sources menu", "by": "Aaditya", "start": "2026-11-22 23:19", "outcome": "partial", "note": "scheduled run (bio-sr1-sources-menu-when-clear), route B — reopened 23 Nov ~02:35 IST: layout-check issues after the G-Art r2 styling; lock re-taken"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app, content data and tools, runs the checks, pushes"}
   },
   {
@@ -1802,7 +1802,7 @@
    "type": "Build",
    "chat": "Bio · Build · U3 look screens",
    "status": "planned",
-   "needs": ["U2"],
+   "needs": ["U2", "SR1"],
    "unblocks": ["GATE", "FA"],
    "lock": true,
    "gates": {"G-Eng": "open", "G-Art": "open", "G-A11y": "open"},

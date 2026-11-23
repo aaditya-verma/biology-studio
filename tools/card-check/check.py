@@ -20,7 +20,7 @@ import argparse, json, re, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from citations import ROOT, build_sources, validate_citation, suggest_mark  # noqa: E402
+from citations import ROOT, DOCS, build_sources, validate_citation, suggest_mark, link_errors, source_index_md, NOTE_BAD  # noqa: E402
 
 # EDIT: limits (card-spec §3) — mirror CARD_RULES in src/js/15-cards.js
 VERBS = ["explain", "describe", "identify", "label", "locate", "order", "compare", "distinguish", "predict", "name", "trace", "relate"]
@@ -254,6 +254,7 @@ def card_check(card, stem, ctx):
         errs, p = validate_citation(f.get("cite"), src)
         for e in errs:
             E("E-cite", fid, e)
+        src_url_rule(p, fid, src, E)
         mark_rules(f, p, fid, card, src, final, E, W)
     # 7. terms (D2 + glossary)
     tn, tk = card["terms"].get("new", []), card["terms"].get("known", [])
@@ -279,9 +280,10 @@ def card_check(card, stem, ctx):
         if m.get("cite") and app_cite(m["cite"]) is not None:
             app_rules(m["cite"], m.get("mark"), mid, guide, E)
         elif m.get("cite"):
-            errs, _ = validate_citation(m["cite"], src)
+            errs, mp = validate_citation(m["cite"], src)
             for e in errs:
                 E("E-cite", mid, e)
+            src_url_rule(mp, mid, src, E)
             if m.get("mark") == "ⓘ":
                 E("E-mark", mid, "ⓘ needs an APP cite in a guide card")
         if m.get("mark") and m["mark"] not in MARKS:
@@ -598,6 +600,17 @@ def app_rules(cite, mk, line, guide, E):
         E("E-mark", line, "an APP cite is marked ⓘ")
 
 
+def src_url_rule(p, line, src, E):
+    """SR1 (D-098): a source a card cites must open — a url (DOI, else PubMed, else a checked web url) in its registry row"""
+    if p is None:
+        return
+    reg = {r["id"]: r for r in src["registry"]}
+    for s in p["sources"]:
+        r = reg.get(s["id"])
+        if r and s["id"] != "R00" and not r.get("url"):
+            E("E-srcurl", line, f"{s['id']} has no link — add its doi, PMID or a checked 'url https://…' to the registry row")
+
+
 def mark_rules(f, p, fid, card, src, final, E, W):
     mk = f.get("mark")
     if mk not in MARKS:
@@ -654,6 +667,14 @@ def check_all(a):
     sp = cdir.parent / "sources.json"
     if not sp.exists() or {k: v for k, v in json.loads(sp.read_text(encoding="utf-8")).items()} != fresh:
         glob.append({"lvl": "E", "code": "E-sources", "line": "sources.json", "msg": "out of date — run with --write-sources"})
+    for e in link_errors(fresh):   # SR1: the CI link check (offline: link shape + DOI/PMID agreement)
+        glob.append({"lvl": "E", "code": "E-link", "line": "registry", "msg": e})
+    for r in fresh["registry"]:   # SR1 G-Learn r1: a learner-facing note carries no working-note bits (marks, D-ids, Ch tags, paths)
+        if NOTE_BAD.search(r.get("note") or ""):
+            glob.append({"lvl": "E", "code": "E-note", "line": r["id"], "msg": "note shows a working-note bit — write a learner note in research/source-notes.json"})
+    ix = DOCS / "research" / "source-index.md"
+    if book == "E" and (not ix.exists() or ix.read_text(encoding="utf-8") != source_index_md(fresh) + "\n"):
+        glob.append({"lvl": "E", "code": "E-srcindex", "line": "source-index.md", "msg": "out of date — run with --write-sources"})
     cards = {}
     for p in files:
         try:
@@ -831,8 +852,13 @@ def main():
     DEBUG = a.debug
     if a.write_sources:
         p = ROOT / "content" / a.book / "sources.json"
-        p.write_text(json.dumps(build_sources(a.book), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        fresh = build_sources(a.book)
+        p.write_text(json.dumps(fresh, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")   # SR1 (G-Eng r1): compact — every learner loads it
         print(f"wrote {p.relative_to(ROOT)}")
+        if a.book == "E":   # SR1 (D-098): the linked source index the registry and dossiers point to
+            ix = DOCS / "research" / "source-index.md"
+            ix.write_text(source_index_md(fresh) + "\n", encoding="utf-8", newline="\n")
+            print(f"wrote {ix.relative_to(ROOT)}")
         return 0
     if a.preview:
         return preview(a)

@@ -3,6 +3,7 @@
    · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode)
    · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
    · #lessons · #lesson=E05 · #card=E05.01.01&lesson=E05&step=check · #mix · #mix=go · #deck=go (L2 lessons, Today plans, Mixed review — docs/lesson-spec.md)
+   · #res · #res=book|research|curriculum|tools|marks · #res=research&id=R05f · #map=E05&sec=E05.02 (SR1 Resources + book cites, D-098)
    · #review · #review=news · #review=mine · #rcard=E06.02.01 · #rtour · #rtour=2 · #updates · #updates=2 (H2 Reviewer mode). Back/Forward = the browser's history; Up = the parent address.
    Android Back stays in the app: the first history entry is a base #today; Back at home asks once, a second press within 2 s leaves.
    U2 (D-084): one in-app history — history.state.n counts the app's steps (1 = the first page above the base); Back shows whenever n > 1
@@ -16,7 +17,7 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   let p;try{p=new URLSearchParams(h.replace(/^([a-z]+)$/,'$1='));}catch(_){return {name:CONFIG.home,raw:h,unknown:true};}   // URLSearchParams decodes; a bad escape never throws past here
   const name=[...p.keys()][0]||CONFIG.home,r={name,raw:h};
   if(!CONFIG.routes.includes(name))return {name:CONFIG.home,raw:h,unknown:true};
-  if(name==='map'&&p.get('map'))r.ch=p.get('map');
+  if(name==='map'&&p.get('map')){r.ch=p.get('map');const sc=p.get('sec');if(sc&&/^E\d\d\.\d\d$/.test(sc)&&sc.startsWith(r.ch+'.'))r.sec=sc;}   // SR1: #map=E05&sec=E05.02 opens the chapter at that section (book cites)
   if(name==='concept'){r.id=p.get('concept');r.ch=(r.id||'').slice(0,3);}
   if(name==='scene'){r.id=p.get('scene')||null;const d=p.get('day');if(r.id&&d!=null&&d!==''&&isFinite(+d))r.day=+d;}
   if(name==='day'){const d=p.get('day');r.day=isFinite(+d)?+d:null;}
@@ -32,9 +33,11 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   if(name==='rcard'){r.id=p.get('rcard')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'review',raw:h,view:'todo'};}
   if(name==='rtour'){const s=+p.get('rtour');r.step=s>=1&&s<=3?Math.floor(s):1;}
   if(name==='updates'){const n=+p.get('updates');r.page=n>=1?Math.floor(n):1;}
+  if(name==='res'){const v=p.get('res');r.view=RES_TABS.includes(v)?v:'book';const i=p.get('id');if(i&&/^R\d\d[a-z]{0,2}$/.test(i)){r.id=i;if(!v)r.view='research';}}   // SR1 Resources (#res=research&id=R05f)
   if(name==='x'){r.x=p.get('x')||CONFIG.xt.x;r.y=p.get('y')||CONFIG.xt.y;if(p.get('cell'))r.cell=p.get('cell');}
   return r;}
-function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch:'map';case 'concept':return 'concept='+r.id;
+function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch+(r.sec?'&sec='+r.sec:''):'map';
+  case 'res':return 'res='+(r.view||'book')+(r.id?'&id='+r.id:'');case 'concept':return 'concept='+r.id;
   case 'scene':return r.id?'scene='+r.id+(r.day!=null?'&day='+(Math.abs(r.day-Math.round(r.day))<0.05?Math.round(r.day):(+r.day).toFixed(1)):''):'scene';
   case 'day':return 'day='+r.day;
   case 'studio':return r.id?'studio='+r.id+(r.gate&&r.gate!=='G-Sci'?'&gate='+r.gate:''):'studio';
@@ -44,7 +47,8 @@ function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch:'map';case 
   case 'rtour':return r.step&&r.step>1?'rtour='+r.step:'rtour';case 'updates':return r.page&&r.page>1?'updates='+r.page:'updates';
   case 'progress':return r.view&&r.view!=='map'?'progress='+r.view:'progress';case 'step':return r.id?'step='+r.id:'progress';
   case 'x':return 'x='+r.x+'&y='+r.y+(r.cell?'&cell='+encodeURIComponent(r.cell):'');default:return r.name;}}
-function upOf(r){switch(r.name){case 'concept':return {name:'map',ch:r.ch};case 'map':return r.ch?{name:'map'}:{name:'today'};
+function upOf(r){switch(r.name){case 'res':return r.view!=='book'||r.id?{name:'res',view:'book'}:{name:'today'};   // SR1 (G-Eng r1)
+  case 'concept':return {name:'map',ch:r.ch};case 'map':return r.ch?{name:'map'}:{name:'today'};
   case 'x':return {name:'map'};case 'scene':return r.id?{name:'scene'}:{name:'today'};case 'day':return {name:'scene'};case 'colours':return {name:'settings'};
   case 'studio':return r.id?{name:'studio'}:{name:'today'};case 'calib':return {name:'studio'};case 'step':return {name:'progress'};case 'card':return r.lesson?{name:'lesson',ch:r.lesson}:{name:'cards'};case 'deck':return {name:'today'};
   case 'lesson':return {name:'lessons'};case 'lessons':case 'mix':return {name:'today'};

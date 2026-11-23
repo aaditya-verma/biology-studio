@@ -1317,6 +1317,13 @@
     }
    },
    "expect": "E-check"
+  },
+  {
+   "name": "cited source with no link (SR1)",
+   "set": {
+    "facts.0.cite": "E05.01 · R01"
+   },
+   "expect": "E-srcurl"
   }
  ]
 }

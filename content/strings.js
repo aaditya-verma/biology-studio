@@ -3,11 +3,11 @@
 'use strict';
 const STR={
   app:'Biology Studio',
-  nav:{today:'Today',cards:'Learn',map:'Map',scene:'3D',settings:'Settings',studio:'Studio',progress:'Progress',review:'Review'},
-  navHint:{today:'Where to start and what is next',cards:'Concept cards: read, check, explain, remember',map:'Every concept in the book, mapped',scene:'3D scenes: turn, scrub the days, slice',settings:'Theme, motion, storage, backup, colour key',studio:'Draft and review cards (testing mode)',progress:'Progress map: every step, what blocks it, what you owe',review:'Check the science on cards and send feedback'},
+  nav:{today:'Today',cards:'Learn',map:'Map',scene:'3D',res:'Re­sources',settings:'Settings',studio:'Studio',progress:'Progress',review:'Review'},
+  navHint:{today:'Where to start and what is next',res:'The book, research papers, curriculum codes, tools and how we mark facts',cards:'Concept cards: read, check, explain, remember',map:'Every concept in the book, mapped',scene:'3D scenes: turn, scrub the days, slice',settings:'Theme, motion, storage, backup, colour key',studio:'Draft and review cards (testing mode)',progress:'Progress map: every step, what blocks it, what you owe',review:'Check the science on cards and send feedback'},
   back:'Back', up:'Up', close:'Close', search:'Search', clear:'Clear', all:'All', none:'—',
   leaveHint:'Press Back again to leave Biology Studio',
-  navShort:{today:'Your plan for today',cards:'Read, check, remember',map:'Every concept',scene:'Turn, scrub, slice',settings:'Theme, backup, colours',studio:'Draft + review cards',progress:'Steps and blockers',review:'Check the science'},   // D-087: one line under a More tile
+  navShort:{today:'Your plan for today',res:'Book, papers, codes',cards:'Read, check, remember',map:'Every concept',scene:'Turn, scrub, slice',settings:'Theme, backup, colours',studio:'Draft + review cards',progress:'Steps and blockers',review:'Check the science'},   // D-087: one line under a More tile
   moreBelow:'More ↓', dockFold:'Fold the Back button away', dockOpen:'Show the Back button', newMark:'new',
   more:'More', moreT:'More places', searchGo:'Search the book map', closePanel:'Close — back to where you were',   // U2 shell (D-077, D-084)
   testFlag:'Testing mode — nothing is saved', testShort:'test',
@@ -291,6 +291,28 @@ const STR={
     setT:'Reviewer mode', setHint:'Adds a Review tab for checking the science on cards.', setOn:'Turn on Reviewer mode', setOff:'Turn off Reviewer mode',
     // debug
     dbgT:'Debug (reviewer)', dbgClear:'Clear the saved list', dbgAs:'Pretend to be (GitHub name)'},
+  // SR1 sources + Resources (D-098; src/js/21-sources.js) — links + our own one-line notes only (RULES §G)
+  src:{title:'Resources', lead:'Everything the cards are built on: the book, the research we checked it against, the curriculum, the tools — and how we mark each fact.',
+    tabsL:'Resources sections', tabs:{book:'Book',research:'Research',curriculum:'Curriculum',tools:'Tools & assets',marks:'How we mark facts'},
+    loading:'Loading sources…', loadFail:'Could not load the sources', unknown:id=>id+' is not in the source list', copyFail:'Select the text and copy it by hand.',
+    chipL:(id,n)=>'Source '+id+(n?', '+n:'')+' — open details', bookAt:(k,n)=>'Book section '+k+(n?' · '+n:'')+' — open in the Book map',
+    open:'Open', openWeb:'Open website', nt:id=>'<span class="sr"> '+esc(id)+', opens in a new tab</span>', pubmed:'PubMed', noLink:'No link for this source yet.', noteL:'What we use it for: ', licL:'Licence:',
+    tier:t=>t==='C'||t==='c'?'Curriculum':'Tier '+t+({1:' · specimens & peer-reviewed',2:' · other textbooks',3:' · teaching references'}[t]||''), tierS:t=>t==='C'||t==='c'?'Curriculum':'Tier '+t, spNone:'species not tagged', lineMark:(m,w)=>'This line: '+m+' '+w, dosT:n=>'Research notes ('+n+')', ckOpen:'You have a Check open on a card — these notes can give answers away. Finish the Check first if you want to test yourself.', alsoT:'Also used in', allSrc:'See it in Resources › Research',
+    lessonL:ch=>'Lesson '+ch, dossierL:d=>'Research notes '+d.replace(/^ch(\d\d)-/,'Ch $1 · ').replace(/-/g,' '),
+    copyBtn:'Copy sources', copied:n=>n+(n===1?' source':' sources')+' copied.',
+    bookLead:'Langman is our spine: every fact cites its section. Open a chapter or a section to see its concepts in the Book map.',
+    nSec:n=>n+(n===1?' section':' sections'), chOpen:ch=>'Open '+ch+' in the Book map', secEmpty:'No concepts mapped in this section yet.',
+    filtersL:'Filters', any:'Any', fCh:'Chapter', fTier:'Tier', fSp:'Species', fMark:'Mark on a card line', fQ:'Search', clear:'Clear filters',
+    spHint:'Species is tagged from each source’s title and our note (cells = lab-grown cells). Tier 1 = human specimens and peer-reviewed papers; 2 = other textbooks; 3 = teaching references.',
+    nShown:(n,t)=>n+' of '+t+' sources', none:'No sources match these filters — clear a filter to see more.', chs:L=>(L.length>4?L.slice(0,4).join(', ')+' +'+(L.length-4):L.join(', ')), nCards:n=>'cited on '+n+(n===1?' card':' cards'),
+    nmcT:'NMC curriculum (Anatomy, AN codes)', nmcLead:'Each code lists the concepts in the Book map that it covers.', nCodes:n=>n+' AN codes in the map', nCon:n=>n+(n===1?' concept':' concepts'),
+    toolsLead:'Every library, font and tool behind the app, with its licence.', toolsApp:'In the app', toolsMake:'Used to make it (not shipped in the app)', toolsAll:'Full list with licence files (THIRD_PARTY.md)',
+    marksLead:'Every fact line on a card carries one mark. It tells you how sure we are and where the fact comes from.',
+    markLong:{'✔✔':'The book says it and a Tier 1 source (human embryo collections or peer-reviewed research) agrees.','✔':'The book says it. We have not yet found an outside source that checks it.',
+      '⚑':'The book and newer research differ. The card gives the book answer (the exam answer) and the newer evidence under More, and we record why.',
+      '✚':'Beyond the book: depth from a Tier 1 source, shown only under More (or at the deepest level) and labelled "beyond Langman". When the evidence is not from humans, the line names the species.','≈':'Not yet cited or not sure. A card with this mark stays a draft.',
+      'ⓘ':'How the app works — on guide cards only, not science.'},
+    citeHow:'How to read a cite: [E05.02 · R06 CS6] = book section E05.02, checked against source R06 at Carnegie stage 6. Tap a section to open it in the Book map, or a source to see what it is.'},
   // edit hook dialog
   editT:'Edit this', editChat:'Paste into a new chat named', copy:'Copy prompt', copied:'Copied.', copyFail:'Select the text and copy it by hand.',
   // errors

@@ -59,6 +59,9 @@ SCREENS = {
     # L2 lessons, Today plans, Mixed review (D-070)
     "lessons": "lessons", "lesson": "lesson=E05", "lesson-noscene": "lesson=E06", "card-lesson": "card=E05.02.01&lesson=E05&step=check",
     "card-lesson-noscene": "card=E06.00.01&lesson=E06", "mix": "mix", "mix-go": "mix=go", "deck-go": "deck=go",
+    # SR1 Resources + book cites (D-098)
+    "res": "res=book", "res-research": "res=research", "res-src": "res=research&id=R05f", "res-curriculum": "res=curriculum",
+    "res-tools": "res=tools", "res-marks": "res=marks", "chapter-sec": "map=E06&sec=E06.06",
     # H2 Reviewer mode — opened with the demo issues (?fixture=review, never GitHub); keep these last (the page reloads once with the fixture)
     "review": "review", "review-news": "review=news", "review-mine": "review=mine", "rcard": "rcard=E05.01.02", "rcard-draft": "rcard=E06.02.01",
     "rtour": "rtour", "rtour-3": "rtour=3", "updates": "updates",
@@ -154,7 +157,12 @@ async def run(a):
                     for sname, route in screens.items():
                         if sname in REVIEW_SCREENS and not in_fx:   # H2: one reload into the demo issues; the next screens change the hash only
                             await page.goto(f"{base}?test=1&debug=0&fixture=review#{route}")
-                            await page.wait_for_function("window.BOOTED", timeout=20000)
+                            try:
+                                await page.wait_for_function("window.BOOTED", timeout=20000)
+                            except Exception:   # SR1: the same local load flake as Studio (W3 log; it stopped 3 full local runs here) — reload once, wait longer; a real failure still fails
+                                print(f"[retry] review fixture reload at {w}x{h} {theme} {text}%", flush=True)
+                                await page.goto(f"{base}?test=1&debug=0&fixture=review#{route}")
+                                await page.wait_for_function("window.BOOTED", timeout=40000)
                             in_fx, first = True, False
                         elif first:
                             await page.goto(f"{base}?test=1&debug=0#{route}")
@@ -182,6 +190,9 @@ async def run(a):
                             if "lesson=" in route:   # L2: the lesson bar is drawn
                                 await page.wait_for_function("!!document.querySelector('#lsBar .ls-acts')", timeout=20000)
                                 await page.wait_for_timeout(80)
+                        if route.startswith("res="):   # SR1: sources (and, for Curriculum, the map) loaded + the tab drawn
+                            await page.wait_for_function("!!CD.src && !!document.querySelector('.res .res-h2') && (ROUTE.view!=='curriculum' || !!MAPD.M)", timeout=20000)
+                            await page.wait_for_timeout(80)
                         if sname in REVIEW_SCREENS:   # H2: cards, demo issues and the build log loaded + drawn
                             await page.wait_for_function(f"window.RV_READY==={json.dumps(route)} && (!['review','review=news','review=mine'].includes(window.RV_READY) || (RV.idx && RV.upd && !RV.busy))", timeout=20000)
                             if route.startswith("review"):
@@ -200,6 +211,9 @@ async def run(a):
                         await page.wait_for_timeout(60)
                         iss2 = [i for i in await page.evaluate("layoutAudit()") if i["kind"] == "fixed-over"]
                         await page.evaluate("scrollTo(0,0)")
+                        if sname in ("res-src", "chapter-sec"):   # SR1 (G-Art r1): the shot shows the ringed row / section, not the page top
+                            await page.evaluate("(()=>{const h=document.querySelector('.hit');if(h)h.scrollIntoView({block:'center'});})()")
+                            await page.wait_for_timeout(60)
                         found = [dict(i, at=label) for i in iss + iss2]
                         if cls != want:
                             found.append({"kind": "device-class", "what": f"got {cls}, want {want}", "at": label})
@@ -245,7 +259,7 @@ async def run(a):
                             path = out / "shots" / f"real_{w}x{h}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault("real tablets", []).append((f"{w}×{h} on {scr[0]}×{scr[1]} {sname}", path))
-                        elif text in BIG_TEXT and sname in ("today", "card", "viewer", "settings", "lesson", "map", "progress-plan"):
+                        elif text in BIG_TEXT and sname in ("today", "card", "viewer", "settings", "lesson", "map", "progress-plan", "res-research"):
                             path = out / "shots" / f"big{text}_{w}x{h}_{sname}.png"
                             await page.screenshot(path=str(path))
                             shots.setdefault(f"text {text}", []).append((f"{w}×{h} {sname} {text}%", path))

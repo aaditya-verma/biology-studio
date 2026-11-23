@@ -158,5 +158,6 @@ function appTests(){
   if(SC.mod&&SC.mod.traceAt&&SC.loaded['sc-E00.01.04']){const S=SC.loaded['sc-E00.01.04'],A=SC.mod.traceAt(S,'t-endo',15),B=SC.mod.traceAt(S,'t-endo',17),M=SC.mod.traceAt(S,'t-endo',15.5);
     t('traceAt: epiblast → streak → endoderm, deeper at the end',A.in==='epiblast'&&M.in==='streak'&&B.in==='endoderm'&&B.z<M.z&&M.z<A.z&&B.end==='endoderm',JSON.stringify([A.in,M.in,B.in]));}
   if(typeof lsTests==='function')lsTests(t);   // L2 lessons, Today plans, Mixed review (20-lessons.js)
+  if(typeof srcTests==='function')srcTests(t);   // SR1 sources + Resources (21-sources.js)
   dlog('test',out.filter(x=>!x.ok).length+' failed of '+out.length);return out;
 }

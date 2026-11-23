@@ -71,6 +71,9 @@ function cardLines(card){const L={obj:['obj'],terms:['terms'],body:[],fact:[],mi
 const gateLines=(card,g)=>{const L=cardLines(card);return CARD_RULES.gates[g].lines.flatMap(k=>L[k]);};
 
 /* ---------- cardCheck: mirror of tools/card-check/check.py card_check() ---------- */
+/* SR1 (D-098): a source a card cites must open — a url in its registry row (DOI, else PubMed, else a checked web url); same as check.py src_url_rule */
+function srcUrlRule(p,line,src,E){if(!p)return;const reg=Object.fromEntries(src.registry.map(r=>[r.id,r]));
+  for(const s of p.sources){const r=reg[s.id];if(r&&s.id!=='R00'&&!r.url)E('E-srcurl',line,`${s.id} has no link — add its doi, PMID or a checked 'url https://…' to the registry row`);}}
 /* guide cards (D-050): a fact about the app cites `APP <screen>` and is marked ⓘ — same rules as check.py app_cite/app_rules */
 function appCite(c){if(typeof c!=='string')return null;const m=/^APP(?: (.+))?$/.exec(c.trim().replace(/^\[+|\]+$/g,'').trim());return m?(m[1]||''):null;}
 function appRules(cite,mk,line,guide,E){const loc=appCite(cite);
@@ -141,7 +144,7 @@ function cardCheck(card,stem,ctx){
     for(const s of cSentences(f.text||''))if(cWords(s)>R.limits.sentence)E('E-sentence',fid,`${cWords(s)} words > ${R.limits.sentence}`);
     if(f.where!=='main'&&f.where!=='more')E('E-schema',fid,"where must be 'main' or 'more'");
     if(appCite(f.cite)!==null){appRules(f.cite,f.mark,fid,guide,E);continue;}
-    const v=validateCitation(f.cite,src);v.errors.forEach(e=>E('E-cite',fid,e));
+    const v=validateCitation(f.cite,src);v.errors.forEach(e=>E('E-cite',fid,e));srcUrlRule(v.parsed,fid,src,E);
     const mk=f.mark;
     if(!R.marks.includes(mk)){E('E-mark',fid,'mark missing or unknown');continue;}
     if(mk==='ⓘ'){E('E-mark',fid,'ⓘ needs an APP cite in a guide card');continue;}
@@ -163,7 +166,7 @@ function cardCheck(card,stem,ctx){
   for(const m of card.misconceptions){const mid=m.id||'m?';mids.push(mid);
     for(const k of ['wrong','right','cite','mark'])if(!m[k])E('E-mis',mid,`${k} missing`);
     if(m.cite&&appCite(m.cite)!==null)appRules(m.cite,m.mark,mid,guide,E);
-    else if(m.cite){validateCitation(m.cite,src).errors.forEach(e=>E('E-cite',mid,e));if(m.mark==='ⓘ')E('E-mark',mid,'ⓘ needs an APP cite in a guide card');}
+    else if(m.cite){const mv=validateCitation(m.cite,src);mv.errors.forEach(e=>E('E-cite',mid,e));srcUrlRule(mv.parsed,mid,src,E);if(m.mark==='ⓘ')E('E-mark',mid,'ⓘ needs an APP cite in a guide card');}
     if(m.mark&&!R.marks.includes(m.mark))E('E-mark',mid,`unknown mark ${m.mark}`);
     if(m.mark==='≈')(final?E:W)(final?'E-approx':'W-approx',mid,'≈ blocks reviewed/shipped');}
   const qs=card.checks,scn=card.scene||null,SF=scn?(ctx.sceneFiles||{})[scn.id]||null:null;   // scene optional (D-058)

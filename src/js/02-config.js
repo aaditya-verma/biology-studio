@@ -7,10 +7,10 @@ const CONFIG={
   saveDelayMs:400,                            // debounce between a change and the write
   saveLogMax:20,
   keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash',dockFold:'biostudio.dockfold'},   // dockFold (D-087): Back dock folded on this device
-  nav:['today','cards','map','scene','settings'],             // EDIT: order of the main nav
+  nav:['today','cards','map','scene','res','settings'],   // EDIT: order of the main nav (SR1, D-098: Resources before Settings — in the More sheet on phone portrait)
   navBar:['today','cards','map','scene'],     // EDIT (U2, D-077): the phone-portrait floating bar = these 4 + More; every other item goes in the More sheet
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
-  routes:['today','lessons','lesson','mix','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates'],   // first key of the hash; see src/js/05-router.js
+  routes:['today','lessons','lesson','mix','cards','card','deck','map','concept','x','scene','day','settings','colours','studio','calib','progress','step','review','rcard','rtour','updates','res'],   // first key of the hash; see src/js/05-router.js
   home:'today',
   leaveWindowMs:2000,                         // Android Back at home: a second press within this leaves
   // device classes (§2, D-087): touch — the SCREEN's short side < phone ⇒ phone, else tablet (orientation from the window); fine pointer — window ≥ tablet wide ⇒ desktop
@@ -35,6 +35,8 @@ const CONFIG={
     tweenMs:450,                              // view preset camera move (0 with reduced motion)
     measure:{phaseMs:4000,warmFrames:10,orbitDegPerS:20,stress:[50000,150000,300000]}   // ?debug=viewer › Measure fps
   },
+  // EDIT (SR1, D-098): Resources + source sheet — repo links for dossiers and THIRD_PARTY (read on GitHub)
+  src:{repo:'https://github.com/aaditya-verma/biology-studio/blob/main/',dossiers:'studio-docs/research/dossiers/',index:'studio-docs/research/source-index.md'},
   // EDIT: progress map (W1, D-040) — read live from the deployed repo (GitHub Pages serves the repo root; .nojekyll keeps .md raw)
   tracker:{
     steps:'studio-docs/build/steps.json', status:'studio-docs/claude/STATUS.md', plan:'studio-docs/build/master-plan.md', backlog:'studio-docs/build/ideas-backlog.md',

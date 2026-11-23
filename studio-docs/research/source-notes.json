@@ -1,0 +1,12 @@
+{
+ "purpose": "Learner notes for the source sheet and Resources (SR1, D-098; G-Learn r1). One plain line per source in our own words — what we use it for. Wins over the note card-check derives from the registry's Best-for cell. Never an abstract or a quote (RULES §G). Edit here, then run python tools/card-check/check.py --write-sources.",
+ "notes": {
+  "R00": "Our spine: every fact on a card cites its section in this book.",
+  "R01": "Our main check on the 3D scenes: shape, organ position, timing and growth, built from real embryos.",
+  "R02": "Serial sections and 3D reconstructions of real embryos at every Carnegie stage; we check stage sizes and how to read a section.",
+  "R06": "The standard definition of the 23 Carnegie stages of the human embryo.",
+  "R07": "An anatomy ontology: which structure develops from which, and at what stage. We use it to link concepts in the Book map.",
+  "R08": "The museum that holds the Carnegie embryo collection; its stage table gives the length and age range for each stage.",
+  "R30": "India's medical curriculum for anatomy; we tag each concept with the competency codes it covers."
+ }
+}

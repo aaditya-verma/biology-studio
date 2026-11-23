@@ -52,6 +52,7 @@ SCREENS.map=SCREENS.concept=SCREENS.x=function(v){
     <section class="p-con" aria-label="${esc(STR.conceptPane)}"><div class="pane">${o?bmConcept(o):r.id?`<p class="empty">${esc(STR.noConcept(r.id))}</p>`:`<p class="empty">${esc(STR.pickConcept)}</p>`}</div></section></div>`;
   bmWire(v);
   if(focus==='concept'&&DEV.cls!=='dev-d')scrollTo(0,0);
+  if(r.sec&&ch)requestAnimationFrame(()=>{const h=document.getElementById('sec-'+r.sec);if(h)h.scrollIntoView({block:'start'});});   // SR1: a book cite lands on its section
 };
 function bmTree(cur){const M=MAPD.M,V=M.vocab,L=MAPD.C.filter(bmPass);
   const opts={tier:['A','B','C','D'],importance:V.importance,layer:Object.keys(V.layer),system:Object.keys(V.system),thread:Object.keys(V.threads),mark:['✔✔','✔','⚑','✚','≈']};
@@ -73,8 +74,8 @@ function bmOverview(){const top=[...MAPD.C].sort((a,b)=>b.unlock_n-a.unlock_n).s
 function bmChapter(ch,cur){const M=MAPD.M,secs=M.sections.filter(s=>s.ch===ch.id),L=MAPD.C.filter(o=>o.ch===ch.id);
   let h=`<div class="row"><h1 style="flex:1;margin:0">${esc(ch.id)} ${esc(ch.title)}</h1>${editBtn('chapter',ch.id,'tools/map/concepts.txt (sections of '+ch.id+')')}</div>
     <p class="sm mut">${L.length} ${esc(STR.concepts)}${ch.pages?` · ${pages(ch.pages)} (${esc(STR.locator)})`:''}</p>`;
-  for(const s of secs){const ss=L.filter(o=>o.sec===s.id);if(!ss.length)continue;
-    h+=`<h3 style="margin-top:14px">${esc(s.id)} ${esc(s.title)} <span class="xs mut">${s.pages?'· '+pages(s.pages):''}${s.boxes&&s.boxes.length?' · '+s.boxes.map(b=>b==='clinical'?'CC':'MR').join(' '):''}</span></h3>${ss.map(o=>crow(o,cur&&cur.id===o.id)).join('')}`;}
+  for(const s of secs){const ss=L.filter(o=>o.sec===s.id),hit=ROUTE.sec===s.id;if(!ss.length&&!hit)continue;   // SR1: a book cite's section shows even with no concepts yet
+    h+=`<h3 id="sec-${esc(s.id)}" class="bm-sec${hit?' hit':''}"${hit?' data-focus-first':''} style="margin-top:14px">${esc(s.id)} ${esc(s.title)} <span class="xs mut">${s.pages?'· '+pages(s.pages):''}${s.boxes&&s.boxes.length?' · '+s.boxes.map(b=>b==='clinical'?'CC':'MR').join(' '):''}</span></h3>${ss.length?ss.map(o=>crow(o,cur&&cur.id===o.id)).join(''):`<p class="xs mut">${esc(STR.src.secEmpty)}</p>`}`;}
   return h;}
 function bmXt(r){const L=MAPD.C.filter(bmPass),xo=bmOrder(r.x),yo=bmOrder(r.y),m={};
   if(!BM_DIMS[r.x]||!BM_DIMS[r.y])return `<p class="empty">${esc(STR.badXt)}</p>`;

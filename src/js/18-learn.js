@@ -58,9 +58,9 @@ const lnFact=(card,id)=>card.facts.find(f=>f.id===id);
    44 px target rule's inline exception applies (WCAG 2.5.8; layout-audit skips inline <a>); Enter and Space both open it. */
 function lnRich(card,text,key){let n=0;
   return esc(text).replace(/\s*\[(f\d+(?:\s*,\s*f\d+)*)\]([.,;:!?]?)/g,(m,ids,pu)=>{const k=key+'-'+(n++),list=ids.split(',').map(s=>s.trim());
-    return `<a href="#" role="button" class="ln-ref" data-ln="ref" data-k="${k}" aria-expanded="false" aria-controls="lnR-${k}" aria-label="${esc(STR.ln.factsFor(list.map(x=>x.slice(1))))}">${list.map(x=>x.slice(1)).join(',')}</a><span class="ln-refbox hidden" id="lnR-${k}" role="note">${list.map(x=>{const f=lnFact(card,x);return f?`<span>${esc(f.text)} <span class="xs mut">[${esc(f.cite)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b></span>`:'';}).join('')}</span>`.replace(/^/,pu);});}   // punctuation first: the ref and its box follow the sentence (G-A11y)
+    return `<a href="#" role="button" class="ln-ref" data-ln="ref" data-k="${k}" aria-expanded="false" aria-controls="lnR-${k}" aria-label="${esc(STR.ln.factsFor(list.map(x=>x.slice(1))))}">${list.map(x=>x.slice(1)).join(',')}</a><span class="ln-refbox hidden" id="lnR-${k}" role="note">${list.map(x=>{const f=lnFact(card,x);return f?`<span>${esc(f.text)} <span class="xs mut">[${citeHtml(f.cite,f.mark)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b></span>`:'';}).join('')}</span>`.replace(/^/,pu);});}   // punctuation first: the ref and its box follow the sentence (G-A11y)
 const lnPlain=t=>stripRefs(t);
-const lnFactLi=f=>`<li><span>${esc(f.text)}</span> <span class="xs mut">[${esc(f.cite)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b>${f.decision?` <span class="xs mut">${esc(f.decision)}</span>`:''}</li>`;
+const lnFactLi=f=>`<li><span>${esc(f.text)}</span> <span class="xs mut">[${appCite(f.cite)!=null?esc(f.cite):citeHtml(f.cite,f.mark)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b>${f.decision?` <span class="xs mut">${esc(f.decision)}</span>`:''}</li>`;
 
 /* ---------- #cards ---------- */
 SCREENS.cards=function(v){
@@ -113,7 +113,7 @@ SCREENS.card=function(v){
     <section class="ln-body" id="lnBody" tabindex="-1">${lnBodyHtml(card,lv)}</section>
     ${card.adult?`<section class="ln-adult"><h2 class="ln-h">${esc(STR.ln.adultT)}</h2><p>${lnRich(card,card.adult,'adult')}</p></section>`:''}
     ${card.clinical?`<section class="ln-clin"><h2 class="ln-h">${esc(STR.ln.clinicalT)}</h2><p>${lnRich(card,card.clinical,'clin')}</p></section>`:''}
-    ${card.misconceptions.length?`<section class="ln-mis"><h2 class="ln-h">${esc(STR.ln.misT)}</h2>${card.misconceptions.map(m=>`<div class="ln-mi"><p><span class="ln-x" aria-hidden="true">✗</span> <span class="sr">${esc(STR.ln.wrongL)}</span><s>${esc(m.wrong)}</s></p><p><span class="ln-ok" aria-hidden="true">✓</span> <span class="sr">${esc(STR.ln.rightL)}</span>${esc(m.right)} <span class="xs mut">[${esc(m.cite)}]</span> <b class="mark" title="${esc(STR.marks[m.mark]||'')}">${esc(m.mark)}</b></p></div>`).join('')}</section>`:''}
+    ${card.misconceptions.length?`<section class="ln-mis"><h2 class="ln-h">${esc(STR.ln.misT)}</h2>${card.misconceptions.map(m=>`<div class="ln-mi"><p><span class="ln-x" aria-hidden="true">✗</span> <span class="sr">${esc(STR.ln.wrongL)}</span><s>${esc(m.wrong)}</s></p><p><span class="ln-ok" aria-hidden="true">✓</span> <span class="sr">${esc(STR.ln.rightL)}</span>${esc(m.right)} <span class="xs mut">[${appCite(m.cite)!=null?esc(m.cite):citeHtml(m.cite,m.mark)}]</span> <b class="mark" title="${esc(STR.marks[m.mark]||'')}">${esc(m.mark)}</b></p></div>`).join('')}</section>`:''}
     <section class="ln-check card" id="lnCheck" aria-labelledby="lnCkT">${lnCheckHtml(card)}</section>
     <section class="ln-expl" id="lnExpl" aria-labelledby="lnExT">${lnExplHtml(card)}</section>
     <section class="ln-rem" id="lnRem" aria-labelledby="lnRmT">${lnRemHtml(card)}</section>
@@ -154,8 +154,9 @@ function lnSrcHtml(card){const src=CD.src||{},secN=src.sections||{},chN=src.chap
   const book=(reg.R00&&reg.R00.name)||STR.ln.bookDefault;
   const sk=[...secs.keys()].sort(),rk=[...regs.keys()].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})),main=card.facts.filter(f=>f.where==='main');
   return `<h2 id="lnSrcT" class="ln-h">${esc(STR.ln.sourcesT)}</h2>`
-    +(sk.length?`<p class="sm"><b>${esc(STR.ln.srcBook(book))}</b></p><ul class="ln-facts sm ln-srcs">${sk.map(k=>`<li><span class="mono">${esc(k)}</span> ${esc(secs.get(k))}</li>`).join('')}</ul>`:'')
-    +(rk.length?`<p class="sm"><b>${esc(STR.ln.srcOther)}</b></p><ul class="ln-facts sm ln-srcs">${rk.map(k=>{const r=regs.get(k);return `<li><span class="mono">${esc(k)}</span> ${esc(r?r.name:'')}${r&&r.tier?` <span class="xs mut">· ${esc(STR.ln.srcTier(r.tier))}</span>`:''}</li>`;}).join('')}</ul>`:'')
+    +(sk.length?`<p class="sm"><b>${esc(STR.ln.srcBook(book))}</b></p><ul class="ln-facts sm ln-srcs">${sk.map(k=>`<li><a class="cite-b" href="#${esc(srcUrlSec(k.slice(0,3),k.length>3?k:null))}"><span class="mono">${esc(k)}</span> <span class="res-t">${esc(secs.get(k))}</span></a></li>`).join('')}</ul>`:'')   // SR1: a book section opens in the Book map
+    +(rk.length?`<p class="sm"><b>${esc(STR.ln.srcOther)}</b></p><ul class="ln-facts sm ln-srcs">${rk.map(k=>{const r=regs.get(k);return `<li><a class="src-hit" href="#res=research&amp;id=${esc(k)}" role="button" aria-haspopup="dialog" data-src="${esc(k)}" aria-label="${esc(STR.src.chipL(k,r?r.name:''))}"><span class="src-chip">${esc(k)}</span></a><span class="src-li-t">${esc(r?(r.title||r.name):'')}${r&&r.tier?` <span class="xs mut">· ${esc(STR.ln.srcTier(r.tier))}</span>`:''}${r&&r.url?` <a class="xs" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.doi?STR.src.open:STR.src.openWeb)} ↗${STR.src.nt(k)}</a>`:''}</span></li>`;}).join('')}</ul>
+      <div class="row"><button type="button" class="btn" data-src-copy="${esc(rk.join(','))}">${esc(STR.src.copyBtn)}</button></div>`:'')   // SR1: every source is a chip → the source sheet; Copy carries the source lines
     +(app&&!sk.length&&!rk.length?`<p class="sm">${esc(STR.ln.srcApp)}</p>`:'')
     +(main.length?`<details class="ln-srcf"><summary><span class="sm">${esc(STR.ln.srcFacts(main.length))}</span></summary><ul class="ln-facts sm">${main.map(lnFactLi).join('')}</ul></details>`:'')
     +`<p class="xs mut">${esc(STR.ln.marksKey)}</p>`;}
