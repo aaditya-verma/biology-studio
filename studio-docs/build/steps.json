@@ -1793,7 +1793,7 @@
     {"id": "SR1.q1", "kind": "decide", "ask": "Lock-lane order: SR1 right after U2 (as asked; GATE moves ~1 day later, 29 → 30 Nov) or after U3 (keeps the U2 → U3 → GATE critical path)?", "asked_in": "Bio · Build · SR1 sources menu (scheduling)", "asked": "2026-11-22", "answer": "Keep SR1 right after U2, before U3 (owner, 22 Nov 2026)", "status": "answered", "d": null}
    ],
    "est": {"chats": 2},
-   "runs": [{"chat": "Bio · Build · SR1 sources menu", "by": "Aaditya", "start": "2026-11-22 23:19", "outcome": "partial", "note": "scheduled run (bio-sr1-sources-menu-when-clear), route B — reopened 23 Nov ~02:35 IST: layout-check issues after the G-Art r2 styling; lock re-taken"}],
+   "runs": [{"chat": "Bio · Build · SR1 sources menu", "by": "Aaditya", "start": "2026-11-22 23:19", "outcome": "partial", "note": "scheduled run (bio-sr1-sources-menu-when-clear), route B — reopened 23 Nov ~02:35 IST: layout-check issues after the G-Art r2 styling; lock re-taken; closed by U3, end from STATUS", "end": "2026-11-23 02:35"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app, content data and tools, runs the checks, pushes"}
   },
   {
@@ -1801,7 +1801,7 @@
    "title": "U3 look screens",
    "type": "Build",
    "chat": "Bio · Build · U3 look screens",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["U2", "SR1"],
    "unblocks": ["GATE", "FA"],
    "lock": true,
@@ -1823,6 +1823,7 @@
    ],
    "inputs": [],
    "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Build · U3 look screens", "by": "Aaditya", "start": "2026-11-24 04:49", "outcome": "partial", "note": "live chat, route A — Claude Code direct push; closing SR1's open run + fixing the STATUS backspace (INTEGRITY-ALERT) before the restyle; CI checks run on main (bd182b4) timed out at 50min with no output, diagnosing locally before the full matrix"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
