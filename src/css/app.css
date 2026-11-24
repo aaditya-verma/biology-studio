@@ -1030,8 +1030,11 @@ html.dev-d .rv-card{max-width:calc(34em + 400px + 4 * var(--gap));margin:0 auto}
 .ls-cont{margin-top:var(--gap);max-width:var(--measure)}
 .ls-prog{height:8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-strong);overflow:hidden;margin:6px 0 2px;max-width:var(--measure)}
 .ls-prog span{display:block;height:100%;background:var(--ink)}   /* ink, never the accent or a layer colour (B3); the words beside it carry the number */
-html.dev-pl .ls-chs,html.dev-tp .ls-chs{grid-template-columns:repeat(2,minmax(0,1fr))}
-html.dev-tl .ls-chs,html.dev-d .ls-chs{grid-template-columns:repeat(3,minmax(0,1fr))}
+html.dev-pl .ls-chs,html.dev-tl .ls-chs{grid-template-columns:repeat(2,minmax(0,1fr))}   /* U3 (D-087, P1): tp one column (was 2 — the audit's spec change), tl keeps 2 */
+html.dev-d .ls-chs{grid-template-columns:repeat(3,minmax(0,1fr))}
+html.dev-p .ls-ch{background:none;box-shadow:none;border-radius:0;padding:10px 0;border-bottom:1px solid var(--line)}   /* U3 (D-087, P3): compact rows on phone portrait, not a boxed card per chapter */
+html.dev-p .ls-chs{gap:0}
+html.dev-p .ls-ch:last-child{border-bottom:0}
 /* one lesson: phone = head → needs first → sittings · tablet portrait = the same at reading width · two panes from tablet landscape */
 .ls-les{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "pre" "sits";align-items:start;max-width:1400px}
 .ls-head{grid-area:head;max-width:var(--measure)} .ls-head h1{margin:4px 0 6px} .ls-pre{grid-area:pre;min-width:0} .ls-sits{grid-area:sits;display:grid;gap:var(--gap);min-width:0}
