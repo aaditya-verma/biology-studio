@@ -798,6 +798,7 @@ html.dev-tl .tr-pside,html.dev-d .tr-pside{grid-template-columns:repeat(2,minmax
 .ln-chips .btn{flex:0 1 auto}
 .ln-pn{margin-top:calc(var(--gap) * 2);gap:8px;flex-wrap:wrap}
 .ln-pn .btn{flex:0 1 auto;max-width:100%}
+.ln-related{margin-top:var(--gap)}   /* U3 (D-087, P5): a snap row of the same-chapter cards — desktop already has the full .ln-rail */
 /* the inline 3D (Try it): stage + compact panel, stacked on every class */
 .vw.inl{grid-template-columns:minmax(0,1fr)!important;gap:0}
 .vw.inl .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0;height:clamp(220px,40dvh,460px)}
@@ -916,7 +917,7 @@ html.dev-tl .vw.inl .vw-stage,html.dev-d .vw.inl .vw-stage{height:auto;min-heigh
 html.dev-d .ln-rail{display:block;position:sticky;top:calc(var(--top-h) + env(safe-area-inset-top) + 8px);max-height:calc(100dvh - var(--top-h) - 2 * var(--pad));overflow:auto}
 html.dev-d .ln-rail .ln-row{flex-wrap:wrap;row-gap:2px}
 html.dev-d .ln-rail .ln-row .nm{flex:1 1 100%}
-html.dev-d .ln-pn{display:none}
+html.dev-d .ln-pn,html.dev-d .ln-related{display:none}
 
 /* D-058: a card with no scene yet — no 3D column; Try it + Watch it are two "Coming soon" strips above the text, one reading column on every class */
 .ln-try-none{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;border:1px dashed var(--line-strong);border-radius:var(--r)}

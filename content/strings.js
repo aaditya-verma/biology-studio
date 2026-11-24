@@ -208,7 +208,7 @@ const STR={
     srcBook:b=>'Book: '+b, srcOther:'Checked against', srcApp:'App facts (ⓘ) — no book source. These lines describe how the app works.', srcFacts:n=>'Each fact with its source ('+n+')', srcTier:t=>'Tier '+t,
     hidT:'Card text hidden during the Check', readAgain:'Read again', readAgainHelp:'Reading again ends this run — nothing is scored. Start the Check again after.', runEnded:'Run ended, not scored. The card text is back.', lblOffRun:'3D labels are off during the Check.', showsT:'Where it shows up', termsT:'New terms',
     marksKey:'Marks: ✔✔ book + Tier 1 source agree · ✔ book only · ⚑ book vs newer evidence (logged) · ✚ beyond the book · ⓘ how the app works.',
-    refL:f=>'Source '+f, factsFor:n=>'Facts behind this line: fact '+n.join(', fact '), rightPlace:'right place', wrongPlace:'wrong place', started:(n,t)=>n+' of '+t+' started', cardRail:'Cards in this part', prev:'Previous card', nextCard:'Next card',
+    refL:f=>'Source '+f, factsFor:n=>'Facts behind this line: fact '+n.join(', fact '), rightPlace:'right place', wrongPlace:'wrong place', started:(n,t)=>n+' of '+t+' started', cardRail:'Cards in this part', relatedT:'Related cards', prev:'Previous card', nextCard:'Next card',
     deckT:'Remember deck', deckLead:'Short recall prompts from the cards you have read. Each comes back after 1 day, then 3, then 7 days apart.', due:n=>n+' due', dueNone:'Nothing due today.',
     deckEmpty:'Your deck is empty. Read a card and its prompts join the deck.', nextOn:d=>'Next prompt due '+d+'.', practise:'Practise now anyway',
     deckStart:n=>'Start ('+n+')', showAns:'Show answer', gotIt:'Got it', notYetD:'Not yet', fromCard:id=>'from '+id, openCard:'Open the card',

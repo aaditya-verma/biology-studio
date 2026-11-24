@@ -168,6 +168,7 @@ SCREENS.card=function(v){
     <section class="ln-src" id="lnSrc" aria-labelledby="lnSrcT">${lnSrcHtml(card)}</section>
     ${lsBarFoot()}
     <nav class="ln-pn row" aria-label="${esc(STR.ln.cardRail)}">${prev?`<button type="button" class="btn" data-go="card=${esc(prev.id)}">${icon('back',18)} ${esc(prev.title)}</button>`:''}<span class="sp"></span>${next?`<button type="button" class="btn" data-go="card=${esc(next.id)}">${esc(next.title)} ${icon('fwd',18)}</button>`:''}</nav>
+    ${lnRelatedHtml(grp,id)}
   </article>
   <nav class="ln-rail card" aria-label="${esc(STR.ln.cardRail)}"><h2 class="ln-h">${esc(STR.ln.groups[id.slice(0,3)]||STR.ln.groupOf(id.slice(0,3)))}</h2>
     ${grp.map(c=>`<button type="button" class="lrow ln-row" data-go="card=${esc(c.id)}"${c.id===id?' aria-current="page"':''}><span class="nm">${esc(c.title)}</span>${lnChip(c.id)}</button>`).join('')}</nav>
@@ -184,6 +185,10 @@ SCREENS.card=function(v){
   window.LN_READY='card='+id;
   if(dbgOn('learn'))DBG.learn=`learn ${id} · ${lnStatus(id)} · level ${lv} · deck ${lnDeckAll().length} (${lnDeckDue().length} due)${run?' · run open (text folded)':''}`;
 };
+/* U3 (D-087, P5): a snap row of the same-chapter cards, on every class but desktop (the rail there already shows them, full list) */
+function lnRelatedHtml(grp,id){const rel=grp.filter(c=>c.id!==id);if(!rel.length)return '';
+  return `<section class="ln-related" aria-labelledby="lnRelT"><h2 id="lnRelT" class="ln-h">${esc(STR.ln.relatedT)}</h2><div class="snap">${rel.map(c=>{const m=MAPD.byId&&MAPD.byId[c.id];
+    return `<button type="button" class="nu-card" data-go="card=${esc(c.id)}"><span class="sw L-${esc(m?m.layer:'none')}" aria-hidden="true"></span><span class="nm">${esc(c.title)}</span><span class="id">${esc(c.id)}</span></button>`;}).join('')}</div></section>`;}
 function lnBodyHtml(card,lv){return `<h2 class="sr">${esc(STR.ln.levels[lv]||lv)}</h2><p>${lnRich(card,card.body[lv],'b')}</p>`;}
 const lnRun=id=>!!(LN.ck[id]&&!LN.ck[id].done);   // a Check run is open: the card text folds away (D-053)
 /* More: only when the card has `more` facts; folded, with a count (a heading is never empty — T7) */
