@@ -1,0 +1,637 @@
+{
+ "spec": 1,
+ "episode": "S1E01",
+ "shots": [
+  {
+   "id": "S01",
+   "kind": "host",
+   "scene": "host (tools/m1b-host)",
+   "day": null,
+   "what": "Nani asks the question to camera; book closed on her lap",
+   "cams": "cam_short + cam_lesson",
+   "key": "warm key (no tokens on screen)",
+   "labels": [],
+   "tag": null,
+   "needs": [
+    "N1"
+   ]
+  },
+  {
+   "id": "S02",
+   "kind": "host+panel",
+   "scene": "host + terms strip",
+   "day": null,
+   "what": "Terms strip, 5 s: 3 chips per profile — MBBS 'germ layers · primitive node · notochord' (L02), General 'epiblast · primitive streak · gastrulation' (G02); host in a corner cut-in",
+   "cams": "cam_lesson (Lesson/General only)",
+   "key": "token panel: chips on their own neutral panel, host keeps warm key (D-059 (5))",
+   "labels": [],
+   "tag": null,
+   "needs": [
+    "N1",
+    "N2"
+   ]
+  },
+  {
+   "id": "S03",
+   "labels_general": [],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "view": "top (From the back)",
+   "what": "Establish: two-layer disc, slow push-in",
+   "labels": [
+    "Epiblast",
+    "Hypoblast"
+   ],
+   "tag": "Colours illustrative",
+   "needs": []
+  },
+  {
+   "id": "S04",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "view": "top",
+   "what": "Push in to the caudal midline; streak ring (accent); stamp Day 15 · CS06",
+   "labels": [
+    "Primitive streak"
+   ],
+   "tag": "Colours illustrative",
+   "needs": []
+  },
+  {
+   "id": "S05",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15→16",
+   "view": "top, close",
+   "what": "Ring moves to the cranial end; the mound is shown, not named yet (named at L18/S14)",
+   "labels": [],
+   "tag": "Time compressed",
+   "needs": []
+  },
+  {
+   "id": "S06",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "16",
+   "view": "top, pull back",
+   "what": "Pull back to whole disc; axis gizmo arrows Cranial/Caudal highlighted",
+   "labels": [
+    "Primitive streak"
+   ],
+   "tag": "Colours illustrative",
+   "needs": [
+    "N12"
+   ]
+  },
+  {
+   "id": "S07",
+   "labels_general": [
+    "Marked cell"
+   ],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "view": "side (From the right), lengthwise cut",
+   "what": "Rewind to day 15; marked cell appears in the epiblast (accent ring is the cell's alone)",
+   "labels": [
+    "Marked cell",
+    "Epiblast"
+   ],
+   "tag": "Exaggerated for clarity",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N4"
+   ]
+  },
+  {
+   "id": "S08",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15→15.5",
+   "view": "side, lengthwise cut",
+   "what": "Cell moves to the streak, briefly changes shape and slips under (invagination; no sheet stretch). General G07: camera stays on the marked cell through the whole analogy (no cut ahead to S10, keeps time order)",
+   "labels": [
+    "Marked cell",
+    "Primitive streak"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N4"
+   ]
+  },
+  {
+   "id": "S09",
+   "labels_general": [],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15.5→16",
+   "view": "side, lengthwise cut",
+   "what": "Earlier cells (ghost tracer t-endo) replace the hypoblast; endoderm label as the sheet forms",
+   "labels": [
+    "Endoderm",
+    "Hypoblast"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3"
+   ]
+  },
+  {
+   "id": "S10",
+   "labels_general": [
+    "Marked cell"
+   ],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "16",
+   "view": "side, lengthwise cut",
+   "what": "Our cell settles between the layers; mesoderm label",
+   "labels": [
+    "Marked cell",
+    "Mesoderm"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N4",
+    "N12"
+   ]
+  },
+  {
+   "id": "S11",
+   "labels_general": [],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "16→17",
+   "view": "top, semi-transparent epiblast",
+   "what": "Mesoderm sheet spreads sideways + cranially; marked cell ringed, riding the sheet",
+   "labels": [
+    "Mesoderm",
+    "Marked cell"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3"
+   ]
+  },
+  {
+   "id": "S12",
+   "labels_general": [],
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "side, lengthwise cut",
+   "what": "Cells left on top lit; marked cell ringed below them; label Epiblast → Ectoderm swap",
+   "labels": [
+    "Ectoderm"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Colours illustrative",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N6"
+   ]
+  },
+  {
+   "id": "S13",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "front (From the head), transverse cut through the streak + slab",
+   "what": "D9 section: ectoderm / mesoderm / endoderm, yolk-sac side ventral; marked cell ringed in the mesoderm; hold",
+   "labels": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm"
+   ],
+   "tag": "Not to scale",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N7"
+   ]
+  },
+  {
+   "id": "S14",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "16",
+   "view": "top",
+   "what": "Opens on the day-17 frame, our marked cell dimmed out in the lateral mesoderm (end of its t-meso path); stamp counts back to day 16 (N11); pan to the node; prenotochordal cells run forward toward the head end",
+   "labels": [
+    "Primitive node"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N4",
+    "N11",
+    "N12"
+   ]
+  },
+  {
+   "id": "S15",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "16→17",
+   "view": "end (transverse cut, cranial of node)",
+   "what": "Notochordal plate in the endoderm, then folds into a rod; 'Notochord' label appears only on L20 (no label on the plate stage — the voice does not name it)",
+   "labels": [
+    "Endoderm",
+    "Notochord"
+   ],
+   "tag": "Time compressed",
+   "needs": []
+  },
+  {
+   "id": "S16",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "17→18",
+   "view": "side",
+   "what": "Book order: head end of the rod first, tail parts added as the streak moves back (D-029: book version only)",
+   "labels": [
+    "Notochord"
+   ],
+   "tag": "Time compressed",
+   "needs": []
+  },
+  {
+   "id": "S17",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "18",
+   "view": "end",
+   "what": "Rod in the midline under the ectoderm; no neural tube drawn or named",
+   "labels": [
+    "Notochord"
+   ],
+   "tag": "Simplified",
+   "needs": []
+  },
+  {
+   "id": "S18",
+   "kind": "3D-adult",
+   "scene": "new: sc-S1E01-18 (adult disc, Z-Anatomy, D-021)",
+   "day": "adult",
+   "view": "spine segment, one disc cut; cm scale bar + 'Adult' stamp replace the day stamp; Z-Anatomy credit + licence row (D-021)",
+   "what": "This becomes: nucleus pulposus at the core of an intervertebral disc; vertebrae dim (ctx)",
+   "labels": [
+    "Nucleus pulposus"
+   ],
+   "tag": "Not to scale",
+   "needs": [
+    "N8"
+   ]
+  },
+  {
+   "id": "S19",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "top, mesoderm only",
+   "what": "This becomes: mesoderm sheet lit, rest ctx; marked cell ringed in it; no icons on anatomy — the voice carries the list",
+   "labels": [
+    "Mesoderm"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Colours illustrative",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3"
+   ]
+  },
+  {
+   "id": "S20",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "top",
+   "what": "Clinical link slot: replay starts on the marked cell's entry point in the streak (2 s), then ring the caudal streak; 'Clinical link' tag top-left",
+   "labels": [
+    "Primitive streak"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Colours illustrative",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "clinical": true,
+   "needs": [
+    "N9"
+   ]
+  },
+  {
+   "id": "S21",
+   "kind": "diagram",
+   "scene": "new: sc-S1E01-21 (caudal remnant diagram)",
+   "day": "—",
+   "view": "sagittal sketch",
+   "what": "Diagram of a remnant at the sacrococcygeal region (no patient imaging, D6)",
+   "labels": [
+    "Sacrococcygeal teratoma"
+   ],
+   "tag": "Simplified",
+   "clinical": true,
+   "needs": [
+    "N9"
+   ]
+  },
+  {
+   "id": "S22",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "front, transverse cut + slab",
+   "what": "Payoff: back to the S13 section; marked cell shown in mesoderm",
+   "labels": [
+    "Ectoderm",
+    "Mesoderm",
+    "Endoderm"
+   ],
+   "tag": "Not to scale",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N7"
+   ]
+  },
+  {
+   "id": "S23",
+   "kind": "check",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "front, transverse cut",
+   "what": "2 Checks: tap-the-layer (spatial) + spoken-choice MCQ with ≤ 3-word chips; labels off for the tap; on the reveal (L31a/G15a) the Mesoderm label and the marked cell's ring come back",
+   "labels": [],
+   "tag": "Not to scale",
+   "exaggerations": [
+    {
+     "what": "marked cell (reveal)",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N10"
+   ]
+  },
+  {
+   "id": "S24",
+   "kind": "host",
+   "scene": "host",
+   "day": null,
+   "what": "Teaser ≤ 5 s; Nani opens the book — pages blank/abstract, no diagram (host props carry no diagrams, §5b)",
+   "cams": "cam_short + cam_lesson",
+   "key": "warm key",
+   "labels": [],
+   "tag": null,
+   "needs": [
+    "N1"
+   ]
+  },
+  {
+   "id": "SS1",
+   "kind": "host+3D",
+   "scene": "host / sc-E00.01.04 d15",
+   "day": "15",
+   "what": "Frame 1: day-15 disc, epiblast lit, hypoblast dimmed ('this one sheet'), question starts at 0 s; Nani cut-in at ~1.5 s; marked cell visible from ch2",
+   "cams": "cam_short",
+   "key": "neutral/cool key on Nani (tokens on screen)",
+   "labels": [],
+   "tag": "Colours illustrative",
+   "needs": [
+    "N1"
+   ]
+  },
+  {
+   "id": "SS2",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "what": "S04 push-in → S05 close → S06 pull-back (3 cuts); the streak gets label + glow, no ring — the accent ring is the marked cell's alone",
+   "labels": [
+    "Primitive streak",
+    "Marked cell"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Colours illustrative",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": []
+  },
+  {
+   "id": "SS3",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15→15.5",
+   "what": "S07 → S08 shape change → S08 slip-under (3 shots, ~2.6 s each)",
+   "labels": [
+    "Marked cell"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N4"
+   ]
+  },
+  {
+   "id": "SS4",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15.5→16",
+   "what": "S09 → S09 endoderm close → S10 → close on the marked cell's ring (4 shots ~2.4 s + 1.5 s hold)",
+   "labels": [
+    "Mesoderm"
+   ],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Time compressed",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3"
+   ]
+  },
+  {
+   "id": "SS5",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "what": "S12 ring → S11 top → S12 cells-on-top close → 1.5 s close on the marked cell's ring (4 shots ~2.1 s + 1.5 s hold)",
+   "labels": [],
+   "tag": "Exaggerated for clarity",
+   "tag_also": "Colours illustrative",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N6"
+   ]
+  },
+  {
+   "id": "SS6",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "what": "Section cut-in → ring on the marked cell in mesoderm → 2 s hold (3 beats)",
+   "labels": [
+    "Mesoderm",
+    "Marked cell"
+   ],
+   "tag": "Not to scale",
+   "exaggerations": [
+    {
+     "what": "marked cell",
+     "how_much": "~4× size",
+     "why": "so one cell reads at phone size",
+     "exam_fact": false
+    }
+   ],
+   "needs": [
+    "N3",
+    "N7"
+   ]
+  },
+  {
+   "id": "SS7",
+   "kind": "endcard",
+   "scene": "end card",
+   "day": null,
+   "what": "'Full episode in the app' + chip 'Gastrulation · Part 1'; key structure + title inside the centre 4:5 crop (§15)",
+   "labels": [],
+   "tag": null,
+   "needs": []
+  }
+ ],
+ "needs": {
+  "N1": "Host scene: add `cam_lesson` (16:9) beside the 9:16 camera — one scene, two cameras (M1b to-do; visual-style §10). Lines S01/S24/SS1. Step: M1V8 or R1.",
+  "N2": "Terms-strip graphic: 3 term chips on a neutral token panel next to the host (D-059 (5)); chips use layer tokens only for layer names (none here → neutral chips). Step: R1.",
+  "N3": "Video use of a tracer: scene spec §5/§6 make `tracer` drill-only ('never in Try it, stills or video'). S1E01 needs the marked cell on screen. Spec change + engine flag, e.g. shot `show.trace` (scene-spec §10). Step: V-step (V4?) before ② can show it; ② may fake it as an animatic placeholder.",
+  "N4": "New tracer `t-meso` (with the scene disclaimer 'marked cell drawn larger' kept on every shot it appears in) in sc-E00.01.04 (and the same cell in sc-E05.02.01 at its day-16 lateral mesoderm position, for S14): an epiblast cell that ingresses after the endoderm cell and ends in mesoderm, then spreads laterally (path keyed days 15 → 17). The existing `t-endo` stays as the 'first cells' ghost. Step: V-step (scene edit + scene-check path rules).",
+  "N6": "Label swap 'Epiblast → ectoderm' becomes a spoken text item (C1 G-A11y to-do: '→' needs spoken text) and a clean 'Ectoderm' label at day 17. Step: V-step / scene owner.",
+  "N7": "Shot-sheet `show` state: §10 has no `view/cut/slab_mm/layers/trace` per shot — add `show` (same shape as card drills §8a) so S13/S22 can ask for the transverse cut + slab at day 17. Step: R1 shot-sheet code (spec first).",
+  "N8": "Adult anchor scene `sc-S1E01-18`: adult lumbar segment, one intervertebral disc cut to show the nucleus pulposus (Z-Anatomy adult mesh, rendered video only, D-021); vertebrae ctx. Step: V-step or R1.",
+  "N9": "Clinical slot: caudal streak remnant + sacrococcygeal teratoma diagram `sc-S1E01-21` (our own diagram, no imaging, D6/§14); streak shrink after day 18 is not in any scene (keys end at day 17/18) → either a day-28 key or a diagram only. Step: V-step.",
+  "N11": "Day stamp rewinds on screen (counts back) on the S06→S07 and S13→S14 time jumps, so a jump back in day reads as intended (G-Story r1). Step: ② animatic overlay, then R1.",
+  "N12": "Day-16 stamp agrees across scenes: sc-E00.01.04 eases day 16 to 'CS06–07 · ≈0.3 mm' while sc-E05.02.01 keys day 16 as 'CS07 · 0.4 mm'. Add a day-16 key to sc-E00.01.04 = CS07 · 0.4 mm (dossier §1 book 16–18 d, R06/R08), or re-key sc-E05.02.01. Step: V-step (scene edit + scene-check).",
+  "N10": "Spatial Check in video: tap-the-layer on a section is an app drill (V2 label drill); the video shows the question + a 4 s pause and the answer reveal; the app version links to the E05.01.03 drill. Step: R1 (player Checks)."
+ }
+}

@@ -1,0 +1,115 @@
+{
+ "errors": [],
+ "warnings": [],
+ "lengths": {
+  "lesson": 312.2,
+  "general": 176.7,
+  "short": 51.8
+ },
+ "words": {
+  "lesson": 607,
+  "general": 340,
+  "short": 100
+ },
+ "wpm_speech": 143,
+ "wpm_overall": {
+  "lesson": 116.7,
+  "general": 115.4,
+  "short": 115.8
+ },
+ "new_terms": {
+  "lesson": [
+   [
+    "germ layers",
+    10.8
+   ],
+   [
+    "primitive node",
+    10.8
+   ],
+   [
+    "notochord",
+    10.8
+   ],
+   [
+    "invagination",
+    78.7
+   ],
+   [
+    "yolk sac",
+    121.2
+   ],
+   [
+    "nucleus pulposus",
+    204.8
+   ],
+   [
+    "sacrococcygeal teratoma",
+    242.5
+   ]
+  ],
+  "general": [
+   [
+    "epiblast",
+    11.2
+   ],
+   [
+    "primitive streak",
+    11.2
+   ],
+   [
+    "gastrulation",
+    11.2
+   ],
+   [
+    "ectoderm",
+    107.3
+   ],
+   [
+    "mesoderm",
+    107.3
+   ],
+   [
+    "endoderm",
+    107.3
+   ]
+  ],
+  "short": [
+   [
+    "primitive streak",
+    7.9
+   ],
+   [
+    "mesoderm",
+    23.9
+   ],
+   [
+    "gastrulation",
+    32.6
+   ]
+  ]
+ },
+ "max_terms_per_60s": {
+  "lesson": 3,
+  "general": 3,
+  "short": 3
+ },
+ "card_body_overlaps": [
+  [
+   "lesson",
+   "L05"
+  ],
+  [
+   "lesson",
+   "L06"
+  ],
+  [
+   "lesson",
+   "L15"
+  ],
+  [
+   "lesson",
+   "L25"
+  ]
+ ]
+}

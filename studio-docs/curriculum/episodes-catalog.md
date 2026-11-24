@@ -1,5 +1,7 @@
 # Episode catalog & how to add an episode — draft
 
+*(Purpose: episodes, card tags and how to add one. Updated: 24 Nov 2026 · Bio · Episode · S1E01 commit (S1E01 lengths + script fact-check).)*
+
 Episodes are story-led 3D explainers. The app stores metadata, card tags, the cited script and Drive file ids — never book text or figures (RULES §G). Ids `S<season>E<nn>` are never reused or renumbered.
 
 ## How to add an episode
@@ -14,7 +16,7 @@ Episodes are story-led 3D explainers. The app stores metadata, card tags, the ci
 ### Season 1 — "How does a flat disc become a body?" (Part 1)
 | Id | Title | Format | Length | Cards (★ core) | Fact-checked | Notes |
 |---|---|---|---|---|---|---|
-| S1E01 | Gastrulation | Journey (ride with an epiblast cell) | ~90–120 s | ★E05.01.01, ★E05.01.02, ★E05.01.03, ★E05.01.04, E05.02.01, E00.01.04 | ≈ (not written) | Pilot (P1, R1) |
+| S1E01 | Gastrulation | Journey (ride with an epiblast cell) | Lesson 5:12 · General 2:57 · Short 0:52 | ★E05.01.01, ★E05.01.02, ★E05.01.03, ★E05.01.04, E05.02.01, E00.01.04 | ✔ script (G-Sci pass, ①); animatic pending | Pilot (P1, R1) |
 
 ## 2. By system / thread · System × Tier counts
 Filled as episodes are added.
@@ -35,6 +37,6 @@ Planned slots for every core and exam-high concept: `curriculum/roadmap.md` (K1,
 ```js
 // [id, title, format, seconds, coreCards, supportCards, factChecked]
 const EPISODES = [
-  ['S1E01','Gastrulation','journey',0,['E05.01.01','E05.01.02','E05.01.03','E05.01.04'],['E05.02.01','E00.01.04'],false],
+  ['S1E01','Gastrulation','journey',312,['E05.01.01','E05.01.02','E05.01.03','E05.01.04'],['E05.02.01','E00.01.04'],false],
 ];
 ```

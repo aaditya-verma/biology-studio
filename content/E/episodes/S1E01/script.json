@@ -1,0 +1,1495 @@
+{
+ "spec": 1,
+ "episode": "S1E01",
+ "title": "Gastrulation",
+ "wpm": 143,
+ "profiles": {
+  "lesson": {
+   "name": "MBBS Lesson",
+   "frame": "16:9 (1920×1080 master, 1280×720 ship)",
+   "level": "MBBS",
+   "depth": "Tier A (+ ⚑ pointer)",
+   "type": "Journey explainer",
+   "length_target": [
+    180,
+    330
+   ],
+   "language": "English",
+   "host": "Nani (H-a)"
+  },
+  "general": {
+   "name": "General Lesson cut",
+   "frame": "16:9 (same scenes, same cameras)",
+   "level": "General",
+   "depth": "Tier A core only",
+   "type": "Journey explainer",
+   "length_target": [
+    100,
+    190
+   ],
+   "language": "English",
+   "host": "Nani (H-a)"
+  },
+  "short": {
+   "name": "9:16 Short",
+   "frame": "9:16 (1080×1920 master, 720×1280 ship)",
+   "level": "General / pre-med",
+   "depth": "one idea",
+   "type": "Short (6 × 8 s)",
+   "length_target": [
+    44,
+    60
+   ],
+   "language": "English",
+   "host": "Nani (H-a)"
+  }
+ },
+ "scripts": {
+  "lesson": [
+   {
+    "id": "L01",
+    "seg": "Open",
+    "shot": "S01",
+    "text": "Two flat sheets of cells. One week later, three. How does that happen, and where does each new layer come from?",
+    "facts": [],
+    "hold": 2.0,
+    "kind": "question",
+    "_start": 0.0,
+    "_words": 21,
+    "_dur": 8.8,
+    "refs": []
+   },
+   {
+    "id": "L02",
+    "seg": "Open",
+    "shot": "S02",
+    "text": "Three terms first: germ layers, primitive node, notochord.",
+    "facts": [],
+    "new": [
+     "germ layers",
+     "primitive node",
+     "notochord"
+    ],
+    "hold": 1.0,
+    "kind": "terms",
+    "_start": 10.8,
+    "_words": 8,
+    "_dur": 3.4,
+    "refs": []
+   },
+   {
+    "id": "L03",
+    "seg": "1 The groove",
+    "shot": "S03",
+    "text": "This is the disc at the very start of week three. Its upper layer, from week two, is the epiblast.",
+    "facts": [
+     "E05.01.04#f1"
+    ],
+    "hold": 1.0,
+    "_start": 15.2,
+    "_words": 20,
+    "_dur": 8.4,
+    "refs": [
+     {
+      "ref": "E05.01.04#f1",
+      "mark": "✔",
+      "section": "E04.01",
+      "cite": "E04.01"
+     }
+    ]
+   },
+   {
+    "id": "L04",
+    "seg": "1 The groove",
+    "shot": "S03",
+    "text": "In week three the disc makes three germ layers: ectoderm, mesoderm and endoderm. That process is gastrulation.",
+    "facts": [
+     "E05.01.01#f1"
+    ],
+    "hold": 1.5,
+    "_start": 24.6,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": [
+     {
+      "ref": "E05.01.01#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     }
+    ]
+   },
+   {
+    "id": "L05",
+    "seg": "1 The groove",
+    "shot": "S04",
+    "text": "It starts when the primitive streak appears on the epiblast, around days fourteen to fifteen.",
+    "facts": [
+     "E05.01.01#f2"
+    ],
+    "hold": 1.0,
+    "_start": 33.2,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E05.01.01#f2",
+      "mark": "✔✔",
+      "section": "E05.01, E06.06 Tbl 6.4",
+      "cite": "E05.01, E06.06 Tbl 6.4 · R06 CS6"
+     }
+    ]
+   },
+   {
+    "id": "L06",
+    "seg": "1 The groove",
+    "shot": "S04",
+    "text": "The streak first shows as a faint line in the caudal midline. By days fifteen to sixteen it is a narrow groove with raised edges.",
+    "facts": [
+     "E05.01.02#f1"
+    ],
+    "hold": 1.5,
+    "_start": 40.5,
+    "_words": 25,
+    "_dur": 10.5,
+    "refs": [
+     {
+      "ref": "E05.01.02#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R06 CS6"
+     }
+    ]
+   },
+   {
+    "id": "L07",
+    "seg": "1 The groove",
+    "shot": "S05",
+    "text": "Its cranial end is a low mound, with a small pit at its centre. Keep an eye on it.",
+    "facts": [
+     "E05.01.02#f2"
+    ],
+    "hold": 1.5,
+    "_start": 52.5,
+    "_words": 19,
+    "_dur": 8.0,
+    "refs": [
+     {
+      "ref": "E05.01.02#f2",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R06 CS8"
+     }
+    ]
+   },
+   {
+    "id": "L08",
+    "seg": "1 The groove",
+    "shot": "S06",
+    "text": "The streak also marks the body's long axis. It lies at the tail end; the head end is the opposite end.",
+    "facts": [
+     "E05.01.02#f3"
+    ],
+    "hold": 1.5,
+    "_start": 61.9,
+    "_words": 21,
+    "_dur": 8.8,
+    "refs": [
+     {
+      "ref": "E05.01.02#f3",
+      "mark": "✔",
+      "section": "E05.01, E05.03",
+      "cite": "E05.01, E05.03"
+     }
+    ]
+   },
+   {
+    "id": "L09",
+    "seg": "2 The dive",
+    "shot": "S07",
+    "text": "Back to day fifteen. Let's follow one epiblast cell. We have marked it.",
+    "facts": [],
+    "hold": 1.0,
+    "kind": "frame",
+    "_start": 72.3,
+    "_words": 13,
+    "_dur": 5.5,
+    "refs": []
+   },
+   {
+    "id": "L10",
+    "seg": "2 The dive",
+    "shot": "S08",
+    "text": "Epiblast cells move toward the streak, change shape, let go of their neighbours and slip underneath. This inward move is called invagination.",
+    "facts": [
+     "E05.01.03#f1"
+    ],
+    "new": [
+     "invagination"
+    ],
+    "hold": 1.5,
+    "_start": 78.7,
+    "_words": 22,
+    "_dur": 9.2,
+    "refs": [
+     {
+      "ref": "E05.01.03#f1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L11",
+    "seg": "2 The dive",
+    "shot": "S09",
+    "text": "The first cells in push into the hypoblast and replace it, forming the embryo's endoderm.",
+    "facts": [
+     "E05.01.03#f2"
+    ],
+    "hold": 1.0,
+    "_start": 89.4,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E05.01.03#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L12",
+    "seg": "2 The dive",
+    "shot": "S09",
+    "text": "So the hypoblast does not turn into endoderm. Epiblast cells take its place.",
+    "facts": [
+     "E05.01.01#m1"
+    ],
+    "hold": 1.5,
+    "_start": 96.7,
+    "_words": 13,
+    "_dur": 5.5,
+    "refs": [
+     {
+      "ref": "E05.01.01#m1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L13",
+    "seg": "2 The dive",
+    "shot": "S10",
+    "text": "Our cell goes in later. It settles between the epiblast and the new endoderm, as mesoderm.",
+    "facts": [
+     "E05.01.03#f3"
+    ],
+    "hold": 1.5,
+    "_start": 103.7,
+    "_words": 16,
+    "_dur": 6.7,
+    "refs": [
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L14",
+    "seg": "2 The dive",
+    "shot": "S11",
+    "text": "Mesoderm spreads sideways and toward the head.",
+    "facts": [
+     "E05.01.03#f4"
+    ],
+    "hold": 1.5,
+    "_start": 111.9,
+    "_words": 7,
+    "_dur": 2.9,
+    "refs": [
+     {
+      "ref": "E05.01.03#f4",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L15",
+    "seg": "2 The dive",
+    "shot": "S12",
+    "text": "Cells that stay in the epiblast become ectoderm.",
+    "facts": [
+     "E05.01.03#f5"
+    ],
+    "hold": 1.5,
+    "_start": 116.3,
+    "_words": 8,
+    "_dur": 3.4,
+    "refs": [
+     {
+      "ref": "E05.01.03#f5",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L16",
+    "seg": "2 The dive",
+    "shot": "S13",
+    "text": "Cut across the disc. Ectoderm is the top layer. Mesoderm is the middle layer. Endoderm is the bottom layer, facing the yolk sac.",
+    "facts": [
+     "E00.01.04#f2",
+     "E00.01.04#f3",
+     "E00.01.04#f4"
+    ],
+    "new": [
+     "yolk sac"
+    ],
+    "hold": 2.0,
+    "_start": 121.2,
+    "_words": 23,
+    "_dur": 9.7,
+    "refs": [
+     {
+      "ref": "E00.01.04#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E00.01.04#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E00.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L17",
+    "seg": "2 The dive",
+    "shot": "S13",
+    "text": "So all three germ layers come from the epiblast. The epiblast is not the ectoderm; ectoderm is only the part it leaves behind.",
+    "facts": [
+     "E05.01.04#f4",
+     "E05.01.01#m3"
+    ],
+    "hold": 2.0,
+    "_start": 132.8,
+    "_words": 23,
+    "_dur": 9.7,
+    "refs": [
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     },
+     {
+      "ref": "E05.01.01#m3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L18",
+    "seg": "3 The rod",
+    "shot": "S14",
+    "text": "Our cell is out in the mesoderm now. Back to day sixteen, at that mound: the primitive node.",
+    "facts": [
+     "E05.01.02#f2"
+    ],
+    "hold": 1.5,
+    "_start": 144.5,
+    "_words": 18,
+    "_dur": 7.6,
+    "refs": [
+     {
+      "ref": "E05.01.02#f2",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R06 CS8"
+     }
+    ]
+   },
+   {
+    "id": "L18b",
+    "seg": "3 The rod",
+    "shot": "S14",
+    "text": "One stream of cells does something different there. Cells entering at the node move straight forward in the midline, toward the head end.",
+    "facts": [
+     "E05.02.01#f1"
+    ],
+    "hold": 1.5,
+    "_start": 153.6,
+    "_words": 23,
+    "_dur": 9.7,
+    "refs": [
+     {
+      "ref": "E05.02.01#f1",
+      "mark": "✔✔",
+      "section": "E05.02",
+      "cite": "E05.02 · R05a, R06 CS7"
+     }
+    ]
+   },
+   {
+    "id": "L19",
+    "seg": "3 The rod",
+    "shot": "S15",
+    "text": "For a short time they sit within the endoderm, as a flat plate.",
+    "facts": [
+     "E05.02.01#f2"
+    ],
+    "hold": 1.0,
+    "_start": 164.7,
+    "_words": 13,
+    "_dur": 5.5,
+    "refs": [
+     {
+      "ref": "E05.02.01#f2",
+      "mark": "✔✔",
+      "section": "E05.02",
+      "cite": "E05.02 · R05a"
+     }
+    ]
+   },
+   {
+    "id": "L20",
+    "seg": "3 The rod",
+    "shot": "S15",
+    "text": "Then the plate lifts off the endoderm and rolls into a solid rod: the notochord.",
+    "facts": [
+     "E05.02.01#f3"
+    ],
+    "hold": 1.5,
+    "_start": 171.2,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E05.02.01#f3",
+      "mark": "✔✔",
+      "section": "E05.02",
+      "cite": "E05.02 · R05a"
+     }
+    ]
+   },
+   {
+    "id": "L21",
+    "seg": "3 The rod",
+    "shot": "S16",
+    "text": "In the book, its head end forms first, by about day seventeen, and tail parts are added as the streak moves back.",
+    "facts": [
+     "E05.02.01#f4"
+    ],
+    "hold": 1.0,
+    "_start": 179.0,
+    "_words": 22,
+    "_dur": 9.2,
+    "refs": [
+     {
+      "ref": "E05.02.01#f4",
+      "mark": "⚑",
+      "section": "E05.02",
+      "cite": "E05.02 · R05a"
+     }
+    ]
+   },
+   {
+    "id": "L22",
+    "seg": "3 The rod",
+    "shot": "S16",
+    "text": "Newer human data tell a different story. You'll find it on the notochord card.",
+    "facts": [
+     "E05.02.01#f6"
+    ],
+    "hold": 1.5,
+    "kind": "flag-pointer",
+    "_start": 189.2,
+    "_words": 14,
+    "_dur": 5.9,
+    "refs": [
+     {
+      "ref": "E05.02.01#f6",
+      "mark": "⚑",
+      "section": "E05.02",
+      "cite": "E05.02 · R05a"
+     }
+    ]
+   },
+   {
+    "id": "L23",
+    "seg": "3 The rod",
+    "shot": "S17",
+    "text": "The notochord lies in the midline and sends signals that help build the spine around it.",
+    "facts": [
+     "E05.02.01#f5"
+    ],
+    "hold": 1.5,
+    "_start": 196.6,
+    "_words": 16,
+    "_dur": 6.7,
+    "refs": [
+     {
+      "ref": "E05.02.01#f5",
+      "mark": "✔",
+      "section": "E05.02, E05.07",
+      "cite": "E05.02, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "L24",
+    "seg": "3 The rod",
+    "shot": "S18",
+    "text": "In adults only bits of it remain, in the nucleus pulposus, at the core of each spinal disc, the cushion between the vertebrae. It does not become the vertebrae.",
+    "facts": [
+     "E05.02.01#f7",
+     "E05.02.01#m1"
+    ],
+    "new": [
+     "nucleus pulposus"
+    ],
+    "hold": 2.0,
+    "_start": 204.8,
+    "_words": 29,
+    "_dur": 12.2,
+    "refs": [
+     {
+      "ref": "E05.02.01#f7",
+      "mark": "✔",
+      "section": "E05.02",
+      "cite": "E05.02 · E10"
+     },
+     {
+      "ref": "E05.02.01#m1",
+      "mark": "✔",
+      "section": "E05.02",
+      "cite": "E05.02 · E10"
+     }
+    ]
+   },
+   {
+    "id": "L25",
+    "seg": "3 The rod",
+    "shot": "S19",
+    "text": "And the mesoderm our cell joined goes on to build muscle, bone, connective tissue, the heart, vessels and blood.",
+    "facts": [
+     "E05.01.03#f6"
+    ],
+    "hold": 2.0,
+    "_start": 218.9,
+    "_words": 19,
+    "_dur": 8.0,
+    "refs": [
+     {
+      "ref": "E05.01.03#f6",
+      "mark": "✔",
+      "section": "E06.02",
+      "cite": "E06.02"
+     }
+    ]
+   },
+   {
+    "id": "L26",
+    "seg": "Clinical link",
+    "shot": "S20",
+    "text": "Clinical link. Here, at day seventeen, the groove our cell went through is still adding cells. It keeps going until the end of week four, then shrinks fast and disappears.",
+    "facts": [
+     "E05.01.02#f4"
+    ],
+    "hold": 1.0,
+    "_start": 228.9,
+    "_words": 30,
+    "_dur": 12.6,
+    "refs": [
+     {
+      "ref": "E05.01.02#f4",
+      "mark": "✔",
+      "section": "E05.05",
+      "cite": "E05.05"
+     }
+    ]
+   },
+   {
+    "id": "L27",
+    "seg": "Clinical link",
+    "shot": "S21",
+    "text": "Leftover streak cells near the base of the spine can form a sacrococcygeal teratoma, the most common tumour in newborns.",
+    "facts": [
+     "E05.01.02#f5",
+     "E05.01.02#f6"
+    ],
+    "new": [
+     "sacrococcygeal teratoma"
+    ],
+    "hold": 1.0,
+    "_start": 242.5,
+    "_words": 20,
+    "_dur": 8.4,
+    "refs": [
+     {
+      "ref": "E05.01.02#f5",
+      "mark": "✔",
+      "section": "E05.05 CC",
+      "cite": "E05.05 CC"
+     },
+     {
+      "ref": "E05.01.02#f6",
+      "mark": "✔",
+      "section": "E05.05 CC",
+      "cite": "E05.05 CC"
+     }
+    ]
+   },
+   {
+    "id": "L28",
+    "seg": "Clinical link",
+    "shot": "S21",
+    "text": "It holds tissue from all three germ layers, and it is often found on scans before birth.",
+    "facts": [
+     "E05.01.02#f7"
+    ],
+    "hold": 1.5,
+    "_start": 251.9,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": [
+     {
+      "ref": "E05.01.02#f7",
+      "mark": "✔✔",
+      "section": "E05.05 CC",
+      "cite": "E05.05 CC · R05g, R05h, R05i"
+     }
+    ]
+   },
+   {
+    "id": "L29",
+    "seg": "Close",
+    "shot": "S22",
+    "text": "So, back to our question. Cells went in through the streak. The first replaced the hypoblast as endoderm, the next became mesoderm, and those left on top became ectoderm.",
+    "facts": [
+     "E05.01.03#f2",
+     "E05.01.03#f3",
+     "E05.01.03#f5"
+    ],
+    "hold": 1.0,
+    "_start": 260.5,
+    "_words": 29,
+    "_dur": 12.2,
+    "refs": [
+     {
+      "ref": "E05.01.03#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.03#f5",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L30",
+    "seg": "Close",
+    "shot": "S22",
+    "text": "Three layers, all from the epiblast.",
+    "facts": [
+     "E05.01.04#f4"
+    ],
+    "hold": 2.0,
+    "_start": 273.7,
+    "_words": 6,
+    "_dur": 2.5,
+    "refs": [
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "L31",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "Two quick checks. On this section, tap the layer our cell joined.",
+    "facts": [],
+    "hold": 4.0,
+    "kind": "check",
+    "check": "spatial: tap Mesoderm on the day-17 cross-section (answer from E05.01.03#f3)",
+    "_start": 278.2,
+    "_words": 12,
+    "_dur": 5.0,
+    "refs": []
+   },
+   {
+    "id": "L31a",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "The middle layer: mesoderm.",
+    "facts": [
+     "E05.01.03#f3"
+    ],
+    "hold": 2.0,
+    "kind": "reveal",
+    "_start": 287.2,
+    "_words": 4,
+    "_dur": 1.7,
+    "refs": [
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L32",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "And the hypoblast: does it become endoderm, or is it replaced?",
+    "facts": [],
+    "hold": 4.0,
+    "kind": "check",
+    "check": "E05.01.01 q2 (refutes m1), spoken choices; chips 'Becomes endoderm' / 'Is replaced'",
+    "_start": 290.9,
+    "_words": 11,
+    "_dur": 4.6,
+    "refs": []
+   },
+   {
+    "id": "L32a",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "It is replaced. Epiblast cells take its place; it does not become endoderm.",
+    "facts": [
+     "E05.01.01#m1"
+    ],
+    "hold": 2.0,
+    "kind": "reveal",
+    "_start": 299.5,
+    "_words": 13,
+    "_dur": 5.5,
+    "refs": [
+     {
+      "ref": "E05.01.01#m1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "L33",
+    "seg": "Close",
+    "shot": "S24",
+    "text": "Next: how does this flat disc fold into a body?",
+    "facts": [],
+    "hold": 1.0,
+    "kind": "teaser",
+    "_start": 307.0,
+    "_words": 10,
+    "_dur": 4.2,
+    "refs": []
+   }
+  ],
+  "general": [
+   {
+    "id": "G01",
+    "seg": "Open",
+    "shot": "S01",
+    "text": "Every tissue in your body traces back to one thin sheet of cells. So how does one sheet make three different layers?",
+    "facts": [
+     "E05.01.04#f4"
+    ],
+    "hold": 2.0,
+    "kind": "question",
+    "_start": 0.0,
+    "_words": 22,
+    "_dur": 9.2,
+    "refs": [
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "G02",
+    "seg": "Open",
+    "shot": "S02",
+    "text": "Three words first: epiblast, primitive streak, gastrulation.",
+    "facts": [],
+    "new": [
+     "epiblast",
+     "primitive streak",
+     "gastrulation"
+    ],
+    "hold": 1.0,
+    "kind": "terms",
+    "_start": 11.2,
+    "_words": 7,
+    "_dur": 2.9,
+    "refs": []
+   },
+   {
+    "id": "G03",
+    "seg": "1 The groove",
+    "shot": "S03",
+    "text": "This tiny disc is an embryo, about two weeks old. It has two layers. The upper one is the epiblast, our starting layer.",
+    "facts": [
+     "E05.01.04#f1"
+    ],
+    "hold": 1.0,
+    "_start": 15.2,
+    "_words": 23,
+    "_dur": 9.7,
+    "refs": [
+     {
+      "ref": "E05.01.04#f1",
+      "mark": "✔",
+      "section": "E04.01",
+      "cite": "E04.01"
+     }
+    ]
+   },
+   {
+    "id": "G04",
+    "seg": "1 The groove",
+    "shot": "S04",
+    "text": "In week three a groove appears on that starting layer, at the tail end. This is the primitive streak.",
+    "facts": [
+     "E05.01.01#f1",
+     "E05.01.01#f2",
+     "E05.01.02#f1",
+     "E05.01.02#f3"
+    ],
+    "hold": 1.5,
+    "_start": 25.8,
+    "_words": 19,
+    "_dur": 8.0,
+    "refs": [
+     {
+      "ref": "E05.01.01#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     },
+     {
+      "ref": "E05.01.01#f2",
+      "mark": "✔✔",
+      "section": "E05.01, E06.06 Tbl 6.4",
+      "cite": "E05.01, E06.06 Tbl 6.4 · R06 CS6"
+     },
+     {
+      "ref": "E05.01.02#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R06 CS6"
+     },
+     {
+      "ref": "E05.01.02#f3",
+      "mark": "✔",
+      "section": "E05.01, E05.03",
+      "cite": "E05.01, E05.03"
+     }
+    ]
+   },
+   {
+    "id": "G05",
+    "seg": "1 The groove",
+    "shot": "S06",
+    "text": "The head will form at the other end, so the streak marks which way is head and which way is tail.",
+    "facts": [
+     "E05.01.02#f3"
+    ],
+    "hold": 1.5,
+    "_start": 35.3,
+    "_words": 21,
+    "_dur": 8.8,
+    "refs": [
+     {
+      "ref": "E05.01.02#f3",
+      "mark": "✔",
+      "section": "E05.01, E05.03",
+      "cite": "E05.01, E05.03"
+     }
+    ]
+   },
+   {
+    "id": "G06",
+    "seg": "2 The dive",
+    "shot": "S07",
+    "text": "Let's go back a day and follow one cell from the starting layer. We have marked it.",
+    "facts": [],
+    "hold": 1.0,
+    "kind": "frame",
+    "_start": 45.6,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": []
+   },
+   {
+    "id": "G07",
+    "seg": "2 The dive",
+    "shot": "S08",
+    "text": "Cells move toward the groove, let go of their neighbours and slip underneath. Think of a crowd filing down a narrow ramp, then spreading out in the thin gap between two floors. Unlike a ramp, the groove is made of the cells themselves.",
+    "facts": [
+     "E05.01.03#f1"
+    ],
+    "hold": 1.5,
+    "kind": "analogy",
+    "_start": 53.7,
+    "_words": 43,
+    "_dur": 18.0,
+    "refs": [
+     {
+      "ref": "E05.01.03#f1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G08",
+    "seg": "2 The dive",
+    "shot": "S09",
+    "text": "The first cells in push the old bottom layer aside and take its place. They become the new bottom layer.",
+    "facts": [
+     "E05.01.03#f2"
+    ],
+    "hold": 1.5,
+    "_start": 73.3,
+    "_words": 20,
+    "_dur": 8.4,
+    "refs": [
+     {
+      "ref": "E05.01.03#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G09",
+    "seg": "2 The dive",
+    "shot": "S10",
+    "text": "Our cell goes in later. It settles in between, in a new middle layer.",
+    "facts": [
+     "E05.01.03#f3"
+    ],
+    "hold": 1.5,
+    "_start": 83.2,
+    "_words": 14,
+    "_dur": 5.9,
+    "refs": [
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G10",
+    "seg": "2 The dive",
+    "shot": "S11",
+    "text": "The middle layer spreads out to the sides and toward the head.",
+    "facts": [
+     "E05.01.03#f4"
+    ],
+    "hold": 1.0,
+    "_start": 90.5,
+    "_words": 12,
+    "_dur": 5.0,
+    "refs": [
+     {
+      "ref": "E05.01.03#f4",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G11",
+    "seg": "2 The dive",
+    "shot": "S12",
+    "text": "Cells that stay behind on top become the new top layer. This new top layer is only part of the starting layer.",
+    "facts": [
+     "E05.01.03#f5",
+     "E05.01.01#m3"
+    ],
+    "hold": 1.5,
+    "_start": 96.6,
+    "_words": 22,
+    "_dur": 9.2,
+    "refs": [
+     {
+      "ref": "E05.01.03#f5",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.01#m3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G12",
+    "seg": "2 The dive",
+    "shot": "S13",
+    "text": "Cut across the disc, and there they are: ectoderm on top, mesoderm in the middle, endoderm at the bottom. These are the three layers, and making them is gastrulation.",
+    "facts": [
+     "E00.01.04#f2",
+     "E00.01.04#f3",
+     "E00.01.04#f4",
+     "E05.01.01#f1"
+    ],
+    "new": [
+     "ectoderm",
+     "mesoderm",
+     "endoderm"
+    ],
+    "hold": 2.0,
+    "_start": 107.3,
+    "_words": 29,
+    "_dur": 12.2,
+    "refs": [
+     {
+      "ref": "E00.01.04#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E00.01.04#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E00.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.01#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     }
+    ]
+   },
+   {
+    "id": "G13",
+    "seg": "This becomes",
+    "shot": "S19",
+    "text": "The middle layer our cell joined goes on to build muscle, bone, the heart, vessels and blood.",
+    "facts": [
+     "E05.01.03#f6"
+    ],
+    "hold": 2.0,
+    "_start": 121.5,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": [
+     {
+      "ref": "E05.01.03#f6",
+      "mark": "✔",
+      "section": "E06.02",
+      "cite": "E06.02"
+     }
+    ]
+   },
+   {
+    "id": "G14",
+    "seg": "Close",
+    "shot": "S22",
+    "text": "So, one sheet became three, because cells dived in through the streak. All three layers come from that one starting layer.",
+    "facts": [
+     "E05.01.03#f1",
+     "E05.01.04#f4"
+    ],
+    "hold": 2.0,
+    "_start": 130.6,
+    "_words": 21,
+    "_dur": 8.8,
+    "refs": [
+     {
+      "ref": "E05.01.03#f1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "G15",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "Quick check. On this section, tap the layer our cell joined.",
+    "facts": [],
+    "hold": 4.0,
+    "kind": "check",
+    "check": "spatial: tap Mesoderm",
+    "_start": 141.4,
+    "_words": 11,
+    "_dur": 4.6,
+    "refs": []
+   },
+   {
+    "id": "G15a",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "The middle layer, the mesoderm.",
+    "facts": [
+     "E05.01.03#f3"
+    ],
+    "hold": 2.0,
+    "kind": "reveal",
+    "_start": 150.0,
+    "_words": 5,
+    "_dur": 2.1,
+    "refs": [
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "G16",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "And which layer did all three come from: the epiblast, the old bottom layer, or a different one for each?",
+    "facts": [],
+    "hold": 4.0,
+    "kind": "check",
+    "check": "own options (refutes E05.01.01 m2); chips 'Epiblast' / 'Old bottom layer' / 'One each'",
+    "_start": 154.1,
+    "_words": 20,
+    "_dur": 8.4,
+    "refs": []
+   },
+   {
+    "id": "G16a",
+    "seg": "Close",
+    "shot": "S23",
+    "text": "The epiblast. All three came from it.",
+    "facts": [
+     "E05.01.04#f4"
+    ],
+    "hold": 2.0,
+    "kind": "reveal",
+    "_start": 166.5,
+    "_words": 7,
+    "_dur": 2.9,
+    "refs": [
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "G17",
+    "seg": "Close",
+    "shot": "S24",
+    "text": "Next: how does this flat disc fold into a body?",
+    "facts": [],
+    "hold": 1.0,
+    "kind": "teaser",
+    "_start": 171.5,
+    "_words": 10,
+    "_dur": 4.2,
+    "refs": []
+   }
+  ],
+  "short": [
+   {
+    "id": "R01",
+    "seg": "Ch1 hook",
+    "shot": "SS1",
+    "text": "How does this one sheet of cells become three? Every tissue in your body comes from it.",
+    "facts": [
+     "E05.01.04#f4"
+    ],
+    "hold": 0.8,
+    "kind": "question",
+    "title": null,
+    "_start": 0.0,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": [
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     }
+    ]
+   },
+   {
+    "id": "R02",
+    "seg": "Ch2",
+    "shot": "SS2",
+    "text": "Watch this cell. In week three a groove appears at the tail end: the primitive streak.",
+    "facts": [
+     "E05.01.01#f1",
+     "E05.01.01#f2",
+     "E05.01.02#f1",
+     "E05.01.02#f3"
+    ],
+    "new": [
+     "primitive streak"
+    ],
+    "hold": 1.5,
+    "title": "THE GROOVE",
+    "_start": 7.9,
+    "_words": 16,
+    "_dur": 6.7,
+    "refs": [
+     {
+      "ref": "E05.01.01#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     },
+     {
+      "ref": "E05.01.01#f2",
+      "mark": "✔✔",
+      "section": "E05.01, E06.06 Tbl 6.4",
+      "cite": "E05.01, E06.06 Tbl 6.4 · R06 CS6"
+     },
+     {
+      "ref": "E05.01.02#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R06 CS6"
+     },
+     {
+      "ref": "E05.01.02#f3",
+      "mark": "✔",
+      "section": "E05.01, E05.03",
+      "cite": "E05.01, E05.03"
+     }
+    ]
+   },
+   {
+    "id": "R03",
+    "seg": "Ch3",
+    "shot": "SS3",
+    "text": "Cells move to the groove, let go of their neighbours and slip underneath. Ours too.",
+    "facts": [
+     "E05.01.03#f1"
+    ],
+    "hold": 1.5,
+    "title": "THE DIVE",
+    "_start": 16.1,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E05.01.03#f1",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "R04",
+    "seg": "Ch4",
+    "shot": "SS4",
+    "text": "The first cells in replace the old layer underneath. Later ones, like ours, settle in between: mesoderm.",
+    "facts": [
+     "E05.01.03#f2",
+     "E05.01.03#f3"
+    ],
+    "new": [
+     "mesoderm"
+    ],
+    "hold": 1.5,
+    "title": "A NEW MIDDLE",
+    "_start": 23.9,
+    "_words": 17,
+    "_dur": 7.1,
+    "refs": [
+     {
+      "ref": "E05.01.03#f2",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.03#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     }
+    ]
+   },
+   {
+    "id": "R05",
+    "seg": "Ch5",
+    "shot": "SS5",
+    "text": "Cells left on top form the new top layer. Three layers from one sheet: gastrulation.",
+    "facts": [
+     "E05.01.03#f5",
+     "E05.01.04#f4",
+     "E05.01.01#f1"
+    ],
+    "new": [
+     "gastrulation"
+    ],
+    "hold": 1.5,
+    "title": "LEFT ON TOP",
+    "_start": 32.6,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E05.01.03#f5",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.04#f4",
+      "mark": "✔",
+      "section": "E05.01, E05.07",
+      "cite": "E05.01, E05.07"
+     },
+     {
+      "ref": "E05.01.01#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     }
+    ]
+   },
+   {
+    "id": "R06",
+    "seg": "Ch6 payoff",
+    "shot": "SS6",
+    "text": "Three layers. Ours is in the middle one. Mesoderm builds muscle, bone, heart and blood.",
+    "facts": [
+     "E00.01.04#f1",
+     "E00.01.04#f3",
+     "E05.01.03#f6"
+    ],
+    "hold": 2.0,
+    "title": "THIS BECOMES",
+    "_start": 40.4,
+    "_words": 15,
+    "_dur": 6.3,
+    "refs": [
+     {
+      "ref": "E00.01.04#f1",
+      "mark": "✔✔",
+      "section": "E05.01",
+      "cite": "E05.01 · R05b"
+     },
+     {
+      "ref": "E00.01.04#f3",
+      "mark": "✔",
+      "section": "E05.01",
+      "cite": "E05.01"
+     },
+     {
+      "ref": "E05.01.03#f6",
+      "mark": "✔",
+      "section": "E06.02",
+      "cite": "E06.02"
+     }
+    ]
+   },
+   {
+    "id": "R07",
+    "seg": "End card",
+    "shot": "SS7",
+    "text": "Full episode in the app.",
+    "facts": [],
+    "hold": 1.0,
+    "kind": "endcard",
+    "title": null,
+    "_start": 48.7,
+    "_words": 5,
+    "_dur": 2.1,
+    "refs": []
+   }
+  ]
+ },
+ "lengths_s": {
+  "lesson": 312.2,
+  "general": 176.7,
+  "short": 51.8
+ },
+ "needs": {
+  "N1": "Host scene: add `cam_lesson` (16:9) beside the 9:16 camera — one scene, two cameras (M1b to-do; visual-style §10). Lines S01/S24/SS1. Step: M1V8 or R1.",
+  "N2": "Terms-strip graphic: 3 term chips on a neutral token panel next to the host (D-059 (5)); chips use layer tokens only for layer names (none here → neutral chips). Step: R1.",
+  "N3": "Video use of a tracer: scene spec §5/§6 make `tracer` drill-only ('never in Try it, stills or video'). S1E01 needs the marked cell on screen. Spec change + engine flag, e.g. shot `show.trace` (scene-spec §10). Step: V-step (V4?) before ② can show it; ② may fake it as an animatic placeholder.",
+  "N4": "New tracer `t-meso` (with the scene disclaimer 'marked cell drawn larger' kept on every shot it appears in) in sc-E00.01.04 (and the same cell in sc-E05.02.01 at its day-16 lateral mesoderm position, for S14): an epiblast cell that ingresses after the endoderm cell and ends in mesoderm, then spreads laterally (path keyed days 15 → 17). The existing `t-endo` stays as the 'first cells' ghost. Step: V-step (scene edit + scene-check path rules).",
+  "N6": "Label swap 'Epiblast → ectoderm' becomes a spoken text item (C1 G-A11y to-do: '→' needs spoken text) and a clean 'Ectoderm' label at day 17. Step: V-step / scene owner.",
+  "N7": "Shot-sheet `show` state: §10 has no `view/cut/slab_mm/layers/trace` per shot — add `show` (same shape as card drills §8a) so S13/S22 can ask for the transverse cut + slab at day 17. Step: R1 shot-sheet code (spec first).",
+  "N8": "Adult anchor scene `sc-S1E01-18`: adult lumbar segment, one intervertebral disc cut to show the nucleus pulposus (Z-Anatomy adult mesh, rendered video only, D-021); vertebrae ctx. Step: V-step or R1.",
+  "N9": "Clinical slot: caudal streak remnant + sacrococcygeal teratoma diagram `sc-S1E01-21` (our own diagram, no imaging, D6/§14); streak shrink after day 18 is not in any scene (keys end at day 17/18) → either a day-28 key or a diagram only. Step: V-step.",
+  "N11": "Day stamp rewinds on screen (counts back) on the S06→S07 and S13→S14 time jumps, so a jump back in day reads as intended (G-Story r1). Step: ② animatic overlay, then R1.",
+  "N12": "Day-16 stamp agrees across scenes: sc-E00.01.04 eases day 16 to 'CS06–07 · ≈0.3 mm' while sc-E05.02.01 keys day 16 as 'CS07 · 0.4 mm'. Add a day-16 key to sc-E00.01.04 = CS07 · 0.4 mm (dossier §1 book 16–18 d, R06/R08), or re-key sc-E05.02.01. Step: V-step (scene edit + scene-check).",
+  "N10": "Spatial Check in video: tap-the-layer on a section is an app drill (V2 label drill); the video shows the question + a 4 s pause and the answer reveal; the app version links to the E05.01.03 drill. Step: R1 (player Checks)."
+ }
+}
