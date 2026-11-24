@@ -1,29 +1,17 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24 17:07 IST",
+ "generated_at": "2026-11-24 17:50 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "c7ccb57",
+  "commit": "bc8ac77",
   "branch": "main"
  },
- "now": [
-  {
-   "id": "W5",
-   "title": "W5 dispatcher — routine checks, every pipeline task, Desk snapshot, Desk answers",
-   "chat": "Bio · Build · W5 dispatcher",
-   "row": "lock",
-   "status": "in progress",
-   "start": "2026-11-24",
-   "end": "2026-11-24",
-   "slipped": false,
-   "tentative": false
-  }
- ],
+ "now": [],
  "lock": {
-  "state": "held",
-  "chat": "Bio · Build · W5 dispatcher",
-  "since": "2026-11-24 15:33 IST",
-  "age_h": 1.6,
+  "state": "free",
+  "chat": null,
+  "since": null,
+  "age_h": null,
   "old": false,
   "since_reason": null
  },
@@ -35,7 +23,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-25",
-   "end": "2026-11-26",
+   "end": "2026-11-25",
    "slipped": false,
    "tentative": false
   },
@@ -45,8 +33,8 @@
    "chat": "Bio · Build · W6 desk",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
+   "start": "2026-11-25",
+   "end": "2026-11-25",
    "slipped": false,
    "tentative": true
   },
@@ -56,7 +44,7 @@
    "chat": "Bio · Build · V4 viewer controls",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
+   "start": "2026-11-25",
    "end": "2026-11-26",
    "slipped": false,
    "tentative": true
@@ -68,7 +56,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-26",
-   "end": "2026-11-27",
+   "end": "2026-11-26",
    "slipped": false,
    "tentative": true
   },
@@ -78,8 +66,8 @@
    "chat": "Bio · Build · M1b v8 install",
    "row": "lock",
    "status": "ready",
-   "start": "2026-11-27",
-   "end": "2026-11-27",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
    "slipped": false,
    "tentative": false
   }
@@ -89,7 +77,7 @@
    "id": "T2",
    "step": "K1",
    "kind": "check",
-   "unblocks": 47,
+   "unblocks": 46,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -97,7 +85,7 @@
    "id": "H1.q4",
    "step": "H1",
    "kind": "action",
-   "unblocks": 46,
+   "unblocks": 45,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -105,7 +93,7 @@
    "id": "T5",
    "step": "H1",
    "kind": "check",
-   "unblocks": 46,
+   "unblocks": 45,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -113,7 +101,7 @@
    "id": "H1.q6",
    "step": "H1",
    "kind": "action",
-   "unblocks": 46,
+   "unblocks": 45,
    "blocks": false,
    "asked": "2026-11-18"
   },
@@ -121,7 +109,7 @@
    "id": "L1.q2",
    "step": "L1",
    "kind": "action",
-   "unblocks": 40,
+   "unblocks": 39,
    "blocks": false,
    "asked": "2026-11-21"
   },
@@ -129,7 +117,7 @@
    "id": "T7",
    "step": "L1",
    "kind": "check",
-   "unblocks": 40,
+   "unblocks": 39,
    "blocks": false,
    "asked": "2026-11-21"
   },
@@ -185,25 +173,9 @@
    "id": "T8b",
    "step": "V3",
    "kind": "check",
-   "unblocks": 5,
+   "unblocks": 4,
    "blocks": false,
    "asked": null
-  },
-  {
-   "id": "T11",
-   "step": "W1",
-   "kind": "check",
-   "unblocks": 5,
-   "blocks": false,
-   "asked": "2026-11-21"
-  },
-  {
-   "id": "V3.q1",
-   "step": "V3",
-   "kind": "decide",
-   "unblocks": 5,
-   "blocks": false,
-   "asked": "2026-11-22"
   },
   {
    "id": "M1.q3",
@@ -247,9 +219,25 @@
   },
   {
    "id": "T11",
-   "step": "W2",
+   "step": "W1",
    "kind": "check",
    "unblocks": 4,
+   "blocks": false,
+   "asked": "2026-11-21"
+  },
+  {
+   "id": "V3.q1",
+   "step": "V3",
+   "kind": "decide",
+   "unblocks": 4,
+   "blocks": false,
+   "asked": "2026-11-22"
+  },
+  {
+   "id": "T11",
+   "step": "W2",
+   "kind": "check",
+   "unblocks": 3,
    "blocks": false,
    "asked": "2026-11-21"
   },
@@ -257,17 +245,9 @@
    "id": "W2.q1",
    "step": "W2",
    "kind": "decide",
-   "unblocks": 4,
-   "blocks": false,
-   "asked": "2026-11-21"
-  },
-  {
-   "id": "W5.q1",
-   "step": "W5",
-   "kind": "action",
    "unblocks": 3,
    "blocks": false,
-   "asked": "2026-11-24"
+   "asked": "2026-11-21"
   },
   {
    "id": "I1.q1",
@@ -628,32 +608,30 @@
    "unblocks": 0,
    "blocks": false,
    "asked": "2026-11-24"
-  }
- ],
- "running": [
+  },
   {
+   "id": "W5.q1",
    "step": "W5",
-   "chat": "Bio · Build · W5 dispatcher",
-   "by": "Aaditya",
-   "start": "2026-11-24 15:33",
-   "age_h": 1.6,
-   "old": false,
-   "old_reason": null
+   "kind": "action",
+   "unblocks": 0,
+   "blocks": false,
+   "asked": "2026-11-24"
   }
  ],
+ "running": [],
  "slips": [],
  "ci": {
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "b7da250",
-   "run": 45371201956,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45371201956"
+   "commit": "c7ccb57",
+   "run": 45385856561,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45385856561"
   },
   "main_head": {
-   "commit": "c7ccb57",
-   "state": null,
-   "reason": "no run listed for this commit"
+   "commit": "bc8ac77",
+   "state": "in_progress",
+   "reason": null
   }
  },
  "checks": [
@@ -670,7 +648,7 @@
   {
    "id": "ci",
    "state": "warn",
-   "detail": "main c7ccb57 is not confirmed green (no run)"
+   "detail": "main bc8ac77 is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
@@ -680,12 +658,12 @@
   {
    "id": "lock_age",
    "state": "pass",
-   "detail": "held by Bio · Build · W5 dispatcher"
+   "detail": "free"
   },
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "1 open"
+   "detail": "0 open"
   },
   {
    "id": "conflicts",
@@ -733,8 +711,7 @@
     "status": "planned",
     "chat": "Bio · Build · K3 embryo map",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": "2026-12-01"
    },
@@ -744,8 +721,7 @@
     "chat": "Bio · Build · K4 map side + day",
     "waits_for": [
      "K3 (planned)",
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": "2026-12-02"
    },
@@ -775,8 +751,7 @@
     "status": "planned",
     "chat": "Bio · Build · R1 render",
     "waits_for": [
-     "P1 (planned)",
-     "the build lock"
+     "P1 (planned)"
     ],
     "end": "2026-11-28"
    },
@@ -819,54 +794,36 @@
     "id": "V4",
     "status": "planned",
     "chat": "Bio · Build · V4 viewer controls",
-    "waits_for": [
-     "the build lock"
-    ],
-    "end": "2026-11-26"
-   },
-   {
-    "id": "W5",
-    "status": "in progress",
-    "chat": "Bio · Build · W5 dispatcher",
     "waits_for": [],
-    "end": "2026-11-24"
+    "end": "2026-11-26"
    },
    {
     "id": "W5b",
     "status": "planned",
     "chat": "Bio · Build · W5b job queue",
-    "waits_for": [
-     "W5 (in progress)",
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-27"
    },
    {
     "id": "W6",
     "status": "planned",
     "chat": "Bio · Build · W6 desk",
-    "waits_for": [
-     "W5 (in progress)",
-     "the build lock"
-    ],
-    "end": "2026-11-26"
+    "waits_for": [],
+    "end": "2026-11-25"
    },
    {
     "id": "M1V8",
     "status": "ready",
     "chat": "Bio · Build · M1b v8 install",
-    "waits_for": [
-     "the build lock"
-    ],
-    "end": "2026-11-27"
+    "waits_for": [],
+    "end": "2026-11-26"
    },
    {
     "id": "L3",
     "status": "planned",
     "chat": "Bio · Build · L3 player",
     "waits_for": [
-     "R1 (planned)",
-     "the build lock"
+     "R1 (planned)"
     ],
     "end": "2026-11-28"
    },
@@ -888,20 +845,15 @@
     "id": "SR2",
     "status": "planned",
     "chat": "Bio · Build · SR2 book vs research",
-    "waits_for": [
-     "the build lock"
-    ],
-    "end": "2026-11-27"
+    "waits_for": [],
+    "end": "2026-11-26"
    },
    {
     "id": "U3b",
     "status": "planned",
     "chat": "Bio · Build · U3b look screens",
-    "waits_for": [
-     "W5 (in progress)",
-     "the build lock"
-    ],
-    "end": "2026-11-26"
+    "waits_for": [],
+    "end": "2026-11-25"
    },
    {
     "id": "GATE",
@@ -915,8 +867,7 @@
     "status": "idea",
     "chat": "Bio · Build · D1 Drive sync",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    },
@@ -925,8 +876,7 @@
     "status": "idea",
     "chat": "Bio · Build · G1 guide",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    },
@@ -935,25 +885,23 @@
     "status": "planned",
     "chat": "Bio · Ideation · flag digest",
     "waits_for": [],
-    "end": "2026-11-29"
+    "end": "2026-11-28"
    },
    {
     "id": "FA",
     "status": "planned",
     "chat": "Bio · Content · flag answers",
     "waits_for": [
-     "FD (planned)",
-     "the build lock"
+     "FD (planned)"
     ],
-    "end": "2026-11-29"
+    "end": "2026-11-28"
    },
    {
     "id": "LST",
     "status": "idea",
     "chat": "Bio · Build · LST step ticker",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    }
