@@ -1,24 +1,12 @@
 {
  "schema": 1,
- "generated_at": "2026-11-25 01:33 IST",
+ "generated_at": "2026-11-25 02:21 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "b98c05c",
+  "commit": "62478f8",
   "branch": "main"
  },
- "now": [
-  {
-   "id": "P1",
-   "title": "P1 S1E01 Gastrulation — script + animatic",
-   "chat": "Bio · Episode · S1E01",
-   "row": "gpu",
-   "status": "in progress",
-   "start": "2026-11-25",
-   "end": "2026-11-25",
-   "slipped": false,
-   "tentative": false
-  }
- ],
+ "now": [],
  "lock": {
   "state": "free",
   "chat": null,
@@ -260,6 +248,22 @@
    "unblocks": 3,
    "blocks": false,
    "asked": "2026-11-21"
+  },
+  {
+   "id": "P1.q2",
+   "step": "P1",
+   "kind": "decide",
+   "unblocks": 2,
+   "blocks": false,
+   "asked": "2026-11-25"
+  },
+  {
+   "id": "T4",
+   "step": "P1",
+   "kind": "check",
+   "unblocks": 2,
+   "blocks": false,
+   "asked": "2026-11-25"
   },
   {
    "id": "I1.q1",
@@ -622,17 +626,7 @@
    "asked": "2026-11-24"
   }
  ],
- "running": [
-  {
-   "step": "P1",
-   "chat": "Bio · Episode · S1E01 animatic",
-   "by": "Aaditya",
-   "start": "2026-11-24 23:04",
-   "age_h": 2.5,
-   "old": false,
-   "old_reason": null
-  }
- ],
+ "running": [],
  "slips": [],
  "ci": {
   "newest_finished": {
@@ -643,8 +637,8 @@
    "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45450275505"
   },
   "main_head": {
-   "commit": "b98c05c",
-   "state": "success",
+   "commit": "62478f8",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -656,18 +650,18 @@
   },
   {
    "id": "next",
-   "state": "warn",
-   "detail": "schedule builds; STATUS § Next differs (check.py --next --write)"
+   "state": "pass",
+   "detail": "schedule builds; STATUS § Next agrees"
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main b98c05c is green"
+   "state": "warn",
+   "detail": "main 62478f8 is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
-   "state": "warn",
-   "detail": "27 uncommitted files"
+   "state": "pass",
+   "detail": "clean and in sync"
   },
   {
    "id": "lock_age",
@@ -677,7 +671,7 @@
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "1 open"
+   "detail": "0 open"
   },
   {
    "id": "conflicts",
@@ -755,18 +749,16 @@
    },
    {
     "id": "P1",
-    "status": "in progress",
+    "status": "owner check",
     "chat": "Bio · Episode · S1E01",
     "waits_for": [],
-    "end": "2026-11-25"
+    "end": null
    },
    {
     "id": "R1",
     "status": "planned",
     "chat": "Bio · Build · R1 render",
-    "waits_for": [
-     "P1 (in progress)"
-    ],
+    "waits_for": [],
     "end": "2026-11-28"
    },
    {
