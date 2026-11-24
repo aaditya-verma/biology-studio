@@ -1,6 +1,6 @@
 # Glossary
 
-*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 22 Nov 2026 · Bio · Build · L2 lessons (lesson, sitting, lesson step, On the go, Study, Mixed review, recall stats). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (plan, resource row, critical path, run, professor suggestion). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode (Reviewer mode, human science pass, plain line). Before: 21 Nov 2026 · Bio · Build · V2 3D drills (drill, pin, masked stamp, scene view, demo card; notochord looks). Before: 21 Nov 2026 · Bio · Build · L1 learning core (statuses, deck, guide card). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §5 Lesson, Part, segment mode, leader line, media tag, clinical link slot, honesty tag, end-state handoff (D-046). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — §6 Remember prompt, Clinical link, Where it shows up (D-042). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §8 five look terms (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
+*(Purpose: one name per thing — terms by thread, production, app and project terms. Updated: 24 Nov 2026 · Bio · Fix · tentative rows (Desk, desk.json, Tentative step; §9 Step ids). Before: 22 Nov 2026 · Bio · Build · L2 lessons (lesson, sitting, lesson step, On the go, Study, Mixed review, recall stats). Before: 21 Nov 2026 · Bio · Build · W2 scheduler (plan, resource row, critical path, run, professor suggestion). Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode (Reviewer mode, human science pass, plain line). Before: 21 Nov 2026 · Bio · Build · V2 3D drills (drill, pin, masked stamp, scene view, demo card; notochord looks). Before: 21 Nov 2026 · Bio · Build · L1 learning core (statuses, deck, guide card). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §5 Lesson, Part, segment mode, leader line, media tag, clinical link slot, honesty tag, end-state handoff (D-046). Before: 20 Nov 2026 · Bio · Content · C1 Part 0 + Ch 5 — §6 Remember prompt, Clinical link, Where it shows up (D-042). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §8 five look terms (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — §8 progress map, steps.json, owner input, can start now, proposed status (D-040). Before: 19 Nov 2026 · Bio · Research · X1 Ch 06 — §7 CS11–CS23 events + R02 age note (D-039). Before: 19 Nov 2026 · Bio · Build · V1 viewer — day key, stamp, cut plane, axis gizmo, still; embryo axes + planes. Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: §5 rendition, §6 device class, input class, test matrix, layout check, contact sheet (D-033); added host, Short, kinetic captions (D-032). Our own words. Each embryology term gets its book citation once I1 numbers the sections. New term → add it here.)*
 
 ## 1. Timeline & staging (thread T)
 - **Fertilization age vs gestational age:** embryology counts from fertilization; clinicians count from the last menstrual period (about 2 weeks earlier). Always say which.
@@ -139,3 +139,79 @@ A stage is set by **form**, not by age or length (R05f). Day = classic estimate,
 - **Chapter title:** ≤ 4-word thin-caps title at the top of each 8-s chapter of a Short (D8, D-041).
 - **Chapter grammar:** the 6 × 8 s Short structure: hook, four ideas, payoff on the section view.
 - **Swatch-chip frame:** a debug frame rendered per shot that shows each layer's graded colour beside its token, with ΔE00.
+- **Desk:** the central coordination chat, a Cowork chat rolled weekly (`Bio · Desk · <date>`); it reads `desk.json` + STATUS, suggests steps and queues owner answers to W5. Its dashboard is the Desk tab on `#progress` (W6, D-099).
+- **`desk.json`:** `studio-docs/build/desk.json`, the snapshot W5's scheduled checks write (now, lock, next 5 with dates, ranked inputs, running, slips, CI, generated-at); over 6 h old = stale (W5, D-099).
+- **Tentative step:** a planned step agreed before it is scoped — `todo` line 1 reads *Tentative — firm up when its prompt is written*; the Plan dates it (D-099).
+
+## 9. Step ids
+
+*(From the owner's doc Biology Studio — Task ID glossary, sections 1, 2 and 5, as read 24 Nov 2026. Step status stays in `build/steps.json`.)*
+
+### 9.1 How to read a step id
+A step id is **letter(s) = track** + **number = order inside that track**. A higher number usually needs the lower one. Ids never change or get reused (RULES A2), so gaps and odd names are history, not mistakes.
+
+| Pattern | Means | Example |
+| --- | --- | --- |
+| `L1`, `L2`, `L3` | Track L, steps in order | L2 needs L1 |
+| `…b` | Second pass of the same step | `M1b` = M1 host shot, after M1 numbers |
+| `…F` | Fix chat on that step | `L1F`, `U2F`, `W3F`, `MAPF` |
+| `…a` / `…b` | One step split in parts | `X3a` → `X3b`, `X2a` → `X2c` |
+| `X1.NN` | One step per book chapter | `X1.04` = research, Ch 4 |
+| `…V8` | A version of a step's kit | `M1V8` = M1b v8 install |
+| `<step>.q<n>` | Owner input on that step | `X1.04.q1` |
+| Word ids | One-off steps | `GATE`, `CIG`, `WCON`, `FD`, `FA` |
+
+Chat name always follows: `Bio · <Type> · <Step>`, e.g. `Bio · Build · U3 look screens`. Source: `build/steps.json` (100 steps on 24 Nov 2026, incl. 21 X1 chapters and 25 IB ideas).
+
+### 9.2 Letter families
+Each letter is one track. Lane = where it sits on the Plan (lock lane runs one at a time).
+
+| Letter | Track | Steps | Lane |
+| --- | --- | --- | --- |
+| **M** | Media: render/voice bake-off, host | M0 setup, M1, M1b, M1V8 | GPU |
+| **H** | Hub: shared repo, reviewer home | H1, H2 | Lock |
+| **I** | Index the book | I1 | Lock |
+| **K** | Knowledge (concept) map | K1, K2, K3, K4 | Lock |
+| **X** | eXtra research (dossiers) | X1.01–X1.21, X2a–c, X3a–b | Research |
+| **A** | App shell | A0 | Lock |
+| **V** | 3D Viewer + drills | V1, V2, V3 | Lock |
+| **S** | Studio (draft + review cards) | S1 | Lock |
+| **W** | Workflow tracker | W1, W2, W3, W3F | Lock |
+| **C** | Cards (content) | C1, C2 | Lock |
+| **L** | Learning app | L1, L1F, L2, L3 | Lock |
+| **U** | UI look | U1, U2, U2F, U3 | Lock |
+| **SR** | Sources & Resources | SR1 | Lock |
+| **P** | Plan an episode | P1 (S1E01) | GPU |
+| **R** | Render a video | R1 | GPU |
+| **F…** | Flags (⚑ decisions) | FD digest, FA answers | You / Lock |
+| **GATE** | Use gate: 7 days of real use | GATE | You |
+| **D / G** | After-gate: Drive sync, Guide | D1, G1 | Ideas |
+| **IB** | Ideas backlog items | IB01–IB25 | Ideas |
+| **Fixes** | One-off repairs | CIG (CI guard), MAPF (map compare), WCON (Windows UTF-8) | Lock |
+| **Early docs** | Ideation setup, all done | R0, PB, UR, QB, DR, VS, VS2, VS2P | — |
+
+Watch: **R0** (research layer, done) and **R1** (render) share a letter but are different tracks. **M0** is setup, not media.
+
+### 9.3 Other id families
+These are not steps; they hang off steps.
+
+| Id | What it is | Example | Lives in |
+| --- | --- | --- | --- |
+| `T<n>` (+ b/c) | Owner check on real devices | T14 = SR1; T13 → T13b → T13c = U1 → U2 → U3 | owner-test-checklist.md |
+| `<step>.q<n>` | Owner input: decide, answer or do | X1.03.q1, W2.q1 | steps.json `inputs` |
+| `D-###` | Decision (why) | D-098 = SR1 sources | DECISIONS.md |
+| `G-xxx` | Review gate | G-Sci, G-Learn, G-Story, G-Art, G-Eng, G-A11y, G-Owner | playbook §2 |
+| `E` | Book code (Langman) | E = Embryology | README |
+| `E<ch>.<sec>` | Book section | E05.02 | content/E/index |
+| `E<ch>.<sec>.<nn>` | Concept card | E05.01.03 | content/E |
+| `R<nn>`, `R05xx` | Trusted source | R06, R05pn | source-registry.md |
+| `S<n>E<nn>` | Video episode | S1E01 Gastrulation | episodes-catalog.md |
+| `IB<nn>` | Idea in the backlog | IB07 Trace a cell | ideas-backlog.md |
+| `QR<nn>` | Quality reference reel | QR04, QR05 | quality-references.md |
+| `CS<n>` | Carnegie stage (biology) | CS11 | GLOSSARY §7 |
+| `AN<n>.<n>` | NMC curriculum code | AN43.4 | curriculum |
+| v<n> | App version | v21 = SR1 | Settings › Version |
+| Route A / B | How a chat commits | A = pushes from chat; B = you run sync.bat | setup-guide |
+| Marks | Fact confidence | ✔✔ ✔ ≈ ⚑ ✚ | RULES B6–B7 |
+
+Owner-check map: T1 M1 · T1b M1b · T2 K1 · T3a A0 · T3b V1 · T3c C1 · T3d C2 · T4 L3 · T5 H1 · T7 L1 · T7b L1F · T8 V2 · T8b V3 · T9 L2 · T10 H2 · T11 W1+W2 (T6 folded in) · T12 K3 · T13 U1 · T13b U2 · T13c U3 · T14 SR1.
