@@ -56,8 +56,7 @@ function upOf(r){switch(r.name){case 'res':return r.view!=='book'||r.id?{name:'r
 function go(r,opts={}){const h='#'+(typeof r==='string'?r:hashOf(r));HIST.push=!opts.replace;
   if(opts.replace){history.replaceState(history.state,'',h);routeChanged();}
   else if(location.hash===h)routeChanged();else location.hash=h;}   // a hash change = one history entry
-function goUp(){const u=upOf(ROUTE);if(u)go(u);}
-function goBack(){if(HIST.busy)return;if(canBack()){HIST.busy=true;setTimeout(()=>{HIST.busy=false;},700);history.back();}else{const u=upOf(ROUTE);if(u)go(u);}}   // U2: Back never leaves the app — with no step behind, it goes Up
+function goBack(){if(HIST.busy)return;if(canBack()){HIST.busy=true;setTimeout(()=>{HIST.busy=false;},700);history.back();}else{const u=upOf(ROUTE);if(u)go(u);}}   // U2/U3: Back never leaves the app — with no step behind, it goes Up (the only back-like control, D-087)
 function closeStack(name){if(HIST.busy)return;   // D-084 (3): ✕ closes the whole panel stack — back past every consecutive step of this route name
   let k=0;while(HIST.n-k>1&&HIST.names[HIST.n-k]===name)k++;
   if(k&&HIST.names[HIST.n-k]!==undefined&&HIST.names[HIST.n-k]!==name){HIST.busy=true;setTimeout(()=>{HIST.busy=false;},700);history.go(-k);}else{const u=upOf(ROUTE);if(u)go(u,{replace:true});}}

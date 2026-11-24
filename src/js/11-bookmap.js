@@ -8,7 +8,8 @@ const MAPD={M:null,C:[],byId:{},err:null,loading:null};
 function mapLoad(){if(!MAPD.loading)MAPD.loading=fetch(CONFIG.mapUrl).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
   .then(d=>{MAPD.M=d;MAPD.C=d.concepts;d.concepts.forEach(o=>MAPD.byId[o.id]=o);dlog('map','loaded',d.concepts.length,'concepts');})
   .catch(e=>{MAPD.err=e.message;dlog('map','load failed',e.message);});return MAPD.loading;}
-const BM={F:{},q:''};
+const BM={F:{},q:'',view:'chapter'};   // view: 'chapter'|'week'|'layer' — U3 (D-087, P4) switch on the narrow landing pane, ephemeral (A1)
+const BM_VIEW_DIM={chapter:'chapter',week:'day',layer:'layer'};
 const range=(a,b)=>{const r=[];for(let i=a;i<=b;i++)r.push(i);return r;};
 const pad2=n=>String(n).padStart(2,'0');
 const pages=p=>p?(p[0]===p[1]?'p '+p[0]:'pp '+p[0]+'–'+p[1]):'';
@@ -49,31 +50,73 @@ SCREENS.map=SCREENS.concept=SCREENS.x=function(v){
   if(o)stTouch(o.id);
   v.innerHTML=`<div class="bm" data-focus="${focus}"><section class="p-tree" aria-label="${esc(STR.tree)}"><div class="pane">${bmTree(ch)}</div></section>
     <section class="p-mid" aria-label="${esc(r.name==='x'?STR.crosstab:STR.chapterView)}"><div class="pane">${r.name==='x'?bmXt(r):ch?bmChapter(ch,o):bmOverview()}</div></section>
-    <section class="p-con" aria-label="${esc(STR.conceptPane)}"><div class="pane">${o?bmConcept(o):r.id?`<p class="empty">${esc(STR.noConcept(r.id))}</p>`:`<p class="empty">${esc(STR.pickConcept)}</p>`}</div></section></div>`;
+    <section class="p-con" aria-label="${esc(STR.conceptPane)}"><div class="pane">${o?bmConcept(o):r.id?`<p class="empty">${esc(STR.noConcept(r.id))}</p>`:`<p class="empty">${esc(STR.pickConcept)}</p>`}</div></section>
+    ${bmFiltDialog()}</div>`;
   bmWire(v);
   if(focus==='concept'&&DEV.cls!=='dev-d')scrollTo(0,0);
   if(r.sec&&ch)requestAnimationFrame(()=>{const h=document.getElementById('sec-'+r.sec);if(h)h.scrollIntoView({block:'start'});});   // SR1: a book cite lands on its section
 };
-function bmTree(cur){const M=MAPD.M,V=M.vocab,L=MAPD.C.filter(bmPass);
+/* the whole screen's Filters sheet (tier, importance, layer, system, thread, confidence — design-plan §4.3), U3 (D-087, P4).
+   Rendered once as a sibling of the three panes (SCREENS.map), never rebuilt by a filter/search/view change, so it stays open across them. */
+function bmFiltDialog(){const V=MAPD.M.vocab;
   const opts={tier:['A','B','C','D'],importance:V.importance,layer:Object.keys(V.layer),system:Object.keys(V.system),thread:Object.keys(V.threads),mark:['✔✔','✔','⚑','✚','≈']};
-  const nF=Object.values(BM.F).filter(Boolean).length;
-  let h=`<label class="sr" for="bmq">${esc(STR.searchLabel)}</label><input id="bmq" class="bm-search" type="search" placeholder="${esc(STR.searchPh)}" value="${esc(BM.q)}" autocomplete="off">
-   <details class="filt"${nF?' open':''}><summary class="row" style="min-height:var(--tap);cursor:pointer"><b>${esc(STR.filters)}</b>${nF?`<span class="badge">${nF}</span>`:''}</summary>
-   <div class="filters">${Object.entries(opts).map(([k,vs])=>`<div><label for="f-${k}">${esc(BM_DIMS[k]?BM_DIMS[k].label:k)}</label><select id="f-${k}" data-f="${k}"><option value="">${esc(STR.all)}</option>${vs.map(x=>`<option value="${esc(x)}"${BM.F[k]===x?' selected':''}>${esc(bmLab(k,x))}</option>`).join('')}</select></div>`).join('')}</div>
-   <button type="button" class="btn" data-act="clearf">${esc(STR.clearFilters)}</button></details>
-   <p class="sm mut" aria-live="polite">${esc(STR.shown(L.length,MAPD.C.length))}</p>`;
-  if(bmFiltered())return h+(L.length?L.slice(0,200).map(x=>crow(x,ROUTE.id===x.id)).join(''):`<p class="empty">—</p>`);
-  let part=-1;h+='<div class="tree">';
+  return `<dialog id="bmFiltSh" class="sheet" aria-labelledby="bmFiltT"><div class="grip" aria-hidden="true"><span></span></div><h2 id="bmFiltT">${esc(STR.filters)}</h2>
+   <div class="sheet-grid">${Object.entries(opts).map(([k,vs])=>`<label class="res-f" for="f-${k}"><span class="xs">${esc(BM_DIMS[k]?BM_DIMS[k].label:k)}</span><select id="f-${k}" data-f="${k}"><option value="">${esc(STR.all)}</option>${vs.map(x=>`<option value="${esc(x)}"${BM.F[k]===x?' selected':''}>${esc(bmLab(k,x))}</option>`).join('')}</select></label>`).join('')}</div>
+   <div class="row"><button type="button" class="btn" data-act="clearf">${esc(STR.clearFilters)}</button><span class="sp"></span><button type="button" class="btn pri" data-act="filtclose">${esc(STR.close)}</button></div></dialog>`;}
+function bmSearchBar(){return `<label class="sr" for="bmq">${esc(STR.searchLabel)}</label><input id="bmq" class="bm-search" type="search" placeholder="${esc(STR.searchPh)}" value="${esc(BM.q)}" autocomplete="off">`;}
+function bmFiltBtn(nF){return `<button type="button" class="btn${nF?' pri':''}" data-act="filtopen" aria-haspopup="dialog">${esc(STR.filters)}${nF?' ('+nF+')':''}</button>`;}
+/* U3 (D-087, P1/P5): the narrow landing (pp/tp, nothing picked) — progress, a Start-here/unlocks-most snap row, chapters as cards
+   (or, By week/By layer, concepts grouped as compact rows) and crosstabs folded to the bottom. Replaces the old side-by-side
+   tree + near-empty overview pane (draft issue #1: "half the screen wasted"). */
+function bmUnlockSnap(){const top=[...MAPD.C].sort((a,b)=>b.unlock_n-a.unlock_n).slice(0,10);
+  return `<section class="card td-nextup"><h2>${esc(STR.unlocks)}</h2><div class="snap">${top.map(o=>`<button type="button" class="nu-card" data-go="concept=${esc(o.id)}">${sw(o.layer)}<span class="nm">${esc(o.name)}</span><span class="id">${esc(o.id)} · ${esc(STR.bmUnlock(o.unlock_n))}</span></button>`).join('')}</div></section>`;}
+function bmLanding(){const M=MAPD.M,C=MAPD.C,nF=Object.values(BM.F).filter(Boolean).length;
+  const done=C.filter(o=>o.x1).length,parts=new Set(M.chapters.map(c=>c.part)).size;
+  return `<h1>${esc(STR.mapTitle)}</h1>${bmSearchBar()}
+   <section class="card" aria-labelledby="bmProgT"><h2 id="bmProgT" class="sr">${esc(STR.bmProgT)}</h2>
+     <div class="bm-bar" role="img" aria-label="${esc(STR.bmResearched(done,C.length))}"><span style="width:${C.length?done/C.length*100:0}%"></span></div>
+     <p class="sm">${esc(STR.bmResearched(done,C.length))} · ${esc(STR.bmShape(M.chapters.length,parts))}</p></section>
+   ${bmUnlockSnap()}
+   <div class="row ln-tools"><div class="seg" role="group" aria-label="${esc(STR.bmViewGroup)}">
+     <button type="button" data-act="bmview" data-v="chapter" aria-pressed="${BM.view==='chapter'}">${esc(STR.bmViewChapter)}</button>
+     <button type="button" data-act="bmview" data-v="week" aria-pressed="${BM.view==='week'}">${esc(STR.bmViewWeek)}</button>
+     <button type="button" data-act="bmview" data-v="layer" aria-pressed="${BM.view==='layer'}">${esc(STR.bmViewLayer)}</button></div>
+     <span class="sp"></span>${bmFiltBtn(nF)}</div>
+   ${BM.view==='chapter'?bmChapterCards():bmGroupRows(BM_VIEW_DIM[BM.view])}
+   ${bmCrosstabRows()}`;}
+function bmChapterCards(){const M=MAPD.M;let part=-1,h='';
+  for(const c of M.chapters){const L=MAPD.C.filter(o=>o.ch===c.id),n=L.length,done=L.filter(o=>o.x1).length,ds=L.filter(o=>o.day).flatMap(o=>o.day),wk=ds.length?dayBin([Math.min(...ds)]):'';
+    if(c.part!==part){part=c.part;h+=`<div class="partlbl">${esc(STR.parts[part]||'')}</div>`;}
+    h+=`<button type="button" class="bm-cc" data-go="map=${esc(c.id)}"><span class="xs mut mono">${esc(c.id)} · ${n} ${esc(STR.concepts)}${wk?' · '+esc(wk):''}</span><span class="t">${esc(c.title)}</span><div class="bm-bar"><span style="width:${n?done/n*100:0}%"></span></div></button>`;}
+  return `<div class="bm-cards">${h}</div>`;}
+/* By week / By layer: the same concepts as plain compact rows, grouped by that dimension (reuses BM_DIMS/bmOrder/bmLab from the crosstab machinery) */
+function bmGroupRows(dim){const L=MAPD.C.filter(bmPass);let h='';
+  for(const val of bmOrder(dim)){const gs=L.filter(o=>BM_DIMS[dim].vals(o).includes(val));if(!gs.length)continue;
+    h+=`<div class="partlbl">${esc(bmLab(dim,val))}</div>${gs.map(o=>crow(o,ROUTE.id===o.id)).join('')}`;}
+  return h||`<p class="empty">—</p>`;}
+function bmCrosstabRows(){const pairs=[['layer','day'],['system','chapter'],['tier','chapter'],['mark','chapter'],['cs','layer']],shown=pairs.slice(0,2),rest=pairs.slice(2);
+  const row=([x,y])=>`<button type="button" class="lrow" data-go="x=${x}&y=${y}"><span class="nm">${esc(BM_DIMS[x].label)} × ${esc(BM_DIMS[y].label)}</span>${icon('fwd',18)}</button>`;
+  return `<section class="card"><h2 class="sm mut">${esc(STR.crosstab)}</h2>${shown.map(row).join('')}
+    ${rest.length?`<details class="xt-more"><summary class="sm">${esc(STR.xtMore(rest.length))}</summary>${rest.map(row).join('')}</details>`:''}</section>`;}
+function bmTree(cur){const L=MAPD.C.filter(bmPass),nF=Object.values(BM.F).filter(Boolean).length;
+  if(bmFiltered())return bmSearchBar()+`<div class="row" style="margin:8px 0">${bmFiltBtn(nF)}<span class="sp"></span><p class="sm mut" aria-live="polite">${esc(STR.shown(L.length,MAPD.C.length))}</p></div>`
+    +(L.length?L.slice(0,200).map(x=>crow(x,ROUTE.id===x.id)).join(''):`<p class="empty">—</p>`);
+  if(!cur&&['dev-p','dev-pl','dev-tp'].includes(DEV.cls))return bmLanding();   // narrow + nothing picked: the rich landing (P1) replaces the plain rail
+  const M=MAPD.M;let part=-1,h=bmSearchBar()+`<div class="row" style="margin:8px 0">${bmFiltBtn(nF)}</div><div class="tree">`;
   for(const c of M.chapters){const n=L.filter(x=>x.ch===c.id).length;if(c.part!==part){part=c.part;h+=`<div class="partlbl">${esc(STR.parts[part]||'')}</div>`;}
     h+=`<div class="row bm-ch"><button type="button" class="lrow" data-go="map=${esc(c.id)}"${cur&&cur.id===c.id?' aria-current="true"':''}><span class="nm">${esc(c.title)}<br><span class="xs mut">${esc(c.id)} · ${n} ${esc(STR.concepts)}</span></span></button>${editBtn('chapter',c.id,'tools/map/concepts.txt (sections of '+c.id+')')}</div>`;}
   return h+'</div>';}
-function bmOverview(){const top=[...MAPD.C].sort((a,b)=>b.unlock_n-a.unlock_n).slice(0,12),pairs=[['layer','day'],['system','chapter'],['tier','chapter'],['mark','chapter'],['cs','layer']];
-  return `<h1>${esc(STR.mapTitle)}</h1><p class="mut sm">${esc(STR.pickChapter)}</p>
-   <h2>${esc(STR.crosstab)}</h2><div class="links">${pairs.map(([x,y])=>`<button type="button" class="lk" data-go="x=${x}&y=${y}">${esc(BM_DIMS[x].label)} × ${esc(BM_DIMS[y].label)}</button>`).join('')}</div>
-   <h2 style="margin-top:16px">${esc(STR.unlocks)}</h2>${top.map(o=>`<div class="row" style="flex-wrap:nowrap"><span class="badge" title="concepts that build on it">${o.unlock_n}</span><div style="flex:1;min-width:0">${crow(o)}</div></div>`).join('')}`;}
-function bmChapter(ch,cur){const M=MAPD.M,secs=M.sections.filter(s=>s.ch===ch.id),L=MAPD.C.filter(o=>o.ch===ch.id);
+/* U3 (D-087, P4): the wide "mid" landing (tl/desktop, nothing picked — the tree rail beside it already lists chapters) — same
+   snap row + compact crosstab rows as the narrow bmLanding(), crosstab pills removed */
+function bmOverview(){return `<h1>${esc(STR.mapTitle)}</h1><p class="mut sm">${esc(STR.pickChapter)}</p>${bmUnlockSnap()}${bmCrosstabRows()}`;}
+function bmChapter(ch,cur){const M=MAPD.M,V=M.vocab,secs=M.sections.filter(s=>s.ch===ch.id),L=MAPD.C.filter(o=>o.ch===ch.id);
+  const done=L.filter(o=>o.x1).length,mix=Object.keys(V.layer).filter(l=>l!=='none'&&L.some(o=>o.layer===l));   // no swatch for "No layer" concepts — a pattern would carry no information
   let h=`<div class="row"><h1 style="flex:1;margin:0">${esc(ch.id)} ${esc(ch.title)}</h1>${editBtn('chapter',ch.id,'tools/map/concepts.txt (sections of '+ch.id+')')}</div>
-    <p class="sm mut">${L.length} ${esc(STR.concepts)}${ch.pages?` · ${pages(ch.pages)} (${esc(STR.locator)})`:''}</p>`;
+    <p class="sm mut">${L.length} ${esc(STR.concepts)}${ch.pages?` · ${pages(ch.pages)} (${esc(STR.locator)})`:''}</p>
+    <div class="bm-bar" role="img" aria-label="${esc(STR.bmResearched(done,L.length))}"><span style="width:${L.length?done/L.length*100:0}%"></span></div>
+    <p class="xs mut">${esc(STR.bmResearched(done,L.length))}</p>
+    ${mix.length?`<div class="bm-mix" role="img" aria-label="${esc(mix.map(l=>V.layer[l]+' '+L.filter(o=>o.layer===l).length).join(', '))}">${mix.map(l=>`<span class="L-${esc(l)}" style="width:${L.filter(o=>o.layer===l).length/L.length*100}%"></span>`).join('')}</div>
+    <ul class="bm-mix-key">${mix.map(l=>`<li>${sw(l)} ${esc(V.layer[l])} <b>${L.filter(o=>o.layer===l).length}</b></li>`).join('')}</ul>`:''}`;
   for(const s of secs){const ss=L.filter(o=>o.sec===s.id),hit=ROUTE.sec===s.id;if(!ss.length&&!hit)continue;   // SR1: a book cite's section shows even with no concepts yet
     h+=`<h3 id="sec-${esc(s.id)}" class="bm-sec${hit?' hit':''}"${hit?' data-focus-first':''} style="margin-top:14px">${esc(s.id)} ${esc(s.title)} <span class="xs mut">${s.pages?'· '+pages(s.pages):''}${s.boxes&&s.boxes.length?' · '+s.boxes.map(b=>b==='clinical'?'CC':'MR').join(' '):''}</span></h3>${ss.length?ss.map(o=>crow(o,cur&&cur.id===o.id)).join(''):`<p class="xs mut">${esc(STR.src.secEmpty)}</p>`}`;}
   return h;}
@@ -114,10 +157,17 @@ function bmConcept(o){const M=MAPD.M,V=M.vocab,sec=M.sections.find(s=>s.id===o.s
 function bmWire(v){   // only the search box needs its own listener (it is re-created with the tree)
   const q=$('#bmq',v);if(q)q.addEventListener('input',()=>{BM.q=q.value;const pos=q.selectionStart;bmRefreshTree();const n=$('#bmq');if(n){n.focus();try{n.setSelectionRange(pos,pos);}catch(_){}}});
 }
-/* one delegated listener each, added once (renders never stack listeners) */
-document.addEventListener('change',e=>{if(!e.target.closest('.bm'))return;const f=e.target.dataset.f;if(f){BM.F[f]=e.target.value||undefined;render();return;}
+/* one delegated listener each, added once (renders never stack listeners). Filter/search/view changes repaint the tree (+ the
+   crosstab table, if open) rather than calling render() — render() would rebuild #bmFiltSh too and close it mid-use (U3, D-087). */
+document.addEventListener('change',e=>{if(!e.target.closest('.bm'))return;const f=e.target.dataset.f;if(f){BM.F[f]=e.target.value||undefined;bmRefreshTree();return;}
   const x=e.target.dataset.xt;if(x){const r={...ROUTE,cell:null};if(x==='xtx')r.x=e.target.value;else r.y=e.target.value;go(r);}});
-document.addEventListener('click',e=>{if(e.target.closest('.bm [data-act=clearf]')){BM.F={};BM.q='';render();}
+document.addEventListener('click',e=>{
+  if(e.target.closest('.bm [data-act=clearf]')){BM.F={};BM.q='';$$('#bmFiltSh select[data-f]').forEach(s=>s.value='');bmRefreshTree();return;}
+  if(e.target.closest('.bm [data-act=filtopen]')){$('#bmFiltSh')?.showModal();return;}
+  if(e.target.closest('.bm [data-act=filtclose]')){$('#bmFiltSh')?.close();return;}
+  const vb=e.target.closest('.bm [data-act=bmview]');if(vb){BM.view=vb.dataset.v;bmRefreshTree();return;}
   if(e.target.closest('.bm [data-act=closestack]'))closeStack('concept');});   // U2, D-084 (3): ✕ closes the whole concept stack
-function bmRefreshTree(){const t=$('.p-tree .pane');if(t){const open=$('.filt',t)?.open;t.innerHTML=bmTree(ROUTE.ch&&MAPD.M.chapters.find(c=>c.id===ROUTE.ch));if(open)$('.filt',t).open=true;bmWire(t);}
+document.addEventListener('click',e=>{if(e.target.id!=='bmFiltSh')return;const r=e.target.getBoundingClientRect();   // only a tap on the backdrop (outside the sheet) closes it
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();});
+function bmRefreshTree(){const t=$('.p-tree .pane');if(t){t.innerHTML=bmTree(ROUTE.ch&&MAPD.M.chapters.find(c=>c.id===ROUTE.ch));bmWire(t);}
   if(ROUTE.name==='x'){const m=$('.p-mid .pane');if(m)m.innerHTML=bmXt(ROUTE);}}

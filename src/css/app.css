@@ -180,6 +180,7 @@ html.dev-pl .crumbs>button:not(:nth-last-child(3)),html.dev-pl .crumbs>span:not(
 html.dev-p #backb{display:none}   /* phone portrait: the floating Back dock carries Back (thumb reach) */
 html.dev-p.dock-fold #backb:not(.hidden){display:inline-flex}   /* D-087: dock folded away → Back is in the header again */
 .crumbs b{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.crumbs b.cur{display:none}html.h1-gone .crumbs b.cur{display:inline}   /* U3 (D-087): the current title shows in the header only once the page's own h1 has scrolled under it — never both at once */
 .tb-hide{} html.dev-pl .banner.tb{display:none}
 .testflag{font-size:var(--fs-xs);font-weight:700;border:2px dashed var(--accent-text);color:var(--accent-text);border-radius:6px;padding:0 6px;white-space:nowrap}
 #view{padding:var(--pad);padding-left:calc(var(--pad) + env(safe-area-inset-left));padding-right:calc(var(--pad) + env(safe-area-inset-right));
@@ -290,12 +291,20 @@ html.test .edit{display:inline-flex;align-items:center;justify-content:center}
 html.dbg-boxes *{outline:1px solid rgb(255 0 120 / .35)}
 
 /* ---------- 5. Today (§8a: 1 col phone · 2 col phone landscape/tablet portrait · rail + 2–3 col tablet landscape · 3 col desktop) ---------- */
-.today{display:grid;gap:var(--gap);grid-template-columns:1fr}
-html.dev-pl .today,html.dev-tp .today{grid-template-columns:repeat(2,minmax(0,1fr))}
+.today{display:grid;gap:var(--gap);grid-template-columns:1fr}   /* U3 (D-087): tablet portrait joins phone portrait at one column (P1) — two narrow columns at 540 px was the root cramping cause (audit §0) */
+html.dev-pl .today{grid-template-columns:repeat(2,minmax(0,1fr))}
 html.dev-tl .today{grid-template-columns:repeat(2,minmax(0,1fr))}
 html.dev-d .today{grid-template-columns:repeat(3,minmax(0,1fr))}
 @container (min-width:1100px){.today{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .today .wide{grid-column:1/-1}
+/* U3 (D-087, P2/P4/P5): progress hero + stat tiles, the plan switch, "Next up" snap row */
+.td-hero .stats{grid-template-columns:repeat(3,1fr)}
+.snap{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;margin:0 -2px;padding:2px 2px 4px}
+.snap>.nu-card{scroll-snap-align:start}
+.nu-card{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:min(46vw,170px);flex:0 0 auto;min-height:var(--tap);padding:10px;border:0;border-radius:var(--r-in);background:var(--L2);text-align:left;cursor:pointer;color:var(--ink)}
+.nu-card:hover{background:var(--L3)}
+.nu-card .nm{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:var(--fs-sm)}
+.nu-card .id{font:var(--fs-xs) var(--mono);color:var(--muted)}
 .stat{display:flex;flex-direction:column} .stat b{font-size:1.75rem;line-height:1.1}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:var(--gap)}
 .lrow{display:flex;align-items:center;gap:10px;width:100%;min-width:0;flex:1 1 auto;min-height:var(--tap);padding:6px 8px;border:0;border-radius:var(--r-sm);background:none;text-align:left;cursor:pointer;color:var(--ink)}
@@ -308,14 +317,12 @@ html.dev-d .today{grid-template-columns:repeat(3,minmax(0,1fr))}
 .bm{display:grid;gap:var(--gap);align-items:start;grid-template-columns:minmax(0,1fr)}
 .bm>section{min-width:0}
 .bm .pane{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);min-width:0}
-/* phone portrait + landscape: one pane per screen, chosen by the route (data-focus) */
-html.dev-p .bm>section,html.dev-pl .bm>section{display:none}
+/* phone portrait + landscape + tablet portrait: one pane per screen, chosen by the route (data-focus). U3 (D-087, P1): tp used to keep a
+   36% tree rail beside the landing page even with nothing picked (half the screen wasted on a near-empty pane) — now one pane, like phone. */
+html.dev-p .bm>section,html.dev-pl .bm>section,html.dev-tp .bm>section{display:none}
 html.dev-p .bm[data-focus="tree"]>.p-tree,html.dev-p .bm[data-focus="mid"]>.p-mid,html.dev-p .bm[data-focus="concept"]>.p-con,
-html.dev-pl .bm[data-focus="tree"]>.p-tree,html.dev-pl .bm[data-focus="mid"]>.p-mid,html.dev-pl .bm[data-focus="concept"]>.p-con{display:block}
-/* tablet portrait: tree rail + detail (mid or concept) */
-html.dev-tp .bm{grid-template-columns:minmax(260px,36%) minmax(0,1fr)}
-html.dev-tp .bm>.p-con,html.dev-tp .bm[data-focus="concept"]>.p-mid{display:none}
-html.dev-tp .bm[data-focus="concept"]>.p-con{display:block}
+html.dev-pl .bm[data-focus="tree"]>.p-tree,html.dev-pl .bm[data-focus="mid"]>.p-mid,html.dev-pl .bm[data-focus="concept"]>.p-con,
+html.dev-tp .bm[data-focus="tree"]>.p-tree,html.dev-tp .bm[data-focus="mid"]>.p-mid,html.dev-tp .bm[data-focus="concept"]>.p-con{display:block}
 /* tablet landscape: tree │ heatmap or concept */
 html.dev-tl .bm{grid-template-columns:minmax(280px,34%) minmax(0,1fr)}
 html.dev-tl .bm>.p-con,html.dev-tl .bm[data-focus="concept"]>.p-mid{display:none}
@@ -323,7 +330,7 @@ html.dev-tl .bm[data-focus="concept"]>.p-con{display:block}
 /* desktop: tree │ heatmap │ concept */
 html.dev-d .bm{grid-template-columns:minmax(280px,1fr) minmax(0,1.6fr) minmax(320px,1.2fr)}
 html.dev-d .bm .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
-html.dev-tp .bm .p-tree .pane,html.dev-tl .bm .p-tree .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
+html.dev-tl .bm .p-tree .pane{position:sticky;top:calc(var(--top-h) + 12px);max-height:calc(100dvh - var(--top-h) - 32px);overflow:auto}
 /* U2: tablet portrait has the rail now, so no bottom-bar room is reserved (the rule above sets its height) */
 .stat .sm{overflow-wrap:anywhere}   /* Today's book stats at 200 % text */
 
@@ -334,9 +341,22 @@ html.dev-tp .bm .p-tree .pane,html.dev-tl .bm .p-tree .pane{position:sticky;top:
 .tree summary .t{flex:1;min-width:0} .tree .partlbl{margin:14px 0 4px;font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
 .tree .sec{padding:0 0 6px 18px} .tree .sec h3{font-size:var(--fs-xs);color:var(--muted);margin:8px 0 2px;font-weight:600}
 .tree [aria-current="true"]{background:var(--surface-2);box-shadow:inset 3px 0 0 var(--accent-text)}
-.filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0}
-.filters label{font-size:var(--fs-xs);color:var(--muted);display:block} .filters select{width:100%}
 .bm-search{width:100%}
+/* U3 (D-087): chapters-as-cards (pp 1 col, tp 2 cols) on the narrow single-pane landing; a slim single-segment bar (progress card + per-card) */
+.bm-cards{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+html.dev-tp .bm-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bm-cc{display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;padding:10px 12px;border:0;border-radius:var(--r-in);background:var(--L2);cursor:pointer;color:var(--ink)}
+.bm-cc:hover{background:var(--L3)}
+.bm-cc .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600}
+.bm-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--line);margin:8px 0}
+.bm-bar span{display:block;height:100%;background:var(--accent-text)}
+.bm-cc .bm-bar{height:6px;margin:0}
+.xt-more summary{min-height:var(--tap);display:flex;align-items:center;cursor:pointer}
+/* U3 (D-087): chapter-page germ-layer mix strip — the .L-* classes already carry a pattern, not colour alone (B3), so the segments need no new fill */
+.bm-mix{display:flex;height:10px;border-radius:999px;overflow:hidden;border:1px solid var(--line-strong);background:var(--line);margin:8px 0 4px}
+.bm-mix>span{display:block;height:100%}
+.bm-mix-key{list-style:none;padding:0;margin:0 0 8px;display:flex;flex-wrap:wrap;gap:4px 10px;font-size:var(--fs-xs)}
+.bm-mix-key li{display:flex;align-items:center;gap:4px}
 .xt-wrap{overflow:auto;max-width:100%;border:1px solid var(--line);border-radius:var(--r-sm);max-height:70dvh}
 table.xt{border-collapse:separate;border-spacing:0;font-size:var(--fs-xs)}
 table.xt th,table.xt td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;text-align:center;background:var(--surface)}
@@ -445,8 +465,7 @@ html.dev-p.can-back:not(.dock-fold) .vw:not(.inl) .vw-tabs{margin-left:72px}   /
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
 .vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}
-.vw-list{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-.vw-item h2{margin-top:4px}
+.vw-list{display:grid;gap:4px}   /* U3 (D-087, P3): compact rows, not a card grid */
 /* phone portrait: canvas on top, controls in a bottom sheet (thumb reach) */
 html.dev-p .vw{gap:0}
 html.dev-p .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0}
@@ -820,8 +839,22 @@ html.dev-pl .ln-media:has(.ln-try.drill) .ln-watch,html.dev-pl .ln-try.drill>.ro
 html.dev-tp .ln-dr{grid-template-columns:minmax(0,1fr) minmax(0,220px);align-items:start}
 /* lists */
 .ln-list{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
-.ln-counts{list-style:none;padding:0;margin:0 0 8px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,11em),1fr));gap:6px}   /* one column when two don't fit (CI fonts at 125 %, V2) */
-.ln-counts li{display:flex;align-items:center;gap:8px}
+/* U3 (D-087, P4): a slim 4-segment bar + a plain-text legend, no chip pills */
+.ln-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--line);margin:8px 0}
+.ln-bar span{display:block;height:100%}
+.ln-bar .b-none{background:transparent} .ln-bar .b-read{background:var(--line-strong)} .ln-bar .b-und{background:var(--accent-text)} .ln-bar .b-exp{background:var(--accent)}
+.ln-bar-key{list-style:none;padding:0;margin:0 0 8px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,11em),1fr));gap:6px}   /* one column when two don't fit (CI fonts at 125 %, V2) */
+.ln-bar-key li{display:flex;align-items:center;gap:6px}
+.ln-bar-key .ln-ic{color:var(--muted)}
+/* U3 (D-087, P3): compact row — bare status icon · title one line + mono id below · chevron (no pill per row). Own class (not .lrow.c):
+   that one already means something else for Book map's wide single-line rows (hides .id on phone — wrong here, the id costs no width). */
+.ln-rowc{flex-wrap:nowrap;gap:10px}
+.ln-rowc .ln-ic{flex:none;display:inline-flex;color:var(--muted)}
+.ln-rowc .ln-rt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px}
+.ln-rowc .ln-rt .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
+.ln-rowc .ln-rt .id{font:var(--fs-xs) var(--mono);color:var(--muted)}
+.ln-rowc>svg{flex:none;color:var(--muted)}
+.ln-tools{margin:4px 0}
 .ln-today .lrow .ln-st{flex:none}
 .ln-deck{max-width:var(--measure)}
 .ln-dk .ln-dq{font-size:1.15em;margin:12px 0}
@@ -880,9 +913,9 @@ html .ln-card.no-3d .ln-media{position:static;height:auto}
 .ln-card.no-3d .ln-head,.ln-card.no-3d .ln-media,.ln-card.no-3d .ln-text{width:100%;max-width:var(--measure);margin-inline:auto}
 html.dev-pl .ln-card.no-3d .ln-watch{display:flex}
 html .ln-card.no-3d .ln-try.ln-try-none{display:flex;flex-direction:row;align-items:center;flex:none;min-height:0}
-html.dev-pl .ln-list,html.dev-tp .ln-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+html.dev-pl .ln-list{grid-template-columns:repeat(2,minmax(0,1fr))}   /* U3 (D-087): tp drops to one column (P1) — pl keeps 2 */
 html.dev-tl .ln-list,html.dev-d .ln-list{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1400px}
-html.dev-pl .ln-sum,html.dev-tp .ln-sum{grid-column:1 / -1}
+html.dev-pl .ln-sum{grid-column:1 / -1}
 
 /* ---------- H2 Reviewer mode (#review · #rcard · #rtour · #updates; design plan §2 Review rows + §4.10; D-061) ---------- */
 html.rvnav.dev-p .nav button span,html.rvnav.dev-tp .nav button span{font-size:var(--fs-min)}   /* 6 items with the Review tab: labels shrink, never break mid-word */
@@ -1024,10 +1057,6 @@ html.dev-tp .ls-les{max-width:var(--measure);margin:0 auto}
 /* D-087: a NARROW tablet window (page zoom, 1/3 split screen — < 700 px wide) keeps the tablet rail but its screens go one column (the phone
    one-pane drill-down here); the class stays dev-tp. Kept LAST in this file so it wins over every dev-tp grid above, so the tablet shell, rail and Back stay */
 @media (max-width:699px){
-  html.dev-tp .bm{grid-template-columns:minmax(0,1fr)}
-  html.dev-tp .bm>section{display:none}
-  html.dev-tp .bm[data-focus="tree"]>.p-tree,html.dev-tp .bm[data-focus="mid"]>.p-mid,html.dev-tp .bm[data-focus="concept"]>.p-con{display:block}
-  html.dev-tp .bm .p-tree .pane{position:static;max-height:none;overflow:visible}
   html.dev-tp .tr-board,html.dev-tp .tr-pcols,html.dev-tp .today,html.dev-tp .st-home,html.dev-tp .ln-list,html.dev-tp .ls-chs,html.dev-tp .ln-dr{grid-template-columns:minmax(0,1fr)}
   html.dev-tp .brand{display:none}
   html.dev-tp .crumbs>button:not(:nth-last-child(3)),html.dev-tp .crumbs>span:not(:nth-last-child(2)){display:none}

@@ -14,7 +14,8 @@
    #deck=go (Today · On the go) caps the session at CONFIG.today.goPrompts. lnTodayHtml = the Cards box only (the plans are lsTodayHtml).
    EDIT: words in STR.ln (STR.ln.dr for drills); settings in CONFIG.learn; card data in content/<book>/cards/ (never in code). */
 'use strict';
-const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null,keep:null,drillKey:null,snap:{}};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng)
+const LN={idx:null,err:null,ck:{},ex:{},open:{},gone:new Set(),readT:0,deck:null,keep:null,drillKey:null,snap:{},
+  view:'chapter',filt:{st:'',ch:'',tier:'',has3d:false}};   // gone = cards that failed to load (kept apart so the reader retries, G-Eng); view/filt: U3 #cards switch + Filters sheet, nothing saved (A1)
 const DAY=864e5;
 const lnDay0=t=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime();};
 const lnAddDays=(t,n)=>{const d=new Date(lnDay0(t));d.setDate(d.getDate()+n);return d.getTime();};
@@ -63,23 +64,67 @@ const lnPlain=t=>stripRefs(t);
 const lnFactLi=f=>`<li><span>${esc(f.text)}</span> <span class="xs mut">[${appCite(f.cite)!=null?esc(f.cite):citeHtml(f.cite,f.mark)}]</span> <b class="mark" title="${esc(STR.marks[f.mark]||'')}">${esc(f.mark)}</b>${f.decision?` <span class="xs mut">${esc(f.decision)}</span>`:''}</li>`;
 
 /* ---------- #cards ---------- */
+/* U3 (D-087, P3/P4/P5): compact rows (icon left, title + mono id stacked, chevron) · By chapter/By status switch + a Filters sheet
+   (status, chapter, tier, has 3D — tier/has-3D read MAPD/SC.idx, never the full card, so #cards never preloads every card) ·
+   a slim 4-segment progress bar (no chip pills) · a "Due + continue" snap row above the list. LN.view/LN.filt: ephemeral (A1). */
+const lnHas3d=id=>SC.idx?scenesFor(id).length>0:null;   // null = scene index not loaded yet (has-3D filter/badge skip it till then)
+function lnCardsFiltered(L){const f=LN.filt;
+  return L.filter(c=>{if(f.st&&lnStatus(c.id)!==f.st)return false;if(f.ch&&c.id.slice(0,3)!==f.ch)return false;
+    if(f.tier){const m=MAPD.byId&&MAPD.byId[c.id];if(!m||m.tier!==f.tier)return false;}
+    if(f.has3d&&!lnHas3d(c.id))return false;return true;});}
+const lnRowC=c=>{const s=lnStatus(c.id);return `<button type="button" class="lrow ln-row ln-rowc" data-go="card=${esc(c.id)}">
+  <span class="ln-ic" aria-hidden="true">${lnPie(s)}</span><span class="sr">${esc(STR.ln.st[s])}</span>
+  <span class="ln-rt"><span class="nm">${esc(c.title)}</span><span class="id">${esc(c.id)}</span></span>${icon('fwd',18)}</button>`;};
+/* the list + progress + snap row + switch (everything but the dialog) — repainted alone so an open Filters sheet survives a filter/view change */
+function lnCardsBodyHtml(){
+  const L=lnList(),cnt={none:0,read:0,und:0,exp:0};L.forEach(c=>cnt[lnStatus(c.id)]++);
+  const F=LN.filt,view=LN.view,FL=lnCardsFiltered(L);
+  const groups={};
+  if(view==='status'){for(const s of['none','read','und','exp'])groups[s]=FL.filter(c=>lnStatus(c.id)===s);}
+  else for(const c of FL){const g=c.id.slice(0,3);(groups[g]||(groups[g]=[])).push(c);}
+  const order=view==='status'?['none','read','und','exp'].filter(s=>groups[s].length)
+    :CONFIG.learn.groups.filter(g=>groups[g]).concat(Object.keys(groups).filter(g=>!CONFIG.learn.groups.includes(g)).sort());
+  const due=lnDeckDue(),dueIds=[...new Set(due.map(x=>x.id))],all=lnDeckAll().length;
+  const cur=state.last.card&&L.find(c=>c.id===state.last.card&&lnStatus(c.id)!=='exp');
+  const nuIds=[...(cur?[cur.id]:[]),...dueIds.filter(id=>!cur||id!==cur.id)].slice(0,8);
+  const nuCard=id=>{const c=L.find(x=>x.id===id);if(!c)return'';const m=MAPD.byId&&MAPD.byId[id],nm=(cur&&id===cur.id?STR.ln.today.cont+': ':'')+c.title;
+    return `<button type="button" class="nu-card" data-go="card=${esc(id)}"><span class="sw L-${esc(m?m.layer:'none')}" aria-hidden="true"></span><span class="nm">${esc(nm)}</span><span class="id">${esc(id)}</span></button>`;};
+  const activeF=(F.st?1:0)+(F.ch?1:0)+(F.tier?1:0)+(F.has3d?1:0);
+  return `<p class="mut ln-lead">${esc(STR.ln.cardsLead)}</p>
+  <section class="card ln-sum" aria-labelledby="lnSumT"><h2 id="lnSumT">${esc(STR.ln.progressT)}</h2>
+    <div class="ln-bar" role="img" aria-label="${esc(['none','read','und','exp'].map(s=>cnt[s]+' '+STR.ln.st[s]).join(', '))}">${['none','read','und','exp'].map(s=>cnt[s]?`<span class="b-${s}" style="width:${cnt[s]/L.length*100}%"></span>`:'').join('')}</div>
+    <ul class="ln-bar-key">${['none','read','und','exp'].map(s=>`<li><span class="ln-ic" aria-hidden="true">${lnPie(s)}</span><span class="sm">${esc(STR.ln.st[s])}</span> <b>${cnt[s]}</b></li>`).join('')}</ul>
+    <h3 class="sm">${esc(STR.ln.deckT)}</h3><p class="sm">${esc(all?(due.length?STR.ln.due(due.length):STR.ln.dueNone):STR.ln.deckEmpty)}</p>
+    ${all?`<button type="button" class="btn${due.length?' pri':''}" data-go="deck">${esc(due.length?STR.ln.deckStart(due.length):STR.ln.deckT)}</button>`:''}</section>
+  <section class="card td-nextup"><h2>${esc(STR.ln.dueContT)}</h2>
+    ${nuIds.length?`<div class="snap">${nuIds.map(nuCard).join('')}</div>`:`<p class="mut sm">${esc(STR.ln.dueContNone)}</p>`}</section>
+  <div class="row ln-tools">
+    <div class="seg" role="group" aria-label="${esc(STR.ln.viewGroup)}"><button type="button" data-ln="view" data-v="chapter" aria-pressed="${view==='chapter'}">${esc(STR.ln.viewChapter)}</button><button type="button" data-ln="view" data-v="status" aria-pressed="${view==='status'}">${esc(STR.ln.viewStatus)}</button></div>
+    <span class="sp"></span><button type="button" class="btn${activeF?' pri':''}" data-ln="filtopen" aria-haspopup="dialog">${esc(STR.ln.filtBtn(activeF))}</button>
+  </div>
+  <div class="ln-list">${FL.length?order.map(g=>{const label=view==='status'?STR.ln.st[g]:(STR.ln.groups[g]||STR.ln.groupOf(g));
+      return `<section class="card ln-grp" aria-labelledby="lnG-${esc(g)}"><h2 id="lnG-${esc(g)}">${esc(label)}</h2>${groups[g].map(lnRowC).join('')}</section>`;}).join('')
+    :`<section class="card"><p class="mut">${esc(STR.ln.filtNone)}</p><button type="button" class="btn" data-ln="filtclear">${esc(STR.ln.filtClear)}</button></section>`}
+  </div>${editBtn('screen','cards','src/js/18-learn.js + content/strings.js')}`;}
+function lnCardsRepaint(){const h=$('#lnCardsBody');if(h)h.innerHTML=lnCardsBodyHtml();}
+/* the dialog is built once per real render (not on every filter tweak) and reset from LN.filt whenever it's reopened */
+function lnFiltShHtml(){const F=LN.filt,L=lnList(),chOpts=CONFIG.learn.groups.filter(g=>L.some(c=>c.id.slice(0,3)===g)),tiers=MAPD.M?Object.keys(MAPD.M.vocab.tier):[];
+  return `<dialog id="lnFiltSh" class="sheet" aria-labelledby="lnFiltT"><div class="grip" aria-hidden="true"><span></span></div><h2 id="lnFiltT">${esc(STR.ln.filtT)}</h2>
+    <div class="sheet-grid">
+      <label class="res-f" for="lnfSt"><span class="xs">${esc(STR.ln.filtStatus)}</span><select id="lnfSt" data-filt="st"><option value="">${esc(STR.ln.filtAny)}</option>${['none','read','und','exp'].map(s=>`<option value="${s}"${F.st===s?' selected':''}>${esc(STR.ln.st[s])}</option>`).join('')}</select></label>
+      <label class="res-f" for="lnfCh"><span class="xs">${esc(STR.ln.filtChapter)}</span><select id="lnfCh" data-filt="ch"><option value="">${esc(STR.ln.filtAny)}</option>${chOpts.map(g=>`<option value="${esc(g)}"${F.ch===g?' selected':''}>${esc(STR.ln.groups[g]||STR.ln.groupOf(g))}</option>`).join('')}</select></label>
+      <label class="res-f" for="lnfTier"><span class="xs">${esc(STR.ln.filtTier)}</span><select id="lnfTier" data-filt="tier" ${tiers.length?'':'disabled'}><option value="">${esc(STR.ln.filtAny)}</option>${tiers.map(t=>`<option value="${esc(t)}"${F.tier===t?' selected':''}>${esc(MAPD.M?MAPD.M.vocab.tier[t]:t)}</option>`).join('')}</select></label>
+      <label class="row" for="lnfHas3d"><input id="lnfHas3d" type="checkbox" data-filt="has3d" ${F.has3d?'checked':''} ${SC.idx?'':'disabled'}><span class="xs">${esc(STR.ln.filtHas3d)}</span></label>
+    </div>
+    <div class="row"><button type="button" class="btn" data-ln="filtclear">${esc(STR.ln.filtClear)}</button><span class="sp"></span><button type="button" class="btn pri" data-ln="filtclose">${esc(STR.ln.filtClose)}</button></div>
+  </dialog>`;}
 SCREENS.cards=function(v){
   ROUTE.crumbs=[{label:STR.ln.cardsT}];
   if(!LN.idx){v.innerHTML=`<h1>${esc(STR.ln.cardsT)}</h1><p class="mut" role="status">${esc(LN.err?STR.ln.loadFail+' ('+LN.err+')':STR.ln.loading)}</p>`;
     if(!LN.err)lnLoad().then(()=>{if(ROUTE.name==='cards')render();},()=>{if(ROUTE.name==='cards')render();});return;}
-  const L=lnList(),cnt={none:0,read:0,und:0,exp:0};L.forEach(c=>cnt[lnStatus(c.id)]++);
-  const groups={};for(const c of L){const g=c.id.slice(0,3);(groups[g]||(groups[g]=[])).push(c);}
-  const order=CONFIG.learn.groups.filter(g=>groups[g]).concat(Object.keys(groups).filter(g=>!CONFIG.learn.groups.includes(g)).sort());
-  const due=lnDeckDue().length,all=lnDeckAll().length;
-  v.innerHTML=`<h1>${esc(STR.ln.cardsT)}</h1><p class="mut ln-lead">${esc(STR.ln.cardsLead)}</p>
-  <div class="ln-list">
-    <section class="card ln-sum" aria-labelledby="lnSumT"><h2 id="lnSumT">${esc(STR.ln.progressT)}</h2>
-      <ul class="ln-counts">${['none','read','und','exp'].map(s=>`<li><span class="ln-st st-${s}">${lnPie(s)} ${esc(STR.ln.st[s])}</span> <b>${cnt[s]}</b></li>`).join('')}</ul>
-      <h3 class="sm">${esc(STR.ln.deckT)}</h3><p class="sm">${esc(all?(due?STR.ln.due(due):STR.ln.dueNone):STR.ln.deckEmpty)}</p>
-      ${all?`<button type="button" class="btn${due?' pri':''}" data-go="deck">${esc(due?STR.ln.deckStart(due):STR.ln.deckT)}</button>`:''}</section>
-    ${order.map(g=>`<section class="card ln-grp" aria-labelledby="lnG-${esc(g)}"><h2 id="lnG-${esc(g)}">${esc(STR.ln.groups[g]||STR.ln.groupOf(g))}</h2>
-      ${groups[g].map(c=>`<button type="button" class="lrow ln-row" data-go="card=${esc(c.id)}"><span class="nm">${esc(c.title)}</span>${lnChip(c.id)}<span class="id">${esc(c.id)}</span></button>`).join('')}</section>`).join('')}
-  </div>${editBtn('screen','cards','src/js/18-learn.js + content/strings.js')}`;
+  if(!MAPD.M&&!MAPD.err)mapLoad().then(()=>{if(ROUTE.name==='cards')render();});   // tier filter
+  if(!SC.idx&&!SC.err)scIndexLoad().then(()=>{if(ROUTE.name==='cards')render();});   // has-3D filter + snap-row swatches
+  v.innerHTML=`<h1>${esc(STR.ln.cardsT)}</h1><div id="lnCardsBody">${lnCardsBodyHtml()}</div>${lnFiltShHtml()}`;
   window.LN_READY='cards';   // tools/layout-check waits for this
 };
 
@@ -338,19 +383,20 @@ function lnDeckAct(a,b){
     if(!ok&&!s.again.has(x.k)){s.again.add(x.k);s.q.push(x);}  // a miss comes back once at the end of the session
     s.i++;s.shown=false;render();($('#lnDkQ')||$('#lnDkEnd'))?.focus();}}
 
-/* ---------- Today: the Cards box (design plan §4.1; the On the go / Study plans = 20-lessons.js lsTodayHtml, L2) ---------- */
-function lnTodayHtml(){
-  const L=lnList(),due=lnDeckDue().length,all=lnDeckAll().length,last=state.last.card&&L.find(c=>c.id===state.last.card);
-  const done=L.filter(c=>lnStatus(c.id)!=='none').length,firstNew=L.find(c=>lnStatus(c.id)==='none');
-  return `<section class="card ln-today"><h2>${esc(STR.ln.today.cardsT)}</h2><p class="sm">${esc(LN.idx?STR.ln.started(done,L.length):STR.ln.loading)}</p>
-      ${last?`<button type="button" class="lrow" data-go="card=${esc(last.id)}"><span class="nm">${esc(STR.ln.today.cont)}: ${esc(last.title)}</span>${lnChip(last.id)}</button>`:''}
-      ${firstNew&&(!last||firstNew.id!==last.id)?`<button type="button" class="lrow" data-go="card=${esc(firstNew.id)}"><span class="nm">${esc(done?firstNew.title:STR.ln.today.start+' · '+firstNew.title)}</span>${lnChip(firstNew.id)}</button>`:''}
-      <p class="row" style="margin-top:8px"><button type="button" class="btn" data-go="lessons">${esc(STR.ls.pathT)}</button><button type="button" class="btn" data-go="cards">${esc(STR.ln.today.all)}</button></p></section>`;}
+/* Today's Cards module is now folded into the "Next up" snap row + compact line (U3, 10-today.js); the On the go / Study plans stay in 20-lessons.js lsTodayHtml. */
 
 /* ---------- events (one delegated listener) ---------- */
 document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!b)return;const a=b.dataset.ln;
   if(b.getAttribute('aria-disabled')==='true')return;
   if(a.startsWith('d')&&ROUTE.name==='deck'){lnDeckAct(a,b);return;}
+  if(ROUTE.name==='cards'){
+    if(a==='view'){LN.view=b.dataset.v;lnCardsRepaint();return;}
+    if(a==='filtopen'){$('#lnFiltSh')?.showModal();return;}
+    if(a==='filtclose'){$('#lnFiltSh')?.close();return;}
+    if(a==='filtclear'){LN.filt={st:'',ch:'',tier:'',has3d:false};const d=$('#lnFiltSh');
+      if(d){$('#lnfSt',d).value='';$('#lnfCh',d).value='';$('#lnfTier',d).value='';$('#lnfHas3d',d).checked=false;}
+      lnCardsRepaint();return;}
+    return;}
   const card=LN.open[ROUTE.id];if(ROUTE.name!=='card'||!card)return;
   if(a==='ref'){e.preventDefault();const o=b.getAttribute('aria-expanded')!=='true',box=document.getElementById('lnR-'+b.dataset.k);b.setAttribute('aria-expanded',o);if(box)box.classList.toggle('hidden',!o);return;}
   if(a==='level'){const l=b.dataset.l;state.settings.level=l;state.settings.t=Date.now();stSave();$('#lnBody').innerHTML=lnBodyHtml(card,l);
@@ -363,6 +409,10 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!
   if(a==='exyes'){lnSet(card.id,'exp');LN.ex[card.id]=null;lnPaint('expl');lnPaint('status');$('#lnExT')?.setAttribute('tabindex','-1');$('#lnExT')?.focus();return;}
   if(a==='exno'){LN.ex[card.id]=null;lnPaint('expl');$('#lnExT')?.setAttribute('tabindex','-1');$('#lnExT')?.focus();}
 });
+document.addEventListener('click',e=>{if(e.target.id!=='lnFiltSh')return;const r=e.target.getBoundingClientRect();   // only a tap on the backdrop (outside the sheet) closes it
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();});
+document.addEventListener('change',e=>{const t=e.target;if(!t.matches||!t.matches('[data-filt]')||ROUTE.name!=='cards')return;
+  LN.filt[t.dataset.filt]=t.dataset.filt==='has3d'?t.checked:t.value;lnCardsRepaint();});
 document.addEventListener('keydown',e=>{if(e.key===' '&&e.target.matches&&e.target.matches('a.ln-ref')){e.preventDefault();e.target.click();}});   // role=button: Space too
 /* label drill: one select per pin; the pin glows while its select has focus */
 document.addEventListener('change',e=>{const t=e.target;if(!t.matches||!t.matches('[data-lnpin]'))return;const card=LN.open[ROUTE.id],ck=card&&LN.ck[card.id];if(!ck)return;

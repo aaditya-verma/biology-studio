@@ -41,7 +41,6 @@ function buildShell(){
   $('#editChatL').textContent=STR.editChat;$('#editCopy').textContent=STR.copy;$('#editClose').textContent=STR.close;$('#editTxt').setAttribute('aria-label',STR.editT);
   $('#brand').textContent=STR.app;toastRegion();
   $('#backb').innerHTML=icon('back',20);$('#backb').setAttribute('aria-label',STR.back);$('#backb').title=STR.back;
-  $('#upb').innerHTML=icon('up',20);$('#upb').setAttribute('aria-label',STR.up);$('#upb').title=STR.up;
   document.documentElement.classList.toggle('rvnav',rvNavOn());
   if(FLAGS.test){$('#testflag .tf-t').textContent=STR.testShort;$('#testflag').title=STR.testFlag;$('#testflag').classList.remove('hidden');document.documentElement.classList.add('test');}
 }
@@ -49,15 +48,19 @@ const navOf=r=>({concept:'map',x:'map',colours:'settings',day:'scene',calib:'stu
 function syncShell(){
   $$('#nav [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   const cr=ROUTE.crumbs||[{label:STR.nav[navOf(ROUTE)]||STR.app}];
-  $('#crumbs').innerHTML=cr.map((c,i)=>i<cr.length-1?`<button type="button" data-go="${esc(c.hash)}">${esc(c.label)}</button><span aria-hidden="true">›</span>`:`<b>${esc(c.label)}</b>`).join('');
-  const home=!upOf(ROUTE);$('#upb').classList.toggle('hidden',home);
-  const cb=canBack();$('#backb').classList.toggle('hidden',!cb);document.documentElement.classList.toggle('can-back',cb);$('#dock').classList.toggle('hidden',!cb);   // D-084: Back whenever there is history (never at the first step: Back there would arm "leave")
+  $('#crumbs').innerHTML=cr.map((c,i)=>i<cr.length-1?`<button type="button" data-go="${esc(c.hash)}">${esc(c.label)}</button><span aria-hidden="true">›</span>`:`<b class="cur">${esc(c.label)}</b>`).join('');
+  $('#brand').classList.toggle('hidden',ROUTE.name!==CONFIG.home);   // U3 (D-087): the app name only on the Today root — elsewhere the trail is the title (one title, not two)
+  const cb=canBack()||!!upOf(ROUTE);$('#backb').classList.toggle('hidden',!cb);document.documentElement.classList.toggle('can-back',cb);$('#dock').classList.toggle('hidden',!cb);   // U3 (D-087): one control — Back pops in-page history, or goes Up with none left (goBack already falls back); never at the true root
   const off=!CONFIG.navBar.includes(navOf(ROUTE)),mb=$('#moreb');if(mb){if(off)mb.setAttribute('aria-current','page');else mb.removeAttribute('aria-current');}   // a page reached from More lights More on the bar
   $$('#moreL [data-nav]').forEach(b=>{if(b.dataset.nav===navOf(ROUTE))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   navNewSync();barShow(true);document.documentElement.classList.toggle('rm',typeof motionReduced==='function'&&motionReduced());
   document.title=cr[cr.length-1].label+' · '+STR.app;
   const ae=document.activeElement;if(ae&&ae!==document.body&&!ae.getClientRects().length)view().focus({preventScroll:true});   // the dock/Back just hid under focus: keep focus in the page
+  titleCue();
 }
+/* U3 (D-087): the header's current-crumb (".cur") stays hidden — the page's own h1 is the title — until h1 scrolls up under the header, then it takes over as a sticky title (never both at once) */
+function titleCue(){const h1=$('#view h1'),h=$('header.top');
+  document.documentElement.classList.toggle('h1-gone',!(h1&&h)||h1.getBoundingClientRect().bottom<=h.getBoundingClientRect().bottom);}
 
 /* screens register themselves: SCREENS[name]=fn(view) */
 const SCREENS={};
@@ -104,7 +107,6 @@ function shellEvents(){
     if(e.target.closest('#moreX')){$('#moresh').close();return;}
     if(e.target===$('#moresh')){const b=e.target.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)$('#moresh').close();return;}   // only a tap on the backdrop (outside the sheet) closes it
     if(e.target.closest('#srchb')){searchGo();return;}
-    if(e.target.closest('#upb')){goUp();return;}
   });
   $('#editClose').onclick=()=>$('#editdlg').close();
   $('#editCopy').onclick=async()=>{try{await navigator.clipboard.writeText($('#editTxt').value);$('#editMsg').textContent=STR.copied;}catch(_){$('#editTxt').select();$('#editMsg').textContent=STR.copyFail;}};
@@ -159,7 +161,7 @@ function searchGo(){const f=()=>{const q=$('#bmq');if(q&&q.getClientRects().leng
 const TYPING='input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=button]),textarea,select';
 function barShow(on){document.documentElement.classList.toggle('bar-away',!on);}
 function barScroll(){let y=scrollY;onDevice(()=>barShow(true));   // a rotation always brings the bar back
-  addEventListener('scroll',()=>{const d=scrollY-y;if(Math.abs(d)<8)return;
+  addEventListener('scroll',()=>{titleCue();const d=scrollY-y;if(Math.abs(d)<8)return;
     if(DEV.cls==='dev-p'&&!(document.activeElement&&document.activeElement.matches(TYPING)))barShow(d<0||scrollY<40||(innerHeight+scrollY>=document.documentElement.scrollHeight-4));y=scrollY;},{passive:true});
   document.addEventListener('focusin',e=>{if(DEV.cls==='dev-p'&&e.target.matches(TYPING))barShow(false);});
   document.addEventListener('focusout',e=>{if(e.target.matches(TYPING))setTimeout(()=>{const a=document.activeElement;if(!a||!a.matches(TYPING))barShow(true);},60);});

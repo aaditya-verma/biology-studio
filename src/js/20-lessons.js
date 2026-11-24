@@ -8,7 +8,7 @@
    recall stats only, never a card status (B4).
    EDIT: words in STR.ls; settings in CONFIG.learn (lessons, lessonDir, mix) + CONFIG.today; lesson data in content/<book>/lessons/ (never in code). */
 'use strict';
-const LS={les:{},err:{},load:{},mix:null,cur:null};   // cur = the lesson step the bar shows (card screen)
+const LS={les:{},err:{},load:{},mix:null,cur:null,view:'go'};   // cur = the lesson step the bar shows (card screen); view = Today's plan switch (U3, ephemeral — never saved, A1)
 
 /* ---------- data ---------- */
 function lsLoad(ch){if(LS.les[ch])return Promise.resolve(LS.les[ch]);if(LS.load[ch])return LS.load[ch];
@@ -220,24 +220,34 @@ document.addEventListener('click',e=>{if(ROUTE.name!=='mix')return;const b=e.tar
 addEventListener('hashchange',()=>{if(parseHash(location.hash).name!=='mix'&&LS.mix&&(LS.mix.done||!LS.mix.items.length))LS.mix=null;});
 
 /* ---------- Today plans (IB01; design plan §4.1) ---------- */
+/* U3 (D-087, P4): On the go / Study as a switch on one plan card, not two side-by-side cards; the due-prompts item is shared and
+   shown once regardless of which is selected (it used to repeat in both — G-Art r1 #? / audit §1). */
+function lsTodayPrimary(){   // the hero's one Start button: whatever "On the go" would send you to first
+  const due=lnDeckDue().length,und=lsUnd(),R=lsRecall(),L=lnList(),cur=state.last.card&&L.find(c=>c.id===state.last.card),firstRead=L.find(c=>lnStatus(c.id)==='read');
+  if(due)return'deck=go';
+  const ckGo=und.length?{hash:'mix=go'}:(cur||firstRead)?{hash:'card='+(cur||firstRead).id}:null;
+  return ckGo?ckGo.hash:'lessons';}
 function lsTodayHtml(){
   if(!LN.idx)return `<section class="card wide"><p class="mut sm" role="status">${esc(STR.ln.loading)}</p></section>`;
-  const T=CONFIG.today,due=lnDeckDue().length,goN=Math.min(due,T.goPrompts),und=lsUnd(),R=lsRecall(),nx=lsNextLesson(),L=lnList();
+  const T=CONFIG.today,due=lnDeckDue().length,und=lsUnd(),R=lsRecall(),nx=lsNextLesson(),L=lnList();
   const cur=state.last.card&&L.find(c=>c.id===state.last.card),firstRead=L.find(c=>lnStatus(c.id)==='read');
   /* On the go: due prompts + one Check (a Mixed-review run of one Understood card, else the Check of the card you are on) */
   const ckGo=und.length?{hash:'mix=go',label:STR.ls.goCheck,done:R.today}:(cur||firstRead)?{hash:'card='+(cur||firstRead).id,label:STR.ls.goCheckCard((cur||firstRead).title),done:false}:null;
-  const goMin=Math.round((goN*T.promptS+(ckGo?T.checkS:0))/60),retry=lsRetry(),mixOn=und.length>=CONFIG.learn.mix.minCards&&lsChs(und)>=CONFIG.learn.mix.minChapters;
-  let iq=0;const item=(n,t,meta,btn,done)=>{const id='lsTi'+(++iq);btn=(btn||'').replace('<button ',`<button aria-describedby="${id}" `);return `<li class="ls-ti${done?' ls-done':''}"><span class="ls-tn" aria-hidden="true">${done?'✓':n}</span><div><p class="sm" id="${id}"><b>${esc(t)}</b>${meta?` <span class="xs mut">${esc(meta)}</span>`:''}${done?`<span class="sr"> — ${esc(STR.ls.doneToday)}</span>`:''}</p>${btn}</div></li>`;};   // each button is described by its item (Today has two Continue — G-A11y)
-  const deckItem=n=>due?item(n,STR.ls.tDeck(due),STR.ls.aboutMin(Math.max(1,Math.round(Math.min(due,n===1?T.goPrompts:CONFIG.learn.deckSession)*T.promptS/60))),`<button type="button" class="btn sm" data-go="${n===1?'deck=go':'deck'}">${esc(STR.ln.today.review)}</button>`,false)
-    :item(n,STR.ls.tDeckNone,lnDeckAll().length&&lnNextDue()?STR.ln.nextOn(lnDayLabel(lnNextDue())):STR.ln.deckEmpty,'',lnDeckAll().length>0);
-  const nxSit=nx&&nx.L.sittings[nx.st.si];
-  const studyLesson=nx?item(1,STR.ls.tLesson(lsName(nx.ch),nx.st.si+1),STR.ls.aboutMin(lsMin(nxSit)),`<button type="button" class="btn sm pri" data-go="${esc(lsHash(nx.ch,nx.st))}">${esc(STR.ls.contBtn)}</button>`,false)
-    :item(1,STR.ls.tLessonsDone,'',`<button type="button" class="btn sm" data-go="lessons">${esc(STR.ls.pathT)}</button>`,true);
-  return `<section class="card ls-plan" aria-labelledby="lsGoT"><h2 id="lsGoT">${esc(STR.ls.goT)} <span class="sm mut">· ${esc(STR.ls.upTo(T.goMax))}</span></h2><p class="xs mut">${esc(goN||ckGo?STR.ls.goLead(Math.max(1,goMin)):STR.ls.goNone)}</p>
-      <ol class="ls-tl">${deckItem(1)}${ckGo?item(2,ckGo.label,STR.ls.aboutMin(Math.round(T.checkS/60)),`<button type="button" class="btn sm" data-go="${esc(ckGo.hash)}">${esc(STR.ls.startBtn)}</button>`,ckGo.done):''}</ol></section>
-    <section class="card ls-plan" aria-labelledby="lsStT"><h2 id="lsStT">${esc(STR.ls.studyT)} <span class="sm mut">· ${esc(STR.ls.range(T.studyMin,T.studyMax))}</span></h2><p class="xs mut">${esc(STR.ls.studyLead)}</p>
-      <ol class="ls-tl">${studyLesson}${deckItem(2)}${retry.length?item(3,STR.ls.tRetry(retry.length),retry[0].title,`<button type="button" class="btn sm" data-go="card=${esc(retry[0].id)}">${esc(STR.ls.retryBtn)}</button>`,false):''}${mixOn?item(retry.length?4:3,STR.ls.tMix,STR.ls.optional,`<button type="button" class="btn sm" data-go="mix">${esc(STR.ls.mixT)}</button>`,R.today):''}</ol>
-      ${R.n?`<p class="xs mut">${esc(STR.ls.recallLine(R.ok,R.n,R.pct,CONFIG.learn.mix.recallDays))}</p>`:''}</section>`;}
+  const retry=lsRetry(),mixOn=und.length>=CONFIG.learn.mix.minCards&&lsChs(und)>=CONFIG.learn.mix.minChapters;
+  let iq=0;const item=(n,t,meta,btn,done)=>{const id='lsTi'+(++iq);btn=(btn||'').replace('<button ',`<button aria-describedby="${id}" `);return `<li class="ls-ti${done?' ls-done':''}"><span class="ls-tn" aria-hidden="true">${done?'✓':n}</span><div><p class="sm" id="${id}"><b>${esc(t)}</b>${meta?` <span class="xs mut">${esc(meta)}</span>`:''}${done?`<span class="sr"> — ${esc(STR.ls.doneToday)}</span>`:''}</p>${btn}</div></li>`;};
+  const dueItem=item(1,due?STR.ls.tDeck(due):STR.ls.tDeckNone,due?STR.ls.aboutMin(Math.max(1,Math.round(Math.min(due,T.goPrompts)*T.promptS/60))):(lnDeckAll().length&&lnNextDue()?STR.ln.nextOn(lnDayLabel(lnNextDue())):STR.ln.deckEmpty),due?`<button type="button" class="btn sm" data-go="deck=go">${esc(STR.ln.today.review)}</button>`:'',!due&&lnDeckAll().length>0);
+  const nxSit=nx&&nx.L.sittings[nx.st.si],study=LS.view==='study';
+  let rest;
+  if(study){const studyLesson=nx?item(2,STR.ls.tLesson(lsName(nx.ch),nx.st.si+1),STR.ls.aboutMin(lsMin(nxSit)),`<button type="button" class="btn sm pri" data-go="${esc(lsHash(nx.ch,nx.st))}">${esc(STR.ls.contBtn)}</button>`,false)
+      :item(2,STR.ls.tLessonsDone,'',`<button type="button" class="btn sm" data-go="lessons">${esc(STR.ls.pathT)}</button>`,true);
+    rest=studyLesson+(retry.length?item(3,STR.ls.tRetry(retry.length),retry[0].title,`<button type="button" class="btn sm" data-go="card=${esc(retry[0].id)}">${esc(STR.ls.retryBtn)}</button>`,false):'')+(mixOn?item(retry.length?4:3,STR.ls.tMix,STR.ls.optional,`<button type="button" class="btn sm" data-go="mix">${esc(STR.ls.mixT)}</button>`,R.today):'');
+  }else rest=ckGo?item(2,ckGo.label,STR.ls.aboutMin(Math.round(T.checkS/60)),`<button type="button" class="btn sm" data-go="${esc(ckGo.hash)}">${esc(STR.ls.startBtn)}</button>`,ckGo.done):'';
+  return `<section class="card ls-plan" aria-labelledby="lsPlanT"><h2 id="lsPlanT">${esc(STR.ls.planT)}</h2>
+      <div class="seg" role="group" aria-label="${esc(STR.ls.planT)}"><button type="button" data-td-view="go" aria-current="${!study}">${esc(STR.ls.goT)}</button><button type="button" data-td-view="study" aria-current="${study}">${esc(STR.ls.studyT)}</button></div>
+      <p class="xs mut">${esc(study?STR.ls.studyLead:STR.ls.goLead(Math.round(T.goMax)))}</p>
+      <ol class="ls-tl">${dueItem}${rest}</ol>
+      ${study&&R.n?`<p class="xs mut">${esc(STR.ls.recallLine(R.ok,R.n,R.pct,CONFIG.learn.mix.recallDays))}</p>`:''}</section>`;}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-td-view]');if(!b)return;LS.view=b.dataset.tdView;render();});
 
 /* ---------- tests hook (91-tests.js calls lsTests) ---------- */
 function lsTests(t){
