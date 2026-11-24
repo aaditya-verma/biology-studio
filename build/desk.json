@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24 17:05 IST",
+ "generated_at": "2026-11-24 17:07 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "facaf70",
+  "commit": "c7ccb57",
   "branch": "main"
  },
  "now": [
@@ -23,7 +23,7 @@
   "state": "held",
   "chat": "Bio · Build · W5 dispatcher",
   "since": "2026-11-24 15:33 IST",
-  "age_h": 1.5,
+  "age_h": 1.6,
   "old": false,
   "since_reason": null
  },
@@ -91,8 +91,7 @@
    "kind": "check",
    "unblocks": 47,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": null
+   "asked": "2026-11-17"
   },
   {
    "id": "H1.q4",
@@ -100,8 +99,7 @@
    "kind": "action",
    "unblocks": 46,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Send the Professor the setup Doc and share Drive subfolders renders/ audio/ research/ assets/ index/ backup/ as Editor — not book/"
+   "asked": "2026-11-17"
   },
   {
    "id": "T5",
@@ -109,8 +107,7 @@
    "kind": "check",
    "unblocks": 46,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": null
+   "asked": "2026-11-17"
   },
   {
    "id": "H1.q6",
@@ -118,8 +115,7 @@
    "kind": "action",
    "unblocks": 46,
    "blocks": false,
-   "asked": "2026-11-18",
-   "ask": "Delete the 24 uploaded Project docs (Project → knowledge; keep the GitHub studio-docs/ source), then a chat checks it still sees STATUS"
+   "asked": "2026-11-18"
   },
   {
    "id": "L1.q2",
@@ -127,8 +123,7 @@
    "kind": "action",
    "unblocks": 40,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "Tomorrow (22 Nov), installed app on the tablet or phone: T7 step 8 — Today shows the due count → Review now → answer from memory, Show answer, Got it / Not yet. Send one screenshot + anything confusing; then T7 → pass and L1 → done"
+   "asked": "2026-11-21"
   },
   {
    "id": "T7",
@@ -136,8 +131,7 @@
    "kind": "check",
    "unblocks": 40,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "T3d",
@@ -145,8 +139,7 @@
    "kind": "check",
    "unblocks": 30,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "T9",
@@ -154,8 +147,7 @@
    "kind": "check",
    "unblocks": 29,
    "blocks": false,
-   "asked": null,
-   "ask": null
+   "asked": null
   },
   {
    "id": "L2.q1",
@@ -163,8 +155,7 @@
    "kind": "decide",
    "unblocks": 29,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-070: confirm lessons in sittings ≤ 15 min, step rules (any finished Check run ticks the step; Skip for now; no separate drill step), Today plans, Mixed review rules (4 Understood cards in 2 chapters, ≤ 2 per card in card order, recall only), nav unchanged — or say what to change (T9 step 13)"
+   "asked": "2026-11-22"
   },
   {
    "id": "L2.q2",
@@ -172,8 +163,7 @@
    "kind": "decide",
    "unblocks": 29,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "Lesson order: move E00.01.06 How to use the app first in Part 0 (it explains Check + Understood before the first Check) and E07.01.01 A tube on a tube first in Ch 7 (the chapter's overview, book E07.01)? Roadmap order puts them last; yes needs a small order override in lesson-check (G-Learn recommendation)"
+   "asked": "2026-11-22"
   },
   {
    "id": "T13b",
@@ -181,8 +171,7 @@
    "kind": "check",
    "unblocks": 28,
    "blocks": false,
-   "asked": null,
-   "ask": null
+   "asked": null
   },
   {
    "id": "T14",
@@ -190,8 +179,7 @@
    "kind": "check",
    "unblocks": 27,
    "blocks": false,
-   "asked": null,
-   "ask": null
+   "asked": null
   },
   {
    "id": "T8b",
@@ -199,8 +187,7 @@
    "kind": "check",
    "unblocks": 5,
    "blocks": false,
-   "asked": null,
-   "ask": null
+   "asked": null
   },
   {
    "id": "T11",
@@ -208,8 +195,7 @@
    "kind": "check",
    "unblocks": 5,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "V3.q1",
@@ -217,8 +203,7 @@
    "kind": "decide",
    "unblocks": 5,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-075: confirm the trace drill as built (Check type, path as scene data, cell only during its question, ringed + labelled, drawn larger; first use early cell → endoderm) — say 'D-075 confirmed' or what to change"
+   "asked": "2026-11-22"
   },
   {
    "id": "M1.q3",
@@ -226,8 +211,7 @@
    "kind": "decide",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Pick renderer (O1–O3), voice (V-a/V-b) and encoder (E1/E2) from D-024 + D-045 after T1"
+   "asked": "2026-11-17"
   },
   {
    "id": "M1.q4",
@@ -235,8 +219,7 @@
    "kind": "action",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Optional: download the free 3D Atlas of Human Embryology PDFs (3dembryoatlas.com) to Drive › research/ (needed for the G-Sci look check vs R01 CS7)"
+   "asked": "2026-11-17"
   },
   {
    "id": "M1.q2",
@@ -244,8 +227,7 @@
    "kind": "decide",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-19",
-   "ask": "Align the kit’s shot.json with the app (grey ctx + plum outline, D-036) or keep the accent fill — recommended: align"
+   "asked": "2026-11-19"
   },
   {
    "id": "M1.q5",
@@ -253,8 +235,7 @@
    "kind": "action",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-20",
-   "ask": "Upload out\\for_drive\\ (3 clips, 3 manifests, 2 voices) to Drive › renders › bakeoff, then do T1 on the phone"
+   "asked": "2026-11-20"
   },
   {
    "id": "T1",
@@ -262,8 +243,7 @@
    "kind": "check",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-20",
-   "ask": null
+   "asked": "2026-11-20"
   },
   {
    "id": "T11",
@@ -271,8 +251,7 @@
    "kind": "check",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "W2.q1",
@@ -280,8 +259,7 @@
    "kind": "decide",
    "unblocks": 4,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "Calendar: are 3 h on weekdays and 6 h on Sat/Sun of chat time right? Send your minutes per day (Mon…Sun) and any days off — every date on Plan follows them"
+   "asked": "2026-11-21"
   },
   {
    "id": "W5.q1",
@@ -289,8 +267,7 @@
    "kind": "action",
    "unblocks": 3,
    "blocks": false,
-   "asked": "2026-11-24",
-   "ask": "Create the one scheduled task `Bio · Dispatcher` (hourly, this laptop) with the prompt in tools/dispatch/README.md, then delete the old ones: bio-code-commit-queue, bio-w5-commit-queue, bio-w5-dispatcher-when-clear, bio-sr1-sources-menu-when-clear, bio-u3-look-screens-when-clear, bio-w3-run-surface, bio-x2a-commit-when-clear. Keep P1, FA, M1V8 and the CI checks until W5b."
+   "asked": "2026-11-24"
   },
   {
    "id": "I1.q1",
@@ -298,8 +275,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Skim the I1 section tables (curriculum/book-index-part1.md, -part2.md) — say if any ids look wrong"
+   "asked": "2026-11-17"
   },
   {
    "id": "I1.q2",
@@ -307,8 +283,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Optional: photograph the print Index pages to Drive › book/ (missing from the PDF) for a later I1 calibration"
+   "asked": "2026-11-17"
   },
   {
    "id": "M0.q1",
@@ -316,8 +291,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Optional: rename the Drive folder Embryo Studio → Biology Studio, then tell a chat so the docs follow"
+   "asked": "2026-11-17"
   },
   {
    "id": "QB.q1",
@@ -325,8 +299,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Put the two reference reels in Drive › research/quality-refs/ (reference only, never in the repo)"
+   "asked": "2026-11-17"
   },
   {
    "id": "R0.q1",
@@ -334,8 +307,7 @@
    "kind": "ask",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "\"GitHub projects added\" (17 Nov): not found yet — share the links so they join the registry § Tools"
+   "asked": "2026-11-17"
   },
   {
    "id": "X1.05.q1",
@@ -343,8 +315,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-17",
-   "ask": "Skim the ⚑ list: D-029 notochord, D-030 stage ages / SCT frequency / SSRI line — say if you want a different handling"
+   "asked": "2026-11-17"
   },
   {
    "id": "A0.q1",
@@ -352,8 +323,7 @@
    "kind": "ask",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-18",
-   "ask": "Which tablet can you test on (model, real or emulated)? None → checks use the laptop’s device mode, marked \"emulated\""
+   "asked": "2026-11-18"
   },
   {
    "id": "DR.q1",
@@ -361,8 +331,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-18",
-   "ask": "Re-paste claude/INSTRUCTIONS.md §6 into Project → Custom instructions (it now names build/steps.json; Professor’s Project too, once set up)"
+   "asked": "2026-11-18"
   },
   {
    "id": "S1.q1",
@@ -370,8 +339,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-19",
-   "ask": "Optional: try the Studio at ?test=1#studio=E05.01.01 on the phone (review pane) and the laptop (3 panes)"
+   "asked": "2026-11-19"
   },
   {
    "id": "X1.06.q1",
@@ -379,8 +347,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-19",
-   "ask": "D-039 (a–e) from Ch 6: pick an option per item (somite total, month-2 days, R02 ages, marrow timing, haemangioma) — recommendations given"
+   "asked": "2026-11-19"
   },
   {
    "id": "VS2.q1",
@@ -388,8 +355,7 @@
    "kind": "ask",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-20",
-   "ask": "QR04/QR05 (D-046 H5): (a) is QR04 heart Part 3 and QR05 fertilisation Part 1? (b) channel/account + link for each; (d) what is the \"Record_2026-11-17-03-43-37…\" file in Drive › research/quality-refs/?"
+   "asked": "2026-11-20"
   },
   {
    "id": "X1.07.q1",
@@ -397,8 +363,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-20",
-   "ask": "D-043 (a–d) from Ch 7: ventral body-wall closure model, CDH frequency, renaming 'Diaphragm from four parts' (septum transversum ≠ central tendon in Langman 14e), gastroschisis associated-defect figures — recommendations given"
+   "asked": "2026-11-20"
   },
   {
    "id": "X1.08.q1",
@@ -406,8 +371,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-20",
-   "ask": "D-044 (a–e) from Ch 8: pick an option per item (progesterone hand-over, CRL accuracy, share of DZ twins, accreta/previa concept name, amniotic fluid curve) — recommendations given"
+   "asked": "2026-11-20"
   },
   {
    "id": "H2.q1",
@@ -415,8 +379,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "Copy the 3 GitHub forms in before syncing: xcopy /I /Y \"D:\\Projects\\biology_studio\\handoff\\h2-issue-forms\\*.yml\" \"D:\\Projects\\biology_studio\\repo\\biology-studio\\.github\\ISSUE_TEMPLATE\\\" (the chat can't write inside .github); then repo settings (chats can't): Issues ticked; Labels › New label `review` and `fixing`; a milestone `v12` when a fix ships (T10 Before)"
+   "asked": "2026-11-21"
   },
   {
    "id": "H2.q2",
@@ -424,8 +387,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "D-061: confirm Reviewer mode as built (addresses, 8-line checklist, ✓/✎/? + note rule, the issue → words mapping, 5-min GitHub check, updates from the build log) — or say what to change (T10 step 8)"
+   "asked": "2026-11-21"
   },
   {
    "id": "H2.q3",
@@ -433,8 +395,7 @@
    "kind": "action",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "After T10 part A: send the Professor the welcome message (links + 3 lines; text in the build log H2 line / chat) — then T10 part B is hers"
+   "asked": "2026-11-21"
   },
   {
    "id": "L1F.q1",
@@ -442,8 +403,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "D-056: confirm Try it labels off during a Check run, leaving the card ends a run, scene phone framing, pinned labels beside pins (T7b step 11) — or say what to change"
+   "asked": "2026-11-21"
   },
   {
    "id": "T10",
@@ -451,8 +411,7 @@
    "kind": "check",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "T7b",
@@ -460,8 +419,7 @@
    "kind": "check",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": null
+   "asked": "2026-11-21"
   },
   {
    "id": "X1.09.q1",
@@ -469,8 +427,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "D-057 (a–d) from Ch 9: pick an option per item (FASD rate, Zika risk, pregestational diabetes risk, ondansetron and heart defects) — recommendations given; (e) is a note, no action needed"
+   "asked": "2026-11-21"
   },
   {
    "id": "X1.10.q1",
@@ -478,8 +435,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-21",
-   "ask": "D-064 (a, b, d) from Ch 10: pick an option per item (posterior fontanelle timing, craniosynostosis rate, acromegaly cause) — recommendations given; (c) resegmentation is a teaching note — confirm option 1 (book halves in the card, refinement in More); (e) is a curriculum note"
+   "asked": "2026-11-21"
   },
   {
    "id": "X1.01.q1",
@@ -487,8 +443,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-092 (a–d) from Ch 1: pick an option per item (how many human genes; what euchromatin is; does methylation inactivate the X; which Delta ligands) — recommended a3, b2, c2, d3; (e)–(n) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.01.q2",
@@ -496,8 +451,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "E01.05.06 Retinoic acid has no Ch 1 text: retire-hide the row (A2) or re-point it to Ch 5/6?"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.02.q1",
@@ -505,8 +459,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-093 (a–e, g–i; f withdrawn) from Ch 2: pick an option per item (crossovers per meiosis; maternal share of trisomy 21; T18/T13 first-year survival; Klinefelter extra X origin; fragile X rate and sex; when spermatogonia form; spermatogenesis length; abnormal sperm share) — recommended a2 b2 c3 d2 e3 g2 h2 i2"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.02.q2",
@@ -514,8 +467,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "The gene-mutation text (Ch 2 pp 23–24) has no concept row: add a row (A1, new id) or fold it into E02.02.05?"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.03.q1",
@@ -523,8 +475,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-094 (a–f) from Ch 3: pick an option per item (zona sperm receptor; sperm–egg adhesion; cortical granule contents; FGF and the hypoblast; IVF embryos transferred; when inner/outer cells commit) — recommended a2 b2 c2 d2 e2 f2"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.03.q2",
@@ -532,8 +483,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-044 (a) revisit: new evidence (placental steroids from ~gestational week 5, Ch 3 source) — keep option (1) or move to (2)?"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.03.q3",
@@ -541,8 +491,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "Colour key: the inner cell mass before it splits has no --g- token (Ch 3 scenes) — use --g-epi, --g-ctx or a new token (D-031 change)? Ch 2's parental chromosome colours also need a non-layer pattern + label"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.03.q4",
@@ -550,8 +499,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "E00.01.06 holds app facts only — keep ✔ in research.txt, or allow an 'ⓘ app' mark (build_map change)?"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.11.q1",
@@ -559,8 +507,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-066 (a–e) from Ch 11: pick an option per item (striation timing, BMP4 role at the VLL lip, primaxial/abaxial muscle + rib lists — (3) also rewords Ch 10's rib line, DMD rate, prune belly triad + cause) — recommendations given; (f) is notes only"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.12.q1",
@@ -568,8 +515,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-067 (a–e) from Ch 12: pick an option per item (thalidomide window + which clock, retinoic acid's role, digit identity by time vs concentration, the two quotable rates, whether cards carry the hip-dysplasia prevention line) — recommendations given; (f) is the curriculum note, notes only"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.13.q1",
@@ -577,8 +523,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-068 (a–e) from Ch 13: pick an option per item (pulmonary-artery origin, probe-patent foramen ovale 20 % vs 27 %, mitral not tricuspid cleft in ostium primum defect, interrupted-arch rate and its 22q11 link, single-lesion rates) — recommendations given; (f) passes limb-rate evidence to D-067 d, (g) is the curriculum note"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.14.q1",
@@ -586,8 +531,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-072 (a–e) from Ch 14: pick an option per item (how trachea and oesophagus part — Tier 1 split; alveoli at birth and until when; preterm survival age; branching after birth; what seals the larynx) — recommendations given; (f)–(i) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.15.q1",
@@ -595,8 +539,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-074 (a–j) from Ch 15: pick an option per item (midgut rotation model, why the gut herniates, midgut–hindgut border, stomach's second axis, liver-bud timing, gastroschisis rate — the book contradicts itself, small-bowel atresia rate, Meckel frequency, insulin timing, pyloric stenosis age) — recommendations given; (k)–(n) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.16.q1",
@@ -604,8 +547,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-076 (a–i) from Ch 16: pick an option per item (vaginal lining origin, glans urethra, when nephrons stop forming, exstrophy rates, hypospadias rate, Wilms cause, Klinefelter frequency, renal arteries in ascent) — recommendations given; (g) PKD is a note after G-Sci; (j)–(m) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.17.q1",
@@ -613,8 +555,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-078 (a–e) from Ch 17: pick an option per item (when the palatal shelves rise, how the septum meets the palate, 22q11.2 rate, hemifacial microsomia rate, cleft palate rate) — recommendations given; (f)–(l) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.18.q1",
@@ -622,8 +563,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-079 (a–d) from Ch 18: pick an option per item (where the cord ends at birth and in adults, where microglia come from and when, when cord myelination starts, which way the forebrain fusion site runs) — recommendations given; (e)–(l) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.19.q1",
@@ -631,8 +571,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-082 (a–c) from Ch 19: pick an option per item (when the ear canal opens, the six hillocks, when the organ of Corti forms) — recommendations given; (d)–(k) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.20.q1",
@@ -640,8 +579,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-085 (a–b) from Ch 20: pick an option per item (where a coloboma usually is; does the eye need PAX6 to make its cup) — recommendations given; (c)–(k) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X1.21.q1",
@@ -649,8 +587,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-088 (b) from Ch 21: is ichthyosis 'usually' autosomal recessive? pick option 1 (book default), 2 (card: commonest is filaggrin type, semidominant; next X-linked; severe newborn forms like harlequin recessive — book line in More) or 3 ('inherited — several patterns') — recommended 2; (a), (c)–(k) are notes"
+   "asked": "2026-11-22"
   },
   {
    "id": "X2a.q1",
@@ -658,8 +595,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-090 (a): birth defects cause ~25 % of infant deaths (book) or 20.6 % in 2017 (Tier 1)? options 1 (book default), 2 (card: about 1 in 5 infant deaths in the US; book figure + falling death rate in More) or 3 (25 % + '20.6 % in 2017' in one line) — recommended 2"
+   "asked": "2026-11-22"
   },
   {
    "id": "X2a.q2",
@@ -667,8 +603,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-090 (b): keep or drop the Hiroshima/Nagasaki 28 % / 25 % / 25 % trio? options 1 (quote as the book does), 2 (drop the three percentages; teach 'worst 8–15 weeks after fertilization' as ✚, no dose claim; book figures in More) or 3 (keep, qualified as the heavily exposed subgroup) — recommended 2"
+   "asked": "2026-11-22"
   },
   {
    "id": "X2a.q3",
@@ -676,8 +611,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-090 (c): amniocentesis 'not usually before 14 weeks' (book) or 'from 15 weeks'? options 1 (book default), 2 (book's ~14 weeks but the reason becomes loss + club foot, fluid reason in More; '15–16 weeks in practice' only once a guideline is cited) or 3 ('14–15 weeks', no reason) — recommended 2"
+   "asked": "2026-11-22"
   },
   {
    "id": "X2b.q1",
@@ -685,8 +619,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-22",
-   "ask": "D-091 (a) knee centres at birth: book 'epiphyses all cartilage at birth' vs lower femur from ~30 wk (often upper tibia) — recommended 2 (card: '…except at the knee', book line in More); (b) ductus venosus sphincter: book 'a sphincter' vs human 13–17 wk histology, no muscle sphincter but flow still regulated — recommended 2 ('can narrow to limit flow'); (c) how the duodenum closes: book 'cell proliferation' vs human morphometry, cells converge and number falls — recommended 2 ('closes, then reopens', no mechanism on the card). Pick 1 / 2 / 3 for each"
+   "asked": "2026-11-22"
   },
   {
    "id": "U3b.q1",
@@ -694,8 +627,7 @@
    "kind": "decide",
    "unblocks": 0,
    "blocks": false,
-   "asked": "2026-11-24",
-   "ask": "Which segmented groups move aria-pressed → aria-current (D-086 (4))? Candidates: Book map view switch (11-bookmap.js), Studio gate/line/cal-mark groups (16-studio.js), Learn view/level switches (18-learn.js), Review tabs/level/verdict/sure (19-review.js) — all single-select groups where the CSS already treats aria-current and aria-pressed identically. Recommended: convert all of those, but leave Tracker's done/ideas filters (17-tracker.js) as aria-pressed — they're two independent toggles, not a single-select group."
+   "asked": "2026-11-24"
   }
  ],
  "running": [
@@ -704,7 +636,7 @@
    "chat": "Bio · Build · W5 dispatcher",
    "by": "Aaditya",
    "start": "2026-11-24 15:33",
-   "age_h": 1.5,
+   "age_h": 1.6,
    "old": false,
    "old_reason": null
   }
@@ -719,9 +651,9 @@
    "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45371201956"
   },
   "main_head": {
-   "commit": "facaf70",
-   "state": "in_progress",
-   "reason": null
+   "commit": "c7ccb57",
+   "state": null,
+   "reason": "no run listed for this commit"
   }
  },
  "checks": [
@@ -738,7 +670,7 @@
   {
    "id": "ci",
    "state": "warn",
-   "detail": "main facaf70 is not confirmed green (in_progress)"
+   "detail": "main c7ccb57 is not confirmed green (no run)"
   },
   {
    "id": "laptop",
