@@ -1,12 +1,24 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24 22:21 IST",
+ "generated_at": "2026-11-24 23:21 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "c2860f6",
+  "commit": "b98c05c",
   "branch": "main"
  },
- "now": [],
+ "now": [
+  {
+   "id": "P1",
+   "title": "P1 S1E01 Gastrulation — script + animatic",
+   "chat": "Bio · Episode · S1E01",
+   "row": "gpu",
+   "status": "in progress",
+   "start": "2026-11-24",
+   "end": "2026-11-24",
+   "slipped": false,
+   "tentative": false
+  }
+ ],
  "lock": {
   "state": "free",
   "chat": null,
@@ -610,19 +622,29 @@
    "asked": "2026-11-24"
   }
  ],
- "running": [],
+ "running": [
+  {
+   "step": "P1",
+   "chat": "Bio · Episode · S1E01 animatic",
+   "by": "Aaditya",
+   "start": "2026-11-24 23:04",
+   "age_h": 0.3,
+   "old": false,
+   "old_reason": null
+  }
+ ],
  "slips": [],
  "ci": {
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "c2860f6",
-   "run": 45427268899,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45427268899"
+   "commit": "c2d33f9",
+   "run": 45442569139,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45442569139"
   },
   "main_head": {
-   "commit": "c2860f6",
-   "state": "success",
+   "commit": "b98c05c",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -634,18 +656,18 @@
   },
   {
    "id": "next",
-   "state": "pass",
-   "detail": "schedule builds; STATUS § Next agrees"
+   "state": "warn",
+   "detail": "schedule builds; STATUS § Next differs (check.py --next --write)"
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main c2860f6 is green"
+   "state": "warn",
+   "detail": "main b98c05c is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
-   "state": "warn",
-   "detail": "23 uncommitted files"
+   "state": "pass",
+   "detail": "clean and in sync"
   },
   {
    "id": "lock_age",
@@ -655,7 +677,7 @@
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "0 open"
+   "detail": "1 open"
   },
   {
    "id": "conflicts",
@@ -733,19 +755,19 @@
    },
    {
     "id": "P1",
-    "status": "planned",
+    "status": "in progress",
     "chat": "Bio · Episode · S1E01",
     "waits_for": [],
-    "end": "2026-11-28"
+    "end": "2026-11-24"
    },
    {
     "id": "R1",
     "status": "planned",
     "chat": "Bio · Build · R1 render",
     "waits_for": [
-     "P1 (planned)"
+     "P1 (in progress)"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-27"
    },
    {
     "id": "L1",
@@ -794,7 +816,7 @@
     "status": "planned",
     "chat": "Bio · Build · W5b job queue",
     "waits_for": [],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "W6",
@@ -817,7 +839,7 @@
     "waits_for": [
      "R1 (planned)"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-27"
    },
    {
     "id": "U2",
@@ -966,11 +988,6 @@
      "reason": "no Committed line"
     },
     {
-     "id": "p1-s1e01",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
      "id": "sr1-sources-menu",
      "committed": false,
      "reason": "no Committed line"
@@ -1006,7 +1023,7 @@
      "reason": "no Committed line"
     }
    ],
-   "committed": 8
+   "committed": 9
   },
   "code_queue": {
    "open": [
