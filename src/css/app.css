@@ -299,7 +299,7 @@ html.dev-d .today{grid-template-columns:repeat(3,minmax(0,1fr))}
 .today .wide{grid-column:1/-1}
 /* U3 (D-087, P2/P4/P5): progress hero + stat tiles, the plan switch, "Next up" snap row */
 .td-hero .stats{grid-template-columns:repeat(3,1fr)}
-.snap{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;margin:0 -2px;padding:2px 2px 4px}
+.snap{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;margin:0 calc(-2px + max(0px,var(--r-card) - var(--pad))) 0 -2px;padding:2px 2px 4px}   /* U3 fix: overflow clips at .snap's own border-box edge, which on phone (pad 14/12px) sits inside the card's 20px corner radius — a scrolled-to-the-end peek card's hard edge then visually crossed the rounded corner ("border overlap"). A right margin (not padding — padding doesn't move the clip edge) pulls .snap's own edge in by the radius/pad deficit so the clip lands clear of the curve; tp/tl/d already have pad >= r-card, so margin there is unchanged */
 .snap>.nu-card{scroll-snap-align:start}
 .nu-card{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:min(46vw,170px);flex:0 0 auto;min-height:var(--tap);padding:10px;border:0;border-radius:var(--r-in);background:var(--L2);text-align:left;cursor:pointer;color:var(--ink)}
 .nu-card:hover{background:var(--L3)}
