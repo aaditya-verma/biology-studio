@@ -1,22 +1,33 @@
 /* Biology Studio — Settings (theme, motion (V1, H5), storage + save log, backup, Reviewer mode (H2), testing mode, version) and the Colour key (D-031 re-check on this screen).
    Owner doc: build/design-plan.md §4.4–4.5. EDIT: words in STR; colour tokens in src/css/app.css :root. */
 'use strict';
+const SET_CK_LAYERS=['epi','hypo','ecto','meso','endo','crest','ctx'];
+function setSwRow(act,on,label,hint,disabled){   // U3 (D-087, P4): switches — role=switch, D-086 look (ink + ring + check via .swc)
+  return `<button type="button" class="lrow set-row" role="switch" aria-checked="${on}" data-act="${esc(act)}"${disabled?' disabled':''}><span class="lb"><b>${esc(label)}</b><span class="hint">${esc(hint)}</span></span><span class="swc" aria-hidden="true"></span></button>`;
+}
 SCREENS.settings=function(v){
   ROUTE.crumbs=[{label:STR.settingsTitle}];const th=state.settings.theme,L=slogRead().slice().reverse();
   const fmt=e=>new Date(e.t).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})+'  '+e.ev+(e.to!=null?' → rev '+e.to:'')+(e.err?'  '+e.err:'')+(e.why?'  '+e.why:'');
+  const hhmm=t=>t?new Date(t).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'—';
   v.innerHTML=`<h1>${esc(STR.settingsTitle)}</h1><div class="settings">
-   <section class="card"><h2>${esc(STR.themeT)}</h2><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-current="${th===k}">${esc(l)}</button>`).join('')}</div>
-     <h3 class="sm" style="margin-top:12px">${esc(STR.motionT)}</h3><div class="seg" role="group" aria-label="${esc(STR.motionT)}">${Object.entries(STR.motions).map(([k,l])=>`<button type="button" data-motion-set="${k}" aria-current="${(state.settings.motion||'system')===k}">${esc(l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.motionHint)}</p></section>
-   <section class="card"><h2>${esc(STR.colourKeyT)}</h2><p class="sm mut">${esc(STR.colourKeyHint)}</p><div class="row" style="margin:8px 0">${['epi','hypo','ecto','meso','endo','crest','ctx'].map(k=>`<span class="sw L-${k}" title="${esc(STR.ckLayers[k])}"></span>`).join('')}</div>
-     <button type="button" class="btn" data-go="colours">${esc(STR.colourKeyT)}</button></section>
-   <section class="card"><h2>${esc(STR.storageT)}</h2><p class="sm">${STORE.mode==='idb'?esc(STR.saved)+' · IndexedDB '+esc(CONFIG.idb.name)+' · '+esc(STR.rev)+' '+STORE.rev:esc(STR.savedTest)}${STORE.err?` · <span class="bad">${esc(STORE.err)}</span>`:''}</p>
-     <h3 class="sm">${esc(STR.saveLog)}</h3><div class="slog" tabindex="0">${L.length?L.map(e=>esc(fmt(e))).join('\n'):'—'}</div></section>
-   <section class="card"><h2>${esc(STR.backupT)}</h2><p class="sm mut">${esc(STR.exportHint)}</p><div class="row">
-     <button type="button" class="btn" data-act="export">${esc(STR.exportB)}</button>
-     <label class="btn">${esc(STR.importB)}<input type="file" accept="application/json,.json" data-act="import" class="sr"></label></div></section>
-   <section class="card"><h2>${esc(STR.rv.setT)}</h2><p class="sm mut">${esc(STR.rv.setHint)}</p><div class="row"><button type="button" class="btn" data-act="rvmode"${FLAGS.test?' disabled':''}>${esc(state.review.on?STR.rv.setOff:STR.rv.setOn)}</button><a class="btn" href="#review">${esc(STR.rv.title)}</a></div></section>
-   <section class="card"><h2>${esc(STR.testT)}</h2><p class="sm mut">${esc(STR.testHint)}</p><button type="button" class="btn" data-act="testmode">${esc(FLAGS.test?STR.testOff:STR.testOn)}</button></section>
-   <section class="card"><h2>${esc(STR.versionT)}</h2><p class="mono">${esc(appVerLine())}</p><p class="xs mut" id="setDev">${esc(devLine())} · ${esc(DEV.input)}</p></section>
+   <section class="card"><h2>${esc(STR.setGLook)}</h2>
+     <h3 class="sm">${esc(STR.themeT)}</h3><div class="seg" role="group" aria-label="${esc(STR.themeT)}">${Object.entries(STR.themes).map(([k,l])=>`<button type="button" data-theme-set="${k}" aria-current="${th===k}">${esc(l)}</button>`).join('')}</div>
+     <h3 class="sm" style="margin-top:12px">${esc(STR.motionT)}</h3><div class="seg" role="group" aria-label="${esc(STR.motionT)}">${Object.entries(STR.motions).map(([k,l])=>`<button type="button" data-motion-set="${k}" aria-current="${(state.settings.motion||'system')===k}">${esc(l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.motionHint)}</p>
+     <button type="button" class="lrow ln-rowc" data-go="colours" style="margin-top:4px"><span class="ln-rt"><span class="nm">${esc(STR.colourKeyT)}</span></span><span class="ckp" aria-hidden="true">${SET_CK_LAYERS.map(k=>`<span class="sw L-${k}"></span>`).join('')}</span>${icon('fwd',18)}</button>
+   </section>
+   <section class="card"><h2>${esc(STR.setGData)}</h2>
+     <p class="sm">${STORE.mode==='idb'?esc(STR.savedAt(STORE.rev,hhmm(state.savedAt))):esc(STR.savedTest)}${STORE.err?` · <span class="bad">${esc(STORE.err)}</span>`:''}</p>
+     <details class="xt-more"><summary class="sm">${esc(STR.saveLogN(L.length))}</summary><div class="slog flow">${L.length?L.map(e=>esc(fmt(e))).join('\n'):'—'}</div></details>
+     <p class="sm mut" style="margin-top:8px">${esc(STR.exportHint)}</p>
+     <div class="row"><button type="button" class="btn" data-act="export">${esc(STR.exportB)}</button>
+     <label class="btn">${esc(STR.importB)}<input type="file" accept="application/json,.json" data-act="import" class="sr"></label></div>
+   </section>
+   <section class="card"><h2>${esc(STR.setGStudy)}</h2>
+     ${setSwRow('rvmode',state.review.on,STR.rv.setT,STR.rv.setHint,FLAGS.test)}
+     ${state.review.on?`<a class="btn" href="#review" style="margin-top:8px">${esc(STR.rv.title)}</a>`:''}
+     ${setSwRow('testmode',FLAGS.test,STR.testT,STR.testHint,false)}
+   </section>
+   <section class="card"><h2>${esc(STR.setGAbout)}</h2><p class="mono">${esc(appVerLine())}</p><p class="xs mut" id="setDev">${esc(devLine())} · ${esc(DEV.input)}</p></section>
   </div>`;
 };
 document.addEventListener('click',e=>{

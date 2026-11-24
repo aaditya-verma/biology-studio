@@ -103,14 +103,17 @@ const STR={
     calTitle:'Calibration', calLead:'Five facts from the Ch 5 dossier. Pick the mark you would give each one, then compare with the dossier (G-Sci passed) and the mark suggester.',
     calYou:'You', calDossier:'Dossier', calRules:'Suggester', calScore:(y,n,r)=>'You '+y+'/'+n+' · suggester '+r+'/'+n,
     calRulesT:'How the suggester marks', calRules1:'Decision logged → ⚑ · no book section → ✚ · book + a Tier 1 source → ✔✔ · otherwise ✔. It proposes; a reviewer decides (only a person can see that a Tier 1 source disagrees).'},
-  // Settings
-  settingsTitle:'Settings', themeT:'Theme', themes:{system:'Device',light:'Light',dark:'Dark'},
+  // Settings (U3, D-087: groups Look · Your data · Study · About; compact rows, switches)
+  settingsTitle:'Settings',
+  setGLook:'Look', setGData:'Your data', setGStudy:'Study', setGAbout:'About',
+  themeT:'Theme', themes:{system:'Device',light:'Light',dark:'Dark'},
   motionT:'Motion', motions:{system:'Device',reduce:'Reduce',full:'Full'}, motionHint:'Reduce = no smooth camera moves; Play jumps from key day to key day.',
-  storageT:'Storage', saved:'Saved on this device', savedTest:'Testing mode: nothing is written', rev:'revision', saveLog:'Save log (this device, last 20)',
+  savedAt:(rev,hhmm)=>'Saved on this device · rev '+rev+' · '+hhmm, savedTest:'Testing mode: nothing is written',
+  saveLogN:n=>'Save log ('+n+')',
   backupT:'Backup', exportB:'Export backup', importB:'Import backup', importOk:'Backup merged.', importBad:'That file is not a Biology Studio backup.', importNewer:'That backup is from a newer app version — update the app first.',
   exportHint:'Tap Export backup before any update that touches saved data (RULES A3).',
   testT:'Testing mode', testOn:'Turn on testing mode', testOff:'Turn off testing mode', testHint:'Shows ✎ edit hooks and the debug overlay. Nothing is saved while it is on.',
-  colourKeyT:'Colour key', colourKeyHint:'The germ-layer colours, each with its pattern and label, checked on this screen.',
+  colourKeyT:'Colour key',
   versionT:'Version',
   // Colour key
   ckTitle:'Colour key', ckLead:'Every layer has a colour, a pattern and a label — colour is never the only cue. Numbers are measured on this screen now.',
@@ -296,7 +299,7 @@ const STR={
     // updates
     updT:'Updates', updLead:'What the team changed, in plain words, newest first.', updNone:'No updates yet.', updFail:'Could not load the updates.', updMore:'Show more',
     // settings
-    setT:'Reviewer mode', setHint:'Adds a Review tab for checking the science on cards.', setOn:'Turn on Reviewer mode', setOff:'Turn off Reviewer mode',
+    setT:'Reviewer mode', setHint:'Adds a Review tab for checking the science on cards.',
     // debug
     dbgT:'Debug (reviewer)', dbgClear:'Clear the saved list', dbgAs:'Pretend to be (GitHub name)'},
   // SR1 sources + Resources (D-098; src/js/21-sources.js) — links + our own one-line notes only (RULES §G)

@@ -379,9 +379,23 @@ table.xt td button{display:block;width:100%;min-width:var(--tap);min-height:var(
 .empty{color:var(--muted);text-align:center;padding:24px 8px}
 
 /* ---------- 7. Settings + colour key ---------- */
-.settings{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
-html.dev-tl .settings,html.dev-d .settings{grid-template-columns:repeat(2,minmax(0,1fr))}
+.settings{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}   /* U3 (D-087, §4.4): pp/tp one column */
+html.dev-pl .settings,html.dev-tl .settings{grid-template-columns:repeat(2,minmax(0,1fr))}
+html.dev-d .settings{grid-template-columns:repeat(3,minmax(0,1fr))}
 .slog{font:var(--fs-xs)/1.5 var(--mono);max-height:240px;overflow:auto;background:var(--surface-2);border-radius:var(--r-sm);padding:8px;margin:8px 0;white-space:pre-wrap}
+.slog.flow{max-height:none;overflow:visible}   /* U3: Save log sits behind a disclosure — the page scrolls, no inner scroller (C8/C13) */
+.set-row{flex-wrap:nowrap}
+.set-row .lb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.set-row .lb .hint{font:var(--fs-xs)/1.3 inherit;color:var(--muted);white-space:normal}
+.set-row .swc,.set-row .ckp{flex:none}
+.set-row .ckp{display:flex;gap:4px}
+.ckp .sw{width:24px;height:24px;border-radius:6px}   /* U3: colour-key preview row — swatches >= 24px with pattern (audit §Settings) */
+.swc{width:44px;height:26px;border-radius:999px;border:2px solid var(--line-strong);background:var(--L3);position:relative}
+.swc::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--muted);transition:transform .15s}
+[role=switch][aria-checked="true"] .swc{background:var(--ink);border-color:var(--ink)}
+[role=switch][aria-checked="true"] .swc::after{background:var(--L0);transform:translateX(18px)}
+[role=switch].lrow:focus-visible{outline:var(--focus);outline-offset:3px}
+[role=switch].lrow[disabled]{opacity:.5;cursor:default}
 .ckey{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 .ck{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
 .ck .fill{height:72px;border-width:0 0 2px 0;border-style:solid;display:flex;align-items:flex-end;padding:6px 8px;font-weight:700}
