@@ -65,11 +65,11 @@
 ## Next (in order)
 <!-- next:auto -->
 Schedule (auto · check.py --next · est. from 24 Nov; order fixed, dates move):
-- Lock: W5 [Code] ~24 Nov now → U3b [Code] ~25 Nov next → W6 [Code] ~25 Nov → V4 [Code] ~26 Nov → SR2 [Code] ~26 Nov
-- GPU: P1 [Code] ~27 Nov next
-- You (no lock): M1·T1 [Cowork] ~24 Nov now → H1·T5 [Cowork] ~24 Nov now → H2·T10 [Cowork] ~24 Nov now → +7 more now → V3·T8b [Cowork] ~25 Nov next → U2·T13b [Cowork] ~25 Nov → SR1·T14 [Cowork] ~25 Nov → FD [Cowork] ~28 Nov
+- Lock: W5 [Code] ~24 Nov now → U3b [Code] ~26 Nov next → W6 [Code] ~26 Nov → V4 [Code] ~26 Nov → SR2 [Code] ~27 Nov
+- GPU: P1 [Code] ~28 Nov next
+- You (no lock): M1·T1 [Cowork] ~24 Nov now → H1·T5 [Cowork] ~24 Nov now → H2·T10 [Cowork] ~25 Nov next → K1·T2 [Cowork] ~25 Nov → W1·T11 [Cowork] ~25 Nov → W2·T11 [Cowork] ~25 Nov
 - Critical path: GATE (ends ~1 Dec)
-- Your inputs first: T2 (unblocks 46) · H1.q4 (unblocks 45) · T5 (unblocks 45)
+- Your inputs first: T2 (unblocks 47) · H1.q4 (unblocks 46) · T5 (unblocks 46)
 - Run in: U3b → Code (takes the build lock: changes app or tools, runs the checks, pushes) · P1 → Code (renders on the laptop GPU: desktop app with the laptop shell on)
 - Lock: held by `Bio · Build · W5 dispatcher` (route A — Claude Code, laptop clone, live chat), since 24 Nov 2026, 15:33 IST. U3a closed and U3b planned, with its open points (gates na, `.snap` exemption review, U3b.q1, T13c) in § Now, D-100 and `steps.json`.
 <!-- /next:auto -->
