@@ -1,6 +1,6 @@
 # Ideas backlog — PARKED (17 Nov 2026)
 
-*(Purpose: parked ideas only (RULES I3). Updated: 22 Nov 2026 · Bio · Build · V3 trace a cell — item 7 built (D-075). Before: 22 Nov 2026 · Bio · Build · L2 lessons — items 1, 3 built (D-070). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — items 4–6, 10, 11 built (D-054). Before: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
+*(Purpose: parked ideas only (RULES I3). Updated: 24 Nov 2026 · Bio · Code · Commit queue (item 7; owner idea 22 Nov, Bio · Build · U3 look screens) — item 26 step ticker (LST). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — item 7 built (D-075). Before: 22 Nov 2026 · Bio · Build · L2 lessons — items 1, 3 built (D-070). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — items 4–6, 10, 11 built (D-054). Before: 21 Nov 2026 · Bio · Plan · App-first — items 1, 3–7, 10, 11 picked into V2/V3/L2 (D-047). Before: 17 Nov 2026 · Bio · Research · X1 Ch 05 (item 22 candidates).)*
 
 No pick until the use gate after L2 (D-010, D-047), except the owner's app-first picks (D-047). Free only. Each idea: what · why · size (S/M/L). Owner picks; picks move into a plan.
 
@@ -35,6 +35,7 @@ No pick until the use gate after L2 (D-010, D-047), except the owner's app-first
 18. **Render diagnostics** (S) — frame time, ≈ count, citation coverage meter.
 19. **Hindi voice-over** (M) — script-first means a new TTS track + subtitles, no re-render.
 20. **Progress page to share** (S) — for a study group or teacher.
+26. **Step ticker** (M) — a live status page per step (state, open run + elapsed vs estimate, lock, needs and what blocks it, gates, owner check + inputs, its live runs + screenshots, its commits + CI, scheduled check, ETA); the hub lists them. Local only (`out/live/`). Owner idea 22 Nov 2026 → step **LST** (idea; after GATE, LST.q1). Spec: Studio home `handoff\lst-step-ticker\README.md`.
 
 ## G. From the research layer (added 17 Nov 2026, D-011)
 21. **Make it** (S) — a 1-minute paper/clay fold on hard cards (gastrulation, folding); hands-on models help with 3D movement (teaching-methods M05).

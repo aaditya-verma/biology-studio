@@ -1783,7 +1783,7 @@
    "chat": "Bio · Fix · split-screen test badge",
    "status": "done",
    "needs": ["U2"],
-   "unblocks": [],
+   "unblocks": ["LST"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-A11y": "pass"},
    "check": null,
@@ -1930,7 +1930,7 @@
    "chat": "Bio · Review · use gate",
    "status": "planned",
    "needs": ["L2", "V2", "U3"],
-   "unblocks": ["K3", "K4", "D1", "G1", "IB02", "IB08", "IB09", "IB12", "IB13", "IB14", "IB15", "IB16", "IB17", "IB18", "IB19", "IB20", "IB21", "IB22", "IB23", "IB24", "IB25"],
+   "unblocks": ["K3", "K4", "D1", "G1", "IB02", "IB08", "IB09", "IB12", "IB13", "IB14", "IB15", "IB16", "IB17", "IB18", "IB19", "IB20", "IB21", "IB22", "IB23", "IB24", "IB25", "LST"],
    "lock": false,
    "gates": {"G-Owner": "open"},
    "check": null,
@@ -2492,6 +2492,29 @@
    "est": {"chats": 1},
    "runs": [],
    "run": {"on": "Code", "why": "takes the lock and edits cards; card-check must pass"}
+  },
+  {
+   "id": "LST",
+   "title": "LST step ticker — a live status page for every step",
+   "type": "Build",
+   "chat": "Bio · Build · LST step ticker",
+   "status": "idea",
+   "needs": ["U2F", "GATE"],
+   "unblocks": [],
+   "lock": true,
+   "gates": {},
+   "check": null,
+   "decisions": ["D-089"],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Fold the 22 Nov stopgap into tools/live: status.py + status-ticker.html, live.py --serve starts the feed, hub lists *-ticker.html (Studio home handoff\\lst-step-ticker\\README.md § Spec 1)"
+   ],
+   "inputs": [
+    {"id": "LST.q1", "kind": "decide", "ask": "When should LST (a live status ticker per step) be built: right after the lock lane's current steps (SR1 → W5 → U3), or after the GATE?", "asked_in": "Bio · Build · U3 look screens", "asked": "2026-11-22", "answer": "after GATE (owner, 24 Nov 2026, Desk)", "status": "answered", "d": null}
+   ],
+   "est": {"chats": 1},
+   "run": {"on": "Code", "why": "takes the build lock: changes tools, runs the checks, pushes"}
   }
  ]
 }
