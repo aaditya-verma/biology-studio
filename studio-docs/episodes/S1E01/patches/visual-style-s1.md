@@ -1,6 +1,6 @@
 # Patch note — `studio-docs/build/visual-style.md` §1 (M1b.q10 = B) · placeholder **D-103**
 
-*(Not applied. Drafted 22 Nov 2026 in `Bio · Episode · S1E01 script` (P1 ①); the commit task or the ② chat applies it after G-Art reads the animatic frames. Owner answer: M1b.q10 = B, 22 Nov 2026 12:19 IST — anatomy shots also use the 68–72 % caption band; axes + scale bar move top-left.)*
+*(**APPLIED 25 Nov 2026** in `Bio · Episode · S1E01 animatic` after G-Art agreed, with its corrections — the doc text is the valid one, D-104. Drafted 22 Nov 2026 in `Bio · Episode · S1E01 script` (P1 ①); the commit task or the ② chat applies it after G-Art reads the animatic frames. Owner answer: M1b.q10 = B, 22 Nov 2026 12:19 IST — anatomy shots also use the 68–72 % caption band; axes + scale bar move top-left.)*
 
 ## 1. Replace the "Bands" bullet in §1
 **Old:**
