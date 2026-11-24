@@ -25,7 +25,7 @@ Exit 0 = tick done (a failing check is a row, not an error) · 1 = could not pub
 Desk (and W6's Desk tab) read it at `https://raw.githubusercontent.com/aaditya-verma/biology-studio/desk-data/build/desk.json`. The branch holds only this file; a push to it runs no CI and never touches `main`.
 - Published when the content changes, or after 5 h. **Over 6 h since `generated_at` = stale.** `generated_at` and `age_h` alone never count as a change.
 - **Public:** ids, states and counts. No answer text, local paths or task descriptions.
-- Schema 1: `generated_at` (IST) · `stale_after_h` · `source` (main commit) · `now` · `lock` · `next` (5, with dates) · `inputs` (ranked) · `running` · `slips` · `ci` · `checks` (`id`, `state` pass/warn/fail/unknown, `detail`) · `pipeline` (`steps`, `handoffs`, `code_queue`, `scheduled`, `reasons`) · `answers` (`id`, `state`, `reason`) · `reasons`.
+- Schema 1: `generated_at` (IST) · `stale_after_h` · `source` (main commit) · `now` · `lock` · `next` (5, with dates) · `inputs` (ranked; the question text is in steps.json under the same id) · `running` · `slips` · `ci` · `checks` (`id`, `state` pass/warn/fail/unknown, `detail`) · `pipeline` (`steps`, `handoffs`, `code_queue`, `scheduled`, `reasons`) · `answers` (`id`, `state`, `reason`) · `reasons`.
 - A section that can't be read is `null`, with the cause in `reasons`. Scheduled tasks' on/off state is in no readable file, so `enabled` is always `null`.
 
 ## Desk answers — Studio home `handoff\desk-answers.json`

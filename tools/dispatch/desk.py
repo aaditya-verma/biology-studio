@@ -218,9 +218,8 @@ def s_lock(ctx):
 
 
 def s_inputs(ctx):
-    asks = {x["id"]: x for s in ctx.doc["steps"] for x in s.get("inputs", [])}
-    return [dict(id=r["id"], step=r["step"], kind=r["kind"], unblocks=r["unblocks"], blocks=r["blocks"], asked=r["asked"] or None,
-                 ask=asks[r["id"]]["ask"] if r["id"] in asks else None) for r in ctx.plan["ranked"]]
+    # no `ask`: it is free text (it can hold local paths); steps.json has it under the same id
+    return [dict(id=r["id"], step=r["step"], kind=r["kind"], unblocks=r["unblocks"], blocks=r["blocks"], asked=r["asked"] or None) for r in ctx.plan["ranked"]]
 
 
 def s_running(ctx):
@@ -1083,7 +1082,7 @@ def t_publish(f, case):
     f.run(now=NOW + dt.timedelta(hours=5.5))
     d = f.remote()
     case("content change publishes; lock age", f.ncommits() == 3 and (d["lock"]["state"], d["lock"]["chat"], d["lock"]["age_h"]) == ("held", "Bio · Build · T1", 11.5), d["lock"])
-    case("no task descriptions or paths in the public file", "secret words" not in json.dumps(d) and not any(x in json.dumps(d) for x in (f.home.as_posix(), json.dumps(str(f.home))[1:-1])))
+    case("no task descriptions or paths in the public file", "secret words" not in json.dumps(d) and "which?" not in json.dumps(d) and not any(x in json.dumps(d) for x in (f.home.as_posix(), json.dumps(str(f.home))[1:-1])))
     rc, out = f.run(dry=True, now=NOW + dt.timedelta(hours=20))
     case("dry run writes nothing", rc == 0 and f.ncommits() == 3 and "nothing written" in out, out)
 
