@@ -12,7 +12,9 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 50   # D-087: layout-check gained real-tablet sizes + 150/200 % text (~+55 %)
+    timeout-minutes: 90   # 50 proved too tight after D-087 (~+55 %): 2 consecutive CI runs (a7c150b, bd182b4) hit it
+                           # with zero log output; a local unbuffered full run (24 Nov, U3) took ~61 min with 0 issues,
+                           # so CI — usually slower than a dev machine — needed more headroom, not a hang/bug fix.
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 2 }
