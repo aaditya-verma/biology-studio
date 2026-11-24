@@ -465,7 +465,7 @@ html.dev-p.can-back:not(.dock-fold) .vw:not(.inl) .vw-tabs{margin-left:72px}   /
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
 .vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}
-.vw-list{display:grid;gap:4px}   /* U3 (D-087, P3): compact rows, not a card grid */
+.vw-list{display:grid;gap:4px;grid-template-columns:minmax(0,1fr)}   /* U3 (D-087, P3): compact rows, not a card grid; minmax(0,…) — a grid track's default min is auto (content-based), which a nowrap title/id would otherwise force wide */
 /* phone portrait: canvas on top, controls in a bottom sheet (thumb reach) */
 html.dev-p .vw{gap:0}
 html.dev-p .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0}
@@ -851,7 +851,7 @@ html.dev-tp .ln-dr{grid-template-columns:minmax(0,1fr) minmax(0,220px);align-ite
 .ln-rowc{flex-wrap:nowrap;gap:10px}
 .ln-rowc .ln-ic{flex:none;display:inline-flex;color:var(--muted)}
 .ln-rowc .ln-rt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px}
-.ln-rowc .ln-rt .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
+.ln-rowc .ln-rt .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none;min-width:0}   /* min-width:auto on a nowrap span = its full text width (flex gotcha) — without this the ellipsis never kicks in and the row overflows */
 .ln-rowc .ln-rt .id{font:var(--fs-xs) var(--mono);color:var(--muted)}
 .ln-rowc>svg{flex:none;color:var(--muted)}
 .ln-tools{margin:4px 0}

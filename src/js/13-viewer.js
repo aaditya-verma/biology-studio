@@ -42,7 +42,7 @@ function scList(v){
   /* U3 (D-087, P3): compact rows — title one line, "Days N–M · k cards" mono line, chevron; the whole row opens the scene.
      Card ids moved into the scene's own About section (13-viewer.js ~line 101) — no longer repeated here. */
   v.innerHTML=`<h1>${esc(STR.vw.listTitle)}</h1><p class="mut" style="max-width:var(--measure)">${esc(STR.vw.listLead)}</p>
-  <div class="vw-list">${SC.idx.scenes.map(s=>`<div class="row" style="flex-wrap:nowrap"><button type="button" class="lrow ln-rowc" data-go="scene=${esc(s.id)}">
+  <div class="vw-list">${SC.idx.scenes.map(s=>`<div class="row"><button type="button" class="lrow ln-rowc" data-go="scene=${esc(s.id)}">
     <span class="ln-rt"><span class="nm">${esc(s.title)}</span><span class="id">${esc(STR.vw.daysRange(s.days))} · ${esc(STR.vw.cardsN(s.cards.length))}</span></span>${icon('fwd',18)}</button>${editBtn('scene',s.id,CONFIG.viewer.scenesUrl+s.id+'.json')}</div>`).join('')}</div>`;
 }
 
