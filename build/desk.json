@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24 23:21 IST",
+ "generated_at": "2026-11-25 00:21 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "b98c05c",
@@ -13,8 +13,8 @@
    "chat": "Bio · Episode · S1E01",
    "row": "gpu",
    "status": "in progress",
-   "start": "2026-11-24",
-   "end": "2026-11-24",
+   "start": "2026-11-25",
+   "end": "2026-11-25",
    "slipped": false,
    "tentative": false
   }
@@ -34,8 +34,8 @@
    "chat": "Bio · Build · U3b look screens",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-25",
-   "end": "2026-11-25",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
    "slipped": false,
    "tentative": false
   },
@@ -45,8 +45,8 @@
    "chat": "Bio · Build · W6 desk",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-25",
-   "end": "2026-11-25",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
    "slipped": false,
    "tentative": true
   },
@@ -56,8 +56,8 @@
    "chat": "Bio · Build · V4 viewer controls",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-25",
-   "end": "2026-11-26",
+   "start": "2026-11-26",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": true
   },
@@ -67,8 +67,8 @@
    "chat": "Bio · Build · SR2 book vs research",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": true
   },
@@ -78,8 +78,8 @@
    "chat": "Bio · Build · M1b v8 install",
    "row": "lock",
    "status": "ready",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": false
   }
@@ -628,7 +628,7 @@
    "chat": "Bio · Episode · S1E01 animatic",
    "by": "Aaditya",
    "start": "2026-11-24 23:04",
-   "age_h": 0.3,
+   "age_h": 1.3,
    "old": false,
    "old_reason": null
   }
@@ -638,13 +638,13 @@
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "c2d33f9",
-   "run": 45442569139,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45442569139"
+   "commit": "b98c05c",
+   "run": 45450275505,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45450275505"
   },
   "main_head": {
    "commit": "b98c05c",
-   "state": "in_progress",
+   "state": "success",
    "reason": null
   }
  },
@@ -661,8 +661,8 @@
   },
   {
    "id": "ci",
-   "state": "warn",
-   "detail": "main b98c05c is not confirmed green (in_progress)"
+   "state": "pass",
+   "detail": "main b98c05c is green"
   },
   {
    "id": "laptop",
@@ -727,7 +727,7 @@
     "waits_for": [
      "GATE (planned)"
     ],
-    "end": "2026-12-01"
+    "end": "2026-12-02"
    },
    {
     "id": "K4",
@@ -737,7 +737,7 @@
      "K3 (planned)",
      "GATE (planned)"
     ],
-    "end": "2026-12-02"
+    "end": "2026-12-03"
    },
    {
     "id": "W1",
@@ -758,7 +758,7 @@
     "status": "in progress",
     "chat": "Bio · Episode · S1E01",
     "waits_for": [],
-    "end": "2026-11-24"
+    "end": "2026-11-25"
    },
    {
     "id": "R1",
@@ -767,7 +767,7 @@
     "waits_for": [
      "P1 (in progress)"
     ],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "L1",
@@ -809,7 +809,7 @@
     "status": "planned",
     "chat": "Bio · Build · V4 viewer controls",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    {
     "id": "W5b",
@@ -823,14 +823,14 @@
     "status": "planned",
     "chat": "Bio · Build · W6 desk",
     "waits_for": [],
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    {
     "id": "M1V8",
     "status": "ready",
     "chat": "Bio · Build · M1b v8 install",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    {
     "id": "L3",
@@ -839,7 +839,7 @@
     "waits_for": [
      "R1 (planned)"
     ],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "U2",
@@ -860,21 +860,21 @@
     "status": "planned",
     "chat": "Bio · Build · SR2 book vs research",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    {
     "id": "U3b",
     "status": "planned",
     "chat": "Bio · Build · U3b look screens",
     "waits_for": [],
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    {
     "id": "GATE",
     "status": "planned",
     "chat": "Bio · Review · use gate",
     "waits_for": [],
-    "end": "2026-12-01"
+    "end": "2026-12-02"
    },
    {
     "id": "D1",
