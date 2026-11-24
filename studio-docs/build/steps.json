@@ -1608,7 +1608,7 @@
    "title": "W5 dispatcher — one Code task tracks every pipeline task, commit queue, Desk snapshot",
    "type": "Build",
    "chat": "Bio · Build · W5 dispatcher",
-   "status": "planned",
+   "status": "in progress",
    "needs": ["W3F"],
    "unblocks": ["W6", "U3b"],
    "lock": true,
@@ -1624,7 +1624,7 @@
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [],
+   "runs": [{"chat": "Bio · Build · W5 dispatcher", "by": "Aaditya", "start": "2026-11-24 15:33", "outcome": "partial", "note": "live chat, route A (Claude Code, laptop clone); open run; start checks passed: lock free, HEAD ab72ee8 = origin/main, CI #115 green (ci.bat)"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
