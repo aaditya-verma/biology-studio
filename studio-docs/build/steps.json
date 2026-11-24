@@ -1914,13 +1914,16 @@
     "Tab and chip look (viewer tabs, layer chips, switches; on-ring ≤ 3 px for ring-touch, tabs never wrap for pill-wrap); the day slider's plum filled track may be restyled with it (G-Art r1 #6)",
     "Header icons at 200 % text stay 20 px (G-Art r1 #7, declined in U2 — revisit with the header restyle)",
     "Prompt written by U2 part 2 in master plan §13 (after SR1)",
-    "Prompt written by U2 part 2 in master plan §13 (after SR1)",
     "Studio home handoff/u3-screen-audit drafts its decision as D-087 — taken by U2 part 2 (device class + shell); give U3's decision the next free D-id (re-check DECISIONS first)",
-    "Split noted as U3a screen restyle + U3b Strava patterns (D-098); runs as one row"
+    "Split noted as U3a screen restyle + U3b Strava patterns (D-098); runs as one row",
+    "Lessons list restyle — tablet portrait one column (audit §3; was the spec's 2), compact rows",
+    "Card screen — related/next snap row (P5, audit README §4.4/§65–66)",
+    "Viewer bar title + segment aria-pressed restyle (README §4 U3 scope; the D-086 (4) aria-pressed segments left for U3)",
+    "Full layout-check matrix (~ 61 min, every screen) + the full guard suite (card-check, lesson-check, scene-check + selftests, tracker check + selftest, colour-check, lock-guard selftest, map dry-run, appTests) as the final post-restyle validation pass"
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · U3 look screens", "by": "Aaditya", "start": "2026-11-24 04:49", "outcome": "partial", "note": "live chat, route A — Claude Code direct push; closing SR1's open run + fixing the STATUS backspace (INTEGRITY-ALERT) before the restyle; CI checks run on main (bd182b4) timed out at 50min with no output, diagnosing locally before the full matrix"}],
+   "runs": [{"chat": "Bio · Build · U3 look screens", "by": "Aaditya", "start": "2026-11-24 04:49", "outcome": "partial", "end": "2026-11-24 11:20", "note": "live chat, route B — laptop clone, owner runs sync.bat; closed SR1's open run + fixed the STATUS backspace before the restyle (INTEGRITY-ALERT repo rows 1–2, now ticked); CI checks.yml timeout bumped 50→90 (184cf68, local full run ~61 min, margin not a hang); restyled Today, Learn, Book map, 3D scenes list, Settings (D-087, P1–P6) with layout-check clean per screen; rebased onto 6f245b2 (LST) clean, no conflicts; Lessons list, Card related row, viewer bar title + aria-pressed segments and the rest of todo carry to the next run"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
