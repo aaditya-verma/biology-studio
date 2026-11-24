@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24 19:21 IST",
+ "generated_at": "2026-11-24 21:21 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "bc8ac77",
+  "commit": "c2860f6",
   "branch": "main"
  },
  "now": [],
@@ -608,14 +608,6 @@
    "unblocks": 0,
    "blocks": false,
    "asked": "2026-11-24"
-  },
-  {
-   "id": "W5.q1",
-   "step": "W5",
-   "kind": "action",
-   "unblocks": 0,
-   "blocks": false,
-   "asked": "2026-11-24"
   }
  ],
  "running": [],
@@ -629,8 +621,8 @@
    "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45392624874"
   },
   "main_head": {
-   "commit": "bc8ac77",
-   "state": "success",
+   "commit": "c2860f6",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -647,8 +639,8 @@
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main bc8ac77 is green"
+   "state": "warn",
+   "detail": "main c2860f6 is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
