@@ -17,7 +17,6 @@ Our own 3D host in Blender (route H-a, D-047): same mesh, materials and seed fro
 | `loud.py` | Two-pass loudness (H6, D-051): measure → gain + 4×-oversampled limiter → loudnorm `linear=true` → AAC → re-measure every mp4 (−14 LUFS ±0.5, true peak ≤ −1.5 dBTP). `python loud.py out\audio\line.wav` tests it alone. |
 | `captions.py` | Kinetic captions: ASS (burned) + VTT (app), EN and HI tracks, key word = colour + weight + scale. |
 | `m1b.py` | Runner: `check · tts · tex · sheet · shot · palette · captions · encode · report · compare` (+ QA in report). `t1b` = only what owner check T1b needs, one run at 720×1280. |
-| `sheet2d.py` | 2D model sheet v1 (the drawing the model follows; no Blender needed). |
 
 Flags on every step (RULES I5): `--dry-run` (print, write nothing) · `--debug` (verbose + saves `out\debug\host_*.blend` to open and nudge `# EDIT:` values) · `--only A|B|<tile>` · `--preview` (360×640, 8 samples). Also `--cycles`, `--nvenc`, `--safe` (paints safe zones; review only), `--reduced-motion` (H5 variant), `--palette-pass` (Standard transform, for ΔE), `--no-sim` (procedural shawl, fast look-dev), `--strict` (stop on the first failing part), `--onion` (compare: ours at 50 % over the ref, silhouettes aligned → `out\review\onion_*.png`).
 
