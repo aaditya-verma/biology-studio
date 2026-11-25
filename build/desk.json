@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-25 21:22 IST",
+ "generated_at": "2026-11-26 00:21 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "25cee0c",
@@ -22,8 +22,8 @@
    "chat": "Bio · Build · U3b look screens",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": false
   },
@@ -33,8 +33,8 @@
    "chat": "Bio · Build · W6 desk",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": true
   },
@@ -44,8 +44,8 @@
    "chat": "Bio · Build · V4 viewer controls",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-26",
-   "end": "2026-11-27",
+   "start": "2026-11-27",
+   "end": "2026-11-28",
    "slipped": false,
    "tentative": true
   },
@@ -55,8 +55,8 @@
    "chat": "Bio · Build · SR2 book vs research",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-27",
-   "end": "2026-11-27",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
    "slipped": false,
    "tentative": true
   },
@@ -66,8 +66,8 @@
    "chat": "Bio · Build · M1b v8 install",
    "row": "lock",
    "status": "ready",
-   "start": "2026-11-27",
-   "end": "2026-11-27",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
    "slipped": false,
    "tentative": false
   }
@@ -721,7 +721,7 @@
     "waits_for": [
      "GATE (planned)"
     ],
-    "end": "2026-12-02"
+    "end": "2026-12-03"
    },
    {
     "id": "K4",
@@ -731,7 +731,7 @@
      "K3 (planned)",
      "GATE (planned)"
     ],
-    "end": "2026-12-03"
+    "end": "2026-12-04"
    },
    {
     "id": "W1",
@@ -801,28 +801,28 @@
     "status": "planned",
     "chat": "Bio · Build · V4 viewer controls",
     "waits_for": [],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "W5b",
     "status": "planned",
     "chat": "Bio · Build · W5b job queue",
     "waits_for": [],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "W6",
     "status": "planned",
     "chat": "Bio · Build · W6 desk",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    {
     "id": "M1V8",
     "status": "ready",
     "chat": "Bio · Build · M1b v8 install",
     "waits_for": [],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "L3",
@@ -852,21 +852,21 @@
     "status": "planned",
     "chat": "Bio · Build · SR2 book vs research",
     "waits_for": [],
-    "end": "2026-11-27"
+    "end": "2026-11-28"
    },
    {
     "id": "U3b",
     "status": "planned",
     "chat": "Bio · Build · U3b look screens",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    {
     "id": "GATE",
     "status": "planned",
     "chat": "Bio · Review · use gate",
     "waits_for": [],
-    "end": "2026-12-02"
+    "end": "2026-12-03"
    },
    {
     "id": "D1",
@@ -891,7 +891,7 @@
     "status": "planned",
     "chat": "Bio · Ideation · flag digest",
     "waits_for": [],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "FA",
@@ -900,7 +900,7 @@
     "waits_for": [
      "FD (planned)"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "LST",
