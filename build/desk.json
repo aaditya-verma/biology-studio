@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated_at": "2026-11-25 19:30 IST",
+ "generated_at": "2026-11-25 20:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "62478f8",
+  "commit": "25cee0c",
   "branch": "main"
  },
  "now": [],
@@ -637,8 +637,8 @@
    "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45477901420"
   },
   "main_head": {
-   "commit": "62478f8",
-   "state": "success",
+   "commit": "25cee0c",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -655,8 +655,8 @@
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main 62478f8 is green"
+   "state": "warn",
+   "detail": "main 25cee0c is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
@@ -920,11 +920,6 @@
      "reason": "no Committed line"
     },
     {
-     "id": "c2-round3",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
      "id": "flag-digest",
      "committed": null,
      "reason": "no README"
@@ -935,17 +930,7 @@
      "reason": "no README"
     },
     {
-     "id": "handoff-M1b-step1.md",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
      "id": "handoff-M1b-v7-results.md",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
-     "id": "handoff-M1b-v7b.md",
      "committed": false,
      "reason": "no Committed line"
     },
@@ -970,11 +955,6 @@
      "reason": "no README"
     },
     {
-     "id": "m1b-v7c",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
      "id": "m1b-v8",
      "committed": false,
      "reason": "no Committed line"
@@ -995,11 +975,6 @@
      "reason": "no Committed line"
     },
     {
-     "id": "x1-ch21",
-     "committed": false,
-     "reason": "no Committed line"
-    },
-    {
      "id": "x1-part0",
      "committed": false,
      "reason": "no Committed line"
@@ -1008,14 +983,9 @@
      "id": "x2",
      "committed": false,
      "reason": "no Committed line"
-    },
-    {
-     "id": "x2-part1",
-     "committed": false,
-     "reason": "no Committed line"
     }
    ],
-   "committed": 9
+   "committed": 15
   },
   "code_queue": {
    "open": [
