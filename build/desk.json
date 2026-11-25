@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-25 20:22 IST",
+ "generated_at": "2026-11-25 21:22 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "25cee0c",
@@ -632,13 +632,13 @@
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "62478f8",
-   "run": 45477901420,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45477901420"
+   "commit": "25cee0c",
+   "run": 45631799596,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45631799596"
   },
   "main_head": {
    "commit": "25cee0c",
-   "state": "in_progress",
+   "state": "success",
    "reason": null
   }
  },
@@ -655,8 +655,8 @@
   },
   {
    "id": "ci",
-   "state": "warn",
-   "detail": "main 25cee0c is not confirmed green (in_progress)"
+   "state": "pass",
+   "detail": "main 25cee0c is green"
   },
   {
    "id": "laptop",
