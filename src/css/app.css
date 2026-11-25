@@ -129,6 +129,7 @@ html.rm *,html.rm *::before,html.rm *::after{scroll-behavior:auto!important;tran
 @media (prefers-reduced-motion:no-preference){.btn:active,.seg button:active,.vw-t:active{transform:scale(.97)} .btn.pri:active{transform:translateY(2px)}}
 .btn.ghost{background:transparent;border-color:transparent}
 .btn.icon{padding:0;border-radius:50%}
+.top .btn.icon svg{width:max(20px,1.125rem);height:max(20px,1.125rem)}   /* U3b (G-Art r1 #7): header icons grow with the text size (20 px at 100 %, 36 px at 200 %) */
 label.btn:focus-within{outline:var(--focus);outline-offset:2px}
 .btn[aria-pressed="true"]{border:2px solid var(--accent-text);color:var(--accent-text)}
 input[type=search],input[type=text],select{min-height:var(--tap);border:1px solid var(--line-strong);border-radius:var(--r-input);background:var(--L1);padding:0 10px;max-width:100%}
@@ -438,6 +439,7 @@ html.dev-pl .vw-tabs button{padding:0 4px;font-size:var(--fs-xs);min-width:0}
 .vw-msg{position:absolute;left:0;right:0;top:45%;text-align:center;padding:0 16px;color:var(--muted)}
 .vw-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);min-width:0}
 .vw-head h1{font-size:var(--fs-h2);margin:2px 0 8px}
+.vw:not(.inl):not(.drill) .vw-head{align-items:center;gap:8px;flex-wrap:nowrap} .vw:not(.inl):not(.drill) .vw-head h1{margin:2px 0;min-width:0}   /* U3b (P6): the viewer bar keeps one title — the scene id + version live in About */
 .vw-day{display:flex;align-items:flex-start;gap:8px}
 .vw-day>.btn,.vw-day>.vw-dl{flex:none}
 .vw-day>.vw-dl{align-self:center}
@@ -475,7 +477,8 @@ html.dev-pl .vw-day{flex-wrap:wrap;row-gap:0} html.dev-pl .vw-day>.vw-range{orde
 .vw-t[aria-checked="true"]::after{content:"✓"/"";color:var(--L0);font-weight:800}   /* decorative: the name stays the label (G-A11y) */
 .vw-t[aria-checked="true"]:focus-visible{outline:var(--focus);outline-offset:3px}   /* focus = the 3 px focus ring (2.4.7); ink fill + ✓ still say "on" */
 .vw .seg{margin-top:10px}
-html.dev-p.can-back:not(.dock-fold) .vw:not(.inl) .vw-tabs{margin-left:72px}   /* G-Art: the tab row starts right of the floating Back dock (no tab under it at rest) */
+html.dev-p.can-back:not(.dock-fold) .vw:not(.inl) .vw-tabs{margin-left:72px}
+html.dev-p .vw:not(.inl) .vw-tabs button{padding:0 8px}   /* U3b: the four tabs fit beside the dock on 360–430 px phones at 100 % (were 12 px a side → About scrolled out); big text still scrolls, never wraps */   /* G-Art: the tab row starts right of the floating Back dock (no tab under it at rest) */
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
 .vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}

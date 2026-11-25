@@ -52,6 +52,7 @@ SCREENS = {
     "today": "today", "map": "map", "chapter": "map=E05", "concept": "concept=E05.02.01",
     "crosstab": "x=layer&y=day", "cell": "x=layer&y=day&cell=meso%7CWk%203", "settings": "settings", "colours": "colours",
     "scenes": "scene", "viewer": "scene=sc-E00.01.04&day=16", "viewer-axes": "scene=sc-E00.01.01&day=17",
+    "viewer-2": "scene=sc-E00.01.02", "viewer-noto": "scene=sc-E05.02.01&day=17",   # U3b: every scene at its start view (framing, labels off the model)
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
     "progress": "progress", "progress-board": "progress=board", "progress-plan": "progress=plan", "progress-inputs": "progress=inputs",
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
@@ -909,7 +910,7 @@ def write_md(r, out, nvp, themes, texts, screens):
     (out / "report.md").write_text("\n".join(lines) + "\n")
 
 
-SELFTEST_CHECKS = ["ctrl-overlap", "slider-label", "ring-touch", "pill-wrap", "stage-collide", "no-scroll-cue"]   # EDIT: one case per check in selftest/cases.html
+SELFTEST_CHECKS = ["ctrl-overlap", "slider-label", "ring-touch", "pill-wrap", "stage-collide", "no-scroll-cue", "label-on-model", "frame-small"]   # EDIT: one case per check in selftest/cases.html
 
 
 async def selftest():

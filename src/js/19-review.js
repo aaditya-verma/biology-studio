@@ -150,7 +150,7 @@ SCREENS.review=function(v){const E=STR.rv;ROUTE.crumbs=[{label:E.title}];
   if(!state.review.seenAt&&RV.idx&&(RV.upd||RV.updErr)&&FLAGS.fixture!=='review'){for(const m of rvCardsAll())state.review.seen[m.id]=Math.max(state.review.seen[m.id]||0,m.version||1);
     state.review.updKey=RV.upd&&RV.upd[0]?RV.upd[0].key:'';state.review.seenAt=Date.now();rvSaveR();}
   const S=rvSort(),mine=rvMine(),news=rvNews(),nu=rvUpdNew(),tab=ROUTE.view||'todo';
-  const tabBtn=(k,n)=>`<button type="button" data-rvtab="${k}" data-fk="rvtab-${k}" aria-pressed="${tab===k}" aria-controls="rv-${k}">${esc(E.tabs[k])}${n?` <span class="rv-n" aria-hidden="true">${n}</span><span class="sr">, ${n}</span>`:''}</button>`;
+  const tabBtn=(k,n)=>`<button type="button" data-rvtab="${k}" data-fk="rvtab-${k}" aria-current="${tab===k}" aria-controls="rv-${k}">${esc(E.tabs[k])}${n?` <span class="rv-n" aria-hidden="true">${n}</span><span class="sr">, ${n}</span>`:''}</button>`;
   const todo=`<section class="card rv-pane" id="rv-todo" aria-labelledby="rvTodoT"><h2 id="rvTodoT">${esc(E.tabs.todo)}</h2>
       ${RV.idx?`<p class="sm mut">${esc(E.todoLead(S.todo.length))}</p>${S.todo.map(rvCardRow).join('')}`:`<p class="sm mut">${esc(RV.idxErr?STR.ln.loadFail:STR.ln.loading)}</p>`}
       ${S.wait.length?`<h3 class="sm rv-h3">${esc(E.waitingT)}</h3><p class="xs mut">${esc(E.waitingLead)}</p>${S.wait.map(rvCardRow).join('')}`:''}
@@ -193,7 +193,7 @@ function rvCardHtml(card,lv){const E=STR.rv,src=CD.src||{},secN=src.sections||{}
     return `<li class="rv-q"><p><b>${esc(q.prompt)}</b></p>${a}${q.why?`<p class="xs"><b>${esc(E.qWhy)}:</b> ${esc(q.why)}</p>`:''}</li>`;};
   return `<section class="rv-sec" id="rvs-obj"><h2 class="rv-h">${esc(E.objT)}</h2><p>${esc(card.objective&&card.objective.text||'')}</p></section>
    <section class="rv-sec" id="rvs-body"><h2 class="rv-h">${esc(E.bodyT)}</h2>
-     ${levels.length>1?`<div class="row"><span class="sm mut">${esc(E.readFor)}</span><div class="seg" role="group" aria-label="${esc(E.readFor)}">${levels.map(l=>`<button type="button" data-rvlv="${l}" aria-pressed="${l===lv}">${esc(E.levels[l])}</button>`).join('')}</div></div>`:''}
+     ${levels.length>1?`<div class="row"><span class="sm mut">${esc(E.readFor)}</span><div class="seg" role="group" aria-label="${esc(E.readFor)}">${levels.map(l=>`<button type="button" data-rvlv="${l}" aria-current="${l===lv}">${esc(E.levels[l])}</button>`).join('')}</div></div>`:''}
      <p class="rv-body">${rvBodyHtml(card,card.body[lv]||'')}</p></section>
    <section class="rv-sec" id="rvs-facts"><h2 class="rv-h">${esc(E.factsT)}</h2><ol class="rv-facts">${card.facts.map(f=>`<li value="${esc(f.id.slice(1))}"><span>${esc(f.text)}</span><span class="xs mut rv-src">${esc(secOf(f.cite))} · ${mk(f)}</span></li>`).join('')}</ol></section>
    ${card.misconceptions&&card.misconceptions.length?`<section class="rv-sec" id="rvs-mis"><h2 class="rv-h">${esc(E.misT)}</h2><ul class="rv-mis">${card.misconceptions.map(m=>`<li><p><span class="bad">✗ ${esc(E.wrongL)}</span> ${esc(m.wrong)}</p><p><span class="good">✓ ${esc(E.rightL)}</span> ${esc(m.right)}</p></li>`).join('')}</ul></section>`:''}

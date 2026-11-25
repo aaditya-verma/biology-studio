@@ -3,7 +3,7 @@
 <head>
 <!-- Biology Studio — layout audit selftest (U2 part 2, D-087). Owner doc: build/design-plan.md §7. Run by `python tools/layout-check/check.py --selftest`.
      Each case = a #<check>-v18 box built from the v18 CSS rules (copied as they were in app.css v18) that the check MUST flag,
-     and a #<check>-v19 box with the v19 rules that it must NOT flag. The v19 boxes are a FROZEN fixture (the rule shapes that pass), not a mirror of app.css — the full layout-check runs the same checks on the shipped CSS. EDIT: add a case per new audit check. -->
+     and a #<check>-v19 box with the v19 rules that it must NOT flag. The v19 boxes are a FROZEN fixture (the rule shapes that pass), not a mirror of app.css — the full layout-check runs the same checks on the shipped CSS. EDIT: add a case per new audit check. U3b: + label-on-model, frame-small (fixture hulls). -->
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>layout audit selftest</title>
 <style>
@@ -70,6 +70,14 @@ button{font:inherit}
 <!-- no-scroll-cue -->
 <section id="no-scroll-cue-v18"><div class="vw-panel"><p>Layers</p><p>Cut</p><p>View</p><p>About</p><p>Facts</p><p>Sources</p></div></section>
 <section id="no-scroll-cue-v19"><div class="vw-panel cue-on"><p>Layers</p><p>Cut</p><p>View</p><p>About</p><p>Facts</p><p>Sources</p><div class="cue" aria-hidden="true">More ↓</div></div></section>
+<!-- U3b (D-106): label-on-model + frame-small. The hull is a fixture (data-hull, stage px) handed to the audit by stageModel below, as the viewer does with the engine outline.
+     *-v18 = the v22 look (labels on the embryo; the E00.01.02 start view at 30 % × 20 %); *-v19 = fixed (labels beside it; model ≥ 50 % of the width). -->
+<section id="label-on-model-v18"><div class="vw-stage" data-hull="60,80 300,80 300,200 60,200" data-start="0"><span class="vw-lb" style="left:120px;top:120px">Primitive streak</span></div></section>
+<section id="label-on-model-v19"><div class="vw-stage" data-hull="60,80 300,80 300,200 60,200" data-start="0"><span class="vw-lb" style="left:120px;top:210px">Primitive streak</span><span class="vw-lb ax" style="left:150px;top:140px">Cranial</span></div></section>
+<section id="frame-small-v18"><div class="vw-stage" data-hull="126,112 234,112 234,168 126,168" data-start="1"></div></section>
+<section id="frame-small-v19"><div class="vw-stage" data-hull="60,100 300,100 300,180 60,180" data-start="1"></div></section>
+<script>/* U3b: the fixture outline (the viewer's stageModel hands the engine's) */
+function stageModel(st){const h=st.dataset.hull;if(!h)return null;return {hull:h.split(' ').map(p=>{const[x,y]=p.split(',').map(Number);return {x,y};}),start:st.dataset.start==='1'};}</script>
 <script src="../../../src/js/90-layout-audit.js"></script>
 </body>
 </html>

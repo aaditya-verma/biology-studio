@@ -5,6 +5,7 @@
    V2 (D-054): `notochord` part (lofted midline tube: prenotochordal strand → notochordal plate → rod, cranial end first per the book, D-029),
    per-key fit_mm, disc streak_scale + meso_midline_gap, stills of any state (snapshot — drills), viewAngle (rotate drills), context-loss hooks.
    L1F: `axis-o` anchor (the arrows' origin — the viewer keeps labels off the axis arrows) and screenBox() (drill framing keeps the embryo + ruler clear of the overlays).
+   U3b: outline() — the model's convex outline on screen (labels sit off it; the layout audit checks labels + start framing against it).
    V3 (D-075): `tracer` part — one marked cell on a path keyed by day (traceAt, shared with the viewer + tests; scene-check mirrors it); drawn only while
    a trace drill names it (state.trace), over the tissue, ctx fill + accent ring (B3), at least min_px on screen.
    EDIT: lights + materials in makeRenderer(); pattern drawings in PATTERNS; budgets in CONFIG.viewer (02-config.js). */
@@ -40,6 +41,15 @@ function patternTexture(T, token) {
   (PATTERNS[token] || PATTERNS.guide)(g, token === 'ecto' ? T.patInkLight : T.patInk);
   const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
   return t;
+}
+
+/* U3b: convex hull of 2D points [x, y] (monotone chain) → [{x, y}] clockwise on screen; the model outline for labels + framing */
+export function hull2(P) {
+  P = P.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]); if (P.length < 3) return P.map(([x, y]) => ({ x, y }));
+  const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]), lo = [], up = [];
+  for (const p of P) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+  for (let i = P.length - 1; i >= 0; i--) { const p = P[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+  return lo.slice(0, -1).concat(up.slice(0, -1)).map(([x, y]) => ({ x, y }));
 }
 
 /* ---------- 2. geometry (mirror of scene_math.py) ---------- */
@@ -462,11 +472,20 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
       return out; },
     pxPerMm() { return pxPerUnit() / V.scene.units.mm_per_unit; },
     /* screen box (px) of everything drawn except guides (axes, planes, debug) — drill framing (scene-spec §8a, L1F) */
-    screenBox() { placeCamera(); const b = new THREE.Box3(), t = new THREE.Box3(); let any = false;
+    screenBox() { placeCamera(); cam.updateMatrixWorld(); const b = new THREE.Box3(), t = new THREE.Box3(); let any = false;
       for (const o of V.objs) { if (!o.visible || o.userData.noFrame || o.userData.layer === '_debug') continue; t.setFromObject(o); if (t.isEmpty()) continue; b.union(t); any = true; }
       if (!any) return null; let l = Infinity, tp = Infinity, r = -Infinity, bt = -Infinity;
       for (const x of [b.min.x, b.max.x]) for (const y of [b.min.y, b.max.y]) for (const z of [b.min.z, b.max.z]) { const q = project([x, y, z]); l = Math.min(l, q.x); r = Math.max(r, q.x); tp = Math.min(tp, q.y); bt = Math.max(bt, q.y); }
       return { l, t: tp, r, b: bt, W: V.w, H: V.h, shift: V.shift || 0, pan: V.pan || 0, zoom: V.zoom }; },
+    /* U3b: the model's outline on screen (px) — the convex hull of every visible tissue piece's vertices (no guides, tracer, rings or planes).
+       The viewer keeps labels off it, and the layout audit checks labels and framing against it. Cached until the view or the build changes. */
+    outline() { placeCamera(); cam.updateMatrixWorld(); root.updateMatrixWorld(true);   // the camera matrix is otherwise only set by a render (first call before any frame gave a stale outline)
+     
+      const k = [V.w, V.h, V.az, V.el, V.zoom, V.shift || 0, V.pan || 0, V.objs.length, V.day, JSON.stringify(V.layersOn), JSON.stringify(V.cut)].join('|');
+      if (V.hullK === k) return V.hull; const P = [], v = new THREE.Vector3();
+      for (const m of V.hoverables) { if (!m.visible) continue; const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
+        for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld).project(cam); P.push([(v.x + 1) / 2 * V.w, (1 - v.y) / 2 * V.h]); } }
+      V.hullK = k; V.hull = hull2(P); return V.hull; },
     axisDirs, onFrame(f) { V.onFrame = f; }, render: kick,
     pick(x, y) { const r = new THREE.Raycaster(), v = new THREE.Vector2(x / V.w * 2 - 1, -(y / V.h) * 2 + 1); r.setFromCamera(v, cam);
       const hit = r.intersectObjects(V.hoverables.filter(m => m.visible), false)[0]; return hit ? hit.object.userData.layer : null; },

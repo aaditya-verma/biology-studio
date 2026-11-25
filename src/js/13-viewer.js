@@ -75,8 +75,7 @@ function scViewer(v,S,o={}){
       <div class="vw-turn row" role="group" aria-label="${esc(STR.vw.turnGroup)}">${tr?`<span class="vw-dl xs" aria-hidden="true">${esc(STR.vw.turnShort)}</span>`:''}${[['l','back'],['r','fwd'],['u','up'],['d','up']].map(([d,ic])=>`<button type="button" class="btn icon${d==='d'?' ln-dn':''}" data-vw="turn" data-d="${d}" aria-label="${esc(STR.vw.turn[d])}" title="${esc(STR.vw.turn[d])}">${icon(ic,20)}</button>`).join('')}
       <button type="button" class="btn sm" data-vw="dreset">${esc(STR.vw.dReset)}</button></div>`
     :o.inline?`<div class="vw-head row"><h3 class="vw-it" title="${esc(S.id)} · v${S.version}">${esc(S.title)}</h3><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>`
-    :`<div class="vw-head"><div class="row"><span class="mono mut">${esc(S.id)} · v${S.version}</span><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>
-      <h1 id="cpT" tabindex="-1">${esc(S.title)}</h1></div>`}
+    :`<div class="vw-head row"><h1 id="cpT" tabindex="-1">${esc(S.title)}</h1><span class="sp"></span>${editBtn('scene',S.id,CONFIG.viewer.scenesUrl+S.id+'.json')}</div>`}
     ${o.drill&&!tr?'':`<div class="vw-day" role="group" aria-label="${esc(STR.vw.dayGroup)}">${tr?`<span class="vw-dl xs" aria-hidden="true">${esc(STR.vw.day)}</span>`:''}
       <button type="button" class="btn icon" data-vw="dprev" aria-label="${esc(tr?STR.vw.trPrev:STR.vw.dayPrev)}" title="${esc(tr?STR.vw.trPrev:STR.vw.dayPrev)} ( [ )">${icon('back',20)}</button>
       <div class="vw-range"><label class="vw-rl"><span class="sr">${esc(STR.vw.day)}</span><input type="range" id="vwDay" min="${R0}" max="${R1}" step="0.1" value="${st.day}"></label>
@@ -100,7 +99,7 @@ function scViewer(v,S,o={}){
       ${S.terms&&S.terms.length?`<h3 class="sm">${esc(STR.vw.termsT)}</h3><dl class="vw-terms sm">${S.terms.map(t=>`<dt>${esc(t.term)}</dt><dd>${esc(t.text)}</dd>`).join('')}</dl>`:''}
       <h3 class="sm">${esc(STR.vw.discT)}</h3><ul class="vw-facts xs mut">${S.disclaimers.map(d=>`<li>${esc(d)}</li>`).join('')}</ul>
       <p class="xs mut">${esc(STR.vw.cardsT)} ${S.cards.map(c=>`<button type="button" class="lk" data-go="concept=${esc(c)}">${esc(c)}</button>`).join(' ')}</p>
-      <p class="xs mut">${esc(STR.vw.marksKey)}</p><p class="xs mut" id="vwTech"></p></div>
+      <p class="xs mut">${esc(STR.vw.marksKey)}</p><p class="xs mut"><span class="mono">${esc(S.id)} · v${S.version}</span></p><p class="xs mut" id="vwTech"></p></div>
     ${dbg?`<div class="vw-sec" data-sec="debug"><h2 class="vw-h">${esc(STR.vw.heads.debug)}</h2><p class="xs mut">${esc(STR.vw.measHint)}</p>
       <div class="row"><button type="button" class="btn" data-vw="measure" id="vwMeas">${esc(STR.vw.measure)}</button><button type="button" class="btn" data-vw="dbgbox">${esc(STR.vw.boxes)}</button><button type="button" class="btn" data-vw="lose">${esc(STR.vw.lose)}</button></div>
       <textarea id="vwMeasOut" readonly aria-label="${esc(STR.vw.measOut)}" rows="8"></textarea><div class="row"><button type="button" class="btn" data-vw="mcopy">${esc(STR.copy)}</button><span class="sm mut" id="vwMeasMsg" role="status"></span></div></div>`:''}`}
@@ -124,17 +123,37 @@ function scMount(S,st){
         onLost:()=>{dlog('viewer','context lost');clearTimeout(SC.lostT);SC.lostT=setTimeout(()=>{if(SC.eng&&SC.eng.lost())$('#vwLost')?.classList.remove('hidden');},CONFIG.viewer.lostMs);},   // Android may restore on its own: wait a moment
         onRestored:()=>{dlog('viewer','context restored');clearTimeout(SC.lostT);$('#vwLost')?.classList.add('hidden');scOverlay();}});
       if(!e.ok){SC.engErr=e.err||'WebGL';throw new Error(SC.engErr);}SC.eng=e;}
-    const E=SC.eng;E.onFrame(scOverlay);E.setPan(SC.drill?0:scStart(S).pan);E.setShift(SC.drill?(SC.drill.shift??(SC.drill.type==='label'?CONFIG.viewer.drillShift:0)):scStart(S).shift);   // drills: the subject sits below the stamp + notes plate (G-Art); phone: the scene's start framing (L1F)
+    const E=SC.eng;E.onFrame(scOverlay);E.setPan(SC.drill?0:scStart(S).pan);E.setShift(SC.drill?(SC.drill.shift??(SC.drill.type==='label'?CONFIG.viewer.drillShift:0)):scShift0(S));   // drills: the subject sits below the stamp + notes plate (G-Art); phone: the scene's start framing (L1F)
     const trace=scTr()?scTr().trace:null;   // V3: the marked cell only in its trace drill (never Try it)
     if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom??scStart(S).zoom,trace});SC.cur=S.id;}else{E.setTokens();if((E.state().trace||null)!==trace){E.setTrace(trace);dlog('viewer','trace',trace||'off');}if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
     if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
+    if(!SC.drill&&st.zoom==null)scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class)
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
     scLabelsDom(S);SC.ready=true;if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{if(SC.ready)scOverlay();});   // L1F (G-Art): labels measured before the web font loads would grow afterwards — place them again
     scDay(SC.st[S.id].day,true);setTimeout(vwKeysFit,0);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
   }).catch(e=>{console.error(e);scDay(SC.st[S.id].day,true);const m=$('#vwMsg');if(m){m.textContent=STR.vw.noGL+' ('+e.message+')';m.classList.remove('hidden');}});
 }
+/* U3b: start framing on every class. At the scene's start view the model (engine outline) spans at least CONFIG.viewer.fit.min of the stage's
+   width or height: zoom in (never out) about the stage centre, keeping the model inside the stage, below the stamp + notes line as drawn and
+   F.bottom px off the bottom edge (the gizmo + scale bar sit in the corners). Kept per scene + class in SC.fit; the learner's own zoom always wins (st.zoom); Reset view returns to it. */
+function scZoom0(S){const f=SC.fit&&SC.fit[S.id+'|'+DEV.cls];return f?f.zoom:scStart(S).zoom;}
+function scShift0(S){const f=SC.fit&&SC.fit[S.id+'|'+DEV.cls];return f?f.shift:scStart(S).shift;}
+function scFit(S){const E=SC.eng,stage=$('#vwStage');if(!E||!E.outline||!stage)return;const key=S.id+'|'+DEV.cls,F=CONFIG.viewer.fit,fit=SC.fit||(SC.fit={});
+  if(fit[key]){E.setShift(fit[key].shift);E.view(null,null,fit[key].zoom);return;}
+  const W=stage.clientWidth,H=stage.clientHeight,z0=E.state().zoom,s0=(E.screenBox()||{shift:0}).shift,box=()=>{const P=E.outline();if(!P||P.length<3)return null;const xs=P.map(p=>p.x),ys=P.map(p=>p.y);return {l:Math.min(...xs),r:Math.max(...xs),t:Math.min(...ys),b:Math.max(...ys)};};
+  const b=box();if(!b||!W||!H)return;const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
+  if(Math.max(fw,fh)>=goal){fit[key]={zoom:z0,shift:s0};return;}
+  const sr=stage.getBoundingClientRect(),top=Math.max(F.top,...['#vwStamp','#vwDisc'].map(s=>$(s)).filter(el=>el&&el.offsetParent!==null).map(el=>el.getBoundingClientRect().bottom-sr.top+6)),bot=H-F.bottom;   // the free band: below the stamp + notes line as drawn (gizmo + scale bar sit in the bottom corners)
+  const k=Math.max(1,Math.min(goal/Math.max(fw,fh),F.maxW/fw,F.maxH/fh,(W-16)/(b.r-b.l),Math.max(1,(bot-top)/(b.b-b.t)))),z=Math.min(F.maxZoom,z0*k);
+  E.view(null,null,z);const b2=box();let sh=s0;   // then move the model to the middle of the free band (orthographic: shift moves everything by shift × H)
+  if(b2){const mid=(b2.t+b2.b)/2,want=(b2.b-b2.t)<=bot-top?(top+bot)/2:mid;sh=Math.max(-0.45,Math.min(0.45,s0+(want-mid)/H));E.setShift(sh);}
+  fit[key]={zoom:z,shift:sh};
+  dlog('viewer','start framing',key,'zoom',z0.toFixed(2),'→',z.toFixed(2),'shift',s0.toFixed(2),'→',sh.toFixed(2),'model',Math.round(fw*100)+'%×'+Math.round(fh*100)+'%');}
+/* U3b: true while the stage shows the scene's own start view (no drill, camera angles + zoom untouched) — the layout audit's frame-small check */
+function scAtStart(){const S=scCur(),E=SC.eng;if(!S||!E||SC.drill)return false;const s=E.state();
+  return Math.abs(s.az-S.camera.azimuth_deg)<0.5&&Math.abs(s.el-S.camera.elevation_deg)<0.5&&Math.abs(s.zoom-scZoom0(S))<1e-3;}
 /* L1F: start framing. Phone portrait uses the scene's camera.phone {zoom, shift} (scene-spec §3) while the learner has not zoomed; other classes 1 / 0 */
 function scStart(S){const p=DEV.cls==='dev-p'&&S.camera&&S.camera.phone,c=(v,a,b)=>Math.max(a,Math.min(b,+v||0));return p?{zoom:c(p.zoom||1,1,4),shift:c(p.shift,0,0.3),pan:c(p.pan,-0.3,0.3)}:{zoom:1,shift:0,pan:0};}
 /* L1F (T8): a drill on a scene with a ruler opens with the embryo + the whole ruler clear of the stamp, notes plate, gizmo and scale bar
@@ -195,6 +214,12 @@ function scLabelsDom(S){
 /* pin spots: offsets on a 10 px grid covering the whole stage, nearest first (a slight preference for above: the pin reads before the layer under it) */
 function scPinGrid(W,H,min){const k=Math.round(W)+'x'+Math.round(H)+':'+min,c=SC.pinGrids||(SC.pinGrids={});if(c[k])return c[k];if(Object.keys(c).length>6)SC.pinGrids={};const g=[];
   for(let dx=-W;dx<=W;dx+=10)for(let dy=-H;dy<=H;dy+=10){const d=Math.hypot(dx,dy);if(d>=min)g.push([dx,dy,d+(dy>0?4:0)]);}g.sort((p,q)=>p[2]-q[2]);SC.pinGrids[k]=g;return g;}
+/* U3b (T13b note, D-087 "left for U3"): labels sit OFF the model. The engine's outline() is the model's convex hull on screen;
+   polyRectArea (90-layout-audit.js) = how much of a box lies on it, scRayOut = how far a ray from p along u runs before it leaves the hull.
+   stageModel(st) hands the same outline to the layout audit's label-on-model + frame-small checks. */
+function stageModel(st){if(!st||st.id!=='vwStage'||!SC.eng||!SC.eng.outline||!SC.ready)return null;return {hull:SC.eng.outline(),start:scAtStart()};}
+function scRayOut(poly,p,u){let t=0;for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ex=b.x-a.x,ey=b.y-a.y,d=u.x*ey-u.y*ex;if(Math.abs(d)<1e-9)continue;
+  const s=((a.x-p.x)*ey-(a.y-p.y)*ex)/d,q=((a.x-p.x)*u.y-(a.y-p.y)*u.x)/d;if(s>=0&&q>=0&&q<=1)t=Math.max(t,s);}return t;}
 function scOverlay(){
   const S=scCur(),E=SC.eng,stage=$('#vwStage');if(!S||!E||!stage||!SC.ready)return;
   const sp=$('#vwStamp');if(sp)stage.style.setProperty('--stamp-h',sp.offsetHeight+'px');   // the notes plate sits under the stamp's real height (a wrapped stamp never covers it — CI fonts, V2)
@@ -236,6 +261,12 @@ function scOverlay(){
     if(!r){delete lab.el.dataset.pinno;continue;}   // still no room: the Check feedback names it (Pin n: …)
     placed.push({l:r.l-3,t:r.t-3,r:r.r+3,b:r.b+3});lab.el.style.transform=`translate(${Math.round(r.l)}px,${Math.round(r.t)}px)`;lab.done=SC.drill.key;seen.push(lab.text);}
   const pinned=it=>lblOn&&SC.drill&&pinAt[it.at];
+  /* U3b: off the model — every scene label (not axis labels, not a drill's pinned labels or guides) is placed outside the model's outline, joined by its leader */
+  const HL=!SC.drill&&E.outline?E.outline():null,HC=HL&&HL.length>2?HL.reduce((s,p)=>({x:s.x+p.x/HL.length,y:s.y+p.y/HL.length}),{x:0,y:0}):null;
+  const onModel=r=>!!HL&&polyRectArea(HL,{l:r.l-3,t:r.t-3,r:r.r+3,b:r.b+3})>0;
+  const outward=(x,y,w,h)=>{let u={x:x-HC.x,y:y-HC.y};const n=Math.hypot(u.x,u.y);u=n<1?{x:0,y:-1}:{x:u.x/n,y:u.y/n};const out=[];
+    for(const gap of CONFIG.viewer.lblGaps)for(const deg of [0,25,-25,50,-50,80,-80,115,-115,180]){const c=Math.cos(deg*Math.PI/180),s=Math.sin(deg*Math.PI/180),v={x:u.x*c-u.y*s,y:u.x*s+u.y*c};
+      const t=scRayOut(HL,{x,y},v)+gap,px=x+v.x*t,py=y+v.y*t;out.push([px-w/2+v.x*w/2,py-h/2+v.y*h/2]);}return out;};
   const items=SC.lbl.slice().sort((a,b)=>(pinned(b)?1:0)-(pinned(a)?1:0)||(a.pri||5)-(b.pri||5)||((A[a.at]&&A[b.at])?A[a.at].s.y-A[b.at].s.y:0));   // pinned structures first (answered label drill), then subject first: small screens drop context labels (G-Art)
   for(const it of items){const el=it.el;if(!el)continue;if(SC.drill&&it.done===SC.drill.key)continue;const a=A[it.at],pr=pinned(it);
     const guideLbl=(SC.drill||SC.runOff)&&(it.at==='ruler'||(!!a&&!!a.tracer));   // the ruler keeps its length label in a drill (G-Art: "1 mm" must read); the marked cell keeps "Marked cell" (V3, B3)
@@ -246,10 +277,11 @@ function scOverlay(){
     const w=el.offsetWidth,h=el.offsetHeight,x=a?a.s.x:0,y=a?a.s.y:0,g=it.axis?6:16;
     const cand=pr?[[pr.r+4,pr.t+(PZ-h)/2],[pr.l-4-w,pr.t+(PZ-h)/2],[pr.l+PZ/2-w/2,pr.b+4],[pr.l+PZ/2-w/2,pr.t-h-4],[pr.r+4,pr.b+2],[pr.l-4-w,pr.b+2],[pr.r+4,pr.t-h-2],[pr.l-4-w,pr.t-h-2]]
       :it.axis?[[x-w/2,y-h/2],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-g],[x-w/2,y+g]]:[1,2.2,3.6].flatMap(k=>{const G=g*k;return [[x+G,y-h-G],[x-w-G,y-h-G],[x+G,y+G],[x-w-G,y+G],[x+G,y-h/2],[x-w-G,y-h/2],[x-w/2,y-h-2*G],[x-w/2,y+2*G]];});   // a second, farther ring (L1F: arrows and pins take near spots)
-    if(!it.axis&&!pr){const cl=v=>Math.max(4,Math.min(W-4-w,v));cand.push(...cand.map(([cx,cy])=>[cl(cx),cy]).filter(([cx],j)=>cx!==cand[j][0]));}   // L1F: a long label slides in from the stage edge instead of being dropped (phone 360 px)
+    if(!it.axis&&!pr){const cl=v=>Math.max(4,Math.min(W-4-w,v));if(HC&&a)cand.unshift(...outward(x,y,w,h));cand.push(...cand.map(([cx,cy])=>[cl(cx),cy]).filter(([cx],j)=>cx!==cand[j][0]));}   // L1F: a long label slides in from the stage edge instead of being dropped (phone 360 px); U3b: outward spots first
     const lead=r=>{const ex=Math.max(r.l,Math.min(x,r.r)),ey=y<r.t?r.t:y>r.b?r.b:(r.t+r.b)/2;return [{x,y},{x:ex,y:ey}];};
     const tryAt=(list,withLead)=>{for(const[cx,cy]of list){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(hit(r))continue;
         if(!it.axis&&onArrow(r))continue;
+        if(!it.axis&&!pr&&onModel(r))continue;   // U3b: never on the model (no room → the label waits for hover / tap, like any dropped label)
         if(withLead){const [a1,b1]=lead(r);if(segs.some(([p,q])=>cross(a1,b1,p,q))||placed.some(o=>segHitsRect(a1,b1,o)))continue;}
         if(!it.axis&&segs.some(([p,q])=>segHitsRect(p,q,r)))continue;
         return r;}return null;};
@@ -308,7 +340,7 @@ function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.dr
   el.style.transform=`translate(${Math.round(Math.min(x+14,r.width-el.offsetWidth-6))}px,${Math.round(Math.max(6,y-el.offsetHeight-10))}px)`;}
 function scView(k){const S=scCur(),E=SC.eng;if(!S||!E)return;const c=S.camera,V={three:[c.azimuth_deg,c.elevation_deg],top:[-90,89],side:[-90,0],cut:null,reset:[c.azimuth_deg,c.elevation_deg]}[k];
   let t=V;if(k==='cut'){const cu=E.state().cut;t=cu.axis==='x'?[180,20]:[-90,20];}
-  const z=k==='reset'?scStart(S).zoom:null,s0=E.state();if(motionReduced()){E.view(t[0],t[1],z);scSave();return;}
+  const z=k==='reset'?scZoom0(S):null,s0=E.state();if(motionReduced()){E.view(t[0],t[1],z);scSave();return;}
   const a0=s0.az,e0=s0.el,da=((t[0]-a0+540)%360)-180,de=t[1]-e0,z0=s0.zoom,T0=performance.now(),dur=CONFIG.viewer.tweenMs;
   const step=n=>{const u=Math.min(1,(n-T0)/dur),k2=u*u*(3-2*u);E.view(a0+da*k2,e0+de*k2,z!=null?z0+(z-z0)*k2:null);if(u<1)requestAnimationFrame(step);else scSave();};requestAnimationFrame(step);}
 function scPlay(){const S=scCur();if(!S)return;if(SC.playing){scStop();return;}const tr=scTr(),K=tr?tr.steps.map(day=>({day})):S.days,d1=K[K.length-1].day;let d=SC.st[S.id].day;if(d>=d1-0.05)d=K[0].day;   // V3: a trace plays its path (reduced motion: path key to key)

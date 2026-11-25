@@ -99,7 +99,7 @@ function lnCardsBodyHtml(){
   <section class="card td-nextup"><h2>${esc(STR.ln.dueContT)}</h2>
     ${nuIds.length?`<div class="snap">${nuIds.map(nuCard).join('')}</div>`:`<p class="mut sm">${esc(STR.ln.dueContNone)}</p>`}</section>
   <div class="row ln-tools">
-    <div class="seg" role="group" aria-label="${esc(STR.ln.viewGroup)}"><button type="button" data-ln="view" data-v="chapter" aria-pressed="${view==='chapter'}">${esc(STR.ln.viewChapter)}</button><button type="button" data-ln="view" data-v="status" aria-pressed="${view==='status'}">${esc(STR.ln.viewStatus)}</button></div>
+    <div class="seg" role="group" aria-label="${esc(STR.ln.viewGroup)}"><button type="button" data-ln="view" data-v="chapter" aria-current="${view==='chapter'}">${esc(STR.ln.viewChapter)}</button><button type="button" data-ln="view" data-v="status" aria-current="${view==='status'}">${esc(STR.ln.viewStatus)}</button></div>
     <span class="sp"></span><button type="button" class="btn${activeF?' pri':''}" data-ln="filtopen" aria-haspopup="dialog">${esc(STR.ln.filtBtn(activeF))}</button>
   </div>
   <div class="ln-list">${FL.length?order.map(g=>{const label=view==='status'?STR.ln.st[g]:(STR.ln.groups[g]||STR.ln.groupOf(g));
@@ -146,7 +146,7 @@ SCREENS.card=function(v){
   v.innerHTML=`<div class="ln-card${run?' ck-on':''}${sc?'':' no-3d'}" id="lnCard" data-id="${esc(id)}">
   <header class="ln-head"><div class="row"><span class="mono mut">${esc(id)} · ${esc(STR.tierShort(card.tier))}${card.kind==='guide'?' · ⓘ':''}</span><span class="sp"></span><span id="lnStatus">${lnChip(id)}</span>${editBtn('card',id,CONFIG.cards.dir+id+'.json')}</div>
       <h1 id="cpT" tabindex="-1">${esc(card.title)}</h1>
-      ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-pressed="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
+      ${L.length>1?`<div class="seg ln-lv" role="group" aria-label="${esc(STR.ln.level)}">${L.map(l=>`<button type="button" data-ln="level" data-l="${esc(l)}" aria-current="${l===lv}">${esc(STR.ln.levels[l]||l)}</button>`).join('')}</div><p class="xs mut">${esc(STR.ln.levelHelp)}</p>`:''}
     <section class="ln-obj"><h2 class="ln-h">${esc(STR.ln.objT)}</h2><p><b>${esc(card.objective.text)}</b></p></section>${lsBarHost()}</header>
   <div class="ln-media">
     ${sc?`<section class="ln-try" id="lnTry" aria-labelledby="lnTryT"><div class="row"><h2 id="lnTryT" class="ln-h">${esc(STR.ln.tryT)}</h2><span class="xs mut">${esc(STR.ln.tryLead)}</span></div><div id="lnVw"></div></section>`
@@ -405,7 +405,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ln]');if(!
   const card=LN.open[ROUTE.id];if(ROUTE.name!=='card'||!card)return;
   if(a==='ref'){e.preventDefault();const o=b.getAttribute('aria-expanded')!=='true',box=document.getElementById('lnR-'+b.dataset.k);b.setAttribute('aria-expanded',o);if(box)box.classList.toggle('hidden',!o);return;}
   if(a==='level'){const l=b.dataset.l;state.settings.level=l;state.settings.t=Date.now();stSave();$('#lnBody').innerHTML=lnBodyHtml(card,l);
-    $$('.ln-lv [data-l]').forEach(x=>x.setAttribute('aria-pressed',x===b));if(LN.ex[card.id]&&LN.ex[card.id].shown)lnPaint('expl');return;}
+    $$('.ln-lv [data-l]').forEach(x=>x.setAttribute('aria-current',x===b));if(LN.ex[card.id]&&LN.ex[card.id].shown)lnPaint('expl');return;}
   if(['start','pick','mv','order','next','rwords','rcheck','rshow','lcheck','fold','fcheck'].includes(a)){lnCheckAct(card,a,b);return;}
   if(a==='reread'){if(!lnRun(card.id))return;dlog('learn','read again — run ended unscored',card.id);delete LN.ck[card.id];lnPaint('check');toast(STR.ln.runEnded);   // D-053: no run counted, answers already given stay logged
     const bd=$('#lnBody');if(bd){bd.scrollIntoView({block:'start',behavior:motionReduced()?'auto':'smooth'});bd.focus({preventScroll:true});}return;}

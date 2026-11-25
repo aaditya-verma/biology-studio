@@ -3,6 +3,7 @@
    Checks the current screen: overlap · spill · page-wider · tap < --tap · text < --fs-min · fixed/sticky bars covering a control · a word split mid-word in a list title or h1 (L1F)
    · U2 part 2 (D-087): ctrl-overlap (boxes or tap areas of two controls) · ring-touch (boxes grown by box-shadow spread / outline) · pill-wrap · slider-label
    · stage-collide (3D labels vs labels, stamp, notes, gizmo, scale) · no-scroll-cue (a side panel hides content with no "More ↓"). Each has a --selftest case in tools/layout-check.
+   · U3b: label-on-model (a scene label on the model's outline) · frame-small (model < 50 % of the stage's width and height at the start view).
    EDIT: thresholds come from the CSS tokens; skip an element on purpose with data-layout-skip. */
 'use strict';
 function layoutAudit(root){
@@ -64,6 +65,12 @@ function layoutAudit(root){
   issues.push(...layoutAudit2(root,ctrls,TAP,clipTo,vis,name));
   return issues;
 }
+/* U3b: area (px²) of box r {l,t,r,b} that lies inside convex polygon poly [{x,y}] (Sutherland–Hodgman clip) — label-on-model; the viewer's label placement uses it too */
+function polyRectArea(poly,r){if(!poly||poly.length<3)return 0;let P=poly.map(p=>[p.x,p.y]);
+  const E=[[p=>p[0]>=r.l,(a,b)=>[r.l,a[1]+(r.l-a[0])/(b[0]-a[0])*(b[1]-a[1])]],[p=>p[0]<=r.r,(a,b)=>[r.r,a[1]+(r.r-a[0])/(b[0]-a[0])*(b[1]-a[1])]],
+    [p=>p[1]>=r.t,(a,b)=>[a[0]+(r.t-a[1])/(b[1]-a[1])*(b[0]-a[0]),r.t]],[p=>p[1]<=r.b,(a,b)=>[a[0]+(r.b-a[1])/(b[1]-a[1])*(b[0]-a[0]),r.b]]];
+  for(const[ins,x]of E){const o=[];for(let i=0;i<P.length;i++){const a=P[i],b=P[(i+1)%P.length];if(ins(b)){if(!ins(a))o.push(x(a,b));o.push(b);}else if(ins(a))o.push(x(a,b));}P=o;if(P.length<3)return 0;}
+  let s=0;for(let i=0;i<P.length;i++){const a=P[i],b=P[(i+1)%P.length];s+=a[0]*b[1]-b[0]*a[1];}return Math.abs(s)/2;}
 function layoutAudit2(root,ctrls,TAP,clipTo,vis,name){
   const out=[],ov=(a,b,m)=>Math.min(a.right,b.right)-Math.max(a.left,b.left)>(m||1)&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>(m||1);
   const nested=(a,b)=>a.contains(b)||b.contains(a)||(a.closest('label')&&a.closest('label')===b.closest('label'));
@@ -109,6 +116,13 @@ function layoutAudit2(root,ctrls,TAP,clipTo,vis,name){
     const O=[...st.querySelectorAll('.vw-stamp,.vw-disc,.vw-giz,.vw-scale')].filter(el=>shown(el)&&(el.textContent.trim()||el.tagName==='CANVAS')).map(el=>({el,r:el.getBoundingClientRect()}));
     for(let i=0;i<L.length;i++){for(let j=i+1;j<L.length;j++)if(ov(L[i].r,L[j].r))out.push({kind:'stage-collide',what:name(L[i].el)+'  ⟷  '+name(L[j].el)});
       for(const o of O)if(ov(L[i].r,o.r))out.push({kind:'stage-collide',what:name(L[i].el)+'  ⟷  '+name(o.el)});}});
+  // 14–15. U3b (D-087 left for U3, D-106): on a 3D stage that hands the audit its model outline (stageModel — the live viewer, or a selftest fixture), not a drill (drills frame + pin themselves, L1F/V2):
+  //   label-on-model: a shown scene label (not an axis label) lies on the model; frame-small: at the scene's start view the model spans < 50 % of the stage's width AND height
+  if(typeof stageModel==='function')root.querySelectorAll('.vw-stage').forEach(st=>{if(!vis(st)||st.closest('.vw.drill'))return;const M=stageModel(st),H=M&&M.hull;if(!H||H.length<3)return;const sr=st.getBoundingClientRect();
+    st.querySelectorAll('.vw-lb:not(.hidden):not(.ax):not(.hov)').forEach(el=>{if(!vis(el))return;const q=el.getBoundingClientRect(),r={l:q.left-sr.left,t:q.top-sr.top,r:q.right-sr.left,b:q.bottom-sr.top},a=polyRectArea(H,r);
+      if(a>4)out.push({kind:'label-on-model',what:name(el)+' '+Math.round(100*a/((r.r-r.l)*(r.b-r.t)))+' % on the model'});});
+    if(M.start){const xs=H.map(p=>p.x),ys=H.map(p=>p.y),fw=(Math.min(sr.width,Math.max(...xs))-Math.max(0,Math.min(...xs)))/sr.width,fh=(Math.min(sr.height,Math.max(...ys))-Math.max(0,Math.min(...ys)))/sr.height;
+      if(fw<0.5&&fh<0.5)out.push({kind:'frame-small',what:name(st)+' model spans '+Math.round(100*fw)+' % × '+Math.round(100*fh)+' % of the stage at the start view (want ≥ 50 % of one)'});}});
   // 13. no-scroll-cue: a side panel that scrolls, with content hidden below and no visible "More ↓" cue
   root.querySelectorAll('.vw-panel,[data-cue]').forEach(p=>{if(!vis(p))return;const s=getComputedStyle(p);if(!/(auto|scroll)/.test(s.overflowY))return;
     if(p.scrollHeight-p.clientHeight>8&&p.scrollTop+p.clientHeight<p.scrollHeight-8){const c=p.querySelector(':scope>.cue');if(!(c&&vis(c)))out.push({kind:'no-scroll-cue',what:name(p)+' hides '+Math.round(p.scrollHeight-p.clientHeight-p.scrollTop)+'px below with no cue'});}});

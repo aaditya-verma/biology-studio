@@ -78,9 +78,9 @@ function bmLanding(){const M=MAPD.M,C=MAPD.C,nF=Object.values(BM.F).filter(Boole
      <p class="sm">${esc(STR.bmResearched(done,C.length))} · ${esc(STR.bmShape(M.chapters.length,parts))}</p></section>
    ${bmUnlockSnap()}
    <div class="row ln-tools"><div class="seg" role="group" aria-label="${esc(STR.bmViewGroup)}">
-     <button type="button" data-act="bmview" data-v="chapter" aria-pressed="${BM.view==='chapter'}">${esc(STR.bmViewChapter)}</button>
-     <button type="button" data-act="bmview" data-v="week" aria-pressed="${BM.view==='week'}">${esc(STR.bmViewWeek)}</button>
-     <button type="button" data-act="bmview" data-v="layer" aria-pressed="${BM.view==='layer'}">${esc(STR.bmViewLayer)}</button></div>
+     <button type="button" data-act="bmview" data-v="chapter" aria-current="${BM.view==='chapter'}">${esc(STR.bmViewChapter)}</button>
+     <button type="button" data-act="bmview" data-v="week" aria-current="${BM.view==='week'}">${esc(STR.bmViewWeek)}</button>
+     <button type="button" data-act="bmview" data-v="layer" aria-current="${BM.view==='layer'}">${esc(STR.bmViewLayer)}</button></div>
      <span class="sp"></span>${bmFiltBtn(nF)}</div>
    ${BM.view==='chapter'?bmChapterCards():bmGroupRows(BM_VIEW_DIM[BM.view])}
    ${bmCrosstabRows()}`;}

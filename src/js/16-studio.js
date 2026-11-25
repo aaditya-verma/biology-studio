@@ -164,7 +164,7 @@ function sdCanPass(c,g){const r=sdRv(c.id,g),G=CARD_RULES.gates[g],w=ST.who,F=sd
 function sdReviewHtml(c,g){
   const S=STR.st,r=sdRv(c.id,g),G=CARD_RULES.gates[g],L=gateLines(c,g),cp=sdCanPass(c,g),done=(c.review||{})[g],w=ST.who,same=w.role&&w.agent&&(w.role===c.made.role||w.agent===c.made.agent)&&g!=='G-Owner';
   return `<h2 id="sdRevH">${esc(S.panes.review)}</h2>
-   <div class="seg st-gates" role="group" aria-label="${esc(S.gateT)}">${Object.keys(CARD_RULES.gates).map(k=>`<button type="button" data-st-gate="${k}" data-fk="gate-${k}" aria-pressed="${k===g}">${esc(k)}${(c.review||{})[k]?` ${c.review[k].result==='pass'?'✓':'✗'}`:''}</button>`).join('')}</div>
+   <div class="seg st-gates" role="group" aria-label="${esc(S.gateT)}">${Object.keys(CARD_RULES.gates).map(k=>`<button type="button" data-st-gate="${k}" data-fk="gate-${k}" aria-current="${k===g}">${esc(k)}${(c.review||{})[k]?` ${c.review[k].result==='pass'?'✓':'✗'}`:''}</button>`).join('')}</div>
    <p class="sm"><b>${esc(S.gateQ[g])}</b></p><p id="sdGateDone" tabindex="-1" class="sm ${done?(done.result==='pass'?'ok':'bad'):''}">${done?esc(S.gateDone(g,done.result,done.by+' · '+done.role+' · '+done.date)):''}</p>
    <fieldset class="st-who"><legend>${esc(S.reviewer)}</legend><p class="xs mut">${esc(S.maker(c.made))}</p>
      <div class="st-grid"><div class="st-fl"><label for="sdBy">${esc(S.rBy)}</label><input type="text" id="sdBy" data-st-who="by" value="${esc(w.by)}" autocomplete="name"></div>
