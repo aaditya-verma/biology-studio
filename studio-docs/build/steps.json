@@ -1797,12 +1797,12 @@
    "unblocks": ["U2F", "SR1", "U3"],
    "lock": true,
    "gates": {"G-Eng": "pass", "G-Art": "pass", "G-A11y": "pass"},
-   "check": {"id": "T13b", "state": "open"},
+   "check": {"id": "T13b", "state": "open", "note": "26 Nov, v22, partial: phone steps 3–8 and tablet rail (2) ok; left: step 1 (three tablet Version lines), step 9 (laptop), the D-087 answer"},
    "decisions": ["D-077", "D-031", "D-034", "D-084", "D-086", "D-087"],
    "prompt": "U2 look tokens",
    "log": "22 Nov 2026 · U2 look tokens, parts 1 + 2 (app v18 → v19, D-086, D-087 proposed, route B) — part 1: v2 tokens (ladder L0–L4, e1–e3, radii, lift, D-077 light edges), fonts A (54 KB, OFL), shell (floating bar + More + Back dock, one in-app history D-084), colour re-check tool; part 2 (owner's T13b tablet notes): device class from the screen's short side (window orientation, split screen = in-split, never phone), Strava shell pattern (pill rail + labels + logo on tablet/desktop, phone bar pills, More bottom sheet with grip + 3-column tiles + new-dot, phone dialogs as sheets, Back dock fold handle), viewer spacing (day labels inside the slider, tabs never wrap, on-ring outline, More ↓ cue), narrow-tablet + big-text layouts, six new layout audits (+ --selftest 24/24), layout-check real-tablet sizes + 150/200 % text, sync.bat lock guard (tools/ci/lock_guard.py, staged-only commits, --lock-ok); gates G-Eng pass (4 rounds), G-A11y pass (2), G-Art pass (2 rounds); layout-check full matrix 0 issues after fixes (narrow + big-text sizes re-run), appTests 167/167, stills unchanged; T13b open",
    "todo": [
-    "T13b (v20 — v19 + the U2F test-badge fix): tablet landscape Settings › Version must show dev-tl; read it also at Chrome zoom 150 % — D-087 assumes zoom doesn't shrink `screen` (G-Eng r1 note)",
+    "T13b (v22; partly run 26 Nov — steps 1 + 9 left): tablet landscape Settings › Version must show dev-tl; read it also at Chrome zoom 150 % — D-087 assumes zoom doesn't shrink `screen` (G-Eng r1 note)",
     "D-087 is proposed — the owner confirms (or changes) it at T13b",
     "Watch the `checks` run after the sync push: CI's full layout-check is the final proof on the merged code (the last local full matrix ran before the G-Art r1 fixes; narrow, big-text and preview sizes were re-run after them)",
     "VoiceOver/TalkBack on real devices + drag-to-close with a screen reader running were not covered by G-A11y (tools only)"
