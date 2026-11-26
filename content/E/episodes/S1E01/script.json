@@ -101,7 +101,7 @@
     "id": "L02d",
     "seg": "Open",
     "shot": "S02c",
-    "text": "Primitive node: a low mound at the head end of the streak.",
+    "text": "Primitive node: a low mound at the head end of the primitive streak.",
     "facts": [
      "E05.01.02#f2",
      "E00.01.01#f2"
@@ -112,8 +112,8 @@
     "hold": 0.4,
     "kind": "primer",
     "_start": 19.9,
-    "_words": 12,
-    "_dur": 5.0,
+    "_words": 13,
+    "_dur": 5.5,
     "refs": [
      {
       "ref": "E05.01.02#f2",
@@ -144,7 +144,7 @@
     ],
     "hold": 2.0,
     "kind": "primer",
-    "_start": 25.3,
+    "_start": 25.8,
     "_words": 9,
     "_dur": 3.8,
     "refs": [
@@ -177,7 +177,7 @@
      "E05.01.04#f1"
     ],
     "hold": 1.0,
-    "_start": 31.1,
+    "_start": 31.5,
     "_words": 20,
     "_dur": 8.4,
     "refs": [
@@ -198,7 +198,7 @@
      "E05.01.01#f1"
     ],
     "hold": 1.5,
-    "_start": 40.5,
+    "_start": 40.9,
     "_words": 17,
     "_dur": 7.1,
     "refs": [
@@ -214,12 +214,12 @@
     "id": "L05",
     "seg": "1 The groove",
     "shot": "S04",
-    "text": "It starts when the primitive streak appears on the epiblast, around days fourteen to fifteen.",
+    "text": "Gastrulation starts when the primitive streak appears on the epiblast, around days fourteen to fifteen.",
     "facts": [
      "E05.01.01#f2"
     ],
     "hold": 1.0,
-    "_start": 49.1,
+    "_start": 49.6,
     "_words": 15,
     "_dur": 6.3,
     "refs": [
@@ -240,7 +240,7 @@
      "E05.01.02#f1"
     ],
     "hold": 1.5,
-    "_start": 56.4,
+    "_start": 56.9,
     "_words": 25,
     "_dur": 10.5,
     "refs": [
@@ -261,7 +261,7 @@
      "E05.01.02#f2"
     ],
     "hold": 1.5,
-    "_start": 68.4,
+    "_start": 68.8,
     "_words": 19,
     "_dur": 8.0,
     "refs": [
@@ -282,7 +282,7 @@
      "E05.01.02#f3"
     ],
     "hold": 1.5,
-    "_start": 77.9,
+    "_start": 78.3,
     "_words": 21,
     "_dur": 8.8,
     "refs": [
@@ -302,7 +302,7 @@
     "facts": [],
     "hold": 1.0,
     "kind": "frame",
-    "_start": 88.2,
+    "_start": 88.6,
     "_words": 13,
     "_dur": 5.5,
     "refs": []
@@ -319,7 +319,7 @@
      "invagination"
     ],
     "hold": 1.5,
-    "_start": 94.7,
+    "_start": 95.1,
     "_words": 22,
     "_dur": 9.2,
     "refs": [
@@ -340,7 +340,7 @@
      "E05.01.03#f2"
     ],
     "hold": 1.0,
-    "_start": 105.4,
+    "_start": 105.8,
     "_words": 15,
     "_dur": 6.3,
     "refs": [
@@ -361,7 +361,7 @@
      "E05.01.01#m1"
     ],
     "hold": 1.5,
-    "_start": 112.7,
+    "_start": 113.1,
     "_words": 13,
     "_dur": 5.5,
     "refs": [
@@ -382,7 +382,7 @@
      "E05.01.03#f3"
     ],
     "hold": 1.5,
-    "_start": 119.6,
+    "_start": 120.1,
     "_words": 16,
     "_dur": 6.7,
     "refs": [
@@ -403,7 +403,7 @@
      "E05.01.03#f4"
     ],
     "hold": 1.5,
-    "_start": 127.9,
+    "_start": 128.3,
     "_words": 7,
     "_dur": 2.9,
     "refs": [
@@ -424,7 +424,7 @@
      "E05.01.03#f5"
     ],
     "hold": 1.5,
-    "_start": 132.3,
+    "_start": 132.7,
     "_words": 8,
     "_dur": 3.4,
     "refs": [
@@ -450,7 +450,7 @@
      "yolk sac"
     ],
     "hold": 2.0,
-    "_start": 137.1,
+    "_start": 137.6,
     "_words": 23,
     "_dur": 9.7,
     "refs": [
@@ -484,7 +484,7 @@
      "E05.01.01#m3"
     ],
     "hold": 2.0,
-    "_start": 148.8,
+    "_start": 149.2,
     "_words": 23,
     "_dur": 9.7,
     "refs": [
@@ -511,7 +511,7 @@
      "E05.01.02#f2"
     ],
     "hold": 1.5,
-    "_start": 160.4,
+    "_start": 160.9,
     "_words": 18,
     "_dur": 7.6,
     "refs": [
@@ -532,7 +532,7 @@
      "E05.02.01#f1"
     ],
     "hold": 1.5,
-    "_start": 169.5,
+    "_start": 169.9,
     "_words": 23,
     "_dur": 9.7,
     "refs": [
@@ -553,7 +553,7 @@
      "E05.02.01#f2"
     ],
     "hold": 1.0,
-    "_start": 180.6,
+    "_start": 181.1,
     "_words": 13,
     "_dur": 5.5,
     "refs": [
@@ -574,7 +574,7 @@
      "E05.02.01#f3"
     ],
     "hold": 1.5,
-    "_start": 187.1,
+    "_start": 187.5,
     "_words": 15,
     "_dur": 6.3,
     "refs": [
@@ -595,7 +595,7 @@
      "E05.02.01#f4"
     ],
     "hold": 1.0,
-    "_start": 194.9,
+    "_start": 195.3,
     "_words": 22,
     "_dur": 9.2,
     "refs": [
@@ -617,7 +617,7 @@
     ],
     "hold": 1.5,
     "kind": "flag-pointer",
-    "_start": 205.1,
+    "_start": 205.5,
     "_words": 14,
     "_dur": 5.9,
     "refs": [
@@ -638,7 +638,7 @@
      "E05.02.01#f5"
     ],
     "hold": 1.5,
-    "_start": 212.5,
+    "_start": 212.9,
     "_words": 16,
     "_dur": 6.7,
     "refs": [
@@ -663,7 +663,7 @@
      "nucleus pulposus"
     ],
     "hold": 2.0,
-    "_start": 220.7,
+    "_start": 221.1,
     "_words": 29,
     "_dur": 12.2,
     "refs": [
@@ -690,7 +690,7 @@
      "E05.01.03#f6"
     ],
     "hold": 2.0,
-    "_start": 234.9,
+    "_start": 235.3,
     "_words": 19,
     "_dur": 8.0,
     "refs": [
@@ -711,7 +711,7 @@
      "E05.01.02#f4"
     ],
     "hold": 1.0,
-    "_start": 244.9,
+    "_start": 245.3,
     "_words": 30,
     "_dur": 12.6,
     "refs": [
@@ -736,7 +736,7 @@
      "sacrococcygeal teratoma"
     ],
     "hold": 1.0,
-    "_start": 258.4,
+    "_start": 258.9,
     "_words": 20,
     "_dur": 8.4,
     "refs": [
@@ -763,7 +763,7 @@
      "E05.01.02#f7"
     ],
     "hold": 1.5,
-    "_start": 267.8,
+    "_start": 268.3,
     "_words": 17,
     "_dur": 7.1,
     "refs": [
@@ -786,7 +786,7 @@
      "E05.01.03#f5"
     ],
     "hold": 1.0,
-    "_start": 276.5,
+    "_start": 276.9,
     "_words": 29,
     "_dur": 12.2,
     "refs": [
@@ -819,7 +819,7 @@
      "E05.01.04#f4"
     ],
     "hold": 2.0,
-    "_start": 289.6,
+    "_start": 290.1,
     "_words": 6,
     "_dur": 2.5,
     "refs": [
@@ -840,7 +840,7 @@
     "hold": 4.0,
     "kind": "check",
     "check": "spatial: tap Mesoderm on the day-17 cross-section (answer from E05.01.03#f3)",
-    "_start": 294.2,
+    "_start": 294.6,
     "_words": 12,
     "_dur": 5.0,
     "refs": []
@@ -855,7 +855,7 @@
     ],
     "hold": 2.0,
     "kind": "reveal",
-    "_start": 303.2,
+    "_start": 303.6,
     "_words": 4,
     "_dur": 1.7,
     "refs": [
@@ -876,7 +876,7 @@
     "hold": 4.0,
     "kind": "check",
     "check": "E05.01.01 q2 (refutes m1), spoken choices; chips 'Becomes endoderm' / 'Is replaced'",
-    "_start": 306.9,
+    "_start": 307.3,
     "_words": 11,
     "_dur": 4.6,
     "refs": []
@@ -891,7 +891,7 @@
     ],
     "hold": 2.0,
     "kind": "reveal",
-    "_start": 315.5,
+    "_start": 315.9,
     "_words": 13,
     "_dur": 5.5,
     "refs": [
@@ -911,7 +911,7 @@
     "facts": [],
     "hold": 1.0,
     "kind": "teaser",
-    "_start": 322.9,
+    "_start": 323.4,
     "_words": 10,
     "_dur": 4.2,
     "refs": []
@@ -1158,14 +1158,14 @@
     "id": "G08",
     "seg": "2 The dive",
     "shot": "S09",
-    "text": "The first cells in push the old bottom layer aside and take its place. They become the new bottom layer.",
+    "text": "The first cells in push the old bottom layer, the hypoblast, aside and take its place. They become the new bottom layer.",
     "facts": [
      "E05.01.03#f2"
     ],
     "hold": 1.5,
     "_start": 85.2,
-    "_words": 20,
-    "_dur": 8.4,
+    "_words": 22,
+    "_dur": 9.2,
     "refs": [
      {
       "ref": "E05.01.03#f2",
@@ -1184,7 +1184,7 @@
      "E05.01.03#f3"
     ],
     "hold": 1.5,
-    "_start": 95.1,
+    "_start": 96.0,
     "_words": 14,
     "_dur": 5.9,
     "refs": [
@@ -1205,7 +1205,7 @@
      "E05.01.03#f4"
     ],
     "hold": 1.0,
-    "_start": 102.5,
+    "_start": 103.4,
     "_words": 12,
     "_dur": 5.0,
     "refs": [
@@ -1227,7 +1227,7 @@
      "E05.01.01#m3"
     ],
     "hold": 1.5,
-    "_start": 108.5,
+    "_start": 109.4,
     "_words": 22,
     "_dur": 9.2,
     "refs": [
@@ -1262,7 +1262,7 @@
      "endoderm"
     ],
     "hold": 2.0,
-    "_start": 119.3,
+    "_start": 120.1,
     "_words": 29,
     "_dur": 12.2,
     "refs": [
@@ -1301,7 +1301,7 @@
      "E05.01.03#f6"
     ],
     "hold": 2.0,
-    "_start": 133.4,
+    "_start": 134.3,
     "_words": 17,
     "_dur": 7.1,
     "refs": [
@@ -1323,7 +1323,7 @@
      "E05.01.04#f4"
     ],
     "hold": 2.0,
-    "_start": 142.6,
+    "_start": 143.4,
     "_words": 21,
     "_dur": 8.8,
     "refs": [
@@ -1350,7 +1350,7 @@
     "hold": 4.0,
     "kind": "check",
     "check": "spatial: tap Mesoderm",
-    "_start": 153.4,
+    "_start": 154.2,
     "_words": 11,
     "_dur": 4.6,
     "refs": []
@@ -1365,7 +1365,7 @@
     ],
     "hold": 2.0,
     "kind": "reveal",
-    "_start": 162.0,
+    "_start": 162.8,
     "_words": 5,
     "_dur": 2.1,
     "refs": [
@@ -1386,7 +1386,7 @@
     "hold": 4.0,
     "kind": "check",
     "check": "own options (refutes E05.01.01 m2); chips 'Epiblast' / 'Old bottom layer' / 'One each'",
-    "_start": 166.1,
+    "_start": 166.9,
     "_words": 20,
     "_dur": 8.4,
     "refs": []
@@ -1401,7 +1401,7 @@
     ],
     "hold": 2.0,
     "kind": "reveal",
-    "_start": 178.5,
+    "_start": 179.3,
     "_words": 7,
     "_dur": 2.9,
     "refs": [
@@ -1421,7 +1421,7 @@
     "facts": [],
     "hold": 1.0,
     "kind": "teaser",
-    "_start": 183.4,
+    "_start": 184.3,
     "_words": 10,
     "_dur": 4.2,
     "refs": []
@@ -1643,8 +1643,8 @@
   ]
  },
  "lengths_s": {
-  "lesson": 328.1,
-  "general": 188.6,
+  "lesson": 328.6,
+  "general": 189.5,
   "short": 51.8
  },
  "needs": {
@@ -1671,8 +1671,8 @@
     "title": "Three layers, week three",
     "next_q": "So where does it start?",
     "_start": 0.0,
-    "_dur": 49.1,
-    "_break": 48.8
+    "_dur": 49.6,
+    "_break": 49.3
    },
    {
     "id": "S1E01.L.i02",
@@ -1681,9 +1681,9 @@
     "objective": "Say where and when the primitive streak forms and how it marks the head–tail axis.",
     "check_by": "E05.01.02",
     "title": "The groove",
-    "_start": 49.1,
-    "_dur": 39.1,
-    "_break": 87.9
+    "_start": 49.6,
+    "_dur": 39.0,
+    "_break": 88.3
    },
    {
     "id": "S1E01.L.i03",
@@ -1693,9 +1693,9 @@
     "check_by": "L32",
     "title": "The first cells in",
     "next_q": "Where does our cell go?",
-    "_start": 88.2,
-    "_dur": 31.4,
-    "_break": 119.3
+    "_start": 88.6,
+    "_dur": 31.5,
+    "_break": 119.8
    },
    {
     "id": "S1E01.L.i04",
@@ -1704,9 +1704,9 @@
     "objective": "Place ectoderm, mesoderm and endoderm on a section, all from the epiblast.",
     "check_by": "L31",
     "title": "All from the epiblast",
-    "_start": 119.6,
+    "_start": 120.1,
     "_dur": 40.8,
-    "_break": 160.1
+    "_break": 160.6
    },
    {
     "id": "S1E01.L.i05",
@@ -1715,9 +1715,9 @@
     "objective": "Describe how cells from the primitive node form the notochordal plate, then the rod.",
     "check_by": "E05.02.01",
     "title": "From node to rod",
-    "_start": 160.4,
-    "_dur": 52.1,
-    "_break": 212.2
+    "_start": 160.9,
+    "_dur": 52.0,
+    "_break": 212.6
    },
    {
     "id": "S1E01.L.i06",
@@ -1726,9 +1726,9 @@
     "objective": "State what the notochord does and what is left of it in adults.",
     "check_by": "E05.02.01",
     "title": "This becomes",
-    "_start": 212.5,
+    "_start": 212.9,
     "_dur": 32.4,
-    "_break": 244.6
+    "_break": 245.0
    },
    {
     "id": "S1E01.L.i07",
@@ -1737,9 +1737,9 @@
     "objective": "Link leftover streak cells to sacrococcygeal teratoma.",
     "check_by": "E05.01.02",
     "title": "Clinical link",
-    "_start": 244.9,
+    "_start": 245.3,
     "_dur": 31.6,
-    "_break": 276.2
+    "_break": 276.6
    },
    {
     "id": "S1E01.L.i08",
@@ -1748,8 +1748,8 @@
     "objective": "Answer the opening question: all three layers come from the epiblast.",
     "check_by": "L31",
     "title": "Back to our question",
-    "_start": 276.5,
-    "_dur": 51.6
+    "_start": 276.9,
+    "_dur": 51.7
    }
   ],
   "general": [
@@ -1774,8 +1774,8 @@
     "title": "The first cells in",
     "next_q": "Where does our cell go?",
     "_start": 57.6,
-    "_dur": 37.5,
-    "_break": 94.8
+    "_dur": 38.4,
+    "_break": 95.7
    },
    {
     "id": "S1E01.G.i03",
@@ -1784,9 +1784,9 @@
     "objective": "Say which of the three layers our cell ended up in.",
     "check_by": "G15",
     "title": "Three layers",
-    "_start": 95.1,
+    "_start": 96.0,
     "_dur": 38.3,
-    "_break": 133.1
+    "_break": 134.0
    },
    {
     "id": "S1E01.G.i04",
@@ -1795,7 +1795,7 @@
     "objective": "Say that all three layers come from the one starting layer.",
     "check_by": "G16",
     "title": "Back to our question",
-    "_start": 133.4,
+    "_start": 134.3,
     "_dur": 55.2
    }
   ]
@@ -1821,13 +1821,13 @@
      "term": "notochord",
      "line": "L02e",
      "card": "E05.02.01",
-     "token": "meso",
+     "token": "meso, outlined",
      "view": "end cut, still; then all parts in place"
     }
    ],
    "hold": 2.0,
    "_start": 10.8,
-   "_dur": 20.3
+   "_dur": 20.7
   },
   "general": {
    "parts": [

@@ -2,19 +2,19 @@
  "errors": [],
  "warnings": [],
  "lengths": {
-  "lesson": 328.1,
-  "general": 188.6,
+  "lesson": 328.6,
+  "general": 189.5,
   "short": 51.8
  },
  "words": {
-  "lesson": 640,
-  "general": 364,
+  "lesson": 641,
+  "general": 366,
   "short": 100
  },
  "wpm_speech": 143,
  "wpm_overall": {
   "lesson": 117.0,
-  "general": 115.8,
+  "general": 115.9,
   "short": 115.8
  },
  "new_terms": {
@@ -29,23 +29,23 @@
    ],
    [
     "notochord",
-    25.3
+    25.8
    ],
    [
     "invagination",
-    94.7
+    95.1
    ],
    [
     "yolk sac",
-    137.1
+    137.6
    ],
    [
     "nucleus pulposus",
-    220.7
+    221.1
    ],
    [
     "sacrococcygeal teratoma",
-    258.4
+    258.9
    ]
   ],
   "general": [
@@ -63,15 +63,15 @@
    ],
    [
     "ectoderm",
-    119.3
+    120.1
    ],
    [
     "mesoderm",
-    119.3
+    120.1
    ],
    [
     "endoderm",
-    119.3
+    120.1
    ]
   ],
   "short": [
@@ -118,19 +118,19 @@
     "S1E01.L.i01",
     "L01",
     "L04",
-    49.1
+    49.6
    ],
    [
     "S1E01.L.i02",
     "L05",
     "L08",
-    39.1
+    39.0
    ],
    [
     "S1E01.L.i03",
     "L09",
     "L12",
-    31.4
+    31.5
    ],
    [
     "S1E01.L.i04",
@@ -142,7 +142,7 @@
     "S1E01.L.i05",
     "L18",
     "L22",
-    52.1
+    52.0
    ],
    [
     "S1E01.L.i06",
@@ -160,7 +160,7 @@
     "S1E01.L.i08",
     "L29",
     "L33",
-    51.6
+    51.7
    ]
   ],
   "general": [
@@ -174,7 +174,7 @@
     "S1E01.G.i02",
     "G06",
     "G08",
-    37.5
+    38.4
    ],
    [
     "S1E01.G.i03",
@@ -191,7 +191,7 @@
   ]
  },
  "primer_s": {
-  "lesson": 20.3,
+  "lesson": 20.7,
   "general": 15.9
  },
  "review_terms": {

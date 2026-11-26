@@ -21,12 +21,12 @@ LESSON = [
   # "Meet the parts" primer (spec 2, D-107; P1F) — replaces the 5-s terms strip L02 (retired). Opens on the cold-open question; names + looks only.
   dict(id="L02b", seg="Open", shot="S02b", text="To answer that, meet three parts first.", facts=[], hold=0.3, kind="primer"),
   dict(id="L02c", seg="Open", shot="S02b", text="Germ layers: the three sheets of cells that every tissue is built from.", facts=["E00.01.04#f5"], new=["germ layers"], hold=0.4, kind="primer"),
-  dict(id="L02d", seg="Open", shot="S02c", text="Primitive node: a low mound at the head end of the streak.", facts=["E05.01.02#f2", "E00.01.01#f2"], new=["primitive node"], hold=0.4, kind="primer"),
+  dict(id="L02d", seg="Open", shot="S02c", text="Primitive node: a low mound at the head end of the primitive streak.", facts=["E05.01.02#f2", "E00.01.01#f2"], new=["primitive node"], hold=0.4, kind="primer"),
   dict(id="L02e", seg="Open", shot="S02d", text="Notochord: a solid rod of cells along the midline.", facts=["E05.02.01#f3", "E05.02.01#f1", "E05.02.01#f4"], new=["notochord"], hold=2.0, kind="primer"),
   # Segment 1 — The groove
   dict(id="L03", seg="1 The groove", shot="S03", text="This is the disc at the very start of week three. Its upper layer, from week two, is the epiblast.", facts=["E05.01.04#f1"], hold=1.0),
   dict(id="L04", seg="1 The groove", shot="S03", text="In week three the disc makes three germ layers: ectoderm, mesoderm and endoderm. That process is gastrulation.", facts=["E05.01.01#f1"], hold=1.5),
-  dict(id="L05", seg="1 The groove", shot="S04", text="It starts when the primitive streak appears on the epiblast, around days fourteen to fifteen.", facts=["E05.01.01#f2"], hold=1.0),
+  dict(id="L05", seg="1 The groove", shot="S04", text="Gastrulation starts when the primitive streak appears on the epiblast, around days fourteen to fifteen.", facts=["E05.01.01#f2"], hold=1.0),
   dict(id="L06", seg="1 The groove", shot="S04", text="The streak first shows as a faint line in the caudal midline. By days fifteen to sixteen it is a narrow groove with raised edges.", facts=["E05.01.02#f1"], hold=1.5),
   dict(id="L07", seg="1 The groove", shot="S05", text="Its cranial end is a low mound, with a small pit at its centre. Keep an eye on it.", facts=["E05.01.02#f2"], hold=1.5),
   dict(id="L08", seg="1 The groove", shot="S06", text="The streak also marks the body's long axis. It lies at the tail end; the head end is the opposite end.", facts=["E05.01.02#f3"], hold=1.5),
@@ -77,7 +77,7 @@ GENERAL = [
   dict(id="G05", seg="1 The groove", shot="S06", text="The head will form at the other end, so the streak marks which way is head and which way is tail.", facts=["E05.01.02#f3"], hold=1.5),
   dict(id="G06", seg="2 The dive", shot="S07", text="Let's go back a day and follow one cell from the starting layer. We have marked it.", facts=[], hold=1.0, kind="frame"),
   dict(id="G07", seg="2 The dive", shot="S08", text="Cells move toward the groove, let go of their neighbours and slip underneath. Think of a crowd filing down a narrow ramp, then spreading out in the thin gap between two floors. Unlike a ramp, the groove is made of the cells themselves.", facts=["E05.01.03#f1"], hold=1.5, kind="analogy"),
-  dict(id="G08", seg="2 The dive", shot="S09", text="The first cells in push the old bottom layer aside and take its place. They become the new bottom layer.", facts=["E05.01.03#f2"], hold=1.5),
+  dict(id="G08", seg="2 The dive", shot="S09", text="The first cells in push the old bottom layer, the hypoblast, aside and take its place. They become the new bottom layer.", facts=["E05.01.03#f2"], hold=1.5),
   dict(id="G09", seg="2 The dive", shot="S10", text="Our cell goes in later. It settles in between, in a new middle layer.", facts=["E05.01.03#f3"], hold=1.5),
   dict(id="G10", seg="2 The dive", shot="S11", text="The middle layer spreads out to the sides and toward the head.", facts=["E05.01.03#f4"], hold=1.0),
   dict(id="G11", seg="2 The dive", shot="S12", text="Cells that stay behind on top become the new top layer. This new top layer is only part of the starting layer.", facts=["E05.01.03#f5", "E05.01.01#m3"], hold=1.5),
@@ -204,7 +204,7 @@ PRIMER = {
   "lesson": {"parts": [
     {"term": "germ layers", "line": "L02c", "card": "E05.01.01", "token": "ecto · meso · endo", "view": "day-17 section, ≤ 15° turntable"},
     {"term": "primitive node", "line": "L02d", "card": "E05.01.02", "token": "ctx + accent ring", "view": "top, close, still"},
-    {"term": "notochord", "line": "L02e", "card": "E05.02.01", "token": "meso", "view": "end cut, still; then all parts in place"}], "hold": 2.0, "target_s": 20},
+    {"term": "notochord", "line": "L02e", "card": "E05.02.01", "token": "meso, outlined", "view": "end cut, still; then all parts in place"}], "hold": 2.0, "target_s": 20},
   "general": {"parts": [
     {"term": "epiblast", "line": "G02c", "card": "E05.01.04", "token": "epi", "view": "side cut, ≤ 15° turntable"},
     {"term": "hypoblast", "line": "G02d", "card": "E05.01.01", "token": "hypo", "view": "side cut, ≤ 15° turntable"},

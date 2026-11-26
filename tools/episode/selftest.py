@@ -12,6 +12,7 @@ spec1 = re.sub(r'  dict\(id="L02[cde]".*\n', '', spec1)
 spec1 = spec1.replace('dict(id="G02b", seg="Open", shot="S02e", text="To answer that, meet three parts first.", facts=[], hold=0.3, kind="primer"),',
   'dict(id="G02", seg="Open", shot="S02e", text="Three words first: epiblast, primitive streak, gastrulation.", facts=[], new=["epiblast", "primitive streak", "gastrulation"], hold=1.0, kind="terms"),')
 spec1 = re.sub(r'  dict\(id="G02[cde]".*\n', '', spec1)
+spec1 = spec1.replace('push the old bottom layer, the hypoblast, aside', 'push the old bottom layer aside')   # spec 1 has no primer, so G08's P1F.q16 "hypoblast" was never introduced there
 CASES = [
   ('spec 1 file still builds', lambda s: spec1, None),
   ('idea over 60 s', lambda s: s.replace('to="L04"', 'to="L08"').replace('frm="L05", to="L08"', 'frm="L09", to="L09"').replace('frm="L09", to="L12"', 'frm="L10", to="L12"'), '20-60 s'),

@@ -1356,15 +1356,15 @@
    "title": "P1F S1E01 primer + ideas",
    "type": "Episode",
    "chat": "Bio · Episode · S1E01 primer",
-   "status": "planned",
+   "status": "owner check",
    "needs": ["P1"],
    "unblocks": ["R1"],
    "lock": false,
-   "gates": {"G-Sci": "open", "G-Learn": "open", "G-Story": "open", "G-Art": "open"},
-   "check": null,
-   "decisions": ["D-107"],
+   "gates": {"G-Sci": "pass", "G-Learn": "pass", "G-Story": "pass", "G-Art": "pass"},
+   "check": {"id": "T4", "state": "open", "since": "2026-11-27", "note": "P1's part A watch covers the P1F primer + idea pauses; built at risk (T4 part A + P1.q2 open, owner OK)"},
+   "decisions": ["D-107", "D-108"],
    "prompt": "P1F S1E01 primer",
-   "log": "—",
+   "log": "27 Nov 2026 · P1F S1E01 primer + ideas (built at risk) — episode spec 2 builder (ideas[], primer{}, retired[], 16-case selftest); \"Meet the parts\" primer replaces the 5-s strip (Lesson 18.5 s, General 16.4 s measured); MBBS 8 ideas (31–54 s), General 4 (36.6–56.1 s); lengths Lesson 327.2 / General 186.1 / Short 50.8 s measured; animatic primer shots + idea pauses + chapters.vtt; G-Sci pass (1 round), G-Learn, G-Story, G-Art pass (2 rounds each, G-Art r1 FAIL); D-108; commits 52f24c0 + 29d081c + 0e92816 · by Aaditya",
    "todo": [
     "Primer replaces the 5-s terms strip: Lesson ~20 s (germ layers · primitive node · notochord), General 15 s (epiblast · hypoblast · primitive streak, the draft's example; G-Learn confirms); primer{} in script.json (docs/episode-spec.md spec 2)",
     "ideas[]: S1E01.L.i01–i07, S1E01.G.i01–i05 (proposal in the video-craft draft §5); the builder snaps breaks to holds; the story director signs",
@@ -1373,7 +1373,14 @@
     "Animatic re-check of the primer clip + idea breaks only; gates scoped to these",
     "Re-cut the spec 1 S1E01 docs that still say terms strip / beats (episodes/S1E01/brief.md, storyboard.md) to primer + ideas",
     "GPU lane (D-105): touches only content/E/episodes + tools/episode + render outputs",
-    "Built at risk (owner, 27 Nov 2026): T4 part A + P1.q2 still open; T4 notes may change wording, and wording changes only as the owner approves"
+    "Built at risk (owner, 27 Nov 2026): T4 part A + P1.q2 still open; T4 notes may change wording, and wording changes only as the owner approves",
+    "Gate notes (27 Nov, fresh reviewers, scoped to primer + breaks): G-Sci r1 PASS WITH NOTES (E05.02.01#f4 added to L02e; S02d compass confirmed); G-Learn r1 PASS WITH NOTES (7 FIX) → r2 PASS WITH NOTES; G-Story r1 (i05/i06 move required) → r2 PASS WITH NOTES (i04 \"All from the epiblast\"); G-Art r1 FAIL (stills missed the label moments; S02f lacked Hypoblast; S02c label late) → r2 PASS WITH NOTES (L04 hold \"Not to scale\"; S02d rod lavender vs orange swatch → owner item P1F.q18)",
+    "Owner to-dos P1F.q13–q19 answered 27 Nov (all as recommended): q13, q14, q16 applied in the S1E01 data file and rebuilt (planned Lesson 328.6 / General 189.5 / Short 51.8 s, 0 errors); q15 no; q17 keep; q18 outline → R1; q19 → R1. The ② animatic still speaks the old lines — R1 voices the new ones",
+    "Carry to R1: MM2 on the P1 ② pause frames L.i02 (S06), L.i04 (S13), L.i05 (S16), L.i06 (S19), G.i01 (S06), G.i03 (S13) — 48 cases, worst 28.1 % of the short side (listed in the animatic's check-p1f file, Studio home); R1's render check re-lays them out (D-108 f)",
+    "Carry to R1: L02d pace ≈ 183 wpm re-measured in the final voice (≤ 165 wpm on a term line)",
+    "Carry to R1: tight lengths — measured (before q13/q14/q16) Lesson 327.2 / 330 s, General 186.1 / 190 s, G.i01 56.1 / 60 s; planned after them Lesson 328.6, General 189.5, G.i01 57.6",
+    "Carry to R1: builder _break (planned) vs measured pauses differ by ~2 s → R1 takes chapters.vtt from the mix; two honesty tags at once on some ② shots (already in R1's carried SHOULDs)",
+    "Carry to R1: notochord primer token = mesoderm colour + outline (P1F.q18)"
    ],
    "inputs": [
     {"id": "P1F.q1", "kind": "decide", "ask": "Default pace (Desk VC.q1)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "A: Study pace on for both Lesson cuts, Watch for Shorts (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
@@ -1387,11 +1394,18 @@
     {"id": "P1F.q9", "kind": "decide", "ask": "Old uses of 'beat' in RULES D2, H1, playbook §4.1 (N1)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "Rename to 'idea' (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
     {"id": "P1F.q10", "kind": "decide", "ask": "Name of the break panel (N2)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "'idea pause panel' (card stays for learning cards) (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
     {"id": "P1F.q11", "kind": "decide", "ask": "'idea' already used elsewhere (N3)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "GLOSSARY entry Idea (episode) (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
-    {"id": "P1F.q12", "kind": "decide", "ask": "Edit P1/R1/L3 rows + add P1F under the lock (N4)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "Yes; open run on P1 (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"}
+    {"id": "P1F.q12", "kind": "decide", "ask": "Edit P1/R1/L3 rows + add P1F under the lock (N4)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "Yes; open run on P1 (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
+    {"id": "P1F.q13", "kind": "decide", "ask": "L05 \"It starts…\" → \"Gastrulation starts…\" (G-Story r1 + r2; recommended: yes)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "Yes (recommended) — applied: L05 \"Gastrulation starts when…\" · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q14", "kind": "decide", "ask": "L02d \"…of the streak\" → \"…of the primitive streak\" (G-Story; also slows the ≈ 183 wpm line; recommended: yes)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "Yes (recommended) — applied: L02d \"…of the primitive streak\" · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q15", "kind": "decide", "ask": "L02c \"every tissue is built from\" → \"…every tissue of the body is built from\" (G-Sci, optional)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "No (recommended: optional, Lesson length tight) — L02c unchanged · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q16", "kind": "decide", "ask": "G08: say \"hypoblast\" once more (\"the old bottom layer, the hypoblast\") (G-Learn)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "Yes (recommended) — applied: G08 \"push the old bottom layer, the hypoblast, aside\" · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q17", "kind": "decide", "ask": "General \"gastrulation\" counted as review (REVIEW → E00.01.02), not new (G-Learn r2 recommends keep) — confirm (D-108 e)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "Keep as review (recommended) — D-108 (e) confirmed · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q18", "kind": "decide", "ask": "Notochord shares the mesoderm token in the primer key → outline or lighter shade? (G-Learn, G-Art; S02d rod reads lavender against an orange swatch)", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "Outline (recommended): notochord keeps the mesoderm colour with an outline — primer token \"meso, outlined\"; R1 draws it · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"},
+    {"id": "P1F.q19", "kind": "ask", "ask": "Built at risk: T4 part A + P1.q2 still open; scratch voice speed 0.80 / 0.75 (as ② built), not the prompt's 0.66 — OK to leave for R1's final voice?", "asked_in": "Bio · Episode · S1E01 primer", "asked": "2026-11-27", "answer": "OK (recommended): leave to R1 — the final voice replaces the scratch speeds · by Aaditya, 27 Nov 2026 04:43 IST (`Bio · Fix · P1F end duties`)", "status": "answered", "d": "D-108"}
    ],
    "uses": ["gpu"],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Episode · S1E01 primer", "by": "Aaditya", "start": "2026-11-27 03:00", "outcome": "partial", "note": "Code, laptop GPU, route B; built at risk (T4 part A open, owner OK); §5 idea map from the video-craft draft via Bio · Fix · video craft"}],
+   "runs": [{"chat": "Bio · Episode · S1E01 primer", "by": "Aaditya", "start": "2026-11-27 03:00", "outcome": "done", "note": "Code, laptop GPU, route B; built at risk (T4 part A + P1.q2 open, owner OK); §5 idea map from the video-craft draft via Bio · Fix · video craft; commits 52f24c0 (builder spec 2 + S1E01 primer + ideas) + 29d081c (animatic tool copy, the animatic tool folder — outside the P1F paths, included without the build lock by the owner's choice, D-108 h) + 0e92816; gates by fresh reviewers: G-Sci pass (1 round), G-Learn pass (2), G-Story pass (2), G-Art pass (2; round 1 FAIL); run left open for Bio · Fix · P1F end duties, closed there (27 Nov 04:37 IST by the machine clock)", "end": "2026-11-27 04:37"}],
    "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {

@@ -14,13 +14,13 @@
 - **Primer (D-107, playbook §6b.3):** replaces the 5-s terms strip (S02, L02, G02 retired). After the cold open, ≤ 3 parts, each isolated (rest ctx-dimmed) on a still view or a ≤ 15° turntable, stamp + scale on; the label + token chip land on the spoken name; no process motion; ends with all parts in place and a 2 s hold.
 - **Ideas (D-107, playbook §6b.1):** Study pace pauses 0.3 s before the end of each idea's last hold (no speech ±0.3 s) on the held frame; panel words live in the app, never in the frame (D8). Watch plays through. Shorts never pause.
 
-## Primer — MBBS Lesson (20.3 s, end hold 2.0 s)
+## Primer — MBBS Lesson (20.7 s, end hold 2.0 s)
 
 | Part | Line | Card | Token (colour key) | View |
 |---|---|---|---|---|
 | germ layers | L02c | `E05.01.01` | ecto · meso · endo | day-17 section, ≤ 15° turntable |
 | primitive node | L02d | `E05.01.02` | ctx + accent ring | top, close, still |
-| notochord | L02e | `E05.02.01` | meso | end cut, still; then all parts in place |
+| notochord | L02e | `E05.02.01` | meso, outlined | end cut, still; then all parts in place |
 
 ## Primer — General Lesson cut (15.9 s, end hold 2.0 s)
 
@@ -34,24 +34,23 @@
 
 | Idea | Title | Lines | Shots | Length | Pause at | Objective | Check by |
 |---|---|---|---|---|---|---|---|
-| S1E01.L.i01 | Three layers, week three | L01–L04 | S01–S03 | 49.1 s | 0:49 | Name the three germ layers and the process that makes them in week three. | `E05.01.01` |
-| S1E01.L.i02 | The groove | L05–L08 | S04–S06 | 39.1 s | 1:28 | Say where and when the primitive streak forms and how it marks the head–tail axis. | `E05.01.02` |
-| S1E01.L.i03 | The first cells in | L09–L12 | S07–S09 | 31.4 s | 1:59 | Explain that the first cells through the streak replace the hypoblast as endoderm. | `L32` |
-| S1E01.L.i04 | Three layers | L13–L17 | S10–S13 | 40.8 s | 2:40 | Place ectoderm, mesoderm and endoderm on a section, all from the epiblast. | `L31` |
-| S1E01.L.i05 | From node to rod | L18–L20 | S14–S15 | 34.5 s | 3:15 | Describe how cells from the primitive node form the notochordal plate, then the rod. | `E05.02.01` |
-| S1E01.L.i06 | This becomes | L21–L25 | S16–S19 | 50.0 s | 4:05 | State what the notochord does and what is left of it in adults. | `E05.02.01` |
-| S1E01.L.i07 | Clinical link | L26–L28 | S20–S21 | 31.6 s | 4:36 | Link leftover streak cells to sacrococcygeal teratoma. | `E05.01.02` |
-| S1E01.L.i08 | Back to our question | L29–L33 | S22–S24 | 51.6 s | end | Answer the opening question: all three layers come from the epiblast. | `L31` |
+| S1E01.L.i01 | Three layers, week three | L01–L04 | S01–S03 | 49.6 s | 0:49 | Name the three germ layers and the process that makes them in week three. | `E05.01.01` |
+| S1E01.L.i02 | The groove | L05–L08 | S04–S06 | 39.0 s | 1:28 | Say where and when the primitive streak forms and how it marks the head–tail axis. | `E05.01.02` |
+| S1E01.L.i03 | The first cells in | L09–L12 | S07–S09 | 31.5 s | 2:00 | Explain that the first cells through the streak replace the hypoblast as endoderm. | `L32` |
+| S1E01.L.i04 | All from the epiblast | L13–L17 | S10–S13 | 40.8 s | 2:41 | Place ectoderm, mesoderm and endoderm on a section, all from the epiblast. | `L31` |
+| S1E01.L.i05 | From node to rod | L18–L22 | S14–S16 | 52.0 s | 3:33 | Describe how cells from the primitive node form the notochordal plate, then the rod. | `E05.02.01` |
+| S1E01.L.i06 | This becomes | L23–L25 | S17–S19 | 32.4 s | 4:05 | State what the notochord does and what is left of it in adults. | `E05.02.01` |
+| S1E01.L.i07 | Clinical link | L26–L28 | S20–S21 | 31.6 s | 4:37 | Link leftover streak cells to sacrococcygeal teratoma. | `E05.01.02` |
+| S1E01.L.i08 | Back to our question | L29–L33 | S22–S24 | 51.7 s | end | Answer the opening question: all three layers come from the epiblast. | `L31` |
 
-## Ideas — General Lesson cut (5; the builder proposes, the story director signs)
+## Ideas — General Lesson cut (4; the builder proposes, the story director signs)
 
 | Idea | Title | Lines | Shots | Length | Pause at | Objective | Check by |
 |---|---|---|---|---|---|---|---|
 | S1E01.G.i01 | The groove | G01–G05 | S01–S06 | 57.6 s | 0:57 | Point to the primitive streak and say it marks head and tail. | `E05.01.02` |
-| S1E01.G.i02 | The first cells in | G06–G08 | S07–S09 | 37.5 s | 1:35 | Say that the first cells in replace the old bottom layer. | `E05.01.03` |
-| S1E01.G.i03 | Three layers | G09–G12 | S10–S13 | 38.3 s | 2:13 | Name the three layers in order and where our cell ended up. | `G15` |
-| S1E01.G.i04 | One sheet, three | G13–G14 | S19–S22 | 20.0 s | 2:33 | Say that all three layers come from the one starting layer. | `G16` |
-| S1E01.G.i05 | Quick checks | G15–G17 | S23–S24 | 35.2 s | end | Recall which layer our cell joined and where all three came from. | `G15` |
+| S1E01.G.i02 | The first cells in | G06–G08 | S07–S09 | 38.4 s | 1:36 | Say that the first cells in replace the old bottom layer. | `E05.01.03` |
+| S1E01.G.i03 | Three layers | G09–G12 | S10–S13 | 38.3 s | 2:14 | Say which of the three layers our cell ended up in. | `G15` |
+| S1E01.G.i04 | Back to our question | G13–G17 | S19–S24 | 55.2 s | end | Say that all three layers come from the one starting layer. | `G16` |
 
 ## Storyboard (Lesson order; General + Short reuse the same scene states)
 

@@ -1,6 +1,6 @@
 # S1E01 Gastrulation — table read
 
-*(Purpose: timings, hard-to-say lines and the pronunciation dictionary for the scratch voice (②) and the final voice. Updated: 27 Nov 2026 · Bio · Episode · S1E01 primer (P1F: timings rows for the primer cut, primer lines measured, D-107). Before: 25 Nov 2026 · Bio · Episode · S1E01 animatic (measured column, speed per cut, D-104). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
+*(Purpose: timings, hard-to-say lines and the pronunciation dictionary for the scratch voice (②) and the final voice. Updated: 27 Nov 2026 · Bio · Fix · P1F end duties (planned timings after P1F.q13, q14, q16 wording; measured rows unchanged — R1 re-measures). Before: 27 Nov 2026 · Bio · Episode · S1E01 primer (P1F: timings rows for the primer cut, primer lines measured, D-107). Before: 25 Nov 2026 · Bio · Episode · S1E01 animatic (measured column, speed per cut, D-104). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
 
 Method: speech time = words ÷ 143 wpm (Kokoro `af_heart` 0.66, measured 143 wpm on the laptop, pipeline-reference §3) + the hold after each line. The real scratch-voice read happens in ② and replaces these estimates.
 
@@ -8,8 +8,8 @@ Method: speech time = words ÷ 143 wpm (Kokoro `af_heart` 0.66, measured 143 wpm
 
 | Profile | Words | Speech | With holds | Target | Speech wpm | Overall wpm |
 |---|---|---|---|---|---|---|
-| MBBS Lesson | 640 | 4:29 | **5:28** | 3:00–5:30 | 143 | 117 |
-| General Lesson cut | 364 | 2:33 | **3:09** | 1:40–3:10 | 143 | 116 |
+| MBBS Lesson | 641 | 4:29 | **5:29** | 3:00–5:30 | 143 | 117 |
+| General Lesson cut | 366 | 2:33 | **3:10** | 1:40–3:10 | 143 | 116 |
 | 9:16 Short | 100 | 0:42 | **0:52** | 0:44–1:00 | 143 | 116 |
 
 Short chapters (grammar 8 s, visual-style §2):
