@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-26 05:21 IST",
+ "generated_at": "2026-11-26 10:21 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "c2db410",
@@ -23,7 +23,7 @@
   "state": "held",
   "chat": ".snap",
   "since": "2026-11-26 04:00 IST",
-  "age_h": 1.4,
+  "age_h": 6.4,
   "old": false,
   "since_reason": null
  },
@@ -644,8 +644,8 @@
    "chat": "Bio · Build · U3b look screens",
    "by": "Aaditya",
    "start": "2026-11-26 04:00",
-   "age_h": 1.4,
-   "old": false,
+   "age_h": 6.4,
+   "old": true,
    "old_reason": null
   }
  ],
@@ -692,8 +692,8 @@
   },
   {
    "id": "open_runs",
-   "state": "pass",
-   "detail": "1 open"
+   "state": "warn",
+   "detail": "open over 6 h: U3b"
   },
   {
    "id": "conflicts",
