@@ -2625,10 +2625,10 @@
   },
   {
    "id": "CIR2",
-   "title": "CI fix — main red on 1abe465 (card check: content/E/sources.json out of date)",
+   "title": "CI fix — main red on 1abe465 (card check: sources list missed D-107)",
    "type": "Fix",
    "chat": "Bio · Fix · CI red 1abe465",
-   "status": "in progress",
+   "status": "done",
    "needs": [],
    "unblocks": [],
    "lock": true,
@@ -2636,11 +2636,14 @@
    "check": null,
    "decisions": [],
    "prompt": null,
-   "log": null,
-   "todo": [],
+   "log": "26 Nov 2026 · CI fix (CIR2) — main red since ea47ca7: card check E-sources (D-107 not in the sources list; route A push skipped the sync.bat guard that rebuilds it) → rebuilt with --write-sources; the next run then showed 41 layout-check midword issues from this row's own title (a file path split on the progress map) → retitled in plain words. Card check + guard suite + layout progress screens pass locally",
+   "todo": [
+    "Route A pushes skip the sync.bat guard: a route A chat that changes DECISIONS, the registry or card terms runs `python tools/card-check/check.py --write-sources` before it commits",
+    "Step titles stay in plain words — no file paths or dotted names (they break mid-word on the progress map at big text)"
+   ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "partial", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3)"}],
+   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "done", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3, E-sources) — cause ea47ca7; fix 4b64bfe; run 45835609388 then red at Layout check (41 midword, this row's title) — retitled; no check loosened, no timeout change"}],
    "run": {"on": "Code", "why": "takes the build lock: changes derived content data, runs the checks, pushes"}
   }
  ]
