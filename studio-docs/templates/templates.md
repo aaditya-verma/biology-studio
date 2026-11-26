@@ -1,6 +1,6 @@
 # Templates
 
-*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 22 Nov 2026 · Bio · Fix · CI guard — §2 End line: route B relies on the sync.bat guard (D-083). Before: 22 Nov 2026 · Bio · Build · W3 run surface — §2 *Run in:* line (D-080). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — §2 End: re-run `--write-sources` after the last rebase. Before: 22 Nov 2026 · Bio · Fix · open-run first (§2 open-run line, RULES I8 (8)). Before: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
+*(Purpose: copy-paste formats for handoffs, prompts, cards, episodes, reviews, bugs, decisions, dossiers, sources. Updated: 26 Nov 2026 · Bio · Fix · video craft (§4 Episode: primer + ideas, D-107). Before: 22 Nov 2026 · Bio · Fix · CI guard — §2 End line: route B relies on the sync.bat guard (D-083). Before: 22 Nov 2026 · Bio · Build · W3 run surface — §2 *Run in:* line (D-080). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — §2 End: re-run `--write-sources` after the last rebase. Before: 22 Nov 2026 · Bio · Fix · open-run first (§2 open-run line, RULES I8 (8)). Before: 17 Nov 2026 · Bio · Ideation · Setup guide (D-025).)*
 
 Change the words in angle brackets.
 
@@ -40,8 +40,8 @@ Check: Q · right answer · distractors (from GLOSSARY "Don't confuse" + dossier
 ```
 Id: S<n>E<nn> · Title · Format · target length
 Cold open: <question or clinical mystery>
-Terms strip: <≤ 3 terms>
-Beat 1 / 2 / 3: <one idea each, cited + marked lines, scene ids, day range>
+Primer (Lessons): <≤ 3 parts, ~20 s MBBS / 15 s General, incl. 2 s hold> (playbook §6b.3)
+Ideas: <id · objective · check_by · from–to line · 20–60 s; cited + marked lines, scene ids, day range> (playbook §6b.1)
 Ends on section view: <which plane, which day>
 This becomes: <adult anchor>
 Recap: <2 lines> · Check: <2 questions, ≥ 1 spatial>

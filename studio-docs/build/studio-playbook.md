@@ -1,6 +1,6 @@
 # Studio playbook — how the crew works, and the craft standards
 
-*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 21 Nov 2026 · Bio · Build · M1b host results — §5b(3) figure/ground + loudness checks on every host render (D-051). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — §5b(2) host colour + D5 host rules (D-048). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §2 G-Sci items 13–18, §5/§5b Explainer/MBBS → Lesson, §6.1 summary + §8.5 → visual-style §10–§16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §2 G-Sci video checklist, §6.1 look summary → build/visual-style.md (D-041). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
+*(Purpose: best practices, crew roles, review gates and Definition of Done. Created 17 Nov 2026, D-020. Updated: 26 Nov 2026 · Bio · Fix · video craft — §6b multimedia craft (ideas, signalling, primer), §2 MM checklist under G-Learn, G-Sci 10/14 point to MM2/MM3, §4.1 beat → idea (D-107). Before: 21 Nov 2026 · Bio · Build · M1b host results — §5b(3) figure/ground + loudness checks on every host render (D-051). Before: 20 Nov 2026 · Bio · Build · M1b host shot (Step 2) — §5b(2) host colour + D5 host rules (D-048). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §2 G-Sci items 13–18, §5/§5b Explainer/MBBS → Lesson, §6.1 summary + §8.5 → visual-style §10–§16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — §2 G-Sci video checklist, §6.1 look summary → build/visual-style.md (D-041). Before: 18 Nov 2026 · Bio · Fix · doc reconcile — ported from the uploaded copy: host + Short profile §5b, cinematic look (D-032); designed per device §6.10, gates, DoD (D-033); §6.2 accent per D-031. RULES §H holds the musts; this doc holds the how. Evidence for teaching choices stays in `research/teaching-methods.md`; the quality bar's reference reels in `research/quality-references.md`; device classes and layouts in `build/design-plan.md` §2.)*
 
 **Stance:** we work like a small science-animation studio. A lead biologist-researcher who is also designer, teacher and storyteller, with a team of engineers behind him. Facts first, clarity over realism, story for attention, measurement for truth.
 
@@ -45,16 +45,28 @@ The owner is **executive producer**: sets direction, approves at gates, watches 
 7. **Counts** — somite pairs fit the day (dossier staging table); neuropore state fits the day; pharyngeal arches five, numbered 1, 2, 3, 4, 6 (5th absent or rudimentary — never shown), appearing cranial → caudal; arch arteries appear and regress in sequence, never all at once.
 8. **Look-induced errors** (build/visual-style.md) — SSS doesn't imply a lumen; dust doesn't read as cells; depth of field doesn't blur the named structure; glow doesn't imply signalling unless labelled; graded layers within ΔE00 ≤ 8.
 9. **Simplifications** — omissions listed in the shot sheet; "simplified / not to scale / colours illustrative" on screen where true (B2).
-10. **Labels** — appear as the structure is shown (D8), point at the right thing, use GLOSSARY terms.
+10. **Labels** — appear as the structure is shown (D8), point at the right thing, use GLOSSARY terms; timing + distance are measured by MM2/MM3 (below), not restated here.
 11. **Citations** — every spoken fact has a section + mark; no ≈; a ⚑ gives the book answer.
 12. **AI shots** — host only, no anatomy, credited (H9).
 13. **Segment colours** — segment mode stated by the legend chip; each segment matches `content/E/segments.json` and the previous Part; splits/merges follow visual-style §11 at the right day; each segment and derivative has a cite + mark; colours change only by a morph.
-14. **Labels + leaders** — every dot sits on the named structure; lines don't cross; the anchor is still on the structure at the end of the move (visual-style §12).
+14. **Labels + leaders** — every dot sits on the named structure (visual-style §12); placement and crossing are measured by MM2.
 15. **Real media** — the image shows what the voice says (stage, view, structure); orientation + scale correct or "scale not given"; unaltered except logged edits; ledger row exists (visual-style §13, §16).
 16. **Clinical link** — cites the book section + mark; the fault shown matches the mechanism the book gives; humane (D6; visual-style §14).
 17. **Honesty tags** — the right tag (visual-style §15 order) on every exaggerated, unscaled or time-compressed shot; `exam_fact` exaggerations are said in the voice; no exaggeration changes number, order, side, topology or sequence (visual-style §15).
 18. **Series continuity** — the Part opens on the last Part's end state (`endstate.json`); recap facts match its `recap_facts`.
 *(G-Art checks the look of visual-style §10–§15; G-A11y checks label/tag contrast, colour chips + patterns, caption band clear.)*
+
+**G-Learn multimedia checklist (MM, D-107)** — runs on the **final render + final mix** (R1), never the scratch. Two parts: `tools/episode/render_check.py` (`--dry-run --debug --only --preview`, I5) runs the auto items, then the **learning designer** (not the maker, H2) signs the human items. Each item records pass/fail + timestamp in the render manifest (H7).
+| # | Check | How |
+|---|---|---|
+| MM1 | Labels ≤ 3 words · each Check chip ≤ 3 words · titles ≤ 4 · no other on-screen string > 4 words (captions, credits, honesty/media tags excepted) | auto (shots.json + overlay track) |
+| MM2 | Dot on the structure; label text's near edge ≤ 12 % of the frame's short side from the dot; outside the subject's outline (Lesson); no crossings | auto (anchors) + human spot check at 210 px high and at 1080 |
+| MM3 | Label fade-in starts −0.3 … +0.5 s from the spoken word's onset; report the max \|Δ\| | auto (word timings) |
+| MM4 | Dwell (time at full opacity) ≥ 1.5 s (Lesson) / ≥ 1.0 s (Short) | auto |
+| MM5 | No on-screen sentence repeats the voice; no burned-in captions in Lessons (Shorts' kinetic captions excepted, §6b.2) | auto + human |
+| MM6 | ≤ 1 accent ring and ≤ 1 moving focus at a time; clutter dimmed (ctx) | human |
+| MM7 | Every label's term is spoken within the MM3 window of the label's fade-in, and is in the transcript there | auto |
+| MM8 | Idea breaks: hold ≥ 1.5 s, no speech within ±0.3 s, music ducked or sustained (never a cadence; only segment ends resolve), break placement per §6b.1, `chapters.vtt` = one cue per idea; each primer part labelled + named inside the MM3 window | auto + listen |
 Templates refer here; don't copy the list (RULES I3).
 
 ## 3. Research craft
@@ -66,7 +78,7 @@ Templates refer here; don't copy the list (RULES I3).
 6. **Licence before look-alike.** Check the licence before any source shapes a visual (RULES G5).
 
 ## 4. Teaching craft (with `research/teaching-methods.md`)
-1. **One objective per card, one per beat**, written as a verb you can test ("explain why…", "identify on a section…", "order…").
+1. **One objective per card, one per idea** (an episode's 20–60 s unit, §6b.1), written as a verb you can test ("explain why…", "identify on a section…", "order…").
 2. **Sequence:** what it looks like → how it happens → why it matters (clinical) → what it becomes (adult).
 3. **Multiple representations:** 3D view + cross-section + simple schematic for each key concept; switch between them explicitly.
 4. **Analogies with an expiry date:** every analogy says where it breaks ("like folding a sheet — except cells are moving, not bending").
@@ -114,6 +126,32 @@ Templates refer here; don't copy the list (RULES I3).
 8. **Animatic first:** a rough three.js preview with scratch voice is reviewed (G-Story, G-Sci, G-Art) before any final render.
 9. **Thumbnails and titles:** a single clear image + a question; never misleading.
 10. **Designed per device (D-033, RULES C13):** each screen has its own layout per class (`build/design-plan.md` §2): phones stack or drill down with actions in thumb reach; tablets split into two panes (study mode); desktops use up to three panes with hover and keyboard. Never just stretch. Labels and overlays in shots stay legible on a phone *and* don't look oversized on a desktop — check frames at both sizes.
+
+
+## 6b. Multimedia craft (M01; D-107)
+Teaching methods 1–5 say *what*; this says *how much* and *how it is checked* (MM, §2). Episode data: `docs/episode-spec.md` spec 2.
+
+**6b.1 Segmenting — learner-paced ideas.**
+- Three levels: **episode → segment** (60–120 s, the `seg` field; a coarse group on the scrubber and transcript) **→ idea** (one objective, H1 + D2; 20–60 s; ends on a reveal hold).
+- **Pace:** *Study pace* pauses at each idea's end on the held frame and waits for **Next idea ▸**; *Watch* plays straight through (apart from the video's own Check pauses), ideas show only as chapter ticks. **Chapters = ideas:** `chapters.vtt` has one cue per idea (YouTube + the app's ticks). Default: Study pace for both Lesson cuts, Watch for Shorts; **Shorts never pause**.
+- **Where a break goes:** after a reveal hold ≥ 1.5 s with no speech within 0.3 s either side; music is ducked or sustained across it, never a cadence (only a segment end may resolve). Never mid-sentence or mid-morph (the shape is the lesson, §6.6); never between a Check and its reveal (the video's own Check pause plays in both modes); never within 10 s after a Check's reveal; never inside or at the end of the cold open (≤ 10 s, D3); never inside or at the end of the primer — the first idea runs from the cold open through the primer to the first reveal in segment 1 (still ≤ 60 s).
+- **A break is a cliffhanger, not a full stop.** The episode question and ABT spine stay pinned on the idea pause panel, with the protagonist's progress (§5, e.g. Journey: "Our cell: in the streak → ?"), or the question's progress when there is no protagonist (Mystery, Factory). An idea ends on a *Therefore* or an open loop the voice already set up. The video never says "tap": YouTube and Watch viewers hear one unbroken story.
+- Panel words live in the app, not the frame (D8 untouched).
+- **Data, not code:** `ideas[]` per Lesson profile in `script.json` — id, from/to line, objective, `check_by` (what tests it), title ≤ 4 words, optional `next_q` ≤ 6 words. Ids are permanent (A2): `S1E01.L.i03`. The builder proposes breaks snapped to the nearest hold; the story director signs them (G-Story).
+
+**6b.2 Signalling, redundancy, temporal contiguity.**
+- **Words:** label ≤ 3 words · each Check chip ≤ 3 words · titles ≤ 4 · no other on-screen string over 4 words, except captions, credits and honesty/media tags (D8).
+- **Beside, not away:** the anchor dot is on the structure (visual-style §12); the text's near edge is ≤ 12 % of the frame's short side from the dot; in Lessons the label stays outside the subject's outline. If both can't hold (a structure deep inside the subject), distance wins and the label may sit on a ctx-dimmed region. The only distant key is the legend chip (visual-style §11).
+- **Timed to the voice:** fade-in starts −0.3 … +0.5 s from the spoken word's onset; dwell ≥ 1.5 s (Lesson) / ≥ 1.0 s (Short). Word onsets come from the final mix (TTS word timings or a free local forced aligner — the R1 pipeline picks one and Measures it, C4).
+- **Redundancy:** the voice carries the sentences; no on-screen sentence repeats the narration. Lesson captions are VTT toggles only, never burned in. Shorts keep burned-in kinetic captions (watched muted) — an a11y exception, not on-screen text; the app never lays VTT over a burned-in Short.
+- **Signalling:** ≤ 1 accent ring at a time (the marked cell's alone on tracer shots); ≤ 1 moving focus; context dimmed (ctx) when the named structure sits in clutter. Every label's term is in the transcript at the same timestamp (visual-style §10).
+
+**6b.3 Pre-training — the "Meet the parts" primer.**
+- **Where:** Lessons (both cuts), after the cold open (hook first, D3) and before segment 1. It replaces the 5-s terms strip. Shorts have none.
+- **Shape:** ~20 s in the MBBS Lesson, 15 s in the General cut, each including the 2 s end hold; ≤ 3 parts, each isolated (rest ctx-dimmed), on a still view or a ≤ 15° turntable, with stamp + scale (B2). The label lands as the voice names the part and says what it is in one line; its token colour + pattern becomes the episode's colour key. No process motion — names and looks only. Ends with all parts in place, then a 2 s hold. The voice opens the primer on the cold-open question ("To answer that, meet three parts…") and adds no new question.
+- **Term budget:** primer terms go in their line's `new[]` and count toward D2's ≤ 3 new terms in any rolling 60 s (`max_terms_per_60s`; the builder checks). A term introduced in Part 0, an earlier Part, or on a Ready-to-watch core card counts as review, not new — decided at build time, never from a learner's status.
+- **Which terms:** the profile's primer terms (`primer.<profile>.parts[].term`; S1E01 MBBS: germ layers · primitive node · notochord; General, in everyday words: epiblast · hypoblast · primitive streak — the top sheet, the bottom sheet, the groove).
+- **App:** primer parts show as chips linking to their cards; the player offers **Know these? Skip ▸** only when every linked card is Understood (B4) — an offer, never automatic.
 
 ## 7. Sound craft
 1. **Voice:** 130–150 words per minute; pronunciation dictionary for every term; consistent voice per season (and per host).

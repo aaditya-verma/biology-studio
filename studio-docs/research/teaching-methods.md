@@ -1,6 +1,6 @@
 # Teaching methods — evidence → our design rules
 
-*(Owner doc for how we teach. Created 17 Nov 2026, D-011. Each method: what the research says (own words) → what we do. New method → add a row and, if it's a must, a RULES §D line.)*
+*(Owner doc for how we teach. Created 17 Nov 2026, D-011. Each method: what the research says (own words) → what we do. New method → add a row and, if it's a must, a RULES §D line. Updated: 26 Nov 2026 · Bio · Fix · video craft — methods 1–5 + checklist: ideas, primer, label numbers (D-107; closes D-102 (1)).)*
 
 ## Evidence sources
 | Id | Source | Strength |
@@ -17,11 +17,11 @@
 ## Methods we adopt
 | # | Method | Evidence | What we do (rule) |
 |---|---|---|---|
-| 1 | **Segmenting** — short pieces, learner controls pace | M01, M02 | Episodes 60–180 s; chapter markers per beat; a season is many shorts, never one long video. Cards = one screen. |
-| 2 | **Pre-training** — learn the names before the process | M01 | Core cards before the episode (Ready to watch); Part 0 first; a 5-s "terms you'll meet" strip at the start of each episode (≤ 3 terms). |
-| 3 | **Signalling** — cue what matters | M01 | The structure being named glows/outlines at that moment; germ-layer tokens (RULES B3); beat titles on the chapter bar. |
-| 4 | **Temporal & spatial contiguity** — word and picture together | M01 | A label appears *on* the structure *as* the voice says it; never a legend far away. |
-| 5 | **Redundancy & modality** — narrate, don't print paragraphs | M01 | On-screen text = 1–3-word labels + scale/day stamp only. Subtitles are a toggle (on by default when muted) — not sentences baked into the frame. |
+| 1 | **Segmenting** — short pieces, learner controls pace | M01, M02 | Lessons 6–10 min, in segments of 60–120 s and **ideas** of 20–60 s (one chapter per idea); the learner sets the pace — Study pace pauses after each idea (playbook §6b.1, RULES D10). Shorts ≤ 60 s never pause. Cards = one screen. |
+| 2 | **Pre-training** — learn the names before the process | M01 | Core cards before the episode (Ready to watch); Part 0 first; a ~20 s "Meet the parts" primer after the cold open in Lessons (≤ 3 parts; 15 s in the General cut; playbook §6b.3) — replaces the old 5-s terms strip. |
+| 3 | **Signalling** — cue what matters | M01 | The structure being named glows/outlines at that moment; germ-layer tokens (RULES B3); idea titles on the scrubber + transcript (app, not the frame); ≤ 1 accent ring and ≤ 1 moving focus at a time (MM6). |
+| 4 | **Temporal & spatial contiguity** — word and picture together | M01 | A label appears *on* the structure *as* the voice says it: fade-in −0.3 … +0.5 s from the word, text ≤ 12 % of the short side from its dot (MM2, MM3); never a legend far away. |
+| 5 | **Redundancy & modality** — narrate, don't print paragraphs | M01 | On-screen text = 1–3-word labels + scale/day stamp only. Subtitles are a toggle (on by default when muted) — not sentences baked into the frame; Lesson captions are never burned in (Shorts' kinetic captions are the a11y exception) (MM5). |
 | 6 | **Coherence** — cut interesting-but-irrelevant extras | M01 | No trivia, no music under key narration, no decorative motion. Extras go to More. (Pairs with D5 "accuracy beats drama".) |
 | 7 | **Personalisation** — conversational voice | M01 | Scripts speak to "you"; plain words; one guide character per season. |
 | 8 | **Interactive 3D beats static 2D for spatial knowledge** (gain larger for spatial than factual; takes more time) | M04 | Every Tier A card has a rotatable scene + day scrubber; Checks test spatial skill (rotate-to-match, which day, order frames). |
@@ -36,7 +36,9 @@
 ## Episode checklist (from the above)
 - [ ] Opens with a question or clinical mystery (D3)
 - [ ] ≤ 3 new terms, shown first (2) and named on the structure (4)
-- [ ] One idea per beat; chapter marker per beat (1)
+- [ ] One objective per idea (20–60 s); one chapter per idea; `ideas[]` breaks signed (1)
+- [ ] Lessons: primer of ≤ 3 parts after the cold open (2)
+- [ ] Final render passes MM1–MM8 (playbook §2)
 - [ ] No sentence on screen; labels + day/scale only (5, B2)
 - [ ] 3D shot ends on the section view students meet in exams (10)
 - [ ] "This becomes…" adult anchor (D4)

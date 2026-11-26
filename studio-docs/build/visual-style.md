@@ -1,6 +1,6 @@
 # Visual style — how our videos look
 
-*(Purpose: owner doc for the look of rendered video and app 3D — frame, chapter grammar, titles, tissue, palette, focus, dust, light; formats, segment colours, labels, mixed media, clinical slots, recaps, honesty tags, media licences. Updated: 25 Nov 2026 · Bio · Episode · S1E01 animatic (§1 bands: anatomy captions 68–72 %, axes + scale bar + tag top-left, G-Art round 2 corrections (M1b.q10 = B, D-103, D-104)). Before: 21 Nov 2026 · Bio · Build · M1b v7 results — §1 host-shot caption band 68–72 % (D-059). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §10–§16 from QR04 + QR05 (D-046). Created: 20 Nov 2026 · Bio · Fix · Visual style port (D-041; from the owner's reel QR03, research/quality-references.md). Germ-layer colours: D-031 / RULES B3. Gates that use it: G-Art (look, §1–§15) and G-Sci (playbook §2 video checklist, items 8 and 13–18).)*
+*(Purpose: owner doc for the look of rendered video and app 3D — frame, chapter grammar, titles, tissue, palette, focus, dust, light; formats, segment colours, labels, mixed media, clinical slots, recaps, honesty tags, media licences. Updated: 26 Nov 2026 · Bio · Fix · video craft (§12 label distance + timing, beat → idea; D-107). Before: 25 Nov 2026 · Bio · Episode · S1E01 animatic (§1 bands: anatomy captions 68–72 %, axes + scale bar + tag top-left, G-Art round 2 corrections (M1b.q10 = B, D-103, D-104)). Before: 21 Nov 2026 · Bio · Build · M1b v7 results — §1 host-shot caption band 68–72 % (D-059). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — §10–§16 from QR04 + QR05 (D-046). Created: 20 Nov 2026 · Bio · Fix · Visual style port (D-041; from the owner's reel QR03, research/quality-references.md). Germ-layer colours: D-031 / RULES B3. Gates that use it: G-Art (look, §1–§15) and G-Sci (playbook §2 video checklist, items 8 and 13–18).)*
 
 ## 1. Frame (Short, 9:16)
 - Design and master at 1080×1920; ship the 720×1280 rendition until the 1080p rung is Measured (RULES H8, D-033).
@@ -16,7 +16,7 @@
 - Ch 1 hook question (D3) · ch 2–5 one idea each (D2) · ch 6 payoff = section view (D9) + "this becomes…" (D4).
 - Inside 8 s: 2–4 shots, a cut every 1–3 s; the ch 1 hook lands by 1 s; final 1.5–2 s hold after the reveal (D-032).
 - ≈ 17–20 spoken words per chapter (130–150 wpm, H6); ≤ 3 new terms per Short (D2).
-- Lessons keep their longer beats (D-032 learning pace; §10).
+- Lessons keep their longer ideas (20–60 s, learner-paced; D-032, D-107; §10).
 
 ## 3. Chapter titles (RULES D8 as amended, D-041 (1))
 - ≤ 4 words, thin caps; weight Regular 400 or heavier at the 720p ship (Light 300 only once 1080p is Measured).
@@ -85,9 +85,9 @@
 ## 12. Labels + leader lines
 - Text: 1–3 words, GLOSSARY term (D8). Weight ≥ 600. Near-white on a dark scrim ≥ 4.5:1. Cap height ≥ 40 px at 1080 (Short) / ≥ 32 px at 1080 high (Lesson). Devanagari +15 %.
 - **Colour chip:** a small swatch before the text in the structure's token colour + pattern (colour never alone, H5).
-- **Leader line:** 2 px at 1080 (3 px at 720) — Short width / Lesson height — near-white with a 1 px dark edge (≥ 3:1 on any background). Ends in a 6 px dot on the surface. Straight, or one elbow; ≤ 25 % of frame width; never crosses another line or label, and touches the named structure only at its dot.
+- **Leader line:** 2 px at 1080 (3 px at 720) — Short width / Lesson height — near-white with a 1 px dark edge (≥ 3:1 on any background). Ends in a 6 px dot on the surface. Straight, or one elbow; length set by the distance rule below (the old 25 %-of-width cap is superseded, D-107); never crosses another line or label, and touches the named structure only at its dot. **Distance (D-107):** the label text's near edge is ≤ 12 % of the frame's short side from the dot (MM2).
 - **Anchored in 3D:** the dot tracks the surface as it moves. If the anchor is hidden, the line becomes dashed for ≤ 1 s, then the label leaves.
-- **Count:** ≤ 3 labels at once (Short), ≤ 6 (Lesson). Fade in 0.3 s as the voice names it (D8); Short: fade out when the voice moves on; Lesson: the leader line and chip dim (text stays ≥ 4.5:1) until the segment ends; the oldest label leaves when a 7th arrives.
+- **Count:** ≤ 3 labels at once (Short), ≤ 6 (Lesson). Fade in 0.3 s as the voice names it (D8), starting −0.3 … +0.5 s from the spoken word's onset (MM3); dwell ≥ 1.5 s (Lesson) / ≥ 1.0 s (Short) (MM4); Short: fade out when the voice moves on; Lesson: the leader line and chip dim (text stays ≥ 4.5:1) until the segment ends; the oldest label leaves when a 7th arrives.
 - The plum `--accent` ring and its label arrive together (D-036); the label goes on the side away from the frame edge.
 - Debug: `?debug=labels` shows anchors, hit boxes and overlaps.
 
@@ -109,7 +109,7 @@
 
 ## 15. Series recap + honesty tags
 **Recap (Lesson):**
-- **Opener ≤ 15 s:** retrieval question first ("Which region becomes the ventricles' outflow tracts?"), 2 s pause, then 3 beats from the last Part's end states.
+- **Opener ≤ 15 s:** retrieval question first ("Which region becomes the ventricles' outflow tracts?"), 2 s pause, then 3 quick recap points from the last Part's end states.
 - **Continuity:** Part N starts on Part N−1's last frame — same scene state, colours, camera (`endstate.json` per Part, scene spec §10; the render check diffs it).
 - **Teaser ≤ 5 s:** a question for the next Part. Part chip ("Heart · Part 3") top-left throughout.
 - Season recap episodes stay (D7). Shorts stand alone: Part number on the end card only.

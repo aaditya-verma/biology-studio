@@ -1,6 +1,6 @@
 # Rules
 
-*(Purpose: the non-negotiables. Updated: 25 Nov 2026 · Bio · Fix · P1 restart recovery — I8 (1) two lanes (D-105). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — I9 live progress page for every build job (D-089). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — B2 masked stamp also for a trace drill that asks when (D-075). Before: 22 Nov 2026 · Bio · Fix · open-run first — I8 (8) open run first. Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode — I2 build-log lines end with a plain line (D-061). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — B2 masked-day exception for the day drill (D-054). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — D8 media tags/credits, Part chip, legend, honesty tags; G4 real media CC0/PD/CC BY; A2 segment + media ids; D6 real imaging per visual-style §16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
+*(Purpose: the non-negotiables. Updated: 26 Nov 2026 · Bio · Fix · video craft — D2 + H1 beat → idea, new D10 (D-107). Before: 25 Nov 2026 · Bio · Fix · P1 restart recovery — I8 (1) two lanes (D-105). Before: 22 Nov 2026 · Bio · Fix · split-screen test badge — I9 live progress page for every build job (D-089). Before: 22 Nov 2026 · Bio · Build · V3 trace a cell — B2 masked stamp also for a trace drill that asks when (D-075). Before: 22 Nov 2026 · Bio · Fix · open-run first — I8 (8) open run first. Before: 21 Nov 2026 · Bio · Build · H2 reviewer mode — I2 build-log lines end with a plain line (D-061). Before: 21 Nov 2026 · Bio · Build · V2 3D drills — B2 masked-day exception for the day drill (D-054). Before: 20 Nov 2026 · Bio · Fix · Visual style 2 port — D8 media tags/credits, Part chip, legend, honesty tags; G4 real media CC0/PD/CC BY; A2 segment + media ids; D6 real imaging per visual-style §16 (D-046). Before: 20 Nov 2026 · Bio · Build · Visual style commit — D8 chapter titles (D-041). Before: 19 Nov 2026 · Bio · Build · W1 progress map — I2 + I3 point to `build/steps.json`, I5 `tracker` area (D-040). Before: 18 Nov 2026 · doc reconcile — C13, H8, I5 `layout` (D-033).)*
 
 Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. How-to and craft standards behind §H: `build/studio-playbook.md`.
 
@@ -39,7 +39,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 
 ## D. Teaching & story
 - **D1.** Shape before names: show the fold, then label it.
-- **D2.** One idea per beat; at most 3 new terms per minute of video and per card.
+- **D2.** One objective per **idea** (an episode's 20–60 s unit, D-107); at most 3 new terms per minute of video and per card.
 - **D3.** Every episode opens with a question or a clinical mystery and answers it by the end.
 - **D4.** Anchor to the adult: "this becomes…" in the same episode or card.
 - **D5.** Accuracy beats drama: a metaphor never changes what happens biologically.
@@ -47,6 +47,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **D7.** Every season has a recap / "connect the dots" episode across chapters.
 - **D8.** On-screen text is labels, day, scale, B2 disclaimers and honesty tags, **chapter titles of 4 words or fewer** (Shorts, D-041), **media tags + credits, the Part chip and the colour legend** (D-046; build/visual-style.md §10–§15); the voice carries the sentences; a label sits on its structure as it is named (teaching methods 4–5). Captions/subtitles are accessibility text, not on-screen text (H5).
 - **D9.** Folding and layer shots end on the cross-section view learners meet in exams (teaching method 10).
+- **D10.** **Learner-paced ideas + primer in Lessons** (D-107): Lessons are split into ideas (`ideas[]`, `docs/episode-spec.md`) that the player can pause after (Study pace, the Lesson default; Shorts never pause), and open with a "Meet the parts" primer (≤ 3 parts) after the cold open. Breaks, primer and label timing follow playbook §6b and pass the MM checklist (playbook §2) on the final render.
 
 ## E. Docs
 - **E1.** One owner doc per fact (`claude/INSTRUCTIONS.md` §2).
@@ -67,7 +68,7 @@ Non-negotiables. To change one, log a decision in `claude/DECISIONS.md` first. H
 - **G5.** Sources marked NC, ND or "no reuse" (registry Licence column) are **reference only**: look, then draw our own. Never trace, import, screenshot or quote at length.
 
 ## H. Production craft & review (D-020; details in `build/studio-playbook.md`)
-- **H1.** Every card and every episode beat has one testable **learning objective**; its Checks test that objective.
+- **H1.** Every card and every episode idea has one testable **learning objective**; its Checks test that objective (an idea's objective is tested by an in-video Check, the episode quiz or its linked card's Check — `ideas[].check_by`, D-107).
 - **H2.** **Review gates:** an artefact ships only after its gates pass — G-Sci, G-Learn, G-Story, G-Art, G-Eng, G-A11y (playbook §2) — and the next build waits for G-Owner. A **different role** reviews than the one that made it; cards, scripts and public outputs get a fresh-eyes reviewer.
 - **H3.** **Animatic before render:** no final render until a three.js animatic with scratch voice has passed G-Sci, G-Story and G-Art.
 - **H4.** **Orientation always:** every 3D shot shows axes (cranial/caudal, dorsal/ventral), scale and day/stage (with B2).
