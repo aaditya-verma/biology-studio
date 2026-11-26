@@ -2643,7 +2643,7 @@
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "done", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3, E-sources) — cause ea47ca7; fix 4b64bfe; run 45835609388 then red at Layout check (41 midword, this row's title) — retitled; no check loosened, no timeout change"}],
+   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "done", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3, E-sources) — cause ea47ca7; fix 4b64bfe; run 45835609388 then red at Layout check (41 midword, this row's title) — retitled; no check loosened, no timeout change; CI run 45846979140 on baca82a green (44 min)", "end": "2026-11-26 21:28"}],
    "run": {"on": "Code", "why": "takes the build lock: changes derived content data, runs the checks, pushes"}
   }
  ]
