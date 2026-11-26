@@ -299,7 +299,7 @@ html.dev-d .today{grid-template-columns:repeat(3,minmax(0,1fr))}
 @container (min-width:1100px){.today{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .today .wide{grid-column:1/-1}
 /* U3 (D-087, P2/P4/P5): progress hero + stat tiles, the plan switch, "Next up" snap row */
-.td-hero .stats{grid-template-columns:repeat(3,1fr)}
+.td-hero .stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.5em),1fr))}   /* G-Art r1 (U3a): 3 across, wrapping at big text instead of running together */
 .snap{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;margin:-3px calc(-5px + max(0px,var(--r-card) - var(--pad))) 0 -5px;padding:5px 5px 6px;scroll-padding-inline:5px}   /* U3 fix: overflow clips at .snap's own border-box edge, which on phone (pad 14/12px) sits inside the card's 20px corner radius — a scrolled-to-the-end peek card's hard edge then visually crossed the rounded corner ("border overlap"). A right margin (not padding — padding doesn't move the clip edge) pulls .snap's own edge in by the radius/pad deficit so the clip lands clear of the curve; tp/tl/d already have pad >= r-card, so margin there is unchanged */
 .snap>.nu-card{scroll-snap-align:start}
 .nu-card{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:min(46vw,170px);flex:0 0 auto;min-height:var(--tap);padding:10px;border:0;border-radius:var(--r-in);background:var(--L2);text-align:left;cursor:pointer;color:var(--ink)}
@@ -486,7 +486,8 @@ html.dev-p .vw:not(.inl) .vw-tabs button{padding:0 8px;min-width:var(--tap)}   /
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
 .vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}
-.vw-list{display:grid;gap:4px;grid-template-columns:minmax(0,1fr)}   /* U3 (D-087, P3): compact rows, not a card grid; minmax(0,…) — a grid track's default min is auto (content-based), which a nowrap title/id would otherwise force wide */
+.vw-list{display:grid;gap:4px;grid-template-columns:minmax(0,1fr)}
+html.dev-tl .vw-list,html.dev-d .vw-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,24em),1fr));column-gap:var(--gap)}   /* G-Art r1 (U3a): wide screens get columns of compact rows, not one row stretched to 1350 px */   /* U3 (D-087, P3): compact rows, not a card grid; minmax(0,…) — a grid track's default min is auto (content-based), which a nowrap title/id would otherwise force wide */
 /* phone portrait: canvas on top, controls in a bottom sheet (thumb reach) */
 html.dev-p .vw{gap:0}
 html.dev-p .vw-stage{border-radius:var(--r) var(--r) 0 0;border-bottom:0}
