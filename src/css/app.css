@@ -478,7 +478,7 @@ html.dev-pl .vw-day{flex-wrap:wrap;row-gap:0} html.dev-pl .vw-day>.vw-range{orde
 .vw-t[aria-checked="true"]:focus-visible{outline:var(--focus);outline-offset:3px}   /* focus = the 3 px focus ring (2.4.7); ink fill + ✓ still say "on" */
 .vw .seg{margin-top:10px}
 html.dev-p.can-back:not(.dock-fold) .vw:not(.inl) .vw-tabs{margin-left:72px}
-html.dev-p .vw:not(.inl) .vw-tabs button{padding:0 8px}   /* U3b: the four tabs fit beside the dock on 360–430 px phones at 100 % (were 12 px a side → About scrolled out); big text still scrolls, never wraps */   /* G-Art: the tab row starts right of the floating Back dock (no tab under it at rest) */
+html.dev-p .vw:not(.inl) .vw-tabs button{padding:0 8px;min-width:var(--tap)}   /* U3b: the four tabs fit beside the dock on 360–430 px phones at 100 % (were 12 px a side → About scrolled out); big text still scrolls, never wraps */   /* G-Art: the tab row starts right of the floating Back dock (no tab under it at rest) */
 .vw-facts{padding-left:1.1em;max-width:var(--measure)} .vw-facts li{margin:4px 0}
 .vw-hint{margin-top:10px}
 .vw textarea{width:100%;font:var(--fs-xs)/1.4 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);margin-top:8px}

@@ -129,7 +129,7 @@ function scMount(S,st){
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
     if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
-    if(!SC.drill&&st.zoom==null)scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class)
+    if(!SC.drill&&st.zoom==null&&!document.documentElement.classList.contains('still'))scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class); stills keep the scene's own camera (C11 compares geometry, not framing)
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
     scLabelsDom(S);SC.ready=true;if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{if(SC.ready)scOverlay();});   // L1F (G-Art): labels measured before the web font loads would grow afterwards — place them again
     scDay(SC.st[S.id].day,true);setTimeout(vwKeysFit,0);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
@@ -137,10 +137,11 @@ function scMount(S,st){
 }
 /* U3b: start framing on every class. At the scene's start view the model (engine outline) spans at least CONFIG.viewer.fit.min of the stage's
    width or height: zoom in (never out) about the stage centre, keeping the model inside the stage, below the stamp + notes line as drawn and
-   F.bottom px off the bottom edge (the gizmo + scale bar sit in the corners). Kept per scene + class in SC.fit; the learner's own zoom always wins (st.zoom); Reset view returns to it. */
-function scZoom0(S){const f=SC.fit&&SC.fit[S.id+'|'+DEV.cls];return f?f.zoom:scStart(S).zoom;}
-function scShift0(S){const f=SC.fit&&SC.fit[S.id+'|'+DEV.cls];return f?f.shift:scStart(S).shift;}
-function scFit(S){const E=SC.eng,stage=$('#vwStage');if(!E||!E.outline||!stage)return;const key=S.id+'|'+DEV.cls,F=CONFIG.viewer.fit,fit=SC.fit||(SC.fit={});
+   F.bottom px off the bottom edge (the gizmo + scale bar sit in the corners). Kept per scene + class + stage size in SC.fit; the learner's own zoom always wins (st.zoom); Reset view returns to it. */
+const scFitKey=S=>{const st=$('#vwStage');return S.id+'|'+DEV.cls+'|'+(st?Math.round(st.clientWidth)+'x'+Math.round(st.clientHeight):'');};   // per stage size: the full viewer and a card's Try it differ, rotate refits
+function scZoom0(S){const f=SC.fit&&SC.fit[scFitKey(S)];return f?f.zoom:scStart(S).zoom;}
+function scShift0(S){const f=SC.fit&&SC.fit[scFitKey(S)];return f?f.shift:scStart(S).shift;}
+function scFit(S){const E=SC.eng,stage=$('#vwStage');if(!E||!E.outline||!stage)return;const key=scFitKey(S),F=CONFIG.viewer.fit,fit=SC.fit||(SC.fit={});{const ks=Object.keys(fit);if(ks.length>40)delete fit[ks[0]];}
   if(fit[key]){E.setShift(fit[key].shift);E.view(null,null,fit[key].zoom);return;}
   const W=stage.clientWidth,H=stage.clientHeight,z0=E.state().zoom,s0=(E.screenBox()||{shift:0}).shift,box=()=>{const P=E.outline();if(!P||P.length<3)return null;const xs=P.map(p=>p.x),ys=P.map(p=>p.y);return {l:Math.min(...xs),r:Math.max(...xs),t:Math.min(...ys),b:Math.max(...ys)};};
   const b=box();if(!b||!W||!H)return;const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
