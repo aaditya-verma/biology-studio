@@ -2622,6 +2622,26 @@
    ],
    "est": {"chats": 1},
    "run": {"on": "Code", "why": "takes the build lock: changes tools, runs the checks, pushes"}
+  },
+  {
+   "id": "CIR2",
+   "title": "CI fix — main red on 1abe465 (card check: content/E/sources.json out of date)",
+   "type": "Fix",
+   "chat": "Bio · Fix · CI red 1abe465",
+   "status": "in progress",
+   "needs": [],
+   "unblocks": [],
+   "lock": true,
+   "gates": {},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": null,
+   "todo": [],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "partial", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3)"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes derived content data, runs the checks, pushes"}
   }
  ]
 }
