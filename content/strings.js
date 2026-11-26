@@ -16,7 +16,7 @@ const STR={
   todayLead:'Short on time? On the go takes up to 5 minutes. Have a while? Study continues your lesson. Read a card and its prompts join your Remember deck: they come back after 1 day, then 3, then every 7.',
   continueT:'Continue', continueNone:'Nothing opened yet. Start with Part 0, then gastrulation.',
   startT:'Start here', startPart0:'Part 0 · Reading an embryo', startGastr:'Ch 5 · Gastrulation (researched ✔)', start3d:'3D · Two layers become three',
-  mapStatsT:'The book, mapped', concepts:'concepts', chapters:'chapters', researched:'researched (X1)',
+  mapStatsT:'The book, mapped', concepts:'concepts', bmDone:(d,n)=>d+' of '+n+' done', chapters:'chapters', researched:'researched (X1)',
   comingT:'Coming next', coming:['Trace a cell in 3D (V3)','Episode S1E01 · Gastrulation (P1 → R1 → L3)','More chapters after the 7-day use gate'],
   // Book map
   mapTitle:'Book map', tree:'Chapters', chapterView:'Chapter', crosstab:'Crosstab', unlocks:'Unlocks most',

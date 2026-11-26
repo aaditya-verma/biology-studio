@@ -87,7 +87,7 @@ function bmLanding(){const M=MAPD.M,C=MAPD.C,nF=Object.values(BM.F).filter(Boole
 function bmChapterCards(){const M=MAPD.M;let part=-1,h='';
   for(const c of M.chapters){const L=MAPD.C.filter(o=>o.ch===c.id),n=L.length,done=L.filter(o=>o.x1).length,ds=L.filter(o=>o.day).flatMap(o=>o.day),wk=ds.length?dayBin([Math.min(...ds)]):'';
     if(c.part!==part){part=c.part;h+=`<div class="partlbl">${esc(STR.parts[part]||'')}</div>`;}
-    h+=`<button type="button" class="bm-cc" data-go="map=${esc(c.id)}"><span class="xs mut mono">${esc(c.id)} · ${n} ${esc(STR.concepts)}${wk?' · '+esc(wk):''}</span><span class="t">${esc(c.title)}</span><div class="bm-bar"><span style="width:${n?done/n*100:0}%"></span></div></button>`;}
+    h+=`<button type="button" class="bm-cc" data-go="map=${esc(c.id)}"><span class="xs mut mono">${esc(c.id)} · ${n} ${esc(STR.concepts)}${wk?' · '+esc(wk):''}</span><span class="t">${esc(c.title)}</span><div class="bm-bar" role="img" aria-label="${esc(STR.bmDone(done,n))}"><span style="width:${n?done/n*100:0}%"></span></div></button>`;}
   return `<div class="bm-cards">${h}</div>`;}
 /* By week / By layer: the same concepts as plain compact rows, grouped by that dimension (reuses BM_DIMS/bmOrder/bmLab from the crosstab machinery) */
 function bmGroupRows(dim){const L=MAPD.C.filter(bmPass);let h='';

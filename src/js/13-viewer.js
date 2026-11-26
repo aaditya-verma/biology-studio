@@ -127,9 +127,9 @@ function scMount(S,st){
     const trace=scTr()?scTr().trace:null;   // V3: the marked cell only in its trace drill (never Try it)
     if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom??scStart(S).zoom,trace});SC.cur=S.id;}else{E.setTokens();if((E.state().trace||null)!==trace){E.setTrace(trace);dlog('viewer','trace',trace||'off');}if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
-    if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);});SC.ro.observe(host);
+    if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);if(SC.ready&&scFitOk(S))scFit(S);});   // rotate / resize: a new stage size refits (G-Eng r1 #1)SC.ro.observe(host);
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
-    if(!SC.drill&&st.zoom==null&&!document.documentElement.classList.contains('still'))scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class); stills keep the scene's own camera (C11 compares geometry, not framing)
+    if(scFitOk(S))scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class); stills keep the scene's own camera (C11 compares geometry, not framing)
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
     scLabelsDom(S);SC.ready=true;if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(()=>{if(SC.ready)scOverlay();});   // L1F (G-Art): labels measured before the web font loads would grow afterwards — place them again
     scDay(SC.st[S.id].day,true);setTimeout(vwKeysFit,0);requestAnimationFrame(()=>requestAnimationFrame(()=>{if(SC.drill&&SC.drill.frame)scFrameDrill();scOverlay();requestAnimationFrame(()=>{scOverlay();window.VW_READY=true;});}));
@@ -138,19 +138,23 @@ function scMount(S,st){
 /* U3b: start framing on every class. At the scene's start view the model (engine outline) spans at least CONFIG.viewer.fit.min of the stage's
    width or height: zoom in (never out) about the stage centre, keeping the model inside the stage, below the stamp + notes line as drawn and
    F.bottom px off the bottom edge (the gizmo + scale bar sit in the corners). Kept per scene + class + stage size in SC.fit; the learner's own zoom always wins (st.zoom); Reset view returns to it. */
-const scFitKey=S=>{const st=$('#vwStage');return S.id+'|'+DEV.cls+'|'+(st?Math.round(st.clientWidth)+'x'+Math.round(st.clientHeight):'');};   // per stage size: the full viewer and a card's Try it differ, rotate refits
+/* the learner's own zoom (pinch, wheel, ＋/− buttons and keys) sets st.zoomed — only that stops the fit; a tap, orbit or layer toggle does not (G-Eng r1 #1). Reset view clears it.
+   The fit is measured at the day first shown and kept while the day scrubs (a zoom jump on every day would move the model under the learner's finger). */
+const scFitOk=S=>!SC.drill&&!(SC.st[S.id]&&SC.st[S.id].zoomed)&&!document.documentElement.classList.contains('still');
+const scZoomed=()=>{const S=scCur();if(S&&SC.st[S.id])SC.st[S.id].zoomed=true;};
+const scFitKey=S=>{const st=$('#vwStage');return S.id+'|'+DEV.cls+'|'+(st?Math.round(st.clientWidth)+'x'+Math.round(st.clientHeight):'')+'|'+getComputedStyle(document.documentElement).fontSize;};   // + text size: the notes plate wraps more at 200 %   // per stage size: the full viewer and a card's Try it differ, rotate refits
 function scZoom0(S){const f=SC.fit&&SC.fit[scFitKey(S)];return f?f.zoom:scStart(S).zoom;}
 function scShift0(S){const f=SC.fit&&SC.fit[scFitKey(S)];return f?f.shift:scStart(S).shift;}
 function scFit(S){const E=SC.eng,stage=$('#vwStage');if(!E||!E.outline||!stage)return;const key=scFitKey(S),F=CONFIG.viewer.fit,fit=SC.fit||(SC.fit={});{const ks=Object.keys(fit);if(ks.length>40)delete fit[ks[0]];}
   if(fit[key]){E.setShift(fit[key].shift);E.view(null,null,fit[key].zoom);return;}
-  const W=stage.clientWidth,H=stage.clientHeight,z0=E.state().zoom,s0=(E.screenBox()||{shift:0}).shift,box=()=>{const P=E.outline();if(!P||P.length<3)return null;const xs=P.map(p=>p.x),ys=P.map(p=>p.y);return {l:Math.min(...xs),r:Math.max(...xs),t:Math.min(...ys),b:Math.max(...ys)};};
-  const b=box();if(!b||!W||!H)return;const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
-  if(Math.max(fw,fh)>=goal){fit[key]={zoom:z0,shift:s0};return;}
+  const W=stage.clientWidth,H=stage.clientHeight,c=S.camera,ss=scStart(S),was=E.state(),z0=ss.zoom,s0=ss.shift,box=()=>{const P=E.outline();if(!P||P.length<3)return null;const xs=P.map(p=>p.x),ys=P.map(p=>p.y);return {l:Math.min(...xs),r:Math.max(...xs),t:Math.min(...ys),b:Math.max(...ys)};};
+  E.view(c.azimuth_deg,c.elevation_deg,z0);E.setShift(s0);   // measure at the scene's own start view, whatever the learner turned it to
+  const b=box();if(!b||!W||!H){E.view(was.az,was.el,was.zoom);return;}const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
   const sr=stage.getBoundingClientRect(),top=Math.max(F.top,...['#vwStamp','#vwDisc'].map(s=>$(s)).filter(el=>el&&el.offsetParent!==null).map(el=>el.getBoundingClientRect().bottom-sr.top+6)),bot=H-F.bottom;   // the free band: below the stamp + notes line as drawn (gizmo + scale bar sit in the bottom corners)
-  const k=Math.max(1,Math.min(goal/Math.max(fw,fh),F.maxW/fw,F.maxH/fh,(W-16)/(b.r-b.l),Math.max(1,(bot-top)/(b.b-b.t)))),z=Math.min(F.maxZoom,z0*k);
+  const m=Math.max(fw,fh),kIn=Math.max(1,Math.min(goal/m,F.maxW/fw,F.maxH/fh,(W-16)/(b.r-b.l))),k=Math.max(Math.min(kIn,(bot-top)/(b.b-b.t)),F.min/m),z=Math.min(F.maxZoom,z0*k);   // zoom in to ~55 %, never past the free band; zoom OUT only to fit the band (a 4-line notes plate at 200 % text, G-A11y r1 #2), never below the 50 % floor
   E.view(null,null,z);const b2=box();let sh=s0;   // then move the model to the middle of the free band (orthographic: shift moves everything by shift × H)
   if(b2){const mid=(b2.t+b2.b)/2,want=(b2.b-b2.t)<=bot-top?(top+bot)/2:mid;sh=Math.max(-0.45,Math.min(0.45,s0+(want-mid)/H));E.setShift(sh);}
-  fit[key]={zoom:z,shift:sh};
+  fit[key]={zoom:z,shift:sh};E.view(was.az,was.el,z);
   dlog('viewer','start framing',key,'zoom',z0.toFixed(2),'→',z.toFixed(2),'shift',s0.toFixed(2),'→',sh.toFixed(2),'model',Math.round(fw*100)+'%×'+Math.round(fh*100)+'%');}
 /* U3b: true while the stage shows the scene's own start view (no drill, camera angles + zoom untouched) — the layout audit's frame-small check */
 function scAtStart(){const S=scCur(),E=SC.eng;if(!S||!E||SC.drill)return false;const s=E.state();
@@ -291,7 +295,7 @@ function scOverlay(){
     if(!ok){el.classList.add('hidden');continue;}
     placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);
     if(led){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);const cell=!!(a&&a.tracer),dl=Math.hypot(ex-x,ey-y)||1,sx=cell?x+(ex-x)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):x,sy=cell?y+(ey-y)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):y;   // V3: the leader stops at the marked cell's ring (no dot on it — G-Art)
-      lines.push(`<line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/>`+(cell?'':`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`));}}
+      const ln=`x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"`;lines.push(`<line class="hl" ${ln}/><line ${ln}/>`+(cell?'':`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`));}}
   const svg=$('#vwLead');if(svg){svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=lines.join('');}
   const ll=$('#vwLblList');if(ll){const t=STR.vw.viewText(st.az,st.el,st.cut)+' '+STR.vw.labelsShown(seen);if(ll.textContent!==t)ll.textContent=t;}
   /* scale bar: a round length ~ 60–130 px (B2) */
@@ -328,11 +332,11 @@ function scPointer(cv){
   cv.addEventListener('pointermove',e=>{const p=SC.ptr.get(e.pointerId),E=SC.eng;if(!E)return;
     if(!p){if(e.pointerType==='mouse')scHover(e);return;}
     if(SC.ptr.size===1){E.orbitBy(-(e.clientX-p.x)*0.45,(e.clientY-p.y)*0.45);}
-    else if(SC.ptr.size===2){const o=[...SC.ptr.entries()].find(([k])=>k!==e.pointerId)[1],d0=Math.hypot(p.x-o.x,p.y-o.y),d1=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(d0>10)E.zoomBy(d1/d0);}
+    else if(SC.ptr.size===2){const o=[...SC.ptr.entries()].find(([k])=>k!==e.pointerId)[1],d0=Math.hypot(p.x-o.x,p.y-o.y),d1=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(d0>10){E.zoomBy(d1/d0);scZoomed();}}
     p.x=e.clientX;p.y=e.clientY;});
   const up=e=>{SC.ptr.delete(e.pointerId);scSave();};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
   cv.addEventListener('pointerleave',()=>{if(SC.hoverEl)SC.hoverEl.classList.add('hidden');});
-  cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
+  cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));scZoomed();clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
   cv.addEventListener('dblclick',()=>{if(SC.drill&&SC.drill.home&&SC.eng){const h=SC.drill.home;SC.eng.view(h.az,h.el,h.zoom);scSave();return;}scView('reset');});   // in a drill: back to its start view (G-Eng)
 }
 function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.drill||(SC.runOff&&ROUTE.name==='card'))return;   // hover names a structure: never in a drill (it would answer it)
@@ -341,6 +345,7 @@ function scHover(e){const E=SC.eng,el=SC.hoverEl,S=scCur();if(!E||!el||!S||SC.dr
   el.style.transform=`translate(${Math.round(Math.min(x+14,r.width-el.offsetWidth-6))}px,${Math.round(Math.max(6,y-el.offsetHeight-10))}px)`;}
 function scView(k){const S=scCur(),E=SC.eng;if(!S||!E)return;const c=S.camera,V={three:[c.azimuth_deg,c.elevation_deg],top:[-90,89],side:[-90,0],cut:null,reset:[c.azimuth_deg,c.elevation_deg]}[k];
   let t=V;if(k==='cut'){const cu=E.state().cut;t=cu.axis==='x'?[180,20]:[-90,20];}
+  if(k==='reset'&&SC.st[S.id]){SC.st[S.id].zoomed=false;if(scFitOk(S))scFit(S);if(!SC.drill)E.setShift(scShift0(S));}   // Reset view: back to the start framing for this stage size
   const z=k==='reset'?scZoom0(S):null,s0=E.state();if(motionReduced()){E.view(t[0],t[1],z);scSave();return;}
   const a0=s0.az,e0=s0.el,da=((t[0]-a0+540)%360)-180,de=t[1]-e0,z0=s0.zoom,T0=performance.now(),dur=CONFIG.viewer.tweenMs;
   const step=n=>{const u=Math.min(1,(n-T0)/dur),k2=u*u*(3-2*u);E.view(a0+da*k2,e0+de*k2,z!=null?z0+(z-z0)*k2:null);if(u<1)requestAnimationFrame(step);else scSave();};requestAnimationFrame(step);}
@@ -365,7 +370,7 @@ document.addEventListener('click',e=>{
   if(a==='labels'){SC.labels=!SC.labels;b.setAttribute('aria-checked',SC.labels);scOverlay();return;}
   if(a==='cut'){const on=b.getAttribute('aria-checked')!=='true';b.setAttribute('aria-checked',on);E.setCut({on});$('#vwCut').disabled=!on;scSave();return;}
   if(a==='axis'){E.setCut({axis:b.dataset.a});const cs=$('#vwCut');if(cs)cs.setAttribute('aria-valuetext',STR.vw.cutText(b.dataset.a,+cs.value));$$('[data-vw=axis]').forEach(x=>x.setAttribute('aria-current',x===b));scSave();return;}
-  if(a==='view'){scView(b.dataset.v);return;} if(a==='zin'){E.zoomBy(1.25);scSave();return;} if(a==='zout'){E.zoomBy(0.8);scSave();return;}
+  if(a==='view'){scView(b.dataset.v);return;} if(a==='zin'){E.zoomBy(1.25);scZoomed();scSave();return;} if(a==='zout'){E.zoomBy(0.8);scZoomed();scSave();return;}
   if(a==='turn'){const d=b.dataset.d,T=CONFIG.viewer.turn;E.orbitBy(d==='l'?-T.az:d==='r'?T.az:0,d==='u'?T.el:d==='d'?-T.el:0);scSave();return;}
   if(a==='dreset'){if(SC.drill&&SC.drill.home){const h=SC.drill.home;E.view(h.az,h.el,h.zoom);scSave();}return;}
   if(a==='lose'){const okL=E.loseContext(800);$('#vwMeasMsg').textContent=okL?STR.vw.loseOk:STR.vw.loseNo;return;}
@@ -382,7 +387,7 @@ document.addEventListener('keydown',e=>{
   if(k==='['){e.preventDefault();scStop();scDay(scStep(st.day,-1));}else if(k===']'){e.preventDefault();scStop();scDay(scStep(st.day,1));}
   else if(k===' '&&!e.target.matches('button')){e.preventDefault();scPlay();}
   else if(onStage&&k.startsWith('Arrow')){e.preventDefault();SC.eng.orbitBy(k==='ArrowLeft'?-10:k==='ArrowRight'?10:0,k==='ArrowUp'?8:k==='ArrowDown'?-8:0);scSave();}
-  else if(k==='+'||k==='='){SC.eng.zoomBy(1.25);scSave();}else if(k==='-'){SC.eng.zoomBy(0.8);scSave();}else if(k==='0'){scView('reset');}
+  else if(k==='+'||k==='='){SC.eng.zoomBy(1.25);scZoomed();scSave();}else if(k==='-'){SC.eng.zoomBy(0.8);scZoomed();scSave();}else if(k==='0'){scView('reset');}
   else if(k==='l'||k==='L'){$('[data-vw=labels]')?.click();}else if(k==='c'||k==='C'){$('[data-vw=cut]')?.click();}
 });
 

@@ -3,7 +3,7 @@
 'use strict';
 const SET_CK_LAYERS=['epi','hypo','ecto','meso','endo','crest','ctx'];
 function setSwRow(act,on,label,hint,disabled){   // U3 (D-087, P4): switches — role=switch, D-086 look (ink + ring + check via .swc)
-  return `<button type="button" class="lrow set-row" role="switch" aria-checked="${on}" data-act="${esc(act)}"${disabled?' disabled':''}><span class="lb"><b>${esc(label)}</b><span class="hint">${esc(hint)}</span></span><span class="swc" aria-hidden="true"></span></button>`;
+  return `<button type="button" class="lrow set-row" role="switch" aria-checked="${on}" aria-labelledby="sw-${esc(act)}-l" aria-describedby="sw-${esc(act)}-h" data-act="${esc(act)}"${disabled?' disabled':''}><span class="lb"><b id="sw-${esc(act)}-l">${esc(label)}</b><span class="hint" id="sw-${esc(act)}-h">${esc(hint)}</span></span><span class="swc" aria-hidden="true"></span></button>`;
 }
 SCREENS.settings=function(v){
   ROUTE.crumbs=[{label:STR.settingsTitle}];const th=state.settings.theme,L=slogRead().slice().reverse();

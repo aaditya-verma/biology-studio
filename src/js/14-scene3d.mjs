@@ -479,10 +479,10 @@ export function createViewer(canvas, stageOf, opt = {}) {   // stageOf(): the CU
       return { l, t: tp, r, b: bt, W: V.w, H: V.h, shift: V.shift || 0, pan: V.pan || 0, zoom: V.zoom }; },
     /* U3b: the model's outline on screen (px) — the convex hull of every visible tissue piece's vertices (no guides, tracer, rings or planes).
        The viewer keeps labels off it, and the layout audit checks labels and framing against it. Cached until the view or the build changes. */
-    outline() { placeCamera(); cam.updateMatrixWorld(); root.updateMatrixWorld(true);   // the camera matrix is otherwise only set by a render (first call before any frame gave a stale outline)
-     
-      const k = [V.w, V.h, V.az, V.el, V.zoom, V.shift || 0, V.pan || 0, V.objs.length, V.day, JSON.stringify(V.layersOn), JSON.stringify(V.cut)].join('|');
+    outline() {
+      const k = [V.scene && V.scene.id, V.w, V.h, V.az, V.el, V.zoom, V.shift || 0, V.pan || 0, V.objs.length, V.day, JSON.stringify(V.layersOn), JSON.stringify(V.cut)].join('|');
       if (V.hullK === k) return V.hull; const P = [], v = new THREE.Vector3();
+      placeCamera(); cam.updateMatrixWorld(); root.updateMatrixWorld(true);   // only on a miss (G-Eng r1 #2): the camera matrix is otherwise only set by a render (a first call before any frame gave a stale outline)
       for (const m of V.hoverables) { if (!m.visible) continue; const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
         for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld).project(cam); P.push([(v.x + 1) / 2 * V.w, (1 - v.y) / 2 * V.h]); } }
       V.hullK = k; V.hull = hull2(P); return V.hull; },
