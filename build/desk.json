@@ -1,12 +1,21 @@
 {
  "schema": 1,
- "generated_at": "2026-11-27 04:22 IST",
+ "generated_at": "2026-11-27 05:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "5165e68",
+  "commit": "d97a17f",
   "branch": "main"
  },
- "now": [
+ "now": [],
+ "lock": {
+  "state": "held",
+  "chat": "Bio · Fix · CI red 1abe465",
+  "since": "2026-11-27 04:38 IST",
+  "age_h": 0.7,
+  "old": false,
+  "since_reason": null
+ },
+ "next": [
   {
    "id": "W6",
    "title": "W6 Desk — central coordination chat + #progress Desk tab",
@@ -18,27 +27,6 @@
    "slipped": false,
    "tentative": true
   },
-  {
-   "id": "P1F",
-   "title": "P1F S1E01 primer + ideas",
-   "chat": "Bio · Episode · S1E01 primer",
-   "row": "gpu",
-   "status": "planned",
-   "start": "2026-11-28",
-   "end": "2026-11-29",
-   "slipped": false,
-   "tentative": false
-  }
- ],
- "lock": {
-  "state": "held",
-  "chat": "Bio · Fix · CI red 1abe465 (W6 prompt)",
-  "since": "2026-11-27 02:57 IST",
-  "age_h": 1.4,
-  "old": false,
-  "since_reason": null
- },
- "next": [
   {
    "id": "V4",
    "title": "V4 viewer controls — panel redesign, per-layer opacity",
@@ -73,23 +61,12 @@
    "tentative": false
   },
   {
-   "id": "W5b",
-   "title": "W5b dispatcher — job queue, chaining, owner controls, dispatcher page",
-   "chat": "Bio · Build · W5b job queue",
+   "id": "R1",
+   "title": "R1 render — voice, mix, captions, renditions",
+   "chat": "Bio · Build · R1 render",
    "row": "lock",
    "status": "planned",
    "start": "2026-11-28",
-   "end": "2026-11-28",
-   "slipped": false,
-   "tentative": true
-  },
-  {
-   "id": "FA",
-   "title": "FA flag answers — apply owner picks to cards + DECISIONS",
-   "chat": "Bio · Content · flag answers",
-   "row": "lock",
-   "status": "planned",
-   "start": "2026-11-29",
    "end": "2026-11-29",
    "slipped": false,
    "tentative": false
@@ -287,6 +264,14 @@
    "unblocks": 3,
    "blocks": false,
    "asked": "2026-11-25"
+  },
+  {
+   "id": "T4",
+   "step": "P1F",
+   "kind": "check",
+   "unblocks": 2,
+   "blocks": false,
+   "asked": "2026-11-27"
   },
   {
    "id": "T13c",
@@ -649,71 +634,52 @@
    "asked": "2026-11-22"
   }
  ],
- "running": [
-  {
-   "step": "P1F",
-   "chat": "Bio · Episode · S1E01 primer",
-   "by": "Aaditya",
-   "start": "2026-11-27 03:00",
-   "age_h": 1.4,
-   "old": false,
-   "old_reason": null
-  },
-  {
-   "step": "W6",
-   "chat": "Bio · Fix · CI red 1abe465",
-   "by": "Aaditya",
-   "start": "2026-11-27 02:57",
-   "age_h": 1.4,
-   "old": false,
-   "old_reason": null
-  }
- ],
+ "running": [],
  "slips": [],
  "ci": {
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "5165e68",
-   "run": 45902277882,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45902277882"
+   "commit": "0e92816",
+   "run": 45908728010,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45908728010"
   },
   "main_head": {
-   "commit": "5165e68",
-   "state": "success",
+   "commit": "d97a17f",
+   "state": "in_progress",
    "reason": null
   }
  },
  "checks": [
   {
    "id": "tracker",
-   "state": "pass",
-   "detail": "0 errors, 0 warnings"
+   "state": "warn",
+   "detail": "0 errors, 8 warnings; first: X1.02: W-title-token title word `gametogenesis` (13 chars > 12) may break mid-word on the progress Plan/Board (640×360, 125–200 % text) — use plain words"
   },
   {
    "id": "next",
-   "state": "warn",
-   "detail": "schedule builds; STATUS § Next differs (check.py --next --write)"
+   "state": "pass",
+   "detail": "schedule builds; STATUS § Next agrees"
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main 5165e68 is green"
+   "state": "warn",
+   "detail": "main d97a17f is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
-   "state": "warn",
-   "detail": "6 uncommitted files; 1 commits to push (sync.bat)"
+   "state": "pass",
+   "detail": "clean and in sync"
   },
   {
    "id": "lock_age",
    "state": "pass",
-   "detail": "held by Bio · Fix · CI red 1abe465 (W6 prompt)"
+   "detail": "held by Bio · Fix · CI red 1abe465"
   },
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "2 open"
+   "detail": "0 open"
   },
   {
    "id": "conflicts",
@@ -800,17 +766,16 @@
    },
    {
     "id": "P1F",
-    "status": "planned",
+    "status": "owner check",
     "chat": "Bio · Episode · S1E01 primer",
     "waits_for": [],
-    "end": "2026-11-29"
+    "end": null
    },
    {
     "id": "R1",
     "status": "planned",
     "chat": "Bio · Build · R1 render",
     "waits_for": [
-     "P1F (planned)",
      "the build lock"
     ],
     "end": "2026-11-29"
@@ -866,7 +831,7 @@
     "waits_for": [
      "the build lock"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "W6",
@@ -1125,6 +1090,11 @@
    },
    {
     "id": "bio-w5-dispatcher-when-clear",
+    "enabled": null,
+    "reason": "on/off is not in a readable file"
+   },
+   {
+    "id": "bio-w6-desk-when-clear",
     "enabled": null,
     "reason": "on/off is not in a readable file"
    },
