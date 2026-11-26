@@ -1,29 +1,17 @@
 {
  "schema": 1,
- "generated_at": "2026-11-26 14:22 IST",
+ "generated_at": "2026-11-26 19:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "c2db410",
+  "commit": "1abe465",
   "branch": "main"
  },
- "now": [
-  {
-   "id": "U3b",
-   "title": "U3b look screens — finishing pass",
-   "chat": "Bio · Build · U3b look screens",
-   "row": "lock",
-   "status": "in progress",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "slipped": false,
-   "tentative": false
-  }
- ],
+ "now": [],
  "lock": {
-  "state": "held",
-  "chat": ".snap",
-  "since": "2026-11-26 04:00 IST",
-  "age_h": 10.4,
+  "state": "free",
+  "chat": null,
+  "since": null,
+  "age_h": null,
   "old": false,
   "since_reason": null
  },
@@ -56,7 +44,7 @@
    "chat": "Bio · Build · SR2 book vs research",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-28",
+   "start": "2026-11-27",
    "end": "2026-11-28",
    "slipped": false,
    "tentative": true
@@ -89,7 +77,7 @@
    "id": "T2",
    "step": "K1",
    "kind": "check",
-   "unblocks": 46,
+   "unblocks": 47,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -97,7 +85,7 @@
    "id": "H1.q4",
    "step": "H1",
    "kind": "action",
-   "unblocks": 45,
+   "unblocks": 46,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -105,7 +93,7 @@
    "id": "T5",
    "step": "H1",
    "kind": "check",
-   "unblocks": 45,
+   "unblocks": 46,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -113,7 +101,7 @@
    "id": "H1.q6",
    "step": "H1",
    "kind": "action",
-   "unblocks": 45,
+   "unblocks": 46,
    "blocks": false,
    "asked": "2026-11-18"
   },
@@ -182,18 +170,10 @@
    "asked": null
   },
   {
-   "id": "T8b",
-   "step": "V3",
-   "kind": "check",
-   "unblocks": 4,
-   "blocks": false,
-   "asked": null
-  },
-  {
    "id": "M1.q3",
    "step": "M1",
    "kind": "decide",
-   "unblocks": 4,
+   "unblocks": 5,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -201,7 +181,7 @@
    "id": "M1.q4",
    "step": "M1",
    "kind": "action",
-   "unblocks": 4,
+   "unblocks": 5,
    "blocks": false,
    "asked": "2026-11-17"
   },
@@ -209,7 +189,7 @@
    "id": "M1.q2",
    "step": "M1",
    "kind": "decide",
-   "unblocks": 4,
+   "unblocks": 5,
    "blocks": false,
    "asked": "2026-11-19"
   },
@@ -217,7 +197,7 @@
    "id": "M1.q5",
    "step": "M1",
    "kind": "action",
-   "unblocks": 4,
+   "unblocks": 5,
    "blocks": false,
    "asked": "2026-11-20"
   },
@@ -225,9 +205,17 @@
    "id": "T1",
    "step": "M1",
    "kind": "check",
-   "unblocks": 4,
+   "unblocks": 5,
    "blocks": false,
    "asked": "2026-11-20"
+  },
+  {
+   "id": "T8b",
+   "step": "V3",
+   "kind": "check",
+   "unblocks": 4,
+   "blocks": false,
+   "asked": null
   },
   {
    "id": "T11",
@@ -265,7 +253,7 @@
    "id": "P1.q2",
    "step": "P1",
    "kind": "decide",
-   "unblocks": 2,
+   "unblocks": 3,
    "blocks": false,
    "asked": "2026-11-25"
   },
@@ -273,9 +261,17 @@
    "id": "T4",
    "step": "P1",
    "kind": "check",
-   "unblocks": 2,
+   "unblocks": 3,
    "blocks": false,
    "asked": "2026-11-25"
+  },
+  {
+   "id": "T13c",
+   "step": "U3b",
+   "kind": "check",
+   "unblocks": 0,
+   "blocks": false,
+   "asked": null
   },
   {
    "id": "I1.q1",
@@ -628,39 +624,21 @@
    "unblocks": 0,
    "blocks": false,
    "asked": "2026-11-22"
-  },
-  {
-   "id": "U3b.q1",
-   "step": "U3b",
-   "kind": "decide",
-   "unblocks": 0,
-   "blocks": false,
-   "asked": "2026-11-24"
   }
  ],
- "running": [
-  {
-   "step": "U3b",
-   "chat": "Bio · Build · U3b look screens",
-   "by": "Aaditya",
-   "start": "2026-11-26 04:00",
-   "age_h": 10.4,
-   "old": true,
-   "old_reason": null
-  }
- ],
+ "running": [],
  "slips": [],
  "ci": {
   "newest_finished": {
-   "state": "success",
-   "red": false,
-   "commit": "c2db410",
-   "run": 45714003693,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45714003693"
+   "state": "failure",
+   "red": true,
+   "commit": "1abe465",
+   "run": 45832628617,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45832628617"
   },
   "main_head": {
-   "commit": "c2db410",
-   "state": "success",
+   "commit": "1abe465",
+   "state": "failure",
    "reason": null
   }
  },
@@ -672,28 +650,28 @@
   },
   {
    "id": "next",
-   "state": "warn",
-   "detail": "schedule builds; STATUS § Next differs (check.py --next --write)"
+   "state": "pass",
+   "detail": "schedule builds; STATUS § Next agrees"
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main c2db410 is green"
+   "state": "fail",
+   "detail": "newest finished run on 1abe465 is red"
   },
   {
    "id": "laptop",
    "state": "warn",
-   "detail": "9 commits to push (sync.bat)"
+   "detail": "3 commits to pull"
   },
   {
    "id": "lock_age",
    "state": "pass",
-   "detail": "held by .snap"
+   "detail": "free"
   },
   {
    "id": "open_runs",
-   "state": "warn",
-   "detail": "open over 6 h: U3b"
+   "state": "pass",
+   "detail": "0 open"
   },
   {
    "id": "conflicts",
@@ -741,8 +719,7 @@
     "status": "planned",
     "chat": "Bio · Build · K3 embryo map",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": "2026-12-03"
    },
@@ -752,8 +729,7 @@
     "chat": "Bio · Build · K4 map side + day",
     "waits_for": [
      "K3 (planned)",
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": "2026-12-04"
    },
@@ -779,11 +755,18 @@
     "end": null
    },
    {
+    "id": "P1F",
+    "status": "planned",
+    "chat": "Bio · Episode · S1E01 primer",
+    "waits_for": [],
+    "end": "2026-11-28"
+   },
+   {
     "id": "R1",
     "status": "planned",
     "chat": "Bio · Build · R1 render",
     "waits_for": [
-     "the build lock"
+     "P1F (planned)"
     ],
     "end": "2026-11-28"
    },
@@ -826,36 +809,28 @@
     "id": "V4",
     "status": "planned",
     "chat": "Bio · Build · V4 viewer controls",
-    "waits_for": [
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-27"
    },
    {
     "id": "W5b",
     "status": "planned",
     "chat": "Bio · Build · W5b job queue",
-    "waits_for": [
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-28"
    },
    {
     "id": "W6",
     "status": "planned",
     "chat": "Bio · Build · W6 desk",
-    "waits_for": [
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-27"
    },
    {
     "id": "M1V8",
     "status": "ready",
     "chat": "Bio · Build · M1b v8 install",
-    "waits_for": [
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-28"
    },
    {
@@ -863,10 +838,9 @@
     "status": "planned",
     "chat": "Bio · Build · L3 player",
     "waits_for": [
-     "R1 (planned)",
-     "the build lock"
+     "R1 (planned)"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "U2",
@@ -886,17 +860,15 @@
     "id": "SR2",
     "status": "planned",
     "chat": "Bio · Build · SR2 book vs research",
-    "waits_for": [
-     "the build lock"
-    ],
+    "waits_for": [],
     "end": "2026-11-28"
    },
    {
     "id": "U3b",
-    "status": "in progress",
+    "status": "owner check",
     "chat": "Bio · Build · U3b look screens",
     "waits_for": [],
-    "end": "2026-11-26"
+    "end": null
    },
    {
     "id": "GATE",
@@ -910,8 +882,7 @@
     "status": "idea",
     "chat": "Bio · Build · D1 Drive sync",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    },
@@ -920,8 +891,7 @@
     "status": "idea",
     "chat": "Bio · Build · G1 guide",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    },
@@ -937,8 +907,7 @@
     "status": "planned",
     "chat": "Bio · Content · flag answers",
     "waits_for": [
-     "FD (planned)",
-     "the build lock"
+     "FD (planned)"
     ],
     "end": "2026-11-29"
    },
@@ -947,8 +916,7 @@
     "status": "idea",
     "chat": "Bio · Build · LST step ticker",
     "waits_for": [
-     "GATE (planned)",
-     "the build lock"
+     "GATE (planned)"
     ],
     "end": null
    }
