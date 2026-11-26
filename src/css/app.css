@@ -427,7 +427,8 @@ html.dev-d .settings{grid-template-columns:repeat(3,minmax(0,1fr))}
 .vw-stage{container:vwstage / size}
 .vw-dbtn .d-short{display:none}
 @container vwstage (max-height:300px){.vw-dbtn .d-long{display:none}.vw-dbtn .d-short{display:inline}}
-@container vwstage (max-width:22em){.vw-dbtn .d-long{display:none}.vw-dbtn .d-short{display:inline}}   /* U3b (G-A11y r1 #2): a narrow stage in text units (phone at 150–200 % text) takes the short line */
+@container vwstage (max-width:22em) or (max-height:22em){.vw-dbtn .d-long{display:none}.vw-dbtn .d-short{display:inline}}   /* U3b (G-A11y r1 #2): a narrow stage in text units (phone at 150–200 % text) takes the short line */
+@container vwstage (max-height:12em){.vw-dbtn .d-short{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}   /* U3b (G-A11y r3): a very short stage (split screen, 200 % text) keeps only ⓘ on screen; the short line stays its accessible name */
 .vw-dbtn[aria-expanded="false"]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;align-content:center}   /* collapsed, the notes line never runs past 2 lines (D-036: one line; ⓘ opens the list) */
 .vw-dbtn{display:block;min-height:var(--tap);padding:0 10px;background:none;border:0;color:var(--ink);font:inherit;font-size:var(--fs-xs);font-weight:600;cursor:pointer;text-align:left}
 .vw-disc ul{margin:0;padding:0 10px 8px 24px} .vw-dbtn[aria-expanded="false"]+ul{display:none}

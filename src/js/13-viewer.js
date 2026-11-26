@@ -335,7 +335,7 @@ function scPointer(cv){
     if(SC.ptr.size===1){E.orbitBy(-(e.clientX-p.x)*0.45,(e.clientY-p.y)*0.45);}
     else if(SC.ptr.size===2){const o=[...SC.ptr.entries()].find(([k])=>k!==e.pointerId)[1],d0=Math.hypot(p.x-o.x,p.y-o.y),d1=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(d0>10){E.zoomBy(d1/d0);scZoomed();}}
     p.x=e.clientX;p.y=e.clientY;});
-  const up=e=>{SC.ptr.delete(e.pointerId);scSave();if(!SC.ptr.size)scOverlay();};   // G-Eng r2: the drag hold ends — labels placed off the model againcv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  const up=e=>{SC.ptr.delete(e.pointerId);scSave();if(!SC.ptr.size)scOverlay();};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);   // G-Eng r2: the drag hold ends — labels placed off the model again
   cv.addEventListener('pointerleave',()=>{if(SC.hoverEl)SC.hoverEl.classList.add('hidden');});
   cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));scZoomed();clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
   cv.addEventListener('dblclick',()=>{if(SC.drill&&SC.drill.home&&SC.eng){const h=SC.drill.home;SC.eng.view(h.az,h.el,h.zoom);scSave();return;}scView('reset');});   // in a drill: back to its start view (G-Eng)
