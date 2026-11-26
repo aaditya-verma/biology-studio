@@ -1,29 +1,17 @@
 {
  "schema": 1,
- "generated_at": "2026-11-26 20:22 IST",
+ "generated_at": "2026-11-26 21:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "4b64bfe",
+  "commit": "baca82a",
   "branch": "main"
  },
- "now": [
-  {
-   "id": "CIR2",
-   "title": "CI fix — main red on 1abe465 (card check: content/E/sources.json out of date)",
-   "chat": "Bio · Fix · CI red 1abe465",
-   "row": "lock",
-   "status": "in progress",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "slipped": false,
-   "tentative": false
-  }
- ],
+ "now": [],
  "lock": {
   "state": "held",
   "chat": "Bio · Fix · video craft",
   "since": "2026-11-26 19:34 IST",
-  "age_h": 0.8,
+  "age_h": 1.8,
   "old": false,
   "since_reason": null
  },
@@ -46,7 +34,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-27",
-   "end": "2026-11-28",
+   "end": "2026-11-27",
    "slipped": false,
    "tentative": true
   },
@@ -56,7 +44,7 @@
    "chat": "Bio · Build · SR2 book vs research",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-28",
+   "start": "2026-11-27",
    "end": "2026-11-28",
    "slipped": false,
    "tentative": true
@@ -79,7 +67,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-28",
-   "end": "2026-11-29",
+   "end": "2026-11-28",
    "slipped": false,
    "tentative": false
   }
@@ -644,7 +632,7 @@
    "chat": "Bio · Fix · CI red 1abe465",
    "by": "Aaditya",
    "start": "2026-11-26 19:34",
-   "age_h": 0.8,
+   "age_h": 1.8,
    "old": false,
    "old_reason": null
   }
@@ -654,12 +642,12 @@
   "newest_finished": {
    "state": "failure",
    "red": true,
-   "commit": "6907f45",
-   "run": 45835399477,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45835399477"
+   "commit": "4b64bfe",
+   "run": 45835609388,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45835609388"
   },
   "main_head": {
-   "commit": "4b64bfe",
+   "commit": "baca82a",
    "state": "in_progress",
    "reason": null
   }
@@ -678,7 +666,7 @@
   {
    "id": "ci",
    "state": "fail",
-   "detail": "newest finished run on 6907f45 is red"
+   "detail": "newest finished run on 4b64bfe is red"
   },
   {
    "id": "laptop",
@@ -793,7 +781,7 @@
      "P1F (planned)",
      "the build lock"
     ],
-    "end": "2026-11-29"
+    "end": "2026-11-28"
    },
    {
     "id": "L1",
@@ -837,7 +825,7 @@
     "waits_for": [
      "the build lock"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-27"
    },
    {
     "id": "W5b",
@@ -959,13 +947,6 @@
      "the build lock"
     ],
     "end": null
-   },
-   {
-    "id": "CIR2",
-    "status": "in progress",
-    "chat": "Bio · Fix · CI red 1abe465",
-    "waits_for": [],
-    "end": "2026-11-26"
    }
   ],
   "handoffs": {
