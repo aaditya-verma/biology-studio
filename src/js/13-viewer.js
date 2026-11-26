@@ -293,7 +293,7 @@ function scOverlay(){
         return r;}return null;};
     let ok=pr?tryAt(cand,false):tryAt(cand,!it.axis),led=!pr&&!it.axis;
     if(!ok&&pr&&a&&!off){const c2=[[x+g,y-h-g],[x-w-g,y-h-g],[x+g,y+g],[x-w-g,y+g],[x+g,y-h/2],[x-w-g,y-h/2]];ok=tryAt(c2,true);led=!!ok;}   // no room beside the pin: by its structure, with a leader
-    if(!ok&&!pr&&!it.axis&&!hold&&a&&(it.pri||5)===1)ok=tryAt(scPinGrid(W,H,0).map(([dx,dy])=>[x+dx-w/2,y+dy-h/2]),true);   // G-Art r1: the subject (priority 1) always gets a spot when one exists anywhere on the stage, joined by a longer leader
+    if(!ok&&!pr&&!it.axis&&!hold&&a&&(it.pri||5)===1)ok=tryAt(scPinGrid(W,H,0).slice(0,600).map(([dx,dy])=>[x+dx-w/2,y+dy-h/2]),true);   // G-Art r1: the subject (priority 1) always gets a spot when one exists anywhere on the stage, joined by a longer leader; the 600 nearest grid spots (~130 px around it) bound the cost (G-Eng r5)
     if(!ok){el.classList.add('hidden');continue;}
     placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);if(!hold)it.off={x:ok.l-x,y:ok.t-y};
     if(led){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);const cell=!!(a&&a.tracer),dl=Math.hypot(ex-x,ey-y)||1,sx=cell?x+(ex-x)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):x,sy=cell?y+(ey-y)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):y;   // V3: the leader stops at the marked cell's ring (no dot on it — G-Art)
