@@ -1372,7 +1372,8 @@
     "Term budget in i01 (cold open + primer + groove): confirm max_terms_per_60s ≤ 3 — primitive streak counts as review only if Part 0 or a Ready-to-watch core card introduces it (G-Learn r2)",
     "Animatic re-check of the primer clip + idea breaks only; gates scoped to these",
     "Re-cut the spec 1 S1E01 docs that still say terms strip / beats (episodes/S1E01/brief.md, storyboard.md) to primer + ideas",
-    "GPU lane (D-105): touches only content/E/episodes + tools/episode + render outputs"
+    "GPU lane (D-105): touches only content/E/episodes + tools/episode + render outputs",
+    "Built at risk (owner, 27 Nov 2026): T4 part A + P1.q2 still open; T4 notes may change wording, and wording changes only as the owner approves"
    ],
    "inputs": [
     {"id": "P1F.q1", "kind": "decide", "ask": "Default pace (Desk VC.q1)", "asked_in": "Bio · Ideation · video craft", "asked": "2026-11-25", "answer": "A: Study pace on for both Lesson cuts, Watch for Shorts (recommended) · by Aaditya, 26 Nov 2026 (`Bio · Fix · video craft`)", "status": "answered", "d": "D-107"},
@@ -1390,6 +1391,7 @@
    ],
    "uses": ["gpu"],
    "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Episode · S1E01 primer", "by": "Aaditya", "start": "2026-11-27 03:00", "outcome": "partial", "note": "Code, laptop GPU, route B; built at risk (T4 part A open, owner OK); §5 idea map from the video-craft draft via Bio · Fix · video craft"}],
    "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
