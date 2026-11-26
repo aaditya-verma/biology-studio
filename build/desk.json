@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated_at": "2026-11-27 03:22 IST",
+ "generated_at": "2026-11-27 04:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "fc60e9e",
+  "commit": "5165e68",
   "branch": "main"
  },
  "now": [
@@ -17,13 +17,24 @@
    "end": "2026-11-28",
    "slipped": false,
    "tentative": true
+  },
+  {
+   "id": "P1F",
+   "title": "P1F S1E01 primer + ideas",
+   "chat": "Bio · Episode · S1E01 primer",
+   "row": "gpu",
+   "status": "planned",
+   "start": "2026-11-28",
+   "end": "2026-11-29",
+   "slipped": false,
+   "tentative": false
   }
  ],
  "lock": {
   "state": "held",
   "chat": "Bio · Fix · CI red 1abe465 (W6 prompt)",
   "since": "2026-11-27 02:57 IST",
-  "age_h": 0.4,
+  "age_h": 1.4,
   "old": false,
   "since_reason": null
  },
@@ -73,12 +84,12 @@
    "tentative": true
   },
   {
-   "id": "P1F",
-   "title": "P1F S1E01 primer + ideas",
-   "chat": "Bio · Episode · S1E01 primer",
-   "row": "gpu",
+   "id": "FA",
+   "title": "FA flag answers — apply owner picks to cards + DECISIONS",
+   "chat": "Bio · Content · flag answers",
+   "row": "lock",
    "status": "planned",
-   "start": "2026-11-28",
+   "start": "2026-11-29",
    "end": "2026-11-29",
    "slipped": false,
    "tentative": false
@@ -640,11 +651,20 @@
  ],
  "running": [
   {
+   "step": "P1F",
+   "chat": "Bio · Episode · S1E01 primer",
+   "by": "Aaditya",
+   "start": "2026-11-27 03:00",
+   "age_h": 1.4,
+   "old": false,
+   "old_reason": null
+  },
+  {
    "step": "W6",
    "chat": "Bio · Fix · CI red 1abe465",
    "by": "Aaditya",
    "start": "2026-11-27 02:57",
-   "age_h": 0.4,
+   "age_h": 1.4,
    "old": false,
    "old_reason": null
   }
@@ -654,13 +674,13 @@
   "newest_finished": {
    "state": "success",
    "red": false,
-   "commit": "96f5258",
-   "run": 45855400070,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45855400070"
+   "commit": "5165e68",
+   "run": 45902277882,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45902277882"
   },
   "main_head": {
-   "commit": "fc60e9e",
-   "state": "in_progress",
+   "commit": "5165e68",
+   "state": "success",
    "reason": null
   }
  },
@@ -677,13 +697,13 @@
   },
   {
    "id": "ci",
-   "state": "warn",
-   "detail": "main fc60e9e is not confirmed green (in_progress)"
+   "state": "pass",
+   "detail": "main 5165e68 is green"
   },
   {
    "id": "laptop",
    "state": "warn",
-   "detail": "1 commits to push (sync.bat)"
+   "detail": "6 uncommitted files; 1 commits to push (sync.bat)"
   },
   {
    "id": "lock_age",
@@ -693,7 +713,7 @@
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "1 open"
+   "detail": "2 open"
   },
   {
    "id": "conflicts",
@@ -1007,6 +1027,11 @@
      "id": "m1b-v8",
      "committed": false,
      "reason": "no Committed line"
+    },
+    {
+     "id": "p1f-s1e01-primer",
+     "committed": null,
+     "reason": "no README"
     },
     {
      "id": "sr1-sources-menu",
