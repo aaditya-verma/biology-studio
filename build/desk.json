@@ -1,17 +1,29 @@
 {
  "schema": 1,
- "generated_at": "2026-11-26 19:22 IST",
+ "generated_at": "2026-11-26 20:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "1abe465",
+  "commit": "4b64bfe",
   "branch": "main"
  },
- "now": [],
+ "now": [
+  {
+   "id": "CIR2",
+   "title": "CI fix — main red on 1abe465 (card check: content/E/sources.json out of date)",
+   "chat": "Bio · Fix · CI red 1abe465",
+   "row": "lock",
+   "status": "in progress",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
+   "slipped": false,
+   "tentative": false
+  }
+ ],
  "lock": {
-  "state": "free",
-  "chat": null,
-  "since": null,
-  "age_h": null,
+  "state": "held",
+  "chat": "Bio · Fix · video craft",
+  "since": "2026-11-26 19:34 IST",
+  "age_h": 0.8,
   "old": false,
   "since_reason": null
  },
@@ -34,7 +46,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-27",
-   "end": "2026-11-27",
+   "end": "2026-11-28",
    "slipped": false,
    "tentative": true
   },
@@ -44,7 +56,7 @@
    "chat": "Bio · Build · SR2 book vs research",
    "row": "lock",
    "status": "planned",
-   "start": "2026-11-27",
+   "start": "2026-11-28",
    "end": "2026-11-28",
    "slipped": false,
    "tentative": true
@@ -67,7 +79,7 @@
    "row": "lock",
    "status": "planned",
    "start": "2026-11-28",
-   "end": "2026-11-28",
+   "end": "2026-11-29",
    "slipped": false,
    "tentative": false
   }
@@ -626,19 +638,29 @@
    "asked": "2026-11-22"
   }
  ],
- "running": [],
+ "running": [
+  {
+   "step": "CIR2",
+   "chat": "Bio · Fix · CI red 1abe465",
+   "by": "Aaditya",
+   "start": "2026-11-26 19:34",
+   "age_h": 0.8,
+   "old": false,
+   "old_reason": null
+  }
+ ],
  "slips": [],
  "ci": {
   "newest_finished": {
    "state": "failure",
    "red": true,
-   "commit": "1abe465",
-   "run": 45832628617,
-   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45832628617"
+   "commit": "6907f45",
+   "run": 45835399477,
+   "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45835399477"
   },
   "main_head": {
-   "commit": "1abe465",
-   "state": "failure",
+   "commit": "4b64bfe",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -650,28 +672,28 @@
   },
   {
    "id": "next",
-   "state": "pass",
-   "detail": "schedule builds; STATUS § Next agrees"
+   "state": "warn",
+   "detail": "schedule builds; STATUS § Next differs (check.py --next --write)"
   },
   {
    "id": "ci",
    "state": "fail",
-   "detail": "newest finished run on 1abe465 is red"
+   "detail": "newest finished run on 6907f45 is red"
   },
   {
    "id": "laptop",
-   "state": "warn",
-   "detail": "3 commits to pull"
+   "state": "pass",
+   "detail": "clean and in sync"
   },
   {
    "id": "lock_age",
    "state": "pass",
-   "detail": "free"
+   "detail": "held by Bio · Fix · video craft"
   },
   {
    "id": "open_runs",
    "state": "pass",
-   "detail": "0 open"
+   "detail": "1 open"
   },
   {
    "id": "conflicts",
@@ -719,7 +741,8 @@
     "status": "planned",
     "chat": "Bio · Build · K3 embryo map",
     "waits_for": [
-     "GATE (planned)"
+     "GATE (planned)",
+     "the build lock"
     ],
     "end": "2026-12-03"
    },
@@ -729,7 +752,8 @@
     "chat": "Bio · Build · K4 map side + day",
     "waits_for": [
      "K3 (planned)",
-     "GATE (planned)"
+     "GATE (planned)",
+     "the build lock"
     ],
     "end": "2026-12-04"
    },
@@ -766,9 +790,10 @@
     "status": "planned",
     "chat": "Bio · Build · R1 render",
     "waits_for": [
-     "P1F (planned)"
+     "P1F (planned)",
+     "the build lock"
     ],
-    "end": "2026-11-28"
+    "end": "2026-11-29"
    },
    {
     "id": "L1",
@@ -809,28 +834,36 @@
     "id": "V4",
     "status": "planned",
     "chat": "Bio · Build · V4 viewer controls",
-    "waits_for": [],
-    "end": "2026-11-27"
+    "waits_for": [
+     "the build lock"
+    ],
+    "end": "2026-11-28"
    },
    {
     "id": "W5b",
     "status": "planned",
     "chat": "Bio · Build · W5b job queue",
-    "waits_for": [],
+    "waits_for": [
+     "the build lock"
+    ],
     "end": "2026-11-28"
    },
    {
     "id": "W6",
     "status": "planned",
     "chat": "Bio · Build · W6 desk",
-    "waits_for": [],
+    "waits_for": [
+     "the build lock"
+    ],
     "end": "2026-11-27"
    },
    {
     "id": "M1V8",
     "status": "ready",
     "chat": "Bio · Build · M1b v8 install",
-    "waits_for": [],
+    "waits_for": [
+     "the build lock"
+    ],
     "end": "2026-11-28"
    },
    {
@@ -838,7 +871,8 @@
     "status": "planned",
     "chat": "Bio · Build · L3 player",
     "waits_for": [
-     "R1 (planned)"
+     "R1 (planned)",
+     "the build lock"
     ],
     "end": "2026-11-29"
    },
@@ -860,7 +894,9 @@
     "id": "SR2",
     "status": "planned",
     "chat": "Bio · Build · SR2 book vs research",
-    "waits_for": [],
+    "waits_for": [
+     "the build lock"
+    ],
     "end": "2026-11-28"
    },
    {
@@ -882,7 +918,8 @@
     "status": "idea",
     "chat": "Bio · Build · D1 Drive sync",
     "waits_for": [
-     "GATE (planned)"
+     "GATE (planned)",
+     "the build lock"
     ],
     "end": null
    },
@@ -891,7 +928,8 @@
     "status": "idea",
     "chat": "Bio · Build · G1 guide",
     "waits_for": [
-     "GATE (planned)"
+     "GATE (planned)",
+     "the build lock"
     ],
     "end": null
    },
@@ -907,7 +945,8 @@
     "status": "planned",
     "chat": "Bio · Content · flag answers",
     "waits_for": [
-     "FD (planned)"
+     "FD (planned)",
+     "the build lock"
     ],
     "end": "2026-11-29"
    },
@@ -916,9 +955,17 @@
     "status": "idea",
     "chat": "Bio · Build · LST step ticker",
     "waits_for": [
-     "GATE (planned)"
+     "GATE (planned)",
+     "the build lock"
     ],
     "end": null
+   },
+   {
+    "id": "CIR2",
+    "status": "in progress",
+    "chat": "Bio · Fix · CI red 1abe465",
+    "waits_for": [],
+    "end": "2026-11-26"
    }
   ],
   "handoffs": {
