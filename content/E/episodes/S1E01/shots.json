@@ -1,5 +1,5 @@
 {
- "spec": 1,
+ "spec": 2,
  "episode": "S1E01",
  "shots": [
   {
@@ -17,17 +17,85 @@
    ]
   },
   {
-   "id": "S02",
-   "kind": "host+panel",
-   "scene": "host + terms strip",
-   "day": null,
-   "what": "Terms strip, 5 s: 3 chips per profile — MBBS 'germ layers · primitive node · notochord' (L02), General 'epiblast · primitive streak · gastrulation' (G02); host in a corner cut-in",
-   "cams": "cam_lesson (Lesson/General only)",
-   "key": "token panel: chips on their own neutral panel, host keeps warm key (D-059 (5))",
-   "labels": [],
-   "tag": null,
+   "id": "S02b",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "17",
+   "view": "front (From the head), transverse cut + slab, ≤ 15° turntable",
+   "what": "Primer part 1 (MBBS): the three germ layers stacked on the day-17 section, nothing else lit; one label 'Germ layers' with a three-token chip",
+   "labels": [
+    "Germ layers"
+   ],
+   "tag": "Not to scale",
    "needs": [
-    "N1",
+    "N2",
+    "N7"
+   ]
+  },
+  {
+   "id": "S02c",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "16",
+   "view": "top, close, still",
+   "what": "Primer part 2 (MBBS): the node isolated at the head end of the streak, rest ctx; accent ring on the node only",
+   "labels": [
+    "Primitive node"
+   ],
+   "tag": "Colours illustrative",
+   "needs": [
+    "N2",
+    "N12"
+   ]
+  },
+  {
+   "id": "S02d",
+   "kind": "3D",
+   "scene": "sc-E05.02.01",
+   "day": "18",
+   "view": "end (transverse cut cranial of the node), then top at day 18 with all three parts in place",
+   "what": "Primer part 3 (MBBS): the rod in the midline, isolated; then all three parts in place (layers, node, rod) for the 2 s end hold",
+   "labels": [
+    "Notochord",
+    "Primitive node",
+    "Germ layers"
+   ],
+   "tag": "Simplified",
+   "needs": [
+    "N2",
+    "N7"
+   ]
+  },
+  {
+   "id": "S02e",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "view": "side (From the right), lengthwise cut, ≤ 15° turntable",
+   "what": "Primer parts 1–2 (General): the top layer lit (epiblast), then the bottom layer lit (hypoblast), the other dimmed",
+   "labels": [
+    "Epiblast",
+    "Hypoblast"
+   ],
+   "tag": "Colours illustrative",
+   "needs": [
+    "N2"
+   ]
+  },
+  {
+   "id": "S02f",
+   "kind": "3D",
+   "scene": "sc-E00.01.04",
+   "day": "15",
+   "view": "top, still; then the 2 s end hold with all three labels",
+   "what": "Primer part 3 (General): the groove at the tail end (label + glow, no accent ring — the ring stays free for the marked cell); then all three parts in place",
+   "labels": [
+    "Primitive streak",
+    "Epiblast",
+    "Hypoblast"
+   ],
+   "tag": "Colours illustrative",
+   "needs": [
     "N2"
    ]
   },
@@ -38,12 +106,13 @@
    "scene": "sc-E00.01.04",
    "day": "15",
    "view": "top (From the back)",
-   "what": "Establish: two-layer disc, slow push-in",
+   "what": "Establish: two-layer disc, slow push-in; Lesson only: from 'three germ layers' (L04) the day-17 three-layer stack as in S02b, so the i01 pause shows the three layers (P1F gates)",
    "labels": [
     "Epiblast",
-    "Hypoblast"
+    "Hypoblast",
+    "Germ layers"
    ],
-   "tag": "Colours illustrative",
+   "tag": "Not to scale",
    "needs": []
   },
   {
@@ -623,7 +692,7 @@
  ],
  "needs": {
   "N1": "Host scene: add `cam_lesson` (16:9) beside the 9:16 camera — one scene, two cameras (M1b to-do; visual-style §10). Lines S01/S24/SS1. Step: M1V8 or R1.",
-  "N2": "Terms-strip graphic: 3 term chips on a neutral token panel next to the host (D-059 (5)); chips use layer tokens only for layer names (none here → neutral chips). Step: R1.",
+  "N2": "Primer (D-107, playbook §6b.3; replaces the terms-strip graphic, S02 retired): each part's label + token chip lands on its spoken name; the part's token colour + pattern becomes the episode's colour key (germ layers = ecto · meso · endo tokens; node = ctx + accent ring; notochord = meso; epiblast = epi; hypoblast = hypo; streak = ctx glow). The app shows the parts as chips linking to their cards + 'Know these? Skip ▸' (L3). Step: R1 (render) + L3 (player).",
   "N3": "Video use of a tracer: scene spec §5/§6 make `tracer` drill-only ('never in Try it, stills or video'). S1E01 needs the marked cell on screen. Spec change + engine flag, e.g. shot `show.trace` (scene-spec §10). Step: V-step (V4?) before ② can show it; ② may fake it as an animatic placeholder.",
   "N4": "New tracer `t-meso` (with the scene disclaimer 'marked cell drawn larger' kept on every shot it appears in) in sc-E00.01.04 (and the same cell in sc-E05.02.01 at its day-16 lateral mesoderm position, for S14): an epiblast cell that ingresses after the endoderm cell and ends in mesoderm, then spreads laterally (path keyed days 15 → 17). The existing `t-endo` stays as the 'first cells' ghost. Step: V-step (scene edit + scene-check path rules).",
   "N6": "Label swap 'Epiblast → ectoderm' becomes a spoken text item (C1 G-A11y to-do: '→' needs spoken text) and a clean 'Ectoderm' label at day 17. Step: V-step / scene owner.",
@@ -633,5 +702,8 @@
   "N11": "Day stamp rewinds on screen (counts back) on the S06→S07 and S13→S14 time jumps, so a jump back in day reads as intended (G-Story r1). Step: ② animatic overlay, then R1.",
   "N12": "Day-16 stamp agrees across scenes: sc-E00.01.04 eases day 16 to 'CS06–07 · ≈0.3 mm' while sc-E05.02.01 keys day 16 as 'CS07 · 0.4 mm'. Add a day-16 key to sc-E00.01.04 = CS07 · 0.4 mm (dossier §1 book 16–18 d, R06/R08), or re-key sc-E05.02.01. Step: V-step (scene edit + scene-check).",
   "N10": "Spatial Check in video: tap-the-layer on a section is an app drill (V2 label drill); the video shows the question + a 4 s pause and the answer reveal; the app version links to the E05.01.03 drill. Step: R1 (player Checks)."
- }
+ },
+ "retired": [
+  "S02"
+ ]
 }

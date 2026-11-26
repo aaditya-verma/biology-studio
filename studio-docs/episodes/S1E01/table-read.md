@@ -1,6 +1,6 @@
 # S1E01 Gastrulation — table read
 
-*(Purpose: timings, hard-to-say lines and the pronunciation dictionary for the scratch voice (②) and the final voice. Updated: 25 Nov 2026 · Bio · Episode · S1E01 animatic (measured column, speed per cut, D-104). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
+*(Purpose: timings, hard-to-say lines and the pronunciation dictionary for the scratch voice (②) and the final voice. Updated: 27 Nov 2026 · Bio · Episode · S1E01 primer (P1F: timings rows for the primer cut, primer lines measured, D-107). Before: 25 Nov 2026 · Bio · Episode · S1E01 animatic (measured column, speed per cut, D-104). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
 
 Method: speech time = words ÷ 143 wpm (Kokoro `af_heart` 0.66, measured 143 wpm on the laptop, pipeline-reference §3) + the hold after each line. The real scratch-voice read happens in ② and replaces these estimates.
 
@@ -8,8 +8,8 @@ Method: speech time = words ÷ 143 wpm (Kokoro `af_heart` 0.66, measured 143 wpm
 
 | Profile | Words | Speech | With holds | Target | Speech wpm | Overall wpm |
 |---|---|---|---|---|---|---|
-| MBBS Lesson | 607 | 4:15 | **5:12** | 3:00–5:30 | 143 | 117 |
-| General Lesson cut | 340 | 2:22 | **2:57** | 1:40–3:10 | 143 | 115 |
+| MBBS Lesson | 640 | 4:29 | **5:28** | 3:00–5:30 | 143 | 117 |
+| General Lesson cut | 364 | 2:33 | **3:09** | 1:40–3:10 | 143 | 116 |
 | 9:16 Short | 100 | 0:42 | **0:52** | 0:44–1:00 | 143 | 116 |
 
 Short chapters (grammar 8 s, visual-style §2):
@@ -124,3 +124,20 @@ Kokoro `af_heart` with this page's dictionary. Speed: Lesson 0.80 · General 0.7
 | SS5 | 7.8 | 8.3 | +6.2 |
 | SS6 | 8.3 | 9.0 | +8.1 |
 | SS7 | 3.1 | 2.7 | -13.2 |
+
+## Measured — P1F primer (scratch voice, 27 Nov 2026, D-107)
+
+Same voice + dictionary + speeds as above. The terms-strip lines L02 / G02 are retired; the primer lines replace them. Whole cuts after P1F (measured lines + holds): **MBBS Lesson 327.2 s · General 186.1 s · Short 50.8 s** (unchanged). Primer: MBBS **18.5 s** (target ~20), General **16.4 s** (target 15), each with its 2 s end hold.
+
+| Line | Words | Planned s | Measured s | Hold s | wpm |
+|---|---|---|---|---|---|
+| L02b | 7 | 2.9 | 2.51 | 0.3 | 167 |
+| L02c | 13 | 5.5 | 4.96 | 0.4 | 157 |
+| L02d | 12 | 5.0 | 3.94 | 0.4 | 183 |
+| L02e | 9 | 3.8 | 3.94 | 2.0 | 137 |
+| G02b | 7 | 2.9 | 3.03 | 0.3 | 139 |
+| G02c | 8 | 3.4 | 3.39 | 0.3 | 142 |
+| G02d | 7 | 2.9 | 3.6 | 0.3 | 117 |
+| G02e | 9 | 3.8 | 3.48 | 2.0 | 155 |
+
+L02d reads fast (≈ 183 wpm on one short line); the final voice (R1) re-measures it.

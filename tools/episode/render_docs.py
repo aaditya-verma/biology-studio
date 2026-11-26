@@ -6,7 +6,7 @@ H = Path(__file__).parent
 spec = importlib.util.spec_from_file_location("d", H / "s1e01_data.py"); D = importlib.util.module_from_spec(spec); spec.loader.exec_module(D)
 S = json.loads((H / "out/script.json").read_text(encoding="utf-8"))
 def mmss(s): s = round(s); return f"{s//60}:{s%60:02d}"
-UPD = "Updated: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①)"
+UPD = "Updated: 27 Nov 2026 · Bio · Episode · S1E01 primer (P1F: primer + ideas, spec 2, D-107). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①)"
 
 # ---- table read ----
 t = ["# S1E01 Gastrulation — table read", "", f"*(Purpose: timings, hard-to-say lines and the pronunciation dictionary for the scratch voice (②) and the final voice. {UPD}.)*", "",
@@ -42,7 +42,25 @@ b = ["# S1E01 Gastrulation — storyboard + shot list", "", f"*(Purpose: what ea
      "- **Always on 3D shots:** day/stage/size stamp, scale bar, axis gizmo (B2, H4). Stamps from the scene's day keys: day 15 · CS06 · ≈0.2 mm; day 17 · CS07 · ≈0.4 mm; day 18 · CS08 · ≈1.25 mm (dossier §1). Between keys the viewer eases (e.g. 'Day 16 · CS06–07 · ≈0.3 mm').",
      "- **Colour mode:** layer mode on every shot (no segment mode, no legend chip). Accent ring = 'look here' only; on tracer shots the ring is the marked cell's alone (scene spec §6).",
      "- **Reduced motion:** push-ins/orbits → cuts; no dust; label fades stay (§8).", "",
-     "## Storyboard (Lesson order; General + Short reuse the same scene states)", ""]
+     "- **Primer (D-107, playbook §6b.3):** replaces the 5-s terms strip (S02, L02, G02 retired). After the cold open, ≤ 3 parts, each isolated (rest ctx-dimmed) on a still view or a ≤ 15° turntable, stamp + scale on; the label + token chip land on the spoken name; no process motion; ends with all parts in place and a 2 s hold.",
+     "- **Ideas (D-107, playbook §6b.1):** Study pace pauses 0.3 s before the end of each idea's last hold (no speech ±0.3 s) on the held frame; panel words live in the app, never in the frame (D8). Watch plays through. Shorts never pause.", ""]
+for p in ("lesson", "general"):
+    P = S.get("primer", {}).get(p)
+    if not P: continue
+    b += [f"## Primer — {D.PROFILES[p]['name']} ({P['_dur']} s, end hold {P['hold']} s)", "", "| Part | Line | Card | Token (colour key) | View |", "|---|---|---|---|---|"]
+    b += [f"| {q['term']} | {q['line']} | `{q['card']}` | {q['token']} | {q['view']} |" for q in P["parts"]]
+    b.append("")
+for p in ("lesson", "general"):
+    I = S.get("ideas", {}).get(p)
+    if not I: continue
+    shots = {L["id"]: L["shot"] for L in S["scripts"][p]}; order = [L["id"] for L in S["scripts"][p]]
+    b += [f"## Ideas — {D.PROFILES[p]['name']} ({len(I)}; the builder proposes, the story director signs)", "",
+          "| Idea | Title | Lines | Shots | Length | Pause at | Objective | Check by |", "|---|---|---|---|---|---|---|---|"]
+    for d in I:
+        ls = order[order.index(d["from"]):order.index(d["to"]) + 1]; sh = list(dict.fromkeys(shots[x] for x in ls))
+        b.append(f"| {d['id']} | {d['title']} | {d['from']}–{d['to']} | {sh[0]}–{sh[-1]} | {d['_dur']} s | {mmss(d['_break']) if '_break' in d else 'end'} | {d['objective']} | `{d['check_by']}` |")
+    b.append("")
+b += ["## Storyboard (Lesson order; General + Short reuse the same scene states)", ""]
 for Sh in D.SHOTS:
     used = ", ".join(lines_by_shot.get(Sh["id"], [])) or "—"
     lab = ", ".join(Sh.get("labels", [])) or "none"
@@ -70,6 +88,7 @@ b += ["", "## Per device (C13) — what ② must lay out", "",
       "- **Phone portrait:** the Lesson plays inline as a 16:9 preview with the transcript + Checks below; tap → full-screen landscape. The Short plays full-frame 9:16.",
       "- **Phone landscape / tablet:** Lesson full-width; tablet portrait shows the transcript beside or below (two panes).",
       "- **Desktop:** Lesson with transcript + shot list side panel (animatic review mode); labels must not look oversized at 1080 (playbook §6.10).",
+      "- **Idea pause panel (Study pace):** drawn by the app per class (design-plan §2), never in the frame; the animatic marks each pause on the scrubber and in the transcript.",
       "- G-Art checks one 16:9 frame at 210 px high and at 1080, and the 9:16 frame at phone size, in ② (visual-style §10)."]
 (H / "out/storyboard.md").write_text("\n".join(b) + "\n", encoding="utf-8")
 print("ok")

@@ -2,76 +2,76 @@
  "errors": [],
  "warnings": [],
  "lengths": {
-  "lesson": 312.2,
-  "general": 176.7,
+  "lesson": 328.1,
+  "general": 188.6,
   "short": 51.8
  },
  "words": {
-  "lesson": 607,
-  "general": 340,
+  "lesson": 640,
+  "general": 364,
   "short": 100
  },
  "wpm_speech": 143,
  "wpm_overall": {
-  "lesson": 116.7,
-  "general": 115.4,
+  "lesson": 117.0,
+  "general": 115.8,
   "short": 115.8
  },
  "new_terms": {
   "lesson": [
    [
     "germ layers",
-    10.8
+    14.0
    ],
    [
     "primitive node",
-    10.8
+    19.9
    ],
    [
     "notochord",
-    10.8
+    25.3
    ],
    [
     "invagination",
-    78.7
+    94.7
    ],
    [
     "yolk sac",
-    121.2
+    137.1
    ],
    [
     "nucleus pulposus",
-    204.8
+    220.7
    ],
    [
     "sacrococcygeal teratoma",
-    242.5
+    258.4
    ]
   ],
   "general": [
    [
     "epiblast",
-    11.2
+    14.5
+   ],
+   [
+    "hypoblast",
+    18.1
    ],
    [
     "primitive streak",
-    11.2
-   ],
-   [
-    "gastrulation",
-    11.2
+    21.4
    ],
    [
     "ectoderm",
-    107.3
+    119.3
    ],
    [
     "mesoderm",
-    107.3
+    119.3
    ],
    [
     "endoderm",
-    107.3
+    119.3
    ]
   ],
   "short": [
@@ -111,5 +111,96 @@
    "lesson",
    "L25"
   ]
- ]
+ ],
+ "ideas": {
+  "lesson": [
+   [
+    "S1E01.L.i01",
+    "L01",
+    "L04",
+    49.1
+   ],
+   [
+    "S1E01.L.i02",
+    "L05",
+    "L08",
+    39.1
+   ],
+   [
+    "S1E01.L.i03",
+    "L09",
+    "L12",
+    31.4
+   ],
+   [
+    "S1E01.L.i04",
+    "L13",
+    "L17",
+    40.8
+   ],
+   [
+    "S1E01.L.i05",
+    "L18",
+    "L22",
+    52.1
+   ],
+   [
+    "S1E01.L.i06",
+    "L23",
+    "L25",
+    32.4
+   ],
+   [
+    "S1E01.L.i07",
+    "L26",
+    "L28",
+    31.6
+   ],
+   [
+    "S1E01.L.i08",
+    "L29",
+    "L33",
+    51.6
+   ]
+  ],
+  "general": [
+   [
+    "S1E01.G.i01",
+    "G01",
+    "G05",
+    57.6
+   ],
+   [
+    "S1E01.G.i02",
+    "G06",
+    "G08",
+    37.5
+   ],
+   [
+    "S1E01.G.i03",
+    "G09",
+    "G12",
+    38.3
+   ],
+   [
+    "S1E01.G.i04",
+    "G13",
+    "G17",
+    55.2
+   ]
+  ]
+ },
+ "primer_s": {
+  "lesson": 20.3,
+  "general": 15.9
+ },
+ "review_terms": {
+  "lesson": {
+   "primitive streak": "E00.01.01"
+  },
+  "general": {
+   "gastrulation": "E00.01.02"
+  },
+  "short": {}
+ }
 }

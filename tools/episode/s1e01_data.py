@@ -18,7 +18,11 @@ PROFILES = {
 LESSON = [
   # Opener (no previous Part → no recap beats; visual-style §15 opener = the question)
   dict(id="L01", seg="Open", shot="S01", text="Two flat sheets of cells. One week later, three. How does that happen, and where does each new layer come from?", facts=[], hold=2.0, kind="question"),
-  dict(id="L02", seg="Open", shot="S02", text="Three terms first: germ layers, primitive node, notochord.", facts=[], new=["germ layers", "primitive node", "notochord"], hold=1.0, kind="terms"),
+  # "Meet the parts" primer (spec 2, D-107; P1F) — replaces the 5-s terms strip L02 (retired). Opens on the cold-open question; names + looks only.
+  dict(id="L02b", seg="Open", shot="S02b", text="To answer that, meet three parts first.", facts=[], hold=0.3, kind="primer"),
+  dict(id="L02c", seg="Open", shot="S02b", text="Germ layers: the three sheets of cells that every tissue is built from.", facts=["E00.01.04#f5"], new=["germ layers"], hold=0.4, kind="primer"),
+  dict(id="L02d", seg="Open", shot="S02c", text="Primitive node: a low mound at the head end of the streak.", facts=["E05.01.02#f2", "E00.01.01#f2"], new=["primitive node"], hold=0.4, kind="primer"),
+  dict(id="L02e", seg="Open", shot="S02d", text="Notochord: a solid rod of cells along the midline.", facts=["E05.02.01#f3", "E05.02.01#f1", "E05.02.01#f4"], new=["notochord"], hold=2.0, kind="primer"),
   # Segment 1 — The groove
   dict(id="L03", seg="1 The groove", shot="S03", text="This is the disc at the very start of week three. Its upper layer, from week two, is the epiblast.", facts=["E05.01.04#f1"], hold=1.0),
   dict(id="L04", seg="1 The groove", shot="S03", text="In week three the disc makes three germ layers: ectoderm, mesoderm and endoderm. That process is gastrulation.", facts=["E05.01.01#f1"], hold=1.5),
@@ -63,7 +67,11 @@ LESSON = [
 # ---------------- General Lesson cut ----------------
 GENERAL = [
   dict(id="G01", seg="Open", shot="S01", text="Every tissue in your body traces back to one thin sheet of cells. So how does one sheet make three different layers?", facts=["E05.01.04#f4"], hold=2.0, kind="question"),
-  dict(id="G02", seg="Open", shot="S02", text="Three words first: epiblast, primitive streak, gastrulation.", facts=[], new=["epiblast", "primitive streak", "gastrulation"], hold=1.0, kind="terms"),
+  # "Meet the parts" primer, everyday words (spec 2, D-107; P1F) — replaces the terms strip G02 (retired).
+  dict(id="G02b", seg="Open", shot="S02e", text="To answer that, meet three parts first.", facts=[], hold=0.3, kind="primer"),
+  dict(id="G02c", seg="Open", shot="S02e", text="The epiblast: the top layer, where we start.", facts=["E05.01.04#f1"], new=["epiblast"], hold=0.3, kind="primer"),
+  dict(id="G02d", seg="Open", shot="S02e", text="The hypoblast: the bottom layer, under it.", facts=["E00.01.01#f4"], new=["hypoblast"], hold=0.3, kind="primer"),
+  dict(id="G02e", seg="Open", shot="S02f", text="The primitive streak: a groove at the tail end.", facts=["E05.01.02#f1", "E05.01.02#f3"], new=["primitive streak"], hold=2.0, kind="primer"),
   dict(id="G03", seg="1 The groove", shot="S03", text="This tiny disc is an embryo, about two weeks old. It has two layers. The upper one is the epiblast, our starting layer.", facts=["E05.01.04#f1"], hold=1.0),
   dict(id="G04", seg="1 The groove", shot="S04", text="In week three a groove appears on that starting layer, at the tail end. This is the primitive streak.", facts=["E05.01.01#f1", "E05.01.01#f2", "E05.01.02#f1", "E05.01.02#f3"], hold=1.5),
   dict(id="G05", seg="1 The groove", shot="S06", text="The head will form at the other end, so the streak marks which way is head and which way is tail.", facts=["E05.01.02#f3"], hold=1.5),
@@ -101,8 +109,13 @@ SCRIPTS = {"lesson": LESSON, "general": GENERAL, "short": SHORT}
 # Lessons keep 85–95 % (visual-style §10). tag = one §15 honesty tag. needs = V-step needs (new scene / spec work).
 SHOTS = [
   dict(id="S01", kind="host", scene="host (tools/m1b-host)", day=None, what="Nani asks the question to camera; book closed on her lap", cams="cam_short + cam_lesson", key="warm key (no tokens on screen)", labels=[], tag=None, needs=["N1"]),
-  dict(id="S02", kind="host+panel", scene="host + terms strip", day=None, what="Terms strip, 5 s: 3 chips per profile — MBBS 'germ layers · primitive node · notochord' (L02), General 'epiblast · primitive streak · gastrulation' (G02); host in a corner cut-in", cams="cam_lesson (Lesson/General only)", key="token panel: chips on their own neutral panel, host keeps warm key (D-059 (5))", labels=[], tag=None, needs=["N1", "N2"]),
-  dict(id="S03", labels_general=[], kind="3D", scene="sc-E00.01.04", day="15", view="top (From the back)", what="Establish: two-layer disc, slow push-in", labels=["Epiblast", "Hypoblast"], tag="Colours illustrative", needs=[]),
+  # Primer shots (D-107, playbook §6b.3; S02 terms strip retired): each part isolated (rest ctx-dimmed), still view or ≤ 15° turntable, stamp + scale; label lands on the spoken name; no process motion.
+  dict(id="S02b", kind="3D", scene="sc-E00.01.04", day="17", view="front (From the head), transverse cut + slab, ≤ 15° turntable", what="Primer part 1 (MBBS): the three germ layers stacked on the day-17 section, nothing else lit; one label 'Germ layers' with a three-token chip", labels=["Germ layers"], tag="Not to scale", needs=["N2", "N7"]),
+  dict(id="S02c", kind="3D", scene="sc-E05.02.01", day="16", view="top, close, still", what="Primer part 2 (MBBS): the node isolated at the head end of the streak, rest ctx; accent ring on the node only", labels=["Primitive node"], tag="Colours illustrative", needs=["N2", "N12"]),
+  dict(id="S02d", kind="3D", scene="sc-E05.02.01", day="18", view="end (transverse cut cranial of the node), then top at day 18 with all three parts in place", what="Primer part 3 (MBBS): the rod in the midline, isolated; then all three parts in place (layers, node, rod) for the 2 s end hold", labels=["Notochord", "Primitive node", "Germ layers"], tag="Simplified", needs=["N2", "N7"]),
+  dict(id="S02e", kind="3D", scene="sc-E00.01.04", day="15", view="side (From the right), lengthwise cut, ≤ 15° turntable", what="Primer parts 1–2 (General): the top layer lit (epiblast), then the bottom layer lit (hypoblast), the other dimmed", labels=["Epiblast", "Hypoblast"], tag="Colours illustrative", needs=["N2"]),
+  dict(id="S02f", kind="3D", scene="sc-E00.01.04", day="15", view="top, still; then the 2 s end hold with all three labels", what="Primer part 3 (General): the groove at the tail end (label + glow, no accent ring — the ring stays free for the marked cell); then all three parts in place", labels=["Primitive streak", "Epiblast", "Hypoblast"], tag="Colours illustrative", needs=["N2"]),
+  dict(id="S03", labels_general=[], kind="3D", scene="sc-E00.01.04", day="15", view="top (From the back)", what="Establish: two-layer disc, slow push-in; Lesson only: from 'three germ layers' (L04) the day-17 three-layer stack as in S02b, so the i01 pause shows the three layers (P1F gates)", labels=["Epiblast", "Hypoblast", "Germ layers"], tag="Not to scale", needs=[]),
   dict(id="S04", kind="3D", scene="sc-E00.01.04", day="15", view="top", what="Push in to the caudal midline; streak ring (accent); stamp Day 15 · CS06", labels=["Primitive streak"], tag="Colours illustrative", needs=[]),
   dict(id="S05", kind="3D", scene="sc-E00.01.04", day="15→16", view="top, close", what="Ring moves to the cranial end; the mound is shown, not named yet (named at L18/S14)", labels=[], tag="Time compressed", needs=[]),
   dict(id="S06", kind="3D", scene="sc-E00.01.04", day="16", view="top, pull back", what="Pull back to whole disc; axis gizmo arrows Cranial/Caudal highlighted", labels=["Primitive streak"], tag="Colours illustrative", needs=["N12"]),
@@ -137,7 +150,7 @@ SHOTS = [
 # V-step needs (scene ids exist today unless listed here)
 NEEDS = {
   "N1": "Host scene: add `cam_lesson` (16:9) beside the 9:16 camera — one scene, two cameras (M1b to-do; visual-style §10). Lines S01/S24/SS1. Step: M1V8 or R1.",
-  "N2": "Terms-strip graphic: 3 term chips on a neutral token panel next to the host (D-059 (5)); chips use layer tokens only for layer names (none here → neutral chips). Step: R1.",
+  "N2": "Primer (D-107, playbook §6b.3; replaces the terms-strip graphic, S02 retired): each part's label + token chip lands on its spoken name; the part's token colour + pattern becomes the episode's colour key (germ layers = ecto · meso · endo tokens; node = ctx + accent ring; notochord = meso; epiblast = epi; hypoblast = hypo; streak = ctx glow). The app shows the parts as chips linking to their cards + 'Know these? Skip ▸' (L3). Step: R1 (render) + L3 (player).",
   "N3": "Video use of a tracer: scene spec §5/§6 make `tracer` drill-only ('never in Try it, stills or video'). S1E01 needs the marked cell on screen. Spec change + engine flag, e.g. shot `show.trace` (scene-spec §10). Step: V-step (V4?) before ② can show it; ② may fake it as an animatic placeholder.",
   "N4": "New tracer `t-meso` (with the scene disclaimer 'marked cell drawn larger' kept on every shot it appears in) in sc-E00.01.04 (and the same cell in sc-E05.02.01 at its day-16 lateral mesoderm position, for S14): an epiblast cell that ingresses after the endoderm cell and ends in mesoderm, then spreads laterally (path keyed days 15 → 17). The existing `t-endo` stays as the 'first cells' ghost. Step: V-step (scene edit + scene-check path rules).",
   "N6": "Label swap 'Epiblast → ectoderm' becomes a spoken text item (C1 G-A11y to-do: '→' needs spoken text) and a clean 'Ectoderm' label at day 17. Step: V-step / scene owner.",
@@ -180,3 +193,41 @@ KNOWN = {
   "general": ["spine"],
   "short": [],
 }
+
+# ---------------- Spec 2 (D-107, docs/episode-spec.md §3; P1F) ----------------
+SPEC = 2
+CORE = ["E05.01.01", "E05.01.02", "E05.01.03", "E05.01.04"]   # brief: ★ core cards (B5)
+# Review, not new (spec §3): a term introduced in Part 0 or on a core card, decided here at build time — term → the card whose terms.new has it.
+REVIEW = {"lesson": {"primitive streak": "E00.01.01"}, "general": {"gastrulation": "E00.01.02"}, "short": {}}
+# "Meet the parts" primer (playbook §6b.3): ≤ 3 parts; token = colour key; view = still or ≤ 15° turntable; hold = end hold (s).
+PRIMER = {
+  "lesson": {"parts": [
+    {"term": "germ layers", "line": "L02c", "card": "E05.01.01", "token": "ecto · meso · endo", "view": "day-17 section, ≤ 15° turntable"},
+    {"term": "primitive node", "line": "L02d", "card": "E05.01.02", "token": "ctx + accent ring", "view": "top, close, still"},
+    {"term": "notochord", "line": "L02e", "card": "E05.02.01", "token": "meso", "view": "end cut, still; then all parts in place"}], "hold": 2.0, "target_s": 20},
+  "general": {"parts": [
+    {"term": "epiblast", "line": "G02c", "card": "E05.01.04", "token": "epi", "view": "side cut, ≤ 15° turntable"},
+    {"term": "hypoblast", "line": "G02d", "card": "E05.01.01", "token": "hypo", "view": "side cut, ≤ 15° turntable"},
+    {"term": "primitive streak", "line": "G02e", "card": "E05.01.01", "token": "ctx glow", "view": "top, still; then all parts in place"}], "hold": 2.0, "target_s": 15},
+}
+# Ideas (playbook §6b.1): proposal from the video-craft draft §5, re-cut by the builder to the 20–60 s + break rules (P1F); the story director signs (G-Story).
+IDEAS = {
+  "lesson": [
+    dict(id="S1E01.L.i01", frm="L01", to="L04", objective="Name the three germ layers and the process that makes them in week three.", check_by="E05.01.01", title="Three layers, week three", next_q="So where does it start?"),
+    dict(id="S1E01.L.i02", frm="L05", to="L08", objective="Say where and when the primitive streak forms and how it marks the head–tail axis.", check_by="E05.01.02", title="The groove"),
+    dict(id="S1E01.L.i03", frm="L09", to="L12", objective="Explain that the first cells through the streak replace the hypoblast as endoderm.", check_by="L32", title="The first cells in", next_q="Where does our cell go?"),
+    dict(id="S1E01.L.i04", frm="L13", to="L17", objective="Place ectoderm, mesoderm and endoderm on a section, all from the epiblast.", check_by="L31", title="All from the epiblast"),
+    dict(id="S1E01.L.i05", frm="L18", to="L22", objective="Describe how cells from the primitive node form the notochordal plate, then the rod.", check_by="E05.02.01", title="From node to rod"),
+    dict(id="S1E01.L.i06", frm="L23", to="L25", objective="State what the notochord does and what is left of it in adults.", check_by="E05.02.01", title="This becomes"),
+    dict(id="S1E01.L.i07", frm="L26", to="L28", objective="Link leftover streak cells to sacrococcygeal teratoma.", check_by="E05.01.02", title="Clinical link"),
+    dict(id="S1E01.L.i08", frm="L29", to="L33", objective="Answer the opening question: all three layers come from the epiblast.", check_by="L31", title="Back to our question"),
+  ],
+  "general": [
+    dict(id="S1E01.G.i01", frm="G01", to="G05", objective="Point to the primitive streak and say it marks head and tail.", check_by="E05.01.02", title="The groove", next_q="How does one sheet make three?"),
+    dict(id="S1E01.G.i02", frm="G06", to="G08", objective="Say that the first cells in replace the old bottom layer.", check_by="E05.01.03", title="The first cells in", next_q="Where does our cell go?"),
+    dict(id="S1E01.G.i03", frm="G09", to="G12", objective="Say which of the three layers our cell ended up in.", check_by="G15", title="Three layers"),
+    dict(id="S1E01.G.i04", frm="G13", to="G17", objective="Say that all three layers come from the one starting layer.", check_by="G16", title="Back to our question"),
+  ],
+}
+RETIRED = ["L02", "G02"]         # terms-strip lines, replaced by the primer (A2: never reused)
+SHOTS_RETIRED = ["S02"]          # terms-strip shot

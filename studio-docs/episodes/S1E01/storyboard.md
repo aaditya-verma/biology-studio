@@ -1,6 +1,6 @@
 # S1E01 Gastrulation — storyboard + shot list
 
-*(Purpose: what each shot shows, its scene + day key, cameras, labels, honesty tag and caption band; V-step needs. Source of truth: `content/E/episodes/S1E01/shots.json`. Updated: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
+*(Purpose: what each shot shows, its scene + day key, cameras, labels, honesty tag and caption band; V-step needs. Source of truth: `content/E/episodes/S1E01/shots.json`. Updated: 27 Nov 2026 · Bio · Episode · S1E01 primer (P1F: primer + ideas, spec 2, D-107). Before: 22 Nov 2026 · Bio · Episode · S1E01 script (P1 ①).)*
 
 ## Frame rules used (all shots)
 
@@ -11,11 +11,57 @@
 - **Colour mode:** layer mode on every shot (no segment mode, no legend chip). Accent ring = 'look here' only; on tracer shots the ring is the marked cell's alone (scene spec §6).
 - **Reduced motion:** push-ins/orbits → cuts; no dust; label fades stay (§8).
 
+- **Primer (D-107, playbook §6b.3):** replaces the 5-s terms strip (S02, L02, G02 retired). After the cold open, ≤ 3 parts, each isolated (rest ctx-dimmed) on a still view or a ≤ 15° turntable, stamp + scale on; the label + token chip land on the spoken name; no process motion; ends with all parts in place and a 2 s hold.
+- **Ideas (D-107, playbook §6b.1):** Study pace pauses 0.3 s before the end of each idea's last hold (no speech ±0.3 s) on the held frame; panel words live in the app, never in the frame (D8). Watch plays through. Shorts never pause.
+
+## Primer — MBBS Lesson (20.3 s, end hold 2.0 s)
+
+| Part | Line | Card | Token (colour key) | View |
+|---|---|---|---|---|
+| germ layers | L02c | `E05.01.01` | ecto · meso · endo | day-17 section, ≤ 15° turntable |
+| primitive node | L02d | `E05.01.02` | ctx + accent ring | top, close, still |
+| notochord | L02e | `E05.02.01` | meso | end cut, still; then all parts in place |
+
+## Primer — General Lesson cut (15.9 s, end hold 2.0 s)
+
+| Part | Line | Card | Token (colour key) | View |
+|---|---|---|---|---|
+| epiblast | G02c | `E05.01.04` | epi | side cut, ≤ 15° turntable |
+| hypoblast | G02d | `E05.01.01` | hypo | side cut, ≤ 15° turntable |
+| primitive streak | G02e | `E05.01.01` | ctx glow | top, still; then all parts in place |
+
+## Ideas — MBBS Lesson (8; the builder proposes, the story director signs)
+
+| Idea | Title | Lines | Shots | Length | Pause at | Objective | Check by |
+|---|---|---|---|---|---|---|---|
+| S1E01.L.i01 | Three layers, week three | L01–L04 | S01–S03 | 49.1 s | 0:49 | Name the three germ layers and the process that makes them in week three. | `E05.01.01` |
+| S1E01.L.i02 | The groove | L05–L08 | S04–S06 | 39.1 s | 1:28 | Say where and when the primitive streak forms and how it marks the head–tail axis. | `E05.01.02` |
+| S1E01.L.i03 | The first cells in | L09–L12 | S07–S09 | 31.4 s | 1:59 | Explain that the first cells through the streak replace the hypoblast as endoderm. | `L32` |
+| S1E01.L.i04 | Three layers | L13–L17 | S10–S13 | 40.8 s | 2:40 | Place ectoderm, mesoderm and endoderm on a section, all from the epiblast. | `L31` |
+| S1E01.L.i05 | From node to rod | L18–L20 | S14–S15 | 34.5 s | 3:15 | Describe how cells from the primitive node form the notochordal plate, then the rod. | `E05.02.01` |
+| S1E01.L.i06 | This becomes | L21–L25 | S16–S19 | 50.0 s | 4:05 | State what the notochord does and what is left of it in adults. | `E05.02.01` |
+| S1E01.L.i07 | Clinical link | L26–L28 | S20–S21 | 31.6 s | 4:36 | Link leftover streak cells to sacrococcygeal teratoma. | `E05.01.02` |
+| S1E01.L.i08 | Back to our question | L29–L33 | S22–S24 | 51.6 s | end | Answer the opening question: all three layers come from the epiblast. | `L31` |
+
+## Ideas — General Lesson cut (5; the builder proposes, the story director signs)
+
+| Idea | Title | Lines | Shots | Length | Pause at | Objective | Check by |
+|---|---|---|---|---|---|---|---|
+| S1E01.G.i01 | The groove | G01–G05 | S01–S06 | 57.6 s | 0:57 | Point to the primitive streak and say it marks head and tail. | `E05.01.02` |
+| S1E01.G.i02 | The first cells in | G06–G08 | S07–S09 | 37.5 s | 1:35 | Say that the first cells in replace the old bottom layer. | `E05.01.03` |
+| S1E01.G.i03 | Three layers | G09–G12 | S10–S13 | 38.3 s | 2:13 | Name the three layers in order and where our cell ended up. | `G15` |
+| S1E01.G.i04 | One sheet, three | G13–G14 | S19–S22 | 20.0 s | 2:33 | Say that all three layers come from the one starting layer. | `G16` |
+| S1E01.G.i05 | Quick checks | G15–G17 | S23–S24 | 35.2 s | end | Recall which layer our cell joined and where all three came from. | `G15` |
+
 ## Storyboard (Lesson order; General + Short reuse the same scene states)
 
 - **S01** (host) `host (tools/m1b-host)` day — — Nani asks the question to camera; book closed on her lap. Labels: none · tag: none · cams: cam_short + cam_lesson · key: warm key (no tokens on screen) · needs: N1 · lines: L01, G01
-- **S02** (host+panel) `host + terms strip` day — — Terms strip, 5 s: 3 chips per profile — MBBS 'germ layers · primitive node · notochord' (L02), General 'epiblast · primitive streak · gastrulation' (G02); host in a corner cut-in. Labels: none · tag: none · cams: cam_lesson (Lesson/General only) · key: token panel: chips on their own neutral panel, host keeps warm key (D-059 (5)) · needs: N1, N2 · lines: L02, G02
-- **S03** (3D) `sc-E00.01.04` day 15 · view: top (From the back) — Establish: two-layer disc, slow push-in. Labels: Epiblast, Hypoblast · General labels: none · tag: Colours illustrative · cams: cam_lesson + cam_short · lines: L03, L04, G03
+- **S02b** (3D) `sc-E00.01.04` day 17 · view: front (From the head), transverse cut + slab, ≤ 15° turntable — Primer part 1 (MBBS): the three germ layers stacked on the day-17 section, nothing else lit; one label 'Germ layers' with a three-token chip. Labels: Germ layers · tag: Not to scale · cams: cam_lesson + cam_short · needs: N2, N7 · lines: L02b, L02c
+- **S02c** (3D) `sc-E05.02.01` day 16 · view: top, close, still — Primer part 2 (MBBS): the node isolated at the head end of the streak, rest ctx; accent ring on the node only. Labels: Primitive node · tag: Colours illustrative · cams: cam_lesson + cam_short · needs: N2, N12 · lines: L02d
+- **S02d** (3D) `sc-E05.02.01` day 18 · view: end (transverse cut cranial of the node), then top at day 18 with all three parts in place — Primer part 3 (MBBS): the rod in the midline, isolated; then all three parts in place (layers, node, rod) for the 2 s end hold. Labels: Notochord, Primitive node, Germ layers · tag: Simplified · cams: cam_lesson + cam_short · needs: N2, N7 · lines: L02e
+- **S02e** (3D) `sc-E00.01.04` day 15 · view: side (From the right), lengthwise cut, ≤ 15° turntable — Primer parts 1–2 (General): the top layer lit (epiblast), then the bottom layer lit (hypoblast), the other dimmed. Labels: Epiblast, Hypoblast · tag: Colours illustrative · cams: cam_lesson + cam_short · needs: N2 · lines: G02b, G02c, G02d
+- **S02f** (3D) `sc-E00.01.04` day 15 · view: top, still; then the 2 s end hold with all three labels — Primer part 3 (General): the groove at the tail end (label + glow, no accent ring — the ring stays free for the marked cell); then all three parts in place. Labels: Primitive streak, Epiblast, Hypoblast · tag: Colours illustrative · cams: cam_lesson + cam_short · needs: N2 · lines: G02e
+- **S03** (3D) `sc-E00.01.04` day 15 · view: top (From the back) — Establish: two-layer disc, slow push-in; Lesson only: from 'three germ layers' (L04) the day-17 three-layer stack as in S02b, so the i01 pause shows the three layers (P1F gates). Labels: Epiblast, Hypoblast, Germ layers · General labels: none · tag: Not to scale · cams: cam_lesson + cam_short · lines: L03, L04, G03
 - **S04** (3D) `sc-E00.01.04` day 15 · view: top — Push in to the caudal midline; streak ring (accent); stamp Day 15 · CS06. Labels: Primitive streak · tag: Colours illustrative · cams: cam_lesson + cam_short · lines: L05, L06, G04
 - **S05** (3D) `sc-E00.01.04` day 15→16 · view: top, close — Ring moves to the cranial end; the mound is shown, not named yet (named at L18/S14). Labels: none · tag: Time compressed · cams: cam_lesson + cam_short · lines: L07
 - **S06** (3D) `sc-E00.01.04` day 16 · view: top, pull back — Pull back to whole disc; axis gizmo arrows Cranial/Caudal highlighted. Labels: Primitive streak · tag: Colours illustrative · cams: cam_lesson + cam_short · needs: N12 · lines: L08, G05
@@ -50,8 +96,12 @@
 | Shot | Scene | Day | Labels | Tag | Lines | Needs |
 |---|---|---|---|---|---|---|
 | S01 | `host (tools/m1b-host)` | — | — | — | L01, G01 | N1 |
-| S02 | `host + terms strip` | — | — | — | L02, G02 | N1, N2 |
-| S03 | `sc-E00.01.04` | 15 | Epiblast, Hypoblast | Colours illustrative | L03, L04, G03 | — |
+| S02b | `sc-E00.01.04` | 17 | Germ layers | Not to scale | L02b, L02c | N2, N7 |
+| S02c | `sc-E05.02.01` | 16 | Primitive node | Colours illustrative | L02d | N2, N12 |
+| S02d | `sc-E05.02.01` | 18 | Notochord, Primitive node, Germ layers | Simplified | L02e | N2, N7 |
+| S02e | `sc-E00.01.04` | 15 | Epiblast, Hypoblast | Colours illustrative | G02b, G02c, G02d | N2 |
+| S02f | `sc-E00.01.04` | 15 | Primitive streak, Epiblast, Hypoblast | Colours illustrative | G02e | N2 |
+| S03 | `sc-E00.01.04` | 15 | Epiblast, Hypoblast, Germ layers | Not to scale | L03, L04, G03 | — |
 | S04 | `sc-E00.01.04` | 15 | Primitive streak | Colours illustrative | L05, L06, G04 | — |
 | S05 | `sc-E00.01.04` | 15→16 | — | Time compressed | L07 | — |
 | S06 | `sc-E00.01.04` | 16 | Primitive streak | Colours illustrative | L08, G05 | N12 |
@@ -94,7 +144,7 @@
 ## V-step needs (scenes or spec work that ② or R1 needs)
 
 - **N1** — Host scene: add `cam_lesson` (16:9) beside the 9:16 camera — one scene, two cameras (M1b to-do; visual-style §10). Lines S01/S24/SS1. Step: M1V8 or R1.
-- **N2** — Terms-strip graphic: 3 term chips on a neutral token panel next to the host (D-059 (5)); chips use layer tokens only for layer names (none here → neutral chips). Step: R1.
+- **N2** — Primer (D-107, playbook §6b.3; replaces the terms-strip graphic, S02 retired): each part's label + token chip lands on its spoken name; the part's token colour + pattern becomes the episode's colour key (germ layers = ecto · meso · endo tokens; node = ctx + accent ring; notochord = meso; epiblast = epi; hypoblast = hypo; streak = ctx glow). The app shows the parts as chips linking to their cards + 'Know these? Skip ▸' (L3). Step: R1 (render) + L3 (player).
 - **N3** — Video use of a tracer: scene spec §5/§6 make `tracer` drill-only ('never in Try it, stills or video'). S1E01 needs the marked cell on screen. Spec change + engine flag, e.g. shot `show.trace` (scene-spec §10). Step: V-step (V4?) before ② can show it; ② may fake it as an animatic placeholder.
 - **N4** — New tracer `t-meso` (with the scene disclaimer 'marked cell drawn larger' kept on every shot it appears in) in sc-E00.01.04 (and the same cell in sc-E05.02.01 at its day-16 lateral mesoderm position, for S14): an epiblast cell that ingresses after the endoderm cell and ends in mesoderm, then spreads laterally (path keyed days 15 → 17). The existing `t-endo` stays as the 'first cells' ghost. Step: V-step (scene edit + scene-check path rules).
 - **N6** — Label swap 'Epiblast → ectoderm' becomes a spoken text item (C1 G-A11y to-do: '→' needs spoken text) and a clean 'Ectoderm' label at day 17. Step: V-step / scene owner.
@@ -110,4 +160,5 @@
 - **Phone portrait:** the Lesson plays inline as a 16:9 preview with the transcript + Checks below; tap → full-screen landscape. The Short plays full-frame 9:16.
 - **Phone landscape / tablet:** Lesson full-width; tablet portrait shows the transcript beside or below (two panes).
 - **Desktop:** Lesson with transcript + shot list side panel (animatic review mode); labels must not look oversized at 1080 (playbook §6.10).
+- **Idea pause panel (Study pace):** drawn by the app per class (design-plan §2), never in the frame; the animatic marks each pause on the scrubber and in the transcript.
 - G-Art checks one 16:9 frame at 210 px high and at 1080, and the 9:16 frame at phone size, in ② (visual-style §10).
