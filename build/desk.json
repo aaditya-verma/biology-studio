@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-26 11:21 IST",
+ "generated_at": "2026-11-26 13:21 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "c2db410",
@@ -23,7 +23,7 @@
   "state": "held",
   "chat": ".snap",
   "since": "2026-11-26 04:00 IST",
-  "age_h": 7.4,
+  "age_h": 9.4,
   "old": false,
   "since_reason": null
  },
@@ -644,7 +644,7 @@
    "chat": "Bio · Build · U3b look screens",
    "by": "Aaditya",
    "start": "2026-11-26 04:00",
-   "age_h": 7.4,
+   "age_h": 9.4,
    "old": true,
    "old_reason": null
   }
@@ -683,7 +683,7 @@
   {
    "id": "laptop",
    "state": "warn",
-   "detail": "6 commits to push (sync.bat)"
+   "detail": "8 commits to push (sync.bat)"
   },
   {
    "id": "lock_age",
