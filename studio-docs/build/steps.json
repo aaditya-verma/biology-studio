@@ -1684,7 +1684,7 @@
   },
   {
    "id": "W5b",
-   "title": "W5b dispatcher — job queue, chaining, owner controls, dispatch.html",
+   "title": "W5b dispatcher — job queue, chaining, owner controls, dispatcher page",
    "type": "Build",
    "chat": "Bio · Build · W5b job queue",
    "status": "planned",
@@ -1717,7 +1717,7 @@
    "gates": {},
    "check": null,
    "decisions": ["D-099", "D-105"],
-   "prompt": null,
+   "prompt": "W6 desk",
    "log": "—",
    "todo": [
     "Tentative — firm up when its prompt is written",
@@ -1730,7 +1730,7 @@
     {"id": "W6.q1", "kind": "decide", "ask": "Desk DSK.q1: may two build chats run at once, and in which lanes?", "asked_in": "Bio · Desk · 25 Nov", "asked": "2026-11-25", "answer": "Two lanes: GPU lane (P1, P1F, R1) in the laptop clone, touching only content/E/episodes + render outputs; lock lane (U3b, V4, SR2, M1b, W6, L3) in a cloud Code clone, no GPU/sync.bat. Only the lock holder edits STATUS; each chat edits only its own steps.json row; pull --rebase before every push, never force-push; any conflict in steps.json/STATUS → stop and ask owner. (owner, 25 Nov 2026, Desk)", "status": "answered", "d": "D-105"}
    ],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-27 02:57", "outcome": "partial", "note": "prompt only (owner asked in the CIR2 chat): writes the W6 ready prompt into master plan §13; no build; route A"}],
+   "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-27 02:57", "outcome": "done", "note": "prompt only (owner asked in the CIR2 chat): W6 ready prompt written into master plan §13 (start, dependency, pipeline, scheduling checks; step 1 = scope with the owner, tentative row stays until then); no build; route A"}],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
