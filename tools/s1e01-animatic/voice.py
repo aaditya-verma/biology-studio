@@ -1,6 +1,6 @@
 """S1E01 animatic — scratch voice (P1 ②). Owner doc: studio-docs/episodes/S1E01/table-read.md.
 One WAV per spoken line (Kokoro af_heart, speed 0.66 + the table-read pronunciation dictionary) → audio/ (never committed) + timings.json.
-Flags (RULES I5): --dry-run (print the marked-up text, synthesise nothing) · --only L01 · --debug · --preview (first 3 lines per cut).
+Flags (RULES I5): --dry-run (print the marked-up text, synthesise nothing) · --only L01[,L02b,…] · --debug · --preview (first 3 lines per cut).
 EDIT: VOICE, SPEED, TRIM_DB, PAD below. Pronunciations live in table-read.md only (RULES I6)."""
 import argparse, json, os, re, sys, time
 from pathlib import Path
@@ -23,7 +23,7 @@ def mark(t):
     for w, ipa in DICT:   # whole words only, longest first; never inside an existing [..](/../)
         t = re.sub(r"(?<![\w\[(/])(%s)\b(?![^\[]*\]\()" % re.escape(w), lambda m: f"[{m.group(1)}](/{kk(ipa)}/)", t, flags=re.I)
     return t
-jobs = [(p, l) for p in sc["scripts"] for i, l in enumerate(sc["scripts"][p]) if (not a.only or l["id"] == a.only) and not (a.preview and i > 2)]
+jobs = [(p, l) for p in sc["scripts"] for i, l in enumerate(sc["scripts"][p]) if (not a.only or l["id"] in a.only.split(",")) and not (a.preview and i > 2)]
 if a.dry_run:
     for p, l in jobs: print(l["id"], mark(l["text"]))
     sys.exit()

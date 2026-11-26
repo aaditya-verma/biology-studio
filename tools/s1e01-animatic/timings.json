@@ -124,54 +124,6 @@
    ],
    "phonemes": "tˈu flˈæt ʃˈits ʌv sˈɛlz. wˈʌn wˈik lˈATəɹ, θɹˈi. hˌW dˈʌz ðˈæt hˈæpən, ænd wˌɛɹ dˈʌz ˈiʧ nˈu lˈAəɹ kˈʌm fɹʌm?"
   },
-  "L02": {
-   "cut": "lesson",
-   "shot": "S02",
-   "words": 8,
-   "planned_s": 3.4,
-   "hold_s": 1.0,
-   "measured_s": 4.71,
-   "raw_s": 5.53,
-   "speed": 0.8,
-   "w": [
-    [
-     "Three",
-     0.09,
-     0.38
-    ],
-    [
-     "terms",
-     0.38,
-     0.85
-    ],
-    [
-     "first",
-     0.85,
-     1.54
-    ],
-    [
-     "germ",
-     1.71,
-     2.06
-    ],
-    [
-     "layers",
-     2.06,
-     2.61
-    ],
-    [
-     "primitive node",
-     2.66,
-     3.66
-    ],
-    [
-     "notochord",
-     3.71,
-     4.71
-    ]
-   ],
-   "phonemes": "θɹˈi tˈɜɹmz fˈɜɹst: ʤˈɜɹm lˈAəɹz, ˈpɹɪmɪtɪv nOd, ˈnOtəˌkɔɹd."
-  },
   "L03": {
    "cut": "lesson",
    "shot": "S03",
@@ -3617,54 +3569,6 @@
    ],
    "phonemes": "ˈɛvəɹi tˈɪʃu ɪn jʊɹ bˈɑdi tɹˈAsᵻz bˈæk tə wˈʌn θˈɪn ʃˈit ʌv sˈɛlz. sˌO hˌW dˈʌz wˈʌn ʃˈit mˌAk θɹˈi dˈɪfəɹənt lˈAəɹz?"
   },
-  "G02": {
-   "cut": "general",
-   "shot": "S02",
-   "words": 7,
-   "planned_s": 2.9,
-   "hold_s": 1.0,
-   "measured_s": 5.53,
-   "raw_s": 6.35,
-   "speed": 0.75,
-   "w": [
-    [
-     "Three",
-     0.14,
-     0.45
-    ],
-    [
-     "words",
-     0.45,
-     0.9
-    ],
-    [
-     "first",
-     0.9,
-     1.72
-    ],
-    [
-     "epiblast",
-     1.9,
-     2.87
-    ],
-    [
-     "primitive",
-     2.95,
-     3.53
-    ],
-    [
-     "streak",
-     3.53,
-     4.09
-    ],
-    [
-     "gastrulation",
-     4.18,
-     5.53
-    ]
-   ],
-   "phonemes": "θɹˈi wˈɜɹdz fˈɜɹst: ˈɛpiˌblæst, pɹˈɪməTɪv stɹˈik, ˌɡæstɹʊˈlAʃən."
-  },
   "G03": {
    "cut": "general",
    "shot": "S03",
@@ -6031,6 +5935,465 @@
     ]
    ],
    "phonemes": "fˈʊl ˈɛpəsˌOd ɪn ði ˈæp."
+  },
+  "L02b": {
+   "cut": "lesson",
+   "shot": "S02b",
+   "words": 7,
+   "planned_s": 2.9,
+   "hold_s": 0.3,
+   "measured_s": 2.51,
+   "raw_s": 3.27,
+   "speed": 0.8,
+   "w": [
+    [
+     "To",
+     0.06,
+     0.2
+    ],
+    [
+     "answer",
+     0.2,
+     0.56
+    ],
+    [
+     "that",
+     0.56,
+     0.94
+    ],
+    [
+     "meet",
+     1.05,
+     1.3
+    ],
+    [
+     "three",
+     1.3,
+     1.57
+    ],
+    [
+     "parts",
+     1.57,
+     1.94
+    ],
+    [
+     "first",
+     1.94,
+     2.51
+    ]
+   ],
+   "phonemes": "tʊ ˈænsəɹ ðˈæt, mˈit θɹˈi pˈɑɹts fˈɜɹst."
+  },
+  "L02c": {
+   "cut": "lesson",
+   "shot": "S02b",
+   "words": 13,
+   "planned_s": 5.5,
+   "hold_s": 0.4,
+   "measured_s": 4.96,
+   "raw_s": 5.8,
+   "speed": 0.8,
+   "w": [
+    [
+     "Germ",
+     0.1,
+     0.49
+    ],
+    [
+     "layers",
+     0.49,
+     1.45
+    ],
+    [
+     "the",
+     1.59,
+     1.75
+    ],
+    [
+     "three",
+     1.75,
+     2.13
+    ],
+    [
+     "sheets",
+     2.13,
+     2.41
+    ],
+    [
+     "of",
+     2.41,
+     2.54
+    ],
+    [
+     "cells",
+     2.54,
+     2.98
+    ],
+    [
+     "that",
+     2.98,
+     3.2
+    ],
+    [
+     "every",
+     3.2,
+     3.59
+    ],
+    [
+     "tissue",
+     3.59,
+     4.03
+    ],
+    [
+     "is",
+     4.03,
+     4.19
+    ],
+    [
+     "built",
+     4.19,
+     4.51
+    ],
+    [
+     "from",
+     4.51,
+     4.96
+    ]
+   ],
+   "phonemes": "ʤˈɜɹm lˈAəɹz: ðə θɹˈi ʃˈits ʌv sˈɛlz ðæt ˈɛvəɹi tˈɪʃu ɪz bˈɪlt fɹʌm."
+  },
+  "L02d": {
+   "cut": "lesson",
+   "shot": "S02c",
+   "words": 12,
+   "planned_s": 5.0,
+   "hold_s": 0.4,
+   "measured_s": 3.94,
+   "raw_s": 4.75,
+   "speed": 0.8,
+   "w": [
+    [
+     "Primitive node",
+     0.04,
+     1.34
+    ],
+    [
+     "a",
+     1.52,
+     1.69
+    ],
+    [
+     "low",
+     1.69,
+     2.11
+    ],
+    [
+     "mound",
+     2.11,
+     2.46
+    ],
+    [
+     "at",
+     2.46,
+     2.53
+    ],
+    [
+     "the",
+     2.53,
+     2.66
+    ],
+    [
+     "head",
+     2.66,
+     2.91
+    ],
+    [
+     "end",
+     2.91,
+     3.11
+    ],
+    [
+     "of",
+     3.11,
+     3.18
+    ],
+    [
+     "the",
+     3.18,
+     3.28
+    ],
+    [
+     "streak",
+     3.28,
+     3.94
+    ]
+   ],
+   "phonemes": "ˈpɹɪmɪtɪv nOd: ɐ lˈO mˈWnd æt ðə hˈɛd ˈɛnd ʌv ðə stɹˈik."
+  },
+  "L02e": {
+   "cut": "lesson",
+   "shot": "S02d",
+   "words": 9,
+   "planned_s": 3.8,
+   "hold_s": 2.0,
+   "measured_s": 3.94,
+   "raw_s": 4.8,
+   "speed": 0.8,
+   "w": [
+    [
+     "Notochord",
+     0.04,
+     1.21
+    ],
+    [
+     "a",
+     1.35,
+     1.49
+    ],
+    [
+     "solid",
+     1.49,
+     1.99
+    ],
+    [
+     "rod",
+     1.99,
+     2.25
+    ],
+    [
+     "of",
+     2.25,
+     2.38
+    ],
+    [
+     "cells",
+     2.38,
+     2.88
+    ],
+    [
+     "along",
+     2.88,
+     3.2
+    ],
+    [
+     "the",
+     3.2,
+     3.29
+    ],
+    [
+     "midline",
+     3.29,
+     3.94
+    ]
+   ],
+   "phonemes": "ˈnOtəˌkɔɹd: ɐ sˈɑləd ɹˈɑd ʌv sˈɛlz əlˈɔŋ ðə mˈɪdlˌIn."
+  },
+  "G02b": {
+   "cut": "general",
+   "shot": "S02e",
+   "words": 7,
+   "planned_s": 2.9,
+   "hold_s": 0.3,
+   "measured_s": 3.03,
+   "raw_s": 3.85,
+   "speed": 0.75,
+   "w": [
+    [
+     "To",
+     0.09,
+     0.28
+    ],
+    [
+     "answer",
+     0.28,
+     0.69
+    ],
+    [
+     "that",
+     0.69,
+     1.09
+    ],
+    [
+     "meet",
+     1.2,
+     1.56
+    ],
+    [
+     "three",
+     1.56,
+     1.93
+    ],
+    [
+     "parts",
+     1.93,
+     2.43
+    ],
+    [
+     "first",
+     2.43,
+     3.03
+    ]
+   ],
+   "phonemes": "tʊ ˈænsəɹ ðˈæt, mˈit θɹˈi pˈɑɹts fˈɜɹst."
+  },
+  "G02c": {
+   "cut": "general",
+   "shot": "S02e",
+   "words": 8,
+   "planned_s": 3.4,
+   "hold_s": 0.3,
+   "measured_s": 3.39,
+   "raw_s": 4.2,
+   "speed": 0.75,
+   "w": [
+    [
+     "The",
+     0.09,
+     0.28
+    ],
+    [
+     "epiblast",
+     0.28,
+     1.36
+    ],
+    [
+     "the",
+     1.49,
+     1.63
+    ],
+    [
+     "top",
+     1.63,
+     2.03
+    ],
+    [
+     "layer",
+     2.03,
+     2.44
+    ],
+    [
+     "where",
+     2.48,
+     2.61
+    ],
+    [
+     "we",
+     2.61,
+     2.8
+    ],
+    [
+     "start",
+     2.8,
+     3.39
+    ]
+   ],
+   "phonemes": "ði ˈɛpiˌblæst: ðə tˈɑp lˈAəɹ, wˌɛɹ wi stˈɑɹt."
+  },
+  "G02d": {
+   "cut": "general",
+   "shot": "S02e",
+   "words": 7,
+   "planned_s": 2.9,
+   "hold_s": 0.3,
+   "measured_s": 3.6,
+   "raw_s": 4.42,
+   "speed": 0.75,
+   "w": [
+    [
+     "The",
+     0.07,
+     0.23
+    ],
+    [
+     "hypoblast",
+     0.23,
+     1.59
+    ],
+    [
+     "the",
+     1.73,
+     1.88
+    ],
+    [
+     "bottom",
+     1.88,
+     2.4
+    ],
+    [
+     "layer",
+     2.4,
+     2.82
+    ],
+    [
+     "under",
+     2.87,
+     3.28
+    ],
+    [
+     "it",
+     3.28,
+     3.6
+    ]
+   ],
+   "phonemes": "ðə ˈhIpOˌblæst: ðə bˈɑTəm lˈAəɹ, ˈʌndəɹ ɪt."
+  },
+  "G02e": {
+   "cut": "general",
+   "shot": "S02f",
+   "words": 9,
+   "planned_s": 3.8,
+   "hold_s": 2.0,
+   "measured_s": 3.48,
+   "raw_s": 4.33,
+   "speed": 0.75,
+   "w": [
+    [
+     "The",
+     0.09,
+     0.2
+    ],
+    [
+     "primitive",
+     0.2,
+     0.8
+    ],
+    [
+     "streak",
+     0.8,
+     1.54
+    ],
+    [
+     "a",
+     1.68,
+     1.84
+    ],
+    [
+     "groove",
+     1.84,
+     2.35
+    ],
+    [
+     "at",
+     2.35,
+     2.43
+    ],
+    [
+     "the",
+     2.43,
+     2.53
+    ],
+    [
+     "tail",
+     2.53,
+     2.95
+    ],
+    [
+     "end",
+     2.95,
+     3.48
+    ]
+   ],
+   "phonemes": "ðə pɹˈɪməTɪv stɹˈik: ɐ ɡɹˈuv æt ðə tˈAl ˈɛnd."
   }
  }
 }

@@ -1,4 +1,4 @@
-"""S1E01 animatic — timeline builder (P1 ②): timings.json + script.json + shots.json → out/timeline.json, out/<cut>.vtt, out/<cut>.wav (two-pass −14 LUFS, H6).
+"""S1E01 animatic — timeline builder (P1 ②; P1F: idea pauses + out/<cut>.chapters.vtt): timings.json + script.json + shots.json → out/timeline.json, out/<cut>.vtt, out/<cut>.wav (two-pass −14 LUFS, H6).
 Flags: --dry-run (no files) · --only <cut> · --debug · --preview (skip audio). EDIT: CAP (caption chars), FFMPEG."""
 import argparse, difflib, json, os, re, subprocess, sys
 from pathlib import Path
@@ -79,7 +79,19 @@ for cut, lines in sc["scripts"].items():
         if not S or S[-1]["id"] != l["shot"]: S.append(dict(id=l["shot"], s=round(at, 2)))
         at = end + l["hold"]; S[-1]["e"] = round(at, 2)
     wpm = sum(l["_words"] for l in lines) / sum(T[l["id"]]["measured_s"] for l in lines) * 60
-    res[cut] = dict(dur=round(at, 2), wpm=round(wpm, 1), lines=L, shots=S)
+    # P1F (spec 2, D-107): idea pauses from the measured voice, 0.3 s before the end of the last line's hold; checks hold >= 1.5 s, silence +-0.3 s, 20-60 s
+    I, by = [], {x['id']: x for x in L}
+    for k, d in enumerate(sc.get('ideas', {}).get(cut, [])):
+        a_, b_ = by[d['from']], by[d['to']]; i_ = L.index(b_); e_ = L[i_ + 1]['s'] if i_ + 1 < len(L) else round(at, 2); last = k == len(sc['ideas'][cut]) - 1
+        brk = None if last else round(e_ - 0.3, 2); I.append(dict(id=d['id'], title=d['title'], s=a_['s'], e=e_, dur=round(e_ - a_['s'], 2), brk=brk, **{'from': d['from'], 'to': d['to']}))
+        bad = [] if 20 <= e_ - a_['s'] <= 60 else [f"{e_ - a_['s']:.1f} s"]
+        if brk is not None:
+            near = [w[0] for x in L for w in x['words'] if w[1] < brk + 0.3 and w[2] > brk - 0.3]
+            if near: bad.append(f'speech within 0.3 s: {near}')
+            if b_['hold'] < 1.5: bad.append(f"hold {b_['hold']} s")
+        print(f"   {d['id']} {a_['s']:6.1f}-{e_:6.1f} ({e_ - a_['s']:4.1f} s) pause {brk if brk is not None else 'end':>6}  {'OK' if not bad else 'FAIL ' + '; '.join(bad)}")
+    res[cut] = dict(dur=round(at, 2), wpm=round(wpm, 1), lines=L, shots=S, ideas=I)
+    if I and not a.dry_run: (out / f'{cut}.chapters.vtt').write_text('WEBVTT\n\n' + '\n'.join(f"{vt(d['s'])} --> {vt(d['e'])}\n{d['title']}\n" for d in I), encoding='utf8', newline='\n')   # chapters = ideas (MM8)
     print(f"{cut}: {at:.1f} s, {wpm:.0f} wpm speech, {sum(len(l['caps']) for l in L)} captions")
     if a.dry_run: continue
     v = "WEBVTT\n\n" + "\n".join(f"{vt(c['s'])} --> {vt(c['e'])}\n" + "\n".join(c["lines"]) + "\n" for l in L for c in l["caps"])
