@@ -127,7 +127,7 @@ function scMount(S,st){
     const trace=scTr()?scTr().trace:null;   // V3: the marked cell only in its trace drill (never Try it)
     if(SC.cur!==S.id){E.setScene(S,{day:st.day,layersOn:st.layersOn,cut:st.cut,az:st.az,el:st.el,zoom:st.zoom??scStart(S).zoom,trace});SC.cur=S.id;}else{E.setTokens();if((E.state().trace||null)!==trace){E.setTrace(trace);dlog('viewer','trace',trace||'off');}if(Math.abs(E.state().day-st.day)>1e-6)E.setDay(st.day);}
     if(dbgOn('viewer')&&S.debug!==true)E.setDebug(!!SC.dbgBoxes);
-    if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);if(SC.ready&&scFitOk(S))scFit(S);});   // rotate / resize: a new stage size refits (G-Eng r1 #1)SC.ro.observe(host);
+    if(SC.ro)SC.ro.disconnect();SC.ro=new ResizeObserver(()=>{const r=host.getBoundingClientRect();E.resize(r.width,r.height);if(SC.ready&&scFitOk(S))scFit(S);});SC.ro.observe(host);   // rotate / resize: a new stage size refits (G-Eng r1 #1)
     const r=host.getBoundingClientRect();E.resize(r.width,r.height);
     if(scFitOk(S))scFit(S);   // U3b: a fresh start view frames the model (≥ 50 % of the stage's width or height, every class); stills keep the scene's own camera (C11 compares geometry, not framing)
     $('#vwMsg').classList.add('hidden');const tech=$('#vwTech');if(tech)tech.textContent=STR.vw.tech(mod.REVISION,E.gpu());   // the inline viewer (L1) has no About tab
@@ -149,9 +149,9 @@ function scFit(S){const E=SC.eng,stage=$('#vwStage');if(!E||!E.outline||!stage)r
   if(fit[key]){E.setShift(fit[key].shift);E.view(null,null,fit[key].zoom);return;}
   const W=stage.clientWidth,H=stage.clientHeight,c=S.camera,ss=scStart(S),was=E.state(),z0=ss.zoom,s0=ss.shift,box=()=>{const P=E.outline();if(!P||P.length<3)return null;const xs=P.map(p=>p.x),ys=P.map(p=>p.y);return {l:Math.min(...xs),r:Math.max(...xs),t:Math.min(...ys),b:Math.max(...ys)};};
   E.view(c.azimuth_deg,c.elevation_deg,z0);E.setShift(s0);   // measure at the scene's own start view, whatever the learner turned it to
-  const b=box();if(!b||!W||!H){E.view(was.az,was.el,was.zoom);return;}const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
+  const b=box();if(!b||!W||!H){E.view(was.az,was.el,was.zoom);E.setShift(scShift0(S));return;}const fw=(b.r-b.l)/W,fh=(b.b-b.t)/H,goal=F.min*1.1;   // aim at 55 %: the audit's 50 % is a floor, not a target (sub-pixel borders)
   const sr=stage.getBoundingClientRect(),top=Math.max(F.top,...['#vwStamp','#vwDisc'].map(s=>$(s)).filter(el=>el&&el.offsetParent!==null).map(el=>el.getBoundingClientRect().bottom-sr.top+6)),bot=H-F.bottom;   // the free band: below the stamp + notes line as drawn (gizmo + scale bar sit in the bottom corners)
-  const m=Math.max(fw,fh),kIn=Math.max(1,Math.min(goal/m,F.maxW/fw,F.maxH/fh,(W-16)/(b.r-b.l))),k=Math.max(Math.min(kIn,(bot-top)/(b.b-b.t)),F.min/m),z=Math.min(F.maxZoom,z0*k);   // zoom in to ~55 %, never past the free band; zoom OUT only to fit the band (a 4-line notes plate at 200 % text, G-A11y r1 #2), never below the 50 % floor
+  const m=Math.max(fw,fh),kIn=Math.max(1,Math.min(goal/m,F.maxW/fw,F.maxH/fh,(W-16)/(b.r-b.l))),k=Math.max(Math.min(kIn,(bot-top)/(b.b-b.t)),F.min*1.02/m),z=Math.min(F.maxZoom,z0*k);   // zoom in to ~55 %, never past the free band; zoom OUT only to fit the band (a 4-line notes plate at 200 % text, G-A11y r1 #2), never below the 50 % floor
   E.view(null,null,z);const b2=box();let sh=s0;   // then move the model to the middle of the free band (orthographic: shift moves everything by shift × H)
   if(b2){const mid=(b2.t+b2.b)/2,want=(b2.b-b2.t)<=bot-top?(top+bot)/2:mid;sh=Math.max(-0.45,Math.min(0.45,s0+(want-mid)/H));E.setShift(sh);}
   fit[key]={zoom:z,shift:sh};E.view(was.az,was.el,z);
@@ -267,7 +267,8 @@ function scOverlay(){
     placed.push({l:r.l-3,t:r.t-3,r:r.r+3,b:r.b+3});lab.el.style.transform=`translate(${Math.round(r.l)}px,${Math.round(r.t)}px)`;lab.done=SC.drill.key;seen.push(lab.text);}
   const pinned=it=>lblOn&&SC.drill&&pinAt[it.at];
   /* U3b: off the model — every scene label (not axis labels, not a drill's pinned labels or guides) is placed outside the model's outline, joined by its leader */
-  const HL=!SC.drill&&E.outline?E.outline():null,HC=HL&&HL.length>2?HL.reduce((s,p)=>({x:s.x+p.x/HL.length,y:s.y+p.y/HL.length}),{x:0,y:0}):null;
+  const hold=!SC.drill&&(SC.ptr.size>0||!!SC.playing);   // G-Eng r2: while a finger drags or Play runs, no outline + outward search (phone budget): each label keeps its last spot beside its structure; full placement on release / stop
+  const HL=!SC.drill&&!hold&&E.outline?E.outline():null,HC=HL&&HL.length>2?HL.reduce((s,p)=>({x:s.x+p.x/HL.length,y:s.y+p.y/HL.length}),{x:0,y:0}):null;
   const onModel=r=>!!HL&&polyRectArea(HL,{l:r.l-3,t:r.t-3,r:r.r+3,b:r.b+3})>0;
   const outward=(x,y,w,h)=>{let u={x:x-HC.x,y:y-HC.y};const n=Math.hypot(u.x,u.y);u=n<1?{x:0,y:-1}:{x:u.x/n,y:u.y/n};const out=[];
     for(const gap of CONFIG.viewer.lblGaps)for(const deg of [0,25,-25,50,-50,80,-80,115,-115,180]){const c=Math.cos(deg*Math.PI/180),s=Math.sin(deg*Math.PI/180),v={x:u.x*c-u.y*s,y:u.x*s+u.y*c};
@@ -282,7 +283,7 @@ function scOverlay(){
     const w=el.offsetWidth,h=el.offsetHeight,x=a?a.s.x:0,y=a?a.s.y:0,g=it.axis?6:16;
     const cand=pr?[[pr.r+4,pr.t+(PZ-h)/2],[pr.l-4-w,pr.t+(PZ-h)/2],[pr.l+PZ/2-w/2,pr.b+4],[pr.l+PZ/2-w/2,pr.t-h-4],[pr.r+4,pr.b+2],[pr.l-4-w,pr.b+2],[pr.r+4,pr.t-h-2],[pr.l-4-w,pr.t-h-2]]
       :it.axis?[[x-w/2,y-h/2],[x+g,y-h/2],[x-w-g,y-h/2],[x-w/2,y-h-g],[x-w/2,y+g]]:[1,2.2,3.6].flatMap(k=>{const G=g*k;return [[x+G,y-h-G],[x-w-G,y-h-G],[x+G,y+G],[x-w-G,y+G],[x+G,y-h/2],[x-w-G,y-h/2],[x-w/2,y-h-2*G],[x-w/2,y+2*G]];});   // a second, farther ring (L1F: arrows and pins take near spots)
-    if(!it.axis&&!pr){const cl=v=>Math.max(4,Math.min(W-4-w,v));if(HC&&a)cand.unshift(...outward(x,y,w,h));cand.push(...cand.map(([cx,cy])=>[cl(cx),cy]).filter(([cx],j)=>cx!==cand[j][0]));}   // L1F: a long label slides in from the stage edge instead of being dropped (phone 360 px); U3b: outward spots first
+    if(!it.axis&&!pr){const cl=v=>Math.max(4,Math.min(W-4-w,v));if(HC&&a)cand.unshift(...outward(x,y,w,h));if(hold&&it.off)cand.unshift([x+it.off.x,y+it.off.y]);cand.push(...cand.map(([cx,cy])=>[cl(cx),cy]).filter(([cx],j)=>cx!==cand[j][0]));}   // L1F: a long label slides in from the stage edge instead of being dropped (phone 360 px); U3b: outward spots first
     const lead=r=>{const ex=Math.max(r.l,Math.min(x,r.r)),ey=y<r.t?r.t:y>r.b?r.b:(r.t+r.b)/2;return [{x,y},{x:ex,y:ey}];};
     const tryAt=(list,withLead)=>{for(const[cx,cy]of list){const r={l:cx,t:cy,r:cx+w,b:cy+h};if(r.l<4||r.t<4||r.r>W-4||r.b>H-4)continue;if(hit(r))continue;
         if(!it.axis&&onArrow(r))continue;
@@ -293,7 +294,7 @@ function scOverlay(){
     let ok=pr?tryAt(cand,false):tryAt(cand,!it.axis),led=!pr&&!it.axis;
     if(!ok&&pr&&a&&!off){const c2=[[x+g,y-h-g],[x-w-g,y-h-g],[x+g,y+g],[x-w-g,y+g],[x+g,y-h/2],[x-w-g,y-h/2]];ok=tryAt(c2,true);led=!!ok;}   // no room beside the pin: by its structure, with a leader
     if(!ok){el.classList.add('hidden');continue;}
-    placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);
+    placed.push({l:ok.l-3,t:ok.t-3,r:ok.r+3,b:ok.b+3});el.style.transform=`translate(${Math.round(ok.l)}px,${Math.round(ok.t)}px)`;seen.push(it.text);if(!hold)it.off={x:ok.l-x,y:ok.t-y};
     if(led){const [p0,p1]=lead(ok),ex=p1.x,ey=p1.y;segs.push([p0,p1]);const cell=!!(a&&a.tracer),dl=Math.hypot(ex-x,ey-y)||1,sx=cell?x+(ex-x)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):x,sy=cell?y+(ey-y)*Math.min(1,CONFIG.viewer.frame.cellGap/dl):y;   // V3: the leader stops at the marked cell's ring (no dot on it — G-Art)
       const ln=`x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"`;lines.push(`<line class="hl" ${ln}/><line ${ln}/>`+(cell?'':`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`));}}
   const svg=$('#vwLead');if(svg){svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=lines.join('');}
@@ -334,7 +335,7 @@ function scPointer(cv){
     if(SC.ptr.size===1){E.orbitBy(-(e.clientX-p.x)*0.45,(e.clientY-p.y)*0.45);}
     else if(SC.ptr.size===2){const o=[...SC.ptr.entries()].find(([k])=>k!==e.pointerId)[1],d0=Math.hypot(p.x-o.x,p.y-o.y),d1=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(d0>10){E.zoomBy(d1/d0);scZoomed();}}
     p.x=e.clientX;p.y=e.clientY;});
-  const up=e=>{SC.ptr.delete(e.pointerId);scSave();};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  const up=e=>{SC.ptr.delete(e.pointerId);scSave();if(!SC.ptr.size)scOverlay();};   // G-Eng r2: the drag hold ends — labels placed off the model againcv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
   cv.addEventListener('pointerleave',()=>{if(SC.hoverEl)SC.hoverEl.classList.add('hidden');});
   cv.addEventListener('wheel',e=>{if(!SC.eng)return;e.preventDefault();SC.eng.zoomBy(Math.exp(-e.deltaY*0.0015));scZoomed();clearTimeout(SC.wt);SC.wt=setTimeout(scSave,200);},{passive:false});
   cv.addEventListener('dblclick',()=>{if(SC.drill&&SC.drill.home&&SC.eng){const h=SC.drill.home;SC.eng.view(h.az,h.el,h.zoom);scSave();return;}scView('reset');});   // in a drill: back to its start view (G-Eng)
@@ -355,7 +356,7 @@ function scPlay(){const S=scCur();if(!S)return;if(SC.playing){scStop();return;}c
   let t0=performance.now(),dd=d;scDay(dd);const tick=n=>{if(!SC.playing)return;if(scCur()!==S){scStop();return;}dd=d+(n-t0)/1000/CONFIG.viewer.secPerDay;if(dd>=d1){scDay(d1);scStop();return;}scDay(dd);SC.playing=requestAnimationFrame(tick);};SC.playing=requestAnimationFrame(tick);}
 /* ◀ ▶ and [ ]: a whole day — in a trace drill, the previous / next key of the path (V3) */
 function scStep(d,dir){const tr=scTr();if(!tr)return dir>0?Math.floor(d+1+1e-6):Math.ceil(d-1-1e-6);const k=dir>0?tr.steps.find(x=>x>d+0.01):tr.steps.slice().reverse().find(x=>x<d-0.01);return k??d;}
-function scStop(){if(!SC.playing)return;cancelAnimationFrame(SC.playing);clearInterval(SC.playing);SC.playing=0;const b=$('#vwPlay');if(b){b.innerHTML=icon('play',20);b.setAttribute('aria-label',STR.vw.play);}
+function scStop(){if(!SC.playing)return;cancelAnimationFrame(SC.playing);clearInterval(SC.playing);SC.playing=0;requestAnimationFrame(()=>scOverlay());const b=$('#vwPlay');if(b){b.innerHTML=icon('play',20);b.setAttribute('aria-label',STR.vw.play);}
   const stp=$('#vwStamp');if(stp){stp.setAttribute('aria-live','polite');const t=stp.innerHTML;stp.innerHTML='';requestAnimationFrame(()=>{stp.innerHTML=t;});}}   // one announcement when Play stops
 
 document.addEventListener('click',e=>{
