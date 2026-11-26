@@ -22,6 +22,10 @@ Checks steps.json against the rules the app's #progress page also uses (src/js/1
                         (without `override`) = warning. --write fills a missing `run` from the rules; --next tags each step [Code]/[Cowork]
                         W3F (D-081): `hard` rules (GPU, tests, > 15 files, lock) make Code required — Cowork is an error; hard + a `split`
                         rule (connectors, artifacts, owner) → split, which needs run.handoff (error); `warn` = allowed, warned (Professor on Code)
+  title token ......... (TTG) W-title-token: a `title`/`chat` word longer than TITLE_TOKEN_MAX (12) or a joined word (letters glued by
+                        / . _ + \\ : @ = or a camelCase hump) may split mid-word on #progress=plan/board at 640×360 with 125–200 % text;
+                        GLOSSARY terms (bold or backticked) and numbers are exempt (warning — approximates layout-check midword, §7);
+                        --todo-tokens also checks to-do lines (step page only), one warning per step
 Warnings never fail the run unless --strict. Exit 1 on any error.
 
 Run from the repo root:
@@ -31,6 +35,7 @@ Run from the repo root:
   python tools/tracker/check.py --only C1       # one step (loops are still checked across all)
   python tools/tracker/check.py --preview       # quick text board: Now · Ready · Blocked · Done + your inputs
   python tools/tracker/check.py --debug         # print every rule as it runs
+  python tools/tracker/check.py --todo-tokens   # also warn on to-do words that may break mid-word (one warning per step)
   python tools/tracker/check.py --selftest      # each rule fires on a known-bad file; plan fixture; app ↔ checker plan parity (node)
   python tools/tracker/check.py --next          # W2: the schedule a chat reads first (rows, critical path, your inputs ranked)
   python tools/tracker/check.py --next --write  # … and refresh the auto block in STATUS § Next (--dry-run: show only)
@@ -63,6 +68,14 @@ APPROVAL_RE = re.compile(r"approv|owner picks?\b|owner kept|confirmed by owner|o
 DRAFT_ID_RE = re.compile(r"(?:Proposed decision|Decision)s?:\s*\*\*(D-\d{3})\*\*")
 MONTHS = {m: i + 1 for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
 ID_RE = re.compile(r"^(?:[A-Z][A-Z0-9]*|[A-Z][0-9]+[a-z]?|X1\.\d\d|IB\d\d|GATE)$")
+# EDIT: W-title-token (TTG) — a step's `title`/`chat` word that would split mid-word on #progress=plan / #progress=board at 640×360
+# with 125–200 % text. This only APPROXIMATES layout-check's midword rule (src/js/90-layout-audit.js §7), which measures the real
+# line boxes in the browser and can't be reused from Python: here a word is too long, or two words glued with no break point.
+TITLE_TOKEN_MAX = 12   # EDIT: longest plain word that still fits a Plan/Board cell at 640×360 and 200 % text (owner rule; the 13–14-letter X1 chapter words still fit today with CI green — reported, not retitled)
+TOKEN_SPLIT_RE = re.compile(r"[\s\-\u2010\u2013\u2014]+")   # the browser may break at whitespace and at - ‐ – —
+TOKEN_STRIP = "()[]{}<>\"'`‘’“”«»,;:!?.…*·→←↔"
+JOINED_RE = re.compile(r"[^\W\d_]+[/._+\\:@＠=]+(?=[^\W\d_])|[a-z][A-Z]")   # ≥ 2 letter-runs glued by / . _ + \ : @ ＠ =, or a camelCase hump
+NUMBER_RE = re.compile(r"^v?\d+(?:[.,:/x×]\d+)*[a-z]?%?$", re.I)          # 1abe465 is not a number but is short; 640x360, v21, 1.5, 22:30
 DBG = False
 
 
@@ -84,8 +97,12 @@ def load_refs():
     for p in sorted(DOCS.rglob("*-draft*.md")):
         head = "\n".join(p.read_text(encoding="utf-8").splitlines()[:12])
         drafts.append((p.name, sorted(set(DRAFT_ID_RE.findall(head)))))
-    dbg(f"refs: {len(dec)} D-ids, T-ids {sorted(chk)}, {len(prompts)} prompts, drafts {drafts}")
-    return {"dec": dec, "chk": chk, "prompts": prompts, "dec_rows": rows, "drafts": drafts}
+    gp = DOCS / "claude" / "GLOSSARY.md"   # optional: the Dispatcher's selftest clone (tools/dispatch/desk.py) has no GLOSSARY
+    gloss_txt = gp.read_text(encoding="utf-8") if gp.exists() else ""
+    gloss = {g.strip().strip(TOKEN_STRIP).strip().lower() for g in re.findall(r"\*\*([^*\n]+)\*\*", gloss_txt) + re.findall(r"`([^`\n]+)`", gloss_txt)}
+    gloss.discard("")
+    dbg(f"refs: {len(dec)} D-ids, T-ids {sorted(chk)}, {len(prompts)} prompts, drafts {drafts}, {len(gloss)} glossary terms")
+    return {"dec": dec, "chk": chk, "prompts": prompts, "dec_rows": rows, "drafts": drafts, "gloss": gloss}
 
 
 def row_date(txt):
@@ -113,6 +130,37 @@ def check_refs(doc, refs):
             if row and name not in row[1]:
                 E.append(f"draft {name}: proposes {d}, but DECISIONS {d} is another decision — renumber the draft to the next free id")
     return E, W
+
+
+def title_tokens(text, gloss):
+    """W-title-token: the words of `text` that may split mid-word on the progress Plan/Board (see TITLE_TOKEN_MAX)."""
+    out = []
+    for raw in TOKEN_SPLIT_RE.split(str(text or "")):
+        tok = raw.strip(TOKEN_STRIP)
+        if not tok or tok.lower() in gloss or NUMBER_RE.match(tok):
+            continue
+        if len(tok) > TITLE_TOKEN_MAX:
+            out.append(f"`{tok}` ({len(tok)} chars > {TITLE_TOKEN_MAX})")
+        elif JOINED_RE.search(tok):
+            out.append(f"`{tok}` (joined word)")
+    return list(dict.fromkeys(out))
+
+
+def check_titles(doc, refs, todo=False):
+    """TTG: warn on title/chat words that may break mid-word on #progress=plan/board; `todo` (--todo-tokens) also checks to-do lines,
+    folded into one warning per step (they only show on the step page, ul.tr-todo, which the midword audit doesn't check)."""
+    W, gloss = [], refs.get("gloss", set())
+    for s in doc.get("steps", []):
+        sid = s.get("id", "?")
+        for k in ("title", "chat"):
+            for x in title_tokens(s.get(k), gloss):
+                W.append(f"{sid}: W-title-token {k} word {x} may break mid-word on the progress Plan/Board (640×360, 125–200 % text) — use plain words")
+        todo_lines = s.get("todo") if isinstance(s.get("todo"), list) else []   # a non-list todo is already an error in check()
+        if todo:
+            hits = list(dict.fromkeys(x for line in todo_lines if isinstance(line, str) for x in title_tokens(line, gloss)))
+            if hits:
+                W.append(f"{sid}: W-title-token {len(hits)} to-do word(s) may break mid-word on the step page: {', '.join(hits)}")
+    return W
 
 
 def read_lock():
@@ -174,7 +222,7 @@ def parity():
     return [f"app: TR_RULES.{k} {r.get(k)} ≠ check.py {v}" for k, v in want.items() if r.get(k) != v]
 
 
-def check(doc, refs, only=None, lock=(None, None), now=None):
+def check(doc, refs, only=None, lock=(None, None), now=None, todo_tokens=False):
     E, W = [], []
     steps = doc.get("steps", [])
     owner, collab = doc.get("owner"), doc.get("collaborator")
@@ -308,7 +356,7 @@ def check(doc, refs, only=None, lock=(None, None), now=None):
     E2, W2 = check_w2(doc)
     E3, W3 = check_refs(doc, refs)
     E4, W4 = check_surface(doc)
-    E2, W2 = E2 + E3 + E4, W2 + W3 + W4
+    E2, W2 = E2 + E3 + E4, W2 + W3 + W4 + check_titles(doc, refs, todo_tokens)
     if only:
         E2 = [x for x in E2 if x.startswith(only + ":")]
         W2 = [x for x in W2 if x.startswith(only + ":")]
@@ -1108,8 +1156,33 @@ def selftest(refs):
             hit = any(want in x for x in E)
         ok += hit
         print(("PASS " if hit else "FAIL ") + name + ("" if hit else f"  E={E} W={W}"))
-    # W2: the scheduler on a known file gives the known plan, and the app's trPlan gives the same (node)
     n = len(cases)
+    # TTG W-title-token: real cases. The CIR2 title as first pushed split "json" on progress-plan at 640x360 in CI (layout-check midword).
+    # Not a title word: "Coderuns" in that CI log is the .nm row text joining the [Code] tag + the hidden "runs in Code" label + the
+    # title — no title ever contains it, so don't test for it.
+    tg = {"gloss": {"steps.json"}}
+    cir2_old = "CI fix — main red on 1abe465 (card check: content/E/sources.json out of date)"
+    tcases = [
+        ("title token: CIR2 old title fires", lambda: any("`content/E/sources.json`" in w and "W-title-token" in w
+                                                          for w in check_titles({"steps": [{"id": "CIR2", "title": cir2_old}]}, tg))),
+        ("title token: CIR2 plain retitle quiet", lambda: not check_titles({"steps": [{"id": "CIR2", "chat": "Bio · Fix · CI red 1abe465",
+                                                          "title": "CI fix — main red on 1abe465 (card check: sources list missed D-107)"}]}, tg)),
+        ("title token: glossary term exempt", lambda: not title_tokens("read `steps.json` first", tg["gloss"]) and title_tokens("read map.json first", tg["gloss"])),
+        ("title token: camelCase hump fires", lambda: title_tokens("mirror of trPlan in the app", tg["gloss"]) == ["`trPlan` (joined word)"]),
+        ("title token: long word fires, hyphen splits, numbers exempt", lambda: title_tokens("gametogenesis", {}) and not title_tokens(
+                                                          "mid-word break-point-free 640x360 v21 1.5 X1.02 (U3b) [Code]", {})),
+        ("title token: to-do lines only with --todo-tokens, one warning per step", lambda: (
+            not check_titles({"steps": [{"id": "Z", "title": "z", "todo": ["fix a/b", "fix c.d"]}]}, tg)
+            and len(check_titles({"steps": [{"id": "Z", "title": "z", "todo": ["fix a/b", "fix c.d"]}]}, tg, todo=True)) == 1)),
+        ("title token: warning only, never an error", lambda: (lambda EW: not EW[0] and any("W-title-token" in w for w in EW[1]))(
+            check(dict(copy.deepcopy(good), steps=[dict(copy.deepcopy(good["steps"][0]), title=cir2_old, unblocks=[])]), dict(refs, gloss=set())))),
+    ]
+    for name, fn in tcases:
+        n += 1
+        hit = bool(fn())
+        ok += hit
+        print(("PASS " if hit else "FAIL ") + name)
+    # W2: the scheduler on a known file gives the known plan, and the app's trPlan gives the same (node)
     fx = json.loads((ROOT / "tools" / "tracker" / "plan-fixture.json").read_text(encoding="utf-8"))
     got = plan(fx["doc"], fx["today"])
     for k, v in fx["expect"].items():
@@ -1180,6 +1253,7 @@ def main():
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--json", action="store_true", help="print {errors, warnings} as JSON (with --next: the plan as JSON)")
     ap.add_argument("--next", action="store_true", help="W2: print the schedule (rows, critical path, ranked inputs); with --write also STATUS § Next auto block")
+    ap.add_argument("--todo-tokens", action="store_true", help="TTG: also warn on to-do words that may break mid-word (one warning per step)")
     ap.add_argument("--today", help="W2: plan from this date (YYYY-MM-DD, default today IST)")
     a = ap.parse_args()
     DBG = a.debug
@@ -1215,7 +1289,7 @@ def main():
         print(f"FAIL: no step `{a.only}`")
         return 1
     lock = read_lock()
-    E, W = check(doc, refs, a.only, lock)
+    E, W = check(doc, refs, a.only, lock, todo_tokens=a.todo_tokens)
     E += parity()
     if a.preview and not E:
         preview(doc, lock)
