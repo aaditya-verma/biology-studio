@@ -2647,6 +2647,26 @@
    "est": {"chats": 1},
    "runs": [{"chat": "Bio · Fix · CI red 1abe465", "by": "Aaditya", "start": "2026-11-26 19:34", "outcome": "done", "note": "route A (Claude Code, laptop clone); start HEAD 1abe465; CI run 45832628617 red at Card check (C3, E-sources) — cause ea47ca7; fix 4b64bfe; run 45835609388 then red at Layout check (41 midword, this row's title) — retitled; no check loosened, no timeout change; CI run 45846979140 on baca82a green (44 min)", "end": "2026-11-26 21:28"}],
    "run": {"on": "Code", "why": "takes the build lock: changes derived content data, runs the checks, pushes"}
+  },
+  {
+   "id": "TTG",
+   "title": "Tracker warning for step titles that would break mid-word on the progress map",
+   "type": "Fix",
+   "chat": "Bio · Fix · title guard",
+   "status": "in progress",
+   "needs": [],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "open"},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": "—",
+   "todo": [],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · title guard", "by": "Aaditya", "start": "2026-11-27 04:38", "outcome": "partial", "note": "route A (Claude Code, cloud clone of main, lock lane D-105); open run; start HEAD 0e92816; P1F GPU lane open in the laptop clone — not touched"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes the tracker check, runs the checks, pushes"}
   }
  ]
 }
