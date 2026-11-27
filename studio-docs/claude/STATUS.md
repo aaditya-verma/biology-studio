@@ -76,12 +76,12 @@
 ## Next (in order)
 <!-- next:auto -->
 Schedule (auto · check.py --next · est. from 27 Nov; order fixed, dates move):
-- Lock: W6 [Code] ~28 Nov next → V4 [Code] ~28 Nov → SR2 [Code] ~28 Nov → M1V8 [Code] ~28 Nov
+- Lock: W6 [Code] ~28 Nov (slipped) now → V4 [Code] ~28 Nov next → SR2 [Code] ~28 Nov → M1V8 [Code] ~28 Nov → R1 [Code] ~29 Nov
 - You (no lock): M1·T1 [Cowork] ~27 Nov now → H1·T5 [Cowork] ~27 Nov now → H2·T10 [Cowork] ~27 Nov now → +9 more now → V3·T8b [Cowork] ~28 Nov next → U2·T13b [Cowork] ~28 Nov → SR1·T14 [Cowork] ~28 Nov → U3b·T13c [Cowork] ~28 Nov
 - Critical path: GATE (ends ~4 Dec)
 - Your inputs first: T2 (unblocks 47) · H1.q4 (unblocks 46) · T5 (unblocks 46)
-- Run in: W6 → Code (takes the build lock: changes app or tools, runs the checks, pushes)
-- Lock: free
+- Run in: V4 → Code (takes the build lock: changes app or tools, runs the checks, pushes)
+- Lock: Aaditya · Bio · Build · W6 desk · 27 Nov 2026, 11:31 IST (scheduled run, laptop clone, route B)
 <!-- /next:auto -->
 1. You: **T9** (~25 min, lessons + Today + Mixed review; + 2 min tomorrow) with **L2.q1** (D-070), **L2.q2**. **T10 part A** (~15 min: labels `review` + `fixing` first, **H2.q1**) → send Komal the welcome message (**H2.q3**). **T3d A + B** (~25 min). **22 Nov:** T7 step 8 deck (**L1.q2**) and **T7b** → L1 + L1F done. Answer **M1b.q10** when you can (before P1).
 2. **U2** — `Bio · Build · U2 look tokens` [Code] (prompt: master plan §13; T13 passed), then **SR1** — `Bio · Build · SR1 sources menu` [Code] (prompt in §13; SR1.q1: stays before U3), then **U3** (U1 look), then **M1V8** — `Bio · Build · M1b v8 install` (prompt in §13). All take the lock; the U2 and M1V8 prompts carry the start, dependency, pipeline and scheduling checks. You first or alongside: **T8b** (~15 min, trace drill on phone, tablet, laptop) + **V3.q1**. No lock, any time: **X1 Ch 21** [Cowork] — `Bio · Research · X1 Ch 21` (prompt in master plan §13; last chapter, 5 short sections); rename the book PDF in `references\` first, X1.13.q2); **P1 S1E01** — `Bio · Episode · S1E01` (after M1b.q10; may run alongside v8).
