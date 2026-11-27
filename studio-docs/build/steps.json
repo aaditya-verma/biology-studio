@@ -1428,10 +1428,14 @@
     "Idea-break mix: ≥ 300 ms room tone, music ducked or sustained (never a cadence; only segment ends resolve), no mid-phrase cut on pause",
     "tools/episode/render_check.py: MM1–MM8 (playbook §2) on the final render + mix, result into the manifest; G-Learn checks the coded MM list (R1 does the sign-off on the final)",
     "Renditions per D-024 + manifest writer (H7: scene hash, tool + version, GPU, settings, seed, voice version, word timings + label onsets); never overwrite a published file",
-    "Each tool takes --selftest (synthetic fixtures under tools/episode/fixtures/, no real audio/video in the repo) and runs in CI; --dry-run, --debug, --only, --preview (I5)"
+    "Each tool takes --selftest (synthetic fixtures under tools/episode/fixtures/, no real audio/video in the repo) and runs in CI; --dry-run, --debug, --only, --preview (I5)",
+    "Timing extractor (TTS word timings or a free local forced aligner) → manifest; --selftest (R1 measures it)",
+    "Inventory every tool R1 runs (Parler voice runner from apps/venv-parler, shot render, NVENC assemble, captions, F: copy + hash check): build what is missing, or flag it to the owner",
+    "If T4 part A + P1.q2 are answered by then: apply that wording in tools/episode/s1e01_data.py (+ rebuild) and close the V-need code in tools/s1e01-animatic + tools/m1b-host; else a lock-lane Fix before R1"
    ],
    "inputs": [],
    "est": {"chats": 1},
+   "runs": [],
    "run": {"on": "Code", "why": "takes the build lock: changes app or tools, runs the checks, pushes"}
   },
   {
@@ -1445,16 +1449,17 @@
    "lock": false,
    "gates": {"G-Eng": "open", "G-A11y": "open", "G-Learn": "open"},
    "check": null,
-   "decisions": ["D-014", "D-024", "D-045", "D-107", "D-105", "D-110"],
+   "decisions": ["D-014", "D-024", "D-045", "D-105", "D-107", "D-110"],
    "prompt": "R1 render",
    "log": "—",
    "todo": [
     "Owner check T4 moved to L3 (player) — R1 QC is G-Eng + G-A11y (D-047)",
     "S1E01 voice = V-d Indic Parler-TTS speaker Thoma (owner pick 27 Nov 2026, D-045): run from apps/venv-parler on the fp16 copy, fixed description + seed; listen for dropped words and respell any wrong term in the voice text",
-    "Word timings + label onsets into the R1T manifest (H7) — TTS timings or a free local forced aligner; pick one and Measure it (C4)",
+    "Word timings + label onsets: run R1T's timing extractor (TTS timings or a free local forced aligner) and Measure it (C4)",
     "GPU lane, no lock (D-105, D-110 b): laptop clone, route B; touches only content/E/episodes + render outputs; uses the R1T tools (render_check.py, mix, chapters.vtt, renditions + manifest) — a tool change → stop and hand it to a lock-lane Fix",
     "GPU-step start checks (D-110 d; any fail → stop): Get-PhysicalDisk HealthStatus Healthy; D: free space ≥ 30 GB (state the actual figure); git fsck clean on the laptop clone; GPU idle (nvidia-smi)",
-    "End duty (D-110 d, H7): copy render outputs + manifest to F: and verify sizes/hashes"
+    "End duty (D-110 d, H7): copy render outputs + manifest to F: and verify sizes/hashes",
+    "Wording (T4 part A, P1.q2) and V-need code (tools/episode/s1e01_data.py, tools/s1e01-animatic, tools/m1b-host) go in through the lock lane (R1T if T4 is answered by then, else a lock-lane Fix) before R1 starts; R1 only lists which V-needs stay stubs"
    ],
    "inputs": [],
    "uses": ["gpu"],
@@ -1824,7 +1829,7 @@
     "block-scan the whole repo tree. Corruption predates the crash, so other committed files may be bad",
     "Runs first in the lock lane after W6 (D-110 a, c): keeps the lock (installs its kit into tools/m1b-host), laptop clone, route B, sync line ends --lock-ok",
     "GPU-step start checks (D-110 d; any fail → stop): Get-PhysicalDisk HealthStatus Healthy; D: free space ≥ 30 GB (state the actual figure); git fsck clean on the laptop clone; GPU idle (nvidia-smi)",
-    "End duty (D-110 d, H7): copy render outputs + manifest to F: and verify sizes/hashes"
+    "End duty (D-110 d, H7): copy any render outputs (+ manifest if written) to F: and verify sizes/hashes"
    ],
    "inputs": [],
    "uses": ["gpu"],
@@ -2729,14 +2734,15 @@
    "needs": [],
    "unblocks": [],
    "lock": true,
-   "gates": {"G-Eng": "open"},
+   "gates": {"G-Eng": "pass"},
    "check": null,
    "decisions": ["D-105", "D-110"],
    "prompt": null,
    "log": "—",
    "todo": [
     "Owner answers 28 Nov 2026, 00:37 IST (Bio · Ideation · local first) → D-110 (a–d): queue GPU first, R1 lock split (new R1T), M1V8 keeps the lock, D: drive cleared + GPU-step start checks; docs + steps.json only",
-    "Owner list after GPF: T4 part A + P1.q2 (~6 min), then T1 (pick O/V/E, D-045) — R1 can't start without them"
+    "Owner list after GPF: T4 part A + P1.q2 (~6 min), then T1 (pick O/V/E, D-045) — R1 can't start without them",
+    "G-Eng (fresh reviewer agent, 28 Nov): PASS WITH FIXES — MUST 1 (R1 prompt edited tools for wording + V-needs) fixed: that code goes through the lock lane (R1T or a Fix), R1T gains timing extractor + tool inventory; SHOULD 2–5 fixed (I8 lane list + M1V8 exception, R1 build-log line allowed, timings extractor → R1T, R1T laptop fallback only with no GPU run open); NIT 6–9 fixed"
    ],
    "inputs": [
     {"kind": "decide", "asked_in": "Bio · Ideation · local first", "asked": "2026-11-28", "status": "answered", "d": "D-110", "id": "GPF.q1", "ask": "Lane order: GPU first, or keep the app rows ahead of the video track?", "answer": "(a) GPU first: queue … W6, M1V8, R1T, V4, SR2, FA, L3, GATE, K3, K4, W5b; R1 runs on the GPU lane as soon as T4 part A, T1 and R1T clear, alongside V4/SR2 · by Aaditya, 28 Nov 2026, 00:37 IST (`Bio · Ideation · local first`)"},
