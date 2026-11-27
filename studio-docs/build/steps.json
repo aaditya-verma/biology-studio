@@ -1419,11 +1419,12 @@
    "lock": true,
    "gates": {"G-Eng": "open", "G-A11y": "open", "G-Learn": "open"},
    "check": null,
-   "decisions": ["D-014", "D-024", "D-107"],
+   "decisions": ["D-014", "D-024", "D-045", "D-107"],
    "prompt": "R1 render",
    "log": "—",
    "todo": [
     "Owner check T4 moved to L3 (player) — R1 QC is G-Eng + G-A11y (D-047)",
+    "S1E01 voice = V-d Indic Parler-TTS speaker Thoma (owner pick 27 Nov 2026, D-045): run from apps/venv-parler on the fp16 copy, fixed description + seed; listen for dropped words and respell any wrong term in the voice text",
     "chapters.vtt from ideas[] (+ idea list in the YouTube description) (D-107)",
     "Idea-break mix: ≥ 300 ms room tone, music ducked or sustained (never a cadence; only segment ends resolve), no mid-phrase cut on pause",
     "Word timings + label onsets in the manifest (H7) — TTS timings or a free local forced aligner; pick one and Measure it (C4)",
