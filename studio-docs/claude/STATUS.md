@@ -3,7 +3,7 @@
 *(Purpose: now · next · lock — nothing else (D-040). Every step's status, blocks, pendencies and what you owe: `build/steps.json`, drawn at https://aaditya-verma.github.io/biology-studio/#progress. Finished work: `logs/build-log.md`. Updated: 28 Nov 2026 · Bio · Fix · GPU first (D-110; STATUS cut to one screen — the old Now lines are in the build log). Before: 27 Nov 2026 · Bio · Build · W6 desk.)*
 
 ## Lock
-- Build lock: free since 28 Nov 2026, 01:50 IST (released by `Bio · Fix · GPU first` after CI green on a1e6f7f; cloud clone, route A).
+- Build lock: Aaditya · Bio · Build · M1b v8 install · 28 Nov 2026, 03:01 IST (laptop clone, route B, lock lane + GPU)
 
 ## Now
 - **GPU first — D-110** (28 Nov, `Bio · Fix · GPU first`, route A, docs + steps.json): lock lane after W6 = **M1V8 → R1T → V4 → SR2 → FA → L3**; new **R1T** builds R1's tools (render check, mix, chapters, renditions) in the cloud; **R1** renders on the GPU lane with no lock once T4 part A, T1 and R1T clear. D: drive cleared — GPU steps start with disk-health, D: ≥ 30 GB, git fsck and GPU-idle checks.

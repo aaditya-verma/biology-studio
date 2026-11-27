@@ -1813,7 +1813,7 @@
    "title": "M1b v8 install — host look pass",
    "type": "Build",
    "chat": "Bio · Build · M1b v8 install",
-   "status": "ready",
+   "status": "in progress",
    "needs": ["M1b"],
    "unblocks": [],
    "lock": true,
@@ -1834,7 +1834,7 @@
    "inputs": [],
    "uses": ["gpu"],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · W5 dispatcher", "by": "Aaditya", "start": "2026-11-24 20:54", "outcome": "partial", "note": "to-do only: sheet2d.py retired (owner); no render, no gate; route B", "end": "2026-11-24 20:55"}],
+   "runs": [{"chat": "Bio · Build · W5 dispatcher", "by": "Aaditya", "start": "2026-11-24 20:54", "outcome": "partial", "note": "to-do only: sheet2d.py retired (owner); no render, no gate; route B", "end": "2026-11-24 20:55"}, {"chat": "Bio · Build · M1b v8 install", "by": "Aaditya", "start": "2026-11-28 03:01", "outcome": "partial", "note": "route B (Claude Code, laptop clone, lock lane + GPU lane, D-110); open run; start HEAD 5134b48; drive + GPU checks: 3 disks Healthy, D: 340.85 GB free, GPU idle (P8, 4 %); git fsck first failed (missing blob e25abde9 = old steps.json in pre-repair commit abfd4a5, held only by refs/backup/w6-before-repair + reflog, never on main/origin) — owner OK'd removal: ref deleted, reflog expired, gc --prune=now, fsck clean; owner asked for auto sync (chat runs sync.bat itself)"}],
    "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
