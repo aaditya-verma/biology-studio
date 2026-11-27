@@ -715,6 +715,23 @@ html.dev-tl .tr-pside,html.dev-d .tr-pside{grid-template-columns:repeat(2,minmax
 .tr-runs{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .tr-run{flex-wrap:wrap;gap:4px 10px;align-items:baseline} .tr-run .nm{flex:1 1 12em;min-width:0;overflow-wrap:anywhere}
 .tr-pcal{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+/* W6 (D-099 a): a tentative Plan cell (agreed, not scoped yet) — a dashed left rule + the word "tentative" (never the dash alone, H5); on the critical path the rule stays ink */
+.tr-pi.tent{border-left:4px dashed var(--line-strong);padding-left:8px;border-radius:0 var(--r-sm) var(--r-sm) 0}
+.tr-pi.tent.crit{border-left-color:var(--ink)}
+.tr-tent{margin-left:4px;vertical-align:baseline}
+
+/* Desk tab (W6, D-099 d, D-101): #progress=desk — the Dispatcher's snapshot. Phone: one column; phone landscape + tablet: 2; desktop + wide tablet landscape: 3.
+   The snapshot card spans the row. Stale / offline / failing are words in badges and banners, never colour alone (H5). */
+.tr-dk>.tr-dk-snap{margin:0 0 var(--gap)}   /* G-Art r1: the sections flow in columns (masonry), not a grid with blank gutters under short cards */
+.tr-dk-cols{columns:1;column-gap:var(--gap)}
+html.dev-pl .tr-dk-cols,html.dev-tp .tr-dk-cols,html.dev-tl .tr-dk-cols{columns:2}
+html.dev-d .tr-dk-cols{columns:3}
+@media (min-width:1200px){html.dev-tl .tr-dk-cols{columns:3}}
+.tr-dk-cols>.tr-dks{break-inside:avoid;margin:0 0 var(--gap)}
+.tr-dks{min-width:0} .tr-dks h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 4px}
+.tr-dks .banner{margin:8px 0 0}
+.tr-dkc{list-style:none;padding:0;margin:0;display:grid;gap:6px} .tr-dkc li{min-width:0;overflow-wrap:anywhere}
+.tr-dk .tr-pmore>summary::before{content:'▸' / '';flex:none;width:1em;margin-right:6px;color:var(--muted);font-weight:700} .tr-dk .tr-pmore[open]>summary::before{content:'▾' / ''}   /* G-A11y W6: folded lists show they open, as .ln-more */
 
 /* ---------- L1 learning core: #cards · #card=<id> · #deck (design plan §2 Card row, §4.8; RULES C13, H5) ---------- */
 /* EDIT: card layout per class — phone: 3D on top, text below · phone landscape: 3D │ text · tablet portrait: 3D on top, text at reading width ·
@@ -1196,3 +1213,6 @@ html.big-text .nav [data-nav="res"] .nl{font-size:.76em}
 .nav [data-nav="res"] .nl,html.big-text .nav [data-nav="res"] .nl{font-size:min(var(--fs-xs),17px);letter-spacing:-.01em;hyphens:manual;-webkit-hyphens:manual;word-break:normal;overflow-wrap:normal}
 html.dev-tp .res-tools-mk,html.dev-tl .res-tools-mk,html.dev-d .res-tools-mk{grid-template-columns:repeat(auto-fill,minmax(14em,1fr))}
 .res-tool b{overflow-wrap:anywhere}
+
+/* W6: a narrow tablet window (< 700 px, D-087) — the Desk tab goes one column too (add-only, after the D-087 block above) */
+@media (max-width:699px){html.dev-tp .tr-dk-cols{columns:1}}

@@ -55,6 +55,7 @@ SCREENS = {
     "viewer-2": "scene=sc-E00.01.02", "viewer-noto": "scene=sc-E05.02.01&day=17",   # U3b: every scene at its start view (framing, labels off the model)
     "studio": "studio", "studio-card": "studio=E05.01.01", "studio-learn": "studio=E05.01.01&gate=G-Learn", "calib": "calib",
     "progress": "progress", "progress-board": "progress=board", "progress-plan": "progress=plan", "progress-inputs": "progress=inputs",
+    "progress-desk": "progress=desk&desk=fresh", "progress-desk-stale": "progress=desk&desk=stale", "progress-desk-empty": "progress=desk&desk=empty",   # W6 Desk tab on the demo snapshots (tools/layout-check/fixtures/desk-*.json; never the network)
     "step": "step=C1", "step-blocked": "step=P1", "step-idea": "step=IB01",
     "cards": "cards", "card": "card=E05.01.01", "card-noto": "card=E05.02.01", "card-guide": "card=E00.01.06", "card-clin": "card=E05.05.01", "deck": "deck",
     # L2 lessons, Today plans, Mixed review (D-070)

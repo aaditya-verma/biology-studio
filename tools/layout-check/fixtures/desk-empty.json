@@ -1,0 +1,31 @@
+{
+ "_note": "Demo snapshot for layout-check and testing mode (#progress=desk&desk=empty, W6). Copied from desk-data on 27 Nov 2026; _age_h sets generated_at relative to now.",
+ "_age_h": null,
+ "schema": 1,
+ "generated_at": null,
+ "stale_after_h": 6,
+ "source": null,
+ "now": null,
+ "lock": null,
+ "next": null,
+ "inputs": null,
+ "running": null,
+ "slips": null,
+ "ci": null,
+ "checks": null,
+ "pipeline": null,
+ "answers": null,
+ "reasons": {
+  "now": "the Dispatcher could not read it (demo)",
+  "lock": "the Dispatcher could not read it (demo)",
+  "next": "the Dispatcher could not read it (demo)",
+  "inputs": "the Dispatcher could not read it (demo)",
+  "running": "the Dispatcher could not read it (demo)",
+  "slips": "the Dispatcher could not read it (demo)",
+  "ci": "the Dispatcher could not read it (demo)",
+  "checks": "the Dispatcher could not read it (demo)",
+  "pipeline": "the Dispatcher could not read it (demo)",
+  "answers": "the Dispatcher could not read it (demo)",
+  "generated_at": "demo: an empty snapshot"
+ }
+}

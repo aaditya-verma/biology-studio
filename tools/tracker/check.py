@@ -60,6 +60,7 @@ INPUT_STATES = ["open", "answered", "closed"]
 MET = {"done", "owner check"}            # a need counts as met when the needed step is done or only waits on the owner's check
 STARTED = {"ready", "in progress", "gates", "owner check", "done"}
 STEP_KEYS = ["id", "title", "type", "chat", "status", "needs", "unblocks", "lock", "gates", "check", "decisions", "prompt", "log", "todo", "inputs"]
+TENTATIVE = "tentative"   # EDIT (D-099 a, W6): todo line 1 of a step agreed but not yet scoped starts with this (any case, as desk.py); the Plan shows it as tentative (17-tracker.js trTent)
 OPTIONAL = ["size", "proposed_by", "proposed_status", "proposed_on", "note", "uses", "est", "produces", "consumes", "runs", "improves", "run"]
 LOCK_MAX_H = 24
 # EDIT: approval rule (D-076) — rows dated on/after this day are checked; words that mark an owner approval in a DECISIONS row
@@ -314,6 +315,11 @@ def check(doc, refs, only=None, lock=(None, None), now=None, todo_tokens=False):
                 ee(f"decision `{x['d']}` not in claude/DECISIONS.md")
             if x.get("status") in ("answered", "closed") and not x.get("answer"):
                 ee("answered/closed input needs its `answer`")
+        td = s.get("todo") if isinstance(s.get("todo"), list) else []
+        if td and str(td[0]).lower().startswith(TENTATIVE) and s.get("lock") is True and not s.get("prompt"):   # W6 (D-099 a): no lock before the prompt exists
+            rs = s.get("runs")   # G-Eng W6: runs may be null (allowed below); an open run = start and no end, as plan() and desk.py
+            if isinstance(rs, list) and any(isinstance(r, dict) and r.get("start") and not r.get("end") for r in rs):
+                e("tentative row has an open run on a lock step but no ready prompt — write its prompt in master plan §13 and set `prompt` first, or close the run (D-099)")
         st = s.get("status")
         unmet = [n for n in needs if n in by and by[n].get("status") not in MET]
         if st in STARTED and unmet:
@@ -1058,6 +1064,12 @@ def selftest(refs):
         ("run unknown field", lambda d: d["steps"][0]["runs"][0].__setitem__("mood", "ok"), "unknown field `mood`"),
         ("run bad chat", lambda d: d["steps"][0]["runs"][0].__setitem__("chat", "my chat"), "chat must be"),
         ("run ends first", lambda d: d["steps"][0]["runs"][0].update(start="2026-11-19", end="2026-11-18"), "ends before it starts"),
+        ("tentative lock step, open run, no prompt", lambda d: d["steps"][1].update(todo=["Tentative — firm up when its prompt is written"], runs=[{"chat": "Bio · Build · V1", "by": "Aaditya", "start": "2026-11-19", "outcome": "partial"}]), "tentative row has an open run"),
+        ("tentative lock step, runs null = no crash", lambda d: d["steps"][1].update(todo=["Tentative — firm up when its prompt is written"], runs=None), None),
+        ("tentative lock step, run without start = not open", lambda d: d["steps"][1].update(todo=["Tentative — firm up when its prompt is written"], runs=[{"chat": "Bio · Build · V1", "by": "Aaditya", "outcome": "partial"}]), "`start` missing"),   # caught by the run rules; not an open run for D-099
+        ("tentative lock step, open run, prompt set = ok", lambda d: d["steps"][1].update(todo=["Tentative — firm up when its prompt is written"], prompt=next(iter(sorted(refs["prompts"])), "X"), runs=[{"chat": "Bio · Build · V1", "by": "Aaditya", "start": "2026-11-19", "outcome": "partial"}]), None),
+        ("tentative lock step, no open run = ok", lambda d: d["steps"][1].update(todo=["Tentative — firm up when its prompt is written"]), None),
+        ("tentative no-lock step, open run = ok", lambda d: d["steps"][1].update(lock=False, run={"on": "Code", "why": "lock"}, todo=["Tentative — firm up when its prompt is written"], runs=[{"chat": "Bio · Build · V1", "by": "Aaditya", "start": "2026-11-19", "outcome": "partial"}]), "W:no surface rule matches"),   # lock off: only the usual no-rule warning (run= keeps the surface quiet), no tentative error
         ("started, no runs = warning", lambda d: d["steps"][0].pop("runs"), "W:no `runs`"),
         ("approval, no step = warning", ("REFS", lambda r: r.update(dec_rows={"D-002": ("1 Jan 2099", " owner approved the look |")})), "W:owner approval with no step"),
         ("approval named on a step", ("REFS", lambda r: r.update(dec_rows={"D-001": ("1 Jan 2099", " owner approved |")})), None),

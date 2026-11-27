@@ -6,7 +6,7 @@ const CONFIG={
   idb:{name:'biostudio',ver:1,stores:['state','answers','files']},   // D-019; add stores only (A1)
   saveDelayMs:400,                            // debounce between a change and the write
   saveLogMax:20,
-  keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash',dockFold:'biostudio.dockfold'},   // dockFold (D-087): Back dock folded on this device
+  keys:{theme:'biostudio.theme',slog:'biostudio.savelog',flags:'biostudio.flags',stash:'biostudio.stash',dockFold:'biostudio.dockfold',desk:'biostudio.desk'},   // dockFold (D-087): Back dock folded on this device
   nav:['today','cards','map','scene','res','settings'],   // EDIT: order of the main nav (SR1, D-098: Resources before Settings — in the More sheet on phone portrait)
   navBar:['today','cards','map','scene'],     // EDIT (U2, D-077): the phone-portrait floating bar = these 4 + More; every other item goes in the More sheet
   navTest:['studio','progress'],                      // EDIT: nav items shown only in testing mode (S1 Studio, W1 progress map — #progress still opens without it)
@@ -40,7 +40,10 @@ const CONFIG={
   // EDIT: progress map (W1, D-040) — read live from the deployed repo (GitHub Pages serves the repo root; .nojekyll keeps .md raw)
   tracker:{
     steps:'studio-docs/build/steps.json', status:'studio-docs/claude/STATUS.md', plan:'studio-docs/build/master-plan.md', backlog:'studio-docs/build/ideas-backlog.md',
-    repo:'https://github.com/aaditya-verma/biology-studio/blob/main/'   // EDIT: links to D-ids, checklist (open in GitHub)
+    repo:'https://github.com/aaditya-verma/biology-studio/blob/main/',   // EDIT: links to D-ids, checklist (open in GitHub)
+    desk:'https://raw.githubusercontent.com/aaditya-verma/biology-studio/desk-data/build/desk.json',   // EDIT (W6, D-101): the Dispatcher's snapshot — fetched when the Desk tab opens (W6.q3)
+    deskFx:'tools/layout-check/fixtures/desk-%s.json', deskFxs:['fresh','stale','empty'],   // testing mode only: #progress=desk&desk=stale (layout-check)
+    deskStaleH:6, deskRefetchMin:10, deskTimeoutS:10   // stale after this many hours unless the snapshot says otherwise; fetch again when the tab opens after N min; give up (→ saved copy, CONFIG.keys.desk) after N s
   },
   // EDIT: cards + Studio (S1; docs/card-spec.md). Studio is testing mode only (?test=1) — nothing it does is saved; export the JSON and commit it.
   cards:{

@@ -1,7 +1,7 @@
-/* Biology Studio — progress map (W1, D-040) + scheduler view (W2, D-063): #progress (Map) · #progress=board · #progress=plan · #progress=inputs · #step=<id>.
+/* Biology Studio — progress map (W1, D-040) + scheduler view (W2, D-063) + Desk tab (W6, D-099/D-101): #progress (Map) · #progress=board · #progress=plan · #progress=inputs · #progress=desk · #step=<id>.
    Plan maths: src/js/17-plan.js trPlan() (pure, same as tools/tracker/check.py plan()).
    Owner doc for the data: studio-docs/build/steps.json (format: tools/tracker/README.md); layouts: build/design-plan.md §2 (progress rows).
-   Reads live from the deployed repo (GitHub Pages): steps.json, STATUS.md (§ Lock), master-plan.md (§13 ready prompts), ideas-backlog.md.
+   Reads live from the deployed repo (GitHub Pages): steps.json, STATUS.md (§ Lock), master-plan.md (§13 ready prompts), ideas-backlog.md; Desk also reads desk.json from branch desk-data (raw.githubusercontent.com).
    Nothing here saves; the page only reads. Rules mirror tools/tracker/check.py (TR_RULES is compared by `check.py`; keep them in step).
    Debug: ?debug=tracker (overlay line + a Debug section with load times, depths and the in-page rule check). ✎ points at steps.json rows.
    EDIT: words in STR.tr, paths in CONFIG.tracker, status looks in app.css § 9 (.st-*), sizes in TR_SIZE. */
@@ -83,9 +83,9 @@ const trEdit=(id,what)=>editBtn('step',id,'studio-docs/build/steps.json (row '+i
 const trGh=p=>CONFIG.tracker.repo+p;
 function trHead(view){const T=STR.tr,n=TR.D?trInputs().length:0,L=TR.lock;
   const lock=L.text?`<p class="banner tr-lock${L.h>24?' bad':''}">${esc(T.lockHeld(L.text))}${L.h!=null?' · '+esc(T.ago(L.h)):''}${L.h>24?' · <b>'+esc(T.lockOld)+'</b>':''}</p>`:`<p class="sm mut tr-lock">${esc(T.lockFree)}</p>`;
-  return `<div class="tr-head"><h1>${esc(T.title)}</h1><div class="seg" role="group" aria-label="${esc(T.views)}">${['map','board','plan','inputs'].map(k=>`<button type="button" data-go="${k==='map'?'progress':'progress='+k}"${view===k?' aria-current="page"':''}>${esc(T.v[k])}${k==='inputs'&&n?` <span class="tr-n-badge">${n}</span>`:''}</button>`).join('')}</div>
-    <button type="button" class="btn" data-tract="refresh">${esc(T.refresh)}</button>${editBtn('screen','progress','src/js/17-tracker.js + studio-docs/build/steps.json')}</div>
-    ${lock}${TR.issues.length?`<p class="banner bad" role="status"><b>${esc(T.issuesT(TR.issues.length))}</b> ${esc(TR.issues.slice(0,4).join(' · '))}</p>`:''}`;}
+  return `<div class="tr-head"><h1>${esc(T.title)}</h1><div class="seg" role="group" aria-label="${esc(T.views)}">${['map','board','plan','inputs','desk'].map(k=>`<button type="button" data-go="${k==='map'?'progress':'progress='+k}"${view===k?' aria-current="page"':''}>${esc(T.v[k])}${k==='inputs'&&n?` <span class="tr-n-badge">${n}</span>`:''}</button>`).join('')}</div>
+    <button type="button" class="btn" data-tract="refresh" data-fk="tr-refresh">${esc(T.refresh)}</button>${editBtn('screen','progress','src/js/17-tracker.js + studio-docs/build/steps.json')}</div>
+    ${view==='desk'?'':lock}${TR.issues.length?`<p class="banner bad" role="status"><b>${esc(T.issuesT(TR.issues.length))}</b> ${esc(TR.issues.slice(0,4).join(' · '))}</p>`:''}`;}
 const trFoot=()=>`<p class="xs mut tr-data">${esc(STR.tr.dataLine(TR.D.updated,new Date(TR.at)))}</p>${dbgOn('tracker')?trDebug():''}`;
 function trDebug(){const vis=TR.D.steps.filter(s=>s.type!=='Idea'),dp=trDepths(vis),by=trBy();
   DBG.tracker=`tracker ${TR.D.steps.length} steps · ${TR.ms} ms · issues ${TR.issues.length} · lock ${TR.lock.text?(TR.lock.h!=null?TR.lock.h.toFixed(1)+' h':'? h'):'free'}`;dbgPaint();
@@ -100,8 +100,12 @@ function trWait(v,crumbs){ROUTE.crumbs=crumbs;window.TR_READY=null;
 SCREENS.progress=function(v){
   const view=ROUTE.view||'map';if(trWait(v,[{label:STR.tr.title}]))return;
   ROUTE.crumbs=[{label:STR.tr.title,hash:'progress'}];if(view!=='map')ROUTE.crumbs.push({label:STR.tr.v[view]});
-  v.innerHTML=`<div class="tr" data-view="${view}">${trHead(view)}${view==='board'?trBoard():view==='plan'?trPlanView():view==='inputs'?trInputsView():trMapShell()}${trFoot()}</div>`;
+  if(view==='desk'&&(DK.key!==(ROUTE.fx||'live')||DK.loading||(!ROUTE.fx&&Date.now()-DK.at>=CONFIG.tracker.deskRefetchMin*60000))){const r=ROUTE.raw;v.innerHTML=`<div class="tr" data-view="desk">${trHead(view)}<p class="empty" role="status"></p></div>`;const ls=v.querySelector('.empty[role=status]');setTimeout(()=>{if(ls.isConnected)ls.textContent=STR.tr.dk.loading;},50);window.TR_READY=null;
+    dkLoad(ROUTE.fx).then(()=>{if(ROUTE.raw!==r)return;const a=document.activeElement,lost=!a||a===document.body||a.matches('#view h1');render();
+      if(lost&&!document.activeElement.closest('#view')){const h=$('#view h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:DEV.cls==='dev-d'});}}});return;}   // G-A11y W6: the re-render after the load keeps focus in the page   // W6: the snapshot loads once per source; TR_READY waits for it
+  v.innerHTML=`<div class="tr" data-view="${view}">${trHead(view)}${view==='board'?trBoard():view==='plan'?trPlanView():view==='inputs'?trInputsView():view==='desk'?trDeskView():trMapShell()}${trFoot()}</div>`;
   if(view==='map'){TR.tapHl=null;trDrawMap();const back=TR.lastNode&&$(`.tr-node[data-go="step=${CSS.escape(TR.lastNode)}"]`);if(back){back.setAttribute('data-focus-first','');requestAnimationFrame(()=>back.scrollIntoView({block:'nearest',inline:'nearest'}));}TR.lastNode=null;}   // Back from a step → the shell focuses the node you came from (W1 to-do)
+  const cur=$('.tr-head .seg [aria-current="page"]');if(cur)cur.scrollIntoView({inline:'nearest',block:'nearest'});   // W6 G-Art: the 5th chip (Desk) sits off-screen on a phone
   window.TR_READY=ROUTE.raw;};
 function trMapShell(){const T=STR.tr,D=TR.D,nd=D.steps.filter(s=>s.status==='done'&&s.type!=='Idea').length,ni=D.steps.filter(s=>s.type==='Idea').length;
   return `<div class="row tr-tools"><div class="seg" role="group" aria-label="${esc(T.showT)}">
@@ -179,7 +183,8 @@ function trPlanView(){const T=STR.tr,P=trPlanFresh(),by=trBy();
   const L=T.pl,nm=c=>c.kind==='check'?L.checkItem(c.id.split('·')[1]):c.kind==='input'?L.inputItem(c.id):(by[c.step]?trTi(by[c.step]):c.step);
   const when=c=>c.start?L.when(trDay(c.start),trDay(c.end||c.start)):L.noDate;
   const crit=new Set(P.critical.map(c=>c.id)),st=c=>by[c.step]?T.st[by[c.step].status]:'';
-  const cell=c=>`<button type="button" class="lrow tr-pi${crit.has(c.id)?' crit':''}" data-go="step=${esc(c.step)}">${by[c.step]?trSw(by[c.step].status):''}<span class="nm"><b class="mono">${esc(c.kind==='step'?c.step:c.id.split('·').pop())}</b>${c.kind==='step'&&by[c.step]?trRunTag(by[c.step]):''} ${esc(nm(c))}<br><span class="xs mut">${c.kind==='step'&&st(c)?esc(st(c))+' · ':''}${esc(when(c))}${c.mins?' · '+esc(L.mins(c.mins)):''}</span>${c.slipped?` <span class="badge bad">${esc(L.slipped)}</span>`:''}${crit.has(c.id)?` <span class="tr-crit" aria-hidden="true">◆</span><span class="sr">${esc(L.critSr)}</span>`:''}</span></button>`;
+  const tent=c=>c.kind==='step'&&trTent(by[c.step]);   // W6 (D-099 a): agreed, not scoped yet — ~ dates + a dashed rule + the word (never the dash alone)
+  const cell=c=>`<button type="button" class="lrow tr-pi${crit.has(c.id)?' crit':''}${tent(c)?' tent':''}" data-go="step=${esc(c.step)}">${by[c.step]?trSw(by[c.step].status):''}<span class="nm"><b class="mono">${esc(c.kind==='step'?c.step:c.id.split('·').pop())}</b>${c.kind==='step'&&by[c.step]?trRunTag(by[c.step]):''} ${esc(nm(c))}<br><span class="xs mut">${c.kind==='step'&&st(c)?esc(st(c))+' · ':''}${esc(when(c))}${c.mins?' · '+esc(L.mins(c.mins)):''}</span>${tent(c)?` <span class="badge tr-tent">${esc(L.tent)}<span class="sr"> — ${esc(L.tentHelp)}</span></span>`:''}${c.slipped?` <span class="badge bad">${esc(L.slipped)}</span>`:''}${crit.has(c.id)?` <span class="tr-crit" aria-hidden="true">◆</span><span class="sr">${esc(L.critSr)}</span>`:''}</span></button>`;
   const list=a=>a.length>3?a.slice(0,3).map(cell).join('')+`<details class="tr-pmore"><summary class="lk">${esc(L.moreN(a.length-3))}</summary>${a.slice(3).map(cell).join('')}</details>`:a.map(cell).join('');
   const rows=['lock','gpu','research','owner'].map(r=>{const R=P.rows[r];if(!R.now.length&&!R.next.length&&!R.later.length)return '';
     return `<section class="card tr-prow" aria-labelledby="trPR-${r}"><h2 id="trPR-${r}">${esc(L.rows[r])}</h2><p class="xs mut">${esc(L.rowHelp[r])}</p><div class="tr-pcols">${['now','next','later'].map(k=>`<div class="tr-pcol"><h3 class="tr-pch">${esc(L.cols[k])}</h3>${list(R[k])||`<p class="sm mut">${esc(L.empty)}</p>`}</div>`).join('')}</div></section>`;}).join('');
@@ -215,6 +220,69 @@ function trInputsView(){const T=STR.tr,L=trInputs();
     <p class="xs mut">${esc(T.askedIn(x.chat))}${x.d?' · '+esc(x.d):''}</p>
     <div class="row"><button type="button" class="lk" data-go="step=${esc(x.step.id)}">${esc(T.openStep(x.step.id))}</button>${x.d?`<a class="lk" href="${esc(trGh('studio-docs/claude/DECISIONS.md'))}" target="_blank" rel="noopener">${esc(x.d)} ↗</a>`:''}
       <button type="button" class="btn" data-tract="reply" data-i="${i}">${esc(T.copyReply)}</button></div></li>`).join('')}</ol>`;}
+
+/* ---- #progress=desk (W6, D-099 d, D-101): the Dispatcher's hourly snapshot, read only ----
+   Source: CONFIG.tracker.desk (raw desk.json on branch desk-data, W6.q3) fetched when the tab opens; the last good copy is kept on this
+   device (localStorage, CONFIG.keys.desk) and shown offline with a note. Testing mode: #progress=desk&desk=fresh|stale|empty reads a demo
+   snapshot from tools/layout-check/fixtures/ (its _age_h sets generated_at relative to now). A section the Dispatcher could not read is null:
+   shown as "— unknown: <reason>" from `reasons` (D-101). Ids and states only — the question text comes from steps.json (TR.D). */
+const DK={d:null,src:'',key:'',err:null,savedAt:0,at:0,loading:null};
+const trTent=s=>!!s&&Array.isArray(s.todo)&&s.todo.length>0&&String(s.todo[0]).toLowerCase().startsWith('tentative');   // same test as check.py TENTATIVE + desk.py step_cell
+const dkMs=t=>{const m=/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/.exec(typeof t==='string'?t:'');return m?Date.UTC(+m[1],+m[2]-1,+m[3],+m[4],+m[5])-330*60000:null;};   // "2026-11-27 11:22 IST" → ms
+const dkIst=ms=>{const t=new Date(ms+330*60000).toISOString();return t.slice(0,10)+' '+t.slice(11,16)+' IST';};
+const dkWhen=t=>{const m=/^(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}))?/.exec(typeof t==='string'?t:'');return m?trDay(m[1])+(m[2]?', '+m[2]:''):String(t||'');};
+const dkShape=j=>!!j&&j.schema===1&&['now','next','inputs','running','slips','checks','answers'].every(k=>j[k]==null||Array.isArray(j[k]))
+  &&['lock','ci','pipeline','reasons'].every(k=>j[k]==null||typeof j[k]==='object')&&(j.generated_at==null||typeof j.generated_at==='string');   // G-Eng W6: a bad copy never breaks the render
+function dkLoad(fx){const key=fx||'live',C=CONFIG.tracker;
+  if(DK.key===key&&DK.loading)return DK.loading;
+  if(DK.key===key&&(DK.d||DK.err)&&(fx||Date.now()-DK.at<C.deskRefetchMin*60000))return Promise.resolve();   // live: fetched again when the tab opens after deskRefetchMin
+  Object.assign(DK,{key,d:null,src:'',err:null,savedAt:0,at:Date.now()});const t0=performance.now(),ac=typeof AbortController==='function'?new AbortController():null,tm=ac&&setTimeout(()=>ac.abort(),C.deskTimeoutS*1000);
+  const p=DK.loading=fetch(fx?C.deskFx.replace('%s',fx):C.desk,{cache:'no-cache',signal:ac?ac.signal:undefined}).then(r=>{if(!r.ok)throw new Error('desk.json HTTP '+r.status);return r.json();})
+    .then(j=>{if(DK.loading!==p)return;if(!dkShape(j))throw new Error(STR.tr.dk.badShape(j&&j.schema));   // a newer load (Refresh, another demo) owns DK now
+      if(fx&&typeof j._age_h==='number')j.generated_at=dkIst(Date.now()-j._age_h*3600000);
+      DK.d=j;DK.src=fx?'fixture':'live';if(!fx)try{localStorage.setItem(CONFIG.keys.desk,JSON.stringify({at:Date.now(),d:j}));}catch(_){}})
+    .catch(e=>{if(DK.loading!==p)return;DK.err=e&&e.name==='AbortError'?STR.tr.dk.timeout(C.deskTimeoutS):(e.message||String(e));
+      if(!fx)try{const c=JSON.parse(localStorage.getItem(CONFIG.keys.desk)||'null');if(c&&dkShape(c.d)){DK.d=c.d;DK.src='cache';DK.savedAt=+c.at||0;}}catch(_){}})
+    .finally(()=>{clearTimeout(tm);if(DK.loading!==p)return;DK.loading=null;dlog('tracker','desk',DK.src||'none',Math.round(performance.now()-t0)+' ms',DK.err||'ok');});
+  return p;}
+function trDeskView(){const T=STR.tr.dk,d=DK.d,by=trBy(),L=STR.tr.pl;
+  if(!d)return `<p class="sm mut">${esc(T.lead)}</p><section class="card" aria-labelledby="dkS"><h2 id="dkS">${esc(T.snapT)}</h2><p>${esc(T.none)}</p>${DK.err?`<p class="xs mut">${esc(DK.err)}</p>`:''}</section>`;
+  const R=d.reasons||{},unk=k=>`<p class="sm mut">${esc(T.unknown(R[k]||T.noReason))}</p>`,none=`<p class="sm mut">${esc(T.nothing)}</p>`;
+  const gen=dkMs(d.generated_at),age=gen==null?null:Math.max(0,(Date.now()-gen)/3600000),lim=+d.stale_after_h||CONFIG.tracker.deskStaleH,stale=age==null||age>lim;
+  const nm=id=>by[id]?trTi(by[id]):'',row=r=>L.rows[r]||r||'',stw=s=>STR.tr.st[s]||s||'';
+  const item=(go,id,title,sub,cls)=>`<li><button type="button" class="lrow tr-pi${cls?' '+cls:''}" data-go="step=${esc(go)}"><span class="nm"><b class="mono">${esc(id)}</b> ${esc(title)}${sub?`<br><span class="xs mut">${sub}</span>`:''}</span></button></li>`;
+  const sec=(k,title,help,body)=>`<section class="card tr-dks" aria-labelledby="dk-${k}"><h2 id="dk-${k}">${esc(title)}</h2>${help?`<p class="xs mut">${esc(help)}</p>`:''}${body}</section>`;
+  const list=a=>a.length?`<ul class="tr-plist">${a.join('')}</ul>`:none;
+  const more=(a,n)=>a.length>n?`<ul class="tr-plist">${a.slice(0,n).join('')}</ul><details class="tr-pmore"><summary class="lk">${esc(T.moreN(a.length-n))}</summary><ul class="tr-plist">${a.slice(n).join('')}</ul></details>`:list(a);
+  const bad=t=>` <span class="badge bad">${esc(t)}</span>`,tag=t=>` <span class="badge">${esc(t)}</span>`;
+  // snapshot age: words, never colour alone (H5)
+  const snap=`<section class="card tr-dks tr-dk-snap" aria-labelledby="dkS"><h2 id="dkS">${esc(T.snapT)}${age==null?bad(T.ageUnknownT):stale?bad(T.staleT):tag(T.freshT)}</h2>
+    <p>${d.generated_at?esc(T.made(dkWhen(d.generated_at),T.age(age))):esc(T.unknown(R.generated_at||T.noReason))}${d.source&&d.source.commit?' · '+esc(T.fromMain(d.source.commit)):''}</p>
+    ${stale?`<p class="banner bad">${esc(age==null?T.staleUnknown:T.stale(lim))}</p>`:`<p class="sm mut">${esc(T.fresh)}</p>`}
+    ${DK.src==='cache'?`<p class="banner">${esc(T.offline(DK.savedAt?dkWhen(dkIst(DK.savedAt)):'?'))}</p>`:''}${DK.src==='fixture'?`<p class="xs mut">${esc(T.fixture(DK.key))}</p>`:''}</section>`;
+  const live=`<p class="xs mut">${esc(T.lockLive(TR.lock.text||T.lockFree))}</p>`;
+  const K=d.lock,lock=(K==null?unk('lock'):K.state==='free'?`<p>${esc(T.lockFree)}</p>`
+    :`<p>${esc(T.lockHeld(K.chat||'?',K.since?dkWhen(K.since):''))}${K.age_h!=null?' · '+esc(T.age(K.age_h)):''}</p>${K.old?`<p class="banner bad">${esc(T.lockOld)}</p>`:''}${K.since_reason?`<p class="xs mut">${esc(K.since_reason)}</p>`:''}`)+live;
+  const nowB=d.now==null?unk('now'):list(d.now.map(c=>item(c.id,c.id,nm(c.id)||c.title||'',esc(row(c.row))+' · '+esc(stw(c.status)))));
+  const nextB=d.next==null?unk('next'):list(d.next.map(c=>item(c.id,c.id,nm(c.id)||c.title||'',esc(c.start?L.when(trDay(c.start),trDay(c.end||c.start)):L.noDate)+' · '+esc(row(c.row))+(c.tentative?` <span class="badge">${esc(L.tent)}<span class="sr"> — ${esc(L.tentHelp)}</span></span>`:'')+(c.slipped?bad(L.slipped):''),c.tentative?'tent':'')));
+  const inB=d.inputs==null?unk('inputs'):more(d.inputs.map(x=>item(x.step,x.id,nm(x.step),esc(STR.tr.kind[x.kind]||x.kind||'')+' · '+esc(T.unblocksN(x.unblocks||0))+(x.blocks?bad(T.blocks):''))),5);
+  const runB=d.running==null?unk('running'):list(d.running.map(r=>item(r.step,r.step,r.chat||nm(r.step),esc(dkWhen(r.start))+' · '+esc(T.runAge(r.age_h))+(r.old?' ·'+bad(T.runOld):'')+(r.old_reason?' · '+esc(r.old_reason):''))));
+  const slipB=d.slips==null?unk('slips'):list(d.slips.map(x=>item(x.step,x.step,nm(x.step),esc(T.slipEnd(trDay(x.end))))));
+  const ci=d.ci,nf=ci&&ci.newest_finished,mh=ci&&ci.main_head;
+  const ciB=ci==null?unk('ci'):`${nf?`<p>${esc(T.ciRun(nf.commit||'?'))}: <b>${esc(nf.state==='success'&&!nf.red?T.ciGreen:T.ciState(nf.state))}</b>${nf.red?bad(T.ciRed):''}${nf.url&&/^https:\/\/github\.com\//.test(nf.url)?` · <a class="lk" href="${esc(nf.url)}" target="_blank" rel="noopener">${esc(T.ciOpen)}<span aria-hidden="true"> ↗</span><span class="sr">${esc(T.newTab)}</span></a>`:''}</p>`:unk('ci')}
+    ${mh?`<p class="sm">${esc(T.ciHead(mh.commit||'?',mh.state))}${mh.reason?' · '+esc(mh.reason):''}</p>`:''}`;
+  const C=d.checks,order={fail:0,warn:1,unknown:2,pass:3},nBad=C?C.filter(c=>c.state!=='pass').length:0;
+  const chkB=C==null?unk('checks'):`<ul class="tr-dkc">${C.slice().sort((a,b)=>(order[a.state]??2)-(order[b.state]??2)).map(c=>`<li><span class="mono">${esc(c.id)}</span> ${c.state==='pass'?tag(T.st.pass):c.state==='fail'?bad(T.st.fail):tag(Object.hasOwn(T.st,c.state)?T.st[c.state]:String(c.state))}${c.detail&&c.state!=='pass'?`<br><span class="xs">${esc(c.detail)}</span>`:c.detail?` <span class="xs mut">${esc(c.detail)}</span>`:''}</li>`).join('')}</ul>`;
+  const P=d.pipeline,sch=P&&P.scheduled,ho=P&&P.handoffs,cq=P&&P.code_queue,PR=(P&&P.reasons)||{};
+  const pipeB=P==null?unk('pipeline'):`<ul class="tr-dkc">
+    <li>${sch==null?esc(T.unknown(PR.scheduled||T.noReason)):`<details class="tr-pmore"><summary class="lk">${esc(T.tasksN(sch.length))}</summary><ul class="tr-dkc">${sch.map(t=>`<li><span class="mono xs">${esc(t.id||'?')}</span></li>`).join('')}</ul><p class="xs mut">${esc(T.tasksOnOff)}</p></details>`}</li>
+    <li>${ho==null?esc(T.unknown(PR.handoffs||T.noReason)):esc(T.handN((ho.open||[]).length))}</li>
+    <li>${cq==null?esc(T.unknown(PR.code_queue||T.noReason)):esc(T.queueN((cq.open||[]).length,cq.done||0))}</li></ul>`;
+  const A=d.answers,ansB=A==null?unk('answers'):A.length?`<ul class="tr-dkc">${A.map(a=>`<li><span class="mono">${esc(a.id||'?')}</span> ${a.state==='bad'?bad(T.ans.bad):tag(Object.hasOwn(T.ans,a.state)?T.ans[a.state]:String(a.state))}${a.reason?` <span class="xs mut">${esc(a.reason)}</span>`:''}</li>`).join('')}</ul>`:none;
+  return `<p class="sm mut">${esc(T.lead)}</p><div class="tr-dk">${snap}<div class="tr-dk-cols">
+    ${sec('lock',T.lockT,'',lock)}${sec('now',T.nowT,T.nowHelp,nowB)}${sec('next',T.nextT,T.nextHelp,nextB)}
+    ${sec('in',T.inT,d.inputs?T.inHelp(d.inputs.length):'',inB)}${sec('runs',T.runsT,T.runsHelp,runB)}${sec('slips',T.slipsT,T.slipsHelp,slipB)}
+    ${sec('ci',T.ciT,'',ciB)}${sec('chk',T.chkT,C?T.chkHelp(nBad):'',chkB)}${sec('pipe',T.pipeT,T.pipeHelp,pipeB)}${sec('ans',T.ansT,T.ansHelp,ansB)}</div></div>`;}
 
 /* ---- #step=<id> ---- */
 SCREENS.step=function(v){
@@ -264,7 +332,7 @@ SCREENS.step=function(v){
 
 /* ---- events (one delegated listener each, added once) ---- */
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-tract]');if(!b||!b.closest('#view'))return;const a=b.dataset.tract,T=STR.tr;
-  if(a==='refresh'){TR.D=null;TR.err=null;trLoad(true).then(()=>{render();toast(TR.err?T.loadFail:T.refreshed);});render();return;}
+  if(a==='refresh'){TR.D=null;TR.err=null;DK.key='';DK.d=null;DK.err=null;trLoad(true).then(()=>{render();toast(TR.err?T.loadFail:T.refreshed);});render();return;}
   if(a==='done'||a==='ideas'){TR.show[a]=!TR.show[a];try{sessionStorage.setItem('biostudio.tracker',JSON.stringify(TR.show));}catch(_){}render();return;}
   let txt='';
   if(a==='copyp'){const s=trBy()[ROUTE.id],p=s&&trPrompt(s.prompt);const rl=s?trSurface(TR.D,s):null,run=rl&&rl.on?'\n'+T.runLine(rl.on,rl.why):'';txt=s?(p?T.chatLine(s.chat)+run+'\n\n'+p:s.chat+run):'';}

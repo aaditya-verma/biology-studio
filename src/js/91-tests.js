@@ -34,6 +34,10 @@ function appTests(){
   t('up step → progress',JSON.stringify(upOf(parseHash('#step=C1')))===JSON.stringify({name:'progress'}));
   t('progress nav only in testing mode',navItems().includes('progress')===!!FLAGS.test);
   t('plan: route',parseHash('#progress=plan').view==='plan'&&hashOf(parseHash('#progress=plan'))==='progress=plan');
+  t('desk: route + demo only in testing mode',parseHash('#progress=desk').view==='desk'&&hashOf(parseHash('#progress=desk'))==='progress=desk'&&parseHash('#progress=desk&desk=nope').fx===undefined&&(parseHash('#progress=desk&desk=stale').fx==='stale')===!!FLAGS.test);   // W6
+  t('desk: IST time both ways',dkMs('2026-11-27 11:22 IST')===Date.UTC(2026,10,27,5,52)&&dkIst(Date.UTC(2026,10,27,5,52))==='2026-11-27 11:22 IST'&&dkMs('')===null&&dkWhen('2026-11-27 11:22 IST')==='27 Nov, 11:22');
+  t('desk: tentative = todo line 1 (as check.py)',trTent({todo:['Tentative — firm up']})&&trTent({todo:['tentative x']})&&!trTent({todo:['x','Tentative']})&&!trTent({todo:[]})&&!trTent(null));
+  t('desk: words for every section',['snapT','lockT','nowT','nextT','inT','runsT','slipsT','ciT','chkT','pipeT','ansT'].every(k=>STR.tr.dk[k])&&STR.tr.v.desk&&STR.tr.pl.tent);
   t('plan: scheduler loaded',typeof trPlan==='function'&&PLAN_DEF.rows.length===5&&PLAN_DEF.rows.every(r=>STR.tr.pl.rows[r]));
   (()=>{const d={queue:['B'],steps:[{id:'A',type:'Build',status:'done',lock:true,needs:[],inputs:[]},{id:'B',type:'Build',status:'planned',lock:true,needs:['A'],inputs:[]},
       {id:'C',type:'Research',status:'ready',lock:false,needs:['A'],inputs:[]},{id:'D',type:'Review',status:'planned',lock:false,uses:['prof'],needs:[],inputs:[]}]},P=trPlan(d,'2026-11-21');

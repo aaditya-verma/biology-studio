@@ -1,7 +1,7 @@
 /* Biology Studio — addresses + history (master plan §8). Owner doc: build/design-plan.md §3.
    Every place has an address: #today · #map · #map=E05 · #concept=E05.02.01 · #x=layer&y=day · #settings · #colours
    · #scene · #scene=sc-E00.01.04&day=16 · #day=16 (V1) · #studio · #studio=E05.01.01[&gate=G-Learn] · #calib (S1, testing mode)
-   · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
+   · #progress · #progress=board · #progress=plan (W2) · #progress=inputs · #progress=desk (W6) · #step=C1 (W1 progress map) · #cards · #card=E05.01.01 · #deck (L1 learning core; later: #ep=…&t=)
    · #lessons · #lesson=E05 · #card=E05.01.01&lesson=E05&step=check · #mix · #mix=go · #deck=go (L2 lessons, Today plans, Mixed review — docs/lesson-spec.md)
    · #res · #res=book|research|curriculum|tools|marks · #res=research&id=R05f · #map=E05&sec=E05.02 (SR1 Resources + book cites, D-098)
    · #review · #review=news · #review=mine · #rcard=E06.02.01 · #rtour · #rtour=2 · #updates · #updates=2 (H2 Reviewer mode). Back/Forward = the browser's history; Up = the parent address.
@@ -22,7 +22,7 @@ function parseHash(h){h=(h||'').replace(/^#/,'');if(!h)return {name:CONFIG.home,
   if(name==='scene'){r.id=p.get('scene')||null;const d=p.get('day');if(r.id&&d!=null&&d!==''&&isFinite(+d))r.day=+d;}
   if(name==='day'){const d=p.get('day');r.day=isFinite(+d)?+d:null;}
   if(name==='studio'){r.id=p.get('studio')||null;const g=p.get('gate');if(r.id&&g&&Object.hasOwn(CARD_RULES.gates,g))r.gate=g;}
-  if(name==='progress'){const v=p.get('progress');r.view=['board','plan','inputs'].includes(v)?v:'map';}
+  if(name==='progress'){const v=p.get('progress');r.view=['board','plan','inputs','desk'].includes(v)?v:'map';const fx=p.get('desk');if(r.view==='desk'&&FLAGS.test&&CONFIG.tracker.deskFxs.includes(fx))r.fx=fx;}   // W6: &desk=<demo snapshot> in testing mode only
   if(name==='step')r.id=p.get('step')||null;
   if(name==='card'){r.id=p.get('card')||null;if(!r.id||!/^E\d\d\.\d\d\.\d\d$/.test(r.id))return {name:'cards',raw:h};
     const ls=p.get('lesson'),sk=p.get('step');if(ls&&CONFIG.learn.lessons.includes(ls)){r.lesson=ls;if(['read','check','scene','drill','remember'].includes(sk))r.step=sk;}}   // L1 reader; a bad id → the card list · L2: opened from a lesson
@@ -45,7 +45,7 @@ function hashOf(r){switch(r.name){case 'map':return r.ch?'map='+r.ch+(r.sec?'&se
   case 'lesson':return 'lesson='+r.ch;case 'mix':return r.view==='go'?'mix=go':'mix';case 'deck':return r.view==='go'?'deck=go':'deck';
   case 'review':return r.view&&r.view!=='todo'?'review='+r.view:'review';case 'rcard':return 'rcard='+r.id;
   case 'rtour':return r.step&&r.step>1?'rtour='+r.step:'rtour';case 'updates':return r.page&&r.page>1?'updates='+r.page:'updates';
-  case 'progress':return r.view&&r.view!=='map'?'progress='+r.view:'progress';case 'step':return r.id?'step='+r.id:'progress';
+  case 'progress':return r.view&&r.view!=='map'?'progress='+r.view+(r.fx?'&desk='+r.fx:''):'progress';case 'step':return r.id?'step='+r.id:'progress';
   case 'x':return 'x='+r.x+'&y='+r.y+(r.cell?'&cell='+encodeURIComponent(r.cell):'');default:return r.name;}}
 function upOf(r){switch(r.name){case 'res':return r.view!=='book'||r.id?{name:'res',view:'book'}:{name:'today'};   // SR1 (G-Eng r1)
   case 'concept':return {name:'map',ch:r.ch};case 'map':return r.ch?{name:'map'}:{name:'today'};
