@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-27 12:22 IST",
+ "generated_at": "2026-11-27 13:22 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "f98993c",
@@ -23,7 +23,7 @@
   "state": "held",
   "chat": "Bio · Build · W6 desk",
   "since": "2026-11-27 11:31 IST",
-  "age_h": 0.9,
+  "age_h": 1.9,
   "old": false,
   "since_reason": null
  },
@@ -684,7 +684,7 @@
    "chat": "Bio · Build · W6 desk",
    "by": "Aaditya",
    "start": "2026-11-27 11:31",
-   "age_h": 0.9,
+   "age_h": 1.9,
    "old": false,
    "old_reason": null
   }
@@ -728,7 +728,7 @@
   {
    "id": "laptop",
    "state": "warn",
-   "detail": "22 uncommitted files; 1 commits to push (sync.bat)"
+   "detail": "2 commits to push (sync.bat)"
   },
   {
    "id": "lock_age",
