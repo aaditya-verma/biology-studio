@@ -2690,6 +2690,28 @@
    "est": {"chats": 1},
    "runs": [{"chat": "Bio · Fix · title guard", "by": "Aaditya", "start": "2026-11-27 04:38", "outcome": "done", "note": "route A (Claude Code, cloud clone of main, lock lane D-105); open run; start HEAD 0e92816; P1F GPU lane open in the laptop clone — not touched; G-Eng fresh reviewer agent: pass with fixes — MUST invalid escape in the docstring (SyntaxWarning) fixed; SHOULD todo: null crash with --todo-tokens fixed, 12-char comment reworded; own find: Dispatcher selftest clone has no GLOSSARY (load_refs made tolerant, desk selftest 78/78); NIT/SHOULD e.g. / brand camelCase false positives left as to-do; CI run 45909628153 on 357c13e green", "end": "2026-11-27 04:42", "commit": "357c13e"}],
    "run": {"on": "Code", "why": "takes the build lock: changes the tracker check, runs the checks, pushes"}
+  },
+  {
+   "id": "GPF",
+   "title": "GPU first lane order and R1 lock split",
+   "type": "Fix",
+   "chat": "Bio · Fix · GPU first",
+   "status": "in progress",
+   "needs": [],
+   "unblocks": [],
+   "lock": true,
+   "gates": {"G-Eng": "open"},
+   "check": null,
+   "decisions": [],
+   "prompt": null,
+   "log": "—",
+   "todo": [
+    "Owner answers 28 Nov 2026, 00:37 IST (Bio · Ideation · local first) → D-110 (a–d): queue GPU first, R1 lock split (new R1T), M1V8 keeps the lock, D: drive cleared + GPU-step start checks; docs + steps.json only"
+   ],
+   "inputs": [],
+   "est": {"chats": 1},
+   "runs": [{"chat": "Bio · Fix · GPU first", "by": "Aaditya", "start": "2026-11-28 00:54", "outcome": "partial", "note": "route A (Claude Code, fresh cloud clone of main, lock lane D-105, no GPU, no sync.bat); open run; start HEAD 81f615a; start check 2 waited for checks run 46050948399 on 81f615a to finish green"}],
+   "run": {"on": "Code", "why": "takes the build lock: changes docs + steps.json, runs the checks, pushes"}
   }
  ]
 }
