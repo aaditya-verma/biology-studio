@@ -2683,7 +2683,7 @@
    ],
    "inputs": [],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Fix · title guard", "by": "Aaditya", "start": "2026-11-27 04:38", "outcome": "done", "note": "route A (Claude Code, cloud clone of main, lock lane D-105); open run; start HEAD 0e92816; P1F GPU lane open in the laptop clone — not touched; G-Eng fresh reviewer agent: pass with fixes — MUST invalid escape in the docstring (SyntaxWarning) fixed; SHOULD todo: null crash with --todo-tokens fixed, 12-char comment reworded; own find: Dispatcher selftest clone has no GLOSSARY (load_refs made tolerant, desk selftest 78/78); NIT/SHOULD e.g. / brand camelCase false positives left as to-do", "end": "2026-11-27 04:42"}],
+   "runs": [{"chat": "Bio · Fix · title guard", "by": "Aaditya", "start": "2026-11-27 04:38", "outcome": "done", "note": "route A (Claude Code, cloud clone of main, lock lane D-105); open run; start HEAD 0e92816; P1F GPU lane open in the laptop clone — not touched; G-Eng fresh reviewer agent: pass with fixes — MUST invalid escape in the docstring (SyntaxWarning) fixed; SHOULD todo: null crash with --todo-tokens fixed, 12-char comment reworded; own find: Dispatcher selftest clone has no GLOSSARY (load_refs made tolerant, desk selftest 78/78); NIT/SHOULD e.g. / brand camelCase false positives left as to-do; CI run 45909628153 on 357c13e green", "end": "2026-11-27 04:42", "commit": "357c13e"}],
    "run": {"on": "Code", "why": "takes the build lock: changes the tracker check, runs the checks, pushes"}
   }
  ]
