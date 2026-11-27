@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-27 13:22 IST",
+ "generated_at": "2026-11-27 18:21 IST",
  "stale_after_h": 6,
  "source": {
   "commit": "f98993c",
@@ -23,7 +23,7 @@
   "state": "held",
   "chat": "Bio · Build · W6 desk",
   "since": "2026-11-27 11:31 IST",
-  "age_h": 1.9,
+  "age_h": 6.8,
   "old": false,
   "since_reason": null
  },
@@ -684,8 +684,8 @@
    "chat": "Bio · Build · W6 desk",
    "by": "Aaditya",
    "start": "2026-11-27 11:31",
-   "age_h": 1.9,
-   "old": false,
+   "age_h": 6.8,
+   "old": true,
    "old_reason": null
   }
  ],
@@ -737,8 +737,8 @@
   },
   {
    "id": "open_runs",
-   "state": "pass",
-   "detail": "1 open"
+   "state": "warn",
+   "detail": "open over 6 h: W6"
   },
   {
    "id": "conflicts",
