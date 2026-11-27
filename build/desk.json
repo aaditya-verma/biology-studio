@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated_at": "2026-11-27 07:22 IST",
+ "generated_at": "2026-11-27 10:22 IST",
  "stale_after_h": 6,
  "source": {
-  "commit": "72814a8",
+  "commit": "4556251",
   "branch": "main"
  },
  "now": [],
@@ -645,8 +645,8 @@
    "url": "https://github.com/aaditya-verma/biology-studio/actions/runs/45914642187"
   },
   "main_head": {
-   "commit": "72814a8",
-   "state": "success",
+   "commit": "4556251",
+   "state": "in_progress",
    "reason": null
   }
  },
@@ -663,13 +663,13 @@
   },
   {
    "id": "ci",
-   "state": "pass",
-   "detail": "main 72814a8 is green"
+   "state": "warn",
+   "detail": "main 4556251 is not confirmed green (in_progress)"
   },
   {
    "id": "laptop",
-   "state": "warn",
-   "detail": "1 commits to pull"
+   "state": "pass",
+   "detail": "clean and in sync"
   },
   {
    "id": "lock_age",
