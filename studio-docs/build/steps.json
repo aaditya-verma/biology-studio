@@ -1459,6 +1459,7 @@
     "GPU lane, no lock (D-105, D-110 b): laptop clone, route B; touches only content/E/episodes + render outputs; uses the R1T tools (render_check.py, mix, chapters.vtt, renditions + manifest) — a tool change → stop and hand it to a lock-lane Fix",
     "GPU-step start checks (D-110 d; any fail → stop): Get-PhysicalDisk HealthStatus Healthy; D: free space ≥ 30 GB (state the actual figure); git fsck clean on the laptop clone; GPU idle (nvidia-smi)",
     "End duty (D-110 d, H7): copy render outputs + manifest to F: and verify sizes/hashes",
+    "D: + F: not safe as of 28 Nov 2026 (M1V8 run 2: live NTFS repairs on D:, bad blocks, F: lost writes) — don't render until M1V8.q1 is answered; add the System-log check (Ntfs 55/98/130, disk 7/51/153) to the start checks",
     "Wording (T4 part A, P1.q2) and V-need code (tools/episode/s1e01_data.py, tools/s1e01-animatic, tools/m1b-host) go in through the lock lane (R1T if T4 is answered by then, else a lock-lane Fix) before R1 starts; R1 only lists which V-needs stay stubs"
    ],
    "inputs": [],
@@ -1813,7 +1814,7 @@
    "title": "M1b v8 install — host look pass",
    "type": "Build",
    "chat": "Bio · Build · M1b v8 install",
-   "status": "in progress",
+   "status": "parked",
    "needs": ["M1b"],
    "unblocks": [],
    "lock": true,
@@ -1829,12 +1830,16 @@
     "block-scan the whole repo tree. Corruption predates the crash, so other committed files may be bad",
     "Runs first in the lock lane after W6 (D-110 a, c): keeps the lock (installs its kit into tools/m1b-host), laptop clone, route B, sync line ends --lock-ok",
     "GPU-step start checks (D-110 d; any fail → stop): Get-PhysicalDisk HealthStatus Healthy; D: free space ≥ 30 GB (state the actual figure); git fsck clean on the laptop clone; GPU idle (nvidia-smi)",
-    "End duty (D-110 d, H7): copy any render outputs (+ manifest if written) to F: and verify sizes/hashes"
+    "End duty (D-110 d, H7): copy any render outputs (+ manifest if written) to F: and verify sizes/hashes",
+    "Parked 28 Nov 2026 (run 2 stopped): D: is still corrupting — NTFS repaired D: 61 times during the start scans, 147 bad-block events on the Seagate, and F: had lost writes on 25 Nov. Unpark (status → ready) only after M1V8.q1; then re-run the start checks plus a block-scan of out\\ and the System log (Ntfs 55/98/130, disk 7/51/153) — Get-PhysicalDisk alone is not enough",
+    "Block-scan done 28 Nov: no tracked repo file damaged; v8 + v7c kits clean — re-scan before install, since D: is still changing"
    ],
-   "inputs": [],
+   "inputs": [
+    {"id": "M1V8.q1", "kind": "action", "ask": "Fix the laptop drives before any GPU step: back up D: (anything not in git/Drive), run `chkdsk D: /scan` (admin), plan to replace the Seagate ST1000LM049 (D:), and check F: (WD My Passport) before trusting it for H7 copies; tell a chat the result", "asked_in": "Bio · Build · M1b v8 install", "asked": "2026-11-28", "answer": null, "status": "open", "d": null}
+   ],
    "uses": ["gpu"],
    "est": {"chats": 1},
-   "runs": [{"chat": "Bio · Build · W5 dispatcher", "by": "Aaditya", "start": "2026-11-24 20:54", "outcome": "partial", "note": "to-do only: sheet2d.py retired (owner); no render, no gate; route B", "end": "2026-11-24 20:55"}, {"chat": "Bio · Build · M1b v8 install", "by": "Aaditya", "start": "2026-11-28 03:01", "outcome": "partial", "note": "route B (Claude Code, laptop clone, lock lane + GPU lane, D-110); open run; start HEAD 5134b48; drive + GPU checks: 3 disks Healthy, D: 340.85 GB free, GPU idle (P8, 4 %); git fsck first failed (missing blob e25abde9 = old steps.json in pre-repair commit abfd4a5, held only by refs/backup/w6-before-repair + reflog, never on main/origin) — owner OK'd removal: ref deleted, reflog expired, gc --prune=now, fsck clean; owner asked for auto sync (chat runs sync.bat itself)"}],
+   "runs": [{"chat": "Bio · Build · W5 dispatcher", "by": "Aaditya", "start": "2026-11-24 20:54", "outcome": "partial", "note": "to-do only: sheet2d.py retired (owner); no render, no gate; route B", "end": "2026-11-24 20:55"}, {"chat": "Bio · Build · M1b v8 install", "by": "Aaditya", "start": "2026-11-28 03:01", "outcome": "partial", "note": "route B (Claude Code, laptop clone, lock lane + GPU lane, D-110); open run; start HEAD 5134b48; drive + GPU checks: 3 disks Healthy, D: 340.85 GB free, GPU idle (P8, 4 %); git fsck first failed (missing blob e25abde9 = old steps.json in pre-repair commit abfd4a5, held only by refs/backup/w6-before-repair + reflog, never on main/origin) — owner OK'd removal: ref deleted, reflog expired, gc --prune=now, fsck clean; owner asked for auto sync (chat runs sync.bat itself); lock-take be679de pushed by sync.bat (guard pass). Block-scan (4 KB junk block, INTEGRITY-ALERT.md): handoff\\m1b-v8 + m1b-v7c clean, tools\\m1b-host = the 30 already-listed files, no tracked repo file damaged, but repo out\\ has damaged files written 26–27 Nov (after the crash) and two scans of the same unchanged files disagreed (1,567 then 429). System log: Ntfs 55/130 — D: corruption found + repaired 48/61 times during this run's scans (03:05–03:08 IST, 1,128 more repair events skipped), Ntfs 98 D: needs an Online Scan since 27 Nov 23:41; disk 7 bad block on Harddisk1 (D:, Seagate ST1000LM049) ×147, last 25 Nov; F: (WD My Passport, disk 2) Ntfs 50 delayed write failed ×65 + disk 51 paging errors ×316 on 25 Nov. Get-PhysicalDisk still says Healthy — not a usable check. Stopped before install: no kit copied, no render, no gates; owner chose close run + release lock (M1V8 parked until D: is fixed, M1V8.q1)", "end": "2026-11-28 03:18"}],
    "run": {"on": "Code", "why": "renders on the laptop GPU: desktop app with the laptop shell on"}
   },
   {
